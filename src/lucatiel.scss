@@ -4,7 +4,7 @@
     --primaryColorContrast: #f0f8ff;
     --primaryColorOpposite: 0;
     --primaryColorPush: #e07668;
-    --secundaryColor: #f0f8ff;
+    --secundaryColor: #f3f5f7;
     --secundaryColorContrast: #D5341F;
     --secundaryColorOpposite: #121212;
     --secundaryColorPush: #636060;
@@ -105,16 +105,33 @@ font-size: var(--fontSizeL);
 [class *= "lctl-navbar"] {
     position: sticky;
     width: 100vw;
-    height: 82px;
+    min-height: 82px;
     text-transform: uppercase;
     font-weight: var(--fontWidthBolder);
     background-color: var(--secundaryColor);
     color: var(--secundaryColorOpposite);
     top: 0;
     display: flex;
-    justify-content: justify;
     align-items: center;
 }
+[class *= "lctl-navbar-leftElements"] {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+[class *= "lctl-navbar-rigthElements"] {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
 [class *= "lctl-navbar"] > a {
+    text-decoration: none;
+    color: inherit;
     padding: 20px;
+}
+[class *= "lctl-navbar"] > a:hover {
+    background-color: var(--secundaryColorContrast);
+    color: var(--secundaryColor);
+}
+[class *= "lctl-navbar"] > a:active {
+    background-color: var(--secundaryColorContrast);
+    color: var(--secundaryColor);
 }
