@@ -1,0 +1,120 @@
+//-----global variables-----
+:root {
+    --primaryColor: #D5341F;
+    --primaryColorContrast: #f0f8ff;
+    --primaryColorOpposite: 0;
+    --primaryColorPush: #e07668;
+    --secundaryColor: #f0f8ff;
+    --secundaryColorContrast: #D5341F;
+    --secundaryColorOpposite: #121212;
+    --secundaryColorPush: #636060;
+    --fontSizeS: 14px;
+    --fontSizeM: 18px;
+    --fontSizeL: 24px;
+    --borderRadiusS: 2px;
+    --borderRadiusM: 4px;
+    --borderRadiusL: 6px;
+    --fontWidthLight: 300;
+    --fontWidthMedium: 400;
+    --fontWidthBolder: 600;
+}
+
+//-----Buttons-----
+[class *="lctl-button"] {
+    text-transform: capitalize;
+    color: var(--primaryColorContrast);
+    background: var(--primaryColor);
+    border: none;
+    outline: none!important;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+}
+[class ^="lctl-button"]:active {
+    background-color: var(--primaryColorPush);
+}
+[class *="lctl-button-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+[class *="lctl-button-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+[class *="lctl-button-l"] {
+width: 300px;
+height: 50px;
+border-radius: var(--borderRadiusL);
+font-size: var(--fontSizeL);
+}
+
+//-----Inputs-----
+[class *="lctl-input"] {
+    background-color: var(--secundaryColor);
+    outline: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 100%;
+}
+[class *="lctl-input"]::placeholder {
+    text-transform: capitalize;
+    color: var(--secundaryColorPush);
+}
+[class *="lctl-input-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+[class *="lctl-input-s-large"] {
+    width: 200px;
+}
+[class *="lctl-input-s-extraLarge"] {
+    width: 300px;
+}
+[class *="lctl-input-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+[class *="lctl-input-m-large"] {
+    width: 300px;
+}
+[class *="lctl-input-m-extraLarge"] {
+    width: 450px;
+}
+[class *="lctl-input-l"] {
+width: 300px;
+height: 50px;
+border-radius: var(--borderRadiusL);
+font-size: var(--fontSizeL);
+}
+[class *="lctl-input-l-large"] {
+    width: 600px;
+}
+[class *="lctl-input-l-extraLarge"] {
+    width: 900px;
+}
+
+//-----Navbar-----
+[class *= "lctl-navbar"] {
+    position: sticky;
+    width: 100vw;
+    height: 82px;
+    text-transform: uppercase;
+    font-weight: var(--fontWidthBolder);
+    background-color: var(--secundaryColor);
+    color: var(--secundaryColorOpposite);
+    top: 0;
+    display: flex;
+    justify-content: justify;
+    align-items: center;
+}
+[class *= "lctl-navbar"] > a {
+    padding: 20px;
+}
