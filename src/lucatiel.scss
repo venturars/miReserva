@@ -1,58 +1,337 @@
 //-----global variables-----
+//----------//----------//----------//----------//----------
 :root {
     --primaryColor: #D5341F;
-    --primaryColorContrast: #f0f8ff;
+    --primaryColorAccent: #D2000D;
+    --primaryColorContrast: #f3f5f7;
     --primaryColorOpposite: 0;
     --primaryColorPush: #e07668;
+    --primaryColorLink: #4F70FF;
+//----------
     --secundaryColor: #f3f5f7;
+    --secundaryColorAccent: #D2000D;
     --secundaryColorContrast: #D5341F;
     --secundaryColorOpposite: #121212;
-    --secundaryColorPush: #636060;
+    --secundaryColorPush: #8f8c8c;
+    --secundaryColorLink: #4F70FF;
+//----------
+    --fontSizeXS: 9px;
     --fontSizeS: 14px;
     --fontSizeM: 18px;
     --fontSizeL: 24px;
-    --borderRadiusS: 2px;
-    --borderRadiusM: 4px;
-    --borderRadiusL: 6px;
+    --fontSizeXL: 32px;
+    --fontSizeXXL: 42px;
+//----------
     --fontWidthLight: 300;
     --fontWidthMedium: 400;
     --fontWidthBolder: 600;
+//----------
+    --borderRadiusS: 2px;
+    --borderRadiusM: 4px;
+    --borderRadiusL: 6px;
 }
+//----------//----------//----------//----------//----------
+
+//-----Typography-----
+//----------//----------//----------//----------//----------
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+//----------//----------//----------//----------//----------
+
+//-----Clean----
+//----------//----------//----------//----------//----------
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--fontSizeM);
+    font-weight: var(--fontWidthMedium);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+//----------
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+//----------//----------//----------//----------//----------
+
+//-----Fonts-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-font-title"] {
+    font-weight: var(--fontWidthBolder);
+    font-size: var(--fontSizeL);
+    text-transform: uppercase;
+}
+//----------
+[class *= "lctl-font-paragraph"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *= "lctl-font-bold"] {
+    font-weight: var(--fontWidthBolder);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *= "lctl-font-lightly"] {
+    font-weight: var(--fontWidthLight);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *= "lctl-font-link"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: inherit;
+    color: var(--primaryColorLink);
+}
+//----------
+[class *= "lctl-font-accent"] {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-transform: uppercase;
+}
+//----------
+[class *= "lctl-font-underline"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: var(--fontSizeS);
+    color: var(--secundaryColorOpposite);
+}
+//----------
+[class *= "lctl-font-comment"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: var(--fontSizeS);
+    color: var(--secundaryColorPush);
+}
+//----------
+[class *= "lctl-font-small"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: var(--fontSizeXS);
+}
+//----------//----------//----------//----------//----------
 
 //-----Buttons-----
+//----------//----------//----------//----------//----------
 [class *="lctl-button"] {
     text-transform: capitalize;
     color: var(--primaryColorContrast);
     background: var(--primaryColor);
     border: none;
     outline: none!important;
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
     max-width: 100%;
     font-weight: var(--fontWidthBolder);
 }
 [class ^="lctl-button"]:active {
     background-color: var(--primaryColorPush);
 }
+//----------
 [class *="lctl-button-s"] {
     width: 100px;
     height: 25px;
     border-radius: var(--borderRadiusS);
     font-size: var(--fontSizeS)
 }
+//----------
 [class *="lctl-button-m"] {
     width: 150px;
     height: 35px;
     border-radius: var(--borderRadiusM);
     font-size: var(--fontSizeM);
 }
+//----------
 [class *="lctl-button-l"] {
-width: 300px;
-height: 50px;
-border-radius: var(--borderRadiusL);
-font-size: var(--fontSizeL);
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
 }
+//----------//----------//----------//----------//----------
+[class *="lctl-buttonOpposite"] {
+    text-transform: capitalize;
+    color: var(--primaryColor);
+    background: inherit;
+    border: 1px solid var(--primaryColor);
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+}
+[class ^="lctl-buttonOpposite"]:active {
+    background-color: var(--primaryColor);
+    color: var(--primaryColorContrast);
+}
+//----------
+[class *="lctl-buttonOpposite-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-buttonOpposite-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-buttonOpposite-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
+[class *="lctl-warnButton"] {
+    text-transform: capitalize;
+    color: var(--primaryColorContrast);
+    background: var(--primaryColorAccent);
+    border: none;
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+}
+[class ^="lctl-warnButton"]:active {
+    background-color: var(--primaryColorPush);
+}
+//----------
+[class *="lctl-warnButton-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-warnButton-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-warnButton-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
+[class *="lctl-warnButtonOpposite"] {
+    text-transform: capitalize;
+    color: var(--secundaryColorAccent);
+    background: inherit;
+    border: 1px solid var(--secundaryColorAccent);
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+}
+[class ^="lctl-warnButtonOpposite"]:active {
+    background-color: var(--secundaryColorContrast);
+    color: var(--secundaryColor);
+}
+//----------
+[class *="lctl-warnButtonOpposite-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-warnButtonOpposite-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-warnButtonOpposite-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
+[class *="lctl-disabledButton"] {
+    text-transform: capitalize;
+    color: var(--secundaryColor);
+    background: var(--secundaryColorPush);
+    border: none;
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+}
+[class ^="lctl-disabledButton"]:active {
+    background-color: var(--secundaryColorPush);
+}
+//----------
+[class *="lctl-disabledButton-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-disabledButton-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-disabledButton-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
+[class *="lctl-disabledButtonOpposite"] {
+    text-transform: capitalize;
+    color: var(--secundaryColorPush);
+    background: inherit;
+    border: 1px solid var(--secundaryColorPush);
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+}
+[class ^="lctl-disabledButtonOpposite"]:active {
+    background-color: inherit;
+    color: var(--secundaryColorPush);
+}
+//----------
+[class *="lctl-disabledButtonOpposite-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-disabledButtonOpposite-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-disabledButtonOpposite-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
 
 //-----Inputs-----
+//----------//----------//----------//----------//----------
 [class *="lctl-input"] {
     background-color: var(--secundaryColor);
     outline: none;
@@ -61,9 +340,11 @@ font-size: var(--fontSizeL);
     max-width: 100%;
 }
 [class *="lctl-input"]::placeholder {
+    font-size: 14px;
     text-transform: capitalize;
     color: var(--secundaryColorPush);
 }
+//----------
 [class *="lctl-input-s"] {
     width: 100px;
     height: 25px;
@@ -76,6 +357,7 @@ font-size: var(--fontSizeL);
 [class *="lctl-input-s-extraLarge"] {
     width: 300px;
 }
+//----------
 [class *="lctl-input-m"] {
     width: 150px;
     height: 35px;
@@ -88,11 +370,12 @@ font-size: var(--fontSizeL);
 [class *="lctl-input-m-extraLarge"] {
     width: 450px;
 }
+//----------
 [class *="lctl-input-l"] {
-width: 300px;
-height: 50px;
-border-radius: var(--borderRadiusL);
-font-size: var(--fontSizeL);
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
 }
 [class *="lctl-input-l-large"] {
     width: 600px;
@@ -100,8 +383,10 @@ font-size: var(--fontSizeL);
 [class *="lctl-input-l-extraLarge"] {
     width: 900px;
 }
+//----------//----------//----------//----------//----------
 
 //-----Navbar-----
+//----------//----------//----------//----------//----------
 [class *= "lctl-navbar"] {
     position: sticky;
     width: 100vw;
@@ -114,24 +399,201 @@ font-size: var(--fontSizeL);
     display: flex;
     align-items: center;
 }
-[class *= "lctl-navbar-leftElements"] {
+[class *= "lctl-navbar"] * a {
+    font-size: var(--fontSizeM);
+    font-weight: var(--fontWidthBolder);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+[class *= "lctl-navbar"] * a:hover {
+    background-color: var(--secundaryColorContrast);
+    color: var(--secundaryColor);
+}
+[class *= "lctl-navbar"] * a:active {
+    background-color: var(--secundaryColorContrast);
+    color: var(--secundaryColor);
+}
+//----------//----------//----------//----------//----------
+
+//-----Footer-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-footer"] {
+    position: fixed;
+    width: 100vw;
+    min-height: 52px;
+    text-transform: uppercase;
+    font-weight: var(--fontWidthBolder);
+    background-color: var(--secundaryColor);
+    color: var(--secundaryColorOpposite);
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+[class *= "lctl-footer"] * a {
+    font-size: var(--fontSizeM);
+    font-weight: var(--fontWidthBolder);
+    padding-left: 20px;
+    padding-right: 20px;
+}
+[class *= "lctl-footer"] * a:hover {
+    background-color: var(--secundaryColorContrast);
+    color: var(--secundaryColor);
+}
+[class *= "lctl-footer"] * a:active {
+    background-color: var(--secundaryColorContrast);
+    color: var(--secundaryColor);
+}
+//----------//----------//----------//----------//----------
+
+//-----Elements position-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-centerElements"] {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
+}
+//----------
+[class *= "lctl-leftElements"] {
+    display: flex;
     justify-content: flex-start;
-}
-[class *= "lctl-navbar-rigthElements"] {
-    justify-content: flex-end;
+    flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
 }
-[class *= "lctl-navbar"] > a {
-    text-decoration: none;
-    color: inherit;
-    padding: 20px;
+//----------
+[class *= "lctl-rightElements"] {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
 }
-[class *= "lctl-navbar"] > a:hover {
-    background-color: var(--secundaryColorContrast);
-    color: var(--secundaryColor);
+//----------//----------//----------//----------//----------
+
+//-----Containers-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-container-photoProfile-"] {
+    background-color: var(--secundaryColorOpposite);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
 }
-[class *= "lctl-navbar"] > a:active {
-    background-color: var(--secundaryColorContrast);
-    color: var(--secundaryColor);
+//----------
+[class *= "lctl-container-photoProfile-xs"] {
+    width: 18px;
+    height: 18px;
+    margin: 1px;
 }
+[class *= "lctl-container-photoProfile-xs"]:hover {
+    border: 1px solid var(--primaryColor);
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-xs"]:active {
+    border: 1px solid var(--primaryColorPush);
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-xs"] img {
+    width: 18px;
+}
+//----------
+[class *= "lctl-container-photoProfile-s"] {
+    width: 36px;
+    height: 36px;
+    margin: 1px;
+}
+[class *= "lctl-container-photoProfile-s"]:hover {
+    border: 2px solid var(--primaryColor);
+    width: 40px;
+    height: 40px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-s"]:active {
+    border: 2px solid var(--primaryColorPush);
+    width: 40px;
+    height: 40px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-s"] img {
+    width: 36px;
+}
+//----------
+[class *= "lctl-container-photoProfile-m"] {
+    width: 60px;
+    height: 60px;
+    margin: 2px;
+}
+[class *= "lctl-container-photoProfile-m"]:hover {
+    border: 2px solid var(--primaryColor);
+    width: 64px;
+    height: 64px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-m"]:active {
+    border: 2px solid var(--primaryColorPush);
+    width: 64px;
+    height: 64px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-m"] img {
+    width: 60px;
+}
+//----------
+[class *= "lctl-container-photoProfile-l"] {
+    width: 100px;
+    height: 100px;
+    margin: 2px;
+}
+[class *= "lctl-container-photoProfile-l"]:hover {
+    border: 2px solid var(--primaryColor);
+    width: 104px;
+    height: 104px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-l"]:active {
+    border: 2px solid var(--primaryColorPush);
+    width: 104px;
+    height: 104px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-l"] img {
+    width: 100px;
+}
+//----------
+[class *= "lctl-container-photoProfile-xl"] {
+    width: 160px;
+    height: 160px;
+    margin: 2px;
+}
+[class *= "lctl-container-photoProfile-xl"]:hover {
+    border: 2px solid var(--primaryColor);
+    width: 164px;
+    height: 164px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-xl"]:active {
+    border: 2px solid var(--primaryColorPush);
+    width: 164px;
+    height: 164px;
+    margin: 0;
+}
+[class *= "lctl-container-photoProfile-xl"] img {
+    width: 160px;
+}
+//----------//----------//----------//----------//----------
+
+//-----Separators-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-br"] {
+    width: 100%;
+    height: 2px;
+    margin: auto;
+    background-color: var(--secundaryColorPush);
+}
+//----------//----------//----------//----------//----------
