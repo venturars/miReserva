@@ -1,1 +1,36 @@
-<p>reservations works!</p>
+<app-navbarClient></app-navbarClient>
+<body>
+<!-- <ng-container *ngIf="reservations == []"></ng-container>
+    <h3 class="lctl-centerElements">No tienes ninguna reserva activa</h3>    -->
+<ng-container *ngIf="reservations != null"></ng-container>
+<div class="lctl-br space" >
+</div>
+<div *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements">
+    <div class="lctl-br modify"></div>
+    <div class="lctl-centerElements row">
+        <div class="center">
+            <a routerLink="/" class="img">
+                <img src="" alt="" class="lctl-photoProfile-s">
+            </a>
+        </div>
+            
+        <div class="">
+            ID: {{reservation.id_reservation }} | 
+            Dia: {{reservations[i].date}} | 
+            Horario: {{reservations[i].time}} | 
+            Observaciones: {{reservations[i].obs}} | 
+            Numero de personas: {{reservations[i].pax}} | 
+            Restaurant: {{reservations[i].id_restaurant}}
+        </div>
+        <div class="center">
+            <button (click)="deleteReservation(reservations[i].id_reservation)" class="lctl-button-m" >Eliminar</button>
+        </div>
+    </div>        
+        <div class="lctl-br modify">
+        </div>
+        <div class="lctl-br space" >
+        </div>    
+</div>
+
+</body>
+<app-footer></app-footer>

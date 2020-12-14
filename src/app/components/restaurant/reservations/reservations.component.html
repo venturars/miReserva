@@ -1,1 +1,85 @@
-<p>reservations works!</p>
+<app-navbarUserRestaurant></app-navbarUserRestaurant>
+<body>
+<!-- <ng-container *ngIf="reservations == []"></ng-container>
+    <h3 class="lctl-centerElements">No tienes ninguna reserva activa</h3>    -->
+    <h3>CONFIRAMDAS</h3>
+<ng-container *ngIf="reservations != null"></ng-container>
+<div class="lctl-br space" >
+</div>
+<div *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements">
+    <div *ngIf="reservations[i].status == 'yes' ">
+    <div class="lctl-br modify" ></div>
+    <div class="lctl-centerElements row" >   
+            <div class="" >
+                Horario: {{reservations[i].time}} | 
+                Nombre: {{reservations[i].name}} | 
+                Mesa: {{reservations[i].table}} | 
+                Numero de personas: {{reservations[i].pax}} | 
+                Observaciones: {{reservations[i].obs}} 
+            </div>
+            <div class="center">
+                <button (click)="deleteReservation(reservations[i].id_reservation)" class="lctl-button-m" >Estado</button>
+            </div>
+        </div>          
+        </div>        
+        <div class="lctl-br modify">
+        </div>
+        <div class="lctl-br space" >
+        </div>    
+    </div>
+    <h3>POR CONFIRMAR</h3>
+    <ng-container *ngIf="reservations != null"></ng-container>
+    <div class="lctl-br space" >
+    </div>
+    <div *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements">
+        <div *ngIf="reservations[i].status == 'no' ">
+        <div class="lctl-br modify"></div>
+        <div class="lctl-centerElements row">
+         
+        <div class="">
+            ID: {{reservation.id_reservation }} | 
+            Horario: {{reservations[i].time}} | 
+            Nombre: {{reservations[i].name}} | 
+            Observaciones: {{reservations[i].obs}} | 
+            Numero de personas: {{reservations[i].pax}} | 
+            Mesa: {{reservations[i].table}}
+        </div>
+        <div class="center">
+            <button (click)="confirmReservation(reservations[i].id_reservation)" class="lctl-button-m" >Confirmar</button>
+            <button (click)="rejectReservation(reservations[i].id_reservation)" class="lctl-button-m" >Rechazar</button>
+
+        </div>
+        </div>
+    </div>        
+        <div class="lctl-br modify">
+        </div>
+        <div class="lctl-br space" >
+        </div>    
+</div>
+
+
+<table>
+    <tr>
+        <th>Hora</th>
+        <th>Nombre</th>
+        <th>Mesa</th>
+        <th>Pax</th>
+        <th>Observaciones</th>
+        <th>Estado</th>
+    </tr>
+    <tr *ngFor="let reservation of reservations; let i = index"  >
+        <!-- <div *ngIf="reservations[i].status == 'yes' "> -->
+    
+        <td>{{reservations[i].time}}</td>
+        <td>{{reservations[i].name}}</td>
+        <td>{{reservations[i].table}}</td>
+        <td>{{reservations[i].pax}}</td>
+        <td>{{reservations[i].obs}}</td>
+        <td>
+            <button (click)="deleteReservation(reservations[i].id_reservation)" class="lctl-button-m" >Estado</button>
+        </td>
+    <!-- </div> -->
+    </tr>
+</table>
+</body>
+<app-footer></app-footer>

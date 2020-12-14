@@ -25,8 +25,8 @@ import { LogInComponent } from './components/login/log-in/log-in.component';
 import { RegistrationComponent } from './components/login/registration/registration.component';
 import { ClientComponent } from './components/login/registration/client/client.component';
 import { OwnerComponent } from './components/login/registration/owner/owner.component';
-import { EditComponent } from './components/client/edit/edit.component';
-import { ReservationsComponent } from './components/client/reservations/reservations.component';
+import { EditClientComponent } from './components/client/edit/edit.component';
+import { ReservationsClientComponent } from './components/client/reservations/reservations.component';
 import { SearchComponent } from './components/client/search/search.component';
 import { DoReservation1Component } from './components/client/do-reservation1/do-reservation1.component';
 import { DoReservation2Component } from './components/client/do-reservation2/do-reservation2.component';
@@ -35,6 +35,8 @@ import { CreateRestaurant1Component } from './components/restaurant/owner/create
 import { CreateRestaurant2Component } from './components/restaurant/owner/create-restaurant/create-restaurant2/create-restaurant2.component';
 import { CreateRestaurant3Component } from './components/restaurant/owner/create-restaurant/create-restaurant3/create-restaurant3.component';
 import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/create-restaurant/create-restaurant-header/create-restaurant-header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
 
 @NgModule({
   declarations: [
@@ -48,8 +50,8 @@ import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/c
     RegistrationComponent,
     ClientComponent,
     OwnerComponent,
-    EditComponent,
-    ReservationsComponent,
+    EditClientComponent,
+    ReservationsClientComponent,
     SearchComponent,
     DoReservation1Component,
     DoReservation2Component,
@@ -58,6 +60,8 @@ import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/c
     CreateRestaurant2Component,
     CreateRestaurant3Component,
     CreateRestaurantHeaderComponent,
+    FooterComponent,
+    ReservationsRestaurantComponent
     
   ],
   imports: [
