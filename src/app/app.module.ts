@@ -26,6 +26,7 @@ import { RegistrationComponent } from './components/login/registration/registrat
 import { ClientComponent } from './components/login/registration/client/client.component';
 import { OwnerComponent } from './components/login/registration/owner/owner.component';
 import { EditComponent } from './components/client/edit/edit.component';
+import { EditComponentR } from './components/restaurant/owner/edit/edit.component'
 import { ReservationsComponent } from './components/client/reservations/reservations.component';
 import { SearchComponent } from './components/client/search/search.component';
 import { DoReservation1Component } from './components/client/do-reservation1/do-reservation1.component';
@@ -35,6 +36,7 @@ import { CreateRestaurant1Component } from './components/restaurant/owner/create
 import { CreateRestaurant2Component } from './components/restaurant/owner/create-restaurant/create-restaurant2/create-restaurant2.component';
 import { CreateRestaurant3Component } from './components/restaurant/owner/create-restaurant/create-restaurant3/create-restaurant3.component';
 import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/create-restaurant/create-restaurant-header/create-restaurant-header.component';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/c
     ClientComponent,
     OwnerComponent,
     EditComponent,
+    EditComponentR,
     ReservationsComponent,
     SearchComponent,
     DoReservation1Component,

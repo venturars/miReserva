@@ -1,0 +1,44 @@
+hr {
+    
+    border: 0;
+    clear:both;
+    display:block;
+    width: 450px;
+    align-items: center;              
+    background-color:grey;
+    height: 1px;
+    
+  }
+
+  .colocaritems {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--secundaryColor);
+  }
+  .first {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .colocaritems2 {
+    width: 450px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    // background-color: var(--secundaryColor);
+    
+  }
+
+  
+  .letraspeque
+  {
+      font-size:14px;
+  }
