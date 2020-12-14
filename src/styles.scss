@@ -41,4 +41,6 @@ $miReserva-theme: mat-light-theme((
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 
-html, body { height: 100%;}
+html, body {
+  height: 100%;
+}
