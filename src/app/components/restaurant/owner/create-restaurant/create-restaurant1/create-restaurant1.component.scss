@@ -1,0 +1,33 @@
+
+body{
+    width: 100%;
+    height: 0;
+}
+
+input{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.form1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    display: block;  
+    margin-top: -300px;
+    margin-left: 70px;
+
+}
+
+select{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.button{
+    width: 87%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+
+}
