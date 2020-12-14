@@ -1,69 +1,360 @@
 //-----global variables-----
+//----------//----------//----------//----------//----------
 :root {
     --primaryColor: #D5341F;
-    --primaryColorContrast: #f0f8ff;
+    --primaryColorAccent: #D2000D;
+    --primaryColorContrast: #f3f5f7;
     --primaryColorOpposite: 0;
     --primaryColorPush: #e07668;
+    --primaryColorLink: #4F70FF;
+//----------
     --secundaryColor: #f3f5f7;
+    --secundaryColorAccent: #D2000D;
     --secundaryColorContrast: #D5341F;
     --secundaryColorOpposite: #121212;
-    --secundaryColorPush: #636060;
+    --secundaryColorPush: #8f8c8c;
+    --secundaryColorLink: #4F70FF;
+//----------
+    --fontSizeXS: 9px;
     --fontSizeS: 14px;
     --fontSizeM: 18px;
     --fontSizeL: 24px;
-    --borderRadiusS: 2px;
-    --borderRadiusM: 4px;
-    --borderRadiusL: 6px;
+    --fontSizeXL: 32px;
+    --fontSizeXXL: 42px;
+//----------
     --fontWidthLight: 300;
     --fontWidthMedium: 400;
     --fontWidthBolder: 600;
+//----------
+    --borderRadiusS: 2px;
+    --borderRadiusM: 4px;
+    --borderRadiusL: 6px;
+//----------
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+//----------
 }
-
+//----------//----------//----------//----------//----------
+//-----Typography-----
+//----------//----------//----------//----------//----------
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+//----------//----------//----------//----------//----------
+//-----Clean-----
+//----------//----------//----------//----------//----------
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--fontSizeM);
+    font-weight: var(--fontWidthMedium);
+    margin: 0;
+    padding: 0;
+}
+//----------
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+//----------//----------//----------//----------//----------
+//-----Scroll-bar-----
+*::-webkit-scrollbar {
+    width: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--secundaryColorPush);
+  border-radius: 4px;
+  &:active {
+    background-color: var(--secundaryColorOpposite);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--secundaryColorPush);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+//----------//----------//----------//----------//----------
+//-----Fonts-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-font-title"] {
+    font-weight: var(--fontWidthBolder);
+    font-size: var(--fontSizeL);
+    text-transform: uppercase;
+}
+//----------
+[class *= "lctl-font-paragraph"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *= "lctl-font-bold"] {
+    font-weight: var(--fontWidthBolder);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *= "lctl-font-lightly"] {
+    font-weight: var(--fontWidthLight);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *= "lctl-font-link"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: inherit;
+    color: var(--primaryColorLink);
+}
+//----------
+[class *= "lctl-font-accent"] {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-transform: uppercase;
+}
+//----------
+[class *= "lctl-font-underline"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: var(--fontSizeS);
+    color: var(--secundaryColorOpposite);
+}
+//----------
+[class *= "lctl-font-comment"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: var(--fontSizeS);
+    color: var(--secundaryColorPush);
+}
+//----------
+[class *= "lctl-font-small"] {
+    font-weight: var(--fontWidthMedium);
+    font-size: var(--fontSizeXS);
+}
+//----------//----------//----------//----------//----------
 //-----Buttons-----
+//----------//----------//----------//----------//----------
 [class *="lctl-button"] {
     text-transform: capitalize;
     color: var(--primaryColorContrast);
     background: var(--primaryColor);
     border: none;
     outline: none!important;
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
     max-width: 100%;
     font-weight: var(--fontWidthBolder);
-}
-[class ^="lctl-button"]:active {
-    background-color: var(--primaryColorPush);
-}
+    &:active {
+        background-color: var(--primaryColorPush);
+}}
+//----------
 [class *="lctl-button-s"] {
     width: 100px;
     height: 25px;
     border-radius: var(--borderRadiusS);
     font-size: var(--fontSizeS)
 }
+//----------
 [class *="lctl-button-m"] {
     width: 150px;
     height: 35px;
     border-radius: var(--borderRadiusM);
     font-size: var(--fontSizeM);
 }
+//----------
 [class *="lctl-button-l"] {
-width: 300px;
-height: 50px;
-border-radius: var(--borderRadiusL);
-font-size: var(--fontSizeL);
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
 }
-
+//----------//----------//----------//----------//----------
+[class *="lctl-buttonOpposite"] {
+    text-transform: capitalize;
+    color: var(--primaryColor);
+    background: inherit;
+    border: 1px solid var(--primaryColor);
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+    &:active {
+        background-color: var(--primaryColor);
+        color: var(--primaryColorContrast);
+}}
+//----------
+[class *="lctl-buttonOpposite-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-buttonOpposite-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-buttonOpposite-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
+[class *="lctl-warnButton"] {
+    text-transform: capitalize;
+    color: var(--primaryColorContrast);
+    background: var(--primaryColorAccent);
+    border: none;
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+    &:active {
+        background-color: var(--primaryColorPush);
+}}
+//----------
+[class *="lctl-warnButton-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-warnButton-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-warnButton-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
+[class *="lctl-warnButtonOpposite"] {
+    text-transform: capitalize;
+    color: var(--secundaryColorAccent);
+    background: inherit;
+    border: 1px solid var(--secundaryColorAccent);
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+    &:active {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+}}
+//----------
+[class *="lctl-warnButtonOpposite-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-warnButtonOpposite-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-warnButtonOpposite-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
+[class *="lctl-disabledButton"] {
+    text-transform: capitalize;
+    color: var(--secundaryColor);
+    background: var(--secundaryColorPush);
+    border: none;
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+    &:active {
+        background-color: var(--secundaryColorPush);
+}}
+//----------
+[class *="lctl-disabledButton-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-disabledButton-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-disabledButton-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
+[class *="lctl-disabledButtonOpposite"] {
+    text-transform: capitalize;
+    color: var(--secundaryColorPush);
+    background: inherit;
+    border: 1px solid var(--secundaryColorPush);
+    outline: none!important;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    max-width: 100%;
+    font-weight: var(--fontWidthBolder);
+    &:active {
+        background-color: inherit;
+        color: var(--secundaryColorPush);
+}}
+//----------
+[class *="lctl-disabledButtonOpposite-s"] {
+    width: 100px;
+    height: 25px;
+    border-radius: var(--borderRadiusS);
+    font-size: var(--fontSizeS)
+}
+//----------
+[class *="lctl-disabledButtonOpposite-m"] {
+    width: 150px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-disabledButtonOpposite-l"] {
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
+}
+//----------//----------//----------//----------//----------
 //-----Inputs-----
+//----------//----------//----------//----------//----------
 [class *="lctl-input"] {
     background-color: var(--secundaryColor);
     outline: none;
     padding-left: 10px;
     padding-right: 10px;
     max-width: 100%;
-}
-[class *="lctl-input"]::placeholder {
-    text-transform: capitalize;
-    color: var(--secundaryColorPush);
-}
+    font-size: 14px;
+    &::placeholder {
+        text-transform: capitalize;
+        color: var(--secundaryColorPush);
+}}
+//----------
 [class *="lctl-input-s"] {
     width: 100px;
     height: 25px;
@@ -76,6 +367,7 @@ font-size: var(--fontSizeL);
 [class *="lctl-input-s-extraLarge"] {
     width: 300px;
 }
+//----------
 [class *="lctl-input-m"] {
     width: 150px;
     height: 35px;
@@ -88,11 +380,12 @@ font-size: var(--fontSizeL);
 [class *="lctl-input-m-extraLarge"] {
     width: 450px;
 }
+//----------
 [class *="lctl-input-l"] {
-width: 300px;
-height: 50px;
-border-radius: var(--borderRadiusL);
-font-size: var(--fontSizeL);
+    width: 300px;
+    height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeL);
 }
 [class *="lctl-input-l-large"] {
     width: 600px;
@@ -100,38 +393,343 @@ font-size: var(--fontSizeL);
 [class *="lctl-input-l-extraLarge"] {
     width: 900px;
 }
-
+//----------//----------//----------//----------//----------
+[class *="lctl-cellInput"] {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    width: 50px;
+    height: 35px;
+    border: 1px solid var(--secundaryColorOpposite);
+    color: var(--secundaryColorOpposite);
+    outline: none;
+    background: transparent;
+    font-size: var(--fontSizeM);
+    font-weight: var(--fontWidthBolder);
+    &::placeholder {
+        color: var(--secundaryColorPush);
+        text-transform: capitalize;
+    }
+    &:disabled {
+        color: var(--secundaryColorOpposite);
+}}
+//----------
+[class *="lctl-cellInput-large"] {
+    width: 100px;
+    text-align: justify;
+}
+//----------
+[class *="lctl-cellInput-large-center"] {
+    width: 100px;
+    text-align: center;
+}
+//----------
+[class *="lctl-cellInput-extraLarge"] {
+    width: 200px;
+    text-align: justify;
+}
+//----------
+[class *="lctl-cellInput-full"] {
+    width: 100%;
+    text-align: justify;
+}
+//----------//----------//----------//----------//----------
+//-----Selects-----
+//----------//----------//----------//----------//----------
+[class *="lctl-cellSelect"] {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    width: 68px;
+    height: 35px;
+    border: 1px solid var(--secundaryColorOpposite);
+    color: var(--secundaryColorOpposite);
+    outline: none;
+    background: transparent;
+    font-size: var(--fontSizeM);
+    font-weight: var(--fontWidthBolder);
+    &::placeholder {
+        color: var(--secundaryColorPush);
+        text-transform: capitalize;
+    }
+    &:disabled {
+        color: var(--secundaryColorOpposite);
+    }
+    & > option {
+        color: var(--secundaryColorOpposite);
+        font-size: var(--fontSizeM);
+        font-weight: var(--fontWidthBolder);
+        border: 1px solid var(--secundaryColorOpposite);
+}}
+//----------
+[class *="lctl-cellSelect-large"] {
+    width: 100px;
+    text-align: justify;
+}
+//----------
+[class *="lctl-cellSelect-extraLarge"] {
+    width: 200px;
+    text-align: justify;
+}
+//----------
+[class *="lctl-cellSelect-full"] {
+    width: 100%;
+    text-align: justify;
+}
+//----------//----------//----------//----------//----------
 //-----Navbar-----
+//----------//----------//----------//----------//----------
 [class *= "lctl-navbar"] {
-    position: sticky;
+    position: relative;
+    // top: 0;
     width: 100vw;
     min-height: 82px;
     text-transform: uppercase;
     font-weight: var(--fontWidthBolder);
     background-color: var(--secundaryColor);
     color: var(--secundaryColorOpposite);
-    top: 0;
     display: flex;
     align-items: center;
-}
-[class *= "lctl-navbar-leftElements"] {
+    & * a, & a {
+        font-size: var(--fontSizeM);
+        font-weight: var(--fontWidthBolder);
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 27px;
+        padding-top: 27px;
+        text-decoration: none;
+    }
+    & * a:hover, & a:hover {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+    }
+    & * a:active, & a:active {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+}}
+//----------//----------//----------//----------//----------
+//-----Footer-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-footer"] {
+    position: relative;
+    width: 100vw;
+    min-height: 52px;
+    text-transform: uppercase;
+    font-weight: var(--fontWidthBolder);
+    background-color: var(--secundaryColor);
+    background-color: red;
+    color: var(--secundaryColorOpposite);
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    & * a, & a {
+        font-size: var(--fontSizeM);
+        font-weight: var(--fontWidthBolder);
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-decoration: none;
+    }
+    & * a:hover, & a:hover {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+    }
+    & * a:active, & a:active {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+}}
+//----------//----------//----------//----------//----------
+//-----Elements position-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-centerElements"] {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
+}
+//----------
+[class *= "lctl-leftElements"] {
+    display: flex;
     justify-content: flex-start;
-}
-[class *= "lctl-navbar-rigthElements"] {
-    justify-content: flex-end;
+    flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
 }
-[class *= "lctl-navbar"] > a {
-    text-decoration: none;
-    color: inherit;
-    padding: 20px;
+//----------
+[class *= "lctl-rightElements"] {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
 }
-[class *= "lctl-navbar"] > a:hover {
-    background-color: var(--secundaryColorContrast);
-    color: var(--secundaryColor);
+//----------//----------//----------//----------//----------
+//-----Containers-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-photoProfile-"] {
+    background-color: var(--secundaryColorOpposite);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background-color: transparent;
+    &:hover {
+        border: 2px solid var(--primaryColor);
+    }
+    &:active {
+        border: 2px solid var(--primaryColorPush);
+}}
+//----------
+[class *= "lctl-photoProfile-xs"] {
+    border: 1px solid transparent;
+    width: 20px;
+    height: 20px;
+    &:hover {
+        border: 1px solid var(--primaryColor);
+    }
+    &:active {
+        border: 1px solid var(--primaryColorPush);
+    }
+    & img {
+        width: 20px;
+}}
+//----------
+[class *= "lctl-photoProfile-s"] {
+    width: 40px;
+    height: 40px;
+    & img {
+        width: 40px;
+}}
+//----------
+[class *= "lctl-photoProfile-m"] {
+    width: 60px;
+    height: 60px;
+    & img {
+        width: 60px;
+}}
+//----------
+[class *= "lctl-photoProfile-l"] {
+    width: 100px;
+    height: 100px;
+    & img {
+        background: #D2000D;
+        width: 100px;
+}}
+//----------
+[class *= "lctl-photoProfile-xl"] {
+    width: 160px;
+    height: 160px;
+    & img {
+        width: 160px;
+}}
+//----------//----------//----------//----------//----------
+//-----Example of structure-----
+//----------
+// <div class="lctl-cardButton">
+//         <div class="lctl-photoProfile-m">
+//             <img src="
+//             http://5b0988e595225.cdn.sohucs.com/images/20180409/372ad315fcc84eeea032ef2994b6cd04.jpeg
+//             ">
+//         </div>
+//         <div>
+//             <p class="lctl-font-title">vips ijerouf furhuf</p>
+//             <p class="lctl-font-small">
+//                 dirección
+//             </p>
+//         </div>
+//     </div>
+//----------
+[class *="lctl-cardButton"] {
+    background-color: var(--secundaryColor);
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    height: 75px;
+    width: 200px;
+    box-shadow: 0 0 5px 1px var(--secundaryColorPush);
+    cursor: pointer;
+    &:hover {
+        background-color: var(--secundaryColorPush);
+    }
+    & div:first-child {
+        margin: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 60px;
+        height: 60px;
+        &:hover {
+            border-color: transparent !important;
+        }
+    }
+    & div:nth-child(2) {
+        width: 140px;
+        padding-left: 0px;
+        padding-right: 15px;
+        padding-top: 20px;
+        overflow: hidden;
+    }
+    & p:first-child {
+            text-align: justify;
+            width: 100%;
+            height: max-content;
+            color: var(--secundaryColorContrast);
+            line-height: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        & p:nth-child(2) {
+            padding: 0;
+            margin-top: -15px;
+            text-transform: capitalize;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+}}
+//----------//----------//----------//----------//----------
+[class *="lctl-bigCard"] {
+    
 }
-[class *= "lctl-navbar"] > a:active {
-    background-color: var(--secundaryColorContrast);
-    color: var(--secundaryColor);
+//----------//----------//----------//----------//----------
+[class *="lctl-div"] {
+    display: flex;
+    flex-direction: column;
+    max-width: 580px;
+    min-width: 320px;
+    border-radius: var(--borderRadiusL);
 }
+//----------
+[class *="lctl-div-s"] {
+    max-width: 320px;
+    min-width: 200px;
+}
+//----------
+[class *="lctl-div-m"] {
+    max-width: 580px;
+    min-width: 320px;
+}
+//----------
+[class *="lctl-div-l"] {
+    max-width: 740px;
+    min-width: 580px;
+}
+//----------//----------//----------//----------//----------
+//-----Separators-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-br"] {
+    width: 100%;
+    height: 2px;
+    margin: auto;
+    background-color: var(--secundaryColorPush);
+}
+//----------//----------//----------//----------//----------
+
+// .mat-select-trigger, .mat-select{
+//     width: 300px !important;
+// }
+// .mat-select-panel {
+//     min-width: 100% !important;
+// }
