@@ -1,1 +1,43 @@
-<p>log-in works!</p>
+<div class="colocaritems">
+    <div>
+  <img src="assets/Mesa.svg">
+    </div>
+    
+    
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+      <!-- Cambiar submenu con formato de la pagina no es un H3 normal -->
+    <b><p class="lctl-font-title text-center">ACCEDER</p></b>
+<label id="labeluno"><input class="lctl-input-m-extraLarge" name="email" placeholder="Email" 
+  [(ngModel)]="user.email" #email="ngModel"
+  [ngClass]="{'caution':userForm.submitted && email.invalid }" email required></label>
+  <div class="invalid-feedback" *ngIf="userForm.submitted && email.invalid">
+    <p *ngIf="email.errors.required">Email obligatorio</p>
+    <p *ngIf="email.errors.email">Formato incorrecto de email</p>
+</div>
+<label id="labeldos"><input class="lctl-input-m-extraLarge" name="password" placeholder="Contraseña"
+  [(ngModel)]="user.password" #password="ngModel"
+  [ngClass]="{'caution':userForm.submitted && password.invalid }" minlength="6" required></label>
+  <div class="invalid-feedback" *ngIf="userForm.submitted && password.invalid">
+    <p *ngIf="password.errors.required">Password obligatoria</p>
+    <p *ngIf="password.errors.minlength">Tu password debe tener al menos 6 caracteres</p>
+</div>
+<div> 
+    <div [ngClass]="{'caution':userForm.submitted && check.invalid }">
+        <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel">
+        
+        <p  class="letraspeque">Recuerdame</p>
+    
+    </div>
+    <div>
+        <a class="letraspeque">¿Olvidaste Contraseña?</a>
+    </div>
+</div>
+
+<div>
+  <button class="lctl-button-m">Iniciar sesión</button>
+</div>
+<hr>
+<div class="letraspeque">¿Aún no has creado tu cuenta?&nbsp;&nbsp;<span><a class="letraspeque" routerLink="/home">Registrate</a></span></div>  
+  </form>
+  
+</div>

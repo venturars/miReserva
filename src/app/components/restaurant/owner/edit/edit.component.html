@@ -1,1 +1,46 @@
-<p>edit works!</p>
+
+
+<div class="colocaritems">
+  
+    
+       
+    <form #userForm1="ngForm" (ngSubmit)="onSubmit(userForm1)">
+        <img id="prueba" class="lctl-photoProfile-xl"> 
+      <!-- Cambiar submenu con formato de la pagina no es un H3 normal -->
+    <b><p class="lctl-font-title text-center">EDITA TU PERFIL</p></b>
+    <input class="lctl-input-m-extraLarge" name="name" autocomplete="off" placeholder="Nombre" 
+        [(ngModel)]="user.name" #name="ngModel"
+        [ngClass]="{'caution':userForm1.submitted && name.invalid }" required>
+        <div class="invalid-feedback" *ngIf="userForm1.submitted && name.invalid">
+          <p *ngIf="name.errors.required">Nombre obligatorio</p>
+      </div>
+      <input class="lctl-input-m-extraLarge" type="file" name="photo" accept="image/x-png,image/gif,image/jpeg" autocomplete="off" placeholder="Introduce foto" #foto (change)="processFile(foto)">
+<input class="lctl-input-m-extraLarge" name="surname" autocomplete="off" placeholder="Apellidos" 
+  [(ngModel)]="user.surname" #surname="ngModel"
+  [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
+  <div class="invalid-feedback" *ngIf="userForm1.submitted && surname.invalid">
+    <p *ngIf="surname.errors.required">Apellidos obligatorio</p>
+</div>
+<input class="lctl-input-m-extraLarge" name="email" autocomplete="off" placeholder="Email" 
+    [(ngModel)]="user.email" #email="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && email.invalid }" email required>
+    <div class="invalid-feedback" *ngIf="userForm1.submitted && email.invalid">
+      <p *ngIf="email.errors.required">Email obligatorio</p>
+      <p *ngIf="email.errors.email">Formato incorrecto de email</p>
+  </div>
+  <input class="lctl-input-m-extraLarge" name="cif" autocomplete="off" placeholder="CIF" 
+  [(ngModel)]="user.cif" #cif="ngModel"
+  [ngClass]="{'caution':userForm1.submitted && cif.invalid }" required>
+  <div class="invalid-feedback" *ngIf="userForm1.submitted && cif.invalid">
+    <p *ngIf="cif.errors.required">CIF obligatorio</p>  
+</div>
+
+<div>
+  <button type="submit" class="lctl-button-m w-100">Guardar</button>
+</div>
+
+  </form>
+  
+</div>
+
+
