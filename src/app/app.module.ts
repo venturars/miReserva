@@ -37,6 +37,7 @@ import { CreateRestaurant3Component } from './components/restaurant/owner/create
 import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/create-restaurant/create-restaurant-header/create-restaurant-header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
+import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ReservationsRestaurantComponent } from './components/restaurant/reserva
     RegistrationComponent,
     ClientComponent,
     OwnerComponent,
+    EditComponentR,
     EditClientComponent,
     ReservationsClientComponent,
     SearchComponent,

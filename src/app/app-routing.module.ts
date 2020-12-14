@@ -13,7 +13,7 @@ import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/c
 import { CreateRestaurant1Component } from './components/restaurant/owner/create-restaurant/create-restaurant1/create-restaurant1.component';
 import { CreateRestaurant2Component } from './components/restaurant/owner/create-restaurant/create-restaurant2/create-restaurant2.component';
 import { CreateRestaurant3Component } from './components/restaurant/owner/create-restaurant/create-restaurant3/create-restaurant3.component';
-import { EditComponent } from './components/restaurant/owner/edit/edit.component';
+import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
 import { RestaurantsComponent } from './components/restaurant/owner/restaurants/restaurants.component';
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
 
@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:"registration", component: RegistrationComponent},
   {path:"registration-owner", component: OwnerComponent},
   {path:"registration-client", component: ClientComponent},
-  {path:"edit-restaurant", component: EditComponent},
+  {path:"edit-restaurant", component: EditComponentR},
   {path:"create-restaurant-1", component: CreateRestaurant1Component},
   {path:"create-restaurant-2", component: CreateRestaurant2Component},
   {path:"create-restaurant-3", component: CreateRestaurant3Component},
