@@ -40,6 +40,7 @@ import { ReservationsRestaurantComponent } from './components/restaurant/reserva
 import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { EditComponentR } from './components/restaurant/owner/edit/edit.componen
     CreateRestaurantHeaderComponent,
     FooterComponent,
     ReservationsRestaurantComponent
+    
     
   ],
   imports: [

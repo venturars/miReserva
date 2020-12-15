@@ -27,7 +27,8 @@
       <p *ngIf="email.errors.email">Formato incorrecto de email</p>
   </div>
  
-  <label id="labeldos"><input class="lctl-input-m-extraLarge" name="password" autocomplete="off" placeholder="{{userForm1.submitted && password.invalid ?  'Password obligatoria' : 'Contraseña'}}"
+  <label id="labeldos"><input class="lctl-input-m-extraLarge" name="password" autocomplete="off"
+    placeholder="{{userForm1.submitted && password.invalid ?  'Password obligatoria' : 'Contraseña'}}"
   [(ngModel)]="user.password" #password="ngModel"
   [ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required></label>
   <!-- <div class="invalid-feedback" *ngIf="userForm1.submitted && password.invalid">

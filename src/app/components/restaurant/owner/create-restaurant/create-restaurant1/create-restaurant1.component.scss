@@ -1,8 +1,4 @@
 
-body{
-    width: 100%;
-    height: 0;
-}
 
 input{
     margin-left: 20px;
@@ -12,10 +8,7 @@ input{
     width: 100%;
     display: flex;
     justify-content: center;
-    position: absolute;
-    display: block;  
-    margin-top: -300px;
-    margin-left: 70px;
+    
 
 }
 
@@ -31,3 +24,89 @@ select{
     margin-top: 40px;
 
 }
+
+
+.breadcrumb { 
+    list-style: none; 
+    overflow: hidden; 
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .breadcrumb li { 
+    display: flex;
+    text-align: center;
+
+    
+    
+  }
+  .breadcrumb li a {
+
+    color: var(--secundaryColor);
+    text-decoration: none; 
+    padding: 10px 0 10px 0;
+    background: var(--secundaryColorPush); 
+    position: relative; 
+    display: block;
+    float: left;
+    width: 32vw;
+
+   
+  }
+  .breadcrumb li a:after { 
+    content: " "; 
+    display: block; 
+    width: 0; 
+    height: 0;
+    border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+    border-bottom: 50px solid transparent;
+    border-left: 30px solid var(--secundaryColorPush);
+    position: absolute;
+    top: 50%;
+    margin-top: -50px; 
+    left: 100%;
+    z-index: 2; 
+  } 
+  .breadcrumb li a:before { 
+    content: " "; 
+    display: block; 
+    width: 0; 
+    height: 0;
+    border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+    border-bottom: 50px solid transparent;
+    border-left: 30px solid var(--secundaryColor);
+    position: absolute;
+    top: 50%;
+    margin-top: -50px; 
+    margin-left: 1px;
+    left: 100%;
+    z-index: 1; 
+  } 
+ 
+  .breadcrumb li:last-child #info:after { border: 0; }
+  .breadcrumb li #info { background:var(--secundaryColorContrast)}
+  .breadcrumb li #info:after { border-left-color: var(--secundaryColorContrast) !important; }
+  
+  .caution{
+    border:var(--secundaryColorContrast) solid 2px;
+    background-color: lightgrey;
+  }
+  .caution::placeholder{
+    color:var(--secundaryColorContrast);
+
+  }
+  
+
+  .encolumna{
+      display:flex;
+      flex-direction: column;
+
+  }
+
+  .dosendos{
+      display:flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+  }
+  

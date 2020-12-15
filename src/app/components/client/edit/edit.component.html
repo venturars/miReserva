@@ -5,7 +5,7 @@
     
        
     <form #userForm1="ngForm" (ngSubmit)="onSubmit(userForm1)">
-        <img id="prueba" class="lctl-photoProfile-xl"> 
+        <img id="prueba" (click)="foto.click()" class="lctl-photoProfile-xl"> 
       <!-- Cambiar submenu con formato de la pagina no es un H3 normal -->
     <b><p class="lctl-font-title text-center">EDITA TU PERFIL</p></b>
     <input class="lctl-input-m-extraLarge" name="name" autocomplete="off" placeholder="Nombre" 
@@ -14,7 +14,7 @@
         <div class="invalid-feedback" *ngIf="userForm1.submitted && name.invalid">
           <p *ngIf="name.errors.required">Nombre obligatorio</p>
       </div>
-      <input class="lctl-input-m-extraLarge" type="file" name="photo" accept="image/x-png,image/gif,image/jpeg" autocomplete="off" placeholder="Introduce foto" #foto (change)="processFile(foto)">
+      <input class="lctl-input-m-extraLarge" style="display:none" id="foto" type="file" name="photo" accept="image/x-png,image/gif,image/jpeg" autocomplete="off" placeholder="Introduce foto" #foto (change)="processFile(foto)">
 <input class="lctl-input-m-extraLarge" name="surname" autocomplete="off" placeholder="Apellidos" 
   [(ngModel)]="user.surname" #surname="ngModel"
   [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
@@ -29,7 +29,6 @@
       <p *ngIf="email.errors.email">Formato incorrecto de email</p>
   </div>
   
-
 <div>
   <button type="submit" class="lctl-button-m w-100">Guardar</button>
 </div>
