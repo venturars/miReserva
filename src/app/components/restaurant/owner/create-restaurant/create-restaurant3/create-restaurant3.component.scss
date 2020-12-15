@@ -1,77 +1,54 @@
-.container{
-    width: 100%;
-    margin-top: -300px;
-}
-
-.turns{
-   display: flex; 
-   align-items: center;
-   margin-top: 50px;
-   
-}
-
-.time{
+.containerr{
+    width: 70%;
     display: flex;
-    align-items: center;
-    margin-top: 5px;
+    flex-direction: column;
+    margin: auto;
+  
 }
 
-input{
-    margin-left: 45px;
+.open{
+   
+    & * {
+     margin: 10px;
+     padding-left: 20px;
+
+    }
+    
 }
 
 button{
     margin-left: 15px;
     margin-top: -2px;
 }
+.buttonModify{
+    font-size: var(--fontSizeS);
+    width: 250px;
+    text-transform: none;
+}
+
 
 select{
     margin-left: 15px;
 }
 
-.switchturn{
-    
-    margin-top: -10px;
-    
-}
-
-.switch{
-    margin-top: 20px;
-}
-
-p{
+ p{
     margin-top: 20px;
     margin-left: 20px;
     
-}
+} 
 
-.addtime{
-    margin-top: 40px;
-   
-}
-
-.texttime{
-    margin-top: 5px;
-
-}
-
-ul{
-    margin-top: 65px;
+.Turns{
     display: flex;
-    align-items: center;
-    list-style: none;
+    & > div {
+        align-items: center;
+     min-width:  max-content;
+
+    }
 }
 
-li{
-    margin-left: 100px;
+.turnbotton{
+    & * { padding-right: 15px;}
 }
-
-.buttonli{
-    margin-left: 10px;
-    
-}
-
-    
 
 
 

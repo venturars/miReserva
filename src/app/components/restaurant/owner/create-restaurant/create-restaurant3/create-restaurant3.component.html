@@ -1,39 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <div class="containerr">
 
-    <div class="container">
-
-<div class="lctl-centerElements days">
+<div class="days">
       <mat-tab-group>
-        <mat-tab class="lunes" label="Lunes"> 
+        <mat-tab class="lunes" label="Lunes">
+           
+            <div class="lctl-leftElements open">
+            <label>Abierto</label> 
+            <mat-slide-toggle></mat-slide-toggle> 
+            </div>
+
+            <div class="lctl-br separador"></div>
+
+
             <div class="turns">
-                
-                <div class="food">
-                <mat-list>
-                    <mat-list-item>Desayuno</mat-list-item>
-                    <mat-list-item>Almuerzo</mat-list-item>
-                    <mat-list-item>Cena</mat-list-item>
-                  </mat-list>
-                </div>
-                
-            <div class="switchturn">
-                <div class="switch">
+                <div class="Turns">
+
+                    <div class="lctl-centerElements turnbotton">
+                    <label>Desayunos</label>
                     <mat-slide-toggle></mat-slide-toggle> 
                     </div>
-                    <div class="switch">
-                        <mat-slide-toggle></mat-slide-toggle> 
-                        </div>
-                        <div class="switch">
-                            <mat-slide-toggle></mat-slide-toggle> 
-                            </div>
-            </div>
-                    <div class="lctl-rightElements time">
+
+                    <div class="lctl-rightElements">
+                        
                         <label>Horario de desayuno</label>
                         <select class="lctl-input-m" name="">
                             <option>8:00</option>
@@ -46,75 +34,353 @@
                         <option>9:00</option>
                         <option>10:00</option>
                         </select>
-                       <button class="buttonadd lctl-button-m ">Guardar horario</button>
-                    </div>  
-                </div>
-
-
-
-                <div class="lctl-rightElements addtime">
-
-                    <input class="lctl-input-m" type="text" placeholder="">
-                    <p class="texttime">a</p>
-                    <input class="lctl-input-m" type="text" placeholder="">
-                    <p class="texttime">PAX</p>
-                    <input class="lctl-input-m" type="text" placeholder="">
-                   
-                    <button class="buttonadd lctl-button-m ">Agregar Horario</button>
-                </div>
-
-                <div class="lctl-rightElements timeedi">
-                    <div class="resp">
-                        
-                        <ul>
-                            <li>Mesa 1</li>
-                            <li>PAX(Max4)</li>
-                            <li>
-                                <button class="lctl-warnButtonOpposite-s buttonli">Editar</button>
-                                <button class="lctl-warnButton-s buttonli">Borrar</button>
-                            </li> 
-                        </ul>
-                        
-                        <div class=" separator lctl-br"></div>
-            
-                        <ul>
-                            <li>Mesa 1</li>
-                            <li>PAX(Max4)</li>
-                            <li>
-                                <button class="lctl-warnButtonOpposite-s buttonli">Editar</button>
-                                <button class="lctl-warnButton-s buttonli">Borrar</button>
-                            </li> 
-                        </ul>
-                        
-                        <div class=" separator lctl-br"></div>
-                       
+                       <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
                     </div>
-            </div>
+
+
+                </div>
+
+                <div class="Turns">
+
+                    <div class="lctl-centerElements turnbotton">
+                    <label>Almuerzo</label>
+                    <mat-slide-toggle></mat-slide-toggle> 
+                    </div>
+
+                    <div class="lctl-rightElements">
+                        
+                        <label>Horario de Almuerzo</label>
+                        <select class="lctl-input-m" name="">
+                            <option>8:00</option>
+                            <option>9:00</option>
+                            <option>10:00</option>
+                            </select>
+                        <p>a</p>
+                        <select class="lctl-input-m" name="">
+                        <option>8:00</option>
+                        <option>9:00</option>
+                        <option>10:00</option>
+                        </select>
+                       <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                    </div>
+                    </div>
+
+                    <div class="Turns">
+
+                        <div class="lctl-centerElements turnbotton">
+                        <label>Cena</label>
+                        <mat-slide-toggle></mat-slide-toggle> 
+                        </div>
+    
+                        <div class="lctl-rightElements">
+                            
+                            <label>Horario de Cena</label>
+                            <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                            <p>a</p>
+                            <select class="lctl-input-m" name="">
+                            <option>8:00</option>
+                            <option>9:00</option>
+                            <option>10:00</option>
+                            </select>
+                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                        </div>
+                        </div>
+
+                </div>
+            
+        </mat-tab>
+
+        <!-- MARTES -->
+
+        <mat-tab label="Martes">
+            <div class="lctl-leftElements open">
+                <label>Abierto</label> 
+                <mat-slide-toggle></mat-slide-toggle> 
+                </div>
+    
+                <div class="lctl-br separador"></div>
+    
+    
+                <div class="turns">
+                    <div class="Turns">
+    
+                        <div class="lctl-centerElements turnbotton">
+                        <label>Desayunos</label>
+                        <mat-slide-toggle></mat-slide-toggle> 
+                        </div>
+    
+                        <div class="lctl-rightElements">
+                            
+                            <label>Horario de desayuno</label>
+                            <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                            <p>a</p>
+                            <select class="lctl-input-m" name="">
+                            <option>8:00</option>
+                            <option>9:00</option>
+                            <option>10:00</option>
+                            </select>
+                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                        </div>
+    
+    
+                    </div>
+    
+                    <div class="Turns">
+    
+                        <div class="lctl-centerElements turnbotton">
+                        <label>Almuerzo</label>
+                        <mat-slide-toggle></mat-slide-toggle> 
+                        </div>
+    
+                        <div class="lctl-rightElements">
+                            
+                            <label>Horario de Almuerzo</label>
+                            <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                            <p>a</p>
+                            <select class="lctl-input-m" name="">
+                            <option>8:00</option>
+                            <option>9:00</option>
+                            <option>10:00</option>
+                            </select>
+                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                        </div>
+                        </div>
+    
+                        <div class="Turns">
+    
+                            <div class="lctl-centerElements turnbotton">
+                            <label>Cena</label>
+                            <mat-slide-toggle></mat-slide-toggle> 
+                            </div>
+        
+                            <div class="lctl-rightElements">
+                                
+                                <label>Horario de Cena</label>
+                                <select class="lctl-input-m" name="">
+                                    <option>8:00</option>
+                                    <option>9:00</option>
+                                    <option>10:00</option>
+                                    </select>
+                                <p>a</p>
+                                <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                               <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                            </div>
+                            </div>
+    
+                    </div>
 
         </mat-tab>
 
-        <mat-tab label="Martes"> Content 2 </mat-tab>
-        <mat-tab label="Miercoles"> Content 3 </mat-tab>
-        <mat-tab label="Jueves"> Content 1 </mat-tab>
+        <!-- MIERCOLES -->
+
+        <mat-tab label="Miercoles"> 
+            <div class="lctl-leftElements open">
+                <label>Abierto</label> 
+                <mat-slide-toggle></mat-slide-toggle> 
+                </div>
+    
+                <div class="lctl-br separador"></div>
+    
+    
+                <div class="turns">
+                    <div class="Turns">
+    
+                        <div class="lctl-centerElements turnbotton">
+                        <label>Desayunos</label>
+                        <mat-slide-toggle></mat-slide-toggle> 
+                        </div>
+    
+                        <div class="lctl-rightElements">
+                            
+                            <label>Horario de desayuno</label>
+                            <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                            <p>a</p>
+                            <select class="lctl-input-m" name="">
+                            <option>8:00</option>
+                            <option>9:00</option>
+                            <option>10:00</option>
+                            </select>
+                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                        </div>
+    
+    
+                    </div>
+    
+                    <div class="Turns">
+    
+                        <div class="lctl-centerElements turnbotton">
+                        <label>Almuerzo</label>
+                        <mat-slide-toggle></mat-slide-toggle> 
+                        </div>
+    
+                        <div class="lctl-rightElements">
+                            
+                            <label>Horario de Almuerzo</label>
+                            <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                            <p>a</p>
+                            <select class="lctl-input-m" name="">
+                            <option>8:00</option>
+                            <option>9:00</option>
+                            <option>10:00</option>
+                            </select>
+                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                        </div>
+                        </div>
+    
+                        <div class="Turns">
+    
+                            <div class="lctl-centerElements turnbotton">
+                            <label>Cena</label>
+                            <mat-slide-toggle></mat-slide-toggle> 
+                            </div>
+        
+                            <div class="lctl-rightElements">
+                                
+                                <label>Horario de Cena</label>
+                                <select class="lctl-input-m" name="">
+                                    <option>8:00</option>
+                                    <option>9:00</option>
+                                    <option>10:00</option>
+                                    </select>
+                                <p>a</p>
+                                <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                               <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                            </div>
+                            </div>
+    
+                    </div>
+        </mat-tab>
+
+        <!-- JUEVES -->
+
+        <mat-tab label="Jueves"> 
+            <div class="lctl-leftElements open">
+                <label>Abierto</label> 
+                <mat-slide-toggle></mat-slide-toggle> 
+                </div>
+    
+                <div class="lctl-br separador"></div>
+    
+    
+                <div class="turns">
+                    <div class="Turns">
+    
+                        <div class="lctl-centerElements turnbotton">
+                        <label>Desayunos</label>
+                        <mat-slide-toggle></mat-slide-toggle> 
+                        </div>
+    
+                        <div class="lctl-rightElements">
+                            
+                            <label>Horario de desayuno</label>
+                            <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                            <p>a</p>
+                            <select class="lctl-input-m" name="">
+                            <option>8:00</option>
+                            <option>9:00</option>
+                            <option>10:00</option>
+                            </select>
+                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                        </div>
+    
+    
+                    </div>
+    
+                    <div class="Turns">
+    
+                        <div class="lctl-centerElements turnbotton">
+                        <label>Almuerzo</label>
+                        <mat-slide-toggle></mat-slide-toggle> 
+                        </div>
+    
+                        <div class="lctl-rightElements">
+                            
+                            <label>Horario de Almuerzo</label>
+                            <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                            <p>a</p>
+                            <select class="lctl-input-m" name="">
+                            <option>8:00</option>
+                            <option>9:00</option>
+                            <option>10:00</option>
+                            </select>
+                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                        </div>
+                        </div>
+    
+                        <div class="Turns">
+    
+                            <div class="lctl-centerElements turnbotton">
+                            <label>Cena</label>
+                            <mat-slide-toggle></mat-slide-toggle> 
+                            </div>
+        
+                            <div class="lctl-rightElements">
+                                
+                                <label>Horario de Cena</label>
+                                <select class="lctl-input-m" name="">
+                                    <option>8:00</option>
+                                    <option>9:00</option>
+                                    <option>10:00</option>
+                                    </select>
+                                <p>a</p>
+                                <select class="lctl-input-m" name="">
+                                <option>8:00</option>
+                                <option>9:00</option>
+                                <option>10:00</option>
+                                </select>
+                               <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                            </div>
+                            </div>
+    
+                    </div>
+        </mat-tab>
         <mat-tab label="Viernes"> Content 2 </mat-tab>
         <mat-tab label="Sábado"> Content 3 </mat-tab>
         <mat-tab label="Domingo"> Content 3 </mat-tab>
 
       </mat-tab-group>
+
+     
     
     
 </div>
 
-<!-- <mat-slide-toggle></mat-slide-toggle>        
-        <div class="lctl-centerElements time">
-            <label>Horario de desayuno</label>
-            <input class="lctl-cellInput-extraLarge" type="text" placeholder="Nombre de la mesa">
-            <input class="lctl-cellInput-extraLarge" type="text" placeholder="PAX">
-           
-            <button class="buttonadd lctl-button-m ">Guardar horario</button>
-        </div> -->
 
     </div>
     
-</body>
-</html>
