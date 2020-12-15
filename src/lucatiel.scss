@@ -57,7 +57,8 @@ a {
 //----------//----------//----------//----------//----------
 //-----Scroll-bar-----
 *::-webkit-scrollbar {
-    width: 10px;
+    width: 0px;
+    background-color: red;
 }
 *::-webkit-scrollbar-thumb {
   background: var(--secundaryColorPush);
@@ -70,7 +71,6 @@ a {
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
 }}
 *::-webkit-scrollbar-track {
-  background: transparent;
 }
 //----------//----------//----------//----------//----------
 //-----Fonts-----
