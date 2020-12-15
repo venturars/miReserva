@@ -6,6 +6,7 @@ import { AppComponent } from './app/app.component';
 //-----Angular Material-----
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './../material-module';
+import {MatDialogModule} from '@angular/material/dialog';
 //-----ngBootstrap-----
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //-----Forms-----
@@ -38,6 +39,8 @@ import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/c
 import { FooterComponent } from './components/footer/footer.component';
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
 import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 
 @NgModule({
@@ -64,8 +67,7 @@ import { EditComponentR } from './components/restaurant/owner/edit/edit.componen
     CreateRestaurant3Component,
     CreateRestaurantHeaderComponent,
     FooterComponent,
-    ReservationsRestaurantComponent
-    
+    ReservationsRestaurantComponent    
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,9 @@ import { EditComponentR } from './components/restaurant/owner/edit/edit.componen
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
+    MatDialogModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
     HttpClientModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
