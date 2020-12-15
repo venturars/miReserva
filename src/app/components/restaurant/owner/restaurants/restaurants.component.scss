@@ -1,7 +1,7 @@
 .page {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100%;
     width: 100%;
@@ -12,4 +12,13 @@
     & > div{
         margin: 20px;
     }
+}
+.targets {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px 0 20px;
+}
+.space {
+    opacity: 0;
+    height: 40px;
 }

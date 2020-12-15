@@ -39,9 +39,7 @@ import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/c
 import { FooterComponent } from './components/footer/footer.component';
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
 import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-
-
+import { DoReservationHeaderComponent } from './components/client/do-reservation-header/do-reservation-header.component';
 
 
 @NgModule({
@@ -68,7 +66,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     CreateRestaurant3Component,
     CreateRestaurantHeaderComponent,
     FooterComponent,
-    ReservationsRestaurantComponent    
+    ReservationsRestaurantComponent,
+    DoReservationHeaderComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -78,7 +78,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     FormsModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
     HttpClientModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
