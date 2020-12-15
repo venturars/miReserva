@@ -9,6 +9,25 @@ export class CreateRestaurantHeaderComponent implements OnInit {
 
   constructor() { }
 
+  processBanner(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+    const imagen=document.getElementById("mostrarbanner").setAttribute("src", event.target.result);
+    
+  })
+  reader.readAsDataURL(file);
+}
+
+processLogo(imageInput: any) {
+  const file: File = imageInput.files[0];
+  const reader = new FileReader();
+  reader.addEventListener('load', (event: any) => {
+  const imagen=document.getElementById("mostrarlogo").setAttribute("src", event.target.result);
+  
+})
+reader.readAsDataURL(file);
+}
   ngOnInit(): void {
   }
 

@@ -1,0 +1,45 @@
+.centrado{
+    display:flex;
+    align-items:center;
+    text-align:center;
+    justify-content: center;
+    width:100%;
+    height: 100%;
+}
+
+.izquierda{
+    padding-left: 50px;
+
+}
+.altura{
+    height:400px;
+}
+
+.ordenar{
+    padding-left:30px;
+    padding-right:30px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    
+}
+
+.conespacios{
+    display:flex;
+    margin-left:5px;
+    
+}
+
+.masgrande{
+    height:30px;
+    opacity:0;
+}
+
+.derecha{
+    display:flex;
+    align-items:center;
+    text-align:center;
+    flex-direction: row-reverse;
+    width:100%;
+    height: 100%;
+}
