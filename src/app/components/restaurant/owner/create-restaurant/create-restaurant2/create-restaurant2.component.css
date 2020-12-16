@@ -1,0 +1,47 @@
+.containerr {
+  width: 100%;
+}
+
+input {
+  margin-left: 40px;
+}
+
+.table {
+  margin-top: -250px;
+}
+
+.addtable {
+  margin-left: -30px;
+}
+
+.buttonadd {
+  margin-left: 40px;
+}
+
+ul {
+  margin-top: 65px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+}
+
+li {
+  margin-left: 100px;
+}
+
+.buttonli {
+  margin-left: 10px;
+}
+
+.separator {
+  margin-left: 50px;
+}
+
+.buttonnext {
+  margin-top: 50px;
+}
+/*# sourceMappingURL=create-restaurant2.component.css.map */

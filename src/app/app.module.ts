@@ -40,6 +40,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
 import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
 import { DoReservationHeaderComponent } from './components/client/do-reservation-header/do-reservation-header.component';
+import { ModalTurnosComponent } from './components/modals/modal-turnos/modal-turnos.component';
+import { ModalClienteComponent } from './components/modals/modal-cliente/modal-cliente.component';
+import { ModalRestauranteComponent } from './components/modals/modal-restaurante/modal-restaurante.component';
+import { ModalReservaComponent } from './components/modals/modal-reserva/modal-reserva.component';
 
 
 @NgModule({
@@ -67,7 +71,11 @@ import { DoReservationHeaderComponent } from './components/client/do-reservation
     CreateRestaurantHeaderComponent,
     FooterComponent,
     ReservationsRestaurantComponent,
-    DoReservationHeaderComponent
+    DoReservationHeaderComponent,
+    ModalTurnosComponent,
+    ModalClienteComponent,
+    ModalRestauranteComponent,
+    ModalReservaComponent,
     
   ],
   imports: [

@@ -1,0 +1,74 @@
+.content {
+  width: 100%;
+}
+
+.search {
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10%;
+}
+
+.searchLine {
+  width: 100%;
+  border: 2px solid var(--secundaryColorPush);
+  border-right: none;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: var(--secundaryColorPush);
+}
+
+.searchButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--secundaryColorAccent);
+  background: var(--secundaryColorAccent);
+  text-align: center;
+  color: var(--secundaryColorAccent);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.labelteam {
+  margin-top: 60px;
+}
+
+.button {
+  width: 100px;
+  height: 30px;
+  margin-left: 20px;
+  background-color: #D8D8D8;
+  border: none;
+  color: gray;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.divider {
+  margin-top: 30px;
+}
+
+.cards {
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.cards > .lctl-cardButton {
+  margin: 20px;
+}
+/*# sourceMappingURL=search.component.css.map */

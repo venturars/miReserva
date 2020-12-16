@@ -1,0 +1,92 @@
+.head {
+  background-color: var(--secundaryColor);
+  max-width: 1920px;
+  height: 160px;
+  margin: auto;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.head > img {
+  max-width: 1920px;
+  min-width: 300px;
+  height: 100%;
+}
+
+.under {
+  background-color: var(--secundaryColor);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  margin: auto;
+  max-width: 1920px;
+  cursor: default;
+}
+
+.under > * {
+  margin: auto;
+}
+
+.under > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.under > div:first-child div > div:first-child {
+  margin-top: -50px;
+  width: 100px;
+  border: 2px solid var(--secundaryColorPush);
+}
+
+.under > div:first-child div > p {
+  font-weight: var(--fontWidthBolder);
+  margin-left: 25px;
+  margin-bottom: -5px;
+  min-width: 150px;
+  max-width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.under div:nth-child(2) div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.under div:nth-child(2) div > p:first-child {
+  font-weight: var(--fontWidthLight);
+  margin: 0 20px 0 20px;
+  width: 300px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*# sourceMappingURL=do-reservation-header.component.css.map */

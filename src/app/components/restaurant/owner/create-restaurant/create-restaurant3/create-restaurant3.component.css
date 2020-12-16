@@ -1,0 +1,56 @@
+.containerr {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+}
+
+.open * {
+  margin: 10px;
+  padding-left: 20px;
+}
+
+button {
+  margin-left: 15px;
+  margin-top: -2px;
+}
+
+.buttonModify {
+  font-size: var(--fontSizeS);
+  width: 250px;
+  text-transform: none;
+}
+
+select {
+  margin-left: 15px;
+}
+
+p {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.Turns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Turns > div {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+}
+
+.turnbotton * {
+  padding-right: 15px;
+}
+/*# sourceMappingURL=create-restaurant3.component.css.map */

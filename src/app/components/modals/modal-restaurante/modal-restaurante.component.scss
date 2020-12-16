@@ -1,0 +1,85 @@
+
+.content{
+    max-width: 700px;
+    min-width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border: 2px solid var(--secundaryColorPush);
+    background-color: var(--secundaryColor);
+    border-radius: var(--borderRadiusM);
+
+    & > div:nth-child(1){
+       
+        display: flex;
+        justify-content: center;
+        background-color:#D8D8D8;
+        width: 100%;
+        height: 60px;
+        & > p{
+            margin-top: 25px;
+            font-size: var(--fontSizeS);
+            text-align: center;
+
+        }
+
+    }
+    
+    & > div:nth-child(2){
+        
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+        & > p{
+            margin-top: 50px;
+            font-size: var(--fontSizeS);
+            text-align: center;
+
+        }
+
+       
+    }
+    & > div:nth-child(3){
+       
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+    }
+    
+}
+
+.buttonLib{
+background-color:#E4E4E5;
+color: #1C1B1B;
+font-weight: var(--fontWidthLight);
+
+}
+.buttonCan{
+    background-color:#FFB3AF;
+    color: #1C1B1B;
+    font-weight: var(--fontWidthLight);
+    
+    }
+
+.buttonRes{
+    background-color:#BFFFD1;
+    color: #1C1B1B;
+    font-weight: var(--fontWidthLight);
+    }
+
+.buttonSen{
+        background-color:#C3C8FF;
+        color: #1C1B1B;
+        font-weight: var(--fontWidthLight);
+        }
+
+        .buttonAu{
+            background-color:#FCC3FF;
+            color: #1C1B1B;
+            font-weight: var(--fontWidthLight);
+            }
