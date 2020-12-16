@@ -1,0 +1,32 @@
+.space {
+  opacity: 0;
+  height: 20px;
+}
+
+.center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.row {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 80%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.modify {
+  width: 85%;
+}
+/*# sourceMappingURL=reservations.component.css.map */

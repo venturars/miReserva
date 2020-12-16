@@ -1,0 +1,151 @@
+input {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.form1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+select {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.button {
+  width: 87%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 40px;
+}
+
+.breadcrumb {
+  list-style: none;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.breadcrumb li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+}
+
+.breadcrumb li a {
+  color: var(--secundaryColor);
+  text-decoration: none;
+  padding: 10px 0 10px 0;
+  background: var(--secundaryColorPush);
+  position: relative;
+  display: block;
+  float: left;
+  width: 32vw;
+}
+
+.breadcrumb li a:after {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  /* Go big on the size, and let overflow hide */
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid var(--secundaryColorPush);
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 100%;
+  z-index: 2;
+}
+
+.breadcrumb li a:before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  /* Go big on the size, and let overflow hide */
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid var(--secundaryColor);
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 1;
+}
+
+.breadcrumb li:last-child #info:after {
+  border: 0;
+}
+
+.breadcrumb li #info {
+  background: var(--secundaryColorContrast);
+}
+
+.breadcrumb li #info:after {
+  border-left-color: var(--secundaryColorContrast) !important;
+}
+
+.caution {
+  border: var(--secundaryColorContrast) solid 2px;
+  background-color: lightgrey;
+}
+
+.caution::-webkit-input-placeholder {
+  color: var(--secundaryColorContrast);
+}
+
+.caution:-ms-input-placeholder {
+  color: var(--secundaryColorContrast);
+}
+
+.caution::-ms-input-placeholder {
+  color: var(--secundaryColorContrast);
+}
+
+.caution::placeholder {
+  color: var(--secundaryColorContrast);
+}
+
+.encolumna {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.dosendos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+/*# sourceMappingURL=create-restaurant1.component.css.map */
