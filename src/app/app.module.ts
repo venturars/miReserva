@@ -13,11 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //-----http-----
 import { HttpClientModule } from '@angular/common/http';
-//-----Calendar-----
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 //-----Components-----
-import { CalendarComponent } from './components/calendar/calendar.component';
 import { NavbarClientComponent } from './components/navbar/navbarClient/navbarClient.component';
 import { NavbarLoginComponent } from './components/navbar/navbar-login/navbar-login.component';
 import { NavbarUserRestaurantComponent } from './components/navbar/navbar-user-restaurant/navbar-user-restaurant.component';
@@ -49,7 +45,6 @@ import { ModalReservaComponent } from './components/modals/modal-reserva/modal-r
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent,
     NavbarClientComponent,
     NavbarLoginComponent,
     NavbarUserRestaurantComponent,
@@ -87,10 +82,6 @@ import { ModalReservaComponent } from './components/modals/modal-reserva/modal-r
     MatDialogModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    }),
     NgbModule
   ],
   providers: [],
