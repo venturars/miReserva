@@ -1,9 +1,27 @@
-.img{
+.img {
     padding-bottom: 0;
     padding-top: 0;
 }
-
-.img:hover{
+.img:hover {
     background: none;
 }
-
+.left {
+}
+.right {
+    width: max-content;
+    flex-wrap: nowrap;
+}
+@media screen and (max-width: 900px) {
+    .left {
+        justify-content: space-around;
+    }
+    .right {
+        visibility: hidden;
+        width: 0;
+    }
+}
+@media screen and (max-width: 603px) {
+    .left {
+        
+    }
+}
