@@ -21,9 +21,16 @@
         </div>
         <div>
             <input class="lctl-cellInput-extraLarge" type="text" autocomplete="off"
-            placeholder="{{tableForm.submitted && pax.invalid ?  'PAX obligatoria' : 'PAX'}}"           
-            name="pax" [(ngModel)]="table.pax" #pax="ngModel" 
-            [ngClass]="{'is-invalid':tableForm.submitted && pax.invalid }" required>
+            placeholder="{{tableForm.submitted && paxmin.invalid ?  'PAX Min obligatoria' : 'PAX Min'}}"           
+            name="paxmin" [(ngModel)]="table.paxmin" #paxmin="ngModel" 
+            [ngClass]="{'is-invalid':tableForm.submitted && paxmin.invalid }" required>
+        
+        </div>
+        <div>
+            <input class="lctl-cellInput-extraLarge" type="text" autocomplete="off"
+            placeholder="{{tableForm.submitted && paxmax.invalid ?  'PAX Max obligatoria' : 'PAX Max'}}"           
+            name="paxmax" [(ngModel)]="table.paxmax" #paxmax="ngModel" 
+            [ngClass]="{'is-invalid':tableForm.submitted && paxmax.invalid }" required>
         
         </div>
             <button type="submit" class="buttonadd lctl-button-m ">Añadir Mesa</button>
@@ -36,7 +43,9 @@
     <div class=" title">
         <div class="rows">
             <p class="lctl-font-bold">Mesa</p>
-            <p class="lctl-font-bold">Personas</p>
+            <p class="lctl-font-bold">PAX Min</p>
+            <p class="lctl-font-bold">PAX Max</p>
+
             <button class="lctl-button-m esconder">Eliminar</button>
 
         </div>
@@ -51,7 +60,8 @@
                 </div>
                 <div class="rows" >    
             <p class="lctl-font-paragraph">{{table.name}}</p>
-            <p class="lctl-font-paragraph">{{table.pax}}</p>
+            <p class="lctl-font-paragraph">{{table.paxmin}}</p>
+            <p class="lctl-font-paragraph">{{table.paxmax}}</p>
             <button (click)="eliminar(i)" class="lctl-button-m ">Eliminar</button>
             </div>
             

@@ -32,7 +32,7 @@
               "src/styles.scss",
               "src/lucatiel.scss"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.js","node_modules/jquery/dist/jquery.min.js","node_modules/@types/jquery"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -96,7 +96,7 @@
               "node_modules/angular-calendar/css/angular-calendar.css",
               "src/styles.scss"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.js","node_modules/jquery/dist/jquery.min.js","node_modules/@types/jquery"]
+            "scripts": []
           }
         },
         "lint": {

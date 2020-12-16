@@ -11,8 +11,8 @@ export class CreateRestaurant2Component implements OnInit {
   public table:Tables;
   
   constructor() {
-    this.tables=[(new Tables ("Salon","4")),(new Tables ("UNO","3"))];
-    this.table=new Tables (null,null);
+    this.tables=[(new Tables ("Salon","2","4")),(new Tables ("UNO","3","5"))];
+    this.table=new Tables (null,null,null);
    }
 
    @ViewChild('prueba') myInputField: ElementRef;
@@ -21,10 +21,11 @@ this.myInputField.nativeElement.focus();
 }
 
    onSubmit(tableForm){
-    const nuevamesa= new Tables (tableForm.value.name,tableForm.value.pax); 
+    const nuevamesa= new Tables (tableForm.value.name,tableForm.value.paxmin, tableForm.value.paxmax); 
     this.tables.push(nuevamesa);
     this.table.name="";
-    this.table.pax="";
+    this.table.paxmin="";
+    this.table.paxmax="";
     this.myInputField.nativeElement.focus();
    }
 
