@@ -4,7 +4,7 @@
     </div>
     
     
-    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <form #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? 'mal' : onSubmit(userForm)">
       <!-- Cambiar submenu con formato de la pagina no es un H3 normal -->
     <b><p class="lctl-font-title text-center">ACCEDER</p></b>
 <label id="labeluno"><input class="lctl-input-m-extraLarge" name="email" placeholder="Email" 
