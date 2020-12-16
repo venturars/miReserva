@@ -8,12 +8,13 @@
       </ul>
 </div>
 <app-restaurant-owner-CreateRestaurantHeader></app-restaurant-owner-CreateRestaurantHeader>
-<form class="form1 encolumna" #restForm="ngForm" (ngSubmit)="onSubmit(restForm)">
+<form class="encolumna" #restForm="ngForm" (ngSubmit)="(restForm.invalid) ? 'mal' : onSubmit(restForm)">
         <div class="dosendos">
         <input type="text" class="lctl-input-m-extraLarge" 
         placeholder="{{restForm.submitted && name.invalid ?  'Nombre del local obligatorio' : 'Nombre del local'}}"
          name="name" [(ngModel)]="restaurant.name" #name="ngModel"
         [ngClass]="{'caution':restForm.submitted && name.invalid }" required>
+        
         <input type="text" class="lctl-input-m-extraLarge" 
         placeholder="{{restForm.submitted && telephone.invalid ?  'Teléfono obligatorio' : 'Teléfono'}}"
         name="telephone" [(ngModel)]="restaurant.telephone" #telephone="ngModel"
@@ -35,10 +36,10 @@
         name="postalcode" [(ngModel)]="restaurant.postalcode" #postalcode="ngModel"
         [ngClass]="{'caution':restForm.submitted && postalcode.invalid }" required>
         <select class="lctl-input-m-extraLarge" 
-        name="food" [(ngModel)]="restaurant.food" #food="ngModel"
+        name="food" [(ngModel)]="restaurant.food" #food="ngModel" 
         [ngClass]="{'caution':restForm.submitted && food.invalid }" required>
-        
-            <option>Tipo de comida</option>
+        <option disabled selected>Selecciona tipo de comida</option>
+            <!-- //HAY QUE PONER VALUES A LOS OPTION PARA METERLOS EN LA BASE DE DATOS -->
             <option>Española</option>
             <option>Mexicana</option>
             <option>China</option>
@@ -50,7 +51,8 @@
         placeholder="{{restForm.submitted && postalcode.invalid ?  'Código postal obligatorio' : 'Código postal'}}"
         name="email" [(ngModel)]="restaurant.email" #email="ngModel"
         [ngClass]="{'caution':restForm.submitted && email.invalid }" required>
-        <input type="text" class="lctl-input-m-extraLarge" placeholder="Contraseña"
+        <input type="text" class="lctl-input-m-extraLarge"
+        placeholder="{{restForm.submitted && password.invalid ?  'Contraseña obligatoria' : 'Contraseña'}}"
         name="password" [(ngModel)]="restaurant.password" #password="ngModel"
         [ngClass]="{'caution':restForm.submitted && password.invalid }" required>
         </div>

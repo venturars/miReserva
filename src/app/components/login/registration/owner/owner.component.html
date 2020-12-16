@@ -4,7 +4,7 @@
     </div>
     
     
-    <form #userForm1="ngForm" (ngSubmit)="onSubmit(userForm1)">
+    <form #userForm1="ngForm" (ngSubmit)="(userForm1.invalid) ? 'mal' : onSubmit(userForm1)">
       <!-- Cambiar submenu con formato de la pagina no es un H3 normal -->
     <b><p class="lctl-font-title text-center">CREA TU PERFIL</p></b>
     <input class="lctl-input-m-extraLarge" name="name" autocomplete="off" placeholder="Nombre" 

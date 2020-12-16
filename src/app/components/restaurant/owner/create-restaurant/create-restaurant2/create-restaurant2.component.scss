@@ -1,48 +1,184 @@
-
-.containerr{
-    width: 100%;
-}
-
-input{
-margin-left: 40px;}
-
-
-.table{
-    margin-top: -250px;
-
-}
-
-.addtable{
-    margin-left: -30px;
-}
-
-.buttonadd{
-    margin-left: 40px;
-   
-}
-
-
-ul{
-    margin-top: 65px;
-    display: flex;
+//BORRO MUCHO CSS CONFIRMAR ESTE CAMBIO
+.centrar{
+    display:flex;
+    flex-direction: column;
+    justify-content: center!important;
     align-items: center;
-    list-style: none;
-}
-
-li{
-    margin-left: 100px;
-}
-
-.buttonli{
-    margin-left: 10px;
+    width:100%;
     
 }
 
-.separator{
-    margin-left: 50px;
+.inter{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    
+}
+.space{
+    opacity:0;
+    height: 60px;
 }
 
-.buttonnext{
-    margin-top: 50px;
+.space2{
+    opacity:0;
+    height: 50px;
 }
 
+
+.alturbr{
+    height:300px;
+    opacity:0;
+}
+
+.espaciar{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width:650px;
+    min-width:300px;
+    
+       
+}
+
+
+.breadcrumb { 
+    list-style: none; 
+    overflow: hidden; 
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .breadcrumb li { 
+    display: flex;
+    text-align: center;
+
+    
+    
+  }
+  .breadcrumb li a {
+
+    color: var(--secundaryColor);
+    text-decoration: none; 
+    padding: 10px 0 10px 0;
+    background: var(--secundaryColorPush); 
+    position: relative; 
+    display: block;
+    float: left;
+    width: 32vw;
+
+   
+  }
+  .breadcrumb li a:after { 
+    content: " "; 
+    display: block; 
+    width: 0; 
+    height: 0;
+    border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+    border-bottom: 50px solid transparent;
+    border-left: 30px solid var(--secundaryColorPush);
+    position: absolute;
+    top: 50%;
+    margin-top: -50px; 
+    left: 100%;
+    z-index: 2; 
+  } 
+  .breadcrumb li a:before { 
+    content: " "; 
+    display: block; 
+    width: 0; 
+    height: 0;
+    border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+    border-bottom: 50px solid transparent;
+    border-left: 30px solid var(--secundaryColor);
+    position: absolute;
+    top: 50%;
+    margin-top: -50px; 
+    margin-left: 1px;
+    left: 100%;
+    z-index: 1; 
+  } 
+ 
+  .breadcrumb li:last-child #dist:after { border: 0; }
+  .breadcrumb li #dist { background:var(--secundaryColorContrast)}
+  .breadcrumb li #dist:after { border-left-color: var(--secundaryColorContrast) !important; }
+  
+  .caution{
+    border:var(--secundaryColorContrast) solid 2px;
+    background-color: lightgrey;
+  }
+  .caution::placeholder{
+    color:var(--secundaryColorContrast);
+
+  }
+
+  .rows{
+    height: 50px;
+    max-width:650px;
+    min-width:300px;
+    display: flex;
+    justify-content: space-evenly; 
+    
+    // border-bottom: 1px solid var(--secundaryColorPush);
+    & p {
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+        height: 100%;
+        padding-top:12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    & p:first-child{
+        width: 150px;
+        text-align: center;
+    }
+    & p:nth-child(2){
+        width: 150px;        
+    }
+    & p:nth-child(3){
+        width: 100px; 
+        text-align: center;       
+    }
+    & p:nth-child(4){
+        width: 100px; 
+        text-align: center;       
+    }
+    & p:nth-child(5){
+        width: 300px;        
+    }
+    & p:last-child{
+        width: 200px;
+    }
+}
+
+.esconder{
+    visibility:hidden;
+
+}
+
+.column{
+    display:flex;
+    flex-direction: column;
+    max-width: max-content;
+    margin:auto;
+}
+.space3{
+    opacity:0;
+    height:5px;
+}
+
+.w{
+  max-width:1200px;
+  min-width: 280px;
+}
+
+.title{
+    // max-width: 1500px;
+    // min-width:300px;
+    max-width: max-content;
+    margin:auto;
+}
