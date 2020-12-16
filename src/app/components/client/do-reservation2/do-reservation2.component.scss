@@ -1,12 +1,83 @@
+.title {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 10px 20px;
+}
+.space {
+    opacity: 0;
+    height: 20px;
+}
+.w {
+    max-width: 1500px;
+    min-width: 250px;
+}
 .head {
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
-    background-color: red;
-    text-align: centers;
+    text-align: center;
 }
 .page {
     width: 100%;
-    min-height: 400px;
+    min-height: 200px;
 }
+.schedules {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 1000px;
+    min-width: 300px;
+    & > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    & > div {
+        margin: 10px 5px 10px 5px;
+    }
+}}
+.end {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+.comment {
+    height: 120px;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    & .com {
+        margin: auto;
+        display: block;
+        min-width: 300px;
+        height: 85px;
+        outline: none;
+        border: 1px solid var(--secundaryColorOpposite);
+        border-radius: var(--borderRadiusL);
+        font-size: var(--fontSizeS);
+        padding: 10px;
+    }
+    & .obs {
+        text-align: justify;
+        display: block;
+        margin: auto;
+        min-width: 300px;
+        font-weight: var(--fontWidthBolder);
+    }
+}
+.buttoms {
+    height: 60px;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+@media screen and (min-width: 1000px) {
+    .buttoms {
+        margin-right: 50px;
+}}
+@media screen and (max-width: 600px) {
+    .buttoms {
+        margin: auto;
+}}

@@ -58,7 +58,6 @@ a {
 //-----Scroll-bar-----
 *::-webkit-scrollbar {
     width: 0px;
-    background-color: red;
 }
 *::-webkit-scrollbar-thumb {
   background: var(--secundaryColorPush);
@@ -78,7 +77,6 @@ a {
 [class *= "lctl-font-title"] {
     font-weight: var(--fontWidthBolder);
     font-size: var(--fontSizeL);
-    text-transform: uppercase;
 }
 //----------
 [class *= "lctl-font-paragraph"] {
@@ -269,6 +267,26 @@ a {
     border-radius: var(--borderRadiusL);
     font-size: var(--fontSizeL);
 }
+//----------//----------//----------//----------//----------
+.lctl-cellButton {
+    cursor: pointer;
+    width: 150px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: var(--fontWidthBolder);
+    box-shadow: 0 0 5px 1px var(--secundaryColorOpposite);
+    border: none;
+    border-radius: var(--borderRadiusM);
+    &:hover {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+    }
+    &:active {
+        color: var(--secundaryColor);
+        background-color: var(--secundaryColorAccent);
+}}
 //----------//----------//----------//----------//----------
 [class *="lctl-disabledButton"] {
     text-transform: capitalize;
@@ -504,7 +522,7 @@ a {
         color: var(--secundaryColor);
     }
     & * a:active, & a:active {
-        background-color: var(--secundaryColorContrast);
+        background-color: var(--secundaryColorAccent);
         color: var(--secundaryColor);
 }}
 //----------//----------//----------//----------//----------
@@ -540,6 +558,7 @@ a {
 }}
 //----------//----------//----------//----------//----------
 //-----Elements position-----
+    //-----Deprecated-----
 //----------//----------//----------//----------//----------
 [class *= "lctl-centerElements"] {
     display: flex;
@@ -574,24 +593,24 @@ a {
     align-items: center;
     border-radius: 1000px;
     // border-radius: 50%;
-    border: 2px solid transparent;
+    border: 2px solid var(--secundaryColorPush);
     background-color: transparent;
     &:hover {
-        border: 2px solid var(--primaryColor);
+        border: 2px solid var(--secundaryColorContrast);
     }
     &:active {
-        border: 2px solid var(--primaryColorPush);
+        border: 2px solid var(--secundaryColorAccent);
 }}
 //----------
 [class *= "lctl-photoProfile-xs"] {
-    border: 1px solid transparent;
+    border: 1px solid var(--secundaryColorPush);
     width: 20px;
     height: 20px;
     &:hover {
-        border: 1px solid var(--primaryColor);
+        border: 1px solid var(--secundaryColorContrast);
     }
     &:active {
-        border: 1px solid var(--primaryColorPush);
+        border: 1px solid var(--secundaryColorAccent);
     }
     & img {
         width: 20px;
