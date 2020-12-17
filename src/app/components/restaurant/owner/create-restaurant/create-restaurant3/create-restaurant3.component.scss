@@ -11,6 +11,7 @@
     & * {
      margin: 10px;
      padding-left: 20px;
+     
 
     }
     
@@ -50,8 +51,19 @@ select{
     & * { padding-right: 15px;}
 }
 
+.imagencerrado{
+    
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
 
-
+.close
+{
+    height: 400px;
+    padding-top: 20px;
+    opacity: 1!important;
+}
 
 
 input{
