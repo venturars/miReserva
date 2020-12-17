@@ -1,4 +1,8 @@
 .page {
+    width: 100%;
+}
+.content {
+    padding-top: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -62,14 +66,6 @@
 }
 .mid {
     width: max-content;
-}
-.space {
-    height: 50px;
-    opacity: 0;
-}
-.space2 {
-    height: 10px;
-    opacity: 0;
 }
 .buttoms {
     height: 60px;
