@@ -7,25 +7,25 @@
     <p class="lctl-font-title title">acceder</p>
     <div class="lctl-br space"></div>
     <label id="labelOne">
-      <input class="lctl-input-l-large" name="email" placeholder="Email" 
+      <input class="lctl-input-l-large inputForm" name="email" placeholder="Email" 
         placeholder="{{userForm.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
         [(ngModel)]="user.email" #email="ngModel"
         [ngClass]="{'caution':userForm.submitted && email.invalid }" email required></label>
     <label id="labelTwo">
-        <input class="lctl-input-l-large" name="password" 
+        <input class="lctl-input-l-large inputForm" name="password" 
           placeholder="{{userForm.submitted && password.invalid ?  'Contraseña obligatoria 6 caracteres' : 'Contraseña'}}"
           [(ngModel)]="user.password" #password="ngModel"
           [ngClass]="{'caution':userForm.submitted && password.invalid }" minlength="6" required>
     </label>
     
     <div class="lctl-br space2"></div>
-    <div>
+    <div class="overLogIn">
       <div [ngClass]="{'caution':userForm.submitted && check.invalid }">
         <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel">
-        <p class="lctl-font-underline">Recuerdame</p>
+        <p class="lctl-font-underline" class="textCheck">Recuerdame</p>
       </div>
       <div>
-        <a class="lctl-font-link lctl-font-underline">¿Olvidaste Contraseña?</a>
+          <a class="lctl-font-link lctl-font-underline">¿Olvidaste Contraseña?</a>
       </div>
     </div>
     <div>

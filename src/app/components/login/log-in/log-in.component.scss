@@ -1,115 +1,111 @@
 .putItems {
+display: flex;
+align-items: center;
+justify-content: space-around;
+padding-top: 20px;
+padding-bottom: 20px;
+background-color: var(--secundaryColor);
+width: 1200px;
+max-width: 100%;
+  & .img, form {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: var(--secundaryColor);
+    justify-content: center;
+    flex-direction: column;
+    max-width: 500px;
     min-width: 300px;
-    background-color: aqua;
-    & > .img {
-      background-color: yellow;
-      margin-right: auto;
-    }
-    & > form {
-      margin-left: auto;
-      background-color: yellowgreen;
+  }
+  & > .img {
+    width: 100%;
+    & > img {
       width: 100%;
-      input {
-        margin-top: 6px;
-        margin-bottom: 6px;
-        padding-left: 38px;
-        width: 400px;
-    }}
-  }
-  .space {
-    opacity: 0;
-    height: 10px;
-  }
-  .space2 {
-    opacity: 0;
-    height: 20px;
-  }
-  .putItems > * {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      max-width: 400px;
-      min-width: 300px;
-      & img {
-        width: 100%;
-      }
-  }
-
-  .putItems > * div {
-      display:flex;
-      justify-content: center;    
-      width:100%;
-      background-color: aquamarine;
-  }
-  .putItems > * div div {
-      display:flex;
-      justify-content:left;
-  }
-  .putItems > * div div p {
-      padding-left: 10px;
-  }
-  //FORGOT PASSWORD
-  .putItems > * div div a {
-      text-align: right;
-      width:100%;
-  }
-  
-  #labelOne {
-      position: relative;
     }
-    
-    #labelOne:before {
-      content: "";
-      position: absolute;
-      left: 10px;
-      top: 7px;
-      bottom: 0;
-      height: 45px;
-      width: 22px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-user' width='33' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Ccircle cx='12' cy='7' r='4' /%3E%3Cpath d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' /%3E%3C/svg%3E");
-     
-    }
-  
-    #labelTwo {
-      position: relative;
-    }
-    
-    #labelTwo:before {
-      content: "";
-      position: absolute;
-      left: 10px;
-      top: 7px;
-      height: 45px;
-
-      bottom: 0;
-      width: 20px;
-      
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-lock' width='30' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Crect x='5' y='11' width='14' height='10' rx='2' /%3E%3Ccircle cx='12' cy='16' r='1' /%3E%3Cpath d='M8 11v-4a4 4 0 0 1 8 0v4' /%3E%3C/svg%3E");
-    }
-  .title
-  {
+  }
+  & > form {
+    width: 100%;
+    & .title {
       text-transform: capitalize;
+    }
+    & .inputForm {
+      margin-top: 6px;
+      margin-bottom: 6px;
+      padding-left: 38px;
+      width: 400px;
+    }
+    & > .overLogIn {
+      display: flex;
+      & > div:first-child > input {
+        width: 0;
+      }
+      & > div:first-child > .textCheck{
+        padding-left: 10px;
+      }
+    }
   }
-  
-  .caution{
-      border:var(--secundaryColorContrast) solid 2px;
-  }
+}
+.putItems > * > div {
+  display:flex;
+  justify-content: center;    
+  width:100%;
+}
+.putItems > * div div {
+  display:flex;
+  justify-content:left;
+  width: min-content;
+}
+//FORGOT PASSWORD
+.putItems > * div div a {
+  text-align: right;
+  width:100%;
+}
+//-----Especial Elements-----
+.space {
+  opacity: 0;
+  height: 10px;
+}
+.space2 {
+  opacity: 0;
+  height: 20px;
+}
+#labelOne {
+  position: relative;
+}
+#labelOne:before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  bottom: 0;
+  height: 45px;
+  width: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-user' width='33' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Ccircle cx='12' cy='7' r='4' /%3E%3Cpath d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' /%3E%3C/svg%3E");
+}
+#labelTwo {
+  position: relative;
+}
+#labelTwo:before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 7px;
+  height: 45px;
+  bottom: 0;
+  width: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-lock' width='30' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Crect x='5' y='11' width='14' height='10' rx='2' /%3E%3Ccircle cx='12' cy='16' r='1' /%3E%3Cpath d='M8 11v-4a4 4 0 0 1 8 0v4' /%3E%3C/svg%3E");
+}
+.caution{
+  border:var(--secundaryColorContrast) solid 2px;
+}
+.invalid-feedback-left{
+  color:var(--secundaryColorContrast);
+  display:flex;
+  justify-content: left!important;
+  font-size:12px;
+}
+//-----//-----//-----//-----//-----//-----
 
-  .invalid-feedback-left{
-    color:var(--secundaryColorContrast);
-    display:flex;
-    justify-content: left!important;
-    font-size:12px;
-  }
-
- @media screen and (max-width: 1200px) {
+//-----responsive-----
+@media screen and (max-width: 1000px) {
   .putItems {
     flex-direction: column;
   }
@@ -117,13 +113,14 @@
     display: none;
   }
  }
- @media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .putItems {
     & > .img {
     }
     & > form {
       input {
         width: max-content;
-    }}
+      }
+    }
   }
- }
+}
