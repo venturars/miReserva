@@ -21,6 +21,7 @@ export class CreateRestaurant1Component implements OnInit {
    }
 
   ngOnInit(): void {
+    // this.router.navigate(['navbar1'])
   }
 
 }

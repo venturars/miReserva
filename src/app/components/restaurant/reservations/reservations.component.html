@@ -1,6 +1,11 @@
 <!-- <ng-container *ngIf="reservations == []"></ng-container>
     <h3 class="lctl-centerElements">No tienes ninguna reserva activa</h3>    -->
 <div class="content">    
+    <div class="header">
+        <app-navbarUserRestaurant></app-navbarUserRestaurant>
+    </div>
+
+    <h3>CONFIRMADAS</h3>
 <div class="table">
     <div>
     <h3>CONFIRMADAS</h3>
@@ -20,7 +25,7 @@
             <p class="lctl-font-paragraph">{{reservationsYes[i].table}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].pax}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].obs}}</p>
-            <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m" >Reservada</button>
+            <button (click)="openDialog()" class="lctl-button-m" >{{reservationsYes[i].status}}</button>
     </div>
 </div>
 
@@ -44,7 +49,7 @@
             <p class="lctl-font-paragraph">{{reservationsNo[i].pax}}</p>
             <p class="lctl-font-paragraph">{{reservationsNo[i].obs}}</p>
             <button (click)="confirmReservation(reservationsNo[i].id_reservation)" class="lctl-button-m" >Confirmar</button>
-            <button (click)="rejectReservation(reservations[i].id_reservation)" class="lctl-button-m" >Rechazar</button>
+            <button (click)="rejectReservation(reservationsNo[i].id_reservation)" class="lctl-button-m" >Rechazar</button>
 
     </div>
 </div>

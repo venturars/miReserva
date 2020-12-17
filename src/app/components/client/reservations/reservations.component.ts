@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ReservationsClient } from 'src/app/models/reservations-client';
+import { ModalClienteComponent } from '../../modals/modal-cliente/modal-cliente.component';
 
 @Component({
   selector: 'app-client-reservations',
@@ -8,7 +10,7 @@ import { ReservationsClient } from 'src/app/models/reservations-client';
 })
 export class ReservationsClientComponent implements OnInit {
 public reservations:ReservationsClient[]
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.reservations = [
       {id_reservation: 1,date:2020,time:24,obs:"hola1",pax:4,id_restaurant:8},
       {id_reservation: 2,date:2019,time:23,obs:"hola2",pax:3,id_restaurant:6},
@@ -34,6 +36,14 @@ public reservations:ReservationsClient[]
       }
     }
     return resultado
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ModalClienteComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

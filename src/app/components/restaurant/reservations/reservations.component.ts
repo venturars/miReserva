@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ReservationsRestaurants } from 'src/app/models/reservations-restaurants';
+import { ModalRestauranteComponent } from '../../modals/modal-restaurante/modal-restaurante.component';
 
 @Component({
   selector: 'app-restaurant-reservations',
@@ -7,6 +9,7 @@ import { ReservationsRestaurants } from 'src/app/models/reservations-restaurants
   styleUrls: ['./reservations.component.scss']
 })
 export class ReservationsRestaurantComponent implements OnInit {
+
   public minDate: Date;
   public maxDate: Date;
   public reservations:ReservationsRestaurants[]
@@ -21,7 +24,7 @@ export class ReservationsRestaurantComponent implements OnInit {
     return day !== 1
   }
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.reservationsYes = []
     this.reservationsNo = []
     this.reservations = [
@@ -55,7 +58,6 @@ export class ReservationsRestaurantComponent implements OnInit {
     
   }
 
-
   public confirmReservation(id_reservation:number){
     let resultado =""
     for(let i = 0; i < this.reservationsNo.length; i++){
@@ -73,9 +75,9 @@ export class ReservationsRestaurantComponent implements OnInit {
 
   public rejectReservation(id_reservation:number){
     let resultado =""
-    for(let i = 0; i < this.reservations.length; i++){
-      if(this.reservations[i].id_reservation == id_reservation){
-        this.reservations.splice(i,1)
+    for(let i = 0; i < this.reservationsNo.length; i++){
+      if(this.reservationsNo[i].id_reservation == id_reservation){
+        this.reservationsNo.splice(i,1)
         resultado = "si"
       }else{
         resultado = "no"
@@ -83,6 +85,7 @@ export class ReservationsRestaurantComponent implements OnInit {
     }
     return resultado
   }
+
   public fecha() {
     console.log(this.dateOfBirth);
     let nombre = this.dateOfBirth.toString().substring(0,3)
@@ -95,6 +98,14 @@ export class ReservationsRestaurantComponent implements OnInit {
     console.log(anyo);
 
   }
-  
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ModalRestauranteComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }
 
