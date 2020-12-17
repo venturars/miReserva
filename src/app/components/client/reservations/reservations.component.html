@@ -1,8 +1,6 @@
 <!-- <ng-container *ngIf="reservations == []"></ng-container>
     <h3 class="lctl-centerElements">No tienes ninguna reserva activa</h3>    -->
 <ng-container *ngIf="reservations != null"></ng-container>
-<div class="lctl-br space" >
-</div>
 <div *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements">
     <div class="lctl-br modify"></div>
     <div class="lctl-centerElements row">

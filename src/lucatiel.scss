@@ -502,7 +502,7 @@ a {
     position: relative;
     // top: 0;
     width: 100vw;
-    min-height: 82px;
+    height: 82px;
     text-transform: uppercase;
     font-weight: var(--fontWidthBolder);
     background-color: var(--secundaryColor);
@@ -532,7 +532,7 @@ a {
 [class *= "lctl-footer"] {
     position: relative;
     width: 100vw;
-    min-height: 52px;
+    height: 52px;
     text-transform: uppercase;
     font-weight: var(--fontWidthBolder);
     background-color: var(--secundaryColor);
