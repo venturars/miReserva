@@ -50,7 +50,7 @@
         </div>
         <div class="dosendos">    
         <input type="text" class="lctl-input-m-extraLarge" placeholder="Email"
-        placeholder="{{restForm.submitted && postalcode.invalid ?  'Código postal obligatorio' : 'Código postal'}}"
+        placeholder="{{restForm.submitted && postalcode.invalid ?  'Email obligatorio' : 'Email'}}"
         name="email" [(ngModel)]="restaurant.email" #email="ngModel"
         [ngClass]="{'caution':restForm.submitted && email.invalid }" required>
         <input type="text" class="lctl-input-m-extraLarge"

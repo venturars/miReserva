@@ -15,26 +15,29 @@
     <form class="espaciar" #tableForm="ngForm"  (ngSubmit)="(tableForm.invalid) ? 'malll' : onSubmit(tableForm)">
         
         <div>
-            <input class="lctl-cellInput-extraLarge" type="text" autocomplete="off"
-            placeholder="{{tableForm.submitted && name.invalid ?  'Mesa obligatoria' : 'Nombre Mesa'}}"
-            id="name" name="name" [(ngModel)]="table.name" #name="ngModel" #prueba 
-            [ngClass]="{'is-invalid':tableForm.submitted && name.invalid }" required>
-        
+            <label>Nombre mesa
+                <input class="lctl-cellInput-large" type="text" autocomplete="off"
+                placeholder="{{tableForm.submitted && name.invalid ?  'Mesa ' : ' Mesa'}}"
+                id="name" name="name" [(ngModel)]="table.name" #name="ngModel" #prueba 
+                [ngClass]="{'is-invalid':tableForm.submitted && name.invalid }" required>
+            </label>    
 
         </div>
         <div>
-            <input class="lctl-cellInput-extraLarge" type="text" autocomplete="off"
-            placeholder="{{tableForm.submitted && paxmin.invalid ?  'PAX Min obligatoria' : 'PAX Min'}}"           
+            <label>PAX min
+            <input class="lctl-cellInput-large" type="text" autocomplete="off"
+            placeholder="{{tableForm.submitted && paxmin.invalid ?  'Pax Min' : 'Pax Min'}}"           
             name="paxmin" [(ngModel)]="table.paxmin" #paxmin="ngModel" 
             [ngClass]="{'is-invalid':tableForm.submitted && paxmin.invalid }" required>
-        
+            </label>    
         </div>
         <div>
-            <input class="lctl-cellInput-extraLarge" type="text" autocomplete="off"
-            placeholder="{{tableForm.submitted && paxmax.invalid ?  'PAX Max obligatoria' : 'PAX Max'}}"           
+            <label>PAX max
+            <input class="lctl-cellInput-large" type="text" autocomplete="off"
+            placeholder="{{tableForm.submitted && paxmax.invalid ?  'Pax Max ' : 'Pax Max'}}"           
             name="paxmax" [(ngModel)]="table.paxmax" #paxmax="ngModel" 
             [ngClass]="{'is-invalid':tableForm.submitted && paxmax.invalid }" required>
-        
+            </label>    
         </div>
             <button type="submit" class="buttonadd lctl-button-m ">Añadir Mesa</button>
         
