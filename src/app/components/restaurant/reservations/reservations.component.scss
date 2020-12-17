@@ -1,47 +1,188 @@
-.conten{
-    max-width: 900px;
+.content{
+   max-width: 1000px;
     min-width: 300px;
-    background-color: brown;
-    height: 360px;
+    height: max-content;
     display: flex;
-    flex-direction: column;
     margin: auto;
+    flex-direction: column;
     background-color: var(--secundaryColor);
     border-radius: var(--borderRadiusM);
 
     /*  div padre 1    */
 
     & > div:nth-child(1){
-
         display: flex;
-        background-color: wheat;
+        flex-direction: column;
+       
         
-
-
             & > div:nth-child(1){
+                display: flex;
+                align-content: center;
+                height: 50px;
+                justify-content: center;
+               
+
+               
+
+                 & > div:nth-child(1){
+                  
+                   align-items: center;
+               
+                    & > button{
+                        font-size: 14px;
+                        width: 200px;
+                        height: 30px;
+                    }
+                    }
+
+                 & > div:nth-child(2){
+                        display: flex;
+                        width: 383px;
+                        align-items: center;
+                        justify-content: center;
+                        margin: auto;
+                       
+
+                        & > select{
+                        font-size: 14px;    
+                        height: 30px;
+                        width: 130px;
+                        }
+
+                        & > button{
+                            background-color: transparent;
+                            border: none;  
+                            height: 30px;
+                            width: 110px;
+                           
+                            display: flex;
+                            justify-content: center;
+                                & > p{
+                                    
+                                    margin-top: 5px;
+                                    font-size: 14px; 
+                                    text-align: left;
+                                  
+                                }
+
+                            }
+                }
+            }
+
+            & > .title{
+                width: 100%;
+                height: 40px;
+                margin: auto;
+                display: flex;
+               
                 
-                background-color: yellowgreen;
-            
+                & > h3{
+                    display: flex;
+                    margin: auto;
+                    font-size: 14px;
+                    
+                } 
             }
-            & > div:nth-child(2){
 
-                background-color: blue;
+            & > .rows{
+                width: 100%;
+                height: 40px;
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+
+                
+
+                & > p{
+                    width: 140px;                   
+                    font-size: 14px;
+                    width: 140px;
+                    margin: auto;
+                    text-align: center;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                  
+                }
             }
 
-            & > div:nth-child(3){
+            & > .rows2{
+                width: 100%;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                flex-direction: row;    
+                
 
-                background-color: blueviolet;
-            }
-            & > div:nth-child(4){
 
-            background-color: brown;
+                & > p{
+                    font-size: 14px;
+                    width: 140px;
+                    margin: auto;
+                    text-align: center;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                   
+                
+                } 
+
+    
             }
 
         }
 
+
+.buttonLib{
+background-color:#E4E4E5;
+color: #1C1B1B;
+font-weight: var(--fontWidthLight);    
+}
+.buttonCan{
+    background-color:#FFB3AF;
+    color: #1C1B1B;
+    font-weight: var(--fontWidthLight);
+}
+.buttonRes{
+    background-color:#BFFFD1;
+    color: #1C1B1B;
+    font-weight: var(--fontWidthLight);
+}
+.buttonSen{
+    background-color:#C3C8FF;
+    color: #1C1B1B;
+    font-weight: var(--fontWidthLight);
+}
+.buttonAu{
+    background-color:#FCC3FF;
+    color: #1C1B1B;
+    font-weight: var(--fontWidthLight);
+}
+
+#one {
+    position: relative;
+  }
+  
+  #one:before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 12px;
+    bottom: 0;
+    width: 10px;
+    height: 8px;
+    background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='10px' height='7px' viewBox='0 0 17 9' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 63.1 (92452) - https://sketch.com --%3E%3Ctitle%3EGroup Copy 2%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='anadirRestau-Copy-3' transform='translate(-810.000000, -699.000000)'%3E%3Cg id='Group-Copy-2' transform='translate(805.000000, 691.000000)'%3E%3Cpolygon id='Path' points='0 0 26 0 26 26 0 26'%3E%3C/polygon%3E%3Cpolyline id='Path' stroke='%23D5341F' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round' points='7 10 13.5 17 20 10'%3E%3C/polyline%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+   
+  }
+
+  
+
+
+
+
     /*  div padre 2    */
 
-    & > div:nth-child(2){
+    /* & > div:nth-child(2){
         
             background-color: wheat;
     
@@ -65,9 +206,31 @@
                 background-color: brown;
                 }
     
-            }    
+            }     */
 
     
+}
+
+
+
+.changesButton{
+
+    width: 40px;
+   
+
+    & > button{
+        height: 28px;
+        font-size: 10px;
+        width: 60px;
+    }
+       
+
+
+}
+
+.space{
+    opacity: 0;
+    height: 10px;
 }
 
 

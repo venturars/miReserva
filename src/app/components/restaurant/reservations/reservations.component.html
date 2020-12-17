@@ -1,14 +1,40 @@
+
+<app-navbarUserRestaurant></app-navbarUserRestaurant>
 <!-- <ng-container *ngIf="reservations == []"></ng-container>
     <h3 class="lctl-centerElements">No tienes ninguna reserva activa</h3>    -->
-    
-<div class="conten">    
-    <div class="header">
-        <app-navbarUserRestaurant></app-navbarUserRestaurant>
-    </div>
+    <div class="lctl-br space"></div>
+    <div class="lctl-br space"></div>  
 
-    <h3>CONFIRMADAS</h3>
+    <div class="content">
+   
 <div class="table">
+    
+
     <div>
+        
+        <div class="lctl-leftElements">
+        <button  class="lctl-button-m " >Reserva Manual</button>
+        </div>
+        <div class="lctl-rightElements">
+        <select name="select" class="lctl-cellSelect-extraLarge">
+            <option value="value2" selected>Turnos</option>
+            <option value="value1">Desayuno</option>
+            <option value="value3">Almuerzo</option>
+            <option value="value3">Cena</option>
+          </select>
+          <button  class="" >
+              <p>Calendario</p>
+            <label id="one">
+                <p></p>
+            </label>
+        </button>
+          
+        </div>  
+    </div>
+    <div class="lctl-br space"></div>
+    <div class="lctl-br"></div>
+    <div class="lctl-br space"></div>
+    <div class="title">
     <h3>CONFIRMADAS</h3>
     </div>
 
@@ -20,19 +46,33 @@
         <p class="lctl-font-bold">Observaciones</p>
         <p class="lctl-font-bold">Estado</p>
     </div>
-    <div class="rows" *ngFor="let reservation of reservationsYes; let i = index">
+    <ng-container *ngFor="let reservation of reservationsYes; let i = index">
+    <div class="rows2">
             <p class="lctl-font-paragraph">{{reservationsYes[i].time}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].name}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].table}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].pax}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].obs}}</p>
-            <button (click)="openDialog()" class="lctl-button-m" >{{reservationsYes[i].status}}</button>
+            <ng-container>
+             <p>   
+            <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-warnButton-s buttonLib">Liberada</button>
+            <!-- Hola Juan acá los botones, suerte con push, no trabajes en la MAIN, att. Jesús-->
+            <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonCan">Reservada</button>
+            <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonRes">Reservada</button>
+            <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonSen">Reservada</button>
+            <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonAu">Reservada</button> -->
+            </p>
+            </ng-container>
     </div>
+    <div class="lctl-br"></div>
+    </ng-container>       
 </div>
 
+</div>
 
-<div class="table">
-    <div>
+<div class="content">
+     <div class="table">
+    <div class="title">
     <h3>POR CONFIRMAR</h3>
    </div>
     <div class="rows">
@@ -43,26 +83,25 @@
         <p class="lctl-font-bold">Observaciones</p>
         <p class="lctl-font-bold">Estado</p>
     </div>
-    <div class="rows" *ngFor="let reservation of reservationsNo; let i = index">
+    <ng-container *ngFor="let reservation of reservationsNo; let i = index">
+    <div class="rows2">
             <p class="lctl-font-paragraph">{{reservationsNo[i].time}}</p>
             <p class="lctl-font-paragraph">{{reservationsNo[i].name}}</p>
             <p class="lctl-font-paragraph">{{reservationsNo[i].table}}</p>
             <p class="lctl-font-paragraph">{{reservationsNo[i].pax}}</p>
             <p class="lctl-font-paragraph">{{reservationsNo[i].obs}}</p>
-            <button (click)="confirmReservation(reservationsNo[i].id_reservation)" class="lctl-button-m" >Confirmar</button>
-            <button (click)="rejectReservation(reservationsNo[i].id_reservation)" class="lctl-button-m" >Rechazar</button>
-
+            <p class="changesButton">
+            <button (click)="confirmReservation(reservationsNo[i].id_reservation)" class="lctl-buttonOpposite-s" >Confirmar</button>
+            <button (click)="rejectReservation(reservations[i].id_reservation)" class="lctl-warnButton-s" >Rechazar</button>
+            </p>
     </div>
-</div>
+    <div class="lctl-br"></div>
+
+</ng-container>
+
+</div> 
+
 
 </div>
-<!-- calendario -->
-<!-- <mat-form-field appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myFilter" [min]="minDate" [max]="maxDate" [(ngModel)]="dateOfBirth" >
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-</mat-form-field> -->
 
-<!-- Este seria el boton "siguiente" -->
-<!-- <button (click)="fecha()" class="lctl-button-m" >Fecha</button> -->
+
