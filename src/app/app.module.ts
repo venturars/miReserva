@@ -41,6 +41,7 @@ import { ModalClienteComponent } from './components/modals/modal-cliente/modal-c
 import { ModalRestauranteComponent } from './components/modals/modal-restaurante/modal-restaurante.component';
 import { ModalReservaComponent } from './components/modals/modal-reserva/modal-reserva.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { ModalReservaManualComponent } from './components/modals/modal-reserva-manual/modal-reserva-manual.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     ModalRestauranteComponent,
     ModalReservaComponent,
     CalendarComponent,
+    ModalReservaManualComponent,
     
   ],
   imports: [
