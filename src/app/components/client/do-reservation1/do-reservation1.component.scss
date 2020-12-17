@@ -13,16 +13,17 @@
     width:100%;
 }
 .component {
-    height:400px;
     width: 400px;
     display: flex;
 }
 .component:first-child {
-    background-color: bisque;
+    margin-bottom: 30px;
     max-width: 400px;
     min-width: 300px;
+    border: none;
 }
 .component:nth-child(2) {
+    height:400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,12 +35,13 @@
     margin: 10px 0 10px 0;
 }
 .table{
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:10px;
+    padding-right:10px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    & > .lctl-cellInput-large-center {
+    justify-content: center;
+    & > .lctl-cellButton {
         margin: 10px;
         width: 40px;
     }
@@ -51,6 +53,11 @@
     align-items: center;
     & * {
         padding: 0 5px 0 5px;
+        background-color: red;
+    }
+    & input {
+        outline: none;
+        width: 60px;
     }
 }
 .mid {

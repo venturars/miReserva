@@ -268,7 +268,7 @@ a {
     font-size: var(--fontSizeL);
 }
 //----------//----------//----------//----------//----------
-.lctl-cellButton {
+[class *="lctl-cellButton"] {
     cursor: pointer;
     width: 150px;
     height: 35px;
@@ -804,7 +804,9 @@ a {
     flex-direction: column;
     max-width: 580px;
     min-width: 320px;
+    border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusL);
+    box-shadow: 0 0 5px 1px var(--secundaryColorOpposite);
 }
 //----------
 [class *="lctl-div-s"] {
@@ -831,6 +833,56 @@ a {
     background-color: var(--secundaryColorPush);
 }
 //----------//----------//----------//----------//----------
+//-----Material modify-----
+//----------//----------//----------//----------//----------
+[class *="lctl-ngMatCalendar"] {
+    
+    min-width: 300px;
+    min-height: 460px;
+    max-width: 800px;
+    height: 480px;
+    border: 1px solid var(--secundaryColorPush);
+    border-radius: var(--borderRadiusL);
+    box-shadow: 0 0 5px 1px var(--secundaryColorPush);
+    background-color: var(--secundaryColor);
+    & .mat-calendar-header {
+        position: relative;
+        top: -20px;
+        padding-top: 0;
+        height: 60px;
+        background-color: var(--secundaryColorContrast);
+        & .mat-calendar-controls {
+            position: relative;
+            top: 10px;
+            height: 40px;
+            flex-direction: column;
+            & .mat-button {
+                margin: auto;
+                top: 1px;
+                & .mat-button-wrapper span {
+                    font-weight: var(--fontWidthBolder);
+                    color: var(--secundaryColor);
+                }
+            }
+            & .mat-calendar-spacer {
+                visibility: hidden;
+            }
+            & .mat-icon-button:nth-child(3) {
+                margin-top: -40px;
+            }
+            & .mat-icon-button:nth-child(4) {
+                margin-left: auto;
+                margin-top: -40px;
+    }}}
+    & .mat-calendar-content {
+        top: -20px;
+        position: relative;
+        padding: 10px 6px 0px 6px;
+        & tbody tr:first-child .mat-calendar-body-label {
+            visibility: hidden;
+            padding-top: 10px!important;
+            padding-bottom: 10px!important;
+}}}
 
 // .mat-select-trigger, .mat-select{
 //     width: 300px !important;
