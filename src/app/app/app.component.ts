@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'miReserva';
-}
+  constructor (public router:Router){
+
+  }
+  ngOnInit() { 
+    if (this.router.url == " "){
+      this.router.navigate[('log.in')]
+              }
+        }
+  }
+

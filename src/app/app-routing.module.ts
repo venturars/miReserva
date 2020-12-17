@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:"registration", component: RegistrationComponent},
   {path:"registration-owner", component: OwnerComponent},
   {path:"registration-client", component: ClientComponent},
-  {path:"edit-restaurant", component: EditComponentR},
+  {path:"edit-owner", component: EditComponentR},
   {path:"create-restaurant-1", component: CreateRestaurant1Component},
   {path:"create-restaurant-2", component: CreateRestaurant2Component},
   {path:"create-restaurant-3", component: CreateRestaurant3Component},
