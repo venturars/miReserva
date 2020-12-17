@@ -1,3 +1,4 @@
-<mat-calendar class="lctl-ngMatCalendar">
+<mat-calendar class="lctl-ngMatCalendar" #calendar [(selected)]="selectedDate"
+ (selectedChange)="getChangedValue($event)" [minDate]="minDate" [maxDate]="maxDate" [dateFilter]="myDateFilter">
 </mat-calendar>
 

@@ -1,8 +1,5 @@
 <!-- <ng-container *ngIf="reservations == []"></ng-container>
     <h3 class="lctl-centerElements">No tienes ninguna reserva activa</h3>    -->
-    <div class="header">
-        <app-navbarClient></app-navbarClient>
-    </div>
 <ng-container *ngIf="reservations != null"></ng-container>
 <div class="lctl-br space" >
 </div>
@@ -26,6 +23,7 @@
         <div class="center">
             <button (click)="openDialog()" class="lctl-button-m" >Eliminar</button>
             <!-- (click)="deleteReservation(reservations[i].id_reservation)"  -->
+            <!-- EL ELIMINAR RESERVA SE VA A HACER CON EL SERVICIO DENTRO DEL MODAL -->
         </div>
     </div>        
         <div class="lctl-br modify">

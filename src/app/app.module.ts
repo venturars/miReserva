@@ -74,8 +74,7 @@ import { ModalReservaManualComponent } from './components/modals/modal-reserva-m
     ModalRestauranteComponent,
     ModalReservaComponent,
     CalendarComponent,
-    ModalReservaManualComponent,
-    
+    ModalReservaManualComponent
   ],
   imports: [
     BrowserModule,

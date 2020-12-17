@@ -6,7 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./do-reservation1.component.scss']
 })
 export class DoReservation1Component implements OnInit {
+  public ciudadElegida2: Date
+
   constructor() { }
   ngOnInit() { 
+
  }
+
+ public eleccionCiudad(paramsCiudad:Date){
+  this.ciudadElegida2 = paramsCiudad
+}
 }
