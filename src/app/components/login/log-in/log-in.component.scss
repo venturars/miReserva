@@ -1,89 +1,92 @@
-.colocaritems{
+.putItems {
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: var(--secundaryColor);
+    min-width: 300px;
   }
-  .colocaritems > *{
+  .space {
+    opacity: 0;
+    height: 10px;
+  }
+  .space2 {
+    opacity: 0;
+    height: 20px;
+  }
+  .putItems > * {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      max-width: 100%;
+      min-width: 300px;
+      & img {
+        width: 100%;
+      }
   }
-  .colocaritems > * input{
-      margin-top: 5px;
+  .putItems > * input {
+      margin-top: 6px;
       margin-bottom: 6px;
       padding-left: 38px;
+      max-width: 100%;
   }
-  .colocaritems > * div {
+  .putItems > * div {
       display:flex;
       justify-content: center;    
       width:100%;
   }
-  .colocaritems > * div div {
+  .putItems > * div div {
       display:flex;
       justify-content:left;
   }
-  .colocaritems > * div div p{
+  .putItems > * div div p {
       padding-left: 10px;
   }
-  //ESTO LLEGA HASTA EL FORGOT PASSWORD
-  .colocaritems > * div div a{
+  //FORGOT PASSWORD
+  .putItems > * div div a {
       text-align: right;
       width:100%;
   }
   
-  #labeluno {
+  #labelOne {
       position: relative;
     }
     
-    #labeluno:before {
+    #labelOne:before {
       content: "";
       position: absolute;
       left: 10px;
-      top: 0;
+      top: 7px;
       bottom: 0;
-      width: 20px;
+      height: 45px;
+      width: 22px;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-user' width='33' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Ccircle cx='12' cy='7' r='4' /%3E%3Cpath d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' /%3E%3C/svg%3E");
      
     }
   
-    #labeldos {
+    #labelTwo {
       position: relative;
     }
     
-    #labeldos:before {
+    #labelTwo:before {
       content: "";
       position: absolute;
       left: 10px;
-      top: 0;
+      top: 7px;
+      height: 45px;
+
       bottom: 0;
       width: 20px;
       
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-lock' width='30' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Crect x='5' y='11' width='14' height='10' rx='2' /%3E%3Ccircle cx='12' cy='16' r='1' /%3E%3Cpath d='M8 11v-4a4 4 0 0 1 8 0v4' /%3E%3C/svg%3E");
     }
-  .titulo
+  .title
   {
-      font-size:17px;
+      text-transform: capitalize;
   }
   
-  .letraspeque
-  {
-      font-size:14px;
-  }
-  
-  hr {
-      border: 0;
-      clear:both;
-      display:block;
-      width: 96%;               
-      background-color:grey;
-      height: 1px;
-    }
-  
-
   .caution{
       border:var(--secundaryColorContrast) solid 2px;
   }
@@ -95,4 +98,11 @@
     font-size:12px;
   }
 
- 
+ @media screen and (max-width: 1200px) {
+  .putItems {
+    flex-direction: column;
+  }
+  .putItems div:nth-child(1) {
+    display: none;
+  }
+ }

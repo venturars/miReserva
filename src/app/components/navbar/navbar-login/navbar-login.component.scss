@@ -16,12 +16,11 @@
         justify-content: space-around;
     }
     .right {
-        visibility: hidden;
-        width: 0;
+        display: none;
     }
 }
 @media screen and (max-width: 603px) {
     .left {
-        
+        flex-direction: column;
     }
 }

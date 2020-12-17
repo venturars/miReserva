@@ -3,7 +3,7 @@
 
         <!-- -----Navbar----- -->
         <app-navbarLogin *ngIf="router.url == '/registration-owner' || router.url == '/registration' ||
-        router.url == '/log-in' || router.url == '/registration-client' || router.url == '**' "></app-navbarLogin>
+        router.url == '/log-in' || router.url == '/registration-client' || router.url == '/' || router.url == '/**' "></app-navbarLogin>
         
         <app-navbarClient *ngIf="router.url == '/reservations-list-client' || router.url == '/reservation1' ||
         router.url == '/reservation2' || router.url == '/edit-client' || router.url == '/search'"></app-navbarClient>
@@ -25,6 +25,6 @@
         <app-footer *ngIf="router.url == '/log-in' || router.url == '/registration' ||
          router.url == '/registration-owner' || router.url == '/registration-client' ||
           router.url == '/reservation1' || router.url == '/reservation2' || router.url == '/edit-client' ||
-           router.url == '/reservations-list-client' || router.url == '/search'"></app-footer>
+           router.url == '/reservations-list-client' || router.url == '/search' || router.url == '/'"></app-footer>
     </div>
 </div>
