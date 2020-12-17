@@ -98,6 +98,7 @@ a {
     font-weight: var(--fontWidthMedium);
     font-size: inherit;
     color: var(--primaryColorLink);
+    text-decoration: none;
 }
 //----------
 [class *= "lctl-font-accent"] {
@@ -403,7 +404,7 @@ a {
     width: 300px;
     height: 50px;
     border-radius: var(--borderRadiusL);
-    font-size: var(--fontSizeL);
+    font-size: var(--fontSizeM);
 }
 [class *="lctl-input-l-large"] {
     width: 600px;
@@ -883,10 +884,3 @@ a {
             padding-top: 10px!important;
             padding-bottom: 10px!important;
 }}}
-
-// .mat-select-trigger, .mat-select{
-//     width: 300px !important;
-// }
-// .mat-select-panel {
-//     min-width: 100% !important;
-// }

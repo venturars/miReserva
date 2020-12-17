@@ -1,46 +1,49 @@
-<div class="header">
   <app-navbarLogin></app-navbarLogin>
-</div>
 
-<div class="colocaritems">
+<div class="putItems">
+  <div>
+    <img src="assets/Mesa.svg">
+  </div>
+  <form #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? 'mal' : onSubmit(userForm)">
+    <p class="lctl-font-title title">acceder</p>
+    <div class="lctl-br space"></div>
+    <label id="labelOne">
+      <input class="lctl-input-l-large" name="email" placeholder="Email" 
+        placeholder="{{userForm.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
+        [(ngModel)]="user.email" #email="ngModel"
+        [ngClass]="{'caution':userForm.submitted && email.invalid }" email required></label>
+    <label id="labelTwo">
+        <input class="lctl-input-l-large" name="password" 
+          placeholder="{{userForm.submitted && password.invalid ?  'Contraseña obligatoria 6 caracteres' : 'Contraseña'}}"
+          [(ngModel)]="user.password" #password="ngModel"
+          [ngClass]="{'caution':userForm.submitted && password.invalid }" minlength="6" required>
+    </label>
+    
+    <div class="lctl-br space2"></div>
     <div>
-  <img src="assets/Mesa.svg">
-    </div>
-    
-    
-    <form #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? 'mal' : onSubmit(userForm)">
-      <!-- Cambiar submenu con formato de la pagina no es un H3 normal -->
-    <b><p class="lctl-font-title text-center">ACCEDER</p></b>
-<label id="labeluno"><input class="lctl-input-m-extraLarge" name="email" placeholder="Email" 
-  placeholder="{{userForm.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
-  [(ngModel)]="user.email" #email="ngModel"
-  [ngClass]="{'caution':userForm.submitted && email.invalid }" email required></label>
-  
-<label id="labeldos"><input class="lctl-input-m-extraLarge" name="password" 
-  placeholder="{{userForm.submitted && password.invalid ?  'Contraseña obligatoria 6 caracteres' : 'Contraseña'}}"
-  [(ngModel)]="user.password" #password="ngModel"
-  [ngClass]="{'caution':userForm.submitted && password.invalid }" minlength="6" required></label>
-  <div class="invalid-feedback" *ngIf="userForm.submitted && password.invalid">
-    <p *ngIf="password.errors.required">Password obligatoria</p>
-    <p *ngIf="password.errors.minlength">Tu password debe tener al menos 6 caracteres</p>
-</div>
-<div> 
-    <div [ngClass]="{'caution':userForm.submitted && check.invalid }">
+      <div [ngClass]="{'caution':userForm.submitted && check.invalid }">
         <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel">
-        
-        <p  class="letraspeque">Recuerdame</p>
-    
+        <p class="lctl-font-underline">Recuerdame</p>
+      </div>
+      <div>
+        <a class="lctl-font-link lctl-font-underline">¿Olvidaste Contraseña?</a>
+      </div>
     </div>
     <div>
-        <a class="letraspeque">¿Olvidaste Contraseña?</a>
+      <button class="lctl-button-m">Iniciar sesión</button>
     </div>
-</div>
+    <div class="lctl-br space2"></div>
+    <div class="lctl-br">
+    </div>
+    <div class="lctl-br space2"></div>
 
-<div>
-  <button class="lctl-button-m">Iniciar sesión</button>
-</div>
-<hr>
-<div class="letraspeque">¿Aún no has creado tu cuenta?&nbsp;&nbsp;<span><a class="letraspeque" routerLink="/registration">Registrate</a></span></div>  
+    <div>
+      <p>
+        ¿Aún no has creado tu cuenta?
+        <a class="lctl-font-underline" routerLink="/registration">
+          Registrate
+        </a>
+      </p>
+    </div>  
   </form>
-  
 </div>
