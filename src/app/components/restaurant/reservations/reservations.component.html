@@ -1,8 +1,11 @@
 <!-- <ng-container *ngIf="reservations == []"></ng-container>
     <h3 class="lctl-centerElements">No tienes ninguna reserva activa</h3>    -->
-    
-    <h3>CONFIRMADAS</h3>
+<div class="content">    
 <div class="table">
+    <div>
+    <h3>CONFIRMADAS</h3>
+    </div>
+
     <div class="rows">
         <p class="lctl-font-bold">Hora</p>
         <p class="lctl-font-bold">Nombre</p>
@@ -23,7 +26,9 @@
 
 
 <div class="table">
+    <div>
     <h3>POR CONFIRMAR</h3>
+   </div>
     <div class="rows">
         <p class="lctl-font-bold">Hora</p>
         <p class="lctl-font-bold">Nombre</p>
@@ -43,13 +48,15 @@
 
     </div>
 </div>
+
+</div>
 <!-- calendario -->
-<mat-form-field appearance="fill">
+<!-- <mat-form-field appearance="fill">
     <mat-label>Choose a date</mat-label>
     <input matInput [matDatepicker]="picker" [matDatepickerFilter]="myFilter" [min]="minDate" [max]="maxDate" [(ngModel)]="dateOfBirth" >
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+</mat-form-field> -->
 
 <!-- Este seria el boton "siguiente" -->
-<button (click)="fecha()" class="lctl-button-m" >Fecha</button>
+<!-- <button (click)="fecha()" class="lctl-button-m" >Fecha</button> -->

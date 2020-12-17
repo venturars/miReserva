@@ -44,6 +44,7 @@ import { ModalTurnosComponent } from './components/modals/modal-turnos/modal-tur
 import { ModalClienteComponent } from './components/modals/modal-cliente/modal-cliente.component';
 import { ModalRestauranteComponent } from './components/modals/modal-restaurante/modal-restaurante.component';
 import { ModalReservaComponent } from './components/modals/modal-reserva/modal-reserva.component';
+import { ModalReservaManualComponent } from './components/modals/modal-reserva-manual/modal-reserva-manual.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { ModalReservaComponent } from './components/modals/modal-reserva/modal-r
     ModalClienteComponent,
     ModalRestauranteComponent,
     ModalReservaComponent,
+    ModalReservaManualComponent,
     
   ],
   imports: [
