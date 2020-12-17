@@ -1,5 +1,5 @@
 
- <div class="target">
+ <div class="target" *ngIf="showHide2">
    <div class="elements">
     <div class="image">
       <div class="Messaje">
@@ -17,13 +17,13 @@
     <div>
      
         <button  mat-dialog-close class="lctl-warnButton-s">No</button>
-        <button [mat-dialog-close]="true" cdkFocusInitial class="lctl-warnButton-s">Sí</button>
+        <button cdkFocusInitial class="lctl-warnButton-s" (click)="confirmar()">Sí</button>
       
     </div>
 
  </div>
 
- <div class="target">
+ <div class="target" *ngIf="showHide">
   <div class="elements">
    <div class="image">
      <div class="Messaje">
@@ -39,9 +39,7 @@
        
  </div>
    <div>
-    
-       <button  mat-dialog-close class="lctl-warnButton-s">No</button>
-       <button [mat-dialog-close]="true" cdkFocusInitial class="lctl-warnButton-s">Sí</button>
+           <button [mat-dialog-close]="true" cdkFocusInitial class="lctl-warnButton-s">Aceptar</button>
      
    </div>
 

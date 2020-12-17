@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalTurnosComponent } from 'src/app/components/modals/modal-turnos/modal-turnos.component';
 import { Turnos } from 'src/app/models/turnos';
 
 @Component({
@@ -12,7 +14,7 @@ export class CreateRestaurant3Component implements OnInit {
   public cenas:Turnos[]
   public CheckboxVar:boolean
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.desayunos = [
       {horario:"7:00"},
       {horario:"7:30"},
@@ -58,6 +60,12 @@ export class CreateRestaurant3Component implements OnInit {
 
   ngOnInit(): void {
   }
+  openDialog() {
+    const dialogRef = this.dialog.open(ModalTurnosComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   
 }

@@ -1,8 +1,12 @@
+<div class="header">
+    <app-navbarOwner></app-navbarOwner>
+  </div>
+
 <div class="lctl-navbar">
     <ul class="breadcrumb">
-        <li ><a id="info" routerLink="/create-restaurant-1" >Información del Local</a></li>
-        <li ><a id="dist" routerLink="/create-restaurant-2">Distribución de las Mesas</a></li>
-        <li ><a id="horarios" routerLink="/create-restaurant-3">Horarios</a></li>
+        <li ><a id="info" >Información del Local</a></li>
+        <li ><a id="dist">Distribución de las Mesas</a></li>
+        <li ><a id="horarios">Horarios</a></li>
       </ul>
 </div>
 <div class="containerr">
@@ -33,7 +37,7 @@
                         <select class="lctl-input-m" name="">
                             <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                         </select>
-                       <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                       <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                     </div>
                 </div>
 
@@ -51,7 +55,7 @@
                         <select class="lctl-input-m" name="">
                             <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                         </select>
-                       <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                       <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                     </div>
                     </div>
 
@@ -72,7 +76,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
                         </div>
 
@@ -109,7 +113,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
     
     
@@ -132,7 +136,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
                         </div>
     
@@ -153,7 +157,7 @@
                                 <select class="lctl-input-m" name="">
                                     <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                                 </select>
-                               <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                               <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                             </div>
                             </div>
     
@@ -190,7 +194,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
     
     
@@ -213,7 +217,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
                         </div>
     
@@ -234,7 +238,7 @@
                                 <select class="lctl-input-m" name="">
                                     <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                                 </select>
-                               <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                               <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                             </div>
                             </div>
     
@@ -270,7 +274,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
     
     
@@ -293,7 +297,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
                         </div>
     
@@ -314,7 +318,7 @@
                                 <select class="lctl-input-m" name="">
                                     <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                                 </select>
-                               <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                               <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                             </div>
                             </div>
     
@@ -348,7 +352,7 @@
                         <select class="lctl-input-m" name="">
                             <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                         </select>
-                       <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                       <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                     </div>
 
                 </div>
@@ -370,7 +374,7 @@
                         <select class="lctl-input-m" name="">
                             <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                         </select>
-                       <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                       <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                     </div>
                     </div>
 
@@ -391,7 +395,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
                         </div>
 
@@ -424,7 +428,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
     
                     </div>
@@ -446,7 +450,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
                         </div>
     
@@ -467,7 +471,7 @@
                                 <select class="lctl-input-m" name="">
                                     <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                                 </select>
-                               <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                               <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                             </div>
                             </div>
     
@@ -502,7 +506,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
     
                     </div>
@@ -524,7 +528,7 @@
                             <select class="lctl-input-m" name="">
                                 <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                             </select>
-                           <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                           <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                         </div>
                         </div>
     
@@ -545,7 +549,7 @@
                                 <select class="lctl-input-m" name="">
                                     <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                                 </select>
-                               <button class="buttonadd lctl-button-m buttonModify">Guardar y editar turnos</button>
+                               <button class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
                             </div>
                             </div>
     
