@@ -11,7 +11,8 @@
     /*  div padre 1    */
 
     & > div:nth-child(1){
-        
+
+        display: flex;
         background-color: wheat;
         
 
@@ -67,3 +68,13 @@
 
     
 }
+
+
+
+
+
+
+
+
+
+
