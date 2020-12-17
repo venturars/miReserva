@@ -6,6 +6,21 @@
     padding-bottom: 20px;
     background-color: var(--secundaryColor);
     min-width: 300px;
+    background-color: aqua;
+    & > .img {
+      background-color: yellow;
+      margin-right: auto;
+    }
+    & > form {
+      margin-left: auto;
+      background-color: yellowgreen;
+      width: 100%;
+      input {
+        margin-top: 6px;
+        margin-bottom: 6px;
+        padding-left: 38px;
+        width: 400px;
+    }}
   }
   .space {
     opacity: 0;
@@ -20,22 +35,18 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      max-width: 100%;
+      max-width: 400px;
       min-width: 300px;
       & img {
         width: 100%;
       }
   }
-  .putItems > * input {
-      margin-top: 6px;
-      margin-bottom: 6px;
-      padding-left: 38px;
-      max-width: 100%;
-  }
+
   .putItems > * div {
       display:flex;
       justify-content: center;    
       width:100%;
+      background-color: aquamarine;
   }
   .putItems > * div div {
       display:flex;
@@ -104,5 +115,15 @@
   }
   .putItems div:nth-child(1) {
     display: none;
+  }
+ }
+ @media screen and (max-width: 500px) {
+  .putItems {
+    & > .img {
+    }
+    & > form {
+      input {
+        width: max-content;
+    }}
   }
  }
