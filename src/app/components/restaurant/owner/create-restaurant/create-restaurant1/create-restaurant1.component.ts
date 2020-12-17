@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Restaurant } from 'src/app/models/restaurant';
 
 @Component({
@@ -10,12 +11,13 @@ export class CreateRestaurant1Component implements OnInit {
   
   public restaurant:Restaurant;
 
-  constructor() {
+  constructor(public router:Router) {
     this.restaurant= new Restaurant (null,null,null,null,null,null,null,null);
    }
   
    onSubmit(restForm){
-     console.log(restForm.value)
+     console.log(restForm.value);
+     this.router.navigate(["/create-restaurant-2"]);
    }
 
   ngOnInit(): void {

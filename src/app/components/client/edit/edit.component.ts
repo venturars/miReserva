@@ -18,8 +18,8 @@ export class EditClientComponent implements OnInit {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
-    const imagen=document.getElementById("prueba").setAttribute("src", event.target.result);
-    
+    this.user.image="assets/photos/" +file.name;
+    const imagen=document.getElementById("prueba").setAttribute("src", this.user.image);
   })
   reader.readAsDataURL(file);
 }
