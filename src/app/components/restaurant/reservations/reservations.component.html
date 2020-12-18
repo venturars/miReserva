@@ -11,7 +11,7 @@
     <div>
         
         <div class="lctl-leftElements">
-        <button  class="lctl-button-m " >Reserva Manual</button>
+        <button  class="lctl-button-m " (click)="modalNew()" >Reserva Manual</button>
         </div>
         <div class="lctl-rightElements">
         <select name="select" class="lctl-cellSelect-extraLarge">
@@ -20,7 +20,7 @@
             <option value="value3">Almuerzo</option>
             <option value="value3">Cena</option>
           </select>
-          <button  class="" >
+          <button  class="" (click)="calendar()">
               <p>Calendario</p>
             <label id="one">
                 <p></p>
@@ -51,9 +51,10 @@
             <p class="lctl-font-paragraph">{{reservationsYes[i].table}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].pax}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].obs}}</p>
-            <ng-container>
-             <p>   
-            <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-warnButton-s buttonLib">Liberada</button>
+            <ng-container> 
+             <p> 
+            <button (click)="modalStatus()" class="lctl-warnButton-s buttonLib">Liberada</button>
+            <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-warnButton-s buttonLib">Liberada</button> -->
             <!-- Hola Juan acá los botones, suerte con push, no trabajes en la MAIN, att. Jesús-->
             <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonCan">Reservada</button>
             <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonRes">Reservada</button>

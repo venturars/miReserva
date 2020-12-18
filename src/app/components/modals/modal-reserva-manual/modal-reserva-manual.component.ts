@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-reserva-manual.component.scss']
 })
 export class ModalReservaManualComponent implements OnInit {
+  public showHide= false;
+  public showHide2= true;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public confirmar(){
+    this.showHide = true
+    this.showHide2 = false
   }
 
 }

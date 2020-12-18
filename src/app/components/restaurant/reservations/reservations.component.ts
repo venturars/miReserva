@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ReservationsRestaurants } from 'src/app/models/reservations-restaurants';
+import { CalendarComponent } from '../../calendar/calendar.component';
+import { ModalReservaManualComponent } from '../../modals/modal-reserva-manual/modal-reserva-manual.component';
+import { ModalRestauranteComponent } from '../../modals/modal-restaurante/modal-restaurante.component';
 
 @Component({
   selector: 'app-restaurant-reservations',
@@ -21,7 +25,7 @@ export class ReservationsRestaurantComponent implements OnInit {
     return day !== 1
   }
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.reservationsYes = []
     this.reservationsNo = []
     this.reservations = [
@@ -96,5 +100,31 @@ export class ReservationsRestaurantComponent implements OnInit {
 
   }
   
+  public modalStatus() {
+    const dialogRef = this.dialog.open(ModalRestauranteComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  
+  public modalNew() {
+  const dialogRef = this.dialog.open(ModalReservaManualComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
+
+public calendar(){
+  const dialogRef = this.dialog.open(CalendarComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+
+}
+
 }
 

@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" *ngIf="showHide2">
     <div>
         <p>Reserva Manual</p>
     </div>
@@ -42,12 +42,13 @@
     </div>
 
      <div>
-        <button   class="lctl-warnButton-s buttonLib">Aceptar</button>
+        <button [mat-dialog-close]="true" cdkFocusInitial  class="lctl-warnButton-s buttonLib">Cancelar</button>
+        <button   class="lctl-warnButton-s buttonLib" (click)="confirmar()">Aceptar</button>
      </div>
   
   </div>
 
-  <div class="target">
+  <div class="target" *ngIf="showHide">
     <div class="elements">
      <div class="image">
        <div class="Messaje">
@@ -64,7 +65,7 @@
    </div>
      <div>
       
-         <button class="lctl-warnButton-s">Aceptar</button>
+         <button [mat-dialog-close]="true" cdkFocusInitial class="lctl-warnButton-s">Aceptar</button>
          
        
      </div>
