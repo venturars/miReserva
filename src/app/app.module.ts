@@ -43,6 +43,7 @@ import { ModalReservaComponent } from './components/modals/modal-reserva/modal-r
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ModalReservaManualComponent } from './components/modals/modal-reserva-manual/modal-reserva-manual.component';
 import { MapComponent } from './components/map/map.component';
+import { DesignComponent } from './components/login/design/design.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { MapComponent } from './components/map/map.component';
     ModalReservaComponent,
     CalendarComponent,
     ModalReservaManualComponent,
-    MapComponent
+    MapComponent,
+    DesignComponent
   ],
   imports: [
     BrowserModule,

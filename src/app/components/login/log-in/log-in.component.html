@@ -1,11 +1,6 @@
 
-<div class="putItems">
-  <div class="img">
-    <img src="assets/Mesa.svg">
-  </div>
   <form #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? 'mal' : onSubmit(userForm)">
     <p class="lctl-font-title title">acceder</p>
-    <div class="lctl-br space"></div>
     <label id="labelOne">
       <input class="lctl-input-l-large inputForm" name="email" placeholder="Email" 
         placeholder="{{userForm.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
@@ -17,32 +12,26 @@
           [(ngModel)]="user.password" #password="ngModel"
           [ngClass]="{'caution':userForm.submitted && password.invalid }" minlength="6" required>
     </label>
-    
-    <div class="lctl-br space2"></div>
     <div class="overLogIn">
       <div [ngClass]="{'caution':userForm.submitted && check.invalid }">
         <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel">
         <p class="lctl-font-underline" class="textCheck">Recuerdame</p>
       </div>
       <div>
-          <a class="lctl-font-link lctl-font-underline">¿Olvidaste Contraseña?</a>
+          <a class="lctl-font-link lctl-font-underline">¿Olvidaste la Contraseña?</a>
       </div>
     </div>
-    <div>
+    <div class="logIn">
       <button class="lctl-button-m">Iniciar sesión</button>
     </div>
-    <div class="lctl-br space2"></div>
-    <div class="lctl-br">
+    <div class="lctl-br separate">
     </div>
-    <div class="lctl-br space2"></div>
-
-    <div>
-      <p>
+    <div class="register">
+      <div>
         ¿Aún no has creado tu cuenta?
-        <a class="lctl-font-underline" routerLink="/registration">
-          Registrate
-        </a>
-      </p>
+          <a class="lctl-font-link registerBlue" routerLink="/registration">
+            Registrate
+          </a>
+      </div>
     </div>  
   </form>
-</div>
