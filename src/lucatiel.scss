@@ -57,7 +57,8 @@ a {
 //----------//----------//----------//----------//----------
 //-----Scroll-bar-----
 *::-webkit-scrollbar {
-    width: 0px;
+    width: 7px;
+    display: none;
 }
 *::-webkit-scrollbar-thumb {
   background: var(--secundaryColorPush);
