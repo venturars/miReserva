@@ -19,7 +19,7 @@ export class ModalClienteComponent implements OnInit {
     this.showHide2 = false
   }
 
-  public asd(){
+  public accept(){
     this.showHide = false
     this.showHide2 = true
   }
