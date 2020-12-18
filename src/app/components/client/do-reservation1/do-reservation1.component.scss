@@ -16,6 +16,21 @@
     justify-content: center;
     width:100%;
 }
+
+.separator{
+
+   height: 10px;
+   opacity: 0;
+}
+.title2{
+    display: flex;
+    margin: auto;
+    width: 350px;
+
+    & > p{
+        margin-top: 20px;
+    }
+}
 .component {
     width: 400px;
     display: flex;
@@ -27,7 +42,7 @@
     border: none;
 }
 .component:nth-child(2) {
-    height:400px;
+    height: min-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,11 +72,14 @@
     align-items: center;
     & * {
         padding: 0 5px 0 5px;
-        background-color: red;
     }
-    & input {
+    & input, input:hover, input:active {
         outline: none;
         width: 60px;
+        background-color: inherit;
+        cursor: text;
+        text-align: center;
+        color: inherit;
     }
 }
 .mid {
