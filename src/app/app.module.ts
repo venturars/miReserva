@@ -42,6 +42,7 @@ import { ModalRestauranteComponent } from './components/modals/modal-restaurante
 import { ModalReservaComponent } from './components/modals/modal-reserva/modal-reserva.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ModalReservaManualComponent } from './components/modals/modal-reserva-manual/modal-reserva-manual.component';
+import { MapComponent } from './components/map/map.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { ModalReservaManualComponent } from './components/modals/modal-reserva-m
     ModalRestauranteComponent,
     ModalReservaComponent,
     CalendarComponent,
-    ModalReservaManualComponent
+    ModalReservaManualComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
