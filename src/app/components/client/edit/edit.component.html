@@ -16,6 +16,12 @@
   <div class="invalid-feedback" *ngIf="userForm1.submitted && surname.invalid">
     <p *ngIf="surname.errors.required">Apellidos obligatorio</p>
 </div>
+<input class="lctl-input-m-extraLarge" name="mobile" autocomplete="off" placeholder="Telefono" 
+  [(ngModel)]="user.mobile" #mobile="ngModel"
+  [ngClass]="{'caution':userForm1.submitted && mobile.invalid }" minlength="9" maxlength="9" required>
+  <div class="invalid-feedback" *ngIf="userForm1.submitted && mobile.invalid">
+    <p *ngIf="mobile.errors.required">Telefono obligatorio</p>
+</div>
 <input class="lctl-input-m-extraLarge" name="email" autocomplete="off" placeholder="Email" 
     [(ngModel)]="user.email" #email="ngModel"
     [ngClass]="{'caution':userForm1.submitted && email.invalid }" email required>
@@ -23,7 +29,19 @@
       <p *ngIf="email.errors.required">Email obligatorio</p>
       <p *ngIf="email.errors.email">Formato incorrecto de email</p>
   </div>
-  
+  <input class="lctl-input-m-extraLarge" name="password"  type="password" autocomplete="off" placeholder="Contraseña" 
+  [(ngModel)]="user.password" #password="ngModel"
+  [ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required>
+  <div class="invalid-feedback" *ngIf="userForm1.submitted && password.invalid">
+    <p *ngIf="password.errors.required">Contraseña obligatoria</p>
+</div>
+  <!-- <input class="lctl-input-m-extraLarge" name="password2"  type="password2" autocomplete="off" placeholder="Confirmar contraseña" 
+  [(ngModel)]="user.password2" #password2="ngModel"
+  [ngClass]="{'caution':userForm1.submitted && password2.invalid }" minlength="6" required>
+  <div class="invalid-feedback" *ngIf="userForm1.submitted && password2.invalid">
+    <p *ngIf="password2.errors.required">Contraseña obligatoria</p>
+    <p *ngIf="password2.errors.required.confirmedValidator">Contraseña obligatoria</p>
+</div> -->
 <div>
   <button type="submit" class="lctl-button-m w-100">Guardar</button>
 </div>

@@ -30,6 +30,12 @@
   <div class="invalid-feedback" *ngIf="userForm1.submitted && cif.invalid">
     <p *ngIf="cif.errors.required">CIF obligatorio</p>  
 </div>
+<input class="lctl-input-m-extraLarge" name="password" type="password" autocomplete="off" placeholder="Contraseña" 
+[(ngModel)]="user.password" #password="ngModel"
+[ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required>
+<div class="invalid-feedback" *ngIf="userForm1.submitted && password.invalid">
+  <p *ngIf="password.errors.required">Contraseña obligatoria</p>
+</div>
 
 <div>
   <button type="submit" class="lctl-button-m w-100">Guardar</button>
