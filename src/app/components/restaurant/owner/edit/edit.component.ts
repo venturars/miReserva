@@ -17,7 +17,7 @@ export class EditComponentR implements OnInit {
 
 
   constructor( ) {
-    this.user= new User("prueba@correo.com","ajakdsfjkaf",true,"Pedro","López","B829475824");
+    this.user= new User("prueba@correo.com","asdasdasd",true,"Pedro","López","B829475824");
    }
   
 
