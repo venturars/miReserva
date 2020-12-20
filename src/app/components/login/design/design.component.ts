@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-design',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./design.component.scss']
 })
 export class DesignComponent implements OnInit {
-
-  constructor() { }
+asd= "a"
+  constructor(public router: Router) {
+   }
 
   ngOnInit(): void {
   }
-
+  eventoPadre(asd1:string){
+    this.asd = asd1
+    
+    
+  }
 }

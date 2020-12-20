@@ -77,9 +77,9 @@ export class ReservationsRestaurantComponent implements OnInit {
 
   public rejectReservation(id_reservation:number){
     let resultado =""
-    for(let i = 0; i < this.reservations.length; i++){
-      if(this.reservations[i].id_reservation == id_reservation){
-        this.reservations.splice(i,1)
+    for(let i = 0; i < this.reservationsNo.length; i++){
+      if(this.reservationsNo[i].id_reservation == id_reservation){
+        this.reservationsNo.splice(i,1)
         resultado = "si"
       }else{
         resultado = "no"

@@ -5,6 +5,7 @@ import { DoReservation2Component } from './components/client/do-reservation2/do-
 import { EditClientComponent } from './components/client/edit/edit.component';
 import { ReservationsClientComponent } from './components/client/reservations/reservations.component';
 import { SearchComponent } from './components/client/search/search.component';
+import { DesignComponent } from './components/login/design/design.component';
 import { LogInComponent } from './components/login/log-in/log-in.component';
 import { ClientComponent } from './components/login/registration/client/client.component';
 import { OwnerComponent } from './components/login/registration/owner/owner.component';
@@ -24,18 +25,18 @@ const routes: Routes = [
   {path:"edit-client", component:EditClientComponent},
   {path:"reservations-list-restaurant", component:ReservationsRestaurantComponent},
   {path:"search", component: SearchComponent},
-  {path:"log-in", component: LogInComponent},
-  {path:"registration", component: RegistrationComponent},
-  {path:"registration-owner", component: OwnerComponent},
-  {path:"registration-client", component: ClientComponent},
+  {path:"log-in", component: DesignComponent},
+  {path:"registration", component: DesignComponent},
+  {path:"registration-owner", component: DesignComponent},
+  {path:"registration-client", component: DesignComponent},
   {path:"edit-owner", component: EditComponentR},
   {path:"create-restaurant-1", component: CreateRestaurant1Component},
   {path:"create-restaurant-2", component: CreateRestaurant2Component},
   {path:"create-restaurant-3", component: CreateRestaurant3Component},
   {path:"create-restaurant-header", component: CreateRestaurantHeaderComponent},
   {path:"restaurants-list", component: RestaurantsComponent},
-  {path:"**", component:LogInComponent},
-  {path:" ", component:LogInComponent}
+  {path:"**", component:DesignComponent},
+  {path:" ", component:DesignComponent}
 ];
 
 @NgModule({

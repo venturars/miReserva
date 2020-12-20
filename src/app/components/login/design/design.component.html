@@ -4,10 +4,19 @@
     </div>
     <div class="content">
         <div class="form">
-            <!-- <app-registration></app-registration> -->
-            <app-login></app-login>
-            <!-- <app-registration-client></app-registration-client> -->
-            <!-- <app-registration-owner></app-registration-owner> -->
+            <ng-container *ngIf="router.url == '/log-in' || router.url == '/' ||
+            router.url == '**'">
+                <app-login></app-login>
+            </ng-container>
+            <ng-container *ngIf="router.url == '/registration'">
+                <app-registration></app-registration>
+            </ng-container>
+            <ng-container *ngIf="router.url == '/registration-client'">
+                <app-registration-client></app-registration-client>
+            </ng-container>
+            <ng-container *ngIf="router.url == '/registration-owner'">
+                <app-registration-owner></app-registration-owner>
+            </ng-container>
         </div>
     </div>
 </div>

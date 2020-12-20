@@ -9,7 +9,6 @@ import { User } from 'src/app/models/user';
 })
 export class ClientComponent implements OnInit {
   public user:User;
-
   constructor(public router:Router ) {
     this.user= new User(null,null,null,null,null,null);
    }

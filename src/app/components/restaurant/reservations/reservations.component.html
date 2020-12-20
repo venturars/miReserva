@@ -15,6 +15,12 @@
         </div>
         <div class="lctl-rightElements">
         <select name="select" class="lctl-cellSelect-extraLarge">
+            <option value="value2" selected>Estado</option>
+            <option value="value1">Confirmada</option>
+            <option value="value3">Rechazada</option>
+            <option value="value3">Cancelada por cliente</option>
+        </select>
+        <select name="select" class="lctl-cellSelect-extraLarge">
             <option value="value2" selected>Turnos</option>
             <option value="value1">Desayuno</option>
             <option value="value3">Almuerzo</option>
@@ -45,7 +51,7 @@
         <p class="lctl-font-bold">Estado</p>
     </div>
     <ng-container *ngFor="let reservation of reservationsYes; let i = index">
-    <div class="rows2">
+    <div class="rows2" (click)="modalStatus()">
             <p class="lctl-font-paragraph">{{reservationsYes[i].time}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].name}}</p>
             <p class="lctl-font-paragraph">{{reservationsYes[i].table}}</p>
@@ -91,7 +97,7 @@
             <p class="lctl-font-paragraph">{{reservationsNo[i].obs}}</p>
             <p class="changesButton">
             <button (click)="confirmReservation(reservationsNo[i].id_reservation)" class="lctl-buttonOpposite-s" >Confirmar</button>
-            <button (click)="rejectReservation(reservations[i].id_reservation)" class="lctl-warnButton-s" >Rechazar</button>
+            <button (click)="rejectReservation(reservationsNo[i].id_reservation)" class="lctl-warnButton-s" >Rechazar</button>
             </p>
     </div>
     <div class="lctl-br"></div>

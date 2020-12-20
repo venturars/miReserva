@@ -14,7 +14,7 @@ export class AppComponent {
   }
   ngOnInit() { 
     if (this.router.url == " "){
-      this.router.navigate[('log.in')]
+      this.router.navigate[('log-in')]
               }
         }
   }
