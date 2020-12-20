@@ -13,28 +13,32 @@
            
             <div class="lctl-leftElements open">
             <label id="labell">Abierto</label> 
-            <mat-slide-toggle  (change)="abiertoCerradoDiaLunes($event)"></mat-slide-toggle> 
+            <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaLunes($event)"></mat-slide-toggle> 
             </div>
-
             <div class="lctl-br separador"></div>
             <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/photos/close.svg"></div></div>
-            <div id="ellunes" class="turns">
+            <div id="ellunes" class="turns" data-value="Lunes">
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Desayunos</label>
+                    
                     <mat-slide-toggle (change)="desayunoLunes($event)"></mat-slide-toggle> 
                     </div>
 
                     <div class="lctl-rightElements">
+                        
                         <label id="labeldl" style="opacity:0.5">Horario de desayuno</label>
-                        <select disabled id="input1dl" class="lctl-input-m" name="" >
+                        <select disabled id="input1dl" class="lctl-input-m" name="" #horainiciold>
+                            <option selected="true" disabled="disabled">Elige hora</option>
                             <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                         </select>
                         <p id="adl" style="opacity:0.5">a</p>
-                        <select disabled id="input2dl" class="lctl-input-m" name="">
+                        <select disabled id="input2dl" class="lctl-input-m" name="" #horafinalld>
+                            <option selected="true" disabled="disabled">Elige hora</option>
                             <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                         </select>
-                       <button disabled style="opacity:0.5" id="butondl" class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
+                       <button disabled style="opacity:0.5" id="butondl" class="buttonadd lctl-button-m buttonModify" 
+                        (click)="prueba(horainiciold,horafinalld)" >Guardar y editar turnos</button>
                     </div>
                 </div>
 
@@ -46,10 +50,12 @@
                     <div class="lctl-rightElements">
                         <label id="labelal" style="opacity:0.5">Horario de Almuerzo</label>
                         <select disabled id="input1al" class="lctl-input-m" name="">
+                            <option selected="true" disabled="disabled">Elige hora</option>
                             <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                             </select>
                         <p id="aal" style="opacity:0.5">a</p>
                         <select disabled id="input2al" class="lctl-input-m" name="">
+                            <option selected="true" disabled="disabled">Elige hora</option>
                             <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butonal" class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
@@ -67,10 +73,12 @@
                             
                             <label id="labelcl" style="opacity:0.5">Horario de Cena</label>
                             <select disabled id="input1cl" class="lctl-input-m" name="">
+                                <option selected="true" disabled="disabled">Elige hora</option>
                                     <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                                 </select>
                             <p id="acl" style="opacity:0.5">a</p>
                             <select disabled id="input2cl" class="lctl-input-m" name="">
+                                <option selected="true" disabled="disabled">Elige hora</option>
                                 <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                             </select>
                            <button disabled style="opacity:0.5" id="butoncl" class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
@@ -87,7 +95,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labelm">Abierto</label> 
-            <mat-slide-toggle  (change)="abiertoCerradoDiaMartes($event)"></mat-slide-toggle> 
+            <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaMartes($event)"></mat-slide-toggle> 
             </div>
 
             <div class="lctl-br separador"></div>
@@ -161,7 +169,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labelx">Abierto</label> 
-            <mat-slide-toggle  (change)="abiertoCerradoDiaMiercoles($event)"></mat-slide-toggle> 
+            <mat-slide-toggle  checked="true" (change)="abiertoCerradoDiaMiercoles($event)"></mat-slide-toggle> 
             </div>
 
             <div class="lctl-br separador"></div>
@@ -234,7 +242,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labelj">Abierto</label> 
-            <mat-slide-toggle  (change)="abiertoCerradoDiaJueves($event)"></mat-slide-toggle> 
+            <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaJueves($event)"></mat-slide-toggle> 
             </div>
 
             <div class="lctl-br separador"></div>
@@ -308,7 +316,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labelv">Abierto</label> 
-            <mat-slide-toggle  (change)="abiertoCerradoDiaViernes($event)"></mat-slide-toggle> 
+            <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaViernes($event)"></mat-slide-toggle> 
             </div>
 
             <div class="lctl-br separador"></div>
@@ -341,6 +349,7 @@
                     <div class="lctl-rightElements">
                         <label id="labelav" style="opacity:0.5">Horario de Almuerzo</label>
                         <select disabled id="input1av" class="lctl-input-m" name="">
+                            
                             <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                             </select>
                         <p id="aav" style="opacity:0.5">a</p>
@@ -380,7 +389,7 @@
            
     <div class="lctl-leftElements open">
     <label id="labels">Abierto</label> 
-    <mat-slide-toggle  (change)="abiertoCerradoDiaSabado($event)"></mat-slide-toggle> 
+    <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaSabado($event)"></mat-slide-toggle> 
     </div>
 
     <div class="lctl-br separador"></div>
@@ -452,7 +461,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labels">Abierto</label> 
-            <mat-slide-toggle  (change)="abiertoCerradoDiaDomingo($event)"></mat-slide-toggle> 
+            <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaDomingo($event)"></mat-slide-toggle> 
             </div>
         
             <div class="lctl-br separador"></div>

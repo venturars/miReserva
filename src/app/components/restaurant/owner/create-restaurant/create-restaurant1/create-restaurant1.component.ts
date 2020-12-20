@@ -12,7 +12,7 @@ export class CreateRestaurant1Component implements OnInit {
   public restaurant:Restaurant;
 
   constructor(public router:Router) {
-    this.restaurant= new Restaurant (null,null,null,null,null,null,null,null);
+    this.restaurant= new Restaurant (null,null,null,null,null,null,null,null,null,"Elige tipo de comida");
    }
   
    onSubmit(restForm){

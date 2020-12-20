@@ -783,6 +783,7 @@ desayunoDomingo(esto){
   ngOnInit(): void {
   }
   openDialog() {
+    
     const dialogRef = this.dialog.open(ModalTurnosComponent);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -790,4 +791,10 @@ desayunoDomingo(esto){
     });
   }
   
+prueba(horainicio,horafin){
+  console.log(horainicio.value);
+  console.log(horafin.value);
+  const lunes=document.getElementById("ellunes").getAttribute("data-value");
+}
+
 }

@@ -9,7 +9,7 @@ import { Restaurant } from 'src/app/models/restaurant';
 export class CreateRestaurantHeaderComponent implements OnInit {
 public restaurant: Restaurant;
   constructor() {
-    this.restaurant= new Restaurant (null,null,null,null,null,null,null,null);
+    this.restaurant= new Restaurant (null,null,null,null,null,null,null,null,null,null,null,null,null,null);
    }
 
   processBanner(imageInput: any) {
