@@ -1,3 +1,4 @@
+//-----Generic styles-----
 .maxContainer {
     display: flex;
     flex-direction: row;
@@ -24,7 +25,6 @@
             width: 100%;
             min-height: 450px;
 }}}
-
 @media screen and (max-width: 1250px) {
 
     .maxContainer {
@@ -41,17 +41,4 @@
         }}
         & > .content {
             .form {
-    }}}
-}
-// @media screen and (max-width: 1250px) {
-
-//     .maxContainer {
-//         & > .img, & > .content {
-//         }
-//         & > .img {
-//             img {
-//         }}
-//         & > .content {
-//             .form {
-//     }}}
-// }
+}}}}

@@ -4,7 +4,7 @@
     --primaryColor: #D5341F;
     --primaryColorAccent: #D2000D;
     --primaryColorContrast: #f3f5f7;
-    --primaryColorOpposite: 0;
+    --primaryColorOpposite: rgb(253, 255, 255);
     --primaryColorPush: #e07668;
     --primaryColorLink: #4F70FF;
 //----------
@@ -78,28 +78,30 @@ a {
 [class *= "lctl-font-title"] {
     font-weight: var(--fontWidthBolder);
     font-size: var(--fontSizeL);
+    cursor: default;
 }
 //----------
 [class *= "lctl-font-paragraph"] {
     font-weight: var(--fontWidthMedium);
     font-size: var(--fontSizeM);
+    cursor: default;
 }
 //----------
 [class *= "lctl-font-bold"] {
     font-weight: var(--fontWidthBolder);
-    font-size: var(--fontSizeM);
+    cursor: default;
 }
 //----------
 [class *= "lctl-font-lightly"] {
     font-weight: var(--fontWidthLight);
     font-size: var(--fontSizeM);
+    cursor: default;
 }
 //----------
 [class *= "lctl-font-link"] {
-    font-weight: var(--fontWidthMedium);
-    font-size: inherit;
     color: var(--primaryColorLink);
-    text-decoration: none;
+    text-decoration: none !important;
+    cursor: pointer !important;
 }
 //----------
 [class *= "lctl-font-accent"] {
@@ -107,23 +109,31 @@ a {
     font-size: inherit;
     color: inherit;
     text-transform: uppercase;
+    cursor: default;
 }
 //----------
 [class *= "lctl-font-underline"] {
-    font-weight: var(--fontWidthMedium);
     font-size: var(--fontSizeS);
-    color: var(--secundaryColorOpposite);
+    cursor: default;
+}
+//----------
+[class *= "lctl-font-smallBold"] {
+    font-weight: var(--fontWidthBolder);
+    font-size: var(--fontSizeS);
+    cursor: default;
 }
 //----------
 [class *= "lctl-font-comment"] {
     font-weight: var(--fontWidthMedium);
     font-size: var(--fontSizeS);
     color: var(--secundaryColorPush);
+    cursor: default;
 }
 //----------
-[class *= "lctl-font-small"] {
+[class *= "lctl-font-ExtraSmall"] {
     font-weight: var(--fontWidthMedium);
     font-size: var(--fontSizeXS);
+    cursor: default;
 }
 //----------//----------//----------//----------//----------
 //-----Buttons-----
@@ -370,6 +380,7 @@ a {
     padding-right: 10px;
     max-width: 100%;
     font-size: 14px;
+    border: 1px solid var(--secundaryColorOpposite);
     &::placeholder {
         text-transform: capitalize;
         color: var(--secundaryColorPush);
@@ -518,6 +529,7 @@ a {
         padding-bottom: 27px;
         padding-top: 27px;
         text-decoration: none;
+        text-align: center;
     }
     & * a:hover, & a:hover {
         background-color: var(--secundaryColorContrast);
@@ -846,7 +858,8 @@ a {
     border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusL);
     box-shadow: 0 0 5px 1px var(--secundaryColorPush);
-    background-color: var(--secundaryColor);
+    background-color: var(--primaryColorOpposite);
+    overflow: hidden;
     & .mat-calendar-header {
         position: relative;
         top: -20px;
@@ -861,9 +874,15 @@ a {
             & .mat-button {
                 margin: auto;
                 top: 1px;
-                & .mat-button-wrapper span {
+                outline: none;
+                & .mat-button-wrapper {
+                    & > span {
                     font-weight: var(--fontWidthBolder);
-                    color: var(--secundaryColor);
+                    color: var(--primaryColorOpposite);
+                    }
+                    & .mat-calendar-arrow {
+                        border-top-color: var(--primaryColorOpposite);
+                    }
                 }
             }
             & .mat-calendar-spacer {
@@ -871,15 +890,48 @@ a {
             }
             & .mat-icon-button:nth-child(3) {
                 margin-top: -40px;
+                outline: none;
+                color: var(--primaryColorOpposite);
+                &:disabled {
+                    color: var(--secundaryColorPush);
+                }
             }
             & .mat-icon-button:nth-child(4) {
                 margin-left: auto;
                 margin-top: -40px;
-    }}}
+                outline: none;
+                color: var(--primaryColorOpposite);
+                &:disabled {
+                    color: var(--secundaryColorPush);
+    }}}}
     & .mat-calendar-content {
         top: -20px;
         position: relative;
         padding: 10px 6px 0px 6px;
+        & .mat-calendar-table-header th{
+            color: var(--secundaryColorOpposite);
+            font-weight: var(--fontWidthBolder);
+            cursor: default;
+        }
+        & .mat-calendar-table-header-divider::after {
+            background-color: var(--secundaryColorPush);    
+        }
+        & .mat-calendar-body-cell-content {
+            color: var(--secundaryColorOpposite);
+            font-weight: var(--fontWidthBolder);
+        }
+        .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+            border: 1px solid var(--secundaryColorContrast);
+        }
+        .mat-calendar-body-selected {
+            background-color: var(--secundaryColorContrast);
+            color: var(--primaryColorOpposite);
+        }
+        & .mat-calendar-body-disabled {
+            & .mat-calendar-body-cell-content {
+                color: var(--secundaryColorPush);
+            }
+        }
         & tbody tr:first-child .mat-calendar-body-label {
             visibility: hidden;
             padding-top: 10px!important;

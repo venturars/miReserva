@@ -2,38 +2,51 @@
 
     <div class="header">
         <!-- -----Navbar----- -->
-        <app-navbarLogin *ngIf="router.url == '/registration-owner' ||
+        <ng-container *ngIf="router.url == '/registration-owner' ||
             router.url == '/registration' || router.url == '/log-in' ||
             router.url == '/registration-client' || router.url == '/' ||
             router.url == '/**' ">
-        </app-navbarLogin>
-        <app-navbarClient *ngIf="router.url == '/reservations-list-client' ||
+            <app-navbarLogin>
+            </app-navbarLogin>
+        </ng-container>
+        
+        <ng-container *ngIf="router.url == '/reservations-list-client' ||
             router.url == '/reservation1' || router.url == '/reservation2' ||
             router.url == '/edit-client' || router.url == '/search'">
-        </app-navbarClient>
-        <app-navbarUserRestaurant
-            *ngIf="router.url == '/reservations-list-restaurant'">
-        </app-navbarUserRestaurant>
-        <app-navbarOwner *ngIf="router.url == '/create-restaurant-1' ||
-        router.url == '/restaurants-list' || router.url == '/edit-owner' ||
-        router.url == '/create-restaurant-2' || router.url == '/create-restaurant-3' ">
-        </app-navbarOwner>
+            <app-navbarClient>
+            </app-navbarClient>
+        </ng-container>
+        
+        <ng-container *ngIf="router.url == '/reservations-list-restaurant'">
+            <app-navbarUserRestaurant>
+            </app-navbarUserRestaurant>
+        </ng-container>
+
+        <ng-container *ngIf="router.url == '/create-restaurant-1' ||
+            router.url == '/restaurants-list' || router.url == '/edit-owner' ||
+            router.url == '/create-restaurant-2' || router.url == '/create-restaurant-3'">
+            <app-navbarOwner >
+            </app-navbarOwner>
+        </ng-container>
+        
     </div>
     <div class="main">
         <!-- -----Router-outlet----- -->
             <router-outlet></router-outlet>
         <!-- -----Components----- -->
-            <!-- <app-login-design></app-login-design> -->
     </div>
 
     <!-- -----Footer----- -->
     <div class="footer">
 
-        <app-footer *ngIf="router.url == '/log-in' || router.url == '/registration' ||
-          router.url == '/registration-owner' || router.url == '/registration-client' ||
-          router.url == '/reservation1' || router.url == '/reservation2' ||
-          router.url == '/edit-client' || router.url == '/reservations-list-client' ||
-          router.url == '/search' || router.url == '/'">
-        </app-footer>
+        <ng-container *ngIf="router.url == '/log-in' || router.url == '/registration' ||
+            router.url == '/registration-owner' || router.url == '/registration-client' ||
+            router.url == '/reservation1' || router.url == '/reservation2' ||
+            router.url == '/edit-client' || router.url == '/reservations-list-client' ||
+            router.url == '/search' || router.url == '/'">
+            <app-footer>
+            </app-footer>
+        </ng-container>
+        
     </div>
 </div>

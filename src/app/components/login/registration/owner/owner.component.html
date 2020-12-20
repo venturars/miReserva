@@ -1,51 +1,69 @@
-<div class="colocaritems">
-  <form #userForm1="ngForm" (ngSubmit)="(userForm1.invalid) ? 'mal' : onSubmit(userForm1)">
-    <p class="lctl-font-title text-center">CREA TU PERFIL</p>
-    <input class="lctl-input-m-extraLarge" name="name" autocomplete="off" placeholder="Nombre" 
-      placeholder="{{userForm1.submitted && name.invalid ?  'Nombre obligatorio' : 'Nombre'}}"
-      [(ngModel)]="user.name" #name="ngModel"
-      [ngClass]="{'caution':userForm1.submitted && name.invalid }" required>
-    <input class="lctl-input-m-extraLarge" name="surname" autocomplete="off" 
-      placeholder="{{userForm1.submitted && surname.invalid ?  'Apellidos obligatorios' : 'Apellidos'}}" 
-      [(ngModel)]="user.surname" #surname="ngModel"
-      [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
-    <input class="lctl-input-m-extraLarge" name="email" autocomplete="off"  
-      placeholder="{{userForm1.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
-      [(ngModel)]="user.email" #email="ngModel"
-      [ngClass]="{'caution':userForm1.submitted && email.invalid }" email required>
-    <input class="lctl-input-m-extraLarge" name="cif" autocomplete="off" 
-      placeholder="{{userForm1.submitted && cif.invalid ?  'CIF obligatorio' : 'CIF'}}"
-      [(ngModel)]="user.cif" #cif="ngModel"
-      [ngClass]="{'caution':userForm1.submitted && cif.invalid }" required>
-    <label id="labeldos"><input class="lctl-input-m-extraLarge" name="password" autocomplete="off" 
-      placeholder="{{userForm1.submitted && password.invalid ?  'Password obligatorio' : 'Password'}}"
-      [(ngModel)]="user.password" #password="ngModel"
-      [ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required>
-    </label>
-    <div>
-      <div [ngClass]="{'caution':userForm1.submitted && check.invalid }">
-        <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel"
-          required>
-        <p class="letraspeque">
-          Acepto los terminos y condiciones y politica de privacidad
-        </p>
-      </div>
-    </div>
-    <div class="invalid-feedback-left" *ngIf="userForm1.submitted && check.invalid">
-      <p *ngIf="check.errors.required">
-        Check obligatorio
+<form #userForm1="ngForm" (ngSubmit)="(userForm1.invalid) ? 'mal' : onSubmit(userForm1)">
+  <p class="lctl-font-title titleForm">Crea tu perfil</p>
+  <input class="lctl-input-l-large inputForm" name="name" autocomplete="off" placeholder="Nombre" 
+    placeholder="{{userForm1.submitted && name.invalid ?  'Nombre obligatorio' : 'Nombre'}}"
+    [(ngModel)]="user.name" #name="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && name.invalid }" required>
+  <input class="lctl-input-l-large inputForm" name="surname" autocomplete="off" 
+    placeholder="{{userForm1.submitted && surname.invalid ?  'Apellidos obligatorios' : 'Apellidos'}}" 
+    [(ngModel)]="user.surname" #surname="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
+  <input id="profile" class="lctl-input-l-large inputForm" name="email" autocomplete="off"  
+    placeholder="{{userForm1.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
+    [(ngModel)]="user.email" #email="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && email.invalid }" email required>
+  <input class="lctl-input-l-large inputForm" name="cif" autocomplete="off" 
+    placeholder="{{userForm1.submitted && cif.invalid ?  'CIF obligatorio' : 'CIF'}}"
+    [(ngModel)]="user.cif" #cif="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && cif.invalid }" required>
+  <input id="password" class="lctl-input-l-large inputForm" name="password" autocomplete="off" 
+    placeholder="{{userForm1.submitted && password.invalid ?  'Password obligatorio' : 'Password'}}"
+    [(ngModel)]="user.password" #password="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required>
+    
+  <div class="overLogIn">
+
+    <div [ngClass]="{'caution':userForm1.submitted && check.invalid }">
+      <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel"
+        required>
+      <p class="textCheck lctl-font-underline">
+        Acepto las 
+        <a href="https://www.senado.es/web/avisojuridico/index.html#:~:text=%20Condiciones%20generales%20de%20uso%20de%20la%20p%C3%A1gina,Senado%20pone%20a%20disposici%C3%B3n%20de%20los...%20More%20"
+        target="_blank" class="lctl-font-underline lctl-font-link lctl-font-bold">
+        condiciones de uso
+        </a>
+        y la
+        <a href="https://politicadeprivacidadplantilla.com/" target="_blank"
+        class="lctl-font-underline lctl-font-link lctl-font-bold">
+        politica de privacidad
+        </a>
       </p>
     </div>
-    <div>
-      <button type="submit" class="lctl-button-m" routerLink="/create-restaurant-1">
-        Siguiente
-      </button>
-    </div>
-    <div class="letraspeque">
+
+  </div>
+
+  <div class="invalid-feedback-left" *ngIf="userForm1.submitted && check.invalid">
+    <p *ngIf="check.errors.required">
+      Check obligatorio
+    </p>
+  </div>
+
+  <div class="logIn">
+    <button type="submit" class="lctl-button-m" routerLink="/create-restaurant-1">
+      Registrarse
+    </button>
+  </div>
+
+  <div class="lctl-br separate">
+  </div>
+
+  <div class="register">
+    <div class="lctl-font-comment">
       ¿Ya estás registrado?
-      <a class="letraspeque" routerLink="/log-in">
-        Haz login
+      <a class="lctl-font-link lctl-font-smallBold" routerLink="/log-in">
+        Inicia sesión
       </a>
-    </div>  
-  </form>
-</div>
+    </div>
+  </div>
+
+</form>

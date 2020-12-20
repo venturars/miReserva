@@ -7,19 +7,21 @@ form {
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
-  & .title {
+  max-width: 1200px;
+  & .titleForm {
     text-transform: capitalize;
   }
   & .inputForm {
     margin-top: 6px;
     margin-bottom: 6px;
     padding-left: 38px;
-    min-width: 100%;
+    padding-right: 38px;
+    max-width: 800px;
   }
   & > .overLogIn {
     display: flex;
     justify-content: space-between;
-    width: calc(100% - 20px);
+    width: 560px;
     height: 60px;
     & > div:first-child {
       display: flex;
@@ -29,6 +31,7 @@ form {
       & > .textCheck{
         padding-left: 10px;
         height: 12px;
+        transform: translate(0, 4px);
       }}
       & > div:nth-child(2) {
         display: flex;
@@ -45,7 +48,7 @@ form {
     }
     .separate {
       margin: 18px;
-      width: calc(100% - 36px);
+      width: 600px;
     }
     .register {
       width: 100%;
@@ -54,37 +57,17 @@ form {
       align-items: center;
       text-align: center;
       margin-top: 10px;
-      .registerBlue {
-        font-size: var(--fontSizeS);
-      }
-    }
-}
+}}
 //-----Especial Elements-----
-#labelOne {
-  position: relative;
-}
-#labelOne:before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 7px;
-  bottom: 0;
-  height: 45px;
-  width: 22px;
+#profile {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-user' width='33' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Ccircle cx='12' cy='7' r='4' /%3E%3Cpath d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 7px 0;
 }
-#labelTwo {
-  position: relative;
-}
-#labelTwo:before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 7px;
-  height: 45px;
-  bottom: 0;
-  width: 20px;
+#password {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-lock' width='30' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Crect x='5' y='11' width='14' height='10' rx='2' /%3E%3Ccircle cx='12' cy='16' r='1' /%3E%3Cpath d='M8 11v-4a4 4 0 0 1 8 0v4' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 7px 0;
 }
 .caution{
   border:var(--secundaryColorContrast) solid 2px;
@@ -105,7 +88,6 @@ form {
     & .inputForm {
     }
     & > .overLogIn {
-      width: calc(100% - 220px);
       & > div:first-child {
         & > .textCheck{
       }}
@@ -115,7 +97,8 @@ form {
   }
   .separate {
   }
-}}
+  .register {
+}}}
 @media screen and (max-width: 850px) {
   form {
     & .title {
@@ -123,12 +106,17 @@ form {
     & .inputForm {
     }
     & > .overLogIn {
-      width: 600px;
       & > div:first-child {
         & > .textCheck{
       }}
       & > div:nth-child(2) {
-}}}}
+  }}
+  .logIn {
+  }
+  .separate {
+  }
+  .register {
+}}}
 @media screen and (max-width: 650px) {
   form {
     & .title {
@@ -144,9 +132,12 @@ form {
       & > div:nth-child(2) {
   }}
   .logIn {
-      
   }
-}}
+  .separate {
+    width: calc(100% - 36px);
+  }
+  .register {
+}}}
 @media screen and (max-width: 450px) {
   form {
     & .title {
@@ -165,6 +156,8 @@ form {
         margin: 5px;
     }}
     .logIn {
-      
     }
-}}
+    .separate {
+    }
+    .register {
+}}}

@@ -9,43 +9,39 @@ import { Moment } from 'moment';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-    public minDate;
-    public maxDate;
-    public asd:Date
+    public minDate:Date;
+    public maxDate:Date;
+    public selectDay:Date;
   @Output() ciudadElegida = new EventEmitter<Date>();
 
   @ViewChild('calendar') calendar: MatCalendar<Moment>;
   public selectedDate: Moment;
-
   constructor() {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
     const currentDay = new Date().getDate();
     this.minDate = new Date(currentYear,currentMonth,currentDay);
     this.maxDate = new Date(currentYear + 1, 11, 31);
-    this.ciudadElegida.emit(this.asd)
-    console.log(this.asd+"asd");
-
-  
+    this.ciudadElegida.emit(this.selectDay)
    }
 
   ngOnInit(): void {
   }
   
-  public getChangedValue(e)  {
-    console.log(e); // this is always "undefined"
-    let nombre = e.toString().substring(0,3)
-    let mes = e.toString().substr(4,3)
-    let dia = e.toString().substr(8,2)
-    let anyo = e.toString().substr(11,4);
-    console.log(nombre);
-    console.log(dia);
-    console.log(mes);
-    console.log(anyo);
-    this.asd = e
+  public getChangedValue(e:Date)  {
+    // console.log(e); // this is always "undefined"
+    // let name = e.toString().substring(0,3)
+    // let month = e.toString().substr(4,3)
+    // let day = e.toString().substr(8,2)
+    // let year = e.toString().substr(11,4);
+    // console.log(name);
+    // console.log(day);
+    // console.log(month);
+    // console.log(year);
+    this.selectDay = e;
   }
 
-  myDateFilter = (date: Date) => {
+  myDateFilter = (date:Date) => {
     const day = date.getDay();
     const date2 = date.getDate();
 
