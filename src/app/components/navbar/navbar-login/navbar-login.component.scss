@@ -55,11 +55,14 @@
     padding: 5px;
 }
 @media only screen and (max-width: 768px) {
-    .Navbar__Items,
+    .RnavbarLeftElements,
     .Rnavbar {
       flex-direction: column;
     }
-    .Navbar__Items--right {
+    .RnavbarLeftElements {
+      display: none;
+    }
+    .RnavbarRightElements {
       margin-left: 0;
     }
   }
