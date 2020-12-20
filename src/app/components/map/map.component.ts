@@ -16,7 +16,7 @@ export class MapComponent implements OnInit{
   public map:Map;
   public restaurant: Restaurant
   constructor(private apiService:GeocodestreetService ) { 
-    this.restaurant= new Restaurant("La Abuela",null,null,null,null,null,null,null,null,null,0,0);
+    this.restaurant= new Restaurant("La Abuela",null,null,null,null,null,null,null,null,null,null,null,null,null);
     this.map=null;
   }
 

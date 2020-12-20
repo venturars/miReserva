@@ -21,14 +21,24 @@
         </div>
         <div class="dosendos">
         <input type="text" class="lctl-input-m-extraLarge" 
-        placeholder="{{restForm.submitted && address.invalid ?  'Dirección obligatoria' : 'Dirección'}}"
+        placeholder="{{restForm.submitted && address.invalid ?  'Calle obligatoria' : 'Calle'}}"
         name="address" [(ngModel)]="restaurant.address" #address="ngModel"
         [ngClass]="{'caution':restForm.submitted && address.invalid }" required>
         <input type="text" class="lctl-input-m-extraLarge" 
-        placeholder="{{restForm.submitted && capacity.invalid ?  'Aforo obligatorio' : 'Capacidad aforo'}}"
-        name="capacity" [(ngModel)]="restaurant.capacity" #capacity="ngModel"
-        [ngClass]="{'caution':restForm.submitted && capacity.invalid }" required>
+        placeholder="{{restForm.submitted && addressnumber.invalid ?  'Numero de calle obligatorio' : 'Número de calle'}}"
+        name="addressnumber" [(ngModel)]="restaurant.addressnumber" #addressnumber="ngModel"
+        [ngClass]="{'caution':restForm.submitted && addressnumber.invalid }" required>
         </div>
+        <div class="dosendos">
+            <input type="text" class="lctl-input-m-extraLarge" 
+            placeholder="{{restForm.submitted && city.invalid ?  'Ciudad obligatoria' : 'Ciudad'}}"
+            name="city" [(ngModel)]="restaurant.city" #city="ngModel"
+            [ngClass]="{'caution':restForm.submitted && city.invalid }" required>
+            <input type="text" class="lctl-input-m-extraLarge" 
+            placeholder="{{restForm.submitted && capacity.invalid ?  'Aforo obligatorio' : 'Capacidad aforo'}}"
+            name="capacity" [(ngModel)]="restaurant.capacity" #capacity="ngModel"
+            [ngClass]="{'caution':restForm.submitted && capacity.invalid }" required>
+            </div>
         <div class="dosendos">
         <input type="text" class="lctl-input-m-extraLarge" 
         placeholder="{{restForm.submitted && postalcode.invalid ?  'Código postal obligatorio' : 'Código postal'}}"
@@ -37,7 +47,7 @@
         <select class="lctl-input-m-extraLarge" 
         name="food" [(ngModel)]="restaurant.food" #food="ngModel" 
         [ngClass]="{'caution':restForm.submitted && food.invalid }" required>
-        <option disabled selected>Selecciona tipo de comida</option>
+        <option selected="true" disabled="disabled">Selecciona tipo de comida</option>
             <!-- //HAY QUE PONER VALUES A LOS OPTION PARA METERLOS EN LA BASE DE DATOS -->
             <option>Española</option>
             <option>Mexicana</option>
