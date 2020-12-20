@@ -15,26 +15,30 @@
             <label id="labell">Abierto</label> 
             <mat-slide-toggle  (change)="abiertoCerradoDiaLunes($event)"></mat-slide-toggle> 
             </div>
-
             <div class="lctl-br separador"></div>
             <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/photos/close.svg"></div></div>
-            <div id="ellunes" class="turns">
+            <div id="ellunes" class="turns" data-value="Lunes">
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Desayunos</label>
+                    
                     <mat-slide-toggle (change)="desayunoLunes($event)"></mat-slide-toggle> 
                     </div>
 
                     <div class="lctl-rightElements">
+                        
                         <label id="labeldl" style="opacity:0.5">Horario de desayuno</label>
-                        <select disabled id="input1dl" class="lctl-input-m" name="" >
+                        <select disabled id="input1dl" class="lctl-input-m" name="" #horainiciold>
+                            <option selected="true" disabled="disabled">Elige hora</option>
                             <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                         </select>
                         <p id="adl" style="opacity:0.5">a</p>
-                        <select disabled id="input2dl" class="lctl-input-m" name="">
+                        <select disabled id="input2dl" class="lctl-input-m" name="" #horafinalld>
+                            <option selected="true" disabled="disabled">Elige hora</option>
                             <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
                         </select>
-                       <button disabled style="opacity:0.5" id="butondl" class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
+                       <button disabled style="opacity:0.5" id="butondl" class="buttonadd lctl-button-m buttonModify" 
+                        (click)="prueba(horainiciold,horafinalld)" >Guardar y editar turnos</button>
                     </div>
                 </div>
 
@@ -46,10 +50,12 @@
                     <div class="lctl-rightElements">
                         <label id="labelal" style="opacity:0.5">Horario de Almuerzo</label>
                         <select disabled id="input1al" class="lctl-input-m" name="">
+                            <option selected="true" disabled="disabled">Elige hora</option>
                             <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                             </select>
                         <p id="aal" style="opacity:0.5">a</p>
                         <select disabled id="input2al" class="lctl-input-m" name="">
+                            <option selected="true" disabled="disabled">Elige hora</option>
                             <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butonal" class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
@@ -67,10 +73,12 @@
                             
                             <label id="labelcl" style="opacity:0.5">Horario de Cena</label>
                             <select disabled id="input1cl" class="lctl-input-m" name="">
+                                <option selected="true" disabled="disabled">Elige hora</option>
                                     <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                                 </select>
                             <p id="acl" style="opacity:0.5">a</p>
                             <select disabled id="input2cl" class="lctl-input-m" name="">
+                                <option selected="true" disabled="disabled">Elige hora</option>
                                 <option *ngFor="let cena of cenas;let i = index">{{cenas[i].horario}}</option>
                             </select>
                            <button disabled style="opacity:0.5" id="butoncl" class="buttonadd lctl-button-m buttonModify"  (click)="openDialog()" >Guardar y editar turnos</button>
@@ -341,6 +349,7 @@
                     <div class="lctl-rightElements">
                         <label id="labelav" style="opacity:0.5">Horario de Almuerzo</label>
                         <select disabled id="input1av" class="lctl-input-m" name="">
+                            
                             <option *ngFor="let almuerzo of almuerzos;let i = index">{{almuerzos[i].horario}}</option>
                             </select>
                         <p id="aav" style="opacity:0.5">a</p>
