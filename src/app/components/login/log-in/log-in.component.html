@@ -1,37 +1,52 @@
+<form #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? 'mal' : onSubmit(userForm)">
 
-  <form #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? 'mal' : onSubmit(userForm)">
-    <p class="lctl-font-title title">acceder</p>
-    <label id="labelOne">
-      <input class="lctl-input-l-large inputForm" name="email" placeholder="Email" 
-        placeholder="{{userForm.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
-        [(ngModel)]="user.email" #email="ngModel"
-        [ngClass]="{'caution':userForm.submitted && email.invalid }" email required></label>
-    <label id="labelTwo">
-        <input class="lctl-input-l-large inputForm" name="password" 
-          placeholder="{{userForm.submitted && password.invalid ?  'Contraseña obligatoria 6 caracteres' : 'Contraseña'}}"
-          [(ngModel)]="user.password" #password="ngModel"
-          [ngClass]="{'caution':userForm.submitted && password.invalid }" minlength="6" required>
-    </label>
-    <div class="overLogIn">
-      <div [ngClass]="{'caution':userForm.submitted && check.invalid }">
-        <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel">
-        <p class="lctl-font-underline" class="textCheck">Recuerdame</p>
-      </div>
-      <div>
-          <a class="lctl-font-link lctl-font-underline">¿Olvidaste la Contraseña?</a>
-      </div>
+  <p class="lctl-font-title titleForm">
+    acceder
+  </p>
+    <input id="profile" class="lctl-input-l-large inputForm" name="email" placeholder="Email" 
+      placeholder="{{userForm.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
+      [(ngModel)]="user.email" #email="ngModel"
+      [ngClass]="{'caution':userForm.submitted && email.invalid }" email required>
+    <input id="password" class="lctl-input-l-large inputForm" name="password" 
+      placeholder="{{userForm.submitted && password.invalid ?  'Contraseña obligatoria 6 caracteres' : 'Contraseña'}}"
+      [(ngModel)]="user.password" #password="ngModel"
+      [ngClass]="{'caution':userForm.submitted && password.invalid }" minlength="6" required>
+
+  <div class="overLogIn">
+
+    <div [ngClass]="{'caution':userForm.submitted && check.invalid }">
+      <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel">
+      <p class="textCheck lctl-font-underline">
+        Recuerdame
+      </p>
     </div>
-    <div class="logIn">
-      <button class="lctl-button-m">Iniciar sesión</button>
+
+    <div>
+      <a class="lctl-font-link lctl-font-underline">
+        ¿Olvidaste la contraseña?
+      </a>
     </div>
-    <div class="lctl-br separate">
+
+  </div>
+
+  <div class="logIn">
+    <button class="lctl-button-m">
+      Iniciar sesión
+    </button>
+  </div>
+
+  <div class="lctl-br separate">
+  </div>
+
+  <div class="register">
+
+    <div class="lctl-font-comment cursor">
+      ¿Aún no has creado tu cuenta en Mi reserva?
+      <a class="lctl-font-link lctl-font-smallBold" routerLink="/registration">
+        Registrate
+      </a>
     </div>
-    <div class="register">
-      <div>
-        ¿Aún no has creado tu cuenta?
-          <a class="lctl-font-link registerBlue" routerLink="/registration">
-            Registrate
-          </a>
-      </div>
-    </div>  
-  </form>
+
+  </div>  
+  
+</form>

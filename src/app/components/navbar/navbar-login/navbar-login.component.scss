@@ -1,26 +1,65 @@
-.img {
-    padding-bottom: 0;
-    padding-top: 0;
+// .img {
+//     padding-bottom: 0;
+//     padding-top: 0;
+// }
+// .img:hover {
+//     background: none;
+// }
+// .left {
+// }
+// .right {
+//     width: max-content;
+//     flex-wrap: nowrap;
+// }
+// .show {
+//     display: none;
+// }
+// @media screen and (max-width: 900px) {
+//     .left {
+//         justify-content: space-around;
+//     }
+//     .right {
+//         display: none;
+//     }
+// }
+// @media screen and (max-width: 603px) {
+//     .left {
+//         justify-content: center;
+//     }
+//     .leftItem {
+//         background-color: aqua;
+//         width: 100%;
+//         font-size: var(--fontSizeS);
+//         height: 100%;
+//     }
+//     .responsiveNav {
+//         height: 100%;
+//         flex-direction: column;
+//         background-color: red;
+//     }
+// }
+
+.Rnavbar {
+    display: flex;
+    background-color: violet;
+    padding: 10px;
+    color: white;
 }
-.img:hover {
-    background: none;
+.RnavbarLeftElements, .RnavbarRightElements {
+    display: flex;
 }
-.left {
+.RnavbarRightElements {
+    margin-left: auto;
 }
-.right {
-    width: max-content;
-    flex-wrap: nowrap;
+.RnavbarElement {
+    padding: 5px;
 }
-@media screen and (max-width: 900px) {
-    .left {
-        justify-content: space-around;
+@media only screen and (max-width: 768px) {
+    .Navbar__Items,
+    .Rnavbar {
+      flex-direction: column;
     }
-    .right {
-        display: none;
+    .Navbar__Items--right {
+      margin-left: 0;
     }
-}
-@media screen and (max-width: 603px) {
-    .left {
-        flex-direction: column;
-    }
-}
+  }

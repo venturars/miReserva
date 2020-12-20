@@ -45,7 +45,6 @@ import { ModalReservaManualComponent } from './components/modals/modal-reserva-m
 import { MapComponent } from './components/map/map.component';
 import { DesignComponent } from './components/login/design/design.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

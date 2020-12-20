@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,IAAI,CAAA;EACA,cAAc,EAAE,CAAC;EACjB,WAAW,EAAE,CAAC;CACjB;;AAED,AAAA,IAAI,AAAA,MAAM,CAAA;EACN,UAAU,EAAE,IAAI;CACnB",
-    "sources": [
-        "navbar-login.component.scss"
-    ],
-    "names": [],
-    "file": "navbar-login.component.css"
-}
