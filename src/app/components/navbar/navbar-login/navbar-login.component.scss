@@ -54,15 +54,27 @@
 .RnavbarElement {
     padding: 5px;
 }
+.RnavbarButton {
+  display: none;
+}
 @media only screen and (max-width: 768px) {
-    .RnavbarLeftElements,
+    .RnavbarLeftElements, .RnavbarRightElements,
     .Rnavbar {
       flex-direction: column;
     }
-    .RnavbarLeftElements {
+    .RnavbarLeftElements, .RnavbarRightElements {
       display: none;
     }
     .RnavbarRightElements {
       margin-left: 0;
+    }
+    .RnavbarButton {
+      display: initial;
+      align-self: flex-end;
+      position: absolute;
+      cursor: pointer;
+    }
+    .RnavbarButton:active ~ .RnavbarLeftElements, .RnavbarButton:checked ~ .RnavbarRightElements {
+      display: initial;
     }
   }
