@@ -1,73 +1,67 @@
 <form #userForm1="ngForm" (ngSubmit)="(userForm1.invalid) ? 'mal' : onSubmit(userForm1)">
 
-      <p class="lctl-font-title titleForm">
-        Crear perfil
-      </p>
-      
-      <input class="lctl-input-l-large inputForm" name="name" autocomplete="off"  
-        placeholder="{{userForm1.submitted && name.invalid ?  'Nombre obligatorio' : 'Nombre'}}"
-        [(ngModel)]="user.name" #name="ngModel"
-        [ngClass]="{'caution':userForm1.submitted && name.invalid }" required>
-      <input class="lctl-input-l-large inputForm" name="surname" autocomplete="off"
-        placeholder="{{userForm1.submitted && surname.invalid ?  'Apellidos obligatorios' : 'Apellidos'}}"
-        [(ngModel)]="user.surname" #surname="ngModel"
-        [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
-      <input class="lctl-input-l-large inputForm" name="mobile" autocomplete="off"
-        placeholder="{{userForm1.submitted && mobile.invalid ?  'Telefono obligatoria' : 'Telefono'}}"
-        [(ngModel)]="user.mobile" #mobile="ngModel"
-        [ngClass]="{'caution':userForm1.submitted && mobile.invalid }" minlength="9" maxlength="9" required>
-      <input id="profile" class="lctl-input-l-large inputForm" name="email" autocomplete="off" 
-        placeholder="{{userForm1.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
-        [(ngModel)]="user.email" #email="ngModel"
-        [ngClass]="{'caution':userForm1.submitted && email.invalid }" email required>
-        <input id="password" class="lctl-input-l-large inputForm" name="password" autocomplete="off"
-        placeholder="{{userForm1.submitted && password.invalid ?  'Password obligatoria' : 'Contraseña'}}"
-        [(ngModel)]="user.password" #password="ngModel"
-        [ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required>
+  <p class="lctl-font-title titleForm">
+    Crear perfil
+  </p>
+  
+  <input class="lctl-input-l-large inputForm" name="name" autocomplete="off"  
+    placeholder="{{userForm1.submitted && name.invalid ?  'Nombre obligatorio' : 'Nombre'}}"
+    [(ngModel)]="user.name" #name="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && name.invalid }" required>
+  <input class="lctl-input-l-large inputForm" name="surname" autocomplete="off"
+    placeholder="{{userForm1.submitted && surname.invalid ?  'Apellidos obligatorios' : 'Apellidos'}}"
+    [(ngModel)]="user.surname" #surname="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
+  <input class="lctl-input-l-large inputForm" name="mobile" autocomplete="off"
+    placeholder="{{userForm1.submitted && mobile.invalid ?  'Telefono obligatoria' : 'Telefono'}}"
+    [(ngModel)]="user.mobile" #mobile="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && mobile.invalid }" minlength="9" maxlength="9" required>
+  <input id="profile" class="lctl-input-l-large inputForm" name="email" autocomplete="off" 
+    placeholder="{{userForm1.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
+    [(ngModel)]="user.email" #email="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && email.invalid }" email required>
+    <input id="password" class="lctl-input-l-large inputForm" name="password" autocomplete="off"
+    placeholder="{{userForm1.submitted && password.invalid ?  'Password obligatoria' : 'Contraseña'}}"
+    [(ngModel)]="user.password" #password="ngModel"
+    [ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required>
 
-      <div class="overLogIn">
+  <div class="overLogIn">
 
-        <div [ngClass]="{'caution':userForm1.submitted && check.invalid }">
-          <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel"
-            required>
-          <p class="textCheck lctl-font-underline">
-            Acepto las 
-            <a href="https://www.senado.es/web/avisojuridico/index.html#:~:text=%20Condiciones%20generales%20de%20uso%20de%20la%20p%C3%A1gina,Senado%20pone%20a%20disposici%C3%B3n%20de%20los...%20More%20"
-            target="_blank" class="lctl-font-underline lctl-font-link lctl-font-bold">
-            condiciones de uso
-            </a>
-            y la
-            <a href="https://politicadeprivacidadplantilla.com/" target="_blank"
-            class="lctl-font-underline lctl-font-link lctl-font-bold">
-            politica de privacidad
-            </a>
-          </p>
-        </div>
-
-      </div>
-
-      <!-- <div class="invalid-feedback-left" *ngIf="userForm1.submitted && check.invalid">
-        <p *ngIf="check.errors.required">
-          Check obligatorio
-        </p>
-      </div> -->
-
-    <div class="logIn">
-      <button type="submit" class="lctl-button-m" >
-        Registrarse
-      </button>
-    </div>
-
-    <div class="lctl-br separate">
-    </div>
-
-    <div class="register">
-      <div class="lctl-font-comment">
-        ¿Ya estás registrado?
-        <a class="lctl-font-link lctl-font-smallBold" routerLink="/log-in">
-          Inicia sesión
+    <div [ngClass]="{'caution':userForm1.submitted && check.invalid }">
+      <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel"
+        required>
+      <p class="textCheck lctl-font-underline">
+        Acepto las 
+        <a href="https://www.senado.es/web/avisojuridico/index.html#:~:text=%20Condiciones%20generales%20de%20uso%20de%20la%20p%C3%A1gina,Senado%20pone%20a%20disposici%C3%B3n%20de%20los...%20More%20"
+        target="_blank" class="lctl-font-underline lctl-font-link lctl-font-bold">
+        condiciones de uso
         </a>
-      </div>
+        y la
+        <a href="https://politicadeprivacidadplantilla.com/" target="_blank"
+        class="lctl-font-underline lctl-font-link lctl-font-bold">
+        politica de privacidad
+        </a>
+      </p>
     </div>
 
-  </form>
+  </div>
+
+  <div class="logIn">
+    <button type="submit" class="lctl-button-m" >
+      Registrarse
+    </button>
+  </div>
+
+  <div class="lctl-br separate">
+  </div>
+
+  <div class="register">
+    <div class="lctl-font-comment">
+      ¿Ya estás registrado?
+      <a class="lctl-font-link lctl-font-smallBold" routerLink="/log-in">
+        Inicia sesión
+      </a>
+    </div>
+  </div>
+
+</form>
