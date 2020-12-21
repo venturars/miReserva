@@ -510,6 +510,127 @@ a {
 //----------//----------//----------//----------//----------
 //-----Navbar-----
 //----------//----------//----------//----------//----------
+//-----Examample of use-----
+//----------//----------//----------//----------//----------
+//-----HTML-----
+//----------//----------//----------//----------//----------
+// <nav class="lctl-toggleNavbar">
+//     <div class="lctl-toggleNavbarPrincipal">
+//         <img a routerLink="/" routerLink="/log-in"
+//             class="lctl-toggleNavbarIcon" src="../../../../assets/LogoMiReserva.svg">
+//         <mat-icon (click)="show()" class="lctl-toggleNavbarButton">menu</mat-icon>
+//     </div>
+//     <nav class="lctl-toggleNavbarLeftElements hide">
+//         <a routerLink="/" class="lctl-toggleNavbarElement">
+//             ¿Cómo funciona?
+//         </a>
+//         <a routerLink="/" class="lctl-toggleNavbarElement">
+//             Contacto
+//         </a>
+//     </nav>
+//     <nav class="lctl-toggleNavbarRightElements hide">
+//         <a routerLink="/registration" class="lctl-toggleNavbarElement">
+//             Regístrate
+//         </a>
+//         <a routerLink="/log-in" class="lctl-toggleNavbarElement">
+//             Ingresa
+//         </a>
+//     </nav>
+// </nav>
+//----------//----------//----------//----------//----------
+//-----Ts-----
+//----------//----------//----------//----------//----------
+// public show() {
+//     const hide:any = document.getElementsByClassName("hide");
+//     for(let i=0; i<hide.length;i++) {
+//       if(hide[i].style.display === "none") {
+//         hide[i].style.display="flex"
+//       } else {
+//         hide[i].style.display="none"
+//     }}}
+//----------//----------//----------//----------//----------
+.lctl-toggleNavbar {
+    display: flex;
+    background-color: var(--primaryColorOpposite);
+    height: 82px;
+    color: var(--secundaryColorOpposite);
+  }
+  .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements {
+    display: flex;
+    align-items: center;
+  }
+  .lctl-toggleNavbarRightElements {
+    margin-left: auto;
+  }
+  .lctl-toggleNavbarElement {
+    padding: calc((82px - var(--fontSizeM))/2) 10px calc((82px - var(--fontSizeM))/2) 10px;
+    text-decoration: none !important;
+    &:hover {
+      background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+    }
+    &:active {
+      background-color: var(--secundaryColorAccent);
+      color: var(--secundaryColor);
+  }}
+  .lctl-toggleNavbarPrincipal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 0 10px;
+  .lctl-toggleNavbarIcon {
+    width: max-content;
+    outline: none;
+    cursor: pointer;
+  }
+  .lctl-toggleNavbarButton {
+    display: none;
+    cursor: pointer;
+    color: var(--secundaryColorOpposite);
+    transform: scale(2.5, 2.5) translateX(-5px);
+    border-radius: 50%;
+    &:hover {
+        background-color: var(--secundaryColor);
+    }
+    &:active {
+        background-color: var(--secundaryColorPush);
+  }}}
+  @media only screen and (max-width: 768px) {
+    .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements,
+    .lctl-toggleNavbar {
+      flex-direction: column;
+    }
+    .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements {
+      background-color: var(--primaryColorOpposite);
+      align-self: flex-end;
+      width: 200px;
+      align-items: flex-start;
+      transform: translate(-4.5px, 14px);
+      display: none;
+    }
+    .lctl-toggleNavbarLeftElements {
+      & > .lctl-toggleNavbarElement:first-child {
+        margin: 15px 10px 5px 10px;
+    }}
+    .lctl-toggleNavbarRightElements {
+      border-bottom-right-radius: var(--borderRadiusM);
+      border-bottom-left-radius: var(--borderRadiusM);
+      & > .lctl-toggleNavbarElement:last-child {
+        margin: 5px 10px 10px 10px;
+    }}
+    .lctl-toggleNavbarElement {
+      margin: 5px 10px 5px 10px;
+      padding: 0 10px 0 10px;
+      background-color: var(--primaryColorContrast);
+      width: calc(100% - 20px);
+      border-radius: var(--borderRadiusS);
+    }
+    .lctl-toggleNavbarPrincipal {
+      transform: translateY(14px);
+      .lctl-toggleNavbarButton {
+        display: initial;
+  }}}
+//----------//----------//----------//----------//----------
 [class *= "lctl-navbar"] {
     position: relative;
     // top: 0;
@@ -548,7 +669,7 @@ a {
     height: 52px;
     text-transform: uppercase;
     font-weight: var(--fontWidthBolder);
-    background-color: var(--secundaryColor);
+    background-color: var(--primaryColorOpposite);
     color: var(--secundaryColorOpposite);
     bottom: 0;
     display: flex;
@@ -937,3 +1058,12 @@ a {
             padding-top: 10px!important;
             padding-bottom: 10px!important;
 }}}
+[class *="lctl-ng-matSlideToggle"] {
+    & [class*="mat-slide-toggle-bar mat-slide-toggle-bar-no-side-margin"] {
+        background-color: red !important;
+    }
+    & [class*="mat-slide-toggle-thumb"] {
+        background-color: red !important;
+        border-radius: 50%;
+    }
+}

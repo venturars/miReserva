@@ -1,42 +1,23 @@
-<nav class="lctl-navbar responsiveNav">
-    <div class="lctl-navbar left">
-        <a routerLink="/" class="img leftItem" routerLink="/log-in">
-        <img src="../../../../assets/LogoMiReserva.svg" alt="Logo empresa">
+<nav class="lctl-toggleNavbar">
+    <div class="lctl-toggleNavbarPrincipal">
+        <img a routerLink="/" routerLink="/log-in"
+            class="lctl-toggleNavbarIcon" src="../../../../assets/LogoMiReserva.svg">
+        <mat-icon (click)="show()" class="lctl-toggleNavbarButton">menu</mat-icon>
+    </div>
+    <nav class="lctl-toggleNavbarLeftElements hide">
+        <a routerLink="/" class="lctl-toggleNavbarElement">
+            ¿Cómo funciona?
         </a>
-        <a routerLink="/log-in" class="leftItem">Home</a>
-        <a routerLink="/" class="leftItem">Como Funciona</a>
-        <a routerLink="/" class="leftItem">Contacto</a>
-    </div>
-
-    <div class="lctl-rightElements right">
-        <a routerLink="/registration">Registrate</a>
-        <a routerLink="/log-in">Ingresa</a>
-    </div>
+        <a routerLink="/" class="lctl-toggleNavbarElement">
+            Contacto
+        </a>
+    </nav>
+    <nav class="lctl-toggleNavbarRightElements hide">
+        <a routerLink="/registration" class="lctl-toggleNavbarElement">
+            Regístrate
+        </a>
+        <a routerLink="/log-in" class="lctl-toggleNavbarElement">
+            Ingresa
+        </a>
+    </nav>
 </nav>
-<!-- <nav class="Rnavbar">
-    <div class="RnavbarWebSite">
-        img left
-    </div>
-    <div class="RnavbarButton Rnavbar-toggle">
-        botón
-    </div>
-    <nav class="RnavbarLeftElements">
-        <div class="RnavbarElement">
-            link left
-        </div>
-        <div class="RnavbarElement">
-            link left
-        </div>
-        <div class="RnavbarElement">
-            link left
-        </div>
-    </nav>
-    <nav class="RnavbarRightElements">
-        <div class="RnavbarElement">
-            link right
-        </div>
-        <div class="RnavbarElement">
-            link right
-        </div>
-    </nav>
-</nav> -->

@@ -1,17 +1,31 @@
-<nav class="lctl-navbar">
-    <div class="lctl-navbar">
-        <a routerLink="/" class="img" routerLink="/search">
-            <img src="../../../../assets/LogoMiReserva.svg" alt="Logo empresa">
-        </a>    
-        <a routerLink="/search">Reservar</a>
-        <a routerLink="/reservations-list-client">Mis Reservas</a>
-    </div>
-
-    <div class="lctl-rightElements">
+    <!-- <div class="lctl-rightElements">
         <a routerLink="/edit-client" class="img">
             <img src="
             assets/photos/logorestaurante.png
             " class="lctl-photoProfile-m">
         </a>
     </div>
+</nav> -->
+<nav class="lctl-toggleNavbar">
+    <div class="lctl-toggleNavbarPrincipal">
+        <img a routerLink="/" routerLink="/log-in"
+            class="lctl-toggleNavbarIcon" src="../../../../assets/LogoMiReserva.svg">
+        <mat-icon (click)="show()" class="lctl-toggleNavbarButton">menu</mat-icon>
+    </div>
+    <nav class="lctl-toggleNavbarLeftElements hide">
+        <a routerLink="/search" class="lctl-toggleNavbarElement">
+            Reservar
+        </a>
+        <a routerLink="/reservations-list-client" class="lctl-toggleNavbarElement">
+            Mis Reservas
+        </a>
+    </nav>
+    <nav class="lctl-toggleNavbarRightElements hide">
+        <a routerLink="/edit-client" class="lctl-toggleNavbarElement">
+            Editar perfil
+        </a>
+        <a routerLink="/" class="lctl-toggleNavbarElement">
+            Salir
+        </a>
+    </nav>
 </nav>
