@@ -15,7 +15,7 @@ export class LogInComponent implements OnInit {
   constructor(public router: Router) {
     this.user= new User(null,null,null,null,null,null);
    }
-onSubmit(form){
+onSubmit(form:any){
   console.log(form.value);
   // routerLink al componente deseado desde el ts
   this.router.navigate(['/reservation1'])
