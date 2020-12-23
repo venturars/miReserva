@@ -15,7 +15,7 @@
             <label>Nombre mesa
                 <input class="lctl-cellInput-large" type="text" autocomplete="off"
                 placeholder="{{tableForm.submitted && name.invalid ?  'Mesa ' : ' Mesa'}}"
-                id="name" name="name" [(ngModel)]="table.name" #name="ngModel" #prueba 
+                id="name" name="table_name" [(ngModel)]="table.table_name" #name="ngModel" #prueba 
                 [ngClass]="{'is-invalid':tableForm.submitted && name.invalid }" required>
             </label>    
 
@@ -24,7 +24,7 @@
             <label>PAX min
             <input class="lctl-cellInput-large" type="text" autocomplete="off"
             placeholder="{{tableForm.submitted && paxmin.invalid ?  'Pax Min' : 'Pax Min'}}"           
-            name="paxmin" [(ngModel)]="table.paxmin" #paxmin="ngModel" 
+            name="table_min" [(ngModel)]="table.table_min" #paxmin="ngModel" 
             [ngClass]="{'is-invalid':tableForm.submitted && paxmin.invalid }" required>
             </label>    
         </div>
@@ -32,7 +32,7 @@
             <label>PAX max
             <input class="lctl-cellInput-large" type="text" autocomplete="off"
             placeholder="{{tableForm.submitted && paxmax.invalid ?  'Pax Max ' : 'Pax Max'}}"           
-            name="paxmax" [(ngModel)]="table.paxmax" #paxmax="ngModel" 
+            name="table_max" [(ngModel)]="table.table_max" #paxmax="ngModel" 
             [ngClass]="{'is-invalid':tableForm.submitted && paxmax.invalid }" required>
             </label>    
         </div>
@@ -62,9 +62,9 @@
                     <div class="lctl-br space3 w"></div>
                 </div>
                 <div class="rows" >    
-            <p class="lctl-font-paragraph">{{table.name}}</p>
-            <p class="lctl-font-paragraph">{{table.paxmin}}</p>
-            <p class="lctl-font-paragraph">{{table.paxmax}}</p>
+            <p class="lctl-font-paragraph">{{table.table_name}}</p>
+            <p class="lctl-font-paragraph">{{table.table_min}}</p>
+            <p class="lctl-font-paragraph">{{table.table_max}}</p>
             <button (click)="eliminar(i)" class="lctl-button-m ">Eliminar</button>
             </div>
             
