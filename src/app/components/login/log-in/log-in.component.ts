@@ -18,7 +18,7 @@ export class LogInComponent implements OnInit {
 onSubmit(form:any){
   console.log(form.value);
   // routerLink al componente deseado desde el ts
-  this.router.navigate(['/reservation1'])
+  this.router.navigate(['/search'])
 }
   ngOnInit(): void {
   }
