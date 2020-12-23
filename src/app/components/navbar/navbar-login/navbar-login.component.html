@@ -1,10 +1,15 @@
 <nav class="lctl-toggleNavbar">
+    <input id="lctl-toggleNavbarLabel" type="checkbox" class="lctl-toggleNavbarCheckbox">
     <div class="lctl-toggleNavbarPrincipal">
         <img a routerLink="/" routerLink="/log-in"
             class="lctl-toggleNavbarIcon" src="../../../../assets/LogoMiReserva.svg">
-        <mat-icon (click)="show()" class="lctl-toggleNavbarButton">menu</mat-icon>
+        <label for="lctl-toggleNavbarLabel" class="lctl-toggleNavbarLabel">
+            <mat-icon class="lctl-toggleNavbarButton">
+                menu
+            </mat-icon>
+        </label>
     </div>
-    <nav class="lctl-toggleNavbarLeftElements hide">
+    <nav class="lctl-toggleNavbarLeftElements">
         <a routerLink="/" class="lctl-toggleNavbarElement">
             ¿Cómo funciona?
         </a>
@@ -12,7 +17,7 @@
             Contacto
         </a>
     </nav>
-    <nav class="lctl-toggleNavbarRightElements hide">
+    <nav class="lctl-toggleNavbarRightElements">
         <a routerLink="/registration" class="lctl-toggleNavbarElement">
             Regístrate
         </a>
@@ -20,4 +25,7 @@
             Ingresa
         </a>
     </nav>
+    <label for="lctl-toggleNavbarLabel" class="lctl-toggleNavbarLabelExit">
+        <div class="lctl-toggleNavbarExit"></div>
+    </label>
 </nav>
