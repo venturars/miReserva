@@ -1,4 +1,100 @@
-.space{
+
+.fatherfiltro{
+
+       max-width: 100%;
+        min-width: 300px;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        align-items: center;
+
+        & > .filtroselect{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            width: 60%;
+            height: 60px;
+
+            & > select{
+                font-size: 14px;
+                color: gray;
+                border: solid 1px gray;
+            }
+
+           
+        }
+
+}
+
+
+.father{
+        max-width: 100%;
+        min-width: 300px;
+        height: max-content;
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        align-content: center;
+
+        & > .son{
+
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+
+            
+
+            & > .pic{
+                width: 20%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                
+            }
+            & > .info{
+                margin: 10px;
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                align-items: center;
+
+                & > p{
+                    font-size: 14px;
+                    text-align: justify;
+                    margin: auto;
+                }
+            }
+            & > .buttons{
+                display: flex;
+                align-items: center;
+            }
+
+        }
+        
+}
+
+
+
+.buttonRes{
+    background-color:#BFFFD1;
+    color: #1C1B1B;
+    font-weight: var(--fontWidthLight);
+    }
+
+
+    .space{
+        opacity: 0;
+        height: 20px;
+    }
+
+    .modify{
+        width: 60%;
+    }
+
+/* .space{
     opacity: 0;
     height: 20px;
 }
@@ -19,4 +115,4 @@
 
 .modify{
     width: 85%;
-}
+} */
