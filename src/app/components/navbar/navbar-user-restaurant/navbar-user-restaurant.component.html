@@ -1,17 +1,28 @@
-<nav class="lctl-navbar">
-    <div class="lctl-navbar-leftElements">
-        <a routerLink="/" class="img" routerLink="/reservations-list-restaurant">
-            <img src="../../../../assets/LogoMiReserva.svg" alt="Logo empresa">
-        </a>    
-        <a routerLink="/reservations-list-restaurant">Reservas</a>
-        <!-- <a routerLink="/">Estadisticas</a> -->
-    </div>
-
-    <div class="lctl-rightElements">
-        <a class="img">
+<nav class="lctl-toggleNavbar">
+    <input id="lctl-toggleNavbarLabel" type="checkbox" class="lctl-toggleNavbarCheckbox lctl-toggleNavbarCheckbox2">
+    <div class="lctl-toggleNavbarPrincipal lctl-toggleNavbarPrincipal2">
+        <img a routerLink="/" routerLink="/reservations-list-restaurant"
+            class="lctl-toggleNavbarIcon" src="../../../../assets/LogoMiReserva.svg">
+        <label for="lctl-toggleNavbarLabel" class="lctl-toggleNavbarLabel lctl-toggleNavbarLabel2">
             <img src="
             assets/photos/logorestaurante.png
-            " class="lctl-photoProfile-m">
-        </a>
+            " class="lctl-photoProfile-m lctl-toggleNavbarPhotoProfile2">
+        </label>
     </div>
+    <nav class="lctl-toggleNavbarLeftElements lctl-toggleNavbarLeftElements2">
+        <a routerLink="/reservations-list-restaurant" class="lctl-toggleNavbarElement">
+            Reservas
+        </a>
+    </nav>
+    <nav class="lctl-toggleNavbarRightElements lctl-toggleNavbarRightElements2">
+        <a class="lctl-toggleNavbarElement">
+            Editar perfil
+        </a>
+        <a routerLink="/" class="lctl-toggleNavbarElement">
+            Salir
+        </a>
+    </nav>
+    <label for="lctl-toggleNavbarLabel" class="lctl-toggleNavbarLabelExit lctl-toggleNavbarLabelExit2">
+        <div class="lctl-toggleNavbarExit lctl-toggleNavbarExit2"></div>
+    </label>
 </nav>

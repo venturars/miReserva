@@ -512,15 +512,18 @@ a {
 //----------//----------//----------//----------//----------
 //-----Examample of use-----
 //----------//----------//----------//----------//----------
-//-----HTML-----
-//----------//----------//----------//----------//----------
 // <nav class="lctl-toggleNavbar">
+//     <input id="lctl-toggleNavbarLabel" type="checkbox" class="lctl-toggleNavbarCheckbox">
 //     <div class="lctl-toggleNavbarPrincipal">
 //         <img a routerLink="/" routerLink="/log-in"
 //             class="lctl-toggleNavbarIcon" src="../../../../assets/LogoMiReserva.svg">
-//         <mat-icon (click)="show()" class="lctl-toggleNavbarButton">menu</mat-icon>
+//         <label for="lctl-toggleNavbarLabel" class="lctl-toggleNavbarLabel">
+//             <mat-icon class="lctl-toggleNavbarButton">
+//                 menu
+//             </mat-icon>
+//         </label>
 //     </div>
-//     <nav class="lctl-toggleNavbarLeftElements hide">
+//     <nav class="lctl-toggleNavbarLeftElements">
 //         <a routerLink="/" class="lctl-toggleNavbarElement">
 //             ¿Cómo funciona?
 //         </a>
@@ -528,7 +531,7 @@ a {
 //             Contacto
 //         </a>
 //     </nav>
-//     <nav class="lctl-toggleNavbarRightElements hide">
+//     <nav class="lctl-toggleNavbarRightElements">
 //         <a routerLink="/registration" class="lctl-toggleNavbarElement">
 //             Regístrate
 //         </a>
@@ -536,35 +539,204 @@ a {
 //             Ingresa
 //         </a>
 //     </nav>
+//     <label for="lctl-toggleNavbarLabel" class="lctl-toggleNavbarLabelExit">
+//         <div class="lctl-toggleNavbarExit"></div>
+//     </label>
 // </nav>
 //----------//----------//----------//----------//----------
-//-----Ts-----
+// <nav class="lctl-toggleNavbar">
+//     <input id="lctl-toggleNavbarLabel" type="checkbox" class="lctl-toggleNavbarCheckbox lctl-toggleNavbarCheckbox2">
+//     <div class="lctl-toggleNavbarPrincipal lctl-toggleNavbarPrincipal2">
+//         <img a routerLink="/" routerLink="/log-in"
+//             class="lctl-toggleNavbarIcon" src="../../../../assets/LogoMiReserva.svg">
+//         <label for="lctl-toggleNavbarLabel" class="lctl-toggleNavbarLabel lctl-toggleNavbarLabel2">
+//             <img src="
+//             assets/photos/logorestaurante.png
+//             " class="lctl-photoProfile-m lctl-toggleNavbarPhotoProfile2">
+//         </label>
+//     </div>
+//     <nav class="lctl-toggleNavbarLeftElements lctl-toggleNavbarLeftElements2">
+//         <a routerLink="/search" class="lctl-toggleNavbarElement">
+//             Reservar
+//         </a>
+//         <a routerLink="/reservations-list-client" class="lctl-toggleNavbarElement">
+//             Mis Reservas
+//         </a>
+//     </nav>
+//     <nav class="lctl-toggleNavbarRightElements lctl-toggleNavbarRightElements2">
+//         <a routerLink="/edit-client" class="lctl-toggleNavbarElement">
+//             Editar perfil
+//         </a>
+//         <a routerLink="/" class="lctl-toggleNavbarElement">
+//             Salir
+//         </a>
+//     </nav>
+//     <label for="lctl-toggleNavbarLabel" class="lctl-toggleNavbarLabelExit lctl-toggleNavbarLabelExit2">
+//         <div class="lctl-toggleNavbarExit lctl-toggleNavbarExit2"></div>
+//     </label>
+// </nav>
 //----------//----------//----------//----------//----------
-// public show() {
-//     const hide:any = document.getElementsByClassName("hide");
-//     for(let i=0; i<hide.length;i++) {
-//       if(hide[i].style.display === "none") {
-//         hide[i].style.display="flex"
-//       } else {
-//         hide[i].style.display="none"
-//     }}}
+//-----Responsive Navbar 1-----
+//----------//----------//----------//----------//----------
+// .lctl-toggleNavbar {
+//     display: flex;
+//     background-color: var(--primaryColorOpposite);
+//     height: 82px;
+//     color: var(--secundaryColorOpposite);
+// }
+// .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements {
+//     display: flex;
+//     align-items: center;
+//     z-index: 2;
+// }
+// .lctl-toggleNavbarRightElements {
+//     margin-left: auto;
+// }
+// .lctl-toggleNavbarElement {
+//     padding: calc((82px - var(--fontSizeM))/2) 10px calc((82px - var(--fontSizeM))/2) 10px;
+//     text-decoration: none !important;
+//     font-weight: var(--fontWidthBolder);
+//     &:hover {
+//       background-color: var(--secundaryColorContrast);
+//         color: var(--secundaryColor);
+//     }
+//     &:active {
+//       background-color: var(--secundaryColorAccent);
+//       color: var(--secundaryColor);
+// }}
+// .lctl-toggleNavbarPrincipal {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 0 10px 0 10px;
+//     .lctl-toggleNavbarIcon {
+//         width: max-content;
+//         outline: none;
+//         cursor: pointer;
+//     }
+//     .lctl-toggleNavbarLabel {
+//         display: none;
+//         cursor: pointer;
+//         transform: scale(2.5, 2.5) translate(-5px, 5px);
+//         .lctl-toggleNavbarButton {
+//             color: var(--secundaryColorOpposite);
+//             border-radius: 50%;
+//             &:hover {
+//                 background-color: var(--secundaryColor);
+//             }
+//             &:active {
+//                 background-color: var(--secundaryColor);
+// }}}}
+// .lctl-toggleNavbarCheckbox {
+//     display: none;
+// }
+// .lctl-toggleNavbarLabelExit {
+//     display: none;
+//     z-index: -1;
+//     & .lctl-toggleNavbarExit {
+//         top: 72px;
+//         left: 0;
+//         position: absolute;
+//         width: 100%;
+//         height: calc(100% - 72px);
+// }}
+// @media only screen and (max-width: 768px) {
+//     .lctl-toggleNavbar {
+//         height: 72px;
+//     }
+//     .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements,
+//         .lctl-toggleNavbar {
+//         flex-direction: column;
+//     }
+//     .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements {
+//         background-color: var(--primaryColorOpposite);
+//         align-self: flex-end;
+//         width: 220px;
+//         align-items: flex-start;
+//         transform: translate(-4.5px, 19px);
+//         display: none;
+//     }
+//     .lctl-toggleNavbarLeftElements {
+//         & > .lctl-toggleNavbarElement:first-child {
+//             margin: 10px 10px 5px 10px;
+//     }}
+//     .lctl-toggleNavbarRightElements {
+//         border-bottom-right-radius: var(--borderRadiusM);
+//         border-bottom-left-radius: var(--borderRadiusM);
+//         & > .lctl-toggleNavbarElement:last-child {
+//         margin: 5px 10px 10px 10px;
+//     }}
+//     .lctl-toggleNavbarElement {
+//         margin: 5px 10px 5px 10px;
+//         padding: 0 10px 0 10px;
+//         background-color: var(--primaryColorContrast);
+//         width: calc(100% - 20px);
+//         border-radius: var(--borderRadiusS);
+//     }
+//     .lctl-toggleNavbarPrincipal {
+//         transform: translateY(9px);
+//         .lctl-toggleNavbarIcon {
+//             transform: scale(.8, .8);
+//         }
+//         .lctl-toggleNavbarLabel {
+//             display: initial;
+//         }}
+//         .lctl-toggleNavbarCheckbox {
+//             &:checked {
+//                 & ~ .lctl-toggleNavbarLeftElements,
+//                     ~ .lctl-toggleNavbarRightElements {
+//                     display: flex;
+//             }
+//             & ~ .lctl-toggleNavbarLabelExit {
+//                 display: initial;
+//                 z-index: 10000;
+// }}}}
+//----------//----------//----------//----------//----------
+//-----Responsive Navbar2-----
 //----------//----------//----------//----------//----------
 .lctl-toggleNavbar {
     display: flex;
     background-color: var(--primaryColorOpposite);
     height: 82px;
     color: var(--secundaryColorOpposite);
-  }
-  .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements {
+    padding: 0 10px 0 10px;
+}
+.lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements {
     display: flex;
     align-items: center;
-  }
-  .lctl-toggleNavbarRightElements {
+    z-index: 2;
+}
+.lctl-toggleNavbarRightElements {
     margin-left: auto;
-  }
-  .lctl-toggleNavbarElement {
-    padding: calc((82px - var(--fontSizeM))/2) 10px calc((82px - var(--fontSizeM))/2) 10px;
+}
+.lctl-toggleNavbarRightElements2 {
+    margin-left: 0;
+    flex-direction: column;
+    background-color: var(--primaryColorOpposite);
+    // align-self: flex-end;
+    width: 220px;
+    align-items: flex-start;
+    // transform: translate(-4.5px, 19px);
+    border-bottom-right-radius: var(--borderRadiusM);
+    border-bottom-left-radius: var(--borderRadiusM);
+    position: absolute;
+    right: 4.5px;
+    top: 82px;
+    display: none;
+        & > .lctl-toggleNavbarElement:last-child {
+        margin: 5px 10px 10px 10px;
+        }
+    & >.lctl-toggleNavbarElement {
+        margin: 5px 10px 5px 10px;
+        padding: 0 10px 0 10px;
+        background-color: var(--primaryColorContrast);
+        width: calc(100% - 20px);
+        border-radius: var(--borderRadiusS);
+}}
+.lctl-toggleNavbarElement {
+    padding: calc((82px - 27px)/2) 10px calc((82px - 27px)/2) 10px;
     text-decoration: none !important;
+    font-weight: var(--fontWidthBolder);
     &:hover {
       background-color: var(--secundaryColorContrast);
         color: var(--secundaryColor);
@@ -572,64 +744,137 @@ a {
     &:active {
       background-color: var(--secundaryColorAccent);
       color: var(--secundaryColor);
-  }}
-  .lctl-toggleNavbarPrincipal {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px 0 10px;
-  .lctl-toggleNavbarIcon {
-    width: max-content;
-    outline: none;
-    cursor: pointer;
-  }
-  .lctl-toggleNavbarButton {
-    display: none;
-    cursor: pointer;
-    color: var(--secundaryColorOpposite);
-    transform: scale(2.5, 2.5) translateX(-5px);
-    border-radius: 50%;
-    &:hover {
-        background-color: var(--secundaryColor);
+}}
+.lctl-toggleNavbarPrincipal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    .lctl-toggleNavbarIcon {
+        width: max-content;
+        outline: none;
+        cursor: pointer;
     }
-    &:active {
-        background-color: var(--secundaryColorPush);
-  }}}
-  @media only screen and (max-width: 768px) {
-    .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements,
+    .lctl-toggleNavbarLabel {
+        display: none;
+        cursor: pointer;
+        transform: scale(2.5, 2.5) translate(-7px, 5px);
+        .lctl-toggleNavbarButton {
+            color: var(--secundaryColorOpposite);
+            border-radius: 50%;
+            &:hover {
+                background-color: var(--secundaryColor);
+            }
+            &:active {
+                background-color: var(--secundaryColor);
+        }}
+        .lctl-toggleNavbarPhotoProfile2 {
+        }}
+    .lctl-toggleNavbarLabel2 {
+        right: 20px;
+        position: absolute;
+        display: initial;
+        transform: none;
+        transform: translate(0, 5px);
+}}
+.lctl-toggleNavbarCheckbox {
+    display: none;
+}
+.lctl-toggleNavbarLabelExit {
+    display: none;
+    z-index: -1;
+    & .lctl-toggleNavbarExit {
+        top: 72px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: calc(100% - 72px);
+}}
+.lctl-toggleNavbarLabelExit2 {
+    & .lctl-toggleNavbarExit2 {
+        top: 82px;
+}}
+.lctl-toggleNavbarCheckbox2 {
+    &:checked {
+        & ~ .lctl-toggleNavbarRightElements2 {
+            display: flex;
+        }
+        & ~ .lctl-toggleNavbarPrincipal2 .lctl-toggleNavbarPhotoProfile2 {
+            border: 2px solid var(--secundaryColorContrast);
+        }
+        & ~ .lctl-toggleNavbarLabelExit2 {
+            display: initial;
+            z-index: 10000;
+}}}
+@media only screen and (max-width: 768px) {
     .lctl-toggleNavbar {
-      flex-direction: column;
+        height: 72px;
+    }
+    .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements,
+        .lctl-toggleNavbar {
+        flex-direction: column;
     }
     .lctl-toggleNavbarLeftElements, .lctl-toggleNavbarRightElements {
-      background-color: var(--primaryColorOpposite);
-      align-self: flex-end;
-      width: 200px;
-      align-items: flex-start;
-      transform: translate(-4.5px, 14px);
-      display: none;
+        background-color: var(--primaryColorOpposite);
+        align-self: flex-end;
+        width: 220px;
+        align-items: flex-start;
+        transform: translate(-4.5px, 19px);
+        display: none;
+    }
+    .lctl-toggleNavbarLeftElements2, .lctl-toggleNavbarRightElements2 {
+        transform: translate(-4.5px, 0);
+    }
+    .lctl-toggleNavbarRightElements2 {
+        position: initial;
+        right: initial;
+        top: initial;
     }
     .lctl-toggleNavbarLeftElements {
-      & > .lctl-toggleNavbarElement:first-child {
-        margin: 15px 10px 5px 10px;
+        & > .lctl-toggleNavbarElement:first-child {
+            margin: 10px 10px 5px 10px;
     }}
     .lctl-toggleNavbarRightElements {
-      border-bottom-right-radius: var(--borderRadiusM);
-      border-bottom-left-radius: var(--borderRadiusM);
-      & > .lctl-toggleNavbarElement:last-child {
+        border-bottom-right-radius: var(--borderRadiusM);
+        border-bottom-left-radius: var(--borderRadiusM);
+        & > .lctl-toggleNavbarElement:last-child {
         margin: 5px 10px 10px 10px;
     }}
     .lctl-toggleNavbarElement {
-      margin: 5px 10px 5px 10px;
-      padding: 0 10px 0 10px;
-      background-color: var(--primaryColorContrast);
-      width: calc(100% - 20px);
-      border-radius: var(--borderRadiusS);
+        margin: 5px 10px 5px 10px;
+        padding: 0 10px 0 10px;
+        background-color: var(--primaryColorContrast);
+        width: calc(100% - 20px);
+        border-radius: var(--borderRadiusS);
     }
     .lctl-toggleNavbarPrincipal {
-      transform: translateY(14px);
-      .lctl-toggleNavbarButton {
-        display: initial;
-  }}}
+        transform: translateY(9px);
+        .lctl-toggleNavbarIcon {
+            transform: scale(.8, .8);
+        }
+        .lctl-toggleNavbarLabel {
+            display: initial;
+        }
+        .lctl-toggleNavbarLabel2 {
+            position:  initial;
+            right: initial;
+    }}
+    .lctl-toggleNavbarCheckbox {
+        &:checked {
+            & ~ .lctl-toggleNavbarLeftElements,
+                ~ .lctl-toggleNavbarRightElements {
+                display: flex;
+            }
+            & ~ .lctl-toggleNavbarPrincipal2 .lctl-toggleNavbarPhotoProfile2 {
+                border: 2px solid var(--secundaryColorContrast);
+            }
+            & ~ .lctl-toggleNavbarLabelExit {
+                display: initial;
+                z-index: 10000;
+    }}}
+    .lctl-toggleNavbarPrincipal2 {
+        transform: translateY(1px);
+}}
 //----------//----------//----------//----------//----------
 [class *= "lctl-navbar"] {
     position: relative;

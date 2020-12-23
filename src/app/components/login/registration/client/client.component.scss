@@ -66,6 +66,7 @@ form {
 }
 .caution{
   border:var(--secundaryColorContrast) solid 2px;
+  border-radius: var(--borderRadiusL);
 }
 .invalid-feedback-left{
   color:var(--secundaryColorContrast);
@@ -78,7 +79,7 @@ form {
 //-----responsive-----
 @media screen and (max-width: 1250px) {
   form {
-    & .title {
+    & .titleForm {
     }
     & .inputForm {
     }
@@ -95,7 +96,7 @@ form {
 }}}
 @media screen and (max-width: 850px) {
   form {
-    & .title {
+    & .titleForm {
     }
     & .inputForm {
     }
@@ -112,7 +113,7 @@ form {
 }}}
 @media screen and (max-width: 650px) {
   form {
-    & .title {
+    & .titleForm {
     }
     & .inputForm {
       max-width: 400px;
@@ -134,10 +135,18 @@ form {
 }}}
 @media screen and (max-width: 450px) {
   form {
-    & .title {
+    & .titleForm {
     }
     & .inputForm {
       width: 100%;
+      font-size: var(--fontSizeS);
+      height: 40px;
+      margin: 11px 0 11px 0;
+      padding: 0 10px 0 30px;
+    }
+    #profile, #password {
+      background-size: 25px;
+      background-position: 7px 1px;
     }
     & > .overLogIn {
       flex-direction: column;
