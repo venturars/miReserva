@@ -1,34 +1,16 @@
-
-        <div class="inputcontainer">
-            <div class="profileport inputimage"> 
-                <img src="assets/photos/potada2.png" class="profileport inputimage" id="mostrarbanner" (click)="banner.click()">  
-                
+<div class="inputcontainer">
+  <div class="profileport inputimage"> 
+    <img src="assets/photos/potada2.png" class="profileport inputimage"
+      id="mostrarbanner" (click)="banner.click()">  
     <div class="aligns">
-            <div class="lctl-photoProfile-xl borderc" (click)="perfil.click()">    
-            <img id="mostrarlogo" src="assets/photos/logorestaurante2.png" >
-        </div>
+      <div class="lctl-photoProfile-xl borderc" (click)="perfil.click()">    
+        <img id="mostrarlogo" src="assets/photos/logorestaurante2.png" >
+      </div>
+    </div>  
+    <input  style="display:none" id="perfil" type="file" name="perfil" #perfil (change)="processLogo(perfil)">
+    <div class="port">
+      <img src="" alt="">
+      <input  style="display:none" id="banner" type="file" name="banner" #banner (change)="processBanner(banner)">
     </div>
-
-            
-            <input  style="display:none" id="perfil" type="file" name="perfil" #perfil (change)="processLogo(perfil)">
-            <div class="port">
-            <img src="" alt="">
-            <input  style="display:none" id="banner" type="file" name="banner" #banner (change)="processBanner(banner)">
-            </div>
-          </div>
-            
-        </div>
-
-
-    
-
-       
-    
-
-
-
-
-
-
-
-
+  </div>          
+</div>

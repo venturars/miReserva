@@ -1,4 +1,4 @@
-<nav class="lctl-toggleNavbar">
+<!-- <nav class="lctl-toggleNavbar">
     <input id="lctl-toggleNavbarLabel" type="checkbox" class="lctl-toggleNavbarCheckbox">
     <div class="lctl-toggleNavbarPrincipal">
         <img a routerLink="/" routerLink="/log-in"
@@ -25,7 +25,36 @@
             Ingresa
         </a>
     </nav>
-    <label for="lctl-toggleNavbarLabel" class="lctl-toggleNavbarLabelExit">
-        <div class="lctl-toggleNavbarExit"></div>
-    </label>
-</nav>
+</nav> -->
+
+<div class="lctl-navContainer">
+    <button class="lctl_navSection lctl-navToggle2">
+        <mat-icon class="lctl-toggleNavbarButton">menu</mat-icon>
+    </button>
+    <button class="lctl-navItems">
+        <div class="lctl-navAfterButton">
+            <button class="lctl_navSection lctl-navRightItems2">
+                <div class="lctl-navAfterButton2">
+                    <div class="lctl-navElement" (click)="toRegister()">
+                        Regístrate
+                    </div>
+                    <div class="lctl-navElement" (click)="toLogIn()">
+                        Ingresa
+                    </div>
+                </div>
+            </button>
+            <div class="lctl_navSection lctl-navLeftItems">
+                <div class="lctl-navElement" (click)="toHowItWorks()">
+                    ¿Cómo funciona?
+                </div>
+                <div class="lctl-navElement" (click)="toContact()">
+                    Contacto
+                </div>
+            </div>
+            <button class="lctl-navHidden"></button>
+        </div>
+    </button>
+        <div class="lctl_navSection lctl-navHome" (click)="toHome()">
+            <img src="../../../../assets/LogoMiReserva.svg">
+    </div>
+</div>
