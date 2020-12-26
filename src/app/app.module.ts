@@ -31,7 +31,6 @@ import { RestaurantsComponent } from './components/restaurant/owner/restaurants/
 import { CreateRestaurant1Component } from './components/restaurant/owner/create-restaurant/create-restaurant1/create-restaurant1.component';
 import { CreateRestaurant2Component } from './components/restaurant/owner/create-restaurant/create-restaurant2/create-restaurant2.component';
 import { CreateRestaurant3Component } from './components/restaurant/owner/create-restaurant/create-restaurant3/create-restaurant3.component';
-import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/create-restaurant/create-restaurant-header/create-restaurant-header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
 import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
@@ -67,7 +66,6 @@ import { ModalInfdeRestauranteComponent } from './components/modals/modal-infde-
     CreateRestaurant1Component,
     CreateRestaurant2Component,
     CreateRestaurant3Component,
-    CreateRestaurantHeaderComponent,
     FooterComponent,
     ReservationsRestaurantComponent,
     DoReservationHeaderComponent,

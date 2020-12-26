@@ -1,72 +1,94 @@
 <!-- Barra breadcrumb añadida al componente de ABAJO CONFIRMAR CAMBIO -->
-<div class="lctl-navbar">
-    <ul class="breadcrumb">
-        <li ><a id="info">Información del Local</a></li>
-        <li ><a id="dist">Distribución de las Mesas</a></li>
-        <li ><a id="horarios">Horarios</a></li>
-      </ul>
+<div class="modifyNav">
+    <div id="info"><a>Local</a></div>
+    <div id="dist"><a>Mesas</a></div>
+    <div id="horarios"><a>Horas</a></div>
 </div>
-<app-restaurant-owner-CreateRestaurantHeader></app-restaurant-owner-CreateRestaurantHeader>
-<form class="encolumna" #restForm="ngForm" (ngSubmit)="(restForm.invalid) ? 'mal' : onSubmit(restForm)">
-        <div class="dosendos">
+
+<div class="profileport inputimage"> 
+    <img src="assets/photos/potada2.png" class="profileport inputimage"
+        id="mostrarbanner" (click)="banner.click()">  
+    <div class="port">
+        <img src="" alt="">
+        <input style="display:none" id="banner" type="file" name="banner" #banner (change)="processBanner(banner)">
+    </div>
+</div>
+<div class="aligns">
+    <div class="lctl-photoProfile-xl borderc" (click)="perfil.click()">    
+        <img id="mostrarlogo" src="assets/photos/logorestaurante2.png" >
+    </div>
+    <input style="display:none" id="perfil" type="file" name="perfil" #perfil (change)="processLogo(perfil)">
+</div>  
+
+
+<form class="createForm" #restForm="ngForm" (ngSubmit)="(restForm.invalid) ? 'mal' : onSubmit(restForm)">
+    <div class="">
         <input type="text" class="lctl-input-m-extraLarge" 
-        placeholder="{{restForm.submitted && name.invalid ?  'Nombre del local obligatorio' : 'Nombre del local'}}"
-         name="name" [(ngModel)]="restaurant.name" #name="ngModel"
-        [ngClass]="{'caution':restForm.submitted && name.invalid }" required>
-        
+            placeholder="{{restForm.submitted && name.invalid ?  'Nombre del local obligatorio' : 'Nombre del local'}}"
+            name="name" [(ngModel)]="restaurant.name" #name="ngModel"
+            [ngClass]="{'caution':restForm.submitted && name.invalid }" required>
         <input type="text" class="lctl-input-m-extraLarge" 
-        placeholder="{{restForm.submitted && telephone.invalid ?  'Teléfono obligatorio' : 'Teléfono'}}"
-        name="telephone" [(ngModel)]="restaurant.telephone" #telephone="ngModel"
-        [ngClass]="{'caution':restForm.submitted && telephone.invalid }" required>
-        </div>
-        <div class="dosendos">
+            placeholder="{{restForm.submitted && telephone.invalid ?  'Teléfono obligatorio' : 'Teléfono'}}"
+            name="telephone" [(ngModel)]="restaurant.telephone" #telephone="ngModel"
+            [ngClass]="{'caution':restForm.submitted && telephone.invalid }" required>
+    </div>
+    <div class="">
         <input type="text" class="lctl-input-m-extraLarge" 
-        placeholder="{{restForm.submitted && address.invalid ?  'Calle obligatoria' : 'Calle'}}"
-        name="address" [(ngModel)]="restaurant.address" #address="ngModel"
-        [ngClass]="{'caution':restForm.submitted && address.invalid }" required>
+            placeholder="{{restForm.submitted && name.invalid ?  'Nombre del local obligatorio' : 'Nombre del local'}}"
+            name="name" [(ngModel)]="restaurant.name" #name="ngModel"
+            [ngClass]="{'caution':restForm.submitted && name.invalid }" required>
         <input type="text" class="lctl-input-m-extraLarge" 
-        placeholder="{{restForm.submitted && addressnumber.invalid ?  'Numero de calle obligatorio' : 'Número de calle'}}"
-        name="addressnumber" [(ngModel)]="restaurant.addressnumber" #addressnumber="ngModel"
-        [ngClass]="{'caution':restForm.submitted && addressnumber.invalid }" required>
-        </div>
-        <div class="dosendos">
-            <input type="text" class="lctl-input-m-extraLarge" 
+            placeholder="{{restForm.submitted && telephone.invalid ?  'Teléfono obligatorio' : 'Teléfono'}}"
+            name="telephone" [(ngModel)]="restaurant.telephone" #telephone="ngModel"
+            [ngClass]="{'caution':restForm.submitted && telephone.invalid }" required>
+    </div>
+    <div class="">
+        <input type="text" class="lctl-input-m-extraLarge" 
+            placeholder="{{restForm.submitted && address.invalid ?  'Calle obligatoria' : 'Calle'}}"
+            name="address" [(ngModel)]="restaurant.address" #address="ngModel"
+            [ngClass]="{'caution':restForm.submitted && address.invalid }" required>
+        <input type="text" class="lctl-input-m-extraLarge" 
+            placeholder="{{restForm.submitted && addressnumber.invalid ?  'Numero de calle obligatorio' : 'Número de calle'}}"
+            name="addressnumber" [(ngModel)]="restaurant.addressnumber" #addressnumber="ngModel"
+            [ngClass]="{'caution':restForm.submitted && addressnumber.invalid }" required>
+    </div>
+    <div class="">
+        <input type="text" class="lctl-input-m-extraLarge" 
             placeholder="{{restForm.submitted && city.invalid ?  'Ciudad obligatoria' : 'Ciudad'}}"
             name="city" [(ngModel)]="restaurant.city" #city="ngModel"
             [ngClass]="{'caution':restForm.submitted && city.invalid }" required>
-            <input type="text" class="lctl-input-m-extraLarge" 
+        <input type="text" class="lctl-input-m-extraLarge" 
             placeholder="{{restForm.submitted && capacity.invalid ?  'Aforo obligatorio' : 'Capacidad aforo'}}"
             name="capacity" [(ngModel)]="restaurant.capacity" #capacity="ngModel"
             [ngClass]="{'caution':restForm.submitted && capacity.invalid }" required>
-            </div>
-        <div class="dosendos">
+    </div>
+    <div class="">
         <input type="text" class="lctl-input-m-extraLarge" 
-        placeholder="{{restForm.submitted && postalcode.invalid ?  'Código postal obligatorio' : 'Código postal'}}"
-        name="postalcode" [(ngModel)]="restaurant.postalcode" #postalcode="ngModel"
-        [ngClass]="{'caution':restForm.submitted && postalcode.invalid }" required>
+            placeholder="{{restForm.submitted && postalcode.invalid ?  'Código postal obligatorio' : 'Código postal'}}"
+            name="postalcode" [(ngModel)]="restaurant.postalcode" #postalcode="ngModel"
+            [ngClass]="{'caution':restForm.submitted && postalcode.invalid }" required>
         <select class="lctl-input-m-extraLarge" 
-        name="food" [(ngModel)]="restaurant.food" #food="ngModel" 
-        [ngClass]="{'caution':restForm.submitted && food.invalid }" required>
-        <option selected="true" disabled="disabled">Selecciona tipo de comida</option>
+            name="food" [(ngModel)]="restaurant.food" #food="ngModel" 
+            [ngClass]="{'caution':restForm.submitted && food.invalid }" required>
+            <option selected="true" disabled="disabled">Selecciona tipo de comida</option>
             <!-- //HAY QUE PONER VALUES A LOS OPTION PARA METERLOS EN LA BASE DE DATOS -->
             <option>Española</option>
             <option>Mexicana</option>
             <option>China</option>
             <option>Japonesa</option>
-            </select>
-        </div>
-        <div class="dosendos">    
-        <input type="text" class="lctl-input-m-extraLarge" placeholder="Email"
-        placeholder="{{restForm.submitted && postalcode.invalid ?  'Email obligatorio' : 'Email'}}"
-        name="email" [(ngModel)]="restaurant.email" #email="ngModel"
-        [ngClass]="{'caution':restForm.submitted && email.invalid }" required>
-        <input type="text" class="lctl-input-m-extraLarge"
-        placeholder="{{restForm.submitted && password.invalid ?  'Contraseña obligatoria' : 'Contraseña'}}"
-        name="password" [(ngModel)]="restaurant.password" #password="ngModel"
-        [ngClass]="{'caution':restForm.submitted && password.invalid }" required>
-        </div>
-    <div class="button">
-        <button type="submit" class="lctl-button-m " >Siguiente</button>
+        </select>
     </div>
-        
+    <div class="">    
+        <input type="text" class="lctl-input-m-extraLarge" placeholder="Email"
+            placeholder="{{restForm.submitted && postalcode.invalid ?  'Email obligatorio' : 'Email'}}"
+            name="email" [(ngModel)]="restaurant.email" #email="ngModel"
+            [ngClass]="{'caution':restForm.submitted && email.invalid }" required>
+        <input type="text" class="lctl-input-m-extraLarge"
+            placeholder="{{restForm.submitted && password.invalid ?  'Contraseña obligatoria' : 'Contraseña'}}"
+            name="password" [(ngModel)]="restaurant.password" #password="ngModel"
+            [ngClass]="{'caution':restForm.submitted && password.invalid }" required>
+    </div>
+    <div class="lctl-footer">
+        <button type="submit" class="lctl-button-m ">Siguiente</button>
+    </div> 
 </form>

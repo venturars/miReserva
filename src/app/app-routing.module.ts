@@ -6,11 +6,6 @@ import { EditClientComponent } from './components/client/edit/edit.component';
 import { ReservationsClientComponent } from './components/client/reservations/reservations.component';
 import { SearchComponent } from './components/client/search/search.component';
 import { DesignComponent } from './components/login/design/design.component';
-import { LogInComponent } from './components/login/log-in/log-in.component';
-import { ClientComponent } from './components/login/registration/client/client.component';
-import { OwnerComponent } from './components/login/registration/owner/owner.component';
-import { RegistrationComponent } from './components/login/registration/registration.component';
-import { CreateRestaurantHeaderComponent } from './components/restaurant/owner/create-restaurant/create-restaurant-header/create-restaurant-header.component';
 import { CreateRestaurant1Component } from './components/restaurant/owner/create-restaurant/create-restaurant1/create-restaurant1.component';
 import { CreateRestaurant2Component } from './components/restaurant/owner/create-restaurant/create-restaurant2/create-restaurant2.component';
 import { CreateRestaurant3Component } from './components/restaurant/owner/create-restaurant/create-restaurant3/create-restaurant3.component';
@@ -33,7 +28,6 @@ const routes: Routes = [
   {path:"create-restaurant-1", component: CreateRestaurant1Component},
   {path:"create-restaurant-2", component: CreateRestaurant2Component},
   {path:"create-restaurant-3", component: CreateRestaurant3Component},
-  {path:"create-restaurant-header", component: CreateRestaurantHeaderComponent},
   {path:"restaurants-list", component: RestaurantsComponent},
   {path:"**", component:DesignComponent},
   {path:" ", component:DesignComponent}
