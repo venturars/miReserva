@@ -126,7 +126,7 @@ form {
       max-width: 400px;
     }
     & > .overLogIn {
-      width: 400px;
+      width: 380px;
       & > div:first-child {
         & > .textCheck{
       }}
@@ -144,7 +144,7 @@ form {
     & .titleForm {
     }
     & .inputForm {
-      width: 100%;
+      width: calc(100% - 20px);
       font-size: var(--fontSizeS);
       height: 40px;
       margin: 11px 0 11px 0;

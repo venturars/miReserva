@@ -382,8 +382,15 @@ a {
     font-size: 14px;
     border: 1px solid var(--secundaryColorOpposite);
     &::placeholder {
-        text-transform: capitalize;
         color: var(--secundaryColorPush);
+    }
+    & > option {
+        color: var(--secundaryColorOpposite);
+        font-size: var(--fontSizeS);
+        border: 1px solid var(--secundaryColorOpposite);
+        &:disabled {
+            color: var(--secundaryColorPush);
+        }
 }}
 //----------
 [class *="lctl-input-s"] {
@@ -403,7 +410,7 @@ a {
     width: 150px;
     height: 35px;
     border-radius: var(--borderRadiusM);
-    font-size: var(--fontSizeM);
+    font-size: var(--fontSizeS);
 }
 [class *="lctl-input-m-large"] {
     width: 300px;
@@ -435,11 +442,10 @@ a {
     color: var(--secundaryColorOpposite);
     outline: none;
     background: transparent;
-    font-size: var(--fontSizeM);
+    font-size: var(--fontSizeS);
     font-weight: var(--fontWidthBolder);
     &::placeholder {
         color: var(--secundaryColorPush);
-        text-transform: capitalize;
     }
     &:disabled {
         color: var(--secundaryColorOpposite);
@@ -477,11 +483,10 @@ a {
     color: var(--secundaryColorOpposite);
     outline: none;
     background: transparent;
-    font-size: var(--fontSizeM);
+    font-size: var(--fontSizeS);
     font-weight: var(--fontWidthBolder);
     &::placeholder {
         color: var(--secundaryColorPush);
-        text-transform: capitalize;
     }
     &:disabled {
         color: var(--secundaryColorOpposite);
@@ -847,6 +852,67 @@ a {
         top: -72px;
         height: 72px;
 }}}
+//----------//----------//----------//----------//----------
+[class *= "lctl-navbar"] {
+    position: relative;
+    // top: 0;
+    width: 100vw;
+    height: 82px;
+    text-transform: uppercase;
+    font-weight: var(--fontWidthBolder);
+    background-color: var(--secundaryColor);
+    color: var(--secundaryColorOpposite);
+    display: flex;
+    align-items: center;
+    & * a, & a {
+        font-size: var(--fontSizeM);
+        font-weight: var(--fontWidthBolder);
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 27px;
+        padding-top: 27px;
+        text-decoration: none;
+        text-align: center;
+    }
+    & * a:hover, & a:hover {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+    }
+    & * a:active, & a:active {
+        background-color: var(--secundaryColorAccent);
+        color: var(--secundaryColor);
+}}
+//----------//----------//----------//----------//----------
+//-----Footer-----
+//----------//----------//----------//----------//----------
+[class *= "lctl-footer"] {
+    position: relative;
+    width: 100vw;
+    height: 52px;
+    text-transform: uppercase;
+    font-weight: var(--fontWidthBolder);
+    background-color: var(--primaryColorOpposite);
+    color: var(--secundaryColorOpposite);
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    & * a, & a {
+        font-size: var(--fontSizeM);
+        font-weight: var(--fontWidthBolder);
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-decoration: none;
+    }
+    & * a:hover, & a:hover {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+    }
+    & * a:active, & a:active {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+}}
 //----------//----------//----------//----------//----------
 //-----Elements position-----
     //-----Deprecated-----

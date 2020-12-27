@@ -72,6 +72,8 @@
     display: none;
 }}
 //-----//-----//-----//-----//-----//-----
+//-----Images-----
+//-----//-----//-----//-----//-----//-----
 .inputimage{
   max-width: 1440px;
   width: 100%;
@@ -101,22 +103,54 @@
   border-color:var(--secundaryColorPush);
 }
 //-----//-----//-----//-----//-----//-----
+//-----Form-----
+//-----//-----//-----//-----//-----//-----
 .createForm {
-  height: 20000px;
   max-width: 1440px;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 52px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  background-color: rebeccapurple;
+  & .inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > div {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      & > input, > select {
+        margin: 10px;
+      }}}}
+@media screen and (max-width: 768px) {
+  .createForm > .inputs > div {
+    flex-wrap: wrap;
+}}
+//-----//-----//-----//-----//-----
+//-----Footer-----
+//-----//-----//-----//-----//-----
+.pass {
+  position: absolute;
+  flex-direction: row-reverse;
+  padding-right: 50px;
+  bottom: 0;
 }
-
-
-
-
-
-
-
+@media screen and (max-width: 768px) {
+  .pass {
+    justify-content: center;
+    padding: 0;
+    & > button {
+      width: 120px;
+}}}
+//-----//-----//-----//-----//-----
+//-----Validations-----
+//-----//-----//-----//-----//-----
 .caution {
     border:var(--secundaryColorContrast) solid 2px;
     background-color: lightgrey;
