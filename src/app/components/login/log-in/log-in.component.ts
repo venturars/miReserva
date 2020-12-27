@@ -24,14 +24,21 @@ export class LogInComponent implements OnInit {
     this.user= new User(null,null,null,null,null,null);
    }
 onSubmit(form:any){
-  console.log(form.value);
-  /* this.serviceLogIn.getUsers() */
-
-
-
-
-  // routerLink al componente deseado desde el ts
-  this.router.navigate(['/search'])
+  
+  this.serviceLogIn.getUsers( 
+    form.value.email,
+    form.value.password
+  )
+  this.serviceLogIn.control
+  if(this.serviceLogIn.control === 0){
+    this.router.navigate(['/']);
+  }else if(this.serviceLogIn.control === 1){
+    this.router.navigate(['/reservations-list-restaurant']);
+  }else if(this.serviceLogIn.control == 2){
+    this.router.navigate(['/restaurants-list']);
+  }else if(this.serviceLogIn.control == 3){
+    this.router.navigate(['/search']);
+  }
 }
   ngOnInit(): void {
   }
