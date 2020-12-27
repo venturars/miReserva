@@ -37,7 +37,7 @@ cogeCoordenadas(){
     console.log(this.restaurant.longitude);
     this.map = new Map("mapid").setView([this.restaurant.latitude,this.restaurant.longitude], 19);
   tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    attribution: 'Mi reserva',
     maxZoom: 18
 })
       .addTo(this.map);

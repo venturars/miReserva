@@ -309,21 +309,19 @@ app.post("/times", (req,res)=>{
     })
 })
 
-app.get("/times", (req,res)=>{
-
-    let params = [req.body.name,req.body.time_from, req.body.time_to, req.body.restaurant_id, req.body.service];
-    let message= {
-        "control":null,
-        "data":null
+app.get("/times/:restaurant_id", (req, res) => {
+    let params = req.params.restaurant_id;
+    let message = {
+        "control": null,
+        "data": null
     }
-
-    let sql=`
-    SELECT 
-    *
-    FROM 
-    times
-    `
-
+    let sql =
+        `SELECT
+            *
+        FROM
+            times
+        WHERE
+            times.restaurant_id = ?`;
     connection.query(sql,params,(err,data)=>{
          if(err){ console.log(err)}
          else{
@@ -333,39 +331,7 @@ app.get("/times", (req,res)=>{
              }
              else{
                  message.control=true;
-                 
-                  
-                }
-         }
-         res.status(200).send(message);
-    })
-})
-
-app.get("/times", (req,res)=>{
-
-    let params = [req.body.name,req.body.time_from, req.body.time_to, req.body.restaurant_id, req.body.service];
-    let message= {
-        "control":null,
-        "data":null
-    }
-
-    let sql=`
-    SELECT 
-    *
-    FROM 
-    times
-    `
-
-    connection.query(sql,params,(err,data)=>{
-         if(err){ console.log(err)}
-         else{
-             if (data==""){
-                 message.control=false;
-                 message.data=data;
-             }
-             else{
-                 message.control=true;
-                 message.data=data;
+                 message.data=data;    
                   
                 }
          }
@@ -551,19 +517,19 @@ app.put("/shifts", (req,res)=>{
     })
 })
 
-app.get("/shifts", (req,res)=>{
-    let params=[];
-    let message= {
-        "control":null,
-        "data":null
+app.get("/shifts/:restaurant_id", (req, res) => {
+    let params = req.params.restaurant_id;
+    let message = {
+        "control": null,
+        "data": null
     }
-
-    let sql=
-    `SELECT * 
-    FROM
-    shifts
-    `
-
+    let sql =
+        `SELECT
+            *
+        FROM
+            shifts
+        WHERE
+            shifts.restaurant_id = ?`;
     connection.query(sql,params,(err,data)=>{
          if(err){ console.log(err)}
          else{
