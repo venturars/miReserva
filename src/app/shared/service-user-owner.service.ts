@@ -1,28 +1,26 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Restaurants } from '../models/restaurants'
+import { UserOwner } from '../models/user-owner';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceRestaurantService {
-  private url = "http://localhost:3000/restaurant"
+export class ServiceUserOwnerService {
+  private url = "http://localhost:3000/user_owner"
   constructor(private http:HttpClient) { }
 
   getRestaurant(id:number){
     return this.http.get(this.url + "/" + id)
   }
-  postRestaurant(nuevoRestaurant:Restaurants){
-    return this.http.post(this.url,nuevoRestaurant)
+  postRestaurant(newOwner:UserOwner){
+    return this.http.post(this.url,newOwner)
   }
-  putRestaurant(nuevoRestaurant:Restaurants){
-    return this.http.put(this.url,nuevoRestaurant)
+  putRestaurant(newOwner:UserOwner){
+    return this.http.put(this.url,newOwner)
   }
   public deleteRestaurant(id:number):any {    
     return this.http.request('DELETE',this.url, {
       headers: new HttpHeaders ({ 'Content-Type': 'application/json' }),
       body: {id:id}
 });
-}
-
-}
+}}

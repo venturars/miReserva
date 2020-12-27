@@ -16,7 +16,9 @@ export class Restaurants {
         public url:string,
         public latitude:number,
         public longitude:number,
-        public owner_id:number
+        public owner_id:number,
+        public mail:string,
+        public password:string
         ){}
 
 }
