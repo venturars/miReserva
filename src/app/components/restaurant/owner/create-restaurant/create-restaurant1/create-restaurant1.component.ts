@@ -14,6 +14,8 @@ export class CreateRestaurant1Component implements OnInit {
   public restaurantmodel:Restaurants;
   public banner:string;
   public logo:string;
+  
+
   constructor(public router:Router) {
     this.restaurant= new Restaurant (null,null,null,null,null,null,null,null,null,null);
     this.restaurantmodel= new Restaurants (null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
@@ -43,7 +45,9 @@ reader.readAsDataURL(file);
    onSubmit(restForm){
      console.log(restForm.value);
     console.log(this.restaurant.banner);
-    console.log(this.restaurant.logo);        
+    console.log(this.restaurant.logo); 
+    
+    const nuevorestaurante= new Restaurants (null,restForm.name, restForm.province, restForm.city, restForm.street_name, restForm.street_number, restForm.postal_code,restForm.phone,restForm.capacity, restForm.food_type,this.banner, this.logo,null,restForm.url,null,null, null);     
      //hay que hacer el post del restaurante
      //hay que hacer un update del restaurant con el header una vez que se ha creado el restaurante
      //hay que hacer un update del restaurant calculando latitude y longitude
