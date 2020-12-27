@@ -12,7 +12,8 @@ export class CreateRestaurant1Component implements OnInit {
   
   public restaurant:Restaurant;
   public restaurantmodel:Restaurants;
-
+  public banner:string;
+  public logo:string;
   constructor(public router:Router) {
     this.restaurant= new Restaurant (null,null,null,null,null,null,null,null,null,null);
     this.restaurantmodel= new Restaurants (null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
@@ -22,8 +23,8 @@ export class CreateRestaurant1Component implements OnInit {
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
     //const imagen=document.getElementById("mostrarbanner").setAttribute("src", event.target.result);
-    this.restaurant.logo="assets/photos/" +file.name;
-    const imagen=document.getElementById("mostrarbanner").setAttribute("src", this.restaurant.logo);
+    this.restaurant.banner="assets/photos/" +file.name;
+    const imagen=document.getElementById("mostrarbanner").setAttribute("src", this.restaurant.banner);
   })
   reader.readAsDataURL(file);
 }
@@ -41,6 +42,8 @@ reader.readAsDataURL(file);
   
    onSubmit(restForm){
      console.log(restForm.value);
+    console.log(this.restaurant.banner);
+    console.log(this.restaurant.logo);        
      //hay que hacer el post del restaurante
      //hay que hacer un update del restaurant con el header una vez que se ha creado el restaurante
      //hay que hacer un update del restaurant calculando latitude y longitude
