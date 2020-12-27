@@ -1,7 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { EventEmitter } from 'events';
 import { User } from 'src/app/models/user';
 
 
