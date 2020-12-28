@@ -1,47 +1,54 @@
-
 .content{
-    width: 100%;
+  top: 0;
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
 }
 .search {
-    width: 40%;
-    display: flex;
-    margin-top: 10%;
-
-    
-    
-  }
-  
+  display: flex;
+  margin: 20px 10px 0 10px;
+  width: calc(100% - 20px);
+  max-width: 400px;
+  min-width: 260px;
+  height: 50px;
   .searchLine {
-    width: 100%;
-    border: 2px solid  var(--secundaryColorPush);;
+    background-color: var(--primaryColorOpposite);
+    border: 1px solid var(--secundaryColorPush);
     border-right: none;
-    padding: 5px;
-    height: 40px;
+    height: 100%;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: var(--secundaryColorPush);
-  }
-  
-  
-  
+    width: 100%;
+    padding: 0 5px 0 10px;
+    color: var(--secundaryColorOpposite);
+    &::placeholder {
+      color: var(--secundaryColorPush);
+    }
+    &:focus::placeholder {
+      color: var(--primaryColorOpposite);
+  }}
   .searchButton {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--secundaryColorAccent);
-    background: var(--secundaryColorAccent);
-    text-align: center;
-    color: var(--secundaryColorAccent);
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-  }
-
-  .labelteam{
+      width: 60px;
+      height: 100%;
+      border: 1px solid var(--secundaryColorAccent);
+      outline: none;
+      background: var(--primaryColor);
+      text-align: center;
+      color: var(--secundaryColorAccent);
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      font-size: 20px;
+      &:hover, &:active {
+        background-color: var(--primaryColorAccent);
+}}}
+.labelteam{
    margin-top: 60px;    
 
-  }
- .button {
-    
+}
+.button {
     width: 100px;
     height: 30px;
     margin-left: 20px;
@@ -51,27 +58,15 @@
     font-size: 14px;
     cursor: pointer;
     border-radius: 30px
-    
-
-  }
-
-  .divider{
-      margin-top: 30px;
-  }
-
-  .cards{
-      max-width: 1000px;
-      margin: auto;
-      margin-top: 50px;
-      display: flex;
-      flex-wrap: wrap;
-      width: 80%;
-      justify-content: flex-start;
-      & > .lctl-cardButton{
-          margin: 20px;
-      }
-     
-  }
-
-  
-  
+}
+.cards{
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: flex-start;
+    & > .lctl-cardButton{
+        margin: 20px;
+}}
