@@ -16,7 +16,7 @@ export class CreateRestaurant1Component implements OnInit {
   public logo:string;
   constructor(public router:Router) {
     this.restaurant= new Restaurant (null,null,null,null,null,null,null,null,null,null);
-    this.restaurantmodel= new Restaurants (null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+    this.restaurantmodel= new Restaurants (null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
    }
    processBanner(imageInput:any) {
     const file: File = imageInput.files[0];
