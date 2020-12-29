@@ -26,15 +26,15 @@ export class MapComponent implements OnInit{
 //   npm install @types/leaflet
 
 cogeCoordenadas(){
-    this.apiService.getJSONstreet().subscribe((data:any)=>{
-    this.restaurant.latitude=data[0].lat;
-    this.restaurant.longitude=data[0].lon;
-    console.log(this.restaurant.latitude);
-    console.log(this.restaurant.longitude);
-      //MOSTRAR MAPA
-    console.log("entra en la funcion");
-    console.log(this.restaurant.latitude);
-    console.log(this.restaurant.longitude);
+    // this.apiService.getJSONstreet().subscribe((data:any)=>{
+    // this.restaurant.latitude=data[0].lat;
+    // this.restaurant.longitude=data[0].lon;
+    // console.log(this.restaurant.latitude);
+    // console.log(this.restaurant.longitude);
+    //   //MOSTRAR MAPA
+    // console.log("entra en la funcion");
+    // console.log(this.restaurant.latitude);
+    // console.log(this.restaurant.longitude);
     this.map = new Map("mapid").setView([this.restaurant.latitude,this.restaurant.longitude], 19);
   tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution: 'Mi reserva',
@@ -44,7 +44,7 @@ cogeCoordenadas(){
       this.marker= new Marker([this.restaurant.latitude, this.restaurant.longitude]).addTo(this.map);
       this.marker.bindPopup(this.restaurant.name).openPopup();  
 
-  })
+  
 }
   ngOnInit(): void {
     this.cogeCoordenadas();
