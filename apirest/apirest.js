@@ -1,6 +1,6 @@
-const express= require ("express");
-const mysql=require ("mysql");
-const app=express();
+const express= require ("express"); 
+const mysql = require ("mysql");
+const app = express();
 const cors = require('cors')
 const compression = require('compression');
 
@@ -516,7 +516,7 @@ app.get("/user_owner/:owner_id", (request, response) => {
         response.status(200).send(message);
 });});
 app.post("/user_owner", (request, response) => {
-    let message= {
+    let message = {
         "control": null,
         "data": null
     }
@@ -563,8 +563,8 @@ app.post("/user_owner", (request, response) => {
                     VALUES (
                         ?,?,?
                     )`;
-                connection.query(sql, arr, function(err2, res2) {
-                    if (err2){
+                connection.query(sql, arr, (err2, res2) => {
+                    if (err2) {
                         message = {
                             control:false,
                             message: "El usuario del login no se ha podido crear."
@@ -653,7 +653,7 @@ app.delete("/user_owner", (request, response) => {
                 user_owner
             WHERE
                 owner_id = ?`;
-        connection.query(sql, request.body.owner_id, (err, res) => {
+        connection.query(sql, request.body.owner_id, (err, data) => {
             if (err) {
                 message.control = false;
             } else {
@@ -662,7 +662,7 @@ app.delete("/user_owner", (request, response) => {
                 } else {
                     message.control = false;
             }}
-            res.status(200).send(message);
+            response.status(200).send(message);
 });});
 //-----User_customer-----
 app.get("/user_customer/:customer_id", (request, response) => {
@@ -769,8 +769,8 @@ app.post("/user_customer", (request, response) => {
                         response.status(200).send(message);
 }});}});}});
 app.put("/user_customer", (request, response) => {
-    let message= {
-        "control":null,
+    let message = {
+        "control": null,
         "message": null,
         "message2": null
     }
@@ -829,7 +829,7 @@ app.put("/user_customer", (request, response) => {
             response.status(200).send(message);
 });});});
 app.delete("/user_customer", (request, response) => {
-    let message= {
+    let message = {
         "control": null
     }
     let sql =
@@ -837,7 +837,7 @@ app.delete("/user_customer", (request, response) => {
             user_customer
         WHERE
             owner_id = ?`;
-    connection.query(sql, request.body.customer_id, (err, res) => {
+    connection.query(sql, request.body.customer_id, (err, data) => {
         if (err) {
             message.control = false;
         } else {
@@ -846,13 +846,13 @@ app.delete("/user_customer", (request, response) => {
             } else {
                 message.control = false;
         }}
-        res.status(200).send(message);
+        response.status(200).send(message);
 });});
 //-----Restaurants-----
 app.get("/restaurant/:restaurant_id", (request, response) => {
-    let message= {
-        "control":null,
-        "data":null
+    let message = {
+        "control": null,
+        "data": null
     } 
     let sql =
         `SELECT
@@ -950,7 +950,7 @@ app.post("/restaurant", (request, response) => {
                 connection.query(sql, arr, (err2, res2) => {
                     if (err2) {
                         message = {
-                            control:false,
+                            control: false,
                             mensaje: "El usuario no se ha podido crear."
                         };
                         sql = 
@@ -960,7 +960,6 @@ app.post("/restaurant", (request, response) => {
                             restaurant_id = ?`
                         connection.query(sql, res.insertId, (err3, res3) => {
                             if (err3) {
-                                console.log(err);
                                 message.mensaje = "El usuario no se ha podido crear pero el resturante se ha creado sin administrador asociado";
                             } else {
                                 message.mensaje = "No Se ha podido completar el proceso por incapacidad para crear el usuario manager";
@@ -976,7 +975,7 @@ app.post("/restaurant", (request, response) => {
                         response.status(200).send(message);
 }});}});}});
 app.put("/restaurant", (request, response) => {
-    let message= {
+    let message = {
         "control": null,
         "message": null,
         "message2": null
@@ -1059,14 +1058,14 @@ app.put("/restaurant", (request, response) => {
 });});});
 app.delete("/restaurant", (request, response) => {
         let message = {
-            "control":false
+            "control": false
         }
         let sql =
             `DELETE FROM
                 restaurants
             WHERE
                 restaurant_id = ?`
-        connection.query(sql, request.body.restaurant_id, (err, res) => {
+        connection.query(sql, request.body.restaurant_id, (err, data) => {
             if (err) {
                 message.control = false;
             } else {
@@ -1075,7 +1074,7 @@ app.delete("/restaurant", (request, response) => {
                 } else {
                     message.control = false;
             }}
-            res.status(200).send(message);
+            response.status(200).send(message);
 });});
 //-----Reservations-----
 app.get("/reservations", (request, response) => {
@@ -1171,7 +1170,7 @@ app.post("/reservations", (request, response) => {
             response.status(200).send(message);
 });});
 app.put("/reservations", (request, response) => {
-    let message= {
+    let message = {
         "control": null
     }        
     let arr = new Array(
@@ -1224,7 +1223,7 @@ app.delete("/reservations", (request, response) => {
             reservations
         WHERE
             reservation_id = ?`;
-    connection.query(sql, request.body.reservation_id, (err, res) => {
+    connection.query(sql, request.body.reservation_id, (err, data) => {
         if (err) {
             message.control = false;
         } else {
@@ -1233,7 +1232,7 @@ app.delete("/reservations", (request, response) => {
             } else {
                 message.control = false;
         }}
-        res.status(200).send(message);
+        response.status(200).send(message);
 });});
 app.listen(3000, () => {
     console.log("listening to port 3000");
