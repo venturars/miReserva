@@ -924,14 +924,14 @@ app.post("/restaurant", (request, response) => {
             ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
         )`;
         connection.query(sql, arr, (err, res) => {
-            if (err){
+            if (err) {
                 message = {
                     control: false,
                     data: null,
                     mensaje: "El restaurant no se ha podido crear."
                 };
                 response.status(200).send(message);
-            }else{
+            }else {
                 arr = [
                     res.insertId,
                     request.body.mail,
