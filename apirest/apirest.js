@@ -193,6 +193,7 @@ app.post("/tables", (req, res) => {
     ];
     let message = {
         "control": null,
+        "data": null
     }
     let sql =
         `INSERT INTO tables (
@@ -210,7 +211,9 @@ app.post("/tables", (req, res) => {
             message.control = false;
         } else {
             message.control = true;
-        }
+            message.data = {
+                "table_id": data.insertId
+        }}
         res.status(200).send(message);
 });});
 app.put("/tables", (req, res) => {
@@ -824,21 +827,26 @@ app.post("/restaurant",
         let sql = "INSERT INTO restaurants (name,province,city,street_name,street_number,postal_code," + 
         "phone,capacity,food_type,header,logo,menu,url,latitude,longitude,owner_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
         connection.query(sql, arr, function(err, res){
+            
             if (err){
-                respuesta = {error: true, codigo: 200, mensaje: "El restaurant no se ha podido crear."}
+                                message = {error: true, codigo: 200, mensaje: "El restaurant no se ha podido crear."}
                 response.status(200).send(message);
+                
             }else{
+                
+
                 respuesta = {error: false, codigo: 200, mensaje: "Restaurant creado correctamente. Su id es: " + res.insertId}
                         let arr2 = new Array(res.insertId,request.body.mail, request.body.password)
                         let sql2= "INSERT INTO users (restaurant_id,mail,password) VALUES (?,?,?)"        
                         connection.query(sql2, arr2, function(err3, res3){
                                 if (err3){
-                                        respuesta = {error: true, codigo: 200, mensaje: "El usuario no se ha podido crear."}
+                                        message = {error: true, codigo: 200, mensaje: "El usuario no se ha podido crear."}
                                         response.status(200).send(message);
                                     }else{
                                         message.control=true;   
+                                        message = {error: false, codigo: 200, mensaje: "usuario creado correctamente. Su id es: " + res3.insertId, restaurantecreado: res.insertId, managercreado:res3.insertId}
                                         response.status(200).send(message);
-                                        respuesta = {error: false, codigo: 200, mensaje: "usuario creado correctamente. Su id es: " + res3.insertId}
+                                        
                                     }})
             }})
     })
@@ -886,12 +894,11 @@ app.put("/restaurant",
         connection.query(sql, arr, function(err, res){
             if (err){
                 console.log(err);
-                response.status(200).send(message);
-                respuesta = {error: true, codigo: 200, mensaje: "El restaurant no se ha podido modificar."}
+                                respuesta = {error: true, codigo: 200, mensaje: "El restaurant no se ha podido modificar."}
             }else{
                 respuesta = {error: false, codigo: 200, mensaje: "Restaurant modificado correctamente."}
                 message.control=true;
-                response.status(200).send(message);
+                
             }})
             let arr2 = new Array(request.body.password, request.body.id)
             let sql2 = "UPDATE users SET password = ? WHERE id = ?"

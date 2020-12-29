@@ -5,7 +5,7 @@ export class Restaurant {
         public addressnumber:string,
         public city:string,
         public postalcode:string,
-        public email:string,
+        public mail:string,
         public telephone:string,
         public capacity:number,
         public password:string,

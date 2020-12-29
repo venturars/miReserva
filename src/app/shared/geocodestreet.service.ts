@@ -17,8 +17,14 @@ export class GeocodestreetService {
     this.url="https://nominatim.openstreetmap.org/search?q="+this.restaurant.addressnumber+",+"+this.restaurant.address.replace(" ","+")+",+"+this.restaurant.city+"&format=json&addressdetails=1&limit=1&polygon_svg=1";
    }
 
-  getJSONstreet(){
-    console.log(this.url);
-    return this.http.get(this.url);
+  // getJSONstreet(){
+  //   console.log(this.url);
+  //   return this.http.get(this.url);
+  // }
+  
+  getJSONstreet(url){
+    
+    return this.http.get(url);
   }
+
 }

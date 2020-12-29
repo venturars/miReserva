@@ -30,7 +30,7 @@
          name="name" [(ngModel)]="restaurantmodel.name" #name="ngModel"
         [ngClass]="{'caution':restForm.submitted && name.invalid }" required>
         
-        <input type="text" class="lctl-input-m-extraLarge" 
+        <input type="number" class="lctl-input-m-extraLarge" 
         placeholder="{{restForm.submitted && phone.invalid ?  'Teléfono obligatorio' : 'Teléfono'}}"
         name="phone" [(ngModel)]="restaurantmodel.phone" #phone="ngModel"
         [ngClass]="{'caution':restForm.submitted && phone.invalid }" required>
@@ -40,7 +40,7 @@
         placeholder="{{restForm.submitted && street_name.invalid ?  'Calle obligatoria' : 'Calle'}}"
         name="street_name" [(ngModel)]="restaurantmodel.street_name" #street_name="ngModel"
         [ngClass]="{'caution':restForm.submitted && street_name.invalid }" required>
-        <input type="text" class="lctl-input-m-extraLarge" 
+        <input type="number" class="lctl-input-m-extraLarge" 
         placeholder="{{restForm.submitted && street_number.invalid ?  'Numero de calle obligatorio' : 'Número de calle'}}"
         name="street_number" [(ngModel)]="restaurantmodel.street_number" #street_number="ngModel"
         [ngClass]="{'caution':restForm.submitted && street_number.invalid }" required>
@@ -51,7 +51,7 @@
             name="city" [(ngModel)]="restaurantmodel.city" #city="ngModel"
             [ngClass]="{'caution':restForm.submitted && city.invalid }" required>
             
-            <input type="text" class="lctl-input-m-extraLarge" 
+            <input type="number" class="lctl-input-m-extraLarge" 
             placeholder="{{restForm.submitted && capacity.invalid ?  'Aforo obligatorio' : 'Capacidad aforo'}}"
             name="capacity" [(ngModel)]="restaurantmodel.capacity" #capacity="ngModel"
             [ngClass]="{'caution':restForm.submitted && capacity.invalid }" required>
@@ -68,7 +68,7 @@
             [ngClass]="{'caution':restForm.submitted && url.invalid }" required>
         </div>
         <div>
-            <input type="text" class="lctl-input-m-extraLarge" 
+            <input type="number" class="lctl-input-m-extraLarge" 
             placeholder="{{restForm.submitted && postal_code.invalid ?  'Código postal obligatorio' : 'Código postal'}}"
             name="postal_code" [(ngModel)]="restaurantmodel.postal_code" #postal_code="ngModel"
             [ngClass]="{'caution':restForm.submitted && postal_code.invalid }" required>
@@ -86,9 +86,9 @@
         </div> 
         <div>  
         <input type="text" class="lctl-input-m-extraLarge" placeholder="Email"
-        placeholder="{{restForm.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
-        name="email" [(ngModel)]="restaurant.email" #email="ngModel"
-        [ngClass]="{'caution':restForm.submitted && email.invalid }" required>
+        placeholder="{{restForm.submitted && mail.invalid ?  'Email obligatorio' : 'Email'}}"
+        name="mail" [(ngModel)]="restaurant.mail" #mail="ngModel"
+        [ngClass]="{'caution':restForm.submitted && mail.invalid }" required>
    
     
         <input type="text" class="lctl-input-m-extraLarge"

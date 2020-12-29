@@ -42,7 +42,7 @@
 </div>
 </div>
 <div class="lctl-br space2" ></div>
-<ng-container *ngIf="tables[0]!=null; else nomesas">
+<ng-container *ngIf="this.servicetable.table[0]!=null; else nomesas">
     <div class=" title">
         <div class="rows">
             <p class="lctl-font-bold">Mesa</p>
@@ -53,7 +53,7 @@
 
         </div>
     </div>
-        <div class="column" *ngFor="let table of this.tables; let i = index">
+        <div class="column" *ngFor="let table of this.servicetable.table; let i = index">
                
                 <div>
                 <div class="lctl-br w"></div>
@@ -65,7 +65,7 @@
             <p class="lctl-font-paragraph">{{table.table_name}}</p>
             <p class="lctl-font-paragraph">{{table.table_min}}</p>
             <p class="lctl-font-paragraph">{{table.table_max}}</p>
-            <button (click)="eliminar(i)" class="lctl-button-m ">Eliminar</button>
+            <button (click)="eliminar(i, table)" class="lctl-button-m ">Eliminar</button>
             </div>
             
         </div>
@@ -77,7 +77,7 @@
 </ng-template>    
     
         <div class="buttonnext lctl-rightElements">
-            <button class="lctl-warnButtonOpposite-m" routerLink="/create-restaurant-1">Anterior</button>
+            <button class="lctl-warnButtonOpposite-m" disabled routerLink="/create-restaurant-1">Anterior</button>
             <button class="lctl-button-m " routerLink="/create-restaurant-3">Siguiente</button>
         </div>
 

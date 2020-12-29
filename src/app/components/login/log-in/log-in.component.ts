@@ -29,7 +29,7 @@ onSubmit(form:any){
     form.value.email,
     form.value.password
   )
-  this.serviceLogIn.control
+  
   if(this.serviceLogIn.control === 0){
     this.router.navigate(['/']);
   }else if(this.serviceLogIn.control === 1){
