@@ -1,7 +1,7 @@
 .content{
     max-width: 700px;
     min-width: 300px;
-    height: 360px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -29,8 +29,26 @@
         
     }
 
-
     & > div:nth-child(2){
+       
+        display: flex;
+        justify-content: center;
+        color: white;
+        width: 100%;
+        height: 50px;
+        background-color:var(--secundaryColorPush);
+
+        & > p{
+            margin-top: 10px;
+            font-size: var(--fontSizeM);
+            text-align: center;
+           
+
+        }
+        
+    }
+
+    & > div:nth-child(3){
        
         display: flex;
         flex-direction: row;

@@ -278,6 +278,42 @@ app.get("/times/:restaurant_id", (req, res) => {
         }}
          res.status(200).send(message);
 });});
+app.get("/times1",(req,res)=>{
+    let params = [req.query.name,
+                  req.query.restaurant_id,
+                  req.query.service];
+    let message = {
+        "control": null,
+        "data": null
+    }
+    let sql =
+        `SELECT
+            *
+        FROM
+            times
+        WHERE
+            times.name = ?
+        AND 
+            times.restaurant_id= ?
+        AND 
+            times.service = ?`;
+    connection.query(sql, params, (err, data) => {
+        if(err) {
+        }else {
+            if (data == "") {
+                message.control = false;
+                message.data = data;
+            }
+            else {
+                message.control = true;
+                message.data = data;          
+        }}
+         res.status(200).send(message);
+
+
+
+
+})})
 app.post("/times", (req, res) => {
     let params = [
         req.body.name,
@@ -849,7 +885,35 @@ app.delete("/user_customer", (request, response) => {
         res.status(200).send(message);
 });});
 //-----Restaurants-----
+app.get("/restaurants", (request, response) => {
+ 
+    let message= {
+        "control":null,
+        "data":null
+    } 
+    let sql =
+        `SELECT
+            *
+        FROM
+            restaurants
+ `;
+    connection.query(sql, (err, res) => {
+        if (err) {
+        }else {
+            if(res!="") {
+                message.control = true;
+                message.data = res;
+            }else {
+                message.control = false;
+                message.data = res;
+        }}
+        response.status(200).send(message);
+    });
+    });
+ 
+
 app.get("/restaurant/:restaurant_id", (request, response) => {
+ 
     let message= {
         "control":null,
         "data":null
@@ -872,7 +936,10 @@ app.get("/restaurant/:restaurant_id", (request, response) => {
                 message.data = res;
         }}
         response.status(200).send(message);
-});});
+    });
+    });
+    
+
 app.post("/restaurant", (request, response) => {
     let message= {
         "control": null,

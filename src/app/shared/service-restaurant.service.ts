@@ -8,11 +8,16 @@ import { Restmailpassword } from '../models/restmailpassword';
 })
 export class ServiceRestaurantService {
   public id_restaurant:any;
-  private url = "http://localhost:3000/restaurant"
+  private url = "http://localhost:3000/restaurant";
+  private url2 = "http://localhost:3000/restaurants"
   constructor(private http:HttpClient) { }
 
   getRestaurant(id:number){
     return this.http.get(this.url + "/" + id)
+  }
+
+  getRestaurants(){
+    return this.http.get(this.url2);
   }
   postRestaurant(nuevoRestaurant:Restmailpassword){
     return this.http.post(this.url,nuevoRestaurant)

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalTurnosComponent } from 'src/app/components/modals/modal-turnos/modal-turnos.component';
+import { Times } from 'src/app/models/times';
 import { Turnos } from 'src/app/models/turnos';
+import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
+import { ServiceTimesService } from 'src/app/shared/service-times.service';
 
 @Component({
   selector: 'app-restaurant-owner-CreateRestaurant3',
@@ -14,9 +17,9 @@ export class CreateRestaurant3Component implements OnInit {
   public desayunos:Turnos[]
   public almuerzos:Turnos[]
   public cenas:Turnos[]
-  public CheckboxVar:boolean
+  
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, public apiTimes:ServiceTimesService, public serviceRestaurant:ServiceRestaurantService ) {
     this.desayunos = [
       {horario:"7:00"},
       {horario:"7:30"},
@@ -55,9 +58,7 @@ export class CreateRestaurant3Component implements OnInit {
       {horario:"23:00"},
       {horario:"23:30"}
     ]
-    this.CheckboxVar = false
-    
-    
+   
    }
 
   abiertoCerradoDiaLunes(esto){
@@ -790,11 +791,66 @@ desayunoDomingo(esto){
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  turnos(comida,dia) {
+    console.log(comida);
+        const dialogRef = this.dialog.open(ModalTurnosComponent);
+        dialogRef.componentInstance.name = dia;
+        dialogRef.componentInstance.service = comida;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
   
-prueba(horainicio,horafin){
-  console.log(horainicio.value);
-  console.log(horafin.value);
-  const lunes=document.getElementById("ellunes").getAttribute("data-value");
+  setTimes(inicio,final,dia,comida,botonshift){
+  if (inicio.value=="Elige hora"){
+    console.log("hacemos un toast para sacar el fallo");
+  }
+  else{
+    inicio.style="background-color:yellow";
+    final.style="background-color:yellow";
+    const name=dia
+    const restaurant=this.serviceRestaurant.id_restaurant
+    const service=comida
+    botonshift.style.display="block";
+    this.apiTimes.checkTimes(name,restaurant,service)
+      .subscribe((data:any)=>{
+        
+        if(data.control==false){
+              //SINO EXISTE EL HORARIO LO CREA
+              const time= new Times (null,dia,inicio.value,final.value,this.serviceRestaurant.id_restaurant,comida);
+              this.apiTimes.inicio=inicio.value;
+              this.apiTimes.fin=final.value;
+              this.apiTimes.postTimes(time)
+              .subscribe((data)=>console.log(data));
+        }
+        else{   // SI YA EXISTE EL HORARIO HACE PUT
+            
+              const time= new Times (data.data[0].times_id,dia,inicio.value,final.value,this.serviceRestaurant.id_restaurant,comida);
+              this.apiTimes.inicio=inicio.value;
+              this.apiTimes.fin=final.value;
+              this.apiTimes.putTimes(time)
+              .subscribe((data)=>console.log(data));
+        }
+
+      })
+    
+  }
+  
+   
+  }    
+
+
+
+
+checkit(horainicio, horafinal)
+{
+if (horainicio.selectedIndex >= horafinal.selectedIndex)
+    {
+      horafinal.selectedIndex= horainicio.selectedIndex + 1;
+    }    
 }
 
 }
