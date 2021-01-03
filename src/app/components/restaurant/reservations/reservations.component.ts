@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Reservations } from 'src/app/models/reservations';
 import { ReservationsRestaurants } from 'src/app/models/reservations-restaurants';
+import { UserCustomer } from 'src/app/models/user-customer';
+import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
+import { ServiceUserCustomerService } from 'src/app/shared/service-user-customer.service';
 import { CalendarComponent } from '../../calendar/calendar.component';
 import { ModalReservaManualComponent } from '../../modals/modal-reserva-manual/modal-reserva-manual.component';
 import { ModalRestauranteComponent } from '../../modals/modal-restaurante/modal-restaurante.component';
@@ -13,10 +17,13 @@ import { ModalRestauranteComponent } from '../../modals/modal-restaurante/modal-
 export class ReservationsRestaurantComponent implements OnInit {
   public minDate: Date;
   public maxDate: Date;
-  public reservations:ReservationsRestaurants[]
-  public reservationsYes:ReservationsRestaurants[]
-  public reservationsNo:ReservationsRestaurants[]
+  public value:number
+  public reservationsConfirmed:Reservations[]
+  public reservationsRejected:Reservations[]
+  public reservationsCanceledByClient:Reservations[]
   public dateOfBirth:string
+  public reservation:Reservations
+  public customers
 
 // hace que el calendario no muestre un dia en particular
 // 0:domingo ..... 6:sabado
@@ -24,24 +31,86 @@ export class ReservationsRestaurantComponent implements OnInit {
     const day = (d || new Date()).getDay();
     return day !== 1
   }
+  
+  constructor(public dialog: MatDialog, private apiService: ServiceReservationsService, private apiService2: ServiceUserCustomerService) {
+    this.reservationsConfirmed = []
+    this.reservationsRejected = []
+    this.reservationsCanceledByClient = []
+    this.customers =[]
 
-  constructor(public dialog: MatDialog) {
-    this.reservationsYes = []
-    this.reservationsNo = []
-    this.reservations = [
-      {id_reservation: 1,time:24,name:"Ventuasdasdasdasdasdasdasdasd",obs:"HOla, queria saber si me pueden poner en una mesa linda, que es mic",pax:4,table:1,status:"yes",id_restaurant:8},
-      {id_reservation: 2,time:23,name:"Carolly",obs:"hola2",pax:3,table:2,status:"no",id_restaurant:6},
-      {id_reservation: 3,time:21,name:"Jesus",obs:"hola3",pax:2,table:3,status:"no",id_restaurant:4},
-      {id_reservation: 4,time:20,name:"Juan",obs:"hola4",pax:1,table:4,status:"yes",id_restaurant:2}
-    ]
-
-    for (let i = 0; i < this.reservations.length; i++){
-      if(this.reservations[i].status == "yes"){
-        this.reservationsYes.push(this.reservations[i]);
-      }else{
-        this.reservationsNo.push(this.reservations[i]);
+    this.apiService.getReservationRestaurant(27).subscribe((data:any) =>{     
+      for(let i = 0; i<data.data.length;i++){
+        if (data.data[i].status == "Reservada"){
+          this.reservation ={reservation_id:data.data[i].reservation_id,
+            customer_id:data.data[i].customer_id,
+            restaurant_id:data.data[i].restaurant_id,
+            table_id:data.data[i].table_id,
+            pax:data.data[i].pax,
+            day_name:data.data[i].day_name,
+            day:data.data[i].day,
+            month:data.data[i].month,
+            year:data.data[i].year,
+            hour:data.data[i].hour,
+            shift_id:data.data[i].shift_id,
+            comments:data.data[i].comments,
+            status:data.data[i].status}
+          this.reservationsConfirmed.push(this.reservation)
+        }
+      for (let j = 0; j < this.reservationsConfirmed.length; j++) {
+        this.apiService2.getCustomer(this.reservationsConfirmed[j].customer_id).subscribe((data2:any) =>{  
+          this.customers.push(data2.data[0].name)          
+        }) 
       }
+
+      if (data.data[i].status == "Rechazada"){
+        this.reservation ={reservation_id:data.data[i].reservation_id,
+          customer_id:data.data[i].customer_id,
+          restaurant_id:data.data[i].restaurant_id,
+          table_id:data.data[i].table_id,
+          pax:data.data[i].pax,
+          day_name:data.data[i].day_name,
+          day:data.data[i].day,
+          month:data.data[i].month,
+          year:data.data[i].year,
+          hour:data.data[i].hour,
+          shift_id:data.data[i].shift_id,
+          comments:data.data[i].comments,
+          status:data.data[i].status}
+        this.reservationsRejected.push(this.reservation)
+      }
+    for (let j = 0; j < this.reservationsRejected.length; j++) {
+      this.apiService2.getCustomer(this.reservationsRejected[j].customer_id).subscribe((data2:any) =>{  
+        this.customers.push(data2.data[0].name)          
+      }) 
     }
+
+    
+    if (data.data[i].status == "Cancelada por cliente"){
+      this.reservation ={reservation_id:data.data[i].reservation_id,
+        customer_id:data.data[i].customer_id,
+        restaurant_id:data.data[i].restaurant_id,
+        table_id:data.data[i].table_id,
+        pax:data.data[i].pax,
+        day_name:data.data[i].day_name,
+        day:data.data[i].day,
+        month:data.data[i].month,
+        year:data.data[i].year,
+        hour:data.data[i].hour,
+        shift_id:data.data[i].shift_id,
+        comments:data.data[i].comments,
+        status:data.data[i].status}
+      this.reservationsCanceledByClient.push(this.reservation)
+    }
+    for (let j = 0; j < this.reservationsCanceledByClient.length; j++) {
+      this.apiService2.getCustomer(this.reservationsCanceledByClient[j].customer_id).subscribe((data2:any) =>{  
+        this.customers.push(data2.data[0].name)          
+      }) 
+    }
+
+  }
+    
+    })     
+  
 // el calendario bloquea desde el dia anterior
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
@@ -52,41 +121,22 @@ export class ReservationsRestaurantComponent implements OnInit {
     console.log(currentYear);
     console.log(currentMonth);
     console.log(currentDay);
-
-    
   }
+
+
   ngOnInit(): void {
-    
+ 
   }
 
 
   public confirmReservation(id_reservation:number){
-    let resultado =""
-    for(let i = 0; i < this.reservationsNo.length; i++){
-      if(this.reservationsNo[i].id_reservation == id_reservation){
-        this.reservationsYes.push(this.reservationsNo[i])
-        this.reservationsNo.splice(i,1)
-        this.reservationsNo[i].status = "no"
-        resultado = "si"
-      }else{
-        resultado = "no"
-      }
-    }
-    return resultado
+
   }
 
   public rejectReservation(id_reservation:number){
-    let resultado =""
-    for(let i = 0; i < this.reservationsNo.length; i++){
-      if(this.reservationsNo[i].id_reservation == id_reservation){
-        this.reservationsNo.splice(i,1)
-        resultado = "si"
-      }else{
-        resultado = "no"
-      }
-    }
-    return resultado
+
   }
+
   public fecha() {
     console.log(this.dateOfBirth);
     let nombre = this.dateOfBirth.toString().substring(0,3)

@@ -14,11 +14,11 @@
         <button  class="lctl-button-m " (click)="modalNew()" >Reserva Manual</button>
         </div>
         <div class="lctl-rightElements">
-        <select name="select" class="lctl-cellSelect-extraLarge">
+        <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="value">
             <option value="value2" selected>Estado</option>
-            <option value="value1">Confirmada</option>
-            <option value="value3">Rechazada</option>
-            <option value="value3">Cancelada por cliente</option>
+            <option value="0">Confirmada</option>
+            <option value="1">Rechazada</option>
+            <option value="2">Cancelada por cliente</option>
         </select>
         <select name="select" class="lctl-cellSelect-extraLarge">
             <option value="value2" selected>Turnos</option>
@@ -50,13 +50,14 @@
         <p class="lctl-font-bold">Observaciones</p>
         <p class="lctl-font-bold">Estado</p>
     </div>
-    <ng-container *ngFor="let reservation of reservationsYes; let i = index">
-    <div class="rows2" (click)="modalStatus()">
-            <p class="lctl-font-paragraph">{{reservationsYes[i].time}}</p>
-            <p class="lctl-font-paragraph">{{reservationsYes[i].name}}</p>
-            <p class="lctl-font-paragraph">{{reservationsYes[i].table}}</p>
-            <p class="lctl-font-paragraph">{{reservationsYes[i].pax}}</p>
-            <p class="lctl-font-paragraph">{{reservationsYes[i].obs}}</p>
+    <ng-container *ngIf="value == 0 ">
+    <ng-container *ngFor="let reservation of reservationsConfirmed; let i = index">
+        <div class="rows2" (click)="modalStatus()">
+            <p class="lctl-font-paragraph">{{reservationsConfirmed[i].hour}}</p>
+            <p class="lctl-font-paragraph">{{customers[i]}}</p>
+            <p class="lctl-font-paragraph">{{reservationsConfirmed[i].table_id}}</p>
+            <p class="lctl-font-paragraph">{{reservationsConfirmed[i].pax}}</p>
+            <p class="lctl-font-paragraph">{{reservationsConfirmed[i].comments}}</p>
             <ng-container> 
              <p> 
             <button (click)="modalStatus()" class="lctl-warnButton-s buttonLib">Liberada</button>
@@ -70,7 +71,9 @@
             </ng-container>
     </div>
     <div class="lctl-br"></div>
-    </ng-container>       
+    </ng-container>
+
+    </ng-container>
 </div>
 
 </div>
@@ -88,21 +91,24 @@
         <p class="lctl-font-bold">Observaciones</p>
         <p class="lctl-font-bold">Estado</p>
     </div>
-    <ng-container *ngFor="let reservation of reservationsNo; let i = index">
+    <!-- <ng-container *ngFor="let reservation of reservations2; let i = index">
+        <ng-container *ngIf="value == 1 ">
+
     <div class="rows2">
-            <p class="lctl-font-paragraph">{{reservationsNo[i].time}}</p>
-            <p class="lctl-font-paragraph">{{reservationsNo[i].name}}</p>
-            <p class="lctl-font-paragraph">{{reservationsNo[i].table}}</p>
-            <p class="lctl-font-paragraph">{{reservationsNo[i].pax}}</p>
-            <p class="lctl-font-paragraph">{{reservationsNo[i].obs}}</p>
+            <p class="lctl-font-paragraph">{{reservations2[i].hour}}</p>
+            <p class="lctl-font-paragraph">{{reservations2[i].day}}</p>
+            <p class="lctl-font-paragraph">{{reservations2[i].table_id}}</p>
+            <p class="lctl-font-paragraph">{{reservations2[i].pax}}</p>
+            <p class="lctl-font-paragraph">{{reservations2[i].comments}}</p>
             <p class="changesButton">
             <button (click)="confirmReservation(reservationsNo[i].id_reservation)" class="lctl-buttonOpposite-s" >Confirmar</button>
             <button (click)="rejectReservation(reservationsNo[i].id_reservation)" class="lctl-warnButton-s" >Rechazar</button>
             </p>
     </div>
     <div class="lctl-br"></div>
-
 </ng-container>
+
+</ng-container> -->
 
 </div> 
 
