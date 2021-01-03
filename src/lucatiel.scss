@@ -3,17 +3,17 @@
 :root {
     --primaryColor: #D5341F;
     --primaryColorAccent: #D2000D;
-    --primaryColorContrast: #f3f5f7;
+    --primaryColorContrast: #e6ebf0;
     --primaryColorOpposite: rgb(253, 255, 255);
-    --primaryColorPush: #e07668;
-    --primaryColorLink: #4F70FF;
+    --primaryColorPush: #ec4d38;
+    --primaryColorLink: #3959e9;
 //----------
-    --secundaryColor: #f3f5f7;
+    --secundaryColor: #e6ebf0;
     --secundaryColorAccent: #D2000D;
     --secundaryColorContrast: #D5341F;
     --secundaryColorOpposite: #121212;
     --secundaryColorPush: #8f8c8c;
-    --secundaryColorLink: #4F70FF;
+    --secundaryColorLink: #3959e9;
 //----------
     --fontSizeXS: 9px;
     --fontSizeS: 14px;
@@ -144,65 +144,37 @@ a {
     background: var(--primaryColor);
     border: none;
     outline: none!important;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
     margin: 5px;
     max-width: 100%;
     font-weight: var(--fontWidthBolder);
-    &:active {
-        background-color: var(--primaryColorPush);
+    cursor: pointer;
+    &:active, &:hover {
+        background-color: var(--primaryColorAccent);
 }}
-//----------
-[class *="lctl-button-s"] {
-    width: 100px;
-    height: 25px;
-    border-radius: var(--borderRadiusS);
-    font-size: var(--fontSizeS)
-}
-//----------
-[class *="lctl-button-m"] {
-    width: 150px;
-    height: 35px;
-    border-radius: var(--borderRadiusM);
-    font-size: var(--fontSizeM);
-}
-//----------
-[class *="lctl-button-l"] {
-    width: 300px;
-    height: 50px;
-    border-radius: var(--borderRadiusL);
-    font-size: var(--fontSizeL);
-}
-//----------//----------//----------//----------//----------
 [class *="lctl-buttonOpposite"] {
-    text-transform: capitalize;
     color: var(--primaryColor);
     background: inherit;
     border: 1px solid var(--primaryColor);
-    outline: none!important;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
-    margin: 5px;
-    max-width: 100%;
-    font-weight: var(--fontWidthBolder);
     &:active {
         background-color: var(--primaryColor);
         color: var(--primaryColorContrast);
 }}
 //----------
-[class *="lctl-buttonOpposite-s"] {
+[class *="lctl-button-s"], [class *="lctl-buttonOpposite-s"] {
     width: 100px;
     height: 25px;
     border-radius: var(--borderRadiusS);
     font-size: var(--fontSizeS)
 }
 //----------
-[class *="lctl-buttonOpposite-m"] {
+[class *="lctl-button-m"], [class *="lctl-buttonOpposite-m"] {
     width: 150px;
     height: 35px;
     border-radius: var(--borderRadiusM);
     font-size: var(--fontSizeM);
 }
 //----------
-[class *="lctl-buttonOpposite-l"] {
+[class *="lctl-button-l"], [class *="lctl-buttonOpposite-l"] {
     width: 300px;
     height: 50px;
     border-radius: var(--borderRadiusL);
@@ -215,65 +187,85 @@ a {
     background: var(--primaryColorAccent);
     border: none;
     outline: none!important;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
     margin: 5px;
     max-width: 100%;
     font-weight: var(--fontWidthBolder);
+    cursor: pointer;
     &:active {
         background-color: var(--primaryColorPush);
 }}
+[class *="lctl-warnButtonOpposite"] {
+    color: var(--primaryColor);
+    background: var(--primaryColorOpposite);
+    border: 1px solid var(--secundaryColorAccent);
+    &:active {
+        background-color: var(--secundaryColorContrast);
+        color: var(--secundaryColor);
+}}
 //----------
-[class *="lctl-warnButton-s"] {
+[class *="lctl-warnButton-s"], [class *="lctl-warnButtonOpposite-s"] {
     width: 100px;
     height: 25px;
     border-radius: var(--borderRadiusS);
     font-size: var(--fontSizeS)
 }
 //----------
-[class *="lctl-warnButton-m"] {
+[class *="lctl-warnButton-m"], [class *="lctl-warnButtonOpposite-m"] {
     width: 150px;
     height: 35px;
     border-radius: var(--borderRadiusM);
     font-size: var(--fontSizeM);
 }
 //----------
-[class *="lctl-warnButton-l"] {
+[class *="lctl-warnButton-l"], [class *="lctl-warnButtonOpposite-l"] {
     width: 300px;
     height: 50px;
     border-radius: var(--borderRadiusL);
     font-size: var(--fontSizeL);
 }
 //----------//----------//----------//----------//----------
-[class *="lctl-warnButtonOpposite"] {
-    text-transform: capitalize;
-    color: var(--secundaryColorAccent);
-    background: inherit;
-    border: 1px solid var(--secundaryColorAccent);
+[class *="lctl-disabledButton"] {
+    color: var(--secundaryColor);
+    background: var(--secundaryColorPush);
+    border: 1px solid var(--secundaryColorPush);
     outline: none!important;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
     margin: 5px;
     max-width: 100%;
     font-weight: var(--fontWidthBolder);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     &:active {
-        background-color: var(--secundaryColorContrast);
-        color: var(--secundaryColor);
+        background-color: var(--secundaryColorPush);
+}}
+[class *="lctl-disabledButtonOpposite"] {
+    color: var(--secundaryColorPush);
+    background: var(--primaryColorOpposite);
+    // border: 1px solid var(--secundaryColorPush);
+    &:hover {
+        background-color: var(--primaryColorContrast);
+    }
+    &:active {
+        background-color: var(--secundaryColorPush);
+        color: var(--primaryColorOpposite);
 }}
 //----------
-[class *="lctl-warnButtonOpposite-s"] {
+[class *="lctl-disabledButton-s"], [class *="lctl-disabledButtonOpposite-s"] {
     width: 100px;
     height: 25px;
     border-radius: var(--borderRadiusS);
-    font-size: var(--fontSizeS)
+    font-size: var(--fontSizeS);
 }
 //----------
-[class *="lctl-warnButtonOpposite-m"] {
+[class *="lctl-disabledButton-m"], [class *="lctl-disabledButtonOpposite-m"] {
     width: 150px;
     height: 35px;
     border-radius: var(--borderRadiusM);
     font-size: var(--fontSizeM);
 }
 //----------
-[class *="lctl-warnButtonOpposite-l"] {
+[class *="lctl-disabledButton-l"], [class *="lctl-disabledButtonOpposite-l"] {
     width: 300px;
     height: 50px;
     border-radius: var(--borderRadiusL);
@@ -288,88 +280,20 @@ a {
     justify-content: center;
     align-items: center;
     font-weight: var(--fontWidthBolder);
-    box-shadow: 0 0 5px 1px var(--secundaryColorOpposite);
+    box-shadow: 0 0 3px 1px var(--secundaryColorPush);
+    background-color: var(--primaryColorOpposite);
     border: none;
     border-radius: var(--borderRadiusM);
+    cursor: pointer;
     &:hover {
         background-color: var(--secundaryColorContrast);
-        color: var(--secundaryColor);
+        color: var(--primaryColorOpposite);
+        box-shadow: 0 0 3px 1px var(--secundaryColor);
     }
     &:active {
-        color: var(--secundaryColor);
+        color: var(--primaryColorOpposite);
         background-color: var(--secundaryColorAccent);
 }}
-//----------//----------//----------//----------//----------
-[class *="lctl-disabledButton"] {
-    text-transform: capitalize;
-    color: var(--secundaryColor);
-    background: var(--secundaryColorPush);
-    border: none;
-    outline: none!important;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
-    margin: 5px;
-    max-width: 100%;
-    font-weight: var(--fontWidthBolder);
-    &:active {
-        background-color: var(--secundaryColorPush);
-}}
-//----------
-[class *="lctl-disabledButton-s"] {
-    width: 100px;
-    height: 25px;
-    border-radius: var(--borderRadiusS);
-    font-size: var(--fontSizeS)
-}
-//----------
-[class *="lctl-disabledButton-m"] {
-    width: 150px;
-    height: 35px;
-    border-radius: var(--borderRadiusM);
-    font-size: var(--fontSizeM);
-}
-//----------
-[class *="lctl-disabledButton-l"] {
-    width: 300px;
-    height: 50px;
-    border-radius: var(--borderRadiusL);
-    font-size: var(--fontSizeL);
-}
-//----------//----------//----------//----------//----------
-[class *="lctl-disabledButtonOpposite"] {
-    text-transform: capitalize;
-    color: var(--secundaryColorPush);
-    background: inherit;
-    border: 1px solid var(--secundaryColorPush);
-    outline: none!important;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
-    margin: 5px;
-    max-width: 100%;
-    font-weight: var(--fontWidthBolder);
-    &:active {
-        background-color: inherit;
-        color: var(--secundaryColorPush);
-}}
-//----------
-[class *="lctl-disabledButtonOpposite-s"] {
-    width: 100px;
-    height: 25px;
-    border-radius: var(--borderRadiusS);
-    font-size: var(--fontSizeS)
-}
-//----------
-[class *="lctl-disabledButtonOpposite-m"] {
-    width: 150px;
-    height: 35px;
-    border-radius: var(--borderRadiusM);
-    font-size: var(--fontSizeM);
-}
-//----------
-[class *="lctl-disabledButtonOpposite-l"] {
-    width: 300px;
-    height: 50px;
-    border-radius: var(--borderRadiusL);
-    font-size: var(--fontSizeL);
-}
 //----------//----------//----------//----------//----------
 //-----Inputs-----
 //----------//----------//----------//----------//----------
@@ -1004,67 +928,146 @@ a {
 //----------//----------//----------//----------//----------
 //-----How to use-----
 //----------
-// <div class="lctl-cardButton">
-//         <div class="lctl-photoProfile-m">
-//             <img src="
-//             http://5b0988e595225.cdn.sohucs.com/images/20180409/372ad315fcc84eeea032ef2994b6cd04.jpeg
-//             ">
+// <div class="lctl-infoCard">
+//     <img class="lctl-infoCard-banner" src="assets/photos/potada2.png">
+//     <div class="lctl-infoCard-under">
+//         <div class="lctl-infoCard-left">
+//             <div class="lctl-photoProfile-l">
+//                 <img src="assets/photos/logorestaurante2.png">
+//             </div>
 //         </div>
-//         <div>
-//             <p class="lctl-font-title">vips ijerouf furhuf</p>
-//             <p class="lctl-font-small">
-//                 dirección
-//             </p>
+//         <div class="lctl-infoCard-right">
+//             <div class="lctl-infoCard-info">
+//                 <div>La cocina del tio Mc Potter</div>
+//                 <div>
+//                     <div>télefono</div>
+//                     <div>tipo de comida</div>
+//                 </div>
+//             </div>
+//             <div class="lctl-infoCard-oferts">
+//             </div>
 //         </div>
 //     </div>
+//     <div class="lctl-infoCard-bottons">
+//         <div class="lctl-warnButtonOpposite-s">Reservar</div>
+//             <div class="lctl-warnButtonOpposite-s">menú</div>
+//             <div class="lctl-warnButtonOpposite-s">web</div>
+//         </div>
+//     </div>
+// </div>
 //----------
-[class *="lctl-cardButton"] {
-    background-color: var(--secundaryColor);
+.lctl-infoCard {
+    background-color: var(--primaryColorOpposite);
+    width: 650px;
+    //Para ampliar height: 280px
+    height: 245px;
+    margin: 5px;
+    text-align: center;
     display: flex;
-    align-items: center;
-    border-radius: 50px;
-    height: 75px;
-    width: 200px;
-    box-shadow: 0 0 5px 1px var(--secundaryColorPush);
-    cursor: pointer;
-    &:hover {
-        background-color: var(--secundaryColorPush);
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: var(--borderRadiusL);
+    overflow: hidden;
+    & > .lctl-infoCard-banner {
+      max-width: 100%;
+      max-height: 125px;
     }
-    & div:first-child {
-        margin: 5px;
-        margin-left: 10px;
-        margin-right: 10px;
-        width: 60px;
-        height: 60px;
-        &:hover {
-            border-color: transparent !important;
+    & > .lctl-infoCard-under {
+      display: flex;
+      & > .lctl-infoCard-left, & > .lctl-infoCard-right {
+        display: flex;
+      transform: translate(0, 45px);
+      }
+      & > .lctl-infoCard-left {
+        width: max-content;
+        padding: 10px;
+      }
+      & > .lctl-infoCard-right {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5px;
+        & > .lctl-infoCard-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          text-align: left;
+          height: 100%;
+          width: 65%;
+          padding: 10px 0 15px 0;
+          & > div {
+            &:first-child {
+              font-weight: var(--fontWidthBolder);
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+        }}}
+        & > .lctl-infoCard-oferts {
+          width: 35%;
+          height: 100%;
         }
-    }
-    & div:nth-child(2) {
-        width: 140px;
-        padding-left: 0px;
-        padding-right: 15px;
-        padding-top: 20px;
-        overflow: hidden;
-    }
-    & p:first-child {
-            text-align: justify;
-            width: 100%;
-            height: max-content;
-            color: var(--secundaryColorContrast);
-            line-height: 20px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-        & p:nth-child(2) {
-            padding: 0;
-            margin-top: -15px;
-            text-transform: capitalize;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+    }}
+    & > .lctl-infoCard-bottons {
+      display: flex;
+      flex-direction: row-reverse;
+      background: none;
 }}
+@media screen and (max-width: 768px) {
+    .lctl-infoCard {
+        max-width: 650px;//
+        //Para ampliar height: 280px
+        height: 245px;
+        margin: 5px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        & > .lctl-infoCard-banner {
+          max-width: 100%;
+          max-height: 125px;
+        }
+        & > .lctl-infoCard-under {
+          display: flex;
+          & > .lctl-infoCard-left, & > .lctl-infoCard-right {
+            display: flex;
+          }
+          & > .lctl-infoCard-left {
+            width: max-content;
+            padding: 10px;
+          }
+          & > .lctl-infoCard-right {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding-left: 5px;
+            & > .lctl-infoCard-info {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              text-align: left;
+              height: 100%;
+              width: 65%;
+              padding: 10px 0 15px 0;
+              & > div {
+                &:first-child {
+                  font-weight: var(--fontWidthBolder);
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                  white-space: nowrap;
+            }}}
+            & > .lctl-infoCard-oferts {
+              width: 35%;
+              height: 100%;
+            }
+        }}
+        & > .lctl-infoCard-bottons {
+          display: flex;
+          flex-direction: row-reverse;
+          //Para ampliar quitar transform
+          transform: translate(-10px, -45px);
+          background: none;
+}}}
 //----------//----------//----------//----------//----------
 //-----How to use-----
 //----------//----------//----------//----------//----------
@@ -1161,10 +1164,10 @@ a {
     display: flex;
     flex-direction: column;
     max-width: 580px;
-    min-width: 320px;
-    border: 1px solid var(--secundaryColorPush);
+    min-width: 260px;
+    // border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusL);
-    box-shadow: 0 0 5px 1px var(--secundaryColorOpposite);
+    box-shadow: 0 0 3px 1px var(--secundaryColorPush);
 }
 //----------
 [class *="lctl-div-s"] {
@@ -1174,7 +1177,7 @@ a {
 //----------
 [class *="lctl-div-m"] {
     max-width: 580px;
-    min-width: 320px;
+    min-width: 280px;
 }
 //----------
 [class *="lctl-div-l"] {
@@ -1194,7 +1197,6 @@ a {
 //-----Material modify-----
 //----------//----------//----------//----------//----------
 [class *="lctl-ngMatCalendar"] {
-    
     min-width: 300px;
     min-height: 460px;
     max-width: 800px;
@@ -1226,9 +1228,7 @@ a {
                     }
                     & .mat-calendar-arrow {
                         border-top-color: var(--primaryColorOpposite);
-                    }
-                }
-            }
+            }}}
             & .mat-calendar-spacer {
                 visibility: hidden;
             }
@@ -1288,8 +1288,7 @@ a {
     & [class*="mat-slide-toggle-thumb"] {
         background-color: red !important;
         border-radius: 50%;
-    }
-}
+}}
 .lctl-toggleNavbarButton {
     color: var(--secundaryColorOpposite);
     border-radius: 50%;

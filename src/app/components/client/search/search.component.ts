@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ServiceSearchService } from '../../../shared/service-search.service';
+import { Restaurants } from '../../../models/restaurants';
 @Component({
   selector: 'app-client-search',
   templateUrl: './search.component.html',
@@ -7,9 +8,81 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  public restaurants: Restaurants[] = new Array();
+  public checked:any[] = new Array();
 
-  ngOnInit(): void {
+  constructor(
+    private searchService:ServiceSearchService
+  ) { }
+
+  ngOnInit() {    
+    this.searchService.initialSearch().subscribe((data:any) => {
+      
+      for(let i = 0; i < data.data.length; i++) {
+        this.restaurants.push(new Restaurants(
+          data.data[i].restaurant_id,
+          data.data[i].name,
+          data.data[i].province,
+          data.data[i].city,
+          data.data[i].street_name,
+          data.data[i].street_number,
+          data.data[i].postal_code,
+          data.data[i].phone,
+          data.data[i].capacity,
+          data.data[i].food_type,
+          data.data[i].header,
+          data.data[i].logo,
+          data.data[i].menu,
+          data.data[i].url,
+          data.data[i].latitude,
+          data.data[i].longitude,
+          data.data[i].owner_id
+      ));}
+    });
   }
-
+  public showOptions() {
+    let options:any = document.getElementById('options');
+    let hide:any = document.getElementById('hide');
+    let filters:any = document.getElementsByClassName('filters')[0];
+    if(options.style.display === "flex") {
+      options.style.display = "none";
+      hide.style.display = "none";
+      if(filters) {
+        filters.style.visibility = "visible";
+      }
+    }else {
+      options.style.display = "flex";
+      hide.style.display = "flex";
+      if(filters) {
+        filters.style.visibility = "hidden";
+      }
+  }}
+  public hideOptions() {
+    let options:any = document.getElementById('options');
+    let hide:any = document.getElementById('hide');
+    let filters:any = document.getElementsByClassName('filters')[0];
+    if(options.style.display === "flex") {
+      options.style.display = "none";
+      hide.style.display = "none";
+      if(filters) {
+        filters.style.visibility = "visible";
+      }
+    }
+  }
+  public asign(value:string) {
+    let input:any = document.getElementById(value);
+    let label1:any = document.getElementsByClassName(value)[0];
+    if(input.checked) {
+      this.checked.push(document.getElementById(value));
+      label1.style.cssText =
+        "background: var(--primaryColor); color: var(--primaryColorOpposite)";
+    } else {
+      label1.style.cssText = "";
+      this.checked.forEach((check, index) => {
+        if (check === document.getElementById(value)) {
+          this.checked.splice(index, 1)
+        }
+      })
+  }}
 }
+//-----Desing funcitons-----

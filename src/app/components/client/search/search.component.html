@@ -1,41 +1,92 @@
 <div class="content">
 
     <div class="search">
-       <input type="text" class="searchLine" placeholder="What are you looking for?">
-        <button class="searchButton">
-           <img src="../../../../assets/seach.svg" alt="">
+        <input type="text" class="searchLine"
+            placeholder="What are you looking for?" (click)="hideOptions()">
+        <button class="filterButton" (click)="showOptions()">
+           Filtros
+        </button>
+        <button accesskey="enter" class="searchButton" (click)="hideOptions()">
         </button>
     </div>
-    <div class="lctl-centerElements labelteam">
-        <button class="button">Mexicana</button>
-        <button class="button">Española</button>
-        <button class="button">Argentina</button>
-        <button class="button">Dominicana</button>
-        <button class="button">Japonesa</button>
-        <button class="button">China</button>
-        <button class="button">China</button>
-    </div>
 
+    <div class="lctl-div showOptions" id="options">
 
-    <div class="cards">
-
-        <div class="lctl-cardButton">
-            <div class="lctl-photoProfile-m">
-                <img src="
-                http://5b0988e595225.cdn.sohucs.com/images/20180409/372ad315fcc84eeea032ef2994b6cd04.jpeg
-                ">
+        <div class="typeOption">
+            <div class="titleOption">
+                Origen
             </div>
-            <div>
-                <p class="lctl-font-title">La Abuela</p>
-                <p class="lctl-font-small">
-                    dirección
-                </p>
+            <div class="box">
+                <div class="lctl-centerElements labelTeam">
+                    <label for="Espayola" class="lctl-disabledButtonOpposite-s Espayola">Española</label>
+                    <input type="checkbox" id="Espayola" value="Española" (click)="asign('Espayola')">
+                    <label for="Mexicana" class="lctl-disabledButtonOpposite-s Mexicana">Mexicana</label>
+                    <input type="checkbox" id="Mexicana" value="Mexicana" (click)="asign('Mexicana')">
+                    <label for="Argentina" class="lctl-disabledButtonOpposite-s Argentina">Argentina</label>
+                    <input type="checkbox" id="Argentina" value="Argentina" (click)="asign('Argentina')">
+                    <label for="Dominicana" class="lctl-disabledButtonOpposite-s Dominicana">Dominicana</label>
+                    <input type="checkbox" id="Dominicana" value="Dominicana" (click)="asign('Dominicana')">
+                    <label for="Japonesa" class="lctl-disabledButtonOpposite-s Japonesa">Japonesa</label>
+                    <input type="checkbox" id="Japonesa" value="Japonesa" (click)="asign('Japonesa')">
+                    <label for="China" class="lctl-disabledButtonOpposite-s China">China</label>
+                    <input type="checkbox" id="China" value="China" (click)="asign('China')">
+                </div>
             </div>
         </div>
 
     </div>
 
+    <div id="hide" (click)="hideOptions()">
+    </div>
+    
+    <div class="containFilters">
+        <ng-container *ngIf="checked.length">
+            <div class="filters">
+                <ng-container *ngFor="let item of checked">
+                    <div class="box">
+                        <label for="{{item.id}}"><div class="tag">{{item.value}}<mat-icon>clear</mat-icon></div></label>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
+
 </div>
 
-  
+<div class="body">
+    <div class="map">
+        <!-- <app-map></app-map> -->
+    </div>
+    <div class="cards">
 
+        <ng-container *ngFor = "let restaurant of restaurants">
+            <div class="lctl-infoCard">
+                <img class="lctl-infoCard-banner" src="{{restaurant.header}}">
+                <div class="lctl-infoCard-under">
+                    <div class="lctl-infoCard-left">
+                        <div class="lctl-photoProfile-l">
+                            <img src="{{restaurant.logo}}">
+                        </div>
+                    </div>
+                    <div class="lctl-infoCard-right">
+                        <div class="lctl-infoCard-info">
+                            <div>{{restaurant.name}}</div>
+                            <div>
+                                <div>{{restaurant.phone}}</div>
+                                <div>{{restaurant.food_type}}</div>
+                            </div>
+                        </div>
+                        <div class="lctl-infoCard-oferts">
+                        </div>
+                    </div>
+                </div>
+                <div class="lctl-infoCard-bottons">
+                    <a class="lctl-warnButtonOpposite-s">Reservar</a>
+                    <a class="lctl-warnButtonOpposite-s">menú</a>
+                    <a class="lctl-warnButtonOpposite-s" href="{{restaurant.url}}" target="_blank">web</a>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>

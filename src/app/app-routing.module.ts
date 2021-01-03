@@ -29,8 +29,8 @@ const routes: Routes = [
   {path:"create-restaurant-2", component: CreateRestaurant2Component},
   {path:"create-restaurant-3", component: CreateRestaurant3Component},
   {path:"restaurants-list", component: RestaurantsComponent},
-  {path:"**", component:DesignComponent},
-  {path:" ", component:DesignComponent}
+  {path:"**", component: DesignComponent},
+  {path:" ", component: DesignComponent}
 ];
 
 @NgModule({

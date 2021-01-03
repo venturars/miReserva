@@ -74,20 +74,19 @@
 //-----//-----//-----//-----//-----//-----
 //-----Images-----
 //-----//-----//-----//-----//-----//-----
-.inputimage{
-  max-width: 1440px;
-  width: 100%;
+.inputimage {
+  max-width: min(1440px, 100%);
   max-height: 274px;
   margin: auto;
+  text-align: center;
   background-color: var(--secundaryColorPush);
 }
 //-----
-.aligns{
+.aligns {
   display:flex;
   justify-content: center;
   max-width: 1440px;
   width: 100%;
-  // transform: translateY(-72%);
   margin: auto;
   margin-top: -70px;
   & * {
@@ -99,7 +98,7 @@
     max-height: 120px;
   }
 }
-.borderc{
+.borderc {
   border-color:var(--secundaryColorPush);
 }
 //-----//-----//-----//-----//-----//-----

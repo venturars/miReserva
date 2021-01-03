@@ -13,7 +13,7 @@ import { User } from 'src/app/models/user';
 export class LogInComponent implements OnInit {
   public user:User;
   constructor(
-    public serviceLogIn:ServiceLoginService
+    private serviceLogIn:ServiceLoginService
   ) {
     this.user= new User(null,null,null,null,null,null);
   }

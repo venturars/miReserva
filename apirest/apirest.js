@@ -1,16 +1,15 @@
-const express= require ("express"); 
+const express = require ("express");
 const mysql = require ("mysql");
 const app = express();
-const cors = require('cors')
+const cors = require('cors');
 const compression = require('compression');
 
 const corsOptions = {
     "Access-Control-Allow-Methods" : ['GET', 'PUT', 'POST', 'DELETE']
 }
 
-app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(cors());
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cors(corsOptions));
 app.use(compression());
 
@@ -1234,6 +1233,40 @@ app.delete("/reservations", (request, response) => {
         }}
         response.status(200).send(message);
 });});
+app.get('/search', (req, res) => {
+    req.aborted;
+    let message = {
+        "control": null,
+        "data": null
+    }
+    let sql =
+        `SELECT
+            restaurants.restaurant_id,
+            restaurants.name,
+            restaurants.province,
+            restaurants.city,
+            restaurants.street_name,
+            restaurants.street_number,
+            restaurants.postal_code,
+            restaurants.phone,
+            restaurants.food_type,
+            restaurants.logo,
+            restaurants.menu,
+            restaurants.url,
+            restaurants.latitude,
+            restaurants.longitude
+        FROM
+            restaurants`;
+        connection.query(sql, (err, data) => {
+            if(err) {
+                message.control = false;
+            }else {
+                message.control = true;
+                message.data = data;
+            }
+            res.status(200).send(message);
+        });
+});
 app.listen(3000, () => {
     console.log("listening to port 3000");
 });
