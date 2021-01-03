@@ -24,22 +24,30 @@
                     
                     <mat-slide-toggle (change)="desayunoLunes($event)"></mat-slide-toggle> 
                     </div>
-
-                    <div class="lctl-rightElements">
-                        
-                        <label id="labeldl" style="opacity:0.5">Horario de desayuno</label>
-                        <select disabled id="input1dl" class="lctl-input-m" name="" #horainiciold>
+                    
+                    <div class="lctl-rightElements" (change)="checkit(horainiciold,horafinalld)">
+                    
+                               
+                    <label id="labeldl" style="opacity:0.5">Horario de desayuno</label>
+                    
+                        <select disabled id="input1dl" class="lctl-input-m" name="" #horainiciold required >
                             <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
+                            <option *ngFor="let desayuno of desayunos;let i = index; let last = last" [disabled]="last" >{{desayunos[i].horario}}</option>
+
                         </select>
                         <p id="adl" style="opacity:0.5">a</p>
-                        <select disabled id="input2dl" class="lctl-input-m" name="" #horafinalld>
+                        <select disabled id="input2dl" class="lctl-input-m" name="" #horafinalld required >
                             <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index">{{desayunos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butondl" class="buttonadd lctl-button-m buttonModify" 
-                        (click)="prueba(horainiciold,horafinalld)" >Guardar y editar turnos</button>
+                            <option *ngFor="let desayuno of desayunos;let z = index; let first = first" [disabled]="first" >{{desayunos[z].horario}}</option>
+                        </select>    
+                       <button type="submit" disabled style="opacity:0.5" id="butondl" class="buttonadd lctl-button-m buttonModify" 
+                       #botondl (click)="setTimes(horainiciold, horafinalld,'Lunes','Desayuno',botonshiftsdl)" >
+                       Guardar horarios</button>
+                        <button type="submit" style="display:none" id="butondl" (click)="turnos('Desayuno','Lunes')"
+                         #botonshiftsdl>Turnos</button>
+                        
                     </div>
+               
                 </div>
 
                 <div class="Turns">

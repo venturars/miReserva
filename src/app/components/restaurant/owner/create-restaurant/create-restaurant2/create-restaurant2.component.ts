@@ -36,8 +36,7 @@ this.myInputField.nativeElement.focus();
     console.log(nuevamesa);
     this.servicetable.table.push(nuevamesa);})
 
-  //   this.servicetable.getTables(this.serviceRestaurant.id_restaurant)
-  // .subscribe((data)=> {console.log(data)})    
+   
    
     
     this.table.table_name="";

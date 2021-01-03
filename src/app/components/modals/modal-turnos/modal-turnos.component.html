@@ -1,23 +1,26 @@
 <div class="content">
   
   <div>
-    <p>Editar Turnos</p>
+    <p>Editar Turnos {{name}}  {{service}}</p>
+  </div>
+  <div>
+    <p>Horario {{limiteinicio}} a {{limitefinal}}</p>
   </div>
   <div class="info">
-       <input class="lctl-input-m-Large" type="text">
-       <input class="lctl-input-m-Large" type="text">
-       <input class="lctl-input-m-Large" type="text">
-       <button   class="lctl-warnButton-m buttonLib">Anadir Turnos</button>       
+       <input class="lctl-input-m-Large" type="time" #shiftinicio required>
+       <input class="lctl-input-m-Large" type="time" #shiftfinal required>
+       <input class="lctl-input-m-Large" type="text" #paxmax>
+       <button   class="lctl-warnButton-m buttonLib" (click)="addShifts(shiftinicio,shiftfinal,paxmax)">Anadir Turnos</button>       
   </div>
   
   <div>
   <mat-divider></mat-divider>
 </div>
 
-   <div>
+   <div *ngFor="let shift of shifts;let i =index">
 
-      <p>9:00 a 10:30</p>
-      <p>PAX(Max4)</p>
+      <p>{{shift.shift_from}} a {{shift.shift_to}}</p>
+      <p>{{shift.pax}}</p>
           <button class="lctl-warnButton-s buttonli">Borrar</button>
       </div>
 
