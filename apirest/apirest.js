@@ -308,10 +308,33 @@ app.get("/times1",(req,res)=>{
                 message.data = data;          
         }}
          res.status(200).send(message);
+})})
 
-
-
-
+app.get("/times2/:times_id", (req, res) => {
+    let params = req.params.times_id;
+    let message = {
+        "control": null,
+        "data": null
+    }
+    let sql =
+        `SELECT
+            *
+        FROM
+            times
+        WHERE
+            times.times_id = ?`;
+    connection.query(sql, params, (err, data) => {
+        if(err) {
+        }else {
+            if (data == "") {
+                message.control = false;
+                message.data = data;
+            }
+            else {
+                message.control = true;
+                message.data = data;          
+        }}
+         res.status(200).send(message);
 })})
 app.post("/times", (req, res) => {
     let params = [
@@ -407,8 +430,9 @@ app.delete("/times", (req, res) => {
         res.status(200).send(message);
 });});
 ////////////// SHIFTS ////////////////////
-app.get("/shifts/:restaurant_id", (req, res) => {
-    let params = req.params.restaurant_id;
+app.get("/shifts/", (req, res) => {
+    if(req.query.restaurant_id){
+    let params = req.query.restaurant_id;
     let message = {
         "control": null,
         "data": null
@@ -431,7 +455,34 @@ app.get("/shifts/:restaurant_id", (req, res) => {
                 message.data = data;
         }}
         res.status(200).send(message);
-});});
+
+})}
+else if(req.query.shift_id){
+    let params = req.query.shift_id;
+    let message = {
+        "control": null,
+        "data": null
+    }
+    let sql =
+        `SELECT
+            *
+        FROM
+            shifts
+        WHERE
+            shifts.shift_id = ?`;
+    connection.query(sql, params, (err, data) => {
+         if(err) {
+         }else {
+            if (data=="") {
+                message.control = false;
+                message.data = data;
+            }else {
+                message.control = true;
+                message.data = data;
+        }}
+        res.status(200).send(message);
+    })}
+;});
 app.post("/shifts", (req, res) => {
     let params = [
         req.body.day,

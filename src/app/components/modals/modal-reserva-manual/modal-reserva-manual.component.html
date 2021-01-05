@@ -2,9 +2,9 @@
     <div>
         <p>Reserva Manual</p>
     </div>
-   
-     <div class="lctl-centerElements">
-         <div class="">
+    
+    <div class="lctl-centerElements">
+      <div class="">
         <input class="lctl-cellInput-extraLarger" type="text" placeholder="Nombre">
         <input class="lctl-cellInput-extraLarger" type="text" placeholder="Teléfono">
        
@@ -21,8 +21,16 @@
         </div>
         <div class="">
             <input class="lctl-cellInput-extraLarger" type="text" placeholder="Apellido">
-            <input class="lctl-cellInput-extraLarger" type="text" placeholder="Calendario">
-            
+            <!-- <input class="lctl-cellInput-extraLarger" type="text" placeholder="Calendario"> -->
+            <!-- ARREGLAR EL CALENDARIO, DESCUADRO TODO
+                  SOY DE BACK, A MI NO ME DIGAN NADA :) -->
+            <button  class="lctl-cellInput-extraLarger" (click)="calendar()">
+              <p>Calendario</p>
+            <label id="one">
+              <p></p>
+            </label>
+          </button>
+    
             <select name="select" class="lctl-cellSelect-extraLarge">
                 <option value="value2" selected>Turnos</option>
                 <option value="value1">Value 1</option>

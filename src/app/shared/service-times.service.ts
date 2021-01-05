@@ -9,6 +9,7 @@ import { Times } from '../models/times';
 export class ServiceTimesService {
   public url="http://localhost:3000/times";
   public url1="http://localhost:3000/times1";
+  public url2="http://localhost:3000/times2";
   public times:Times;
   public inicio:string;
   public fin:string;
@@ -20,6 +21,9 @@ export class ServiceTimesService {
     return this.http.get(this.url+"/"+id )
   }
 
+  public getTimesId(id:number):any{
+    return this.http.get(this.url2 +"/"+ id )
+  }
   public checkTimes(name:any,restaurant:any,service:any){
    
     return this.http.get(this.url1+"?name="+name+"&restaurant_id="+restaurant+"&service="+service)    

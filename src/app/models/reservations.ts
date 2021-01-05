@@ -11,6 +11,8 @@ export class Reservations {
                 public hour:string,
                 public shift_id:number,
                 public comments:string,
-                public status:string)
+                public status:string,
+                public customer_name:string,
+                public service:string)
                 {}
 }

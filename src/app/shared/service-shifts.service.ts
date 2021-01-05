@@ -11,7 +11,10 @@ export class ServiceShiftsService {
   constructor(public http:HttpClient) { }
 
   getShifts(id:number){
-    return this.http.get(this.url+"/"+id);
+    return this.http.get(this.url + "?restaurant_id=" + id);
+  }
+  getShiftsId(id:number){
+    return this.http.get(this.url + "?shift_id=" + id);
   }
   
 
