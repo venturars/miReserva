@@ -1,95 +1,79 @@
-.colocaritems{
-    display: flex;
+.maxContainer {
+  display: flex;
+  height: calc(100vh - 134px);
+  justify-content: space-around;
+  min-height: 668px;
+  form {
+    margin: auto;
     align-items: center;
-    justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: var(--secundaryColor);
-  }
-  .colocaritems > *{
+    border: none;
+    width: 100%;
+      & > label > .lctl-photoProfile-l {
+        margin-top: 5px;
+    }
+    & > #photoInput {
+      display: none;
+    }
+    & > .lctl-font-title {
+      margin: 5px 0 0 0;
+    }
+    & > .lctl-font-paragraph {
+      margin: 0 0 10px 0;
+      width: calc(100% - 20px);
+      text-align: center;
+    }
+    & > .lctl-input-l-extraLarge {
+      width: calc(100% - 20px);
+      margin: 6px 0 6px 0;
+      padding: 0 38px 0 38px;
+    }
+    & > .space {
+      background: none;
+      height: 20px;
+    }
+    & > .message, & > .message2 {
+      width: 100%;
+      height: 40px;
+      text-align: center;
+      color: var(--primaryColor);
+    }
+    & > .message2 {
+      color: var(--secundaryColorOpposite);
+    }
+    & > .buttons {
+      width: 100%;
       display: flex;
-      align-items: center;
       justify-content: center;
-      flex-direction: column;
-  }
-  .colocaritems > * input{
-      margin-top: 5px;
-      margin-bottom: 6px;
-      padding-left: 38px;
-  }
-  .colocaritems > * div {
-      display:flex;
-      justify-content: center;    
-      width:100%;
-  }
-  .colocaritems > * div div {
-      display:flex;
-      justify-content:left;
-  }
-  .colocaritems > * div div p{
-      padding-left: 10px;
-  }
-  //ESTO LLEGA HASTA EL FORGOT PASSWORD
-  .colocaritems > * div div a{
-      text-align: right;
-      width:100%;
-  }
-  
-  #labeluno {
-      position: relative;
-    }
-    
-    #labeluno:before {
-      content: "";
-      position: absolute;
-      left: 10px;
-      top: 0;
-      bottom: 0;
-      width: 20px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-user' width='33' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Ccircle cx='12' cy='7' r='4' /%3E%3Cpath d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' /%3E%3C/svg%3E");
-    }
-  
-    #labeldos {
-      position: relative;
-    }
-    
-    #labeldos:before {
-      content: "";
-      position: absolute;
-      left: 10px;
-      top: 0;
-      bottom: 0;
-      width: 20px;
-      
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-lock' width='30' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Crect x='5' y='11' width='14' height='10' rx='2' /%3E%3Ccircle cx='12' cy='16' r='1' /%3E%3Cpath d='M8 11v-4a4 4 0 0 1 8 0v4' /%3E%3C/svg%3E");
-    }
-  .titulo
-  {
-      font-size:17px;
-  }
-  
-  .letraspeque
-  {
-      font-size:14px;
-  }
-  
-  hr {
-      border: 0;
-      clear:both;
-      display:block;
-      width: 96%;               
-      background-color:grey;
-      height: 1px;
-    }
-  
-
-  .caution{
-      border:var(--secundaryColorContrast) solid 2px;
-  }
-
-  .invalid-feedback-left{
-    color:var(--secundaryColorContrast);
-    display:flex;
-    justify-content: left!important;
-    font-size:12px;
-  }
+      margin-top: 9px;
+}}}
+//-----Especial Elements-----
+#profile {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-user' width='33' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Ccircle cx='12' cy='7' r='4' /%3E%3Cpath d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 7px 0;
+}
+.password {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-lock' width='30' height='33' viewBox='0 -10 30 30' stroke-width='1.5' stroke='%23000000' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke='none' d='M0 0h24v24H0z' fill='none'/%3E%3Crect x='5' y='11' width='14' height='10' rx='2' /%3E%3Ccircle cx='12' cy='16' r='1' /%3E%3Cpath d='M8 11v-4a4 4 0 0 1 8 0v4' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 7px 0;
+}
+.caution {
+  border:var(--secundaryColorContrast) solid 1px;
+}
+@media screen and (max-width: 450px) {
+  .maxContainer {
+    form {
+      & > .lctl-font-title {
+        font-size: var(--fontSizeM);
+      }
+      & .lctl-input-l-extraLarge {
+        margin: 11px 0 11px 0;
+        padding: 0 10px 0 30px;
+        font-size: var(--fontSizeS);
+        height: 40px;
+      }
+      #profile, .password {
+        background-size: 25px;
+        background-position: 7px 1px;
+      }
+}}}

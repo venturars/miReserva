@@ -5,11 +5,11 @@
   </p>
     <input id="profile" class="lctl-input-l-large inputForm" name="email" placeholder="Email" 
       placeholder="{{userForm.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
-      [(ngModel)]="user.email" #email="ngModel"
+      [(ngModel)]="user.email" #email="ngModel" type="email"
       [ngClass]="{'caution':userForm.submitted && email.invalid }" email required>
     <input id="password" class="lctl-input-l-large inputForm" name="password" 
       placeholder="{{userForm.submitted && password.invalid ?  'Contraseña obligatoria 6 caracteres' : 'Contraseña'}}"
-      [(ngModel)]="user.password" #password="ngModel"
+      [(ngModel)]="user.password" #password="ngModel" type="password"
       [ngClass]="{'caution':userForm.submitted && password.invalid }" minlength="6" required>
 
   <div class="overLogIn">

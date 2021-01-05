@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { UserOwner } from '../../../../models/user-owner';
+import { ServiceLoginService } from '../../../../shared/service-login.service';
+import { Users } from '../../../../models/users';
+import { ServiceUserOwnerService } from '../../../../shared/service-user-owner.service';
 
 
 @Component({
@@ -11,39 +14,65 @@ import { User } from 'src/app/models/user';
 
 
 export class EditComponentR implements OnInit {
-
-  public user:User;
-  
-
-
-  constructor( ) {
-    this.user= new User("prueba@correo.com","asdasdasd",true,"Pedro","López","B829475824");
-   }
-  
-
-   processFile(imageInput: any) {
-    //SE SUBEN LOS DATOS DEL FICHERO SUBIDO
+  public userOwner:UserOwner;
+  public users:Users;
+  public pass:string;
+  public checkPassword:string;
+  public checkPassword2:string;
+  public message:string;
+  constructor (
+    private serviceLogin:ServiceLoginService,
+    private serviceUserOwner:ServiceUserOwnerService
+  ) { }
+  processFile(imageInput: any) {
     const file: File = imageInput.files[0];
-    //SE CREA ELEMENTO FILE READER
     const reader = new FileReader();
-    //AL CARGAR EL FICHERO SE USA PARA CAMBIAR EL SRC DE LA IMAGEN
     reader.addEventListener('load', (event: any) => {
-    // const imagen=document.getElementById("prueba").setAttribute("src", event.target.result);
-    this.user.image="assets/photos/" +file.name;
-    const imagen=document.getElementById("prueba").setAttribute("src", this.user.image);
-    // GUARDAMOS STRING PARA PODER USARLA EN TODA LA WEB  
-    
-    
-  })
-  reader.readAsDataURL(file);
-}
-       
-  
-onSubmit(form){
-  console.log(form.value);
-} 
-
-  ngOnInit(): void {
+    this.userOwner.photo = "assets/photos/" + file.name;
+    const imagen = document.getElementById("photo").setAttribute("src", this.userOwner.photo);
+    });
+    reader.readAsDataURL(file);
   }
+  onSubmit() {
+    if (this.pass !== this.users.password) {
+      this.message = 'Contraseña incorrecta';
+      this.pass = null;
+    } else {
+      if (this.checkPassword !== this.checkPassword2) {
+        this.message = 'Las contraseñas no coinciden';
+        this.pass = null;
+        this.checkPassword = null;
+        this.checkPassword2 = null;
+      }else {
+        let password:string = this.pass;
+        if(this.checkPassword) {
+          password = this.checkPassword;
+        }
+        this.serviceUserOwner.putOwner({
+          "owner_id": this.users.owner_id,
+          "password": password,
+          // "phone": this.userOwner.phone,
+          "name": this.userOwner.name,
+          "surname": this.userOwner.surname,
+          "cif": this.userOwner.cif,
+          "photo": this.userOwner.photo
+        }).subscribe((response:any) => {
+          if(!response.control) {
+            //Modal los cambios no se han podido guardar
+          }else {
+            //Modal de los cambios se han guardado correctamente
+            this.users.password = password;
+            this.serviceLogin.users.password = this.users.password;
+            this.serviceLogin.userOwner = this.userOwner;
+          }
+          this.message = null;
+          this.pass = null;
+          this.checkPassword = null;
+          this.checkPassword2 = null;
+  });}}}
 
+  ngOnInit() {
+    this.userOwner = this.serviceLogin.userOwner;
+    this.users = this.serviceLogin.users;
+  }
 }

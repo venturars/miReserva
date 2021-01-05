@@ -34,7 +34,7 @@ app.post("/login", (req, res) => {
         "control": null,
         "data": null,
     }
-    let sql = 
+    let sql =
         `SELECT
             users.restaurant_id,
             users.owner_id,

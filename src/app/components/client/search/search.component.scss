@@ -102,13 +102,19 @@
           }}
           & > input {
             display: none;
-  }}}}}
-  #hide {
-    display: none;
-    position: absolute;
+    }}}}
+    & > .panel {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+  }}
+  & #hideOptions {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, .1);
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .containFilters {
     width: 100%;
@@ -171,7 +177,6 @@
   justify-content: center;
   flex-direction: row-reverse;
   .map {
-    background-color: grey;
     width: calc(100% - 670px);
     max-width: 500px;
     height: 100%;
@@ -229,9 +234,11 @@
               &:active {
             }}
             & > input {
-    }}}}}
-  #hide {
-  }
+      }}}}
+      & > .panel {
+    }}
+    & #hideOptions {
+    }
   .containFilters {
     .filters {
       & > .box {

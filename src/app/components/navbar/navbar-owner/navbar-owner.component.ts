@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServiceLoginService } from '../../../shared/service-login.service';
 
 @Component({
   selector: 'app-navbarOwner',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class NavbarOwnerComponent implements OnInit {
 
   constructor(
-    private router:Router
+    private router:Router,
+    public serviceLogin:ServiceLoginService
   ) { }
 
   ngOnInit(): void {
