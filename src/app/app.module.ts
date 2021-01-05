@@ -44,6 +44,8 @@ import { ModalReservaManualComponent } from './components/modals/modal-reserva-m
 import { MapComponent } from './components/map/map.component';
 import { DesignComponent } from './components/login/design/design.component';
 import { ModalInfdeRestauranteComponent } from './components/modals/modal-infde-restaurante/modal-infde-restaurante.component';
+import { ModalRegistroComponent } from './components/modals/modal-registro/modal-registro.component';
+
 
 @NgModule({
   declarations: [
@@ -77,7 +79,8 @@ import { ModalInfdeRestauranteComponent } from './components/modals/modal-infde-
     ModalReservaManualComponent,
     MapComponent,
     DesignComponent,
-    ModalInfdeRestauranteComponent
+    ModalInfdeRestauranteComponent,
+    ModalRegistroComponent
   ],
   imports: [
     BrowserModule,
