@@ -7,6 +7,8 @@ import { Shifts } from '../models/shifts';
 })
 export class ServiceShiftsService {
   public url="http://localhost:3000/shifts";
+  public url1="http://localhost:3000/shiftss";
+
   public shifts:Shifts;
   constructor(public http:HttpClient) { }
 
@@ -14,6 +16,9 @@ export class ServiceShiftsService {
     return this.http.get(this.url+"/"+id);
   }
   
+  getShiftsIdTimes(id:number){
+     return this.http.get(this.url1+"/"+id)
+  }
 
   postShifts(shift:Shifts){
     return this.http.post(this.url, shift);
@@ -26,7 +31,7 @@ export class ServiceShiftsService {
   public deleteShifts(id:number):any {    
     return this.http.request('DELETE',this.url, {
       headers: new HttpHeaders ({ 'Content-Type': 'application/json' }),
-      body: {id:id}
+      body: {shift_id:id}
 });
 }
 

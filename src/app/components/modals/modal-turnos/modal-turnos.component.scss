@@ -104,7 +104,7 @@
        
     }
 
-    & > div:nth-child(5){
+    & > .shift{
        
         display: flex;
         justify-content: center;
@@ -121,7 +121,10 @@
        
     }
 
-    
+       
     
 }
 
+.centrarh1{
+    margin:0 auto;
+}

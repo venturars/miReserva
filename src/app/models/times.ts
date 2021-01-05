@@ -4,7 +4,8 @@ export class Times {
                 public time_from:string,
                 public time_to:string,
                 public restaurant_id:number,
-                public service:string
+                public service:string,
+                public active:string
         ){    
     }
 }

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { holdReady } from 'jquery';
 import { ModalTurnosComponent } from 'src/app/components/modals/modal-turnos/modal-turnos.component';
 import { Times } from 'src/app/models/times';
 import { Turnos } from 'src/app/models/turnos';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
+import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
 
 @Component({
@@ -19,7 +21,9 @@ export class CreateRestaurant3Component implements OnInit {
   public cenas:Turnos[]
   
 
-  constructor(public dialog: MatDialog, public apiTimes:ServiceTimesService, public serviceRestaurant:ServiceRestaurantService ) {
+  constructor(public dialog: MatDialog, public apiTimes:ServiceTimesService,
+              public serviceRestaurant:ServiceRestaurantService,
+              public apiShifts:ServiceShiftsService ) {
     this.desayunos = [
       {horario:"7:00"},
       {horario:"7:30"},
@@ -77,14 +81,33 @@ export class CreateRestaurant3Component implements OnInit {
         cartelcerrado.style.display="block";
     }
   }
-desayunoLunes(esto){
+desayunoLunes(esto, name, service){
       var input1dl= <HTMLInputElement>document.getElementById("input1dl");
       var input2dl= <HTMLInputElement>document.getElementById("input2dl");
       var butondl= <HTMLInputElement>document.getElementById("butondl");
       var labeldl= <HTMLInputElement>document.getElementById("labeldl");
       var adl= <HTMLInputElement>document.getElementById("adl");
       
-
+      
+      this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+      .subscribe((data:any)=>{
+        if(data.control==false){
+          console.log("NO HAY HORARIO QUE DESHABILITAR")
+        }
+        else{
+          const id_times:Times=data.data[0];
+          if(id_times.active=="true"){
+            id_times.active="false";
+          }
+          else{
+            id_times.active="true"
+          }
+          console.log(id_times);
+          this.apiTimes.putTimes(id_times)
+          .subscribe((data)=>console.log(data))
+        }
+        
+      })
       
       if (input1dl.disabled === true) {
           input1dl.disabled=false;
@@ -106,12 +129,32 @@ desayunoLunes(esto){
 
     }
 
-    comidaLunes(esto){
+    comidaLunes(esto,name,service){
       var input1al= <HTMLInputElement>document.getElementById("input1al");
       var input2al= <HTMLInputElement>document.getElementById("input2al");
       var butonal= <HTMLInputElement>document.getElementById("butonal");
       var labelal=<HTMLInputElement>document.getElementById("labelal");
       var aal=<HTMLInputElement>document.getElementById("aal");
+
+      this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+      .subscribe((data:any)=>{
+        if(data.control==false){
+          console.log("NO HAY HORARIO QUE DESHABILITAR")
+        }
+        else{
+          const id_times:Times=data.data[0];
+          if(id_times.active=="true"){
+            id_times.active="false";
+          }
+          else{
+            id_times.active="true"
+          }
+          console.log(id_times);
+          this.apiTimes.putTimes(id_times)
+          .subscribe((data)=>console.log(data))
+        }
+        
+      })
 
       if (input1al.disabled === true) {
           input1al.disabled=false;
@@ -134,13 +177,31 @@ desayunoLunes(esto){
 
     }
  
-    cenaLunes(esto){
+    cenaLunes(esto,name,service){
       var input1cl= <HTMLInputElement>document.getElementById("input1cl");
       var input2cl= <HTMLInputElement>document.getElementById("input2cl");
       var butoncl= <HTMLInputElement>document.getElementById("butoncl");
       var labelcl=<HTMLInputElement>document.getElementById("labelcl");
       var acl=<HTMLInputElement>document.getElementById("acl");
-
+      this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+      .subscribe((data:any)=>{
+        if(data.control==false){
+          console.log("NO HAY HORARIO QUE DESHABILITAR")
+        }
+        else{
+          const id_times:Times=data.data[0];
+          if(id_times.active=="true"){
+            id_times.active="false";
+          }
+          else{
+            id_times.active="true"
+          }
+          console.log(id_times);
+          this.apiTimes.putTimes(id_times)
+          .subscribe((data)=>console.log(data))
+        }
+        
+      })
       if (input1cl.disabled === true) {
           input1cl.disabled=false;
           input2cl.disabled=false;
@@ -180,14 +241,32 @@ abiertoCerradoDiaMartes(esto){
      cartelcerrado.style.display="block";
  }
 }
-desayunoMartes(esto){
+desayunoMartes(esto,name,service){
    var input1dm= <HTMLInputElement>document.getElementById("input1dm");
    var input2dm= <HTMLInputElement>document.getElementById("input2dm");
    var butondm= <HTMLInputElement>document.getElementById("butondm");
    var labeldm= <HTMLInputElement>document.getElementById("labeldm");
    var adm= <HTMLInputElement>document.getElementById("adm");
    
-
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    
    if (input1dm.disabled === true) {
        input1dm.disabled=false;
@@ -209,12 +288,32 @@ desayunoMartes(esto){
 
  }
 
- comidaMartes(esto){
+ comidaMartes(esto,name,service){
    var input1am= <HTMLInputElement>document.getElementById("input1am");
    var input2am= <HTMLInputElement>document.getElementById("input2am");
    var butonam= <HTMLInputElement>document.getElementById("butonam");
    var labelam=<HTMLInputElement>document.getElementById("labelam");
    var aam=<HTMLInputElement>document.getElementById("aam");
+
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
 
    if (input1am.disabled === true) {
        input1am.disabled=false;
@@ -237,13 +336,32 @@ desayunoMartes(esto){
 
  }
 
- cenaMartes(esto){
+ cenaMartes(esto,name,service){
    var input1cm= <HTMLInputElement>document.getElementById("input1cm");
    var input2cm= <HTMLInputElement>document.getElementById("input2cm");
    var butoncm= <HTMLInputElement>document.getElementById("butoncm");
    var labelcm=<HTMLInputElement>document.getElementById("labelcm");
    var acm=<HTMLInputElement>document.getElementById("acm");
-
+   
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    if (input1cm.disabled === true) {
        input1cm.disabled=false;
        input2cm.disabled=false;
@@ -283,14 +401,32 @@ abiertoCerradoDiaMiercoles(esto){
      cartelcerrado.style.display="block";
  }
 }
-desayunoMiercoles(esto){
+desayunoMiercoles(esto,name,service){
    var input1dx= <HTMLInputElement>document.getElementById("input1dx");
    var input2dx= <HTMLInputElement>document.getElementById("input2dx");
    var butondx= <HTMLInputElement>document.getElementById("butondx");
    var labeldx= <HTMLInputElement>document.getElementById("labeldx");
    var adx= <HTMLInputElement>document.getElementById("adx");
    
-
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    
    if (input1dx.disabled === true) {
        input1dx.disabled=false;
@@ -312,12 +448,32 @@ desayunoMiercoles(esto){
 
  }
 
- comidaMiercoles(esto){
+ comidaMiercoles(esto,name,service){
    var input1ax= <HTMLInputElement>document.getElementById("input1ax");
    var input2ax= <HTMLInputElement>document.getElementById("input2ax");
    var butonax= <HTMLInputElement>document.getElementById("butonax");
    var labelax=<HTMLInputElement>document.getElementById("labelax");
    var aax=<HTMLInputElement>document.getElementById("aax");
+
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
 
    if (input1ax.disabled === true) {
        input1ax.disabled=false;
@@ -340,13 +496,32 @@ desayunoMiercoles(esto){
 
  }
 
- cenaMiercoles(esto){
+ cenaMiercoles(esto,name,service){
    var input1cx= <HTMLInputElement>document.getElementById("input1cx");
    var input2cx= <HTMLInputElement>document.getElementById("input2cx");
    var butoncx= <HTMLInputElement>document.getElementById("butoncx");
    var labelcx=<HTMLInputElement>document.getElementById("labelcx");
    var acx=<HTMLInputElement>document.getElementById("acx");
 
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    if (input1cx.disabled === true) {
        input1cx.disabled=false;
        input2cx.disabled=false;
@@ -385,13 +560,32 @@ abiertoCerradoDiaJueves(esto){
      cartelcerrado.style.display="block";
  }
 }
-desayunoJueves(esto){
+desayunoJueves(esto,name,service){
    var input1dj= <HTMLInputElement>document.getElementById("input1dj");
    var input2dj= <HTMLInputElement>document.getElementById("input2dj");
    var butondj= <HTMLInputElement>document.getElementById("butondj");
    var labeldj= <HTMLInputElement>document.getElementById("labeldj");
    var adj= <HTMLInputElement>document.getElementById("adj");
    
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
 
    
    if (input1dj.disabled === true) {
@@ -414,12 +608,32 @@ desayunoJueves(esto){
 
  }
 
- comidaJueves(esto){
+ comidaJueves(esto,name,service){
    var input1aj= <HTMLInputElement>document.getElementById("input1aj");
    var input2aj= <HTMLInputElement>document.getElementById("input2aj");
    var butonaj= <HTMLInputElement>document.getElementById("butonaj");
    var labelaj=<HTMLInputElement>document.getElementById("labelaj");
    var aaj=<HTMLInputElement>document.getElementById("aaj");
+
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
 
    if (input1aj.disabled === true) {
        input1aj.disabled=false;
@@ -442,13 +656,32 @@ desayunoJueves(esto){
 
  }
 
- cenaJueves(esto){
+ cenaJueves(esto,name,service){
    var input1cj= <HTMLInputElement>document.getElementById("input1cj");
    var input2cj= <HTMLInputElement>document.getElementById("input2cj");
    var butoncj= <HTMLInputElement>document.getElementById("butoncj");
    var labelcj=<HTMLInputElement>document.getElementById("labelcj");
    var acj=<HTMLInputElement>document.getElementById("acj");
 
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    if (input1cj.disabled === true) {
        input1cj.disabled=false;
        input2cj.disabled=false;
@@ -489,14 +722,32 @@ abiertoCerradoDiaViernes(esto){
      cartelcerrado.style.display="block";
  }
 }
-desayunoViernes(esto){
+desayunoViernes(esto,name,service){
    var input1dv= <HTMLInputElement>document.getElementById("input1dv");
    var input2dv= <HTMLInputElement>document.getElementById("input2dv");
    var butondv= <HTMLInputElement>document.getElementById("butondv");
    var labeldv= <HTMLInputElement>document.getElementById("labeldv");
    var adv= <HTMLInputElement>document.getElementById("adv");
    
-
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    
    if (input1dv.disabled === true) {
        input1dv.disabled=false;
@@ -518,12 +769,32 @@ desayunoViernes(esto){
 
  }
 
- comidaViernes(esto){
+ comidaViernes(esto,name,service){
    var input1av= <HTMLInputElement>document.getElementById("input1av");
    var input2av= <HTMLInputElement>document.getElementById("input2av");
    var butonav= <HTMLInputElement>document.getElementById("butonav");
    var labelav=<HTMLInputElement>document.getElementById("labelav");
    var aav=<HTMLInputElement>document.getElementById("aav");
+
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
 
    if (input1av.disabled === true) {
        input1av.disabled=false;
@@ -546,13 +817,32 @@ desayunoViernes(esto){
 
  }
 
- cenaViernes(esto){
+ cenaViernes(esto,name,service){
    var input1cv= <HTMLInputElement>document.getElementById("input1cv");
    var input2cv= <HTMLInputElement>document.getElementById("input2cv");
    var butoncv= <HTMLInputElement>document.getElementById("butoncv");
    var labelcv=<HTMLInputElement>document.getElementById("labelcv");
    var acv=<HTMLInputElement>document.getElementById("acv");
 
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    if (input1cv.disabled === true) {
        input1cv.disabled=false;
        input2cv.disabled=false;
@@ -592,14 +882,32 @@ abiertoCerradoDiaSabado(esto){
      cartelcerrado.style.display="block";
  }
 }
-desayunoSabado(esto){
+desayunoSabado(esto,name,service){
    var input1ds= <HTMLInputElement>document.getElementById("input1ds");
    var input2ds= <HTMLInputElement>document.getElementById("input2ds");
    var butonds= <HTMLInputElement>document.getElementById("butonds");
    var labelds= <HTMLInputElement>document.getElementById("labelds");
    var ads= <HTMLInputElement>document.getElementById("ads");
    
-
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    
    if (input1ds.disabled === true) {
        input1ds.disabled=false;
@@ -621,13 +929,32 @@ desayunoSabado(esto){
 
  }
 
- comidaSabado(esto){
+ comidaSabado(esto,name,service){
    var input1as= <HTMLInputElement>document.getElementById("input1as");
    var input2as= <HTMLInputElement>document.getElementById("input2as");
    var butonas= <HTMLInputElement>document.getElementById("butonas");
    var labelas=<HTMLInputElement>document.getElementById("labelas");
    var aas=<HTMLInputElement>document.getElementById("aas");
 
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    if (input1as.disabled === true) {
        input1as.disabled=false;
        input2as.disabled=false;
@@ -649,13 +976,32 @@ desayunoSabado(esto){
 
  }
 
- cenaSabado(esto){
+ cenaSabado(esto,name,service){
    var input1cs= <HTMLInputElement>document.getElementById("input1cs");
    var input2cs= <HTMLInputElement>document.getElementById("input2cs");
    var butoncs= <HTMLInputElement>document.getElementById("butoncs");
    var labelcs=<HTMLInputElement>document.getElementById("labelcs");
    var acs=<HTMLInputElement>document.getElementById("acs");
 
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    if (input1cs.disabled === true) {
        input1cs.disabled=false;
        input2cs.disabled=false;
@@ -695,14 +1041,32 @@ desayunoSabado(esto){
      cartelcerrado.style.display="block";
  }
 }
-desayunoDomingo(esto){
+desayunoDomingo(esto,name,service){
    var input1dd= <HTMLInputElement>document.getElementById("input1dd");
    var input2dd= <HTMLInputElement>document.getElementById("input2dd");
    var butondd= <HTMLInputElement>document.getElementById("butondd");
    var labeldd= <HTMLInputElement>document.getElementById("labeldd");
    var add= <HTMLInputElement>document.getElementById("add");
    
-
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    
    if (input1dd.disabled === true) {
        input1dd.disabled=false;
@@ -724,13 +1088,32 @@ desayunoDomingo(esto){
 
  }
 
- comidaDomingo(esto){
+ comidaDomingo(esto,name,service){
    var input1ad= <HTMLInputElement>document.getElementById("input1ad");
    var input2ad= <HTMLInputElement>document.getElementById("input2ad");
    var butonad= <HTMLInputElement>document.getElementById("butonad");
    var labelad=<HTMLInputElement>document.getElementById("labelad");
    var aad=<HTMLInputElement>document.getElementById("aad");
 
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    if (input1ad.disabled === true) {
        input1ad.disabled=false;
        input2ad.disabled=false;
@@ -752,13 +1135,32 @@ desayunoDomingo(esto){
 
  }
 
- cenaDomingo(esto){
+ cenaDomingo(esto,name,service){
    var input1cd= <HTMLInputElement>document.getElementById("input1cd");
    var input2cd= <HTMLInputElement>document.getElementById("input2cd");
    var butoncd= <HTMLInputElement>document.getElementById("butoncd");
    var labelcd=<HTMLInputElement>document.getElementById("labelcd");
    var acd=<HTMLInputElement>document.getElementById("acd");
 
+   this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
+   .subscribe((data:any)=>{
+     if(data.control==false){
+       console.log("NO HAY HORARIO QUE DESHABILITAR")
+     }
+     else{
+       const id_times:Times=data.data[0];
+       if(id_times.active=="true"){
+         id_times.active="false";
+       }
+       else{
+         id_times.active="true"
+       }
+       console.log(id_times);
+       this.apiTimes.putTimes(id_times)
+       .subscribe((data)=>console.log(data))
+     }
+     
+   })
    if (input1cd.disabled === true) {
        input1cd.disabled=false;
        input2cd.disabled=false;
@@ -820,15 +1222,22 @@ desayunoDomingo(esto){
         
         if(data.control==false){
               //SINO EXISTE EL HORARIO LO CREA
-              const time= new Times (null,dia,inicio.value,final.value,this.serviceRestaurant.id_restaurant,comida);
+              const time= new Times (null,dia,inicio.value,final.value,this.serviceRestaurant.id_restaurant,comida,"true");
               this.apiTimes.inicio=inicio.value;
               this.apiTimes.fin=final.value;
               this.apiTimes.postTimes(time)
               .subscribe((data)=>console.log(data));
         }
         else{   // SI YA EXISTE EL HORARIO HACE PUT
-            
-              const time= new Times (data.data[0].times_id,dia,inicio.value,final.value,this.serviceRestaurant.id_restaurant,comida);
+              this.apiShifts.getShiftsIdTimes(data.data[0].times_id)
+              .subscribe((data:any)=>{
+                for (let i=0;i<data.data.length;i++){
+                      this.apiShifts.deleteShifts(data.data[i].shift_id)
+                      .subscribe((data)=>{console.log(data)})
+                      console.log("se borran los turnos de ese servicio")
+                }
+              })
+              const time= new Times (data.data[0].times_id,dia,inicio.value,final.value,this.serviceRestaurant.id_restaurant,comida,"true");
               this.apiTimes.inicio=inicio.value;
               this.apiTimes.fin=final.value;
               this.apiTimes.putTimes(time)
@@ -851,6 +1260,11 @@ if (horainicio.selectedIndex >= horafinal.selectedIndex)
     {
       horafinal.selectedIndex= horainicio.selectedIndex + 1;
     }    
+}
+
+cambiarInput(inicio,fin){
+fin.style.backgroundColor="var(--secundaryColor)";
+inicio.style.backgroundColor="var(--secundaryColor)";
 }
 
 }
