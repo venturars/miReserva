@@ -342,7 +342,8 @@ app.post("/times", (req, res) => {
         req.body.time_from,
         req.body.time_to,
         req.body.restaurant_id,
-        req.body.service
+        req.body.service,
+        req.body.active
     ];
     let message = {
         "control": null,
@@ -354,9 +355,10 @@ app.post("/times", (req, res) => {
     time_from,
     time_to,
     restaurant_id,
-    service)
+    service,
+    active)
     VALUES 
-    (?,?,?,?,?)`
+    (?,?,?,?,?,?)`
     connection.query(sql, params, (err, data) => {
          if(err) {
          }else {
@@ -378,7 +380,9 @@ app.put("/times", (req, res) => {
         req.body.time_to,
         req.body.restaurant_id,
         req.body.service,
-        req.body.times_id
+        req.body.active,
+        req.body.times_id,
+        
     ];
     let message = {
         "control": null
@@ -390,7 +394,9 @@ app.put("/times", (req, res) => {
      time_from = COALESCE(?, time_from),
      time_to = COALESCE(?, time_to),
      restaurant_id = COALESCE(?, time_to),
-     service = COALESCE(?, service)
+     service = COALESCE(?, service),
+     active = COALESCE(?, active)
+
      WHERE 
      times_id= ?
     `
@@ -1384,6 +1390,33 @@ app.get('/search', (req, res) => {
             res.status(200).send(message);
         });
 });
+
+
+app.get("/shiftss/:times_id", (req, res) => {
+    let params = req.params.times_id;
+    let message = {
+        "control": null,
+        "data": null
+    }
+    let sql =
+        `SELECT
+            *
+        FROM
+            shifts
+        WHERE
+            shifts.times_id = ?`;
+    connection.query(sql, params, (err, data) => {
+         if(err) {
+         }else {
+            if (data=="") {
+                message.control = false;
+                message.data = data;
+            }else {
+                message.control = true;
+                message.data = data;
+        }}
+        res.status(200).send(message);
+});});
 app.listen(3000, () => {
     console.log("listening to port 3000");
 });

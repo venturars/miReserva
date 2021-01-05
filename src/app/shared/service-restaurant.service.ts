@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceRestaurantService {
-  public id_restaurant:number;
+  public id_restaurant:any;
+  public capacity:any;
   private url = "http://localhost:3000/restaurant";
   private url2 = "http://localhost:3000/restaurants";
   constructor(

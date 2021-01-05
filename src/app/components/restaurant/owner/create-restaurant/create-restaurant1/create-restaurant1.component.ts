@@ -65,6 +65,7 @@ reader.readAsDataURL(file);
     (1,restForm.value.name, restForm.value.province, restForm.value.city, restForm.value.street_name,
        restForm.value.street_number, restForm.value.postal_code,restForm.value.phone,restForm.value.capacity, restForm.value.food_type,this.restaurant.banner,this.restaurant.logo,null,restForm.value.url,null,null,
        this.serviceLogIn.userOwner.owner_id, restForm.value.mail, restForm.value.password);     
+    this.serviceRestaurant.capacity=restForm.value.capacity;   
     this.serviceRestaurant.postRestaurant(nuevorestaurante)
     .subscribe((data:any) => {  
       
@@ -73,9 +74,15 @@ reader.readAsDataURL(file);
       this.restauranteCreado=data.data.restaurant_id;
         // console.log(this.restauranteCreado);
           this.geoservice.getJSONstreet(this.url).subscribe((data:any)=>{
-          this.latitud=data[0].lat;
-          this.longitud=data[0].lon;
-        
+            
+            if (data==""){
+              //EN ESTE IF ES CUANDO HA FALLADO LA LOCALIZACION Y HABRIA QUE METERSELAS O PREGUNTARLE POR ELLAS
+              }
+            else
+            {
+              this.latitud=data[0].lat;
+              this.longitud=data[0].lon;
+            }
       //SE ACTUALIZA EL RESTAURANTE CON LATITUD Y LONGITUD    
           nuevorestaurante.restaurant_id=this.restauranteCreado;
           this.serviceRestaurant.id_restaurant=nuevorestaurante.restaurant_id;

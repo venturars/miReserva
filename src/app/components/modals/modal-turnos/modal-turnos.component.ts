@@ -34,7 +34,26 @@ export class ModalTurnosComponent implements OnInit {
       this.limiteinicio=data.data[0].time_from;
       this.limitefinal=data.data[0].time_to;
       this.times_id=data.data[0].times_id;
+    
+      this.apiShifts.getShiftsIdTimes(this.times_id)
+      .subscribe((data:any)=>{
+        console.log(data);
+        if (data.control==true){
+          for (let i=0;i<data.data.length;i++){
+            this.shifts.push(data.data[i])
+          }
+           
+            console.log(this.shifts);
+        }
+        else{
+          
+          console.log(this.shifts);
+        }
+        
+      })
   })
+    
+
 }
 
 addShifts(inicio,final,paxmax){
@@ -45,4 +64,15 @@ addShifts(inicio,final,paxmax){
     this.shifts.push(newshift)
   })
 }
+
+deleteShifts(i,shift){
+  this.shifts.splice(i,1);
+  this.apiShifts.deleteShifts(shift.shift_id)
+  .subscribe((data)=>{console.log(data)});
+}
+
+maximo(paxmax){
+paxmax.value=this.serviceRestaurant.capacity;
+}
+
 }

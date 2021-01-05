@@ -9,24 +9,24 @@
   <div class="info">
        <input class="lctl-input-m-Large" type="time" #shiftinicio required>
        <input class="lctl-input-m-Large" type="time" #shiftfinal required>
-       <input class="lctl-input-m-Large" type="text" #paxmax>
+       <input class="lctl-input-m-Large" type="number" onkeydown="return false" min=0 max={{serviceRestaurant.capacity}} #paxmax>
+       <button (click)="maximo(paxmax)">Maximo</button>
        <button   class="lctl-warnButton-m buttonLib" (click)="addShifts(shiftinicio,shiftfinal,paxmax)">Anadir Turnos</button>       
   </div>
   
   <div>
   <mat-divider></mat-divider>
 </div>
-
-   <div *ngFor="let shift of shifts;let i =index">
+ <ng-container *ngIf="this.shifts.length!=0; else sinShifts" >
+   <div class="shift"  *ngFor="let shift of shifts;let i =index">
 
       <p>{{shift.shift_from}} a {{shift.shift_to}}</p>
-      <p>{{shift.pax}}</p>
-          <button class="lctl-warnButton-s buttonli">Borrar</button>
-      </div>
-
-   <div>
-    <button class="lctl-warnButton-s buttonli">Guardar</button>
-       
-   </div>
+      <p>  {{shift.pax}}</p>
+          <button class="lctl-warnButton-s buttonli" (click)="deleteShifts(i,shift)">Borrar</button>
+    </div>
+  </ng-container>
+<ng-template #sinShifts>
+  <h1 class="centrarh1">No tienes turnos!</h1>
+</ng-template>
 
 </div>
