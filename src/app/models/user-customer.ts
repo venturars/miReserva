@@ -1,9 +1,9 @@
 export class UserCustomer {
-    constructor(
+    constructor (
         public customer_id:number,
         public phone:number,
         public name:string,
         public surname:string,
-        public photo:string){}
-    
+        public photo:string
+    ){}
 }

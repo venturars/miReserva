@@ -139,6 +139,9 @@ a {
 //-----Buttons-----
 //----------//----------//----------//----------//----------
 [class *="lctl-button"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-transform: capitalize;
     color: var(--primaryColorContrast);
     background: var(--primaryColor);
@@ -190,6 +193,7 @@ a {
     margin: 5px;
     max-width: 100%;
     font-weight: var(--fontWidthBolder);
+    text-align: center;
     cursor: pointer;
     &:active {
         background-color: var(--primaryColorPush);
@@ -298,7 +302,7 @@ a {
 //-----Inputs-----
 //----------//----------//----------//----------//----------
 [class *="lctl-input"] {
-    background-color: var(--secundaryColor);
+    background-color: var(--primaryColorOpposite);
     outline: none;
     padding-left: 10px;
     padding-right: 10px;
@@ -319,35 +323,31 @@ a {
 //----------
 [class *="lctl-input-s"] {
     width: 100px;
-    height: 25px;
+    min-height: 25px;
     border-radius: var(--borderRadiusS);
     font-size: var(--fontSizeS)
 }
-[class *="lctl-input-s-large"] {
-    width: 200px;
-}
-[class *="lctl-input-s-extraLarge"] {
-    width: 300px;
-}
-//----------
 [class *="lctl-input-m"] {
     width: 150px;
-    height: 35px;
+    min-height: 35px;
     border-radius: var(--borderRadiusM);
     font-size: var(--fontSizeS);
 }
-[class *="lctl-input-m-large"] {
+[class *="lctl-input-l"] {
+    width: 300px;
+    min-height: 50px;
+    border-radius: var(--borderRadiusL);
+    font-size: var(--fontSizeM);
+}
+//----------
+[class *="lctl-input-s-large"] {
+    width: 200px;
+}
+[class *="lctl-input-s-extraLarge"], [class *="lctl-input-m-large"] {
     width: 300px;
 }
 [class *="lctl-input-m-extraLarge"] {
     width: 450px;
-}
-//----------
-[class *="lctl-input-l"] {
-    width: 300px;
-    height: 50px;
-    border-radius: var(--borderRadiusL);
-    font-size: var(--fontSizeM);
 }
 [class *="lctl-input-l-large"] {
     width: 600px;
@@ -868,15 +868,13 @@ a {
 //-----Containers-----
 //----------//----------//----------//----------//----------
 [class *= "lctl-photoProfile-"] {
-    background-color: var(--secundaryColorOpposite);
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 1000px;
-    // border-radius: 50%;
     border: 2px solid var(--secundaryColorPush);
-    background-color: transparent;
+    background-color: var(--primaryColorOpposite);
     &:hover {
         border: 2px solid var(--secundaryColorContrast);
     }
@@ -929,54 +927,56 @@ a {
 //-----How to use-----
 //----------
 // <div class="lctl-infoCard">
-//     <img class="lctl-infoCard-banner" src="assets/photos/potada2.png">
-//     <div class="lctl-infoCard-under">
-//         <div class="lctl-infoCard-left">
-//             <div class="lctl-photoProfile-l">
-//                 <img src="assets/photos/logorestaurante2.png">
-//             </div>
-//         </div>
-//         <div class="lctl-infoCard-right">
-//             <div class="lctl-infoCard-info">
-//                 <div>La cocina del tio Mc Potter</div>
-//                 <div>
-//                     <div>télefono</div>
-//                     <div>tipo de comida</div>
-//                 </div>
-//             </div>
-//             <div class="lctl-infoCard-oferts">
-//             </div>
+// <div class="lctl-infoCard-banner">
+//     <img src="assets/photos/potada2.png">
+// </div>
+// <div class="lctl-infoCard-under">
+//     <div class="lctl-infoCard-left">
+//         <div class="lctl-photoProfile-l">
+//             <img src="{{restaurant.logo}}">
 //         </div>
 //     </div>
-//     <div class="lctl-infoCard-bottons">
-//         <div class="lctl-warnButtonOpposite-s">Reservar</div>
-//             <div class="lctl-warnButtonOpposite-s">menú</div>
-//             <div class="lctl-warnButtonOpposite-s">web</div>
+//     <div class="lctl-infoCard-right">
+//         <div class="lctl-infoCard-info">
+//             <div>{{restaurant.name}}</div>
+//             <div>
+//                 <div>{{restaurant.phone}}</div>
+//                 <div>{{restaurant.food_type}}</div>
+//             </div>
+//         </div>
+//         <div class="lctl-infoCard-oferts">
 //         </div>
 //     </div>
+// </div>
+// <div class="lctl-infoCard-bottons">
+//     <a class="lctl-warnButtonOpposite-s">Reservar</a>
+//     <a class="lctl-warnButtonOpposite-s">menú</a>
+//     <a class="lctl-warnButtonOpposite-s" href="{{restaurant.url}}" target="_blank">web</a>
+// </div>
 // </div>
 //----------
 .lctl-infoCard {
     background-color: var(--primaryColorOpposite);
     width: 650px;
-    //Para ampliar height: 280px
-    height: 245px;
+    height: 240px;
     margin: 5px;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     border-radius: var(--borderRadiusL);
     overflow: hidden;
     & > .lctl-infoCard-banner {
-      max-width: 100%;
-      max-height: 125px;
+        width: 100%;
+        height: 125px;
+        text-align: center;
+        & > img {
+            max-width: 100%;
+            max-height: 100%;
+      }
     }
     & > .lctl-infoCard-under {
       display: flex;
       & > .lctl-infoCard-left, & > .lctl-infoCard-right {
         display: flex;
-      transform: translate(0, 45px);
       }
       & > .lctl-infoCard-left {
         width: max-content;
@@ -1011,63 +1011,10 @@ a {
       display: flex;
       flex-direction: row-reverse;
       background: none;
+      transform: translate(-5px, -45px);
 }}
 @media screen and (max-width: 768px) {
-    .lctl-infoCard {
-        max-width: 650px;//
-        //Para ampliar height: 280px
-        height: 245px;
-        margin: 5px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        overflow: hidden;
-        & > .lctl-infoCard-banner {
-          max-width: 100%;
-          max-height: 125px;
-        }
-        & > .lctl-infoCard-under {
-          display: flex;
-          & > .lctl-infoCard-left, & > .lctl-infoCard-right {
-            display: flex;
-          }
-          & > .lctl-infoCard-left {
-            width: max-content;
-            padding: 10px;
-          }
-          & > .lctl-infoCard-right {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding-left: 5px;
-            & > .lctl-infoCard-info {
-              display: flex;
-              flex-direction: column;
-              justify-content: space-between;
-              text-align: left;
-              height: 100%;
-              width: 65%;
-              padding: 10px 0 15px 0;
-              & > div {
-                &:first-child {
-                  font-weight: var(--fontWidthBolder);
-                  text-overflow: ellipsis;
-                  overflow: hidden;
-                  white-space: nowrap;
-            }}}
-            & > .lctl-infoCard-oferts {
-              width: 35%;
-              height: 100%;
-            }
-        }}
-        & > .lctl-infoCard-bottons {
-          display: flex;
-          flex-direction: row-reverse;
-          //Para ampliar quitar transform
-          transform: translate(-10px, -45px);
-          background: none;
-}}}
+}
 //----------//----------//----------//----------//----------
 //-----How to use-----
 //----------//----------//----------//----------//----------
@@ -1165,9 +1112,9 @@ a {
     flex-direction: column;
     max-width: 580px;
     min-width: 260px;
-    // border: 1px solid var(--secundaryColorPush);
+    border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusL);
-    box-shadow: 0 0 3px 1px var(--secundaryColorPush);
+    // box-shadow: 0 0 3px 1px var(--secundaryColorPush);
 }
 //----------
 [class *="lctl-div-s"] {

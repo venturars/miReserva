@@ -1,6 +1,6 @@
 <div class="lctl-navContainer">
     <button class="lctl_navSection lctl-navToggle">
-        <img  src="assets/photos/logorestaurante.png" class="lctl-photoProfile-m">
+        <img  src="{{serviceLogin.userOwner.photo}}" class="lctl-photoProfile-m">
     </button>
     <button class="lctl-navItems">
         <div class="lctl-navAfterButton">
@@ -25,7 +25,7 @@
             <button class="lctl-navHidden"></button>
         </div>
     </button>
-        <div class="lctl_navSection lctl-navHome">
+        <div class="lctl_navSection lctl-navHome" (click)="toRestaurantsList()">
             <img src="../../../../assets/LogoMiReserva.svg">
     </div>
 </div>

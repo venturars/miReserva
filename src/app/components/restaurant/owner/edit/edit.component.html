@@ -1,48 +1,41 @@
-<div class="colocaritems">
-  
-    <form #userForm1="ngForm" (ngSubmit)="(userForm1.invalid) ? 'mal' : onSubmit(userForm1)">
-        <img id="prueba" (click)="foto.click()" class="lctl-photoProfile-xl"> 
-      <!-- Cambiar submenu con formato de la pagina no es un H3 normal -->
-    <b><p class="lctl-font-title text-center">EDITA TU PERFIL</p></b>
-    <input class="lctl-input-m-extraLarge" name="name" autocomplete="off" placeholder="Nombre" 
-        [(ngModel)]="user.name" #name="ngModel"
-        [ngClass]="{'caution':userForm1.submitted && name.invalid }" required>
-        <div class="invalid-feedback" *ngIf="userForm1.submitted && name.invalid">
-          <p *ngIf="name.errors.required">Nombre obligatorio</p>
+<div class="maxContainer">
+  <form class="lctl-div" #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? 'mal' : onSubmit()">
+    <label for="photoInput">
+      <div class="lctl-photoProfile-l">
+        <img id="photo" src="">
       </div>
-      <input class="lctl-input-m-extraLarge" type="file" id="foto" style="display:none" name="photo" accept="image/x-png,image/gif,image/jpeg" autocomplete="off" placeholder="Introduce foto" #foto (change)="processFile(foto)">
-<input class="lctl-input-m-extraLarge" name="surname" autocomplete="off" placeholder="Apellidos" 
-  [(ngModel)]="user.surname" #surname="ngModel"
-  [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
-  <div class="invalid-feedback" *ngIf="userForm1.submitted && surname.invalid">
-    <p *ngIf="surname.errors.required">Apellidos obligatorio</p>
-</div>
-<input class="lctl-input-m-extraLarge" name="email" autocomplete="off" placeholder="Email" 
-    [(ngModel)]="user.email" #email="ngModel"
-    [ngClass]="{'caution':userForm1.submitted && email.invalid }" email required>
-    <div class="invalid-feedback" *ngIf="userForm1.submitted && email.invalid">
-      <p *ngIf="email.errors.required">Email obligatorio</p>
-      <p *ngIf="email.errors.email">Formato incorrecto de email</p>
-  </div>
-  <input class="lctl-input-m-extraLarge" name="cif" autocomplete="off" placeholder="CIF" 
-  [(ngModel)]="user.cif" #cif="ngModel"
-  [ngClass]="{'caution':userForm1.submitted && cif.invalid }" required>
-  <div class="invalid-feedback" *ngIf="userForm1.submitted && cif.invalid">
-    <p *ngIf="cif.errors.required">CIF obligatorio</p>  
-</div>
-<input class="lctl-input-m-extraLarge" name="password" type="password" autocomplete="off" placeholder="Contraseña" 
-[(ngModel)]="user.password" #password="ngModel"
-[ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required>
-<div class="invalid-feedback" *ngIf="userForm1.submitted && password.invalid">
-  <p *ngIf="password.errors.required">Contraseña obligatoria</p>
-</div>
-
-<div>
-  <button type="submit" class="lctl-button-m w-100">Guardar</button>
-</div>
-
+    </label>
+    <input id="photoInput" type="file" name="photoInput" autocomplete="off"
+      accept="image/x-png,image/gif,image/jpeg" #foto (change)="processFile(foto)">
+    <div class="lctl-font-title">Edita tu perfil</div>
+    <div class="lctl-font-paragraph">La información de contacto debe estar actualizada</div>
+    <input class="lctl-input-l-extraLarge" name="name" autocomplete="off" placeholder="Nombre" 
+      [(ngModel)]="userOwner.name" #name="ngModel" type="text"
+      required [ngClass]="{'caution':userForm.submitted && name.invalid}">
+    <input class="lctl-input-l-extraLarge" name="surname" autocomplete="off" placeholder="Apellidos" 
+      [(ngModel)]="userOwner.surname" #surname="ngModel" type="text"
+      required [ngClass]="{'caution':userForm.submitted && surname.invalid}">
+    <!-- <input class="lctl-input-l-extraLarge" name="phone" autocomplete="off" placeholder="Telefono" 
+      [(ngModel)]="userOwner.phone" #phone="ngModel" type="tel"
+      minlength="9" maxlength="9" required [ngClass]="{'caution':userForm.submitted && phone.invalid}"> -->
+    <input class="lctl-input-l-extraLarge" name="cif" autocomplete="off" placeholder="CIF" 
+      [(ngModel)]="userOwner.cif" #cif="ngModel" type="text"
+      [ngClass]="{'caution':userForm.submitted && cif.invalid }" required>
+      <div class="lctl-br space"></div>
+    <input class="lctl-input-l-extraLarge password" name="password1" type="password" autocomplete="off"
+      [(ngModel)]="checkPassword" #password1="ngModel" placeholder="Nueva contraseña"
+      minlength="6" [ngClass]="{'caution':userForm.submitted && password1.invalid}">
+    <input class="lctl-input-l-extraLarge password" name="password2" type="password" autocomplete="off"
+      [(ngModel)]="checkPassword2" #password2="ngModel" placeholder="Confirmar contraseña"
+      minlength="6" [ngClass]="{'caution':userForm.submitted && password2.invalid}">
+    <div class="message">{{message}}</div>
+    <div class="message2">Confirma tu contraseña</div>
+    <input class="lctl-input-l-extraLarge password" name="password" type="password" autocomplete="off"
+      [(ngModel)]="pass" #password="ngModel" placeholder="Contraseña"
+      minlength="6" required [ngClass]="{'caution':userForm.submitted && password.invalid}">
+    <div class="buttons">
+      <div class="lctl-button-m">Cancelar</div>
+      <button type="submit" class="lctl-button-m">Guardar</button>
+    </div>
   </form>
-  
 </div>
-
-

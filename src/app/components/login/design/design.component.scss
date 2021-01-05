@@ -6,6 +6,7 @@
     justify-content: space-around;
     max-width: 100%;
     height: calc(100vh - 134px);
+    min-height: 520px;
     background-color: var(--secundaryColor);
     & > .img, & > .content {
         width: 600px;
@@ -28,6 +29,7 @@
 @media screen and (max-width: 1250px) {
 
     .maxContainer {
+        min-height: 400px;
         & > .img, & > .content {
             width: 100%;
             height: initial;
