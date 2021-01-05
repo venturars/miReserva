@@ -922,7 +922,7 @@ app.get("/restaurant/:restaurant_id", (request, response) => {
         FROM
             restaurants
         WHERE
-            restaurant_id=?`;
+            restaurant_id = ?`;
     connection.query(sql, request.params.restaurant_id, (err, res) => {
         if (err) {
         }else {

@@ -139,6 +139,9 @@ a {
 //-----Buttons-----
 //----------//----------//----------//----------//----------
 [class *="lctl-button"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-transform: capitalize;
     color: var(--primaryColorContrast);
     background: var(--primaryColor);
