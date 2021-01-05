@@ -4,7 +4,6 @@ import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { Users } from '../../../../models/users';
 import { ServiceUserOwnerService } from '../../../../shared/service-user-owner.service';
 
-
 @Component({
   selector: 'app-restaurant-owner-edit',
   templateUrl: './edit.component.html',
