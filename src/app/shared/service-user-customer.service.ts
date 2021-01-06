@@ -10,13 +10,13 @@ export class ServiceUserCustomerService {
   constructor (
     private http:HttpClient
   ) { }
-  getCustomer(id:number):Observable<any> {
+  public getCustomer(id:number):Observable<any> {
     return this.http.get(this.url + "/" + id);
   }
-  postCustomer(newCustomer:any):Observable<any> {
+  public postCustomer(newCustomer:any):Observable<any> {
     return this.http.post(this.url,newCustomer);
   }
-  putCustomer(newCustomer:any):Observable<any> {
+  public putCustomer(newCustomer:any):Observable<any> {
     return this.http.put(this.url,newCustomer);
   }
   public deleteCustomer(id:number):Observable<any> {    

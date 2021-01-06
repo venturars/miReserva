@@ -4,7 +4,6 @@ import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { Users } from '../../../../models/users';
 import { ServiceUserOwnerService } from '../../../../shared/service-user-owner.service';
 
-
 @Component({
   selector: 'app-restaurant-owner-edit',
   templateUrl: './edit.component.html',
@@ -24,14 +23,14 @@ export class EditComponentR implements OnInit {
     private serviceLogin:ServiceLoginService,
     private serviceUserOwner:ServiceUserOwnerService
   ) { }
-  processFile(imageInput: any) {
+  processFile(imageInput:any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
     this.userOwner.photo = "assets/photos/" + file.name;
     const imagen = document.getElementById("photo").setAttribute("src", this.userOwner.photo);
-    });
-    reader.readAsDataURL(file);
+  });
+  reader.readAsDataURL(file);
   }
   onSubmit() {
     if (this.pass !== this.users.password) {

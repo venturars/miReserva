@@ -1,42 +1,37 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Shifts } from '../models/shifts';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceShiftsService {
-  public url="http://localhost:3000/shifts";
-  public url1="http://localhost:3000/shiftss";
 
+  private url="http://localhost:3000/shifts";
   public shifts:Shifts;
-  constructor(public http:HttpClient) { }
 
-  getShifts(id:number){
-    return this.http.get(this.url + "?restaurant_id=" + id);
-  }
-  getShiftsId(id:number){
-    return this.http.get(this.url + "?shift_id=" + id);
-  }
-  
-  getShiftsIdTimes(id:number){
-     return this.http.get(this.url1+"/"+id)
-  }
+  constructor(
+    private http:HttpClient
+  ) { }
 
-  postShifts(shift:Shifts){
+  public getShifts(restaurant_id:number):Observable<any> {
+    return this.http.get(this.url + "?restaurant_id=" + restaurant_id);
+  }
+  public getShiftsId(shift_id:number):Observable<any> {
+    return this.http.get(this.url + "?shift_id=" + shift_id);
+  }
+  public getShiftsIdTimes(times_id:number):Observable<any> {
+    return this.http.get(this.url+"?times_id="+times_id);
+  }
+  public postShifts(shift:Shifts):Observable<any> {
     return this.http.post(this.url, shift);
   }
-
-  putShifts(shift:Shifts){
+  public putShifts(shift:Shifts):Observable<any> {
     return this.http.put(this.url, shift);
   }
-
-  public deleteShifts(id:number):any {    
+  public deleteShifts(id:number):Observable<any> {    
     return this.http.request('DELETE',this.url, {
       headers: new HttpHeaders ({ 'Content-Type': 'application/json' }),
       body: {shift_id:id}
-});
-}
-
-
-}
+});}}
