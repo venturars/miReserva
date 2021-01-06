@@ -1,10 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ServiceLoginService } from 'src/app/shared/service-login.service';
-
 import { User } from 'src/app/models/user';
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './log-in.component.html',
@@ -15,7 +11,7 @@ export class LogInComponent implements OnInit {
   constructor(
     private serviceLogIn:ServiceLoginService
   ) {
-    this.user= new User(null,null,null,null,null,null);
+    this.user = new User(null,null,null,null,null,null);
   }
   onSubmit(form:any){
   this.serviceLogIn.getUsers( 

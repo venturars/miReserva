@@ -15,8 +15,6 @@ export class NavbarOwnerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.serviceLogin.userOwner.photo);
-    
   }
   public toCreateRestaurant1() {
     this.router.navigate(["/create-restaurant-1"]);

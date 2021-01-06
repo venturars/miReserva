@@ -8,18 +8,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceRestaurantService {
-  public id_restaurant:any;
-  public capacity:any;
-  private url = "http://localhost:3000/restaurant";
-  private url2 = "http://localhost:3000/restaurants";
+
+  public id_restaurant:number;
+  public capacity:number;
+  private url:string = "http://localhost:3000/restaurant";
+  
   constructor(
     private http:HttpClient
   ) { }
-  getRestaurant(id:number):Observable<any> {
-    return this.http.get(this.url + "/" + id);
-  }
-  getRestaurants():Observable<any> {
-    return this.http.get(this.url2);
+  getRestaurant(restaurant_id?:number):Observable<any> {
+    return this.http.get(this.url + "?restaurant_id" + restaurant_id);
   }
   postRestaurant(nuevoRestaurant:Restmailpassword):Observable<any> {
     return this.http.post(this.url,nuevoRestaurant);

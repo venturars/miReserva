@@ -23,14 +23,14 @@ export class EditComponentR implements OnInit {
     private serviceLogin:ServiceLoginService,
     private serviceUserOwner:ServiceUserOwnerService
   ) { }
-  processFile(imageInput: any) {
+  processFile(imageInput:any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
     this.userOwner.photo = "assets/photos/" + file.name;
     const imagen = document.getElementById("photo").setAttribute("src", this.userOwner.photo);
-    });
-    reader.readAsDataURL(file);
+  });
+  reader.readAsDataURL(file);
   }
   onSubmit() {
     if (this.pass !== this.users.password) {

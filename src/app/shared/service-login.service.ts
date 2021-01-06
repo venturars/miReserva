@@ -10,11 +10,13 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ServiceLoginService {
+
   private url:string = "http://localhost:3000/login";
   public users: Users;
   public restaurants: Restaurants;
   public userOwner: UserOwner;
   public userCustomer: UserCustomer;
+  
   constructor(
     private http:HttpClient,
     private router:Router
@@ -28,7 +30,7 @@ export class ServiceLoginService {
       "password": password
     }).subscribe((response:any) => {
         
-      if(response.control){
+      if(response.control) {
         this.users = new Users(
           response.data[0].restaurant_id,
           response.data[0].owner_id,
@@ -36,7 +38,7 @@ export class ServiceLoginService {
           mail,
           password
         )
-        if(this.users.restaurant_id){
+        if(this.users.restaurant_id) {
           this.restaurants = new Restaurants(
             response.data[0].restaurant_id,
             response.data[0].name,
@@ -54,10 +56,10 @@ export class ServiceLoginService {
             response.data[0].url,
             response.data[0].latitude,
             response.data[0].longitude,
-            response.data[0].ownwer_id          
+            response.data[0].ownwer_id
           )
           this.router.navigate(['/reservations-list-restaurant']);
-        }else if(this.users.owner_id){
+        }else if(this.users.owner_id) {
           this.userOwner = new UserOwner(
             response.data[0].owner_id,
             response.data[0].cif,
@@ -66,7 +68,7 @@ export class ServiceLoginService {
             response.data[0].photo
           )  
           this.router.navigate(['/restaurants-list']);
-        }else if(this.users.customer_id){
+        }else if(this.users.customer_id) {
           this.userCustomer= new UserCustomer(
             response.data[0].customer_id,
             response.data[0].phone,

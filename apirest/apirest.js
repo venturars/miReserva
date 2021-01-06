@@ -20,8 +20,7 @@ const connection = mysql.createConnection({
     database: 'mi_reserva'
 })
 
-connection.connect(function(err,res)
-{
+connection.connect((err,res) => {
     if (err)
     console.log(err);
     else
@@ -29,18 +28,17 @@ connection.connect(function(err,res)
 });
 //-----Login-----
 app.post("/login", (req, res) => {
-    let params = [req.body.mail,req.body.password];
+    let params = [
+        req.body.mail,
+        req.body.password
+    ];
     let message = {
         "control": null,
         "data": null,
     }
     let sql =
         `SELECT
-            users.restaurant_id,
-            users.owner_id,
-            users.customer_id,
-            users.mail,
-            users.password
+            *
         FROM
             users
         WHERE
@@ -89,14 +87,11 @@ app.post("/login", (req, res) => {
                     params = data[0].owner_id; 
                     sql =
                     `SELECT
-                        user_owner.cif,
-                        user_owner.name,
-                        user_owner.surname,
-                        user_owner.photo
+                        *
                     FROM
                         user_owner
                     WHERE
-                        user_owner.owner_id`
+                        user_owner.owner_id = ?`
                     connection.query(sql, params, (err, data2) => {
                         if(err){
                         }else {
@@ -113,10 +108,7 @@ app.post("/login", (req, res) => {
                     params = data[0].customer_id;
                     sql =
                         `SELECT
-                            user_customer.phone,
-                            user_customer.name,
-                            user_customer.surname,
-                            user_customer.photo
+                            *
                         FROM
                             user_customer
                         WHERE
@@ -138,7 +130,7 @@ app.post("/login", (req, res) => {
                 message.data = data;
                 res.status(200).send(message);
 }}});});
-//-----EndPoints table-----
+//-----Tables-----
 app.get("/tables/:restaurant_id", (req, res) => {
     let params = req.params.restaurant_id;
     let message = {
@@ -251,19 +243,32 @@ app.delete("/tables", (req, res) => {
         res.status(200).send(message);
 });});
 //////////////TIMES////////////////////
-app.get("/times/:restaurant_id", (req, res) => {
-    let params = req.params.restaurant_id;
+app.get("/times/", (req, res) => {
+    let params;
+    let sql;
     let message = {
         "control": null,
         "data": null
     }
-    let sql =
+    if(req.query.restaurant_id) {
+        params = req.query.restaurant_id;
+        sql =
+            `SELECT
+                *
+            FROM
+                times
+            WHERE
+                times.restaurant_id = ?`;
+    } else if (req.query.times_id) {
+        params = req.query.times_id;
+        sql =
         `SELECT
             *
         FROM
             times
         WHERE
-            times.restaurant_id = ?`;
+            times.times_id = ?`;
+    }
     connection.query(sql, params, (err, data) => {
         if(err) {
         }else {
@@ -277,10 +282,13 @@ app.get("/times/:restaurant_id", (req, res) => {
         }}
          res.status(200).send(message);
 });});
-app.get("/times1",(req,res)=>{
-    let params = [req.query.name,
-                  req.query.restaurant_id,
-                  req.query.service];
+///////////////Cambiar////////////////////////
+app.get("/times1", (req,res) => {
+    let params = [
+        req.query.name,
+        req.query.restaurant_id,
+        req.query.service
+    ];
     let message = {
         "control": null,
         "data": null
@@ -293,36 +301,9 @@ app.get("/times1",(req,res)=>{
         WHERE
             times.name = ?
         AND 
-            times.restaurant_id= ?
+            times.restaurant_id = ?
         AND 
             times.service = ?`;
-    connection.query(sql, params, (err, data) => {
-        if(err) {
-        }else {
-            if (data == "") {
-                message.control = false;
-                message.data = data;
-            }
-            else {
-                message.control = true;
-                message.data = data;          
-        }}
-         res.status(200).send(message);
-})})
-
-app.get("/times2/:times_id", (req, res) => {
-    let params = req.params.times_id;
-    let message = {
-        "control": null,
-        "data": null
-    }
-    let sql =
-        `SELECT
-            *
-        FROM
-            times
-        WHERE
-            times.times_id = ?`;
     connection.query(sql, params, (err, data) => {
         if(err) {
         }else {
@@ -437,19 +418,40 @@ app.delete("/times", (req, res) => {
 });});
 ////////////// SHIFTS ////////////////////
 app.get("/shifts/", (req, res) => {
-    if(req.query.restaurant_id){
-    let params = req.query.restaurant_id;
+    let params;
+    let sql;
     let message = {
         "control": null,
         "data": null
     }
-    let sql =
+    if(req.query.restaurant_id) {
+        params = req.query.restaurant_id;
+        sql =
+            `SELECT
+                *
+            FROM
+                shifts
+            WHERE
+                shifts.restaurant_id = ?`;
+    }else if(req.query.shift_id) {
+        params = req.query.shift_id;
+        sql =
         `SELECT
             *
         FROM
             shifts
         WHERE
-            shifts.restaurant_id = ?`;
+            shifts.shift_id = ?`;
+    } else if(req.query.times_id) {
+        params = req.query.times_id;
+        sql =
+            `SELECT
+                *
+            FROM
+                shifts
+            WHERE
+                shifts.times_id = ?`;
+    }
     connection.query(sql, params, (err, data) => {
          if(err) {
          }else {
@@ -462,33 +464,7 @@ app.get("/shifts/", (req, res) => {
         }}
         res.status(200).send(message);
 
-})}
-else if(req.query.shift_id){
-    let params = req.query.shift_id;
-    let message = {
-        "control": null,
-        "data": null
-    }
-    let sql =
-        `SELECT
-            *
-        FROM
-            shifts
-        WHERE
-            shifts.shift_id = ?`;
-    connection.query(sql, params, (err, data) => {
-         if(err) {
-         }else {
-            if (data=="") {
-                message.control = false;
-                message.data = data;
-            }else {
-                message.control = true;
-                message.data = data;
-        }}
-        res.status(200).send(message);
-    })}
-;});
+});});
 app.post("/shifts", (req, res) => {
     let params = [
         req.body.day,
@@ -498,7 +474,7 @@ app.post("/shifts", (req, res) => {
         req.body.times_id,
         req.body.pax
     ];
-    let message= {
+    let message = {
         "control": null,
         "data": null
     }
@@ -941,46 +917,28 @@ app.delete("/user_customer", (request, response) => {
         response.status(200).send(message);
 });});
 //-----Restaurants-----
-app.get("/restaurants", (request, response) => {
- 
-    let message= {
-        "control":null,
-        "data":null
-    } 
-    let sql =
-        `SELECT
-            *
-        FROM
-            restaurants
- `;
-    connection.query(sql, (err, res) => {
-        if (err) {
-        }else {
-            if(res!="") {
-                message.control = true;
-                message.data = res;
-            }else {
-                message.control = false;
-                message.data = res;
-        }}
-        response.status(200).send(message);
-    });
-    });
- 
-
-app.get("/restaurant/:restaurant_id", (request, response) => {
+app.get("/restaurant", (request, response) => {
     let message = {
         "control": null,
         "data": null
-    } 
-    let sql =
+    };
+    let sql;
+    if(request.query.restaurant_id) {
+        sql =
+            `SELECT
+                *
+            FROM
+                restaurants
+            WHERE
+                restaurant_id = ?`;
+    }else {
+        sql =
         `SELECT
             *
         FROM
-            restaurants
-        WHERE
-            restaurant_id = ?`;
-    connection.query(sql, request.params.restaurant_id, (err, res) => {
+            restaurants`;
+    }
+    connection.query(sql, request.query.restaurant_id, (err, res) => {
         if (err) {
         }else {
             if(res!="") {
@@ -991,10 +949,7 @@ app.get("/restaurant/:restaurant_id", (request, response) => {
                 message.data = res;
         }}
         response.status(200).send(message);
-    });
-    });
-    
-
+});});
 app.post("/restaurant", (request, response) => {
     let message= {
         "control": null,
@@ -1356,6 +1311,7 @@ app.delete("/reservations", (request, response) => {
         }}
         response.status(200).send(message);
 });});
+//-----Search-----
 app.get('/search', (req, res) => {
     req.aborted;
     let message = {
@@ -1390,33 +1346,6 @@ app.get('/search', (req, res) => {
             res.status(200).send(message);
         });
 });
-
-
-app.get("/shiftss/:times_id", (req, res) => {
-    let params = req.params.times_id;
-    let message = {
-        "control": null,
-        "data": null
-    }
-    let sql =
-        `SELECT
-            *
-        FROM
-            shifts
-        WHERE
-            shifts.times_id = ?`;
-    connection.query(sql, params, (err, data) => {
-         if(err) {
-         }else {
-            if (data=="") {
-                message.control = false;
-                message.data = data;
-            }else {
-                message.control = true;
-                message.data = data;
-        }}
-        res.status(200).send(message);
-});});
 app.listen(3000, () => {
     console.log("listening to port 3000");
 });

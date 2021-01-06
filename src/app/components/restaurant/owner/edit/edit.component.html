@@ -2,11 +2,11 @@
   <form class="lctl-div" #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? 'mal' : onSubmit()">
     <label for="photoInput">
       <div class="lctl-photoProfile-l">
-        <img id="photo" src="">
+        <img id="photo" src="{{this.userOwner.photo}}">
       </div>
     </label>
     <input id="photoInput" type="file" name="photoInput" autocomplete="off"
-      accept="image/x-png,image/gif,image/jpeg" #foto (change)="processFile(foto)">
+      accept="image/x-png,image/gif,image/jpeg" #photoOwner (change)="processFile(photoOwner)">
     <div class="lctl-font-title">Edita tu perfil</div>
     <div class="lctl-font-paragraph">La información de contacto debe estar actualizada</div>
     <input class="lctl-input-l-extraLarge" name="name" autocomplete="off" placeholder="Nombre" 

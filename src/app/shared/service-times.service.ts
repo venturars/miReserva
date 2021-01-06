@@ -7,43 +7,34 @@ import { Times } from '../models/times';
   providedIn: 'root'
 })
 export class ServiceTimesService {
-  public url="http://localhost:3000/times";
-  public url1="http://localhost:3000/times1";
-  public url2="http://localhost:3000/times2";
+
+  private url:string = "http://localhost:3000/times";
+  private url2:string = "http://localhost:3000/times1";
   public times:Times;
   public inicio:string;
   public fin:string;
-  constructor(public http:HttpClient) {
 
-   }
-
-  public getTimes(id:number):any{
-    return this.http.get(this.url+"/"+id )
+  constructor(
+    private http:HttpClient
+  ) {
   }
-
-  public getTimesId(id:number):any{
-    return this.http.get(this.url2 +"/"+ id )
+  public getTimes(restaurant_id:number):Observable<any> {
+    return this.http.get(this.url + "?restaurant_id=" + restaurant_id);
   }
-  public checkTimes(name:any,restaurant:any,service:any){
-   
-    return this.http.get(this.url1+"?name="+name+"&restaurant_id="+restaurant+"&service="+service)    
+  public getTimesId(times_id:number):Observable<any> {
+    return this.http.get(this.url +"?times_id"+ times_id);
   }
-  
- public postTimes(times:Times):any{
-    return this.http.post(this.url,times)
+  public checkTimes(name:any,restaurant:any,service:any):Observable<any> {
+    return this.http.get(this.url2+"?name="+name+"&restaurant_id="+restaurant+"&service="+service);
   }
-
- public putTimes(times:Times){
+  public postTimes(times:Times):Observable<any> {
+    return this.http.post(this.url,times);
+  }
+  public putTimes(times:Times):Observable<any> {
     return this.http.put(this.url, times);
   }
-
-  
-
-  public deleteTimes(id:number):any {    
+  public deleteTimes(id:number):Observable<any> {    
     return this.http.request('DELETE',this.url, {
       headers: new HttpHeaders ({ 'Content-Type': 'application/json' }),
       body: {id:id}
-});
-}
-
-}
+});}}
