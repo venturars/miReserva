@@ -16,7 +16,7 @@ export class RestaurantsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.restaurants = this.serviceRestaurant.getRestaurant
+    // this.restaurants = this.serviceRestaurant.getRestaurant()
   }
 
 }
