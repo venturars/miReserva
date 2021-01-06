@@ -45,6 +45,9 @@ import { MapComponent } from './components/map/map.component';
 import { DesignComponent } from './components/login/design/design.component';
 import { ModalInfdeRestauranteComponent } from './components/modals/modal-infde-restaurante/modal-infde-restaurante.component';
 import { ModalRegistroComponent } from './components/modals/modal-registro/modal-registro.component';
+import { ModalRegistro2Component } from './components/modals/modal-registro2/modal-registro2.component';
+import { ModalRegistroUsuarioComponent } from './components/modals/modal-registro-usuario/modal-registro-usuario.component';
+
 
 
 @NgModule({
@@ -80,7 +83,9 @@ import { ModalRegistroComponent } from './components/modals/modal-registro/modal
     MapComponent,
     DesignComponent,
     ModalInfdeRestauranteComponent,
-    ModalRegistroComponent
+    ModalRegistroComponent,
+    ModalRegistro2Component,
+    ModalRegistroUsuarioComponent
   ],
   imports: [
     BrowserModule,
