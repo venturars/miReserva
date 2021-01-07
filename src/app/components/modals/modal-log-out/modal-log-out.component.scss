@@ -1,7 +1,7 @@
 .content{
     max-width: 700px;
-    min-width: 280px;
-    height: 280px;
+    min-width: 200px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -26,7 +26,7 @@
     & > div:nth-child(2){
        
         display: flex;
-        margin-top: 10px;
+        
         flex-direction: row;
         justify-content: center;
         width: 100%;
@@ -35,8 +35,9 @@
         & > img{
         
             display: flex;
-            width: 100px;
-            height: 100px;
+            margin-top: -35px;
+            width: 150px;
+            height: 150px;
         }
         
         

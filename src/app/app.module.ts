@@ -47,6 +47,8 @@ import { ModalInfdeRestauranteComponent } from './components/modals/modal-infde-
 import { ModalRegistroComponent } from './components/modals/modal-registro/modal-registro.component';
 import { ModalRegistro2Component } from './components/modals/modal-registro2/modal-registro2.component';
 import { ModalRegistroUsuarioComponent } from './components/modals/modal-registro-usuario/modal-registro-usuario.component';
+import { ModalUsuarioIncorrectoComponent } from './components/modals/modal-usuario-incorrecto/modal-usuario-incorrecto.component';
+import { ModalLogOutComponent } from './components/modals/modal-log-out/modal-log-out.component';
 
 
 
@@ -85,7 +87,9 @@ import { ModalRegistroUsuarioComponent } from './components/modals/modal-registr
     ModalInfdeRestauranteComponent,
     ModalRegistroComponent,
     ModalRegistro2Component,
-    ModalRegistroUsuarioComponent
+    ModalRegistroUsuarioComponent,
+    ModalUsuarioIncorrectoComponent,
+    ModalLogOutComponent
   ],
   imports: [
     BrowserModule,
