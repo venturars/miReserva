@@ -43,16 +43,17 @@
 
                 <div class="lctl-br margin"></div>
                 <div class="title">
-                    <p class="lctl-font-bold">Turno</p> 
+                        <p class="lctl-font-bold">Turno</p> 
                 </div>
                 
                 <div class="title">
                     <select class="lctl-cellSelect-extraLarge mid" id="turnos">
+                        
                         <option disabled selected="true">Elige turno</option>
-                        <option value="Desayuno">Desayuno</option>
-                        <option value="Comida">Comida</option>
-                        <option value="Merienda">Merienda</option>
-                        <option value="Cena">Cena</option>
+                        <ng-container *ngFor="let time of times; let i = index">
+                        <option value="0">{{times[i].service}}</option>
+                    </ng-container>
+
                     </select>
                 </div>               
             </div>

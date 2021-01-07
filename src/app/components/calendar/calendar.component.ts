@@ -18,6 +18,10 @@ export class CalendarComponent implements OnInit {
 
   @ViewChild('calendar') calendar: MatCalendar<Moment>;
   public selectedDate: Moment;
+  public selectedDayName:string
+  public selectedDayNum:string
+  public selectedMonth:string
+  public selectedYear:string
   constructor(private calendarService: ServiceCalendarService) {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
@@ -30,13 +34,15 @@ export class CalendarComponent implements OnInit {
   }
   
   public getChangedValue(e:Date)  {
-    console.log(e);
+    // console.log(e);
     let name = e.toString().substring(0,3)
+    
     let month = e.toString().substr(4,3)
     let day = e.toString().substr(8,2)
     let year = e.toString().substr(11,4);
     this.date = new Calendar(name, day, month, year)
     this.selectDay = e;
+    this.calendarService.asd = name
     this.calendarService.nuevaFecha = this.date
     
     // this.calendarService.newDate(this.date).subscribe((data:any) =>{ 
