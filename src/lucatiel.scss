@@ -963,6 +963,7 @@ a {
     display: flex;
     flex-direction: column;
     border-radius: var(--borderRadiusL);
+    border: 1px solid var(--secundaryColorPush);
     overflow: hidden;
     & > .lctl-infoCard-banner {
         width: 100%;
@@ -1011,7 +1012,7 @@ a {
       display: flex;
       flex-direction: row-reverse;
       background: none;
-      transform: translate(-5px, -45px);
+      transform: translate(-5px, -115px);
 }}
 @media screen and (max-width: 768px) {
 }

@@ -9,29 +9,27 @@
             <ng-container *ngFor="let restaurant of restaurants; let i = index ">
                 <div class="lctl-bigCard" (click)="clickRestaurant(i)">
                     <div class="lctl-bigCard-banner">
-                        <img src="assets/photos/potada2.png">
+                        <img src="{{restaurant.header}}">
                     </div>
                     <div class="lctl-bigCard-profile">
                         <div class="lctl-photoProfile-">
-                            <img src="assets/photos/logorestaurante2.png">
+                            <img src="{{restaurant.logo}}">
                         </div>
                     </div>
                     <div class="lctl-bigCard-name">
                         <div>
-                            Don Paquito
+                            {{restaurant.name}}
                         </div>
                     </div>
                     <div class="lctl-bigCard-content">
                         <div class="lctl-bigCard-text">
-                            Dirección
+                            {{restaurant.city}}
                         </div>
                         <div class="lctl-bigCard-text">
-                            Teléfono
+                            {{restaurant.phone}}
                         </div>
-                        <div>
-                            <button class="lctl-warnButtonOpposite-s">
-                                Editar
-                        </button>
+                        <div class="lctl-bigCard-text">
+                            Max pax.{{restaurant.capacity}}
                         </div>
                     </div>
                 </div>
