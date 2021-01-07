@@ -6,20 +6,17 @@ import { Reservations } from '../models/reservations';
   providedIn: 'root'
 })
 export class ServiceCalendarService {
-  public nuevaFecha:Calendar
-  public reserva:Reservations
-  public asd:string
+
+  public nuevaFecha:Calendar;
+  public reserva:Reservations;
+
   constructor() {
     this.nuevaFecha = new Calendar("","","","")
-    this.asd
-    }
-
-  public newDate(date:Calendar):any{
-    this.nuevaFecha =  date
   }
-
-  public getDate():any{
-    return this.asd
+  public newDate(date:Calendar):any {
+    this.nuevaFecha =  date;
   }
-
+  public getDate():any {
+    return this.nuevaFecha;
+  }
 }

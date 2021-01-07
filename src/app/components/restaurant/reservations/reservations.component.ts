@@ -58,6 +58,7 @@ export class ReservationsRestaurantComponent implements OnInit {
     for(let i = 0; i<data.data.length;i++){
         
         if (data.data[i].status == "Reservada"){
+          this.customerService.getCustomer(data.data[i].customer_id).subscribe((data2:any) =>{ 
 
           this.shiftsService.getShiftsId(data.data[i].shift_id).subscribe((data3:any) =>{  
             
@@ -76,17 +77,18 @@ export class ReservationsRestaurantComponent implements OnInit {
             shift_id:data.data[i].shift_id,
             comments:data.data[i].comments,
             status:data.data[i].status,
-            customer_name:data.data[i].customer_name,
-            customer_phone:data.data[i].customer_phone,
+            customer_name:data2.data[0].name,
             service:data4.data[0].service}
           this.reservationsConfirmed.push(this.reservation)
           
           }) 
           }) 
-          
+          })
         }
 
       else if (data.data[i].status == "Rechazada"){        
+        this.customerService.getCustomer(data.data[i].customer_id).subscribe((data2:any) =>{    
+
         this.shiftsService.getShiftsId(data.data[i].shift_id).subscribe((data3:any) =>{  
             
         this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
@@ -104,16 +106,17 @@ export class ReservationsRestaurantComponent implements OnInit {
           shift_id:data.data[i].shift_id,
           comments:data.data[i].comments,
           status:data.data[i].status,
-          customer_name:data.data[i].customer_name,
-          customer_phone:data.data[i].customer_phone,
+          customer_name:data2.data[0].name,
           service:data4.data[0].service}
         this.reservationsRejected.push(this.reservation)
       }) 
       }) 
-
+      })
       }
     
     else if (data.data[i].status == "Cancelada por cliente"){
+      this.customerService.getCustomer(data.data[i].customer_id).subscribe((data2:any) =>{  
+
       this.shiftsService.getShiftsId(data.data[i].shift_id).subscribe((data3:any) =>{  
             
       this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
@@ -131,15 +134,17 @@ export class ReservationsRestaurantComponent implements OnInit {
         shift_id:data.data[i].shift_id,
         comments:data.data[i].comments,
         status:data.data[i].status,
-        customer_name:data.data[i].customer_name,
-        customer_phone:data.data[i].customer_phone,
+        customer_name:data2.data[0].name,
         service:data4.data[0].service}
       this.reservationsCanceledByClient.push(this.reservation)
     }) 
     }) 
+    })
     }
 
-    else if (data.data[i].status == "Pendiente"){      
+    else if (data.data[i].status == "Pendiente"){
+      this.customerService.getCustomer(data.data[i].customer_id).subscribe((data2:any) =>{    
+      
       this.shiftsService.getShiftsId(data.data[i].shift_id).subscribe((data3:any) =>{  
             
       this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
@@ -157,12 +162,12 @@ export class ReservationsRestaurantComponent implements OnInit {
         shift_id:data.data[i].shift_id,
         comments:data.data[i].comments,
         status:data.data[i].status,
-        customer_name:data.data[i].customer_name,
-        customer_phone:data.data[i].customer_phone,
+        customer_name:data2.data[0].name,
         service:data4.data[0].service}
       this.reservationsToBeConfirmed.push(this.reservation)
     }) 
     }) 
+    })
     }
 
   }
@@ -287,7 +292,6 @@ export class ReservationsRestaurantComponent implements OnInit {
 public calendar(){
   const dialogRef = this.dialog.open(CalendarComponent);
   dialogRef.afterClosed().subscribe(result => {
-    
     console.log(this.calendarService.nuevaFecha);  
     this.selectedDayName = this.calendarService.nuevaFecha.dayName
     this.selectedDayNum = this.calendarService.nuevaFecha.dayNum

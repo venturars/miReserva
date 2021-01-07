@@ -5,9 +5,9 @@
     </div>
 
     <div class="body">
-        <!-- <ng-container *ngIf="restaurants; else not"> -->
-            <!-- <ng-container *ngFor="let restaurant of restaurants"> -->
-                <div class="lctl-bigCard">
+        <ng-container *ngIf="restaurants; else not">
+            <ng-container *ngFor="let restaurant of restaurants; let i = index ">
+                <div class="lctl-bigCard" (click)="clickRestaurant(i)">
                     <div class="lctl-bigCard-banner">
                         <img src="assets/photos/potada2.png">
                     </div>
@@ -16,26 +16,31 @@
                             <img src="assets/photos/logorestaurante2.png">
                         </div>
                     </div>
+                    <div class="lctl-bigCard-name">
+                        <div>
+                            Don Paquito
+                        </div>
+                    </div>
                     <div class="lctl-bigCard-content">
-                        <div class="lctl-bigCard-info">
-                            <div>
-                                Dirección
-                            </div>
-                            <div>
-                                Título
-                            </div>
-                            <div>
-                                Teléfono
-                            </div>
+                        <div class="lctl-bigCard-text">
+                            Dirección
+                        </div>
+                        <div class="lctl-bigCard-text">
+                            Teléfono
+                        </div>
+                        <div>
+                            <button class="lctl-warnButtonOpposite-s">
+                                Editar
+                        </button>
                         </div>
                     </div>
                 </div>
-            <!-- </ng-container> -->
-        <!-- </ng-container> -->
+            </ng-container>
+        </ng-container>
     
-        <!-- <ng-template #not>
+        <ng-template #not>
         <div><img src="">hola</div>
-        </ng-template> -->
+        </ng-template>
     </div>
 
 </div>

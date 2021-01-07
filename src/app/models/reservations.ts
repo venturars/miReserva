@@ -1,5 +1,4 @@
 export class Reservations {
-    public service:string
     constructor(public reservation_id:number,
                 public customer_id:number,
                 public restaurant_id:number,
@@ -14,6 +13,6 @@ export class Reservations {
                 public comments:string,
                 public status:string,
                 public customer_name:string,
-                public customer_phone:number)
+                public service:string)
                 {}
 }

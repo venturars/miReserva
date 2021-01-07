@@ -1208,8 +1208,6 @@ app.post("/reservations", (request, response) => {
             request.body.hour,
             request.body.shift_id,
             request.body.comments,
-            request.body.customer_name,
-            request.body.customer_phone,
             request.body.status
         )
         let sql =
@@ -1226,12 +1224,10 @@ app.post("/reservations", (request, response) => {
                     hour,
                     shift_id,
                     comments,
-                    customer_name,
-                    customer_phone,
                     status
                 )
             VALUES (
-                ?,?,?,?,?,?,?,?,?,?,?,?,?,?
+                ?,?,?,?,?,?,?,?,?,?,?,?
             )`;
         connection.query(sql, arr, (err, res) => {
             if(err) {
@@ -1259,8 +1255,6 @@ app.put("/reservations", (request, response) => {
         request.body.hour,
         request.body.shift_id,
         request.body.comments,
-        request.body.customer_name,
-        request.body.customer_phone,
         request.body.status,
         request.body.reservation_id
     )
@@ -1279,8 +1273,6 @@ app.put("/reservations", (request, response) => {
             hour = COALESCE(?, hour),
             shift_id = COALESCE(?, shift_id),
             comments = COALESCE(?, comments),
-            customer_name = COALESCE(?, customer_name),
-            customer_phone = COALESCE(?, customer_phone),
             status = COALESCE(?, status)
         WHERE
             reservation_id = ?`;
@@ -1450,7 +1442,7 @@ let message = {
                         res.send(message);
                }
                else{
-                
+                //////////////////////////////////////////
                 params = [ data1.insertId,
                           req.body.mail,
                           req.body.password ];

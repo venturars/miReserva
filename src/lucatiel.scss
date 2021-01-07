@@ -1063,13 +1063,12 @@ a {
       }
     }
     & > .lctl-bigCard-profile {
-        position: relative;
-        top: 0;
         width: 15%;
         min-width: 62px;
         min-height: 62px;
         margin: auto;
         margin-top: -8%;
+        z-index: 1;
         & > .lctl-photoProfile- {
             width: 100%;
             height: 100%;
@@ -1079,15 +1078,38 @@ a {
             }
         }
     }
-    & > .lctl-bigCard-content {
-        background-color: aqua;
-
-        & > .lctl-bigCard-info {
-            display: flex;
-            flex-direction: column;
-            background-color: yellow;
-            
+    & > .lctl-bigCard-name {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        & > div {
+            font-weight: var(--fontWidthBolder);
+            color: var(--secundaryColorOpposite);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
     }}
+    & > .lctl-bigCard-content {
+        position: relative;
+        top: 0;
+        display: flex;
+        padding: 10px;
+        & > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        & > .lctl-bigCard-text {
+            font-weight: var(--fontWidthBolder);
+            color: var(--secundaryColorOpposite);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
 }
 //----------//----------//----------//----------//----------
 [class *="lctl-div"] {
