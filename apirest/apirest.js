@@ -1346,6 +1346,167 @@ app.get('/search', (req, res) => {
             res.status(200).send(message);
         });
 });
+
+app.get("/times2", (req,res) => {
+    let params = [
+        req.query.name,
+        req.query.restaurant_id
+    ];
+    let message = {
+        "control": null,
+        "data": null
+    }
+    let sql =
+        `SELECT
+            *
+        FROM
+            times
+        WHERE
+            times.name = ?
+        AND 
+            times.restaurant_id = ?
+       `;
+    connection.query(sql, params, (err, data) => {
+        if(err) {
+        }else {
+            if (data == "") {
+                message.control = false;
+                message.data = data;
+            }
+            else {
+                message.control = true;
+                message.data = data;          
+        }}
+         res.status(200).send(message);
+})})
+
+app.post("/registration", (req,res)=>{
+    let params=[
+    req.body.email
+]
+
+let message = {
+    "control": null,
+    "data": null
+}
+
+    let sql=`SELECT 
+                *
+            FROM
+                users
+            WHERE
+            users.mail= ?`
+    
+    connection.query(sql,params, (err, data) => {
+
+        if(data==""){
+            if(req.body.cif && req.body.name && req.body.surname){
+                params = [
+                    req.body.cif,
+                    req.body.name,
+                    req.body.surname
+    
+                ]
+    
+                 sql=`INSERT INTO user_owner (
+                    owner_id,
+                    cif,
+                    name,
+                    surname,
+                    photo
+                    
+                )
+                VALUES (
+                    null, ?, ?, ?, null
+                )`;
+                
+                }
+
+                else if(req.body.phone && req.body.name && req.body.surname){
+
+                    params = [
+                        req.body.phone,
+                        req.body.name,
+                        req.body.surname,
+        
+                    ]
+        
+                     sql=`INSERT INTO user_customer (
+                        customer_id,
+                        phone,
+                        name,
+                        surname,
+                        photo    
+                    )
+                    VALUES (
+                        null, ?, ?, ?, null
+                    )`;
+
+
+                }
+
+                        
+                connection.query(sql,params, (err, data1) => {
+               if (err){
+                   res.send(message);
+               }
+               else{
+                
+                params = [ data1.insertId,
+                          req.body.email,
+                          req.body.password ];
+                sql= `INSERT INTO
+                      users
+                      ( id,
+                        restaurant_id,
+                        owner_id,
+                        customer_id,
+                        mail,
+                        password
+                        )
+                    VALUES
+                    ( null, null, ?, null, ?, ?)
+                    `          
+                connection.query(sql,params, (err,data2)=>{
+                    if (err){
+                        if (data1.owner_id){
+                        params = [data1.insertId]
+                        sql=`DELETE FROM 
+                            user_owner
+                            WHERE
+                            owner_id = ?` }
+                            
+                        else if(data1.customer_id){
+                        params = [data1.insertId];
+                        sql=`DELETE FROM 
+                            user_customer
+                            WHERE
+                            customer_id = ?`    
+                        }
+                        connection.query(sql, params, (err, data)=>{
+                         console.log(err);
+                         console.log(data);
+                        })
+
+                        message.data=[];
+                        res.send(message)
+                    }
+                    message.data=data2;
+                    message.control=true;
+                    res.send(message);
+                })        
+            }
+                
+
+            })
+        }
+
+        else{
+            res.send(message)
+        }
+    })
+})
+
 app.listen(3000, () => {
     console.log("listening to port 3000");
 });
