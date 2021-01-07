@@ -436,7 +436,7 @@ app.delete("/times", (req, res) => {
         res.status(200).send(message);
 });});
 ////////////// SHIFTS ////////////////////
-app.get("/shifts/", (req, res) => {
+app.get("/shifts", (req, res) => {
     if(req.query.restaurant_id){
     let params = req.query.restaurant_id;
     let message = {
@@ -488,6 +488,32 @@ else if(req.query.shift_id){
         }}
         res.status(200).send(message);
     })}
+    else if(req.query.times_id){
+    let params = req.query.times_id;
+    let message = {
+        "control": null,
+        "data": null
+    }
+    let sql =
+        `SELECT
+            *
+        FROM
+            shifts
+        WHERE
+            shifts.times_id = ?`;
+    connection.query(sql, params, (err, data) => {
+         if(err) {
+         }else {
+            if (data=="") {
+                message.control = false;
+                message.data = data;
+            }else {
+                message.control = true;
+                message.data = data;
+        }}
+        res.status(200).send(message);
+    })}
+
 ;});
 app.post("/shifts", (req, res) => {
     let params = [
@@ -1260,6 +1286,8 @@ app.post("/reservations", (request, response) => {
             request.body.hour,
             request.body.shift_id,
             request.body.comments,
+            request.body.customer_name,
+            request.body.customer_phone,
             request.body.status
         )
         let sql =
@@ -1276,10 +1304,12 @@ app.post("/reservations", (request, response) => {
                     hour,
                     shift_id,
                     comments,
+                    customer_name,
+                    customer_phone,
                     status
                 )
             VALUES (
-                ?,?,?,?,?,?,?,?,?,?,?,?
+                ?,?,?,?,?,?,?,?,?,?,?,?,?,?
             )`;
         connection.query(sql, arr, (err, res) => {
             if(err) {
@@ -1307,6 +1337,8 @@ app.put("/reservations", (request, response) => {
         request.body.hour,
         request.body.shift_id,
         request.body.comments,
+        request.body.customer_name,
+        request.body.customer_phone,
         request.body.status,
         request.body.reservation_id
     )
@@ -1325,6 +1357,8 @@ app.put("/reservations", (request, response) => {
             hour = COALESCE(?, hour),
             shift_id = COALESCE(?, shift_id),
             comments = COALESCE(?, comments),
+            customer_name = COALESCE(?, customer_name),
+            customer_phone = COALESCE(?, customer_phone),
             status = COALESCE(?, status)
         WHERE
             reservation_id = ?`;

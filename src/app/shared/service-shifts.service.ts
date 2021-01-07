@@ -18,6 +18,9 @@ export class ServiceShiftsService {
   getShiftsId(id:number){
     return this.http.get(this.url + "?shift_id=" + id);
   }
+  getShiftsTimes(id:number){
+    return this.http.get(this.url + "?times_id=" + id);
+  }
   
   getShiftsIdTimes(id:number){
      return this.http.get(this.url1+"/"+id)

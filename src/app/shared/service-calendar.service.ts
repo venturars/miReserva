@@ -8,8 +8,10 @@ import { Reservations } from '../models/reservations';
 export class ServiceCalendarService {
   public nuevaFecha:Calendar
   public reserva:Reservations
+  public asd:string
   constructor() {
     this.nuevaFecha = new Calendar("","","","")
+    this.asd
     }
 
   public newDate(date:Calendar):any{
@@ -17,7 +19,7 @@ export class ServiceCalendarService {
   }
 
   public getDate():any{
-    return this.nuevaFecha
+    return this.asd
   }
 
 }
