@@ -6,8 +6,16 @@
     min-height: 100%;
     width: 100%;
     background-color: var(--primaryColorContrast);
-    background-color: blueviolet;
     & > .header {
-        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: calc(100% - 20px);
+        height: 82px;
+        border-bottom: 1px solid var(--secundaryColorPush);
+    }
+    & > .body {
+        margin-top: 35px;
     }
 }

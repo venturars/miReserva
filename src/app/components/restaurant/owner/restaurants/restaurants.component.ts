@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Restaurants } from '../../../../models/restaurants';
 import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { ServiceRestaurantService } from '../../../../shared/service-restaurant.service';
@@ -16,7 +16,13 @@ export class RestaurantsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.restaurants = this.serviceRestaurant.getRestaurant()
+    this.serviceRestaurant.getRestaurantByOwner(
+        this.serviceLogin.userOwner.owner_id
+      ).subscribe((response) => {
+        if(response.control) {
+          this.restaurants = response.data;
+          console.log(this.restaurants);
+    }});
   }
 
 }

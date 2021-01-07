@@ -250,7 +250,24 @@ app.get("/times/", (req, res) => {
         "control": null,
         "data": null
     }
-    if(req.query.restaurant_id) {
+    if(req.query.name && req.query.service && req.query.restaurant_id) {
+        params = [
+            req.query.name,
+            req.query.restaurant_id,
+            req.query.service
+        ];
+        sql =
+            `SELECT
+                *
+            FROM
+                times
+            WHERE
+                times.name = ?
+            AND 
+                times.restaurant_id = ?
+            AND 
+                times.service = ?`;
+    } else if(req.query.restaurant_id) {
         params = req.query.restaurant_id;
         sql =
             `SELECT
@@ -282,41 +299,6 @@ app.get("/times/", (req, res) => {
         }}
          res.status(200).send(message);
 });});
-///////////////Cambiar////////////////////////
-app.get("/times1", (req,res) => {
-    let params = [
-        req.query.name,
-        req.query.restaurant_id,
-        req.query.service
-    ];
-    let message = {
-        "control": null,
-        "data": null
-    }
-    let sql =
-        `SELECT
-            *
-        FROM
-            times
-        WHERE
-            times.name = ?
-        AND 
-            times.restaurant_id = ?
-        AND 
-            times.service = ?`;
-    connection.query(sql, params, (err, data) => {
-        if(err) {
-        }else {
-            if (data == "") {
-                message.control = false;
-                message.data = data;
-            }
-            else {
-                message.control = true;
-                message.data = data;          
-        }}
-         res.status(200).send(message);
-})})
 app.post("/times", (req, res) => {
     let params = [
         req.body.name,
@@ -922,8 +904,19 @@ app.get("/restaurant", (request, response) => {
         "control": null,
         "data": null
     };
+    let params;
     let sql;
-    if(request.query.restaurant_id) {
+    if(request.query.owner_id) {
+        params = request.query.owner_id;
+        sql =
+            `SELECT
+                *
+            FROM
+                restaurants
+            WHERE
+            owner_id = ?`;
+    }else if(request.query.restaurant_id) {
+        params = request.query.restaurant_id;
         sql =
             `SELECT
                 *
@@ -938,7 +931,7 @@ app.get("/restaurant", (request, response) => {
         FROM
             restaurants`;
     }
-    connection.query(sql, request.query.restaurant_id, (err, res) => {
+    connection.query(sql, params, (err, res) => {
         if (err) {
         }else {
             if(res!="") {

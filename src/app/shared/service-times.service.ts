@@ -9,7 +9,6 @@ import { Times } from '../models/times';
 export class ServiceTimesService {
 
   private url:string = "http://localhost:3000/times";
-  private url2:string = "http://localhost:3000/times1";
   private url3:string = "http://localhost:3000/times2";
   public times:Times;
   public inicio:string;
@@ -23,10 +22,10 @@ export class ServiceTimesService {
     return this.http.get(this.url + "?restaurant_id=" + restaurant_id);
   }
   public getTimesId(times_id:number):Observable<any> {
-    return this.http.get(this.url +"?times_id"+ times_id);
+    return this.http.get(this.url +"?times_id="+ times_id);
   }
   public checkTimes(name:any,restaurant:any,service:any):Observable<any> {
-    return this.http.get(this.url2+"?name="+name+"&restaurant_id="+restaurant+"&service="+service);
+    return this.http.get(this.url+"?name="+name+"&restaurant_id="+restaurant+"&service="+service);
   }
 
   public checkDaysTimes(name:any,restaurant:any):Observable<any>{
