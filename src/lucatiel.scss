@@ -893,35 +893,35 @@ a {
         border: 1px solid var(--secundaryColorAccent);
     }
     & img {
-        width: 20px;
+        width: 100%;
 }}
 //----------
 [class *= "lctl-photoProfile-s"] {
     width: 40px;
     height: 40px;
     & img {
-        width: 40px;
+        width: 100%;
 }}
 //----------
 [class *= "lctl-photoProfile-m"] {
     width: 60px;
     height: 60px;
     & img {
-        width: 60px;
+        width: 100%;
 }}
 //----------
 [class *= "lctl-photoProfile-l"] {
     width: 100px;
     height: 100px;
     & img {
-        width: 100px;
+        width: 100%;
 }}
 //----------
 [class *= "lctl-photoProfile-xl"] {
     width: 160px;
     height: 160px;
     & img {
-        width: 160px;
+        width: 100%;
 }}
 //----------//----------//----------//----------//----------
 //-----How to use-----
@@ -1045,15 +1045,17 @@ a {
 //             </div>
 //         </div>
 //----------//----------//----------//----------//----------
-[class *="lctl-bigCard"] {
-    background-color: aqua;
+.lctl-bigCard {
+    background-color: var(--primaryColorOpposite);
     display: flex;
     flex-direction: column;
-    width: clamp(260px, 1000px, 1000px);
-    // overflow: hidden;
+    width: clamp(260px, calc(100% - 20px), 1000px);
+    overflow: hidden;
+    border-radius: var(--borderRadiusL);
     & > .lctl-bigCard-banner {
+        background-color: var(--secundaryColorPush);
         width: 100%;
-        height: 125px;
+        max-height: 200px;
         text-align: center;
         & > img {
             max-width: 100%;
@@ -1061,15 +1063,31 @@ a {
       }
     }
     & > .lctl-bigCard-profile {
-        background-color: yellowgreen;
-        display: flex;
-        align-items: center;
+        position: relative;
+        top: 0;
+        width: 15%;
+        min-width: 62px;
+        min-height: 62px;
+        margin: auto;
+        margin-top: -8%;
+        & > .lctl-photoProfile- {
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--secundaryColorPush);
+            & > img {
+                width: 100%;
+            }
+        }
     }
-    & > .lctl-bigCard-info {
-        display: flex;
-        flex-direction: row;
-        background-color: yellow;
-    }
+    & > .lctl-bigCard-content {
+        background-color: aqua;
+
+        & > .lctl-bigCard-info {
+            display: flex;
+            flex-direction: column;
+            background-color: yellow;
+            
+    }}
 }
 //----------//----------//----------//----------//----------
 [class *="lctl-div"] {
