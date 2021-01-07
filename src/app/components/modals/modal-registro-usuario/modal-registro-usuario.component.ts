@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-registro-usuario.component.scss']
 })
 export class ModalRegistroUsuarioComponent implements OnInit {
-
+  public email:string;
   constructor() { }
 
   ngOnInit(): void {

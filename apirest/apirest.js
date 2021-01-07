@@ -1375,32 +1375,29 @@ app.get("/times2", (req,res) => {
 
 app.post("/registration", (req,res)=>{
     let params=[
-    req.body.email
+    req.body.mail
 ]
-
 let message = {
     "control": null,
     "data": null
 }
-
-    let sql=`SELECT 
-                *
-            FROM
-                users
-            WHERE
+    let sql =
+        `SELECT 
+            *
+        FROM
+            users
+        WHERE
             users.mail= ?`
-    
     connection.query(sql,params, (err, data) => {
-
-        if(data==""){
-            if(req.body.cif && req.body.name && req.body.surname){
+        if(data=="") 
+        {
+            if(req.body.cif && req.body.name && req.body.surname) {
+               
                 params = [
                     req.body.cif,
                     req.body.name,
                     req.body.surname
-    
                 ]
-    
                  sql=`INSERT INTO user_owner (
                     owner_id,
                     cif,
@@ -1412,17 +1409,16 @@ let message = {
                 VALUES (
                     null, ?, ?, ?, null
                 )`;
-                
                 }
-
                 else if(req.body.phone && req.body.name && req.body.surname){
-
+                        
                     params = [
                         req.body.phone,
                         req.body.name,
-                        req.body.surname,
+                        req.body.surname
         
                     ]
+                    
         
                      sql=`INSERT INTO user_customer (
                         customer_id,
@@ -1440,13 +1436,15 @@ let message = {
 
                         
                 connection.query(sql,params, (err, data1) => {
-               if (err){
-                   res.send(message);
+               if (err) {message.control=false;
+                
+                message.data=err;
+                        res.send(message);
                }
                else{
                 
                 params = [ data1.insertId,
-                          req.body.email,
+                          req.body.mail,
                           req.body.password ];
                 sql= `INSERT INTO
                       users
@@ -1459,15 +1457,17 @@ let message = {
                         )
                     VALUES
                     ( null, null, ?, null, ?, ?)
-                    `          
+                    `}          
                 connection.query(sql,params, (err,data2)=>{
                     if (err){
                         if (data1.owner_id){
+                           
                         params = [data1.insertId]
                         sql=`DELETE FROM 
                             user_owner
                             WHERE
-                            owner_id = ?` }
+                            owner_id = ?`
+                         }
                             
                         else if(data1.customer_id){
                         params = [data1.insertId];
@@ -1477,29 +1477,21 @@ let message = {
                             customer_id = ?`    
                         }
                         connection.query(sql, params, (err, data)=>{
-                         console.log(err);
-                         console.log(data);
+                         
+                         res.send(err)
                         })
-
-                        message.data=[];
-                        res.send(message)
-                    }
-                    message.data=data2;
-                    message.control=true;
-                    res.send(message);
-                })        
-            }
-                
-
+                    }else {
+                         message.data=data2;
+                        message.control=true;
+                        res.send(message); 
+                }});
             })
-        }
-
-        else{
-            res.send(message)
+        }else { message.control=false;
+                message.data=[];
+                res.send(message)
         }
     })
 })
-
 app.listen(3000, () => {
     console.log("listening to port 3000");
 });
