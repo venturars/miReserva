@@ -65,7 +65,7 @@ export class CreateRestaurant3Component implements OnInit {
    
    }
 
-  abiertoCerradoDiaLunes(esto){
+  abiertoCerradoDiaLunes(esto,dia,botoncheck,desayuno,almuerzo,cena){
      //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
      var ellunes=document.getElementById("ellunes");
      var labell=document.getElementById("labell");
@@ -80,6 +80,38 @@ export class CreateRestaurant3Component implements OnInit {
         ellunes.style.display = "none";
         cartelcerrado.style.display="block";
     }
+    this.apiTimes.checkDaysTimes(dia,this.serviceRestaurant.id_restaurant)
+    .subscribe((data)=>{
+      if (data.control==true){
+        for (let i=0;i<data.data.length;i++){
+          const time:Times=data.data[i];
+              if(botoncheck.checked==false){
+                    
+                time.active="false";
+              }
+              else{
+               
+                if (desayuno.checked==false && time.service=='Desayuno'){
+                  time.active="false"
+                  
+                }
+                else if(almuerzo.checked==false && time.service=='Almuerzo'){
+                  time.active="false";
+                }
+                else if (cena.checked==false && time.service=='Cena'){
+                  time.active="false";
+                }
+                else{
+                  time.active="true";
+                  
+                } 
+              }
+              this.apiTimes.putTimes(time)
+              .subscribe((data)=>{console.log(data)})
+        }
+      }
+    })
+
   }
 desayunoLunes(esto, name, service){
       var input1dl= <HTMLInputElement>document.getElementById("input1dl");
@@ -225,7 +257,7 @@ desayunoLunes(esto, name, service){
 ////////////////////MARTES ////////////////////
 
 
-abiertoCerradoDiaMartes(esto){
+abiertoCerradoDiaMartes(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
   var elmartes=document.getElementById("elmartes");
   var labelm=document.getElementById("labelm");
@@ -240,6 +272,40 @@ abiertoCerradoDiaMartes(esto){
      elmartes.style.display = "none";
      cartelcerrado.style.display="block";
  }
+
+ this.apiTimes.checkDaysTimes(dia,this.serviceRestaurant.id_restaurant)
+    .subscribe((data)=>{
+      if (data.control==true){
+        for (let i=0;i<data.data.length;i++){
+          const time:Times=data.data[i];
+              if(botoncheck.checked==false){
+                    
+                time.active="false";
+              }
+              else{
+               
+                if (desayuno.checked==false && time.service=='Desayuno'){
+                  time.active="false"
+                  
+                }
+                else if(almuerzo.checked==false && time.service=='Almuerzo'){
+                  time.active="false";
+                }
+                else if (cena.checked==false && time.service=='Cena'){
+                  time.active="false";
+                }
+                else{
+                  time.active="true";
+                  
+                } 
+              }
+              this.apiTimes.putTimes(time)
+              .subscribe((data)=>{console.log(data)})
+        }
+      }
+    })
+
+
 }
 desayunoMartes(esto,name,service){
    var input1dm= <HTMLInputElement>document.getElementById("input1dm");
@@ -385,7 +451,7 @@ desayunoMartes(esto,name,service){
  ///////////// MIERCOLES /////////////////////////////
 
  
-abiertoCerradoDiaMiercoles(esto){
+abiertoCerradoDiaMiercoles(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
   var elmiercoles=document.getElementById("elmiercoles");
   var labelx=document.getElementById("labelx");
@@ -400,6 +466,39 @@ abiertoCerradoDiaMiercoles(esto){
      elmiercoles.style.display = "none";
      cartelcerrado.style.display="block";
  }
+
+ this.apiTimes.checkDaysTimes(dia,this.serviceRestaurant.id_restaurant)
+    .subscribe((data)=>{
+      if (data.control==true){
+        for (let i=0;i<data.data.length;i++){
+          const time:Times=data.data[i];
+              if(botoncheck.checked==false){
+                    
+                time.active="false";
+              }
+              else{
+               
+                if (desayuno.checked==false && time.service=='Desayuno'){
+                  time.active="false"
+                  
+                }
+                else if(almuerzo.checked==false && time.service=='Almuerzo'){
+                  time.active="false";
+                }
+                else if (cena.checked==false && time.service=='Cena'){
+                  time.active="false";
+                }
+                else{
+                  time.active="true";
+                  
+                } 
+              }
+              this.apiTimes.putTimes(time)
+              .subscribe((data)=>{console.log(data)})
+        }
+      }
+    })
+
 }
 desayunoMiercoles(esto,name,service){
    var input1dx= <HTMLInputElement>document.getElementById("input1dx");
@@ -544,7 +643,7 @@ desayunoMiercoles(esto,name,service){
 ////////////////////// JUEVES ////////////////////////////
 
 
-abiertoCerradoDiaJueves(esto){
+abiertoCerradoDiaJueves(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
   var eljueves=document.getElementById("eljueves");
   var labelj=document.getElementById("labelj");
@@ -559,6 +658,38 @@ abiertoCerradoDiaJueves(esto){
      eljueves.style.display = "none";
      cartelcerrado.style.display="block";
  }
+ this.apiTimes.checkDaysTimes(dia,this.serviceRestaurant.id_restaurant)
+    .subscribe((data)=>{
+      if (data.control==true){
+        for (let i=0;i<data.data.length;i++){
+          const time:Times=data.data[i];
+              if(botoncheck.checked==false){
+                    
+                time.active="false";
+              }
+              else{
+               
+                if (desayuno.checked==false && time.service=='Desayuno'){
+                  time.active="false"
+                  
+                }
+                else if(almuerzo.checked==false && time.service=='Almuerzo'){
+                  time.active="false";
+                }
+                else if (cena.checked==false && time.service=='Cena'){
+                  time.active="false";
+                }
+                else{
+                  time.active="true";
+                  
+                } 
+              }
+              this.apiTimes.putTimes(time)
+              .subscribe((data)=>{console.log(data)})
+        }
+      }
+    })
+
 }
 desayunoJueves(esto,name,service){
    var input1dj= <HTMLInputElement>document.getElementById("input1dj");
@@ -706,7 +837,7 @@ desayunoJueves(esto,name,service){
 
  
 
-abiertoCerradoDiaViernes(esto){
+abiertoCerradoDiaViernes(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
   var elviernes=document.getElementById("elviernes");
   var labelv=document.getElementById("labelv");
@@ -721,6 +852,38 @@ abiertoCerradoDiaViernes(esto){
      elviernes.style.display = "none";
      cartelcerrado.style.display="block";
  }
+ this.apiTimes.checkDaysTimes(dia,this.serviceRestaurant.id_restaurant)
+    .subscribe((data)=>{
+      if (data.control==true){
+        for (let i=0;i<data.data.length;i++){
+          const time:Times=data.data[i];
+              if(botoncheck.checked==false){
+                    
+                time.active="false";
+              }
+              else{
+               
+                if (desayuno.checked==false && time.service=='Desayuno'){
+                  time.active="false"
+                  
+                }
+                else if(almuerzo.checked==false && time.service=='Almuerzo'){
+                  time.active="false";
+                }
+                else if (cena.checked==false && time.service=='Cena'){
+                  time.active="false";
+                }
+                else{
+                  time.active="true";
+                  
+                } 
+              }
+              this.apiTimes.putTimes(time)
+              .subscribe((data)=>{console.log(data)})
+        }
+      }
+    })
+
 }
 desayunoViernes(esto,name,service){
    var input1dv= <HTMLInputElement>document.getElementById("input1dv");
@@ -866,7 +1029,7 @@ desayunoViernes(esto,name,service){
 //////////////////// SABADOOO //////////////////////////////////
 
 
-abiertoCerradoDiaSabado(esto){
+abiertoCerradoDiaSabado(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
   var elsabado=document.getElementById("elsabado");
   var labels=document.getElementById("labels");
@@ -881,6 +1044,38 @@ abiertoCerradoDiaSabado(esto){
      elsabado.style.display = "none";
      cartelcerrado.style.display="block";
  }
+ this.apiTimes.checkDaysTimes(dia,this.serviceRestaurant.id_restaurant)
+    .subscribe((data)=>{
+      if (data.control==true){
+        for (let i=0;i<data.data.length;i++){
+          const time:Times=data.data[i];
+              if(botoncheck.checked==false){
+                    
+                time.active="false";
+              }
+              else{
+               
+                if (desayuno.checked==false && time.service=='Desayuno'){
+                  time.active="false"
+                  
+                }
+                else if(almuerzo.checked==false && time.service=='Almuerzo'){
+                  time.active="false";
+                }
+                else if (cena.checked==false && time.service=='Cena'){
+                  time.active="false";
+                }
+                else{
+                  time.active="true";
+                  
+                } 
+              }
+              this.apiTimes.putTimes(time)
+              .subscribe((data)=>{console.log(data)})
+        }
+      }
+    })
+
 }
 desayunoSabado(esto,name,service){
    var input1ds= <HTMLInputElement>document.getElementById("input1ds");
@@ -1025,7 +1220,7 @@ desayunoSabado(esto,name,service){
  ////////////////DOMINGO /////////////////////
 
 
- abiertoCerradoDiaDomingo(esto){
+ abiertoCerradoDiaDomingo(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
   var eldomingo=document.getElementById("eldomingo");
   var labeld=document.getElementById("labeld");
@@ -1040,6 +1235,38 @@ desayunoSabado(esto,name,service){
      eldomingo.style.display = "none";
      cartelcerrado.style.display="block";
  }
+ this.apiTimes.checkDaysTimes(dia,this.serviceRestaurant.id_restaurant)
+    .subscribe((data)=>{
+      if (data.control==true){
+        for (let i=0;i<data.data.length;i++){
+          const time:Times=data.data[i];
+              if(botoncheck.checked==false){
+                    
+                time.active="false";
+              }
+              else{
+               
+                if (desayuno.checked==false && time.service=='Desayuno'){
+                  time.active="false"
+                  
+                }
+                else if(almuerzo.checked==false && time.service=='Almuerzo'){
+                  time.active="false";
+                }
+                else if (cena.checked==false && time.service=='Cena'){
+                  time.active="false";
+                }
+                else{
+                  time.active="true";
+                  
+                } 
+              }
+              this.apiTimes.putTimes(time)
+              .subscribe((data)=>{console.log(data)})
+        }
+      }
+    })
+
 }
 desayunoDomingo(esto,name,service){
    var input1dd= <HTMLInputElement>document.getElementById("input1dd");

@@ -13,7 +13,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labell">Abierto</label> 
-            <mat-slide-toggle class="lctl-ng-matSlideToggle" checked="true" (change)="abiertoCerradoDiaLunes($event)"></mat-slide-toggle> 
+            <mat-slide-toggle class="lctl-ng-matSlideToggle" checked="true" #todoeldialunes (change)="abiertoCerradoDiaLunes($event,'Lunes',todoeldialunes,desayunol,almuerzol,cenal)"></mat-slide-toggle> 
             </div>
             <div class="lctl-br separador"></div>
             <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/photos/close.svg"></div></div>
@@ -22,7 +22,7 @@
                     <div class="lctl-centerElements turnbotton">
                     <label >Desayunos</label>
                     
-                    <mat-slide-toggle (change)="desayunoLunes($event,'Lunes','Desayuno')"></mat-slide-toggle> 
+                    <mat-slide-toggle #desayunol (change)="desayunoLunes($event,'Lunes','Desayuno')"></mat-slide-toggle> 
                     </div>
                     
                     <div class="lctl-rightElements" (change)="checkit(horainiciold,horafinalld)">
@@ -53,7 +53,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Almuerzo</label>
-                    <mat-slide-toggle (change)="comidaLunes($event,'Lunes','Almuerzo')"></mat-slide-toggle> 
+                    <mat-slide-toggle #almuerzol (change)="comidaLunes($event,'Lunes','Almuerzo')"></mat-slide-toggle> 
                     </div>
                     <div class="lctl-rightElements" (change)="checkit(horainiciola, horafinalla)">
                         <label id="labelal" style="opacity:0.5">Horario de Almuerzo</label>
@@ -77,7 +77,7 @@
 
                         <div class="lctl-centerElements turnbotton">
                         <label >Cena</label>
-                        <mat-slide-toggle (change)="cenaLunes($event,'Lunes','Cena')"></mat-slide-toggle> 
+                        <mat-slide-toggle #cenal (change)="cenaLunes($event,'Lunes','Cena')"></mat-slide-toggle> 
                         </div>
     
                         <div class="lctl-rightElements" (change)="checkit(horainiciolc,horafinallc)">
@@ -111,7 +111,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labelm">Abierto</label> 
-            <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaMartes($event)"></mat-slide-toggle> 
+            <mat-slide-toggle checked="true" #todoeldiamartes (change)="abiertoCerradoDiaMartes($event,'Martes',todoeldiamartes,desayunom,almuerzom,cenam)"></mat-slide-toggle> 
             </div>
 
             <div class="lctl-br separador"></div>
@@ -120,7 +120,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Desayunos</label>
-                    <mat-slide-toggle (change)="desayunoMartes($event,'Martes','Desayuno')"></mat-slide-toggle> 
+                    <mat-slide-toggle #desayunom (change)="desayunoMartes($event,'Martes','Desayuno')"></mat-slide-toggle> 
                     </div>
 
                     <div class="lctl-rightElements" (change)="checkit(horainiciomd, horafinalmd)">
@@ -146,7 +146,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Almuerzo</label>
-                    <mat-slide-toggle (change)="comidaMartes($event,'Martes','Almuerzo')"></mat-slide-toggle> 
+                    <mat-slide-toggle #almuerzom (change)="comidaMartes($event,'Martes','Almuerzo')"></mat-slide-toggle> 
                     </div>
                     <div class="lctl-rightElements" (change)="checkit(horainicioma,horafinalma)">
                         <label id="labelam" style="opacity:0.5">Horario de Almuerzo</label>
@@ -173,7 +173,7 @@
 
                         <div class="lctl-centerElements turnbotton">
                         <label >Cena</label>
-                        <mat-slide-toggle (change)="cenaMartes($event,'Martes','Cena')"></mat-slide-toggle> 
+                        <mat-slide-toggle #cenam (change)="cenaMartes($event,'Martes','Cena')"></mat-slide-toggle> 
                         </div>
     
                         <div class="lctl-rightElements" (change)="checkit(horainiciomc,horafinalmc)">
@@ -207,7 +207,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labelx">Abierto</label> 
-            <mat-slide-toggle  checked="true" (change)="abiertoCerradoDiaMiercoles($event)"></mat-slide-toggle> 
+            <mat-slide-toggle  checked="true" #todoeldiamiercoles (change)="abiertoCerradoDiaMiercoles($event,'Miercoles',todoeldiamiercoles,desayunox,almuerzox,cenax)"></mat-slide-toggle> 
             </div>
 
             <div class="lctl-br separador"></div>
@@ -216,7 +216,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Desayunos</label>
-                    <mat-slide-toggle (change)="desayunoMiercoles($event,'Miercoles','Desayuno')"></mat-slide-toggle> 
+                    <mat-slide-toggle #desayunox (change)="desayunoMiercoles($event,'Miercoles','Desayuno')"></mat-slide-toggle> 
                     </div>
 
                     <div class="lctl-rightElements" (change)="checkit(horainicioxd,horafinalxd)">
@@ -242,7 +242,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Almuerzo</label>
-                    <mat-slide-toggle (change)="comidaMiercoles($event,'Miercoles','Almuerzo')"></mat-slide-toggle> 
+                    <mat-slide-toggle #almuerzox (change)="comidaMiercoles($event,'Miercoles','Almuerzo')"></mat-slide-toggle> 
                     </div>
                     <div class="lctl-rightElements" (change)="checkit(horainicioxa,horafinalxa)">
                         <label id="labelax" style="opacity:0.5">Horario de Almuerzo</label>
@@ -268,7 +268,7 @@
 
                         <div class="lctl-centerElements turnbotton">
                         <label >Cena</label>
-                        <mat-slide-toggle (change)="cenaMiercoles($event,'Miercoles','Cena')"></mat-slide-toggle> 
+                        <mat-slide-toggle #cenax (change)="cenaMiercoles($event,'Miercoles','Cena')"></mat-slide-toggle> 
                         </div>
     
                         <div class="lctl-rightElements" (change)="checkit(horainicioxc,horafinalxc)">
@@ -301,7 +301,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labelj">Abierto</label> 
-            <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaJueves($event)"></mat-slide-toggle> 
+            <mat-slide-toggle checked="true" #todoeldiajueves (change)="abiertoCerradoDiaJueves($event,'Jueves',todoeldiajueves,desayunoj,almuerzoj,cenaj)"></mat-slide-toggle> 
             </div>
 
             <div class="lctl-br separador"></div>
@@ -310,7 +310,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Desayunos</label>
-                    <mat-slide-toggle (change)="desayunoJueves($event,'Jueves','Desayuno')"></mat-slide-toggle> 
+                    <mat-slide-toggle #desayunoj (change)="desayunoJueves($event,'Jueves','Desayuno')"></mat-slide-toggle> 
                     </div>
 
                     <div class="lctl-rightElements" (change)="checkit(horainiciojd,horafinaljd)">
@@ -336,7 +336,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Almuerzo</label>
-                    <mat-slide-toggle (change)="comidaJueves($event,'Jueves','Almuerzo')"></mat-slide-toggle> 
+                    <mat-slide-toggle #almuerzoj (change)="comidaJueves($event,'Jueves','Almuerzo')"></mat-slide-toggle> 
                     </div>
                     <div class="lctl-rightElements" (change)="checkit(horainicioja,horafinalja)">
                         <label id="labelaj" style="opacity:0.5">Horario de Almuerzo</label>
@@ -362,7 +362,7 @@
 
                         <div class="lctl-centerElements turnbotton">
                         <label >Cena</label>
-                        <mat-slide-toggle (change)="cenaJueves($event,'Jueves','Cena')"></mat-slide-toggle> 
+                        <mat-slide-toggle #cenaj (change)="cenaJueves($event,'Jueves','Cena')"></mat-slide-toggle> 
                         </div>
     
                         <div class="lctl-rightElements" (change)="checkit(horainiciojc,horafinaljc)">
@@ -396,7 +396,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labelv">Abierto</label> 
-            <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaViernes($event)"></mat-slide-toggle> 
+            <mat-slide-toggle checked="true" #todoeldiaviernes (change)="abiertoCerradoDiaViernes($event,'Viernes',todoeldiaviernes,desayunov,almuerzov,cenav)"></mat-slide-toggle> 
             </div>
 
             <div class="lctl-br separador"></div>
@@ -405,7 +405,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Desayunos</label>
-                    <mat-slide-toggle (change)="desayunoViernes($event,'Viernes','Desayuno')"></mat-slide-toggle> 
+                    <mat-slide-toggle #desayunov (change)="desayunoViernes($event,'Viernes','Desayuno')"></mat-slide-toggle> 
                     </div>
 
                     <div class="lctl-rightElements" (change)="checkit(horainiciovd,horafinalvd)">
@@ -431,7 +431,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Almuerzo</label>
-                    <mat-slide-toggle (change)="comidaViernes($event,'Viernes','Almuerzo')"></mat-slide-toggle> 
+                    <mat-slide-toggle #almuerzov (change)="comidaViernes($event,'Viernes','Almuerzo')"></mat-slide-toggle> 
                     </div>
                     <div class="lctl-rightElements" (change)="checkit(horainiciova,horafinalva)">
                         <label id="labelav" style="opacity:0.5">Horario de Almuerzo</label>
@@ -457,7 +457,7 @@
 
                         <div class="lctl-centerElements turnbotton">
                         <label >Cena</label>
-                        <mat-slide-toggle (change)="cenaViernes($event,'Viernes','Cena')"></mat-slide-toggle> 
+                        <mat-slide-toggle #cenav (change)="cenaViernes($event,'Viernes','Cena')"></mat-slide-toggle> 
                         </div>
     
                         <div class="lctl-rightElements" (change)="checkit(horainiciovc,horafinalvc)">
@@ -489,7 +489,7 @@
            
     <div class="lctl-leftElements open">
     <label id="labels">Abierto</label> 
-    <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaSabado($event)"></mat-slide-toggle> 
+    <mat-slide-toggle checked="true" #todoeldiasabado (change)="abiertoCerradoDiaSabado($event,'Sabado',todoeldiasabado,desayunosa,almuerzosa,cenasa)"></mat-slide-toggle> 
     </div>
 
     <div class="lctl-br separador"></div>
@@ -498,7 +498,7 @@
         <div class="Turns">
             <div class="lctl-centerElements turnbotton">
             <label >Desayunos</label>
-            <mat-slide-toggle (change)="desayunoSabado($event,'Sabado','Desayuno')"></mat-slide-toggle> 
+            <mat-slide-toggle #desayunosa (change)="desayunoSabado($event,'Sabado','Desayuno')"></mat-slide-toggle> 
             </div>
 
             <div class="lctl-rightElements" (change)="checkit(horainiciosd,horafinalsd)">
@@ -524,7 +524,7 @@
         <div class="Turns">
             <div class="lctl-centerElements turnbotton">
             <label >Almuerzo</label>
-            <mat-slide-toggle (change)="comidaSabado($event,'Sabado','Almuerzo')"></mat-slide-toggle> 
+            <mat-slide-toggle #almuerzosa (change)="comidaSabado($event,'Sabado','Almuerzo')"></mat-slide-toggle> 
             </div>
             <div class="lctl-rightElements" (change)="checkit(horainiciosa,horafinalsa)">
                 <label id="labelas" style="opacity:0.5">Horario de Almuerzo</label>
@@ -550,7 +550,7 @@
 
                 <div class="lctl-centerElements turnbotton">
                 <label >Cena</label>
-                <mat-slide-toggle (change)="cenaSabado($event,'Sabado','Cena')"></mat-slide-toggle> 
+                <mat-slide-toggle #cenasa (change)="cenaSabado($event,'Sabado','Cena')"></mat-slide-toggle> 
                 </div>
 
                 <div class="lctl-rightElements" (change)="checkit(horainiciosc,horafinalsc)">
@@ -582,7 +582,7 @@
            
             <div class="lctl-leftElements open">
             <label id="labels">Abierto</label> 
-            <mat-slide-toggle checked="true" (change)="abiertoCerradoDiaDomingo($event)"></mat-slide-toggle> 
+            <mat-slide-toggle checked="true" #todoeldiadomingo (change)="abiertoCerradoDiaDomingo($event,'Domingo',todoeldiadomingo,desayunod,almuerzod,cenad)"></mat-slide-toggle> 
             </div>
         
             <div class="lctl-br separador"></div>
@@ -591,7 +591,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Desayunos</label>
-                    <mat-slide-toggle (change)="desayunoDomingo($event,'Domingo','Desayuno')"></mat-slide-toggle> 
+                    <mat-slide-toggle #desayunod (change)="desayunoDomingo($event,'Domingo','Desayuno')"></mat-slide-toggle> 
                     </div>
         
                     <div class="lctl-rightElements" (change)="checkit(horainiciodd,horafinaldd)">
@@ -617,7 +617,7 @@
                 <div class="Turns">
                     <div class="lctl-centerElements turnbotton">
                     <label >Almuerzo</label>
-                    <mat-slide-toggle (change)="comidaDomingo($event,'Domingo','Almuerzo')"></mat-slide-toggle> 
+                    <mat-slide-toggle #almuerzod (change)="comidaDomingo($event,'Domingo','Almuerzo')"></mat-slide-toggle> 
                     </div>
                     <div class="lctl-rightElements" (change)="checkit(horainicioda,horafinalda)">
                         <label id="labelas" style="opacity:0.5">Horario de Almuerzo</label>
@@ -643,7 +643,7 @@
         
                         <div class="lctl-centerElements turnbotton">
                         <label >Cena</label>
-                        <mat-slide-toggle (change)="cenaDomingo($event,'Domingo','Cena')"></mat-slide-toggle> 
+                        <mat-slide-toggle #cenad (change)="cenaDomingo($event,'Domingo','Cena')"></mat-slide-toggle> 
                         </div>
         
                         <div class="lctl-rightElements" (change)="checkit(horainiciodc,horafinaldc)">
