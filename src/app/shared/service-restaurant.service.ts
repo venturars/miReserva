@@ -17,7 +17,10 @@ export class ServiceRestaurantService {
     private http:HttpClient
   ) { }
   getRestaurant(restaurant_id?:number):Observable<any> {
-    return this.http.get(this.url + "?restaurant_id" + restaurant_id);
+    return this.http.get(this.url + "?restaurant_id=" + restaurant_id);
+  }
+  getRestaurantByOwner(owner_id?:number):Observable<any> {
+    return this.http.get(this.url + "?owner_id=" + owner_id);
   }
   postRestaurant(nuevoRestaurant:Restmailpassword):Observable<any> {
     return this.http.post(this.url,nuevoRestaurant);

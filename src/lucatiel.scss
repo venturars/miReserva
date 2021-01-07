@@ -1046,66 +1046,31 @@ a {
 //         </div>
 //----------//----------//----------//----------//----------
 [class *="lctl-bigCard"] {
-    min-width: 280px;
-    min-width: 280px;
-    max-width: 1200px;
-    height: 270px;
-    margin: auto;
+    background-color: aqua;
     display: flex;
     flex-direction: column;
-    background-color: var(--secundaryColorPush);
-    border-radius: 50px;
-    box-shadow: 0 0 10px 1px var(--secundaryColorPush);
-    overflow: hidden;
-    cursor: pointer;
-    &:active div{
-        background-color: var(--secundaryColorPush)!important;
-    }
-    & > div:first-child {
-        height: 120px;
-        align-items: center;
-        & img {
-            max-width: 100%;
-        }}
-    & > div:nth-child(2) {
-        display: flex;
+    width: clamp(260px, 1000px, 1000px);
+    // overflow: hidden;
+    & > .lctl-bigCard-banner {
         width: 100%;
-        justify-content: space-around;
-        background-color: var(--secundaryColor);
-        & div {
-            border: 2px solid var(--secundaryColorPush);
-            margin-top: -40px;
-            width: 100px;
-            height: 100px;
-    }}
-    & > div:nth-child(3) {
-        height: 100%;
+        height: 125px;
+        text-align: center;
+        & > img {
+            max-width: 100%;
+            max-height: 100%;
+      }
+    }
+    & > .lctl-bigCard-profile {
+        background-color: yellowgreen;
         display: flex;
-        justify-content: center;
         align-items: center;
-        background-color: var(--secundaryColor);
-        & div {
-            width: 33%;
-            text-align: center;
-        }
-        & > div {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            padding: 0 10px 0 10px;
-            font-weight: var(--fontWidthBolder);
-            & a {
-                text-decoration: inherit;
-                color: inherit;
-                font-size: inherit;
-                font-weight: inherit;
-            }
-        }
-        & > div:nth-child(2) {
-                font-size: var(--fontSizeL);
-                font-weight: var(--fontWidthBolder);
-                margin-top: -30px;
-}}}
+    }
+    & > .lctl-bigCard-info {
+        display: flex;
+        flex-direction: row;
+        background-color: yellow;
+    }
+}
 //----------//----------//----------//----------//----------
 [class *="lctl-div"] {
     display: flex;

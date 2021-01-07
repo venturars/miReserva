@@ -1,31 +1,39 @@
 <div class="page">
+
     <div class="header">
-        <h1 class="lctl-font-title">Mis restaurantes</h1>
+        <div class="lctl-font-title">Mis restaurantes</div>
     </div>
-    <div class="lctl-bigCard">
-        <div>
-            <img src="
-            https://www.digitalprinting.co.uk/media/images/products/slides/31/vinyl-pvc-banners-1.jpg
-            " alt="">
-        </div>
-        <div>
-            <div class="lctl-photoProfile-l"><img src="
-                https://www.hogarmania.com/archivos/201702/mascotas-rascadores-gatos-vision-XxXx80.jpg
-                " alt="">
-            </div>
-        </div>
-        <div>
-            <div>
-                Dirección rolvuhrfv rcocnrc cidnhcrfoub crichie cidbcecub
-            </div>
-            <div>
-                <a href="">
-                    Título
-                </a>
-            </div>
-            <div>
-                Teléfono
-            </div>
-        </div>
+
+    <div class="body">
+        <!-- <ng-container *ngIf="restaurants; else not"> -->
+            <!-- <ng-container *ngFor="let restaurant of restaurants"> -->
+                <div class="lctl-bigCard">
+                    <div class="lctl-bigCard-banner">
+                        <img src="assets/photos/potada2.png">
+                    </div>
+                    <div class="lctl-bigCard-profile">
+                        <div class="lctl-photoProfile-xl">
+                            <img src="assets/photos/logorestaurante2.png">
+                        </div>
+                    </div>
+                    <div class="lctl-bigCard-info">
+                        <div>
+                            Dirección
+                        </div>
+                        <div>
+                            Título
+                        </div>
+                        <div>
+                            Teléfono
+                        </div>
+                    </div>
+                </div>
+            <!-- </ng-container> -->
+        <!-- </ng-container> -->
+    
+        <!-- <ng-template #not>
+        <div><img src="">hola</div>
+        </ng-template> -->
     </div>
+
 </div>
