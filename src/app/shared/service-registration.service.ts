@@ -43,4 +43,9 @@ public url:string="http://localhost:3000/registration";
   public registrationCustomer(newCustomer:any){
      return this.http.post(this.url, newCustomer)
   }
+
+  public checkMailFree(mail:any){
+    return this.http.get(this.url+ "?mail=" + mail);
+  }
+
 }

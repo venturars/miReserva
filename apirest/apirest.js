@@ -1523,6 +1523,34 @@ app.post("/registration", (req, res)=> {
                                     message.data = data1.insertId;
                                     res.send(message); 
 }});}});}}});});
+
+app.get("/registration", (req, res)=>{
+    let params=[req.query.mail]
+    let message={"control":null,
+                "data":null}
+    let sql=`SELECT
+             *
+            FROM
+            users
+            WHERE
+            mail = ?`
+    connection.query(sql,params, (err,data)=>{
+        if (err){
+            res.send(err)
+        }
+        else{
+            if (data==""){
+                message.control=true;
+                message.data=[];
+            }
+            else{
+                message.control=false;
+                message.data=data;
+            }
+        }
+        res.send(message)
+    })
+})
 app.listen(3000, () => {
     console.log("listening to port 3000");
 });

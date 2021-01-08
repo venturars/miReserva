@@ -87,13 +87,13 @@
         <div>  
         <input type="text" class="lctl-input-m-extraLarge" placeholder="Email"
         placeholder="{{restForm.submitted && mail.invalid ?  'Email obligatorio' : 'Email'}}"
-        name="mail" [(ngModel)]="restaurant.mail" #mail="ngModel"
+        name="mail" [(ngModel)]="restaurant.mail" #mail="ngModel" id="mail"
         [ngClass]="{'caution':restForm.submitted && mail.invalid }" required>
    
     
         <input type="text" class="lctl-input-m-extraLarge"
         placeholder="{{restForm.submitted && password.invalid ?  'Contraseña obligatoria' : 'Contraseña'}}"
-        name="password" [(ngModel)]="restaurant.password" #password="ngModel"
+        name="password" [(ngModel)]="restaurant.password" #password="ngModel" id="password"
         [ngClass]="{'caution':restForm.submitted && password.invalid }" required>
     </div>        
 
