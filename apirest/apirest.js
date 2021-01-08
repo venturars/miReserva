@@ -267,7 +267,22 @@ app.get("/times/", (req, res) => {
                 times.restaurant_id = ?
             AND 
                 times.service = ?`;
-    } else if(req.query.restaurant_id) {
+    }else if(req.query.name && req.query.restaurant_id){
+        message = {
+            "control": null,
+            "data": null
+        }
+        sql =
+            `SELECT
+                *
+            FROM
+                times
+            WHERE
+                times.name = ?
+            AND 
+                times.restaurant_id = ?
+           `;
+    }else if(req.query.restaurant_id) {
         params = req.query.restaurant_id;
         sql =
             `SELECT
@@ -276,7 +291,7 @@ app.get("/times/", (req, res) => {
                 times
             WHERE
                 times.restaurant_id = ?`;
-    } else if (req.query.times_id) {
+    }else if (req.query.times_id) {
         params = req.query.times_id;
         sql =
         `SELECT
@@ -1306,32 +1321,61 @@ app.delete("/reservations", (request, response) => {
 });});
 //-----Search-----
 app.get('/search', (req, res) => {
-    req.aborted;
+    let params;
     let message = {
         "control": null,
         "data": null
     }
-    let sql =
-        `SELECT
-            restaurants.restaurant_id,
-            restaurants.name,
-            restaurants.province,
-            restaurants.city,
-            restaurants.street_name,
-            restaurants.street_number,
-            restaurants.postal_code,
-            restaurants.phone,
-            restaurants.food_type,
-            restaurants.logo,
-            restaurants.menu,
-            restaurants.url,
-            restaurants.latitude,
-            restaurants.longitude
-        FROM
-            restaurants`;
-        connection.query(sql, (err, data) => {
+    let sql;
+        // if(req.query.food_type) {
+        //     params = req.query.food_type;
+        //     sql =
+        //         `SELECT
+        //             restaurants.restaurant_id,
+        //             restaurants.name,
+        //             restaurants.province,
+        //             restaurants.city,
+        //             restaurants.street_name,
+        //             restaurants.street_number,
+        //             restaurants.postal_code,
+        //             restaurants.phone,
+        //             restaurants.food_type,
+        //             restaurants.logo,
+        //             restaurants.header,
+        //             restaurants.menu,
+        //             restaurants.url,
+        //             restaurants.latitude,
+        //             restaurants.longitude
+        //         FROM
+        //             restaurants
+        //         WHERE
+        //             restaurants.food_type = ?`;
+        // }
+        // else {
+            sql =
+                `SELECT
+                    restaurants.restaurant_id,
+                    restaurants.name,
+                    restaurants.province,
+                    restaurants.city,
+                    restaurants.street_name,
+                    restaurants.street_number,
+                    restaurants.postal_code,
+                    restaurants.phone,
+                    restaurants.food_type,
+                    restaurants.header,
+                    restaurants.logo,
+                    restaurants.menu,
+                    restaurants.url,
+                    restaurants.latitude,
+                    restaurants.longitude
+                FROM
+                    restaurants`;
+        // }
+        connection.query(sql, params, (err, data) => {
             if(err) {
                 message.control = false;
+                message.data = err;
             }else {
                 message.control = true;
                 message.data = data;
@@ -1339,87 +1383,58 @@ app.get('/search', (req, res) => {
             res.status(200).send(message);
         });
 });
-
-app.get("/times2", (req,res) => {
+//-----Registration-----
+app.post("/registration", (req, res)=> {
     let params = [
-        req.query.name,
-        req.query.restaurant_id
+    req.body.mail
     ];
     let message = {
         "control": null,
+        "message": null,
         "data": null
     }
-    let sql =
-        `SELECT
-            *
-        FROM
-            times
-        WHERE
-            times.name = ?
-        AND 
-            times.restaurant_id = ?
-       `;
-    connection.query(sql, params, (err, data) => {
-        if(err) {
-        }else {
-            if (data == "") {
-                message.control = false;
-                message.data = data;
-            }
-            else {
-                message.control = true;
-                message.data = data;          
-        }}
-         res.status(200).send(message);
-})})
-
-app.post("/registration", (req,res)=>{
-    let params=[
-    req.body.mail
-]
-let message = {
-    "control": null,
-    "data": null
-}
     let sql =
         `SELECT 
             *
         FROM
             users
         WHERE
-            users.mail= ?`
+            users.mail= ?`;
     connection.query(sql,params, (err, data) => {
-        if(data=="") 
-        {
-            if(req.body.cif && req.body.name && req.body.surname) {
-               
-                params = [
-                    req.body.cif,
-                    req.body.name,
-                    req.body.surname
-                ]
-                 sql=`INSERT INTO user_owner (
-                    owner_id,
-                    cif,
-                    name,
-                    surname,
-                    photo
-                    
-                )
-                VALUES (
-                    null, ?, ?, ?, null
-                )`;
-                }
-                else if(req.body.phone && req.body.name && req.body.surname){
-                        
+        if(err) {
+            console.log(err);
+            res.status(200).send(message);
+        }else {
+            if(data!="") {
+                message.control = false;
+                message.message = 'Este correo ya está registrado';
+                message.data=[];
+                res.status(200).send(message);
+            } else {
+                if(req.body.cif) {
+                    params = [
+                        req.body.cif,
+                        req.body.name,
+                        req.body.surname
+                    ];
+                    sql =
+                        `INSERT INTO
+                            user_owner (
+                                owner_id,
+                                cif,
+                                name,
+                                surname,
+                                photo
+                            )
+                        VALUES (
+                            null, ?, ?, ?, null
+                        )`;
+                }else {
                     params = [
                         req.body.phone,
                         req.body.name,
                         req.body.surname
-        
-                    ]
-                    
-        
+                    ];
                      sql=`INSERT INTO user_customer (
                         customer_id,
                         phone,
@@ -1430,68 +1445,84 @@ let message = {
                     VALUES (
                         null, ?, ?, ?, null
                     )`;
-
-
                 }
-
-                        
                 connection.query(sql,params, (err, data1) => {
-               if (err) {message.control=false;
-                
-                message.data=err;
-                        res.send(message);
-               }
-               else{
-                //////////////////////////////////////////
-                params = [ data1.insertId,
-                          req.body.mail,
-                          req.body.password ];
-                sql= `INSERT INTO
-                      users
-                      ( id,
-                        restaurant_id,
-                        owner_id,
-                        customer_id,
-                        mail,
-                        password
-                        )
-                    VALUES
-                    ( null, null, ?, null, ?, ?)
-                    `}          
-                connection.query(sql,params, (err,data2)=>{
-                    if (err){
-                        if (data1.owner_id){
-                           
-                        params = [data1.insertId]
-                        sql=`DELETE FROM 
-                            user_owner
-                            WHERE
-                            owner_id = ?`
-                         }
-                            
-                        else if(data1.customer_id){
-                        params = [data1.insertId];
-                        sql=`DELETE FROM 
-                            user_customer
-                            WHERE
-                            customer_id = ?`    
+                    if(err) {
+                        console.log(err);
+                        message.control = false;
+                        message.data = [];
+                        res.status(200).send(message);
+                    }
+                    else {
+                        params = [
+                            data1.insertId,
+                            req.body.mail,
+                            req.body.password
+                        ];
+                        if(req.body.cif) {
+                            sql = 
+                                `INSERT INTO
+                                users(
+                                    id,
+                                    restaurant_id,
+                                    owner_id,
+                                    customer_id,
+                                    mail,
+                                    password
+                                )
+                                VALUES(
+                                    null, null, ?, null, ?, ?
+                                )`;
+                        }else {
+                            sql = 
+                            `INSERT INTO
+                            users(
+                                id,
+                                restaurant_id,
+                                owner_id,
+                                customer_id,
+                                mail,
+                                password
+                            )
+                            VALUES(
+                                null, null, null, ?, ?, ?
+                            )`;
                         }
-                        connection.query(sql, params, (err, data)=>{
-                         
-                         res.send(err)
-                        })
-                    }else {
-                         message.data=data2;
-                        message.control=true;
-                        res.send(message); 
-                }});
-            })
-        }else { message.control=false;
-                message.data=[];
-                res.send(message)
-        }
-    })
-})
+                        connection.query(sql,params, (err,data2)=>{
+                            if (err) {
+                                console.log(err);
+                                if (req.body.cif) {
+                                    params = [data1.insertId];
+                                    sql =
+                                        `DELETE FROM 
+                                            user_owner
+                                        WHERE
+                                            owner_id = ?`;
+                                }else {
+                                    params = [data1.insertId];
+                                    sql =
+                                        `DELETE FROM 
+                                            user_customer
+                                        WHERE
+                                        customer_id = ?`;
+                                }
+                                connection.query(sql, params, (err, data3)=>{
+                                    if (err) {
+                                        message.control = false;
+                                        message.message = 'Usuario creado sin usuario de logueo';
+                                        message.data = data1.insertId;
+                                    } else {
+                                        message.control = false;
+                                        message.message = 'Ha fallado el proceso de creación de logueo del usuario';
+                                        message.data = [];
+                                    }
+                                    res.send(message)
+                            });}else {
+                                    message.control = true;
+                                    message.message = 'Usuario creado correctamente';
+                                    message.data = data1.insertId;
+                                    res.send(message); 
+}});}});}}});});
 app.listen(3000, () => {
     console.log("listening to port 3000");
 });
