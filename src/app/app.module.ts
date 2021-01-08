@@ -49,6 +49,7 @@ import { ModalRegistro2Component } from './components/modals/modal-registro2/mod
 import { ModalRegistroUsuarioComponent } from './components/modals/modal-registro-usuario/modal-registro-usuario.component';
 import { ModalUsuarioIncorrectoComponent } from './components/modals/modal-usuario-incorrecto/modal-usuario-incorrecto.component';
 import { ModalLogOutComponent } from './components/modals/modal-log-out/modal-log-out.component';
+import { MaprestComponent } from './components/maprest/maprest.component';
 
 
 
@@ -89,7 +90,8 @@ import { ModalLogOutComponent } from './components/modals/modal-log-out/modal-lo
     ModalRegistro2Component,
     ModalRegistroUsuarioComponent,
     ModalUsuarioIncorrectoComponent,
-    ModalLogOutComponent
+    ModalLogOutComponent,
+    MaprestComponent
   ],
   imports: [
     BrowserModule,

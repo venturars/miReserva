@@ -1442,7 +1442,9 @@ let message = {
                         res.send(message);
                }
                else{
-                
+                    if(req.body.cif){
+
+                    
                 params = [ data1.insertId,
                           req.body.mail,
                           req.body.password ];
@@ -1457,7 +1459,28 @@ let message = {
                         )
                     VALUES
                     ( null, null, ?, null, ?, ?)
-                    `}          
+                    `}
+                    else {
+                        params = [ data1.insertId,
+                            req.body.mail,
+                            req.body.password ];
+                  sql= `INSERT INTO
+                        users
+                        ( id,
+                          restaurant_id,
+                          owner_id,
+                          customer_id,
+                          mail,
+                          password
+                          )
+                      VALUES
+                      ( null, null, null, ?, ?, ?)
+                      `}   
+                    
+                    
+                    
+
+                    }    
                 connection.query(sql,params, (err,data2)=>{
                     if (err){
                         if (data1.owner_id){
@@ -1490,6 +1513,34 @@ let message = {
                 message.data=[];
                 res.send(message)
         }
+    })
+})
+
+app.get("/registration", (req, res)=>{
+    let params=[req.query.mail]
+    let message={"control":null,
+                "data":null}
+    let sql=`SELECT
+             *
+            FROM
+            users
+            WHERE
+            mail = ?`
+    connection.query(sql,params, (err,data)=>{
+        if (err){
+            res.send(err)
+        }
+        else{
+            if (data==""){
+                message.control=true;
+                message.data=[];
+            }
+            else{
+                message.control=false;
+                message.data=data;
+            }
+        }
+        res.send(message)
     })
 })
 app.listen(3000, () => {
