@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ServiceSearchService } from '../../../shared/service-search.service';
 import { Restaurants } from '../../../models/restaurants';
 import { Map, tileLayer, marker, Marker } from "leaflet";
@@ -10,9 +10,12 @@ import { GeocodestreetService } from 'src/app/shared/geocodestreet.service';
 })
 export class SearchComponent implements OnInit {
 
+  @ViewChild('searchline') searchLine: ElementRef;
+
+  public allRestaurants: Restaurants[] = new Array();
   public restaurants: Restaurants[] = new Array();
   public checked:any[] = new Array();
-  public marker:Marker[] = [];
+  public marker:Marker[] = new Array();
   public map:Map = null;
   constructor(
     private searchService:ServiceSearchService,
@@ -21,9 +24,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
     this.searchService.initialSearch().subscribe((data:any) => {
-      
       for(let i = 0; i < data.data.length; i++) {
-        this.restaurants.push(new Restaurants(
+        this.allRestaurants.push(new Restaurants(
           data.data[i].restaurant_id,
           data.data[i].name,
           data.data[i].province,
@@ -42,6 +44,7 @@ export class SearchComponent implements OnInit {
           data.data[i].longitude,
           data.data[i].owner_id
       ));}
+      this.restaurants = this.allRestaurants;
       this.map = new Map("mapid").setView([40.416865 ,-3.504302], 50)
       .setZoom(11)
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
@@ -49,13 +52,17 @@ export class SearchComponent implements OnInit {
         maxZoom: 18
       }).addTo(this.map);
       for (let i=0;i<this.restaurants.length;i++){
-             
-        this.marker[i]= new Marker([this.restaurants[i].latitude, this.restaurants[i].longitude]).addTo(this.map);
-        this.marker[i].bindPopup(this.restaurants[i].name+"<br>"+this.restaurants[i].street_name+" , "+ this.restaurants[i].street_number)
-        .on('click', function(){console.log(this.restaurants[i])}, this).openPopup()  
-      }
-    });
+        this.marker[i] = new Marker([
+          this.restaurants[i].latitude,
+          this.restaurants[i].longitude
+        ]).addTo(this.map);
+        this.marker[i].bindPopup(
+          this.restaurants[i].name+"<br>"+this.restaurants[i].street_name+" , "+
+          this.restaurants[i].street_number
+        ).on('click', function(){console.log(this.restaurants[i])}, this).openPopup()  
+      }});
   }
+  //-----Design-----
   public showOptions() {
     let options:any = document.getElementById('options');
     let hide:any = document.getElementById('hideOptions');
@@ -100,8 +107,47 @@ export class SearchComponent implements OnInit {
         }
       })
   }}
-  public search() {
+  //-----Functions-----
+  public localSearch() {
 
+    let sumRestaurants:number = this.allRestaurants.length;
+    let sumTypes:number;
+    this.restaurants = new Array();
+
+    if(this.checked) {
+      sumTypes = this.checked.length;
+    }else {
+      sumTypes = 0;
+    }
+    
+    for(let i = 0; i < sumRestaurants; i++) {
+
+      for(let j = 0; j < sumTypes; i++) {
+
+        if(this.allRestaurants[i].food_type == this.checked[j].value) {
+          this.restaurants.push(this.allRestaurants[i]);
+      }}
+
+      if(this.allRestaurants[i].name == this.searchLine.nativeElement.value) {
+
+        let total:number;
+
+        if(this.restaurants) {
+
+          total = this.restaurants.length;
+
+        }else {
+          total = 0;
+        }
+
+        for(let k = 0; k > total; i++) {
+
+          if(this.allRestaurants[i] != this.restaurants[k]) {
+            this.restaurants.push(this.allRestaurants[i]);
+          }
+        }
+      }
+    }
   }
 }
 //-----Desing funcitons-----

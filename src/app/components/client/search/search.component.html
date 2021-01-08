@@ -1,12 +1,12 @@
 <div class="content">
 
     <div class="search">
-        <input type="text" class="searchLine"
+        <input type="text" class="searchLine" #searchLine
             placeholder="What are you looking for?" (click)="hideOptions()">
         <button class="filterButton" (click)="showOptions()">
            Filtros
         </button>
-        <button class="searchButton" (click)="hideOptions()">
+        <button class="searchButton" (click)="hideOptions(); localSearch()">
         </button>
     </div>
 
@@ -60,7 +60,7 @@
         <ng-container *ngFor = "let restaurant of restaurants">
             <div class="lctl-infoCard">
                 <div class="lctl-infoCard-banner">
-                    <img src="assets/photos/potada2.png">
+                    <img src="{{restaurant.header}}">
                 </div>
                 <div class="lctl-infoCard-under">
                     <div class="lctl-infoCard-left">

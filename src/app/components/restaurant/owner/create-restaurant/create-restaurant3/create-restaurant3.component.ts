@@ -15,15 +15,15 @@ import { ServiceTimesService } from 'src/app/shared/service-times.service';
 })
 export class CreateRestaurant3Component implements OnInit {
 
-
   public desayunos:Turnos[]
   public almuerzos:Turnos[]
   public cenas:Turnos[]
   
-
-  constructor(public dialog: MatDialog, public apiTimes:ServiceTimesService,
-              public serviceRestaurant:ServiceRestaurantService,
-              public apiShifts:ServiceShiftsService ) {
+  constructor(
+    public dialog: MatDialog, public apiTimes:ServiceTimesService,
+    public serviceRestaurant:ServiceRestaurantService,
+    public apiShifts:ServiceShiftsService
+  ) {
     this.desayunos = [
       {horario:"7:00"},
       {horario:"7:30"},
@@ -67,9 +67,9 @@ export class CreateRestaurant3Component implements OnInit {
 
   abiertoCerradoDiaLunes(esto,dia,botoncheck,desayuno,almuerzo,cena){
      //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
-     var ellunes=document.getElementById("ellunes");
-     var labell=document.getElementById("labell");
-     var cartelcerrado=document.getElementById("cerrado");
+     let ellunes=document.getElementById("ellunes");
+     let labell=document.getElementById("labell");
+     let cartelcerrado=document.getElementById("cerrado");
 
      if (ellunes.style.display === "none") {
         labell.innerHTML="Abierto";
@@ -114,11 +114,11 @@ export class CreateRestaurant3Component implements OnInit {
 
   }
 desayunoLunes(esto, name, service){
-      var input1dl= <HTMLInputElement>document.getElementById("input1dl");
-      var input2dl= <HTMLInputElement>document.getElementById("input2dl");
-      var butondl= <HTMLInputElement>document.getElementById("butondl");
-      var labeldl= <HTMLInputElement>document.getElementById("labeldl");
-      var adl= <HTMLInputElement>document.getElementById("adl");
+      let input1dl= <HTMLInputElement>document.getElementById("input1dl");
+      let input2dl= <HTMLInputElement>document.getElementById("input2dl");
+      let butondl= <HTMLInputElement>document.getElementById("butondl");
+      let labeldl= <HTMLInputElement>document.getElementById("labeldl");
+      let adl= <HTMLInputElement>document.getElementById("adl");
       
       
       this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
@@ -162,11 +162,11 @@ desayunoLunes(esto, name, service){
     }
 
     comidaLunes(esto,name,service){
-      var input1al= <HTMLInputElement>document.getElementById("input1al");
-      var input2al= <HTMLInputElement>document.getElementById("input2al");
-      var butonal= <HTMLInputElement>document.getElementById("butonal");
-      var labelal=<HTMLInputElement>document.getElementById("labelal");
-      var aal=<HTMLInputElement>document.getElementById("aal");
+      let input1al= <HTMLInputElement>document.getElementById("input1al");
+      let input2al= <HTMLInputElement>document.getElementById("input2al");
+      let butonal= <HTMLInputElement>document.getElementById("butonal");
+      let labelal=<HTMLInputElement>document.getElementById("labelal");
+      let aal=<HTMLInputElement>document.getElementById("aal");
 
       this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
       .subscribe((data:any)=>{
@@ -210,11 +210,11 @@ desayunoLunes(esto, name, service){
     }
  
     cenaLunes(esto,name,service){
-      var input1cl= <HTMLInputElement>document.getElementById("input1cl");
-      var input2cl= <HTMLInputElement>document.getElementById("input2cl");
-      var butoncl= <HTMLInputElement>document.getElementById("butoncl");
-      var labelcl=<HTMLInputElement>document.getElementById("labelcl");
-      var acl=<HTMLInputElement>document.getElementById("acl");
+      let input1cl= <HTMLInputElement>document.getElementById("input1cl");
+      let input2cl= <HTMLInputElement>document.getElementById("input2cl");
+      let butoncl= <HTMLInputElement>document.getElementById("butoncl");
+      let labelcl=<HTMLInputElement>document.getElementById("labelcl");
+      let acl=<HTMLInputElement>document.getElementById("acl");
       this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
       .subscribe((data:any)=>{
         if(data.control==false){
@@ -259,9 +259,9 @@ desayunoLunes(esto, name, service){
 
 abiertoCerradoDiaMartes(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
-  var elmartes=document.getElementById("elmartes");
-  var labelm=document.getElementById("labelm");
-  var cartelcerrado=document.getElementById("cerrado");
+  let elmartes=document.getElementById("elmartes");
+  let labelm=document.getElementById("labelm");
+  let cartelcerrado=document.getElementById("cerrado");
 
   if (elmartes.style.display === "none") {
      labelm.innerHTML="Abierto";
@@ -308,11 +308,11 @@ abiertoCerradoDiaMartes(esto,dia,botoncheck,desayuno,almuerzo,cena){
 
 }
 desayunoMartes(esto,name,service){
-   var input1dm= <HTMLInputElement>document.getElementById("input1dm");
-   var input2dm= <HTMLInputElement>document.getElementById("input2dm");
-   var butondm= <HTMLInputElement>document.getElementById("butondm");
-   var labeldm= <HTMLInputElement>document.getElementById("labeldm");
-   var adm= <HTMLInputElement>document.getElementById("adm");
+   let input1dm= <HTMLInputElement>document.getElementById("input1dm");
+   let input2dm= <HTMLInputElement>document.getElementById("input2dm");
+   let butondm= <HTMLInputElement>document.getElementById("butondm");
+   let labeldm= <HTMLInputElement>document.getElementById("labeldm");
+   let adm= <HTMLInputElement>document.getElementById("adm");
    
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -355,11 +355,11 @@ desayunoMartes(esto,name,service){
  }
 
  comidaMartes(esto,name,service){
-   var input1am= <HTMLInputElement>document.getElementById("input1am");
-   var input2am= <HTMLInputElement>document.getElementById("input2am");
-   var butonam= <HTMLInputElement>document.getElementById("butonam");
-   var labelam=<HTMLInputElement>document.getElementById("labelam");
-   var aam=<HTMLInputElement>document.getElementById("aam");
+   let input1am= <HTMLInputElement>document.getElementById("input1am");
+   let input2am= <HTMLInputElement>document.getElementById("input2am");
+   let butonam= <HTMLInputElement>document.getElementById("butonam");
+   let labelam=<HTMLInputElement>document.getElementById("labelam");
+   let aam=<HTMLInputElement>document.getElementById("aam");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -403,11 +403,11 @@ desayunoMartes(esto,name,service){
  }
 
  cenaMartes(esto,name,service){
-   var input1cm= <HTMLInputElement>document.getElementById("input1cm");
-   var input2cm= <HTMLInputElement>document.getElementById("input2cm");
-   var butoncm= <HTMLInputElement>document.getElementById("butoncm");
-   var labelcm=<HTMLInputElement>document.getElementById("labelcm");
-   var acm=<HTMLInputElement>document.getElementById("acm");
+   let input1cm= <HTMLInputElement>document.getElementById("input1cm");
+   let input2cm= <HTMLInputElement>document.getElementById("input2cm");
+   let butoncm= <HTMLInputElement>document.getElementById("butoncm");
+   let labelcm=<HTMLInputElement>document.getElementById("labelcm");
+   let acm=<HTMLInputElement>document.getElementById("acm");
    
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -453,9 +453,9 @@ desayunoMartes(esto,name,service){
  
 abiertoCerradoDiaMiercoles(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
-  var elmiercoles=document.getElementById("elmiercoles");
-  var labelx=document.getElementById("labelx");
-  var cartelcerrado=document.getElementById("cerrado");
+  let elmiercoles=document.getElementById("elmiercoles");
+  let labelx=document.getElementById("labelx");
+  let cartelcerrado=document.getElementById("cerrado");
 
   if (elmiercoles.style.display === "none") {
      labelx.innerHTML="Abierto";
@@ -501,11 +501,11 @@ abiertoCerradoDiaMiercoles(esto,dia,botoncheck,desayuno,almuerzo,cena){
 
 }
 desayunoMiercoles(esto,name,service){
-   var input1dx= <HTMLInputElement>document.getElementById("input1dx");
-   var input2dx= <HTMLInputElement>document.getElementById("input2dx");
-   var butondx= <HTMLInputElement>document.getElementById("butondx");
-   var labeldx= <HTMLInputElement>document.getElementById("labeldx");
-   var adx= <HTMLInputElement>document.getElementById("adx");
+   let input1dx= <HTMLInputElement>document.getElementById("input1dx");
+   let input2dx= <HTMLInputElement>document.getElementById("input2dx");
+   let butondx= <HTMLInputElement>document.getElementById("butondx");
+   let labeldx= <HTMLInputElement>document.getElementById("labeldx");
+   let adx= <HTMLInputElement>document.getElementById("adx");
    
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -548,11 +548,11 @@ desayunoMiercoles(esto,name,service){
  }
 
  comidaMiercoles(esto,name,service){
-   var input1ax= <HTMLInputElement>document.getElementById("input1ax");
-   var input2ax= <HTMLInputElement>document.getElementById("input2ax");
-   var butonax= <HTMLInputElement>document.getElementById("butonax");
-   var labelax=<HTMLInputElement>document.getElementById("labelax");
-   var aax=<HTMLInputElement>document.getElementById("aax");
+   let input1ax= <HTMLInputElement>document.getElementById("input1ax");
+   let input2ax= <HTMLInputElement>document.getElementById("input2ax");
+   let butonax= <HTMLInputElement>document.getElementById("butonax");
+   let labelax=<HTMLInputElement>document.getElementById("labelax");
+   let aax=<HTMLInputElement>document.getElementById("aax");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -596,11 +596,11 @@ desayunoMiercoles(esto,name,service){
  }
 
  cenaMiercoles(esto,name,service){
-   var input1cx= <HTMLInputElement>document.getElementById("input1cx");
-   var input2cx= <HTMLInputElement>document.getElementById("input2cx");
-   var butoncx= <HTMLInputElement>document.getElementById("butoncx");
-   var labelcx=<HTMLInputElement>document.getElementById("labelcx");
-   var acx=<HTMLInputElement>document.getElementById("acx");
+   let input1cx= <HTMLInputElement>document.getElementById("input1cx");
+   let input2cx= <HTMLInputElement>document.getElementById("input2cx");
+   let butoncx= <HTMLInputElement>document.getElementById("butoncx");
+   let labelcx=<HTMLInputElement>document.getElementById("labelcx");
+   let acx=<HTMLInputElement>document.getElementById("acx");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -645,9 +645,9 @@ desayunoMiercoles(esto,name,service){
 
 abiertoCerradoDiaJueves(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
-  var eljueves=document.getElementById("eljueves");
-  var labelj=document.getElementById("labelj");
-  var cartelcerrado=document.getElementById("cerrado");
+  let eljueves=document.getElementById("eljueves");
+  let labelj=document.getElementById("labelj");
+  let cartelcerrado=document.getElementById("cerrado");
 
   if (eljueves.style.display === "none") {
      labelj.innerHTML="Abierto";
@@ -692,11 +692,11 @@ abiertoCerradoDiaJueves(esto,dia,botoncheck,desayuno,almuerzo,cena){
 
 }
 desayunoJueves(esto,name,service){
-   var input1dj= <HTMLInputElement>document.getElementById("input1dj");
-   var input2dj= <HTMLInputElement>document.getElementById("input2dj");
-   var butondj= <HTMLInputElement>document.getElementById("butondj");
-   var labeldj= <HTMLInputElement>document.getElementById("labeldj");
-   var adj= <HTMLInputElement>document.getElementById("adj");
+   let input1dj= <HTMLInputElement>document.getElementById("input1dj");
+   let input2dj= <HTMLInputElement>document.getElementById("input2dj");
+   let butondj= <HTMLInputElement>document.getElementById("butondj");
+   let labeldj= <HTMLInputElement>document.getElementById("labeldj");
+   let adj= <HTMLInputElement>document.getElementById("adj");
    
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -740,11 +740,11 @@ desayunoJueves(esto,name,service){
  }
 
  comidaJueves(esto,name,service){
-   var input1aj= <HTMLInputElement>document.getElementById("input1aj");
-   var input2aj= <HTMLInputElement>document.getElementById("input2aj");
-   var butonaj= <HTMLInputElement>document.getElementById("butonaj");
-   var labelaj=<HTMLInputElement>document.getElementById("labelaj");
-   var aaj=<HTMLInputElement>document.getElementById("aaj");
+   let input1aj= <HTMLInputElement>document.getElementById("input1aj");
+   let input2aj= <HTMLInputElement>document.getElementById("input2aj");
+   let butonaj= <HTMLInputElement>document.getElementById("butonaj");
+   let labelaj=<HTMLInputElement>document.getElementById("labelaj");
+   let aaj=<HTMLInputElement>document.getElementById("aaj");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -788,11 +788,11 @@ desayunoJueves(esto,name,service){
  }
 
  cenaJueves(esto,name,service){
-   var input1cj= <HTMLInputElement>document.getElementById("input1cj");
-   var input2cj= <HTMLInputElement>document.getElementById("input2cj");
-   var butoncj= <HTMLInputElement>document.getElementById("butoncj");
-   var labelcj=<HTMLInputElement>document.getElementById("labelcj");
-   var acj=<HTMLInputElement>document.getElementById("acj");
+   let input1cj= <HTMLInputElement>document.getElementById("input1cj");
+   let input2cj= <HTMLInputElement>document.getElementById("input2cj");
+   let butoncj= <HTMLInputElement>document.getElementById("butoncj");
+   let labelcj=<HTMLInputElement>document.getElementById("labelcj");
+   let acj=<HTMLInputElement>document.getElementById("acj");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -839,9 +839,9 @@ desayunoJueves(esto,name,service){
 
 abiertoCerradoDiaViernes(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
-  var elviernes=document.getElementById("elviernes");
-  var labelv=document.getElementById("labelv");
-  var cartelcerrado=document.getElementById("cerrado");
+  let elviernes=document.getElementById("elviernes");
+  let labelv=document.getElementById("labelv");
+  let cartelcerrado=document.getElementById("cerrado");
 
   if (elviernes.style.display === "none") {
      labelv.innerHTML="Abierto";
@@ -886,11 +886,11 @@ abiertoCerradoDiaViernes(esto,dia,botoncheck,desayuno,almuerzo,cena){
 
 }
 desayunoViernes(esto,name,service){
-   var input1dv= <HTMLInputElement>document.getElementById("input1dv");
-   var input2dv= <HTMLInputElement>document.getElementById("input2dv");
-   var butondv= <HTMLInputElement>document.getElementById("butondv");
-   var labeldv= <HTMLInputElement>document.getElementById("labeldv");
-   var adv= <HTMLInputElement>document.getElementById("adv");
+   let input1dv= <HTMLInputElement>document.getElementById("input1dv");
+   let input2dv= <HTMLInputElement>document.getElementById("input2dv");
+   let butondv= <HTMLInputElement>document.getElementById("butondv");
+   let labeldv= <HTMLInputElement>document.getElementById("labeldv");
+   let adv= <HTMLInputElement>document.getElementById("adv");
    
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -933,11 +933,11 @@ desayunoViernes(esto,name,service){
  }
 
  comidaViernes(esto,name,service){
-   var input1av= <HTMLInputElement>document.getElementById("input1av");
-   var input2av= <HTMLInputElement>document.getElementById("input2av");
-   var butonav= <HTMLInputElement>document.getElementById("butonav");
-   var labelav=<HTMLInputElement>document.getElementById("labelav");
-   var aav=<HTMLInputElement>document.getElementById("aav");
+   let input1av= <HTMLInputElement>document.getElementById("input1av");
+   let input2av= <HTMLInputElement>document.getElementById("input2av");
+   let butonav= <HTMLInputElement>document.getElementById("butonav");
+   let labelav=<HTMLInputElement>document.getElementById("labelav");
+   let aav=<HTMLInputElement>document.getElementById("aav");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -981,11 +981,11 @@ desayunoViernes(esto,name,service){
  }
 
  cenaViernes(esto,name,service){
-   var input1cv= <HTMLInputElement>document.getElementById("input1cv");
-   var input2cv= <HTMLInputElement>document.getElementById("input2cv");
-   var butoncv= <HTMLInputElement>document.getElementById("butoncv");
-   var labelcv=<HTMLInputElement>document.getElementById("labelcv");
-   var acv=<HTMLInputElement>document.getElementById("acv");
+   let input1cv= <HTMLInputElement>document.getElementById("input1cv");
+   let input2cv= <HTMLInputElement>document.getElementById("input2cv");
+   let butoncv= <HTMLInputElement>document.getElementById("butoncv");
+   let labelcv=<HTMLInputElement>document.getElementById("labelcv");
+   let acv=<HTMLInputElement>document.getElementById("acv");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -1031,9 +1031,9 @@ desayunoViernes(esto,name,service){
 
 abiertoCerradoDiaSabado(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
-  var elsabado=document.getElementById("elsabado");
-  var labels=document.getElementById("labels");
-  var cartelcerrado=document.getElementById("cerrado");
+  let elsabado=document.getElementById("elsabado");
+  let labels=document.getElementById("labels");
+  let cartelcerrado=document.getElementById("cerrado");
 
   if (elsabado.style.display === "none") {
      labels.innerHTML="Abierto";
@@ -1078,11 +1078,11 @@ abiertoCerradoDiaSabado(esto,dia,botoncheck,desayuno,almuerzo,cena){
 
 }
 desayunoSabado(esto,name,service){
-   var input1ds= <HTMLInputElement>document.getElementById("input1ds");
-   var input2ds= <HTMLInputElement>document.getElementById("input2ds");
-   var butonds= <HTMLInputElement>document.getElementById("butonds");
-   var labelds= <HTMLInputElement>document.getElementById("labelds");
-   var ads= <HTMLInputElement>document.getElementById("ads");
+   let input1ds= <HTMLInputElement>document.getElementById("input1ds");
+   let input2ds= <HTMLInputElement>document.getElementById("input2ds");
+   let butonds= <HTMLInputElement>document.getElementById("butonds");
+   let labelds= <HTMLInputElement>document.getElementById("labelds");
+   let ads= <HTMLInputElement>document.getElementById("ads");
    
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -1125,11 +1125,11 @@ desayunoSabado(esto,name,service){
  }
 
  comidaSabado(esto,name,service){
-   var input1as= <HTMLInputElement>document.getElementById("input1as");
-   var input2as= <HTMLInputElement>document.getElementById("input2as");
-   var butonas= <HTMLInputElement>document.getElementById("butonas");
-   var labelas=<HTMLInputElement>document.getElementById("labelas");
-   var aas=<HTMLInputElement>document.getElementById("aas");
+   let input1as= <HTMLInputElement>document.getElementById("input1as");
+   let input2as= <HTMLInputElement>document.getElementById("input2as");
+   let butonas= <HTMLInputElement>document.getElementById("butonas");
+   let labelas=<HTMLInputElement>document.getElementById("labelas");
+   let aas=<HTMLInputElement>document.getElementById("aas");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -1172,11 +1172,11 @@ desayunoSabado(esto,name,service){
  }
 
  cenaSabado(esto,name,service){
-   var input1cs= <HTMLInputElement>document.getElementById("input1cs");
-   var input2cs= <HTMLInputElement>document.getElementById("input2cs");
-   var butoncs= <HTMLInputElement>document.getElementById("butoncs");
-   var labelcs=<HTMLInputElement>document.getElementById("labelcs");
-   var acs=<HTMLInputElement>document.getElementById("acs");
+   let input1cs= <HTMLInputElement>document.getElementById("input1cs");
+   let input2cs= <HTMLInputElement>document.getElementById("input2cs");
+   let butoncs= <HTMLInputElement>document.getElementById("butoncs");
+   let labelcs=<HTMLInputElement>document.getElementById("labelcs");
+   let acs=<HTMLInputElement>document.getElementById("acs");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -1222,9 +1222,9 @@ desayunoSabado(esto,name,service){
 
  abiertoCerradoDiaDomingo(esto,dia,botoncheck,desayuno,almuerzo,cena){
   //AQUI HAY QUE AÑADIR A LA BASE DE DATOS QUE EL CALENDARIO NO FUNCIONE ESE DIA, AQUI SOLO SE MUESTRA
-  var eldomingo=document.getElementById("eldomingo");
-  var labeld=document.getElementById("labeld");
-  var cartelcerrado=document.getElementById("cerrado");
+  let eldomingo=document.getElementById("eldomingo");
+  let labeld=document.getElementById("labeld");
+  let cartelcerrado=document.getElementById("cerrado");
 
   if (eldomingo.style.display === "none") {
      labeld.innerHTML="Abierto";
@@ -1269,11 +1269,11 @@ desayunoSabado(esto,name,service){
 
 }
 desayunoDomingo(esto,name,service){
-   var input1dd= <HTMLInputElement>document.getElementById("input1dd");
-   var input2dd= <HTMLInputElement>document.getElementById("input2dd");
-   var butondd= <HTMLInputElement>document.getElementById("butondd");
-   var labeldd= <HTMLInputElement>document.getElementById("labeldd");
-   var add= <HTMLInputElement>document.getElementById("add");
+   let input1dd= <HTMLInputElement>document.getElementById("input1dd");
+   let input2dd= <HTMLInputElement>document.getElementById("input2dd");
+   let butondd= <HTMLInputElement>document.getElementById("butondd");
+   let labeldd= <HTMLInputElement>document.getElementById("labeldd");
+   let add= <HTMLInputElement>document.getElementById("add");
    
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -1316,11 +1316,11 @@ desayunoDomingo(esto,name,service){
  }
 
  comidaDomingo(esto,name,service){
-   var input1ad= <HTMLInputElement>document.getElementById("input1ad");
-   var input2ad= <HTMLInputElement>document.getElementById("input2ad");
-   var butonad= <HTMLInputElement>document.getElementById("butonad");
-   var labelad=<HTMLInputElement>document.getElementById("labelad");
-   var aad=<HTMLInputElement>document.getElementById("aad");
+   let input1ad= <HTMLInputElement>document.getElementById("input1ad");
+   let input2ad= <HTMLInputElement>document.getElementById("input2ad");
+   let butonad= <HTMLInputElement>document.getElementById("butonad");
+   let labelad=<HTMLInputElement>document.getElementById("labelad");
+   let aad=<HTMLInputElement>document.getElementById("aad");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -1363,11 +1363,11 @@ desayunoDomingo(esto,name,service){
  }
 
  cenaDomingo(esto,name,service){
-   var input1cd= <HTMLInputElement>document.getElementById("input1cd");
-   var input2cd= <HTMLInputElement>document.getElementById("input2cd");
-   var butoncd= <HTMLInputElement>document.getElementById("butoncd");
-   var labelcd=<HTMLInputElement>document.getElementById("labelcd");
-   var acd=<HTMLInputElement>document.getElementById("acd");
+   let input1cd= <HTMLInputElement>document.getElementById("input1cd");
+   let input2cd= <HTMLInputElement>document.getElementById("input2cd");
+   let butoncd= <HTMLInputElement>document.getElementById("butoncd");
+   let labelcd=<HTMLInputElement>document.getElementById("labelcd");
+   let acd=<HTMLInputElement>document.getElementById("acd");
 
    this.apiTimes.checkTimes(name,this.serviceRestaurant.id_restaurant,service)
    .subscribe((data:any)=>{
@@ -1490,8 +1490,8 @@ if (horainicio.selectedIndex >= horafinal.selectedIndex)
 }
 
 cambiarInput(inicio,fin){
-fin.style.backgroundColor="var(--secundaryColor)";
-inicio.style.backgroundColor="var(--secundaryColor)";
+fin.style.backgroundColor="let(--secundaryColor)";
+inicio.style.backgroundColor="let(--secundaryColor)";
 }
 
 }

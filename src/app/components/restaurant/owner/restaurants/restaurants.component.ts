@@ -23,7 +23,6 @@ export class RestaurantsComponent implements OnInit {
       ).subscribe((response) => {
         if(response.control) {
           this.restaurants = response.data;
-          console.log(this.restaurants);
     }});}
   public clickRestaurant(index:number) {
     console.log(index);
