@@ -108,7 +108,7 @@ export class ModalReservaManualComponent implements OnInit {
                       dataTimes.data[i].restaurant_id,
                       dataTimes.data[i].service,
                       dataTimes.data[i].active)
-                      this.shiftsService.getShiftsTimes(dataTimes.data[i].times_id).subscribe((dataShifts:any) =>{   
+                      this.shiftsService.getShiftsIdTimes(dataTimes.data[i].times_id).subscribe((dataShifts:any) =>{   
                         for(let i = 0; i < dataShifts.data.length; i++){
                           let shift = new Shifts (dataShifts.data[i].shift_id,
                             dataShifts.data[i].day,
@@ -223,7 +223,6 @@ export class ModalReservaManualComponent implements OnInit {
 
   public asdd(asd:number){
     for (let i = 0; i < this.reservations.length; i++){
-      console.log(this.reservations);
       
       if(this.reservations[i].day == this.selectedDayNum &&
         this.reservations[i].day_name == this.selectedDayName && 
@@ -231,7 +230,6 @@ export class ModalReservaManualComponent implements OnInit {
         this.reservations[i].year == this.selectedYear && 
         this.reservations[i].shift_id == this.selectedShift){
           this.selectedTables = []
-          console.log(this.reservations[i]);
           
           for (let j = 0; j < this.tables.length; j++){
             if(this.tables[j].table_id != this.reservations[i].table_id){
@@ -245,7 +243,6 @@ export class ModalReservaManualComponent implements OnInit {
 
           for (let j = 0; j < this.tables.length; j++){
               this.selectedTables.push(this.tables[j])
-            console.log(this.selectedTables);
           }
         }
     }
@@ -257,10 +254,7 @@ export class ModalReservaManualComponent implements OnInit {
       if (this.shifts[i].shift_id == this.selectedShift){
         this.selectedShiftHour = this.shifts[i].shift_from
       }
-    }
-    console.log(this.selectedShift);
-    console.log(this.selectedShiftHour);
-    
+    }    
     this.selectedFullName = this.selectedName + " " + this.selectedSurname
 
     let reservation = new Reservations(0,
@@ -289,7 +283,6 @@ export class ModalReservaManualComponent implements OnInit {
     const dialogRef = this.dialog.open(CalendarComponent);
     this.shifts = []
     dialogRef.afterClosed().subscribe(result => {
-      console.log(this.calendarService.nuevaFecha);  
       this.selectedDayName = this.calendarService.nuevaFecha.dayName
       this.selectedDayNum = this.calendarService.nuevaFecha.dayNum
       this.selectedMonth = this.calendarService.nuevaFecha.month
@@ -368,7 +361,6 @@ export class ModalReservaManualComponent implements OnInit {
               if(this.tables[j].table_id != this.reservations[i].table_id){
                 this.selectedTables.push(this.tables[j])
               }
-              console.log(this.selectedTables);
             }
           }
       }
@@ -384,7 +376,7 @@ export class ModalReservaManualComponent implements OnInit {
             dataTimes.data[i].restaurant_id,
             dataTimes.data[i].service,
             dataTimes.data[i].active)
-            this.shiftsService.getShiftsTimes(dataTimes.data[i].times_id).subscribe((dataShifts:any) =>{
+            this.shiftsService.getShiftsIdTimes(dataTimes.data[i].times_id).subscribe((dataShifts:any) =>{
                  
               for(let i = 0; i < dataShifts.data.length; i++){
 
@@ -396,7 +388,6 @@ export class ModalReservaManualComponent implements OnInit {
                   dataShifts.data[i].times_id,
                   dataShifts.data[i].pax);
                   this.shifts.push(shift)
-                  console.log(this.shifts);
                   
                 }    
               })
