@@ -2,29 +2,23 @@
 
     <div class="header">
         <!-- -----Navbar----- -->
-        <ng-container *ngIf="router.url == '/registration-owner' ||
-            router.url == '/registration' || router.url == '/log-in' ||
-            router.url == '/registration-client' || router.url == '/' ||
-            router.url == '/**' ">
+        <ng-container *ngIf="!serviceLogin.users.customer_id &&
+            !serviceLogin.users.restaurant_id && !serviceLogin.users.owner_id">
             <app-navbarLogin>
             </app-navbarLogin>
         </ng-container>
         
-        <ng-container *ngIf="router.url == '/reservations-list-client' ||
-            router.url == '/reservation1' || router.url == '/reservation2' ||
-            router.url == '/edit-client' || router.url == '/search'">
+        <ng-container *ngIf="serviceLogin.users.customer_id">
             <app-navbarClient>
             </app-navbarClient>
         </ng-container>
         
-        <ng-container *ngIf="router.url == '/reservations-list-restaurant'">
+        <ng-container *ngIf="serviceLogin.users.restaurant_id">
             <app-navbarUserRestaurant>
             </app-navbarUserRestaurant>
         </ng-container>
 
-        <ng-container *ngIf="router.url == '/create-restaurant-1' ||
-            router.url == '/restaurants-list' || router.url == '/edit-owner' ||
-            router.url == '/create-restaurant-2' || router.url == '/create-restaurant-3'">
+        <ng-container *ngIf="serviceLogin.users.owner_id">
             <app-navbarOwner >
             </app-navbarOwner>
         </ng-container>

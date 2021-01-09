@@ -1,31 +1,31 @@
 <div class="lctl-navContainer">
     <button class="lctl_navSection lctl-navToggle">
-        <img  src="{{this.serviceLogin.userOwner.photo}}" class="lctl-photoProfile-m">
+        <img src="{{this.serviceLogin.userOwner.photo}}" class="lctl-photoProfile-m">
     </button>
     <button class="lctl-navItems">
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
                 <div class="lctl-navAfterButton2">
-                    <div class="lctl-navElement" (click)="toEditProfile()">
+                    <div #edit class="lctl-navElement" (click)="toEditProfile()">
                         Editar perfil
                     </div>
-                    <div class="lctl-navElement" (click)="toLogIn()">
+                    <div #out class="lctl-navElement" (click)="toLogIn()">
                         Salir
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div class="lctl-navElement" (click)="toCreateRestaurant1()">
+                <div #add class="lctl-navElement" (click)="toCreateRestaurant1()">
                     Añadir resturante
                 </div>
-                <div class="lctl-navElement" (click)="toRestaurantsList()">
+                <div #all class="lctl-navElement" (click)="toRestaurantsList()">
                     Mis restaurantes
                 </div>
             </div>
             <button class="lctl-navHidden"></button>
         </div>
     </button>
-        <div class="lctl_navSection lctl-navHome" (click)="toRestaurantsList()">
-            <img src="../../../../assets/LogoMiReserva.svg">
+    <div class="lctl_navSection lctl-navHome" (click)="toRestaurantsList()">
+        <img src="../../../../assets/LogoMiReserva.svg">
     </div>
 </div>

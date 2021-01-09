@@ -3,6 +3,8 @@ import { ServiceSearchService } from '../../../shared/service-search.service';
 import { Restaurants } from '../../../models/restaurants';
 import { Map, tileLayer, marker, Marker } from "leaflet";
 import { GeocodestreetService } from 'src/app/shared/geocodestreet.service';
+import { Router } from '@angular/router';
+import { ServiceRestaurantService } from '../../../shared/service-restaurant.service';
 @Component({
   selector: 'app-client-search',
   templateUrl: './search.component.html',
@@ -19,7 +21,9 @@ export class SearchComponent implements OnInit {
   public map:Map = null;
   constructor(
     private searchService:ServiceSearchService,
-    private apiService:GeocodestreetService
+    private apiService:GeocodestreetService,
+    private restaurantService:ServiceRestaurantService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -108,6 +112,10 @@ export class SearchComponent implements OnInit {
       })
   }}
   //-----Functions-----
+  public toReservate(i:number) {
+    this.router.navigate(['/reservation1'])
+    this.restaurantService.restaurantReservation = this.restaurants[i];
+  }
   public localSearch() {
 
     let sumRestaurants:number = this.allRestaurants.length;
