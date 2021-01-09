@@ -3,6 +3,9 @@ import { Users } from '../../../models/users';
 import { UserCustomer } from '../../../models/user-customer';
 import { ServiceLoginService } from '../../../shared/service-login.service';
 import { ServiceUserCustomerService } from '../../../shared/service-user-customer.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalRegistroComponent } from '../../modals/modal-registro/modal-registro.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-client-edit',
   templateUrl: './edit.component.html',
@@ -17,7 +20,9 @@ export class EditClientComponent implements OnInit {
   public message:string;
   constructor (
     private serviceLogin:ServiceLoginService,
-    private serviceUserCustomer:ServiceUserCustomerService
+    private serviceUserCustomer:ServiceUserCustomerService,
+    private dialog:MatDialog,
+    private router:Router
     ) { }
    processFile(imageInput: any) {
     const file: File = imageInput.files[0];
@@ -58,6 +63,12 @@ export class EditClientComponent implements OnInit {
             this.users.password = password;
             this.serviceLogin.users.password = this.users.password;
             this.serviceLogin.userCustomer = this.userCustomer;
+
+            const dialogRef = this.dialog.open(ModalRegistroComponent);
+            dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
+        dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);})
+            this.router.navigate(["/search"]);  
           }
           this.message = null;
           this.pass = null;

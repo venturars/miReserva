@@ -1,7 +1,14 @@
 <div class="lctl-navContainer">
+    <ng-container *ngIf="serviceLogin.restaurants.logo; else sinfoto">
     <button class="lctl_navSection lctl-navToggle">
-        <img  src="{{serviceLogin.restaurants.logo}}" class="lctl-photoProfile-m">
+        <img  src="{{this.serviceLogin.restaurants.logo}}" class="lctl-photoProfile-m">
     </button>
+</ng-container>
+<ng-template #sinfoto>
+    <button class="lctl_navSection lctl-navToggle">
+        <img  src="assets/photos/logorestaurante2.png" class="lctl-photoProfile-m">
+    </button>
+</ng-template>
     <button class="lctl-navItems">
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">

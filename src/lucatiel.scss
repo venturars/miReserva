@@ -1247,6 +1247,11 @@ a {
         background-color: red !important;
         border-radius: 50%;
 }}
+.mat-dialog-container {
+    padding: 0 !important;
+    width:calc(100% - 20px)!important;
+    }
+
 .lctl-toggleNavbarButton {
     color: var(--secundaryColorOpposite);
     border-radius: 50%;
@@ -1257,3 +1262,4 @@ a {
     &:active {
         background-color: var(--secundaryColor);
 }}
+
