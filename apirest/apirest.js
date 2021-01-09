@@ -37,6 +37,7 @@ connection.connect((err,res) => {
         AND
             restaurant_id IS null`;
     connection.query(sql);
+});
 //-----Login-----
 app.post("/login", (req, res) => {
     let params = [

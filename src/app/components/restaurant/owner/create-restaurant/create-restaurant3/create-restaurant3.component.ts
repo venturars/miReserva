@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { holdReady } from 'jquery';
+import { ModalRegistroComponent } from 'src/app/components/modals/modal-registro/modal-registro.component';
 import { ModalTurnosComponent } from 'src/app/components/modals/modal-turnos/modal-turnos.component';
 import { Times } from 'src/app/models/times';
 import { Turnos } from 'src/app/models/turnos';
@@ -1442,11 +1443,10 @@ desayunoDomingo(esto,name,service){
     final.style="background-color:yellow";
     const name=dia
     const restaurant=this.serviceRestaurant.id_restaurant
-    const service=comida
-    botonshift.style.display="block";
+    const service=comida;
     this.apiTimes.checkTimes(name,restaurant,service)
       .subscribe((data:any)=>{
-        
+        console.log(data);
         if(data.control==false){
               //SINO EXISTE EL HORARIO LO CREA
               const time= new Times (null,dia,inicio.value,final.value,this.serviceRestaurant.id_restaurant,comida,"true");
@@ -1454,8 +1454,18 @@ desayunoDomingo(esto,name,service){
               this.apiTimes.fin=final.value;
               this.apiTimes.postTimes(time)
               .subscribe((data)=>console.log(data));
+              this.turnos(comida,dia);
         }
         else{   // SI YA EXISTE EL HORARIO HACE PUT
+            
+            if(data.data[0].time_from==inicio.value && data.data[0].time_to==final.value){
+           //SINO HAY CAMBIOS EN EL HORARIO EJECUTA LOS TURNOS              
+                this.turnos(comida,dia);
+              }
+              else{
+              // SI HAY CAMBIOS EN EL HORARIO BORRA LOS TURNOS Y MODIFICA EL HORARIO EXISTENTE
+                
+
               this.apiShifts.getShiftsIdTimes(data.data[0].times_id)
               .subscribe((data:any)=>{
                 for (let i=0;i<data.data.length;i++){
@@ -1469,6 +1479,9 @@ desayunoDomingo(esto,name,service){
               this.apiTimes.fin=final.value;
               this.apiTimes.putTimes(time)
               .subscribe((data)=>console.log(data));
+              this.turnos(comida,dia);
+              this.borramosModal();
+              }
         }
 
       })
@@ -1492,6 +1505,13 @@ if (horainicio.selectedIndex >= horafinal.selectedIndex)
 cambiarInput(inicio,fin){
 fin.style.backgroundColor="let(--secundaryColor)";
 inicio.style.backgroundColor="let(--secundaryColor)";
+}
+
+borramosModal(){
+  const dialogRef = this.dialog.open(ModalRegistroComponent);
+  dialogRef.componentInstance.mensaje="Eliminamos los turnos creados al cambiar el horario establecido";
+  dialogRef.afterClosed().subscribe(result => {
+  console.log(`Dialog result: ${result}`);});
 }
 
 }

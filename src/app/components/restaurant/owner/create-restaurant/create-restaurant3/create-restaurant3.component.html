@@ -42,7 +42,7 @@
                         </select>    
                        <button type="submit" disabled style="opacity:0.5" id="butondl" class="buttonadd lctl-button-m buttonModify" 
                        #botondl (click)="setTimes(horainiciold, horafinalld,'Mon','Desayuno',botonshiftsdl)" >
-                       Guardar horarios</button>
+                       Guardar horarios y editar turnos</button>
                         <button type="submit" style="display:none" id="butondl" (click)="turnos('Desayuno','Mon')"
                          #botonshiftsdl>Turnos</button>
                         
@@ -67,7 +67,7 @@
                             <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butonal" class="buttonadd lctl-button-m buttonModify" 
-                        (click)="setTimes(horainiciola,horafinalla,'Mon','Almuerzo',botonshiftsal)" >Guardar horarios</button>
+                        (click)="setTimes(horainiciola,horafinalla,'Mon','Almuerzo',botonshiftsal)" >Guardar horarios y editar turnos</button>
                        <button type="submit" style="display:none"  (click)="turnos('Almuerzo','Mon')"
                          #botonshiftsal>Turnos</button>
                     </div>
@@ -95,7 +95,7 @@
                                 <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
                             </select>
                            <button disabled style="opacity:0.5" id="butoncl" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainiciolc,horafinallc,'Mon','Cena',botonshiftscl)" >Guardar horarios</button>
+                             (click)="setTimes(horainiciolc,horafinallc,'Mon','Cena',botonshiftscl)" >Guardar horarios y editar turnos</button>
                              <button type="submit" style="display:none"  (click)="turnos('Cena','Mon')"
                              #botonshiftscl>Turnos</button> 
                         </div>
@@ -138,7 +138,7 @@
                         </select>
                        <button disabled style="opacity:0.5" id="butondm" 
                        class="buttonadd lctl-button-m buttonModify" 
-                    (click)="setTimes(horainiciomd,horafinalmd,'Tue','Desayuno',botonshiftsdm)" >Guardar horarios</button>
+                    (click)="setTimes(horainiciomd,horafinalmd,'Tue','Desayuno',botonshiftsdm)" >Guardar horarios y editar turnos</button>
                        <button type="submit" style="display:none" (click)="turnos('Desayuno','Tue')" #botonshiftsdm>Turnos</button>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                             <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butonam" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainicioma,horafinalma,'Tue','Almuerzo',botonshiftsam)" >Guardar horarios</button>
+                         (click)="setTimes(horainicioma,horafinalma,'Tue','Almuerzo',botonshiftsam)" >Guardar horarios y editar turnos</button>
                        <button type="submit" style="display:none" (click)="turnos('Almuerzo','Tue')" #botonshiftsam>Turnos</button>
 
                     </div>
@@ -191,7 +191,7 @@
                                 <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
                             </select>
                            <button disabled style="opacity:0.5" id="butoncm" class="buttonadd lctl-button-m buttonModify"
-                            (click)="setTimes(horainiciomc,horafinalmc,'Tue','Cena',botonshiftscm)" >Guardar horarios</button>
+                            (click)="setTimes(horainiciomc,horafinalmc,'Tue','Cena',botonshiftscm)" >Guardar horarios y editar turnos</button>
                             <button type="submit" style="display:none" (click)="turnos('Cena','Tue')" #botonshiftscm>Turnos</button>
 
                         </div>
@@ -233,7 +233,7 @@
                             <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butondx" class="buttonadd lctl-button-m buttonModify" 
-                        (click)="setTimes(horainicioxd,horafinalxd,'Wed','Desayuno',botonshiftsdx)" >Guardar horarios</button>
+                        (click)="setTimes(horainicioxd,horafinalxd,'Wed','Desayuno',botonshiftsdx)" >Guardar horarios y editar turnos</button>
                         <button type="submit" style="display:none" (click)="turnos('Desayuno','Wed')" #botonshiftsdx>Turnos</button>
 
                     </div>
@@ -258,7 +258,7 @@
                             <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butonax" class="buttonadd lctl-button-m buttonModify"
-                        (click)="setTimes(horainicioxa,horafinalxa,'Wed','Almuerzo',botonshiftsax)" >Guardar horarios</button>
+                        (click)="setTimes(horainicioxa,horafinalxa,'Wed','Almuerzo',botonshiftsax)" >Guardar horarios y editar turnos</button>
                         <button type="submit" style="display:none" (click)="turnos('Almuerzo','Wed')" #botonshiftsax>Turnos</button>
 
                     </div>
@@ -286,7 +286,7 @@
                                 <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
                             </select>
                            <button disabled style="opacity:0.5" id="butoncx" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainicioxc,horafinalxc,'Wed','Cena',botonshiftscx)" >Guardar horarios</button>
+                             (click)="setTimes(horainicioxc,horafinalxc,'Wed','Cena',botonshiftscx)" >Guardar horarios y editar turnos</button>
                             <button type="submit" style="display:none" (click)="turnos('Cena','Wed')" #botonshiftscx>Turnos</button>
 
                         </div>
@@ -327,7 +327,7 @@
                             <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butondj" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainiciojd,horafinaljd,'Thu','Desayuno',botonshiftsdj)" >Guardar horarios</button>
+                         (click)="setTimes(horainiciojd,horafinaljd,'Thu','Desayuno',botonshiftsdj)" >Guardar horarios y editar turnos</button>
                          <button type="submit" style="display:none" (click)="turnos('Desayuno','Thu')" #botonshiftsdj>Turnos</button>
 
                     </div>
@@ -352,7 +352,7 @@
                             <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butonaj" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainicioja,horafinalja,'Thu','Almuerzo',botonshiftsaj)" >Guardar horarios</button>
+                         (click)="setTimes(horainicioja,horafinalja,'Thu','Almuerzo',botonshiftsaj)" >Guardar horarios y editar turnos</button>
                          <button type="submit" style="display:none" (click)="turnos('Almuerzo','Thu')" #botonshiftsaj>Turnos</button>
 
                     </div>
@@ -380,7 +380,7 @@
                                 <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
                             </select>
                            <button disabled style="opacity:0.5" id="butoncj" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainiciojc,horafinaljc,'Thu','Cena',botonshiftscj)" >Guardar horarios</button>
+                             (click)="setTimes(horainiciojc,horafinaljc,'Thu','Cena',botonshiftscj)" >Guardar horarios y editar turnos</button>
                             <button type="submit" style="display:none" (click)="turnos('Cena','Thu')" #botonshiftscj>Turnos</button>
 
                         </div>
@@ -422,7 +422,7 @@
                             <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butondv" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainiciovd,horafinalvd,'Fri','Desayuno',botonshiftsdv)" >Guardar horarios</button>
+                         (click)="setTimes(horainiciovd,horafinalvd,'Fri','Desayuno',botonshiftsdv)" >Guardar horarios y editar turnos</button>
                          <button type="submit" style="display:none" (click)="turnos('Desayuno','Fri')" #botonshiftsdv>Turnos</button>
 
                     </div>
@@ -447,7 +447,7 @@
                             <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butonav" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainiciova,horafinalva,'Fri','Almuerzo',botonshiftsav)" >Guardar horarios</button>
+                         (click)="setTimes(horainiciova,horafinalva,'Fri','Almuerzo',botonshiftsav)" >Guardar horarios y editar turnos</button>
                          <button type="submit" style="display:none" (click)="turnos('Almuerzo','Fri')" #botonshiftsav>Turnos</button>
 
                     </div>
@@ -475,7 +475,7 @@
                                 <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
                             </select>
                            <button disabled style="opacity:0.5" id="butoncv" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainiciovc,horafinalvc,'Fri','Cena',botonshiftscv)" >Guardar horarios</button>
+                             (click)="setTimes(horainiciovc,horafinalvc,'Fri','Cena',botonshiftscv)" >Guardar horarios y editar turnos</button>
                          <button type="submit" style="display:none" (click)="turnos('Cena','Fri')" #botonshiftscv>Turnos</button>
 
                         </div>
@@ -515,7 +515,7 @@
                     <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
                 </select>
                <button disabled style="opacity:0.5" id="butonds" class="buttonadd lctl-button-m buttonModify"
-                 (click)="setTimes(horainiciosd,horafinalsd,'Sat','Desayuno',botonshiftsds)" >Guardar horarios</button>
+                 (click)="setTimes(horainiciosd,horafinalsd,'Sat','Desayuno',botonshiftsds)" >Guardar horarios y editar turnos</button>
                  <button type="submit" style="display:none" (click)="turnos('Desayuno','Sat')" #botonshiftsds>Turnos</button>
 
             </div>
@@ -540,7 +540,7 @@
                     <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
                 </select>
                <button disabled style="opacity:0.5" id="butonas" class="buttonadd lctl-button-m buttonModify"
-                 (click)="setTimes(horainiciosa,horafinalsa,'Sat','Almuerzo',botonshiftsas)" >Guardar horarios</button>
+                 (click)="setTimes(horainiciosa,horafinalsa,'Sat','Almuerzo',botonshiftsas)" >Guardar horarios y editar turnos</button>
                  <button type="submit" style="display:none" (click)="turnos('Almuerzo','Sat')" #botonshiftsas>Turnos</button>
 
             </div>
@@ -568,7 +568,7 @@
                         <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
                     </select>
                    <button disabled style="opacity:0.5" id="butoncs" class="buttonadd lctl-button-m buttonModify"
-                     (click)="setTimes(horainiciosc,horafinalsc,'Sat','Cena',botonshiftscs)" >Guardar horarios</button>
+                     (click)="setTimes(horainiciosc,horafinalsc,'Sat','Cena',botonshiftscs)" >Guardar horarios y editar turnos</button>
                     <button type="submit" style="display:none" (click)="turnos('Cena','Sat')" #botonshiftscs>Turnos</button>
 
                 </div>
@@ -608,7 +608,7 @@
                             <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butondd" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainiciodd,horafinaldd,'Sun','Desayuno',botonshiftsdd)" >Guardar horarios</button>
+                         (click)="setTimes(horainiciodd,horafinaldd,'Sun','Desayuno',botonshiftsdd)" >Guardar horarios y editar turnos</button>
                         <button type="submit" style="display:none" (click)="turnos('Desayuno','Sun')" #botonshiftsdd>Turnos</button>
 
                     </div>
@@ -633,7 +633,7 @@
                             <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
                         </select>
                        <button disabled style="opacity:0.5" id="butonad" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainicioda,horafinalda,'Sun','Almuerzo',botonshiftsad)" >Guardar horarios</button>
+                         (click)="setTimes(horainicioda,horafinalda,'Sun','Almuerzo',botonshiftsad)" >Guardar horarios y editar turnos</button>
                         <button type="submit" style="display:none" (click)="turnos('Almuerzo','Sun')" #botonshiftsad>Turnos</button>
 
                     </div>
@@ -661,7 +661,7 @@
                                 <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
                             </select>
                            <button disabled style="opacity:0.5" id="butoncd" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainiciodc,horafinaldc,'Sun','Cena',botonshiftscd)" >Guardar horarios</button>
+                             (click)="setTimes(horainiciodc,horafinaldc,'Sun','Cena',botonshiftscd)" >Guardar horarios y editar turnos</button>
                         <button type="submit" style="display:none" (click)="turnos('Cena','Sun')" #botonshiftscd>Turnos</button>
 
                         </div>

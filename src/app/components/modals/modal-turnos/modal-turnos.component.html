@@ -6,11 +6,11 @@
   <div>
     <p>{{name}}   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
   </div>
-  <div class="info">
+  <div >
        <input class="lctl-input-m-Large" type="time" #shiftinicio required>
        <input class="lctl-input-m-Large" type="time" #shiftfinal required>
        <input class="lctl-input-m-Large" type="number" onkeydown="return false" min=0 max={{serviceRestaurant.capacity}} #paxmax>
-       <button (click)="maximo(paxmax)">Maximo</button>
+       <button class="lctl-button "(click)="maximo(paxmax)">Max</button>
        <button   class="lctl-warnButton-m buttonLib" (click)="addShifts(shiftinicio,shiftfinal,paxmax)">Anadir Turnos</button>       
   </div>
   
