@@ -1,7 +1,7 @@
 .content{
     max-width: 700px;
     min-width: 300px;
-    height: 450px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -78,32 +78,7 @@
     
     
 
-    & > div:nth-child(4){
-        
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 120px;
-
-        & > p{
-            margin-top: 38px;
-            margin-left: 40px;
-            text-align: center;
-           
-        }
-
-        & > button{
-            margin-top: 40px;
-            margin-left: 60px;
-            text-align: center;
-            font-size: 14px;
-            height: 25px;
-           
-        }
-       
-       
-    }
-
+   
     & > .shift{
        
         display: flex;
@@ -126,5 +101,112 @@
 }
 
 .centrarh1{
-    margin:0 auto;
+    margin: auto;
+    
+}
+.imagen{
+    height:350px;
+}
+
+
+.esconder{
+    visibility:hidden;
+
+}
+
+.column{
+    display:flex;
+    flex-direction: column;
+    max-width: max-content;
+    max-height: 350px;
+    overflow-y: scroll;
+    margin:auto;
+}
+.space3{
+    opacity:0;
+    height:5px;
+}
+
+.w{
+  max-width:1200px;
+  min-width: 280px;
+}
+
+.title{
+     
+        
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 50px;
+
+        & > p{
+            margin-top: 38px;
+            margin-left: 40px;
+            text-align: center;
+           
+        }
+
+        & > button{
+            margin-top: 40px;
+            margin-left: 60px;
+            text-align: center;
+            font-size: 14px;
+            height: 25px;
+           
+        }
+       
+       
+    
+
+    // max-width: 1500px;
+    // min-width:300px;
+    max-width: max-content;
+    margin:auto;
+}
+
+.rows{
+    height: 50px;
+    max-width:650px;
+    min-width:300px;
+    display: flex;
+    justify-content: space-evenly; 
+    
+    // border-bottom: 1px solid var(--secundaryColorPush);
+    & p {
+        padding-left: 20px;
+        padding-right: 20px;
+        text-align: center;
+        height: 100%;
+        padding-top:12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    & p:first-child{
+        width: 150px;
+        text-align: center;
+    }
+    & p:nth-child(2){
+        width: 150px;        
+    }
+    & p:nth-child(3){
+        width: 150px; 
+        text-align: center;       
+    }
+    & p:nth-child(4){
+        width: 100px; 
+        text-align: center;       
+    }
+    & p:nth-child(5){
+        width: 300px;        
+    }
+    & p:last-child{
+        width: 200px;
+    }
+}
+
+.scrollshifts{
+    max-height: 350px;
+    overflow-y:scroll;
 }

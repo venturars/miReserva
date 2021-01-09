@@ -1,9 +1,16 @@
 <div class="maxContainer">
   <form class="lctl-div" #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? 'mal' : onSubmit()">
     <label for="photoInput">
+      <ng-container *ngIf="this.userOwner.photo; else sinfoto">
       <div class="lctl-photoProfile-l">
         <img id="photo" src="{{this.userOwner.photo}}">
       </div>
+    </ng-container>
+    <ng-template #sinfoto>
+      <div class="lctl-photoProfile-l">
+        <img id="photo" src="assets/photos/logorestaurante2.png">
+      </div>
+    </ng-template>
     </label>
     <input id="photoInput" type="file" name="photoInput" autocomplete="off"
       accept="image/x-png,image/gif,image/jpeg" #photoOwner (change)="processFile(photoOwner)">

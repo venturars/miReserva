@@ -3,6 +3,9 @@ import { UserOwner } from '../../../../models/user-owner';
 import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { Users } from '../../../../models/users';
 import { ServiceUserOwnerService } from '../../../../shared/service-user-owner.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalRegistroComponent } from 'src/app/components/modals/modal-registro/modal-registro.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant-owner-edit',
@@ -20,8 +23,10 @@ export class EditComponentR implements OnInit {
   public checkPassword2:string;
   public message:string;
   constructor (
+    private router:Router,
     private serviceLogin:ServiceLoginService,
-    private serviceUserOwner:ServiceUserOwnerService
+    private serviceUserOwner:ServiceUserOwnerService,
+    public dialog:MatDialog
   ) { }
   processFile(imageInput:any) {
     const file: File = imageInput.files[0];
@@ -57,12 +62,19 @@ export class EditComponentR implements OnInit {
           "photo": this.userOwner.photo
         }).subscribe((response:any) => {
           if(!response.control) {
-            //Modal los cambios no se han podido guardar
+                     
+
           }else {
             //Modal de los cambios se han guardado correctamente
             this.users.password = password;
             this.serviceLogin.users.password = this.users.password;
             this.serviceLogin.userOwner = this.userOwner;
+            const dialogRef = this.dialog.open(ModalRegistroComponent);
+            dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
+        dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+            this.router.navigate(["/restaurants-list"]);           
+        })
           }
           this.message = null;
           this.pass = null;

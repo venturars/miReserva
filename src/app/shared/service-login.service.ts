@@ -5,6 +5,8 @@ import { Restaurants } from '../models/restaurants';
 import { UserOwner } from '../models/user-owner';
 import { UserCustomer } from '../models/user-customer';
 import { Router } from '@angular/router';
+import { ModalUsuarioIncorrectoComponent } from '../components/modals/modal-usuario-incorrecto/modal-usuario-incorrecto.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,8 @@ export class ServiceLoginService {
   
   constructor(
     private http:HttpClient,
-    private router:Router
+    private router:Router,
+    private dialog:MatDialog
   ) { }
   public getUsers(
     mail:string,
@@ -78,5 +81,12 @@ export class ServiceLoginService {
           ) 
           this.router.navigate(['/search']);
       }}else {
-      this.router.navigate(['/']);
+      // this.router.navigate(['/']);
+
+      const dialogRef = this.dialog.open(ModalUsuarioIncorrectoComponent);
+            
+        dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);})
+
+
 }});}}

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-registro.component.scss']
 })
 export class ModalRegistroComponent implements OnInit {
-
+mensaje:string=null;
   constructor() { }
 
   ngOnInit(): void {

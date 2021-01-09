@@ -1,10 +1,10 @@
 <div class="content">
   
   <div>
-    <p>Editar Turnos {{name}}  {{service}}</p>
+    <h1>Editar Turnos</h1>
   </div>
   <div>
-    <p>Horario {{limiteinicio}} a {{limitefinal}}</p>
+    <p>{{name}}   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
   </div>
   <div class="info">
        <input class="lctl-input-m-Large" type="time" #shiftinicio required>
@@ -14,19 +14,40 @@
        <button   class="lctl-warnButton-m buttonLib" (click)="addShifts(shiftinicio,shiftfinal,paxmax)">Anadir Turnos</button>       
   </div>
   
-  <div>
-  <mat-divider></mat-divider>
-</div>
- <ng-container *ngIf="this.shifts.length!=0; else sinShifts" >
-   <div class="shift"  *ngFor="let shift of shifts;let i =index">
+  
+ <div class="scrollshifts" *ngIf="this.shifts.length!=0; else sinShifts" >
+  <div class="title">
+    <div class="rows">
+        <p class="lctl-font-bold">Desde</p>
+        <p class="lctl-font-bold">Hasta</p>
+        <p class="lctl-font-bold">PAX Max</p>
 
-      <p>{{shift.shift_from}} a {{shift.shift_to}}</p>
-      <p>  {{shift.pax}}</p>
-          <button class="lctl-warnButton-s buttonli" (click)="deleteShifts(i,shift)">Borrar</button>
+        <button class="lctl-button-m esconder">Eliminar</button>
+
     </div>
-  </ng-container>
+</div>
+    <div class="column" *ngFor="let shift of shifts;let i =index">
+           
+            <div>
+            <div class="lctl-br w"></div>
+            </div>
+            <div>
+                <div class="lctl-br space3 w"></div>
+            </div>
+            <div class="rows" >    
+        <p class="lctl-font-paragraph">{{shift.shift_from}}</p>
+        <p class="lctl-font-paragraph">{{shift.shift_to}}</p>
+        <p class="lctl-font-paragraph">{{shift.pax}}</p>
+        <button (click)="deleteShifts(i,shift)" class="lctl-button-m ">Eliminar</button>
+        </div>
+        
+    </div>
+  </div>
 <ng-template #sinShifts>
-  <h1 class="centrarh1">No tienes turnos!</h1>
+  <div class="centrarh1">
+  <img class="imagen" src="assets/notienesturnos.svg">
+</div>
 </ng-template>
+<button class="lctl-warnButton-s buttonli centrarh1" mat-dialog-close>Cerrar</button>
 
 </div>
