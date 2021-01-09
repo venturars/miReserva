@@ -54,7 +54,7 @@ export class ReservationsRestaurantComponent implements OnInit {
     this.reservationsRejected = []
     this.reservationsCanceledByClient = []
 
-    this.reservationService.getReservationRestaurant(27).subscribe((data:any) =>{     
+    this.reservationService.getReservationRestaurant(36).subscribe((data:any) =>{     
     for(let i = 0; i<data.data.length;i++){
         
         if (data.data[i].status == "Reservada"){

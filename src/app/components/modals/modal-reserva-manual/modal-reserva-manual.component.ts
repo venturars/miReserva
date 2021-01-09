@@ -19,7 +19,7 @@ import { CalendarComponent } from '../../calendar/calendar.component';
   styleUrls: ['./modal-reserva-manual.component.scss']
 })
 export class ModalReservaManualComponent implements OnInit {
-  public restaurantId = 27
+  public restaurantId = 36
   public showHide= false;
   public showHide2= true;
   public today: string
@@ -133,6 +133,8 @@ export class ModalReservaManualComponent implements OnInit {
                       dataTables.data[i].restaurant_id)
                     this.tables.push(table)
                   }    
+                  console.log(this.tables);
+                  
                 })
 
 
@@ -222,16 +224,22 @@ export class ModalReservaManualComponent implements OnInit {
   }
 
   public asdd(asd:number){
+    console.log(asd);
+    
+    console.log(this.reservations);
+    if (this.reservations.length != 0){
     for (let i = 0; i < this.reservations.length; i++){
-      console.log(this.reservations);
       
       if(this.reservations[i].day == this.selectedDayNum &&
         this.reservations[i].day_name == this.selectedDayName && 
         this.reservations[i].month == this.selectedMonth && 
         this.reservations[i].year == this.selectedYear && 
-        this.reservations[i].shift_id == this.selectedShift){
+        this.reservations[i].shift_id == asd){
           this.selectedTables = []
-          console.log(this.reservations[i]);
+          let reservations2: Reservations[]
+          reservations2 = []
+          reservations2.push(this.reservations[i])
+          console.log(this.tables);
           
           for (let j = 0; j < this.tables.length; j++){
             if(this.tables[j].table_id != this.reservations[i].table_id){
@@ -240,15 +248,17 @@ export class ModalReservaManualComponent implements OnInit {
             console.log(this.selectedTables);
           }
         }
-        else{
+      }}else{
+          console.log("hola");
+          
           this.selectedTables = []
 
-          for (let j = 0; j < this.tables.length; j++){
-              this.selectedTables.push(this.tables[j])
+          for (let i = 0; i < this.tables.length; i++){
+              this.selectedTables.push(this.tables[i])
             console.log(this.selectedTables);
           }
         }
-    }
+    
   }
   public confirmar(){
     this.showHide = true

@@ -1,81 +1,83 @@
 <div class="content" *ngIf="showHide2">
-    <div>
-        <p>Reserva Manual</p>
-    </div>
-    
-    <div class="lctl-centerElements">
-      <div class="">
-        <input class="lctl-cellInput-extraLarger" type="text" placeholder="Nombre">
-        <input class="lctl-cellInput-extraLarger" type="text" placeholder="Teléfono">
-       
-        <select name="select" class="lctl-cellSelect-extraLarge">
-            <option value="value2" selected>No. de personas</option>
-            <option value="value1">Value 1</option>
-            <option value="value3">Value 3</option>
-          </select>
-        <select name="select" class="lctl-cellSelect-extraLarge">
-            <option value="value2" selected>Hora</option>
-            <option value="value1">Value 1</option>
-            <option value="value3">Value 3</option>
-          </select>
-        </div>
-        <div class="">
-            <input class="lctl-cellInput-extraLarger" type="text" placeholder="Apellido">
-            <!-- <input class="lctl-cellInput-extraLarger" type="text" placeholder="Calendario"> -->
-            <!-- ARREGLAR EL CALENDARIO, DESCUADRO TODO
-                  SOY DE BACK, A MI NO ME DIGAN NADA :) -->
-            <button  class="lctl-cellInput-extraLarger" (click)="calendar()">
-              <p>Calendario</p>
-            <label id="one">
-              <p></p>
-            </label>
-          </button>
-    
-            <select name="select" class="lctl-cellSelect-extraLarge">
-                <option value="value2" selected>Turnos</option>
-                <option value="value1">Value 1</option>
-                <option value="value3">Value 3</option>
-              </select>
-            <select name="select" class="lctl-cellSelect-extraLarge">
-                <option value="value2" selected>Mesa</option>
-                <option value="value1">Value 1</option>
-                <option value="value3">Value 3</option>
-              </select>
-            
-            </div>
-     </div>
-
-     <div>
-        <input class="lctl-cellInput-extraLarger" type="text" placeholder="Observación">
-    </div>
-
-     <div>
-        <button [mat-dialog-close]="true" cdkFocusInitial  class="lctl-warnButton-s buttonLib">Cancelar</button>
-        <button   class="lctl-warnButton-s buttonLib" (click)="confirmar()">Aceptar</button>
-     </div>
+  <div>
+      <p>Reserva Manual</p>
+      <p>{{selectedDayNum}} {{changedDayName}} de {{changedMonth}} {{selectedYear}}</p>
+  </div>
   
+  <div class="lctl-centerElements">
+    <div class="">
+      <input class="lctl-cellInput-extraLarger" type="text" placeholder="Nombre" [(ngModel)]="selectedName">
+      <input class="lctl-cellInput-extraLarger" type="text" placeholder="Teléfono" [(ngModel)]="selectedPhone">
+     
+      <input class="lctl-cellInput-extraLarger" type="text" placeholder="No. de Personas" [(ngModel)]="selectedPax">
+
+      <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedShift" (change)="asdd(selectedShift)">
+          <option hidden selected>Hora</option>
+          <ng-container *ngFor="let shift of shifts; let i = index">
+            <ng-container *ngIf="shifts[i].times_id == timesId">
+              <option value="{{shifts[i].shift_id}}" >{{shifts[i].shift_from}}</option>
+          </ng-container>
+        </ng-container>
+    </select>
+      </div>
+      <div class="">
+          <input class="lctl-cellInput-extraLarger" type="text" placeholder="Apellido" [(ngModel)]="selectedSurname">
+          <!-- <input class="lctl-cellInput-extraLarger" type="text" placeholder="Calendario"> -->
+          <!-- ARREGLAR EL CALENDARIO, DESCUADRO TODO
+                SOY DE BACK, A MI NO ME DIGAN NADA :) -->
+          <button  class="lctl-cellInput-extraLarger" (click)="calendar()">
+            <p>Calendario</p>
+          <label id="one">
+            <p></p>
+          </label>
+        </button>
+  
+          <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedTime" (change)="asd(selectedTime)">
+              <option hidden selected>Turnos</option>
+              <ng-container *ngFor="let time of times; let i = index" >
+                <option value="{{times[i].times_id}}">{{times[i].service}}</option>
+              </ng-container>
+
+          </select>
+          <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedTable">
+              <option hidden selected>Mesa</option>
+                <ng-container *ngFor="let table of selectedTables; let i = index">
+                  <option value="{{selectedTables[i].table_id}}">Mesa {{selectedTables[i].table_name}} ({{selectedTables[i].table_min}} - {{selectedTables[i].table_max}}  PAX)</option>
+              </ng-container>
+            </select>
+          
+          </div>
+   </div>
+
+   <div>
+      <input class="lctl-cellInput-extraLarger" type="text" placeholder="Observación" [(ngModel)]="selectedComments">
   </div>
 
-  <div class="target" *ngIf="showHide">
-    <div class="elements">
-     <div class="image">
-       <div class="Messaje">
-         <p>Reserva Guardada</p>
- 
-       </div>
-       <div>
-       <img src="../../../../assets/chair2.svg" alt="">
-     </div>
-     
-     
-       </div>
-         
+   <div>
+      <button [mat-dialog-close]="true" cdkFocusInitial  class="lctl-warnButton-s buttonLib">Cancelar</button>
+      <button   class="lctl-warnButton-s buttonLib" (click)="confirmar()">Aceptar</button>
    </div>
-     <div>
-      
-         <button [mat-dialog-close]="true" cdkFocusInitial class="lctl-warnButton-s">Aceptar</button>
-         
-       
+
+</div>
+
+<div class="target" *ngIf="showHide">
+  <div class="elements">
+   <div class="image">
+     <div class="Messaje">
+       <p>Reserva Guardada</p>
+
      </div>
- 
-  
+     <div>
+     <img src="../../../../assets/chair2.svg" alt="">
+   </div>
+   
+   
+     </div>
+       
+ </div>
+   <div>
+    
+       <button [mat-dialog-close]="true" cdkFocusInitial class="lctl-warnButton-s">Aceptar</button>
+       
+     
+   </div>
