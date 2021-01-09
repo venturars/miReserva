@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class ServiceLoginService {
 
   private url:string = "http://localhost:3000/login";
-  public users: Users;
+  public users: Users = new Users(null,null,null,null,null);
   public restaurants: Restaurants;
   public userOwner: UserOwner;
   public userCustomer: UserCustomer;

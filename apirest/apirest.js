@@ -25,7 +25,18 @@ connection.connect((err,res) => {
     console.log(err);
     else
     console.log("Conectado");
-});
+
+    //Limpieza de BBDD//
+    let sql = 
+        `DELETE FROM
+            users
+        WHERE
+            owner_id IS null
+        AND
+            customer_id IS null
+        AND
+            restaurant_id IS null`;
+    connection.query(sql);
 //-----Login-----
 app.post("/login", (req, res) => {
     let params = [

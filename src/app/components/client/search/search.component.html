@@ -57,7 +57,7 @@
     </div>
     <div class="cards">
 
-        <ng-container *ngFor = "let restaurant of restaurants">
+        <ng-container *ngFor = "let restaurant of restaurants; let i = index">
             <div class="lctl-infoCard">
                 <div class="lctl-infoCard-banner">
                     <img src="{{restaurant.header}}">
@@ -81,8 +81,7 @@
                     </div>
                 </div>
                 <div class="lctl-infoCard-bottons">
-                    <a class="lctl-warnButtonOpposite-s">Reservar</a>
-                    <a class="lctl-warnButtonOpposite-s">menú</a>
+                    <a class="lctl-warnButtonOpposite-s" (click)="toReservate(i)">Reservar</a>
                     <a class="lctl-warnButtonOpposite-s" href="{{restaurant.url}}" target="_blank">web</a>
                 </div>
             </div>

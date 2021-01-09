@@ -6,26 +6,26 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems2">
                 <div class="lctl-navAfterButton2">
-                    <div class="lctl-navElement" (click)="toRegister()">
+                    <div #signIn class="lctl-navElement" (click)="toRegister()">
                         Regístrate
                     </div>
-                    <div class="lctl-navElement" (click)="toLogIn()">
+                    <div #log class="lctl-navElement" (click)="toLogIn()">
                         Ingresa
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div class="lctl-navElement" (click)="toHowItWorks()">
+                <div #how class="lctl-navElement" (click)="toHowItWorks()">
                     ¿Cómo funciona?
                 </div>
-                <div class="lctl-navElement" (click)="toContact()">
+                <div #contact class="lctl-navElement" (click)="toContact()">
                     Contacto
                 </div>
             </div>
             <button class="lctl-navHidden"></button>
         </div>
     </button>
-        <div class="lctl_navSection lctl-navHome" (click)="toHome()">
+        <div class="lctl_navSection lctl-navHome" (click)="toLogIn()">
             <img src="../../../../assets/LogoMiReserva.svg">
     </div>
 </div>

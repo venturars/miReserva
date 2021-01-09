@@ -6,13 +6,13 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
                 <div class="lctl-navAfterButton2">
-                    <div class="lctl-navElement" (click)="toLogIn()">
+                    <div #out class="lctl-navElement" (click)="toLogIn()">
                         Salir
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div class="lctl-navElement" (click)="toReservationListRestaurant()">
+                <div #reservate class="lctl-navElement" (click)="toReservationListRestaurant()">
                     Reservas
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServiceLoginService } from '../shared/service-login.service';
 
 
 @Component({
@@ -9,13 +10,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'miReserva';
-  constructor (public router:Router){
-
-  }
+  constructor (
+    public router:Router,
+    public serviceLogin:ServiceLoginService
+    ){ }
   ngOnInit() { 
     if (this.router.url == " "){
       this.router.navigate[('log-in')]
-              }
-        }
+    }}
+
   }
 

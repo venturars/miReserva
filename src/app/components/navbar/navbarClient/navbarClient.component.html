@@ -6,26 +6,26 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
                 <div class="lctl-navAfterButton2">
-                    <div class="lctl-navElement" (click)="toEditProfile()">
+                    <div #edit class="lctl-navElement" (click)="toEditProfile()">
                         Editar perfil
                     </div>
-                    <div class="lctl-navElement" (click)="toLogIn()">
+                    <div #out class="lctl-navElement" (click)="toLogIn()">
                         Salir
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div class="lctl-navElement" (click)="toSearch()">
+                <div #reservate class="lctl-navElement" (click)="toSearch()">
                     Reservar
                 </div>
-                <div class="lctl-navElement" (click)="toReservationListClient()">
+                <div #my class="lctl-navElement" (click)="toReservationListClient()">
                     Mis reservas
                 </div>
             </div>
             <button class="lctl-navHidden"></button>
         </div>
     </button>
-        <div class="lctl_navSection lctl-navHome">
+        <div class="lctl_navSection lctl-navHome" (click)="toSearch()">
             <img src="../../../../assets/LogoMiReserva.svg">
     </div>
 </div>

@@ -589,14 +589,16 @@ a {
                     height: 40px;
                     font-size: var(--fontSizeS);
                     margin: 5px;
-                    background-color: var(--primaryColorContrast);
+                    border: 1px solid var(--primaryColorContrast);
                     border-radius: var(--borderRadiusL);
                     &:hover {
                         background-color: var(--primaryColor);
                         color: var(--primaryColorContrast);
+                        border: none;
                     }
                     &:active {
                         background-color: var(--primaryColorAccent);
+                        border: none;
         }}}
         & > .lctl-navRightItems2 {
             border: none;
@@ -687,14 +689,16 @@ a {
                         height: 40px;
                         font-size: var(--fontSizeS);
                         margin: 5px;
-                        background-color: var(--primaryColorContrast);
+                        border: 1px solid var(--primaryColorContrast);
                         border-radius: var(--borderRadiusL);
                         &:hover {
                             background-color: var(--primaryColor);
+                            border: none;
                             color: var(--primaryColorContrast);
                         }
                         &:active {
                             background-color: var(--primaryColorAccent);
+                            border: none;
                 }}}
                 & > .lctl-navRightItems {
                     position: initial;
@@ -737,16 +741,18 @@ a {
                         height: 40px;
                         font-size: var(--fontSizeS);
                         margin: 5px;
-                        background-color: var(--primaryColorContrast);
+                        border: 1px solid var(--primaryColorContrast);
                         border-radius: var(--borderRadiusL);
                         &:last-child {
                         }
                         &:hover {
                             background-color: var(--primaryColor);
                             color: var(--primaryColorContrast);
+                            border: none;
                         }
                         &:active {
                             background-color: var(--primaryColorAccent);
+                            border: none;
         }}}}}
         & > .lctl-navToggle {
             &:focus ~  .lctl-navItems > .lctl-navAfterButton >
@@ -779,7 +785,6 @@ a {
 //----------//----------//----------//----------//----------
 [class *= "lctl-navbar"] {
     position: relative;
-    // top: 0;
     width: 100vw;
     height: 82px;
     text-transform: uppercase;
