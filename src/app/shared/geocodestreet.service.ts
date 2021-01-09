@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Restaurant } from '../models/restaurant';
 import { Observable } from 'rxjs';
 
 @Injectable({

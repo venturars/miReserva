@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ModalRegistroUsuarioComponent } from 'src/app/components/modals/modal-registro-usuario/modal-registro-usuario.component';
-import { User } from 'src/app/models/user';
 import { UserCustomer } from 'src/app/models/user-customer';
 import { Users } from 'src/app/models/users';
 import { ServiceLoginService } from 'src/app/shared/service-login.service';
@@ -14,15 +13,18 @@ import { ServiceRegistrationService } from 'src/app/shared/service-registration.
   styleUrls: ['./client.component.scss']
 })
 export class ClientComponent implements OnInit {
-  public user:User;
-  constructor(public router:Router,
+
+  public users:Users = new Users(null,null,null,null,null);
+  public userCustomer:UserCustomer = new UserCustomer(null,null,null,null,null); 
+  public acept:boolean = null;
+
+  constructor(
+    public router:Router,
     private apiRegistration:ServiceRegistrationService,
     private apiLogin:ServiceLoginService,
     private dialog:MatDialog ) {
-    this.user= new User(null,null,null,null,null,null);
    }
-onSubmit(form){
-  console.log(form.value);
+onSubmit(form:any){
   const customer= {
 
     "customer_id":null,
@@ -33,9 +35,6 @@ onSubmit(form){
     "mail":form.value.email,
     "password":form.value.password
   }
-
-    
-   console.log(customer);
   this.apiRegistration.registrationCustomer(customer)
   .subscribe((data:any)=>{console.log(data)
     if(data.control==true){
@@ -53,12 +52,10 @@ onSubmit(form){
       const password:any=document.getElementById("password")
       password.value=null;
         dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
         })
     }  
   })
 } 
   ngOnInit(): void {
   }
-
 }
