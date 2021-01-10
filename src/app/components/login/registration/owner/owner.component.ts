@@ -25,7 +25,7 @@ export class OwnerComponent implements OnInit {
     ) {
    }
 onSubmit(form:any){
-  const owner= {
+  const owner = {
     "owner_id": null,
     "cif": form.value.cif,
     "name": form.value.name,
@@ -40,7 +40,7 @@ onSubmit(form:any){
       this.router.navigate(['/restaurants-list']);
       this.apiLogin.userOwner= new UserOwner
       (data.data.owner_id,form.value.cif,form.value.name,form.value.surname,null);
-      this.apiLogin.users= new Users (null,data.data.owner_id,null,form.value.mail,form.value.password)
+      this.apiLogin.users= new Users (null,data.data,null,form.value.mail,form.value.password)
     }
     else {
     const dialogRef = this.dialog.open(ModalRegistroUsuarioComponent);
@@ -51,7 +51,7 @@ onSubmit(form:any){
       password.value=null;
       dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
-  });}})} 
+  });}})}
  ngOnInit(): void {
   
   }

@@ -27,4 +27,4 @@ export class ServiceLoginService {
     return this.http.post(this.url, {
       "mail": mail,
       "password": password
-})}}
+});}}

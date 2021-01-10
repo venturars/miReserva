@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Calendar } from 'src/app/models/calendar';
 import { Reservations } from 'src/app/models/reservations';
-import { ReservationsRestaurants } from 'src/app/models/reservations-restaurants';
-import { UserCustomer } from 'src/app/models/user-customer';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { holdReady } from 'jquery';
 import { ModalTurnosComponent } from 'src/app/components/modals/modal-turnos/modal-turnos.component';
 import { Times } from 'src/app/models/times';
-import { Turnos } from 'src/app/models/turnos';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
+
+class Turnos {
+  constructor (public horario:string){
+  }
+}
 
 @Component({
   selector: 'app-restaurant-owner-CreateRestaurant3',

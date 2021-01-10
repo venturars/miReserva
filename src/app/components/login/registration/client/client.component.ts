@@ -36,13 +36,13 @@ onSubmit(form:any){
     "password":form.value.password
   }
   this.apiRegistration.registrationCustomer(customer)
-  .subscribe((data:any)=>{console.log(data)
+  .subscribe((data:any)=>{
     if(data.control==true){
       this.router.navigate(["/search"]);
-      this.apiLogin.userCustomer= new UserCustomer
+      this.apiLogin.userCustomer = new UserCustomer
       (data.data.customer_id,form.value.phone, form.value.name,form.value.surname,null)
-      this.apiLogin.users= new Users 
-      (null,null,data.data.customer_id,form.value.email,form.value.password)
+      this.apiLogin.users = new Users 
+      (null,null,data.data,form.value.email,form.value.password)
     }
     else{
     const dialogRef = this.dialog.open(ModalRegistroUsuarioComponent);

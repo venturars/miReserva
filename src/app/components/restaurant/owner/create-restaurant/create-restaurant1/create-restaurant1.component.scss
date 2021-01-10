@@ -75,37 +75,33 @@
 //-----Images-----
 //-----//-----//-----//-----//-----//-----
 .inputimage {
-  max-width: min(1440px, 100%);
+  max-width: min(100%, 1440px);
   max-height: 274px;
   margin: auto;
   text-align: center;
-  background-color: var(--secundaryColorPush);
-}
+  & > .inInputimage {
+    max-width: min(100%, 1440px);
+    max-height: 274px;
+    text-align: center;
+  }}
 //-----
 .aligns {
   display:flex;
   justify-content: center;
-  max-width: 1440px;
-  width: 100%;
   margin: auto;
-  margin-top: -70px;
-  & * {
-    width: 10vw;
-    height: 10vw;
-    min-width: 60px;
-    min-height: 60px;
-    max-width: 120px;
-    max-height: 120px;
+  background-color: aqua;
+  width: max-content;
+  margin-top: -2%;
+  & > div {
+    border-color:var(--secundaryColorPush);
   }
-}
-.borderc {
-  border-color:var(--secundaryColorPush);
 }
 //-----//-----//-----//-----//-----//-----
 //-----Form-----
 //-----//-----//-----//-----//-----//-----
 .createForm {
-  max-width: 1440px;
+  background-color: yellowgreen;
+  width: min(100%, 1440px);
   margin: auto;
   margin-top: 10px;
   margin-bottom: 52px;
@@ -125,20 +121,22 @@
       justify-content: center;
       align-items: center;
       & > input, > select {
-        margin: 10px;
+        margin: 6px 10px 6px 10px;
       }}}}
 @media screen and (max-width: 768px) {
   .createForm > .inputs > div {
     flex-wrap: wrap;
 }}
 //-----//-----//-----//-----//-----
-//-----Footer-----
+//-----Buttons-----
 //-----//-----//-----//-----//-----
 .pass {
   position: absolute;
   flex-direction: row-reverse;
   padding-right: 50px;
   bottom: 0;
+  background-color: aqua;
+  width: min(100%, 1420px);
 }
 @media screen and (max-width: 768px) {
   .pass {

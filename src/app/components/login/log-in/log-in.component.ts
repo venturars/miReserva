@@ -29,14 +29,14 @@ export class LogInComponent implements OnInit {
   ).subscribe((response:any) => {
         
     if(response.control) {
-      this.users = new Users(
+      this.serviceLogIn.users = new Users(
         response.data[0].restaurant_id,
         response.data[0].owner_id,
         response.data[0].customer_id,
         form.value.email,
         form.value.password
-      )
-      if(this.users.restaurant_id) {
+      );
+      if(this.serviceLogIn.users.restaurant_id) {
         this.serviceLogIn.restaurants = new Restaurants(
           response.data[0].restaurant_id,
           response.data[0].name,
@@ -54,26 +54,26 @@ export class LogInComponent implements OnInit {
           response.data[0].url,
           response.data[0].latitude,
           response.data[0].longitude,
-          response.data[0].ownwer_id
+          null
         )
         this.router.navigate(['/reservations-list-restaurant']);
-      }else if(this.users.owner_id) {
+      }else if(this.serviceLogIn.users.owner_id) {
         this.serviceLogIn.userOwner = new UserOwner(
           response.data[0].owner_id,
           response.data[0].cif,
           response.data[0].name,
           response.data[0].surname,
           response.data[0].photo
-        )  
+          );
         this.router.navigate(['/restaurants-list']);
-      }else if(this.users.customer_id) {
+      }else if(this.serviceLogIn.users.customer_id) {
         this.serviceLogIn.userCustomer= new UserCustomer(
           response.data[0].customer_id,
           response.data[0].phone,
           response.data[0].name,
           response.data[0].surname,
           response.data[0].photo
-        ) 
+        );
         this.router.navigate(['/search']);
     }}else {
     const dialogRef = this.matDialog.open(ModalUsuarioIncorrectoComponent);

@@ -1,4 +1,3 @@
-<!-- Barra breadcrumb añadida al componente de ABAJO CONFIRMAR CAMBIO -->
 <div class="modifyNav">
     <div id="info"><a>Local</a></div>
     <div id="dist"><a>Mesas</a></div>
@@ -7,20 +6,22 @@
 
 <!-- HEADER -->
 
-<div class="profileport inputimage"> 
-    <img src="assets/photos/potada2.png" class="profileport inputimage"
+<div class="profileport inputimage">
+    <img src="assets/photos/potada2.png" class="profileport inInputimage"
         id="mostrarbanner" (click)="banner.click()">  
-    <div class="port">
+    <div class="port" style="display: none;">
         <img src="" alt="">
         <input style="display:none" id="banner" type="file" name="banner" #banner (change)="processBanner(banner)">
     </div>
 </div>
 <div class="aligns">
-    <div class="lctl-photoProfile-xl borderc" (click)="perfil.click()">    
+    <div class="lctl-photoProfile-xl" (click)="perfil.click()">    
         <img id="mostrarlogo" src="assets/photos/logorestaurante2.png" >
     </div>
     <input style="display:none" id="perfil" type="file" name="perfil" #perfil (change)="processLogo(perfil)">
 </div>
+
+<!-- FORM -->
 
 <form class="createForm" #restForm="ngForm" (ngSubmit)="(restForm.invalid) ? 'mal' : onSubmit(restForm)">
         <div class="inputs">
@@ -99,7 +100,7 @@
 
         
     </div>
-    <div class="lctl-footer pass">
+    <div class="pass">
         <button type="submit" class="lctl-button-m ">Siguiente</button>
     </div> 
 </form>
