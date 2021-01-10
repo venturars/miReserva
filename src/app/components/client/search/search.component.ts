@@ -81,6 +81,8 @@ export class SearchComponent implements OnInit {
             if(this.map.getBounds().contains(this.marker[i].getLatLng())){
               this.rendered.push(this.restaurants[i]);
               this.renderedMarker.push(this.marker[i]);
+              this.rendered.push(this.restaurants[i]);
+              this.renderedMarker.push(this.marker[i]);
             }
           }
           //cambia para que se muestre el primero de la lista el restaurante seleccionado
@@ -159,7 +161,8 @@ console.log(i);
 
     let sumRestaurants:number = this.allRestaurants.length;
     let sumTypes:number;
-    this.restaurants = new Array();
+    // this.restaurants = new Array();
+    this.rendered=[];
 
     if(this.checked) {
       sumTypes = this.checked.length;
@@ -172,16 +175,18 @@ console.log(i);
       for(let j = 0; j < sumTypes; i++) {
 
         if(this.allRestaurants[i].food_type == this.checked[j].value) {
-          this.restaurants.push(this.allRestaurants[i]);
+          // this.restaurants.push(this.allRestaurants[i]);
+          this.rendered.push(this.allRestaurants[i]);
+
       }}
 
       if(this.allRestaurants[i].name == this.searchLine.nativeElement.value) {
 
         let total:number;
 
-        if(this.restaurants) {
+        if(this.rendered) {
 
-          total = this.restaurants.length;
+          total = this.rendered.length;
 
         }else {
           total = 0;
@@ -189,8 +194,8 @@ console.log(i);
 
         for(let k = 0; k > total; i++) {
 
-          if(this.allRestaurants[i] != this.restaurants[k]) {
-            this.restaurants.push(this.allRestaurants[i]);
+          if(this.allRestaurants[i] != this.rendered[k]) {
+            this.rendered.push(this.allRestaurants[i]);
           }
         }
       }
