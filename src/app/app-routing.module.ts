@@ -12,6 +12,7 @@ import { CreateRestaurant3Component } from './components/restaurant/owner/create
 import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
 import { RestaurantsComponent } from './components/restaurant/owner/restaurants/restaurants.component';
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
+import { ContactUsComponent } from './components/login/contact-us/contact-us.component';
 
 const routes: Routes = [
   {path:"reservation1", component: DoReservation1Component},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:"create-restaurant-2", component: CreateRestaurant2Component},
   {path:"create-restaurant-3", component: CreateRestaurant3Component},
   {path:"restaurants-list", component: RestaurantsComponent},
+  {path:"contact-us", component: ContactUsComponent},
   {path:"**", component: DesignComponent},
   {path:" ", component: DesignComponent}
 ];

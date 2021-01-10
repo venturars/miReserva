@@ -20,7 +20,7 @@ export class NavbarLoginComponent implements OnInit {
   ngOnInit(): void {
   }
   public toContact() {
-    this.router.navigate(["/"]);
+    this.router.navigate(["/contact-us"]);
     this.contact.nativeElement.style.cssText = `
     background: var(--primaryColorContrast);
     color: var(--secundaryColorOpposite)`;

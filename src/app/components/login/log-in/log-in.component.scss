@@ -39,6 +39,15 @@ form {
         align-items: center;
         height: 100%;
     }}
+    .messageDiv {
+      width: calc(100% - 20px);
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--primaryColor);
+    }
     .logIn {
       width: 100%;
       height: 70px;
@@ -94,6 +103,9 @@ form {
       }}
       & > div:nth-child(2) {
   }}
+  .messageDiv {
+    max-width: 580px;
+  }
   .logIn {
   }
   .separate {
@@ -112,6 +124,8 @@ form {
       }}
       & > div:nth-child(2) {
   }}
+  .messageDiv {
+  }
   .logIn {
   }
   .separate {
@@ -132,6 +146,9 @@ form {
       }}
       & > div:nth-child(2) {
   }}
+  .messageDiv {
+    max-width: 380px;
+  }
   .logIn {
   }
   .separate {
@@ -164,6 +181,9 @@ form {
       & > div:nth-child(2) {
         margin: 5px;
     }}
+    .messageDiv {
+      margin-top: 15px;
+    }
     .logIn {
     }
     .separate {

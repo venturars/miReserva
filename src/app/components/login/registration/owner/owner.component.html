@@ -2,29 +2,29 @@
   <p class="lctl-font-title titleForm">Crea tu perfil</p>
   <input class="lctl-input-l-large inputForm" name="name" autocomplete="off" placeholder="Nombre" 
     placeholder="{{userForm1.submitted && name.invalid ?  'Nombre obligatorio' : 'Nombre'}}"
-    [(ngModel)]="user.name" #name="ngModel" type="text"
+    [(ngModel)]="userOwner.name" #name="ngModel" type="text"
     [ngClass]="{'caution':userForm1.submitted && name.invalid }" required>
   <input class="lctl-input-l-large inputForm" name="surname" autocomplete="off" 
     placeholder="{{userForm1.submitted && surname.invalid ?  'Apellidos obligatorios' : 'Apellidos'}}" 
-    [(ngModel)]="user.surname" #surname="ngModel" type="text"
+    [(ngModel)]="userOwner.surname" #surname="ngModel" type="text"
     [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
   <input id="profile" class="lctl-input-l-large inputForm" name="email" autocomplete="off"  
     placeholder="{{userForm1.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
-    [(ngModel)]="user.email" #email="ngModel" type="email"
+    [(ngModel)]="users.mail" #email="ngModel" type="email"
     [ngClass]="{'caution':userForm1.submitted && email.invalid }" email required>
   <input class="lctl-input-l-large inputForm" name="cif" autocomplete="off" 
     placeholder="{{userForm1.submitted && cif.invalid ?  'CIF obligatorio' : 'CIF'}}"
-    [(ngModel)]="user.cif" #cif="ngModel" type="text"
+    [(ngModel)]="userOwner.cif" #cif="ngModel" type="text"
     [ngClass]="{'caution':userForm1.submitted && cif.invalid }" required>
   <input id="password" class="lctl-input-l-large inputForm" name="password" autocomplete="off" 
     placeholder="{{userForm1.submitted && password.invalid ?  'Password obligatorio' : 'Password'}}"
-    [(ngModel)]="user.password" #password="ngModel" type="password"
+    [(ngModel)]="users.password" #password="ngModel" type="password"
     [ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required>
     
   <div class="overLogIn">
 
     <div [ngClass]="{'caution':userForm1.submitted && check.invalid }">
-      <input type="checkbox" name="check" [(ngModel)]="user.check" #check="ngModel"
+      <input type="checkbox" name="check" [(ngModel)]="acept" #check="ngModel"
         required>
       <p class="textCheck lctl-font-underline">
         Acepto las 
@@ -40,6 +40,10 @@
       </p>
     </div>
 
+  </div>
+
+  <div class="messageDiv">
+    <!-- Aquí Jesús  hay que meter un ng if para que el div solo se muestre si hay mensaje-->
   </div>
 
   <div class="logIn">

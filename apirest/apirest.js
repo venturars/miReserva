@@ -63,7 +63,7 @@ app.post("/login", (req, res) => {
         }else {
             if(data != "") {
                if(data[0].restaurant_id) {
-                   params = data[0].restaurant_id; 
+                   params = data[0].restaurant_id;
                    sql = 
                     `SELECT
                         *
@@ -91,8 +91,7 @@ app.post("/login", (req, res) => {
                                 "menu": data2[0].menu,
                                 "url": data2[0].url,
                                 "latitude": data2[0].latitude,
-                                "longitude": data2[0].longitude,
-                                "owner_id": data2[0].owner_id
+                                "longitude": data2[0].longitude
                         }];}
                         res.status(200).send(message);
                 });} else if (data[0].owner_id) {

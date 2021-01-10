@@ -1,4 +1,3 @@
-<!-- Barra breadcrumb añadida al componente de ABAJO CONFIRMAR CAMBIO -->
 <div class="modifyNav">
     <div id="info"><a>Local</a></div>
     <div id="dist"><a>Mesas</a></div>
@@ -7,20 +6,22 @@
 
 <!-- HEADER -->
 
-<div class="profileport inputimage"> 
-    <img src="assets/photos/potada2.png" class="profileport inputimage"
+<div class="profileport inputimage">
+    <img src="assets/photos/potada2.png" class="profileport inInputimage"
         id="mostrarbanner" (click)="banner.click()">  
-    <div class="port">
+    <div class="port" style="display: none;">
         <img src="" alt="">
         <input style="display:none" id="banner" type="file" name="banner" #banner (change)="processBanner(banner)">
     </div>
 </div>
 <div class="aligns">
-    <div class="lctl-photoProfile-xl borderc" (click)="perfil.click()">    
+    <div class="lctl-photoProfile-xl" (click)="perfil.click()">    
         <img id="mostrarlogo" src="assets/photos/logorestaurante2.png" >
     </div>
     <input style="display:none" id="perfil" type="file" name="perfil" #perfil (change)="processLogo(perfil)">
 </div>
+
+<!-- FORM -->
 
 <form class="createForm" #restForm="ngForm" (ngSubmit)="(restForm.invalid) ? 'mal' : onSubmit(restForm)">
         <div class="inputs">
@@ -87,19 +88,19 @@
         <div>  
         <input type="text" class="lctl-input-m-extraLarge" placeholder="Email"
         placeholder="{{restForm.submitted && mail.invalid ?  'Email obligatorio' : 'Email'}}"
-        name="mail" [(ngModel)]="restaurant.mail" #mail="ngModel" id="mail"
+        name="mail" [(ngModel)]="users.mail" #mail="ngModel" id="mail"
         [ngClass]="{'caution':restForm.submitted && mail.invalid }" required>
    
     
         <input type="text" class="lctl-input-m-extraLarge"
         placeholder="{{restForm.submitted && password.invalid ?  'Contraseña obligatoria' : 'Contraseña'}}"
-        name="password" [(ngModel)]="restaurant.password" #password="ngModel" id="password"
+        name="password" [(ngModel)]="users.password" #password="ngModel" id="password"
         [ngClass]="{'caution':restForm.submitted && password.invalid }" required>
     </div>        
 
         
     </div>
-    <div class="lctl-footer pass">
+    <div class="pass">
         <button type="submit" class="lctl-button-m ">Siguiente</button>
     </div> 
 </form>
