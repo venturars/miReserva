@@ -18,10 +18,12 @@ export class SearchComponent implements OnInit {
   public restaurants: Restaurants[] = new Array();
   public checked:any[] = new Array();
   public marker:Marker[] = new Array();
-  public map:Map = null;
+  public map:any = null;
+  public rendered:any[]=[];
+  public clicked:Restaurants;
+  public renderedMarker:any[]=[];
   constructor(
     private searchService:ServiceSearchService,
-    private apiService:GeocodestreetService,
     private restaurantService:ServiceRestaurantService,
     private router:Router
   ) { }
@@ -49,23 +51,52 @@ export class SearchComponent implements OnInit {
           data.data[i].owner_id
       ));}
       this.restaurants = this.allRestaurants;
-      this.map = new Map("mapid").setView([40.416865 ,-3.504302], 50)
+      this.rendered=this.restaurants;
+      this.map = new Map("mapid").setView([40.416865 ,-3.504302], 9)
       .setZoom(11)
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
         attribution: 'Mi reserva',
         maxZoom: 18
-      }).addTo(this.map);
+      }).addTo(this.map)
+      
       for (let i=0;i<this.restaurants.length;i++){
         this.marker[i] = new Marker([
           this.restaurants[i].latitude,
           this.restaurants[i].longitude
-        ]).addTo(this.map);
+        ]).addTo(this.map)
+        
         this.marker[i].bindPopup(
           this.restaurants[i].name+"<br>"+this.restaurants[i].street_name+" , "+
           this.restaurants[i].street_number
-        ).on('click', function(){console.log(this.restaurants[i])}, this).openPopup()  
+        )
+        
+        
+        .on('click', function(){
+          this.rendered=[];
+          this.renderedMarker=[];
+          this.map.setView([this.restaurants[i].latitude ,this.restaurants[i].longitude])  
+          // mira que markers se estan mostrando en el mapa y los añade a rendered que
+          // que es el ngfor de las tarjetas que se visualizan
+          for (let i=0;i<this.marker.length;i++){
+            if(this.map.getBounds().contains(this.marker[i].getLatLng())){
+              this.rendered.push(this.restaurants[i]);
+              this.renderedMarker.push(this.marker[i]);
+            }
+          }
+          //cambia para que se muestre el primero de la lista el restaurante seleccionado
+          const posicion=this.rendered.indexOf(this.restaurants[i]);
+          this.renderedMarker.splice(posicion,1);
+          this.rendered.splice(posicion,1);
+          this.rendered.unshift(this.restaurants[i]);
+          this.renderedMarker.unshift(this.marker[i]);        
+          
+        }, this).openPopup()  
+         
+          
+          
       }});
   }
+
   //-----Design-----
   public showOptions() {
     let options:any = document.getElementById('options');
@@ -111,8 +142,16 @@ export class SearchComponent implements OnInit {
         }
       })
   }}
+
+  public clickcard(restaurant,i){
+    
+    this.map.setView([restaurant.latitude ,restaurant.longitude],this.map._animateToZoom)  
+    this.renderedMarker[i].openPopup();
+console.log(restaurant);
+console.log(i);
+  }
   //-----Functions-----
-  public toReservate(i:number) {
+  public toReservate(restaurant,i:number) {
     this.router.navigate(['/reservation1'])
     this.restaurantService.restaurantReservation = this.restaurants[i];
   }
@@ -158,4 +197,7 @@ export class SearchComponent implements OnInit {
     }
   }
 }
+
+
+
 //-----Desing funcitons-----
