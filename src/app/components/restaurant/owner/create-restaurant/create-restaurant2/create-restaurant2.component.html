@@ -4,83 +4,83 @@
     <div id="horarios"><a>Horas</a></div>
 </div>
 
-<div class="lctl-br space"></div>
-<div class="centrar">
-    <div class="inter">
-    <form class="espaciar" #tableForm="ngForm"  (ngSubmit)="(tableForm.invalid) ? 'malll' : onSubmit(tableForm)">
+<div class="center">
+
+    <form class="space" #tableForm="ngForm"  (ngSubmit)="(tableForm.invalid) ? 'malll' : onSubmit(tableForm)">
         
         <div>
-            <label>Nombre mesa
-                <input class="lctl-cellInput-large" type="text" autocomplete="off"
+            Nombre
+            <input class="lctl-cellInput-large" type="text" autocomplete="off"
                 placeholder="{{tableForm.submitted && name.invalid ?  'Mesa ' : ' Mesa'}}"
-                id="name" name="table_name" [(ngModel)]="table.table_name" #name="ngModel" #prueba 
+                id="name" name="table_name" [(ngModel)]="table.table_name" #name="ngModel" #myInputFile
                 [ngClass]="{'is-invalid':tableForm.submitted && name.invalid }" required>
-            </label>    
+        </div>
 
-        </div>
         <div>
-            <label>PAX min
+            PAX min
             <input class="lctl-cellInput-large" type="text" autocomplete="off"
-            placeholder="{{tableForm.submitted && paxmin.invalid ?  'Pax Min' : 'Pax Min'}}"           
-            name="table_min" [(ngModel)]="table.table_min" #paxmin="ngModel" 
-            [ngClass]="{'is-invalid':tableForm.submitted && paxmin.invalid }" required>
-            </label>    
+                placeholder="{{tableForm.submitted && paxmin.invalid ?  'PAX min' : 'PAX min'}}"           
+                name="table_min" [(ngModel)]="table.table_min" #paxmin="ngModel" 
+                [ngClass]="{'is-invalid':tableForm.submitted && paxmin.invalid }" required>
         </div>
+
         <div>
-            <label>PAX max
+            PAX max
             <input class="lctl-cellInput-large" type="text" autocomplete="off"
-            placeholder="{{tableForm.submitted && paxmax.invalid ?  'Pax Max ' : 'Pax Max'}}"           
-            name="table_max" [(ngModel)]="table.table_max" #paxmax="ngModel" 
-            [ngClass]="{'is-invalid':tableForm.submitted && paxmax.invalid }" required>
-            </label>    
+                placeholder="{{tableForm.submitted && paxmax.invalid ?  'PAX max ' : 'PAX max'}}"           
+                name="table_max" [(ngModel)]="table.table_max" #paxmax="ngModel" 
+                [ngClass]="{'is-invalid':tableForm.submitted && paxmax.invalid }" required>
         </div>
-            <button type="submit" class="buttonadd lctl-button-m ">Añadir Mesa</button>
-        
+
+        <div>
+            <button type="submit" class="lctl-cellInput-extraLarge specialButton">Añadir mesa</button>
+        </div>
+    
     </form>
+        
 </div>
-</div>
-<div class="lctl-br space2" ></div>
-<ng-container *ngIf="this.servicetable.table[0]!=null; else nomesas">
-    <div class=" title">
+
+<ng-container *ngIf="this.servicetable.table[0]!=null; else not">
+
+    <div class="header">
+
         <div class="rows">
-            <p class="lctl-font-bold">Mesa</p>
-            <p class="lctl-font-bold">PAX Min</p>
-            <p class="lctl-font-bold">PAX Max</p>
-
-            <button class="lctl-button-m esconder">Eliminar</button>
-
-        </div>
-    </div>
-        <div class="column" *ngFor="let table of this.servicetable.table; let i = index">
-               
-                <div>
-                <div class="lctl-br w"></div>
-                </div>
-                <div>
-                    <div class="lctl-br space3 w"></div>
-                </div>
-                <div class="rows" >    
-            <p class="lctl-font-paragraph">{{table.table_name}}</p>
-            <p class="lctl-font-paragraph">{{table.table_min}}</p>
-            <p class="lctl-font-paragraph">{{table.table_max}}</p>
-            <button (click)="eliminar(i, table)" class="lctl-button-m ">Eliminar</button>
+    
+            <div class="lctl-font-bold">Mesa</div>
+            <div class="lctl-font-bold">PAX Min</div>
+            <div class="lctl-font-bold">PAX Max</div>
+            <div>
+                <button class="lctl-warnButtonOpposite-s" style="visibility: hidden;">Eliminar</button>
             </div>
-            
+    
         </div>
+
+    </div>
+
+    <div class="tables" *ngFor="let table of this.servicetable.table; let i = index">
+
+        <div class="lctl-br"></div>
+
+        <div class="rows">    
+            <div class="lctl-font-paragraph">{{table.table_name}}</div>
+            <div class="lctl-font-paragraph">{{table.table_min}}</div>
+            <div class="lctl-font-paragraph">{{table.table_max}}</div>
+            <div>
+                <button (click)="eliminar(i, table)" class="lctl-warnButtonOpposite-s">Eliminar</button>
+            </div>
+        </div>
+
+    </div>
+
 </ng-container>
-<ng-template #nomesas>
-    <div class="centrar">
+
+<ng-template #not>
+    <div class="not">
         <img src="assets/noMesas.svg">
     </div>
 </ng-template>    
     
-        <div class="buttonnext lctl-rightElements">
-            <button class="lctl-warnButtonOpposite-m" disabled routerLink="/create-restaurant-1">Anterior</button>
-            <button class="lctl-button-m " routerLink="/create-restaurant-3">Siguiente</button>
-        </div>
-
-    
-   <!-- <button (click)="confirmReservation(reservationsNo[i].id_reservation)" class="lctl-button-m" >Confirmar</button>
-            <button (click)="rejectReservation(reservations[i].id_reservation)" class="lctl-button-m" >Rechazar</button> -->
-            <!-- <button class="lctl-warnButtonOpposite-m">Editar</button>
-            <button class="lctl-button-m ">Eliminar</button> -->
+<div class="pass">
+    <button class="lctl-warnButtonOpposite-m" disabled routerLink="/create-restaurant-1">Anterior</button>
+    <button class="lctl-button-m " routerLink="/create-restaurant-3">Siguiente</button>
+</div>

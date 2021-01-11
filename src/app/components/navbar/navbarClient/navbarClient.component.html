@@ -1,10 +1,10 @@
 <div class="lctl-navContainer">
-    <ng-container *ngIf="serviceLogin.userCustomer.photo; else sinfoto">
+    <ng-container *ngIf="serviceLogin.userCustomer.photo; else notPhoto">
     <button class="lctl_navSection lctl-navToggle">
         <img  src="{{serviceLogin.userCustomer.photo}}" class="lctl-photoProfile-m">
     </button>
 </ng-container>
-<ng-template #sinfoto>
+<ng-template #notPhoto>
     <button class="lctl_navSection lctl-navToggle">
         <img  src="assets/photos/logorestaurante2.png" class="lctl-photoProfile-m">
     </button>
@@ -13,19 +13,23 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
                 <div class="lctl-navAfterButton2">
-                    <div #edit class="lctl-navElement" (click)="toEditProfile()">
+                    <div class="lctl-navElement" (click)="toEditProfile()"
+                        [ngClass]="{'lctl-navSelect': serviceLogin.navCustomer === 1}">
                         Editar perfil
                     </div>
-                    <div #out class="lctl-navElement" (click)="toLogIn()">
+                    <div class="lctl-navElement" (click)="toLogIn()"
+                        [ngClass]="{'lctl-navSelect': serviceLogin.navCustomer === 2}">
                         Salir
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div #reservate class="lctl-navElement" (click)="toSearch()">
+                <div class="lctl-navElement" (click)="toSearch()"
+                    [ngClass]="{'lctl-navSelect': serviceLogin.navCustomer === 3}">
                     Reservar
                 </div>
-                <div #my class="lctl-navElement" (click)="toReservationListClient()">
+                <div class="lctl-navElement" (click)="toReservationListClient()"
+                    [ngClass]="{'lctl-navSelect': serviceLogin.navCustomer === 4}">
                     Mis reservas
                 </div>
             </div>

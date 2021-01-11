@@ -13,13 +13,15 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
                 <div class="lctl-navAfterButton2">
-                    <div #out class="lctl-navElement" (click)="toLogIn()">
+                    <div class="lctl-navElement" (click)="toLogIn()"
+                        [ngClass]="{'lctl-navSelect': nav === 1}">
                         Salir
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div #reservate class="lctl-navElement" (click)="toReservationListRestaurant()">
+                <div class="lctl-navElement" (click)="toReservationListRestaurant()"
+                    [ngClass]="{'lctl-navSelect': nav === 2}">
                     Reservas
                 </div>
             </div>

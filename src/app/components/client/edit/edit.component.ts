@@ -23,7 +23,11 @@ export class EditClientComponent implements OnInit {
     private serviceUserCustomer:ServiceUserCustomerService,
     private dialog:MatDialog,
     private router:Router
-    ) { }
+  ) { }
+  ngOnInit() {
+    this.userCustomer = this.serviceLogin.userCustomer;
+    this.users = this.serviceLogin.users;
+  }
    processFile(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
@@ -59,25 +63,19 @@ export class EditClientComponent implements OnInit {
           if(!response.control) {
             //Modal los cambios no se han podido guardar
           }else {
-            //Modal de los cambios se han guardado correctamente
             this.users.password = password;
             this.serviceLogin.users.password = this.users.password;
             this.serviceLogin.userCustomer = this.userCustomer;
 
             const dialogRef = this.dialog.open(ModalRegistroComponent);
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
-        dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);})
-            this.router.navigate(["/search"]);  
-          }
+            dialogRef.afterClosed().subscribe(result => {
+            this.router.navigate(["/search"]);
+            this.serviceLogin.navCustomer = 3;
+          });}
           this.message = null;
           this.pass = null;
           this.checkPassword = null;
           this.checkPassword2 = null;
   });}}}
-
-  ngOnInit() {
-    this.userCustomer = this.serviceLogin.userCustomer;
-    this.users = this.serviceLogin.users;
-  }
 }

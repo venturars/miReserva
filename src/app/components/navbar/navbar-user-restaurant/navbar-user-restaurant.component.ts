@@ -8,8 +8,7 @@ import { ServiceLoginService } from '../../../shared/service-login.service';
 })
 export class NavbarUserRestaurantComponent implements OnInit {
 
-  @ViewChild('reservate') reservate: ElementRef;
-  @ViewChild('out') out: ElementRef;
+  public nav:number = 2;
 
   constructor(
     private router:Router,
@@ -21,16 +20,10 @@ export class NavbarUserRestaurantComponent implements OnInit {
   }
   public toLogIn() {
     this.router.navigate(["/"]);
-    this.out.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.reservate.nativeElement.style.cssText = ``;
+    this.nav = 1;
   }
   public toReservationListRestaurant() {
     this.router.navigate(["/reservations-list-restaurant"]);
-    this.reservate.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.out.nativeElement.style.cssText = ``;
+    this.nav = 2;
   }
 }

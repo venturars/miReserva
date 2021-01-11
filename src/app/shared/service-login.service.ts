@@ -16,6 +16,8 @@ export class ServiceLoginService {
   public restaurants: Restaurants;
   public userOwner: UserOwner;
   public userCustomer: UserCustomer;
+  public navCustomer: number = 3;
+  public navOwner: number = 2;
   
   constructor(
     private http:HttpClient

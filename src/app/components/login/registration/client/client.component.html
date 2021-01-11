@@ -13,7 +13,7 @@
     [(ngModel)]="userCustomer.surname" #surname="ngModel" type="text"
     [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
   <input class="lctl-input-l-large inputForm" name="mobile" autocomplete="off"
-    placeholder="{{userForm1.submitted && mobile.invalid ?  'Telefono obligatoria' : 'Telefono'}}"
+    placeholder="{{userForm1.submitted && mobile.invalid ?  'Telefono obligatorio' : 'Telefono'}}"
     [(ngModel)]="userCustomer.phone" #mobile="ngModel" type="tel"
     [ngClass]="{'caution':userForm1.submitted && mobile.invalid }" minlength="9" maxlength="9" required>
   <input id="profile" class="lctl-input-l-large inputForm" name="email" autocomplete="off" 

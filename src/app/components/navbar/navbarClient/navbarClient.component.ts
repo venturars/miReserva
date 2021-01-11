@@ -8,51 +8,26 @@ import { ServiceLoginService } from '../../../shared/service-login.service';
 })
 export class NavbarClientComponent implements OnInit {
 
-  @ViewChild('my') my: ElementRef;
-  @ViewChild('reservate') reservate: ElementRef;
-  @ViewChild('out') out: ElementRef;
-  @ViewChild('edit') edit: ElementRef;
-
   constructor(
     private router:Router,
     public serviceLogin:ServiceLoginService
     ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
   public toReservationListClient() {
     this.router.navigate(["/reservations-list-client"]);
-    this.my.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.out.nativeElement.style.cssText = ``;
-    this.edit.nativeElement.style.cssText = ``;
-    this.reservate.nativeElement.style.cssText = ``;
+    this.serviceLogin.navCustomer = 4;
   }
   public toSearch() {
     this.router.navigate(["/search"]);
-    this.reservate.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.out.nativeElement.style.cssText = ``;
-    this.edit.nativeElement.style.cssText = ``;
-    this.my.nativeElement.style.cssText = ``;
+    this.serviceLogin.navCustomer = 3;
   }
   public toLogIn() {
     this.router.navigate(["/"]);
-    this.out.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.reservate.nativeElement.style.cssText = ``;
-    this.edit.nativeElement.style.cssText = ``;
-    this.my.nativeElement.style.cssText = ``;
+    this.serviceLogin.navCustomer = 2;
   }
   public toEditProfile() {
     this.router.navigate(["/edit-client"]);
-    this.edit.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.out.nativeElement.style.cssText = ``;
-    this.reservate.nativeElement.style.cssText = ``;
-    this.my.nativeElement.style.cssText = ``;
+    this.serviceLogin.navCustomer = 1;
 }}
