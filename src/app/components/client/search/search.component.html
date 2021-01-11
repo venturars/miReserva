@@ -1,35 +1,37 @@
 <div class="content">
 
     <div class="search">
-        <input type="text" class="searchLine" #searchLine
+        <input type="text" class="searchLine" #searchLine id="searchline"
             placeholder="What are you looking for?" (click)="hideOptions()">
-        <button class="filterButton" (click)="showOptions()">
+        <!-- <button class="filterButton" (click)="showOptions()">
            Filtros
-        </button>
-        <button class="searchButton" (click)="hideOptions(); localSearch()">
+        </button> -->
+        <button class="searchButton" (click)="hideOptions(); localSearch(searchLine)">
         </button>
     </div>
-
-    <div class="lctl-div showOptions" id="options">
+            <div class="lctl-centerElements labelTeam">
+                    <label for="Espayola" class="lctl-disabledButtonOpposite-s Espayola">Española</label>
+                    <input type="checkbox" class="esconder" id="Espayola" value="Española" (click)="asign('Espayola')">
+                    <label for="Mexicana" class="lctl-disabledButtonOpposite-s Mexicana">Mexicana</label>
+                    <input type="checkbox" class="esconder" id="Mexicana" value="Mexicana" (click)="asign('Mexicana')">
+                    <label for="Argentina" class="lctl-disabledButtonOpposite-s Argentina">Argentina</label>
+                    <input type="checkbox" class="esconder" id="Argentina" value="Argentina" (click)="asign('Argentina')">
+                    <label for="Dominicana" class="lctl-disabledButtonOpposite-s Dominicana">Dominicana</label>
+                    <input type="checkbox" class="esconder" id="Dominicana" value="Dominicana" (click)="asign('Dominicana')">
+                    <label for="Japonesa" class="lctl-disabledButtonOpposite-s Japonesa">Japonesa</label>
+                    <input type="checkbox" class="esconder" id="Japonesa" value="Japonesa" (click)="asign('Japonesa')">
+                    <label for="China" class="lctl-disabledButtonOpposite-s China">China</label>
+                    <input type="checkbox" class="esconder" id="China" value="China" (click)="asign('China')">
+            </div>
+    <div class="lctl-div" id="options">
 
         <div class="typeOption">
             <div class="titleOption">
-                Origen
+               
             </div>
             <div class="box">
                 <div class="lctl-centerElements labelTeam">
-                    <label for="Espayola" class="lctl-disabledButtonOpposite-s Espayola">Española</label>
-                    <input type="checkbox" id="Espayola" value="Española" (click)="asign('Espayola')">
-                    <label for="Mexicana" class="lctl-disabledButtonOpposite-s Mexicana">Mexicana</label>
-                    <input type="checkbox" id="Mexicana" value="Mexicana" (click)="asign('Mexicana')">
-                    <label for="Argentina" class="lctl-disabledButtonOpposite-s Argentina">Argentina</label>
-                    <input type="checkbox" id="Argentina" value="Argentina" (click)="asign('Argentina')">
-                    <label for="Dominicana" class="lctl-disabledButtonOpposite-s Dominicana">Dominicana</label>
-                    <input type="checkbox" id="Dominicana" value="Dominicana" (click)="asign('Dominicana')">
-                    <label for="Japonesa" class="lctl-disabledButtonOpposite-s Japonesa">Japonesa</label>
-                    <input type="checkbox" id="Japonesa" value="Japonesa" (click)="asign('Japonesa')">
-                    <label for="China" class="lctl-disabledButtonOpposite-s China">China</label>
-                    <input type="checkbox" id="China" value="China" (click)="asign('China')">
+                   
                 </div>
             </div>
         </div>

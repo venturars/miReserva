@@ -5,6 +5,8 @@ import { Map, tileLayer, marker, Marker } from "leaflet";
 import { GeocodestreetService } from 'src/app/shared/geocodestreet.service';
 import { Router } from '@angular/router';
 import { ServiceRestaurantService } from '../../../shared/service-restaurant.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalRegistroComponent } from '../../modals/modal-registro/modal-registro.component';
 @Component({
   selector: 'app-client-search',
   templateUrl: './search.component.html',
@@ -22,10 +24,13 @@ export class SearchComponent implements OnInit {
   public rendered:any[]=[];
   public clicked:Restaurants;
   public renderedMarker:any[]=[];
+  public rendered2:any[]=[];
+  public unavez:boolean=false;
   constructor(
     private searchService:ServiceSearchService,
     private restaurantService:ServiceRestaurantService,
-    private router:Router
+    private router:Router,
+    private dialog:MatDialog
   ) { }
 
   ngOnInit() {
@@ -63,7 +68,8 @@ export class SearchComponent implements OnInit {
         this.marker[i] = new Marker([
           this.restaurants[i].latitude,
           this.restaurants[i].longitude
-        ]).addTo(this.map)
+        ])
+        this.map.addLayer(this.marker[i])
         
         this.marker[i].bindPopup(
           this.restaurants[i].name+"<br>"+this.restaurants[i].street_name+" , "+
@@ -87,6 +93,9 @@ export class SearchComponent implements OnInit {
           }
           //cambia para que se muestre el primero de la lista el restaurante seleccionado
           const posicion=this.rendered.indexOf(this.restaurants[i]);
+          console.log(posicion);
+          console.log(this.restaurants[i]);
+          console.log(this.rendered)
           this.renderedMarker.splice(posicion,1);
           this.rendered.splice(posicion,1);
           this.rendered.unshift(this.restaurants[i]);
@@ -133,6 +142,7 @@ export class SearchComponent implements OnInit {
     let input:any = document.getElementById(value);
     let label1:any = document.getElementsByClassName(value)[0];
     if(input.checked) {
+      console.log(this.checked);
       this.checked.push(document.getElementById(value));
       label1.style.cssText =
         "background: var(--primaryColor); color: var(--primaryColorOpposite)";
@@ -142,8 +152,11 @@ export class SearchComponent implements OnInit {
         if (check === document.getElementById(value)) {
           this.checked.splice(index, 1)
         }
-      })
-  }}
+      })     
+      
+  }
+  this.tipodecomida();
+}
 
   public clickcard(restaurant,i){
     
@@ -152,55 +165,192 @@ export class SearchComponent implements OnInit {
 console.log(restaurant);
 console.log(i);
   }
+
+  tipodecomida(){
+
+    if (this.checked.length>0)
+    {
+    
+       //Borrando markers de la última busqueda
+ 
+       for(let i=0;i<this.marker.length;i++) {
+        this.marker[i].remove();
+}  
+    this.rendered=[];
+    this.marker=[];
+    
+        for (let i=0;i<this.allRestaurants.length;i++){
+          for (let z=0;z<this.checked.length;z++){
+              if (this.allRestaurants[i].food_type==this.checked[z].value){
+                this.rendered.push(this.allRestaurants[i])
+                this.marker.push(new Marker ([this.allRestaurants[i].latitude,this.allRestaurants[i].longitude]))
+                
+                
+              }
+            }
+            for (let i=0;i<this.marker.length;i++){   
+              this.map.addLayer(this.marker[i])
+              this.marker[i].bindPopup(
+                this.rendered[i].name+"<br>"+this.rendered[i].street_name+" , "+
+                this.rendered[i].street_number
+              )
+            
+            .on('click', function(){
+                  
+                  if(this.unavez!=true){                 
+                  this.map.setView([this.rendered[i].latitude ,this.rendered[i].longitude])
+                  
+                  
+                  // // mira que markers se estan mostrando en el mapa y los añade a rendered que
+                  // // que es el ngfor de las tarjetas que se visualizan
+                  this.renderedMarker=[];
+                  for (let i=0;i<this.marker.length;i++){
+                    if(this.map.getBounds().contains(this.marker[i].getLatLng())){
+                  this.renderedMarker.push(this.marker[i]);
+                  this.rendered2.push(this.rendered[i])
+                    }
+                }
+                this.rendered=[];
+                this.rendered=this.rendered2;
+                this.unavez=true;  
+                      
+                  
+                  // //cambia para que se muestre el primero de la lista el restaurante seleccionado
+                //   const posicion=this.rendered.indexOf(this.rendered2[i]);
+                //  this.renderedMarker.splice(posicion,1);
+                //  this.rendered.splice(posicion,1);
+                //  this.rendered.unshift(this.rendered2[i]);
+                //  this.renderedMarker.unshift(this.marker[i]);        
+                }  
+                }, this)
+
+              }  
+          
+        }
+   
+    
+
+
+    //Creando nuevos markers solo de la busqueda
+           
+        // console.log(this.marker);
+        //   for (let i=0;i<this.rendered.length;i++){
+        //     this.marker[i] = new Marker([
+        //       this.rendered[i].latitude,
+        //       this.rendered[i].longitude
+        //     ]).addTo(this.map)
+
+            
+        //     this.marker[i].bindPopup(
+        //       this.rendered[i].name+"<br>"+this.rendered[i].street_name+" , "+
+        //       this.rendered[i].street_number
+        //     )
+      // }
+          
+                
+
+          
+          
+
+          
+    }
+
+    else{
+
+      for(let i=0;i<this.marker.length;i++) {
+        this.marker[i].remove();
+      }  
+    this.rendered=[];
+    this.marker=[];
+
+      this.rendered=this.allRestaurants;
+      for (let i=0;i<this.allRestaurants.length;i++){
+      this.marker.push(new Marker ([this.allRestaurants[i].latitude,this.allRestaurants[i].longitude]))
+      }
+
+      for (let i=0;i<this.marker.length;i++){   
+        this.map.addLayer(this.marker[i])
+        this.marker[i].bindPopup(
+          this.rendered[i].name+"<br>"+this.rendered[i].street_name+" , "+
+          this.rendered[i].street_number
+        )
+      
+    }
+    } 
+  }
+
   //-----Functions-----
   public toReservate(restaurant,i:number) {
     this.router.navigate(['/reservation1'])
     this.restaurantService.restaurantReservation = this.restaurants[i];
   }
-  public localSearch() {
-
-    let sumRestaurants:number = this.allRestaurants.length;
-    let sumTypes:number;
-    // this.restaurants = new Array();
-    this.rendered=[];
-
-    if(this.checked) {
-      sumTypes = this.checked.length;
-    }else {
-      sumTypes = 0;
-    }
-    
-    for(let i = 0; i < sumRestaurants; i++) {
-
-      for(let j = 0; j < sumTypes; i++) {
-
-        if(this.allRestaurants[i].food_type == this.checked[j].value) {
-          // this.restaurants.push(this.allRestaurants[i]);
-          this.rendered.push(this.allRestaurants[i]);
-
-      }}
-
-      if(this.allRestaurants[i].name == this.searchLine.nativeElement.value) {
-
-        let total:number;
-
-        if(this.rendered) {
-
-          total = this.rendered.length;
-
-        }else {
-          total = 0;
-        }
-
-        for(let k = 0; k > total; i++) {
-
-          if(this.allRestaurants[i] != this.rendered[k]) {
-            this.rendered.push(this.allRestaurants[i]);
-          }
-        }
+  public localSearch(texto) {
+    let control=false;
+    console.log(this.restaurants);
+    for (let i=0;i<this.restaurants.length;i++){
+      if (this.restaurants[i].name.toLowerCase()==texto.value.toLowerCase()){
+        console.log(this.restaurants[i].name);
+        this.rendered=[];
+        this.rendered.push(this.restaurants[i])
+        control=true;
       }
     }
-  }
+
+    if (control){
+      console.log("si");
+      texto.value="";
+    }
+
+    else{
+      const dialogRef = this.dialog.open(ModalRegistroComponent);
+      dialogRef.componentInstance.mensaje="No hemos encontrado ningún restaurante con ese nombre";
+  dialogRef.afterClosed().subscribe(result => {
+  console.log(`Dialog result: ${result}`);})
+    }
+
+    }
+  //         let sumRestaurants:number = this.allRestaurants.length;
+  //   let sumTypes:number;
+  //   // this.restaurants = new Array();
+  //   this.rendered=[];
+
+  //   if(this.checked) {
+  //     sumTypes = this.checked.length;
+  //   }else {
+  //     sumTypes = 0;
+  //   }
+    
+  //   for(let i = 0; i < sumRestaurants; i++) {
+
+  //     for(let j = 0; j < sumTypes; i++) {
+
+  //       if(this.allRestaurants[i].food_type == this.checked[j].value) {
+  //         // this.restaurants.push(this.allRestaurants[i]);
+  //         this.rendered.push(this.allRestaurants[i]);
+
+  //     }}
+
+  //     if(this.allRestaurants[i].name == texto.value) {
+
+  //       let total:number;
+
+  //       if(this.rendered) {
+
+  //         total = this.rendered.length;
+
+  //       }else {
+  //         total = 0;
+  //       }
+
+  //       for(let k = 0; k > total; i++) {
+
+  //         if(this.allRestaurants[i] != this.rendered[k]) {
+  //           this.rendered.push(this.allRestaurants[i]);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 
