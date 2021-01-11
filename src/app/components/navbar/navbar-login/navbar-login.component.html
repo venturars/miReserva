@@ -6,26 +6,30 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems2">
                 <div class="lctl-navAfterButton2">
-                    <div #signIn class="lctl-navElement" (click)="toRegister()">
+                    <div class="lctl-navElement" (click)="toRegister()"
+                        [ngClass]="{'lctl-navSelect': nav === 3}">
                         Regístrate
                     </div>
-                    <div #log class="lctl-navElement" (click)="toLogIn()">
+                    <div class="lctl-navElement" (click)="toLogIn()"
+                        [ngClass]="{'lctl-navSelect': nav === 4}">
                         Ingresa
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div #how class="lctl-navElement" (click)="toHowItWorks()">
+                <div class="lctl-navElement" (click)="toHowItWorks()"
+                    [ngClass]="{'lctl-navSelect': nav === 2}">
                     ¿Cómo funciona?
                 </div>
-                <div #contact class="lctl-navElement" (click)="toContact()">
+                <div class="lctl-navElement" (click)="toContact()"
+                    [ngClass]="{'lctl-navSelect': nav === 1}">
                     Contacto
                 </div>
             </div>
             <button class="lctl-navHidden"></button>
         </div>
     </button>
-        <div class="lctl_navSection lctl-navHome" (click)="toLogIn()">
-            <img src="../../../../assets/LogoMiReserva.svg">
+    <div class="lctl_navSection lctl-navHome" (click)="toLogIn()">
+        <img src="../../../../assets/LogoMiReserva.svg">
     </div>
 </div>

@@ -13,20 +13,24 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
                 <div class="lctl-navAfterButton2">
-                    <div #edit class="lctl-navElement" (click)="toEditProfile()">
+                    <div class="lctl-navElement" (click)="toEditProfile()"
+                        [ngClass]="{'lctl-navSelect': serviceLogin.navOwner === 4}">
                         Editar perfil
                     </div>
-                    <div #out class="lctl-navElement" (click)="toLogIn()">
+                    <div class="lctl-navElement" (click)="toLogIn()"
+                        [ngClass]="{'lctl-navSelect': serviceLogin.navOwner === 3}">
                         Salir
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div #add class="lctl-navElement" (click)="toCreateRestaurant1()">
-                    Añadir resturante
+                <div class="lctl-navElement" (click)="toCreateRestaurant1()"
+                        [ngClass]="{'lctl-navSelect': serviceLogin.navOwner === 1}">
+                        Añadir restaurante
                 </div>
-                <div #all class="lctl-navElement" (click)="toRestaurantsList()">
-                    Mis restaurantes
+                <div class="lctl-navElement" (click)="toRestaurantsList()"
+                        [ngClass]="{'lctl-navSelect': serviceLogin.navOwner === 2}">
+                        Mis restaurantes
                 </div>
             </div>
             <button class="lctl-navHidden"></button>

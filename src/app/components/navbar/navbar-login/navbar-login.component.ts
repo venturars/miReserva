@@ -8,10 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarLoginComponent implements OnInit {
 
-  @ViewChild('how') how: ElementRef;
-  @ViewChild('contact') contact: ElementRef;
-  @ViewChild('log') log: ElementRef;
-  @ViewChild('signIn') signIn: ElementRef;
+  public nav:number = 4;
 
   constructor(
     private router:Router
@@ -21,38 +18,18 @@ export class NavbarLoginComponent implements OnInit {
   }
   public toContact() {
     this.router.navigate(["/contact-us"]);
-    this.contact.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.how.nativeElement.style.cssText = ``;
-    this.log.nativeElement.style.cssText = ``;
-    this.signIn.nativeElement.style.cssText = ``;
+    this.nav = 1;
   }
   public toHowItWorks() {
     this.router.navigate(["/"]);
-    this.contact.nativeElement.style.cssText = ``;
-    this.how.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.log.nativeElement.style.cssText = ``;
-    this.signIn.nativeElement.style.cssText = ``;
+    this.nav = 2;
   }
   public toRegister() {
     this.router.navigate(["/registration"]);
-    this.contact.nativeElement.style.cssText = ``;
-    this.signIn.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.how.nativeElement.style.cssText = ``;
-    this.log.nativeElement.style.cssText = ``;
+    this.nav = 3;
   }
   public toLogIn() {
     this.router.navigate(["/log-in"]);
-    this.contact.nativeElement.style.cssText = ``;
-    this.log.nativeElement.style.cssText = `
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite)`;
-    this.how.nativeElement.style.cssText = ``;
-    this.signIn.nativeElement.style.cssText = ``;
+    this.nav = 4;
   }
 }

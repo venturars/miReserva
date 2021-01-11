@@ -27,19 +27,20 @@ export class CreateRestaurant1Component implements OnInit {
   public longitud:any;
   public url:string;
 
-  constructor(public router:Router,
-              public serviceLogIn:ServiceLoginService,
-              public serviceRestaurant:ServiceRestaurantService,
-              public geoservice:GeocodestreetService,
-              public serviceRegistration:ServiceRegistrationService,
-              public dialog:MatDialog) {
+  constructor(
+    public router:Router,
+    public serviceLogIn:ServiceLoginService,
+    public serviceRestaurant:ServiceRestaurantService,
+    public geoservice:GeocodestreetService,
+    public serviceRegistration:ServiceRegistrationService,
+    public dialog:MatDialog
+  ) {
     this.restaurantmodel= new Restaurants (null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
     this.restaurantmodel.header=null;
     this.restaurantmodel.logo=null;
-    this.restauranteCreado=null
-    
-   }
-   processBanner(imageInput:any) {
+    this.restauranteCreado=null;
+  }
+  processBanner(imageInput:any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
@@ -47,25 +48,23 @@ export class CreateRestaurant1Component implements OnInit {
     this.restaurantmodel.header=null;
     this.restaurantmodel.header="assets/photos/" +file.name;
     const imagen=document.getElementById("mostrarbanner").setAttribute("src", this.restaurantmodel.header);
-  })
-  reader.readAsDataURL(file);
-}
-processLogo(imageInput: any) {
-  const file: File = imageInput.files[0];
-  const reader = new FileReader();
-  reader.addEventListener('load', (event: any) => {
- // const imagen=document.getElementById("mostrarlogo").setAttribute("src", event.target.result);
- this.restaurantmodel.logo=null;
-  this.restaurantmodel.logo="assets/photos/" +file.name;
-  const imagen=document.getElementById("mostrarlogo").setAttribute("src", this.restaurantmodel.logo);
-})
-reader.readAsDataURL(file);
-}
-
-  
-   onSubmit(restForm){
+    });
+    reader.readAsDataURL(file);
+  }
+  processLogo(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+    // const imagen=document.getElementById("mostrarlogo").setAttribute("src", event.target.result);
+    this.restaurantmodel.logo=null;
+    this.restaurantmodel.logo="assets/photos/" +file.name;
+    const imagen=document.getElementById("mostrarlogo").setAttribute("src", this.restaurantmodel.logo);
+    });
+    reader.readAsDataURL(file);
+  }
+  onSubmit(restForm:any) {
      // SE CREA RESTAURANTE
-    const nuevorestaurante:Restmailpassword= new Restmailpassword(
+    const nuevorestaurante:Restmailpassword = new Restmailpassword(
       1,restForm.value.name, restForm.value.province, restForm.value.city, restForm.value.street_name,
        restForm.value.street_number, restForm.value.postal_code,restForm.value.phone,restForm.value.capacity,
        restForm.value.food_type,this.restaurantmodel.header,this.restaurantmodel.logo,null,restForm.value.url,
@@ -84,9 +83,9 @@ reader.readAsDataURL(file);
           this.restauranteCreado=data.data.restaurant_id;
             // console.log(this.restauranteCreado);
           this.geoservice.getJSONstreet(this.url)
-          .subscribe((data:any)=>{
+          .subscribe((data:any)=> {
             
-            if (data==""){
+            if (data=="") {
               //EN ESTE IF ES CUANDO HA FALLADO LA LOCALIZACION Y HABRIA QUE METERSELAS O PREGUNTARLE POR ELLAS
               }
             else
@@ -109,27 +108,16 @@ reader.readAsDataURL(file);
           })
         });
         this.router.navigate(["/create-restaurant-2"]);
-      }
-      else
-      {
+      }else {
         const dialogRef = this.dialog.open(ModalRegistroUsuarioComponent);
-      dialogRef.componentInstance.email=restForm.value.mail;
-      const email:any=document.getElementById("mail")
-      email.value=null;
-      const password:any=document.getElementById("password")
-      password.value=null;
+        dialogRef.componentInstance.email=restForm.value.mail;
+        const email:any=document.getElementById("mail")
+        email.value=null;
+        const password:any=document.getElementById("password")
+        password.value=null;
         dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
-        })
-
-
-      }
-
-    })
-    
-
-    
-    
+    });}});
     this.restaurantmodel.street_number=restForm.value.street_number;
     this.restaurantmodel.street_name=restForm.value.street_name;
     this.restaurantmodel.city=restForm.value.city;
@@ -137,10 +125,7 @@ reader.readAsDataURL(file);
       this.restaurantmodel.street_number+",+"+
       this.restaurantmodel.street_name.replace(" ","+")+",+"+
       this.restaurantmodel.city+"&format=json&addressdetails=1&limit=1&polygon_svg=1";
-   }
-
-  ngOnInit(): void {
-    // this.router.navigate(['navbar1'])
   }
-
+  ngOnInit() {
+  }
 }

@@ -6,8 +6,8 @@
     flex-direction: column;
     margin: auto;
     border: 2px solid var(--secundaryColorPush);
-    background-color: var(--secundaryColor);
     border-radius: var(--borderRadiusM);
+    background-color: var(--primaryColorOpposite);
 
     
     & > div:nth-child(1){

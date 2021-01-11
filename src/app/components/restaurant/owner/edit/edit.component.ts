@@ -73,7 +73,8 @@ export class EditComponentR implements OnInit {
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
         dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
-            this.router.navigate(["/restaurants-list"]);           
+            this.router.navigate(["/restaurants-list"]);
+            this.serviceLogin.navOwner = 2;       
         })
           }
           this.message = null;

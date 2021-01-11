@@ -26,6 +26,7 @@
       color: var(--secundaryColor);
       font-weight: var(--fontWidthBolder);
       transform: translateX(-15px);
+      cursor: default;
   }}
   .modifyNav div:after { 
     content: " "; 
