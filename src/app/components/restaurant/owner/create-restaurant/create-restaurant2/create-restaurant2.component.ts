@@ -22,7 +22,7 @@ export class CreateRestaurant2Component implements OnInit {
   ngAfterViewInit() {
   this.myInputField.nativeElement.focus();
   }
-  onSubmit(tableForm:any) {
+  public onSubmit(tableForm:any) {
     const newTable = new Tables(
       null,
       tableForm.value.table_name,

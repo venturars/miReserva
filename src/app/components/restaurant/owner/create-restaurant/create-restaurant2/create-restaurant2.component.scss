@@ -259,7 +259,7 @@
 }}}
 //-----Especial elements-----
 .caution {
-  border:var(--secundaryColorContrast) solid 2px;
+  border:var(--secundaryColorContrast) solid 1px;
 }
 .caution::placeholder {
   color:var(--secundaryColorContrast);

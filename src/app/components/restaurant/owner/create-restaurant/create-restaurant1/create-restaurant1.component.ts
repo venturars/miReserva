@@ -40,7 +40,7 @@ export class CreateRestaurant1Component implements OnInit {
     this.restaurantmodel.logo=null;
     this.restauranteCreado=null;
   }
-  processBanner(imageInput:any) {
+  public processBanner(imageInput:any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
@@ -51,7 +51,7 @@ export class CreateRestaurant1Component implements OnInit {
     });
     reader.readAsDataURL(file);
   }
-  processLogo(imageInput: any) {
+  public processLogo(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
@@ -62,7 +62,7 @@ export class CreateRestaurant1Component implements OnInit {
     });
     reader.readAsDataURL(file);
   }
-  onSubmit(restForm:any) {
+  public onSubmit(restForm:any) {
      // SE CREA RESTAURANTE
     const nuevorestaurante:Restmailpassword = new Restmailpassword(
       1,restForm.value.name, restForm.value.province, restForm.value.city, restForm.value.street_name,

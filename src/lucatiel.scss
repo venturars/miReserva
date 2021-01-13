@@ -185,7 +185,6 @@ a {
 }
 //----------//----------//----------//----------//----------
 [class *="lctl-warnButton"] {
-    text-transform: capitalize;
     color: var(--primaryColorContrast);
     background: var(--primaryColorAccent);
     border: none;
@@ -195,6 +194,9 @@ a {
     font-weight: var(--fontWidthBolder);
     text-align: center;
     cursor: pointer;
+    &:disabled {
+        cursor: default;
+    }
     &:active {
         background-color: var(--primaryColorPush);
 }}
@@ -412,11 +414,13 @@ a {
     background: transparent;
     font-size: var(--fontSizeS);
     font-weight: var(--fontWidthBolder);
+    cursor: pointer;
     &::placeholder {
         color: var(--secundaryColorPush);
     }
     &:disabled {
         color: var(--secundaryColorOpposite);
+        cursor: default;
     }
     & > option {
         color: var(--secundaryColorOpposite);
@@ -1161,6 +1165,7 @@ a {
 //----------//----------//----------//----------//----------
 //-----Material modify-----
 //----------//----------//----------//----------//----------
+//-----Mat calendar-----
 [class *="lctl-ngMatCalendar"] {
     min-width: 300px;
     min-height: 460px;
@@ -1246,19 +1251,14 @@ a {
             padding-top: 10px!important;
             padding-bottom: 10px!important;
 }}}
-[class *="lctl-ng-matSlideToggle"] {
-    & [class*="mat-slide-toggle-bar mat-slide-toggle-bar-no-side-margin"] {
-        background-color: red !important;
-    }
-    & [class*="mat-slide-toggle-thumb"] {
-        background-color: red !important;
-        border-radius: 50%;
-}}
+//----------//----------//----------//----------//----------
+//-----Mat dialog-----
 .mat-dialog-container {
     padding: 0 !important;
     width:calc(100% - 20px)!important;
-    }
-
+}
+//----------//----------//----------//----------//----------
+//-----Mat nav-----
 .lctl-toggleNavbarButton {
     color: var(--secundaryColorOpposite);
     border-radius: 50%;
@@ -1269,4 +1269,67 @@ a {
     &:active {
         background-color: var(--secundaryColor);
 }}
-
+//----------//----------//----------//----------//----------
+//-----Mat-tab-----
+[class *= "lctl-mat-tab-group"] {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & > .mat-tab-header {
+        width: 100%;
+        background-color: var(--primaryColorOpposite);
+        border: 1px solid var(--secundaryColorPush);
+        border-radius: var(--borderRadiusL);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: none;
+        & .mat-tab-label-container {
+            & .mat-tab-list {
+                & .mat-tab-labels {
+                    & .mat-tab-label {
+                        width: 100%;
+                        opacity: 1;
+                        & .mat-tab-label-content {
+                            color: var(--secundaryColorOpposite);
+                }}}
+                & .mat-ink-bar {
+                    background-color: var(--primaryColor);
+                    height: 3px;
+                    border-radius: 100000px;
+        }}}
+        & .mat-tab-header-pagination-chevron {
+            border-color: var(--secundaryColorOpposite);
+        }
+        & .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+            border-color: var(--secundaryColorPush);
+    }}
+    & > .mat-tab-body-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background-color: var(--primaryColorOpposite);
+        border: 1px solid var(--secundaryColorPush);
+        border-radius: var(--borderRadiusL);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        & .mat-tab-body {
+            display: flex;
+            & .mat-tab-body-content {
+                overflow: auto; //cambiar
+                width: 100%;
+    }}}
+    & .mat-slide-toggle {
+        & .mat-slide-toggle-label {
+            & .mat-slide-toggle-bar, & .mat-slide-toggle-thumb {
+                background: var(--secundaryColorPush);
+    }}}
+    & .mat-checked {
+        & .mat-slide-toggle-label {
+            & .mat-slide-toggle-bar, & .mat-slide-toggle-thumb {
+                background: var(--primaryColor)!important;
+}}}
+    .mat-slide-toggle.mat-checked .mat-ripple-element {
+        background-color: var(--primaryColor);
+}}
