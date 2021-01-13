@@ -1216,7 +1216,47 @@ app.get("/reservations", (request, response) => {
                 message.data = res;
         }}
         response.status(200).send(message);
-});}});
+});}else if (request.query.shift_id &&
+    request.query.dayName &&
+    request.query.dayNum &&
+    request.query.month &&
+    request.query.year) {
+        let params = [request.query.shift_id,
+            request.query.dayName,
+            request.query.dayNum,
+            request.query.month,
+            request.query.year]
+    let sql =
+        `SELECT SUM
+            (pax)
+        AS 
+            pax
+        FROM
+            reservations
+        WHERE
+            shift_id = ?
+        AND
+            day_name = ?
+        AND
+            day = ?
+        AND
+            month = ?
+        AND
+            year = ?`
+    connection.query(sql,params, (err, res) => {
+    if (err){
+    }else{
+        if(res != "") {
+            message.control = true;
+            message.data = res;
+        }else {
+            message.control = false;
+            message.data = res;
+    }}
+    response.status(200).send(message);
+});}
+
+});
 app.post("/reservations", (request, response) => {
         let message = {
             "control": null,
@@ -1234,7 +1274,10 @@ app.post("/reservations", (request, response) => {
             request.body.hour,
             request.body.shift_id,
             request.body.comments,
-            request.body.status
+            request.body.status,
+            request.body.customer_name,
+            request.body.customer_phone
+
         )
         let sql =
             `INSERT INTO
@@ -1250,10 +1293,12 @@ app.post("/reservations", (request, response) => {
                     hour,
                     shift_id,
                     comments,
-                    status
+                    status,
+                    customer_name,
+                    customer_phone
                 )
             VALUES (
-                ?,?,?,?,?,?,?,?,?,?,?,?
+                ?,?,?,?,?,?,?,?,?,?,?,?,?,?
             )`;
         connection.query(sql, arr, (err, res) => {
             if(err) {

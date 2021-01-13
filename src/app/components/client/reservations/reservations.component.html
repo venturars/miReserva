@@ -24,22 +24,16 @@
         </div>
             
         <div class="info">
-
-            <!-- <p>ID: {{reservation.id_reservation }}</p> -->
-            <p>Dia: {{reservations[i].date}} |
-               Horario: {{reservations[i].time}}</p> 
-            <p>Observaciones: {{reservations[i].obs}}</p> 
+            <p>Dia: {{reservations[i].changedDayName}} {{reservations[i].day}} de {{reservations[i].changedMonth}} {{reservations[i].year}} </p>
+            <p>Horario: {{reservations[i].hour}}</p> 
+            <p>Observaciones: {{reservations[i].comments}}</p> 
             <p>Numero de personas: {{reservations[i].pax}}</p>  
-            <p>Restaurant: {{reservations[i].id_restaurant}}</p>
-           
+            <p>Restaurant: {{reservations[i].restaurantName}}</p>
         </div>
 
         <div class="buttons">
             <button class="lctl-button-s buttonRes" >Reservada</button>
-            <button (click)="openDialog()" class="lctl-button-s" >Eliminar</button>
-           
-            <!-- (click)="deleteReservation(reservations[i].id_reservation)"  -->
-            <!-- EL ELIMINAR RESERVA SE VA A HACER CON EL SERVICIO DENTRO DEL MODAL -->
+            <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
         </div>
     </div>   
     

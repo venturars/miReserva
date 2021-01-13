@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class ServiceRestaurantService {
   public restaurantReservation:Restaurants;
   public id_restaurant:number;
+  public selectedRestaurantId:number
   public capacity:number;
   private url:string = "http://localhost:3000/restaurant";
   public restaurant:Restaurants=null;

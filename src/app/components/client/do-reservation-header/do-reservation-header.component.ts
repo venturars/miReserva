@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 
 @Component({
   selector: 'app-client-doReservationHeader',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoReservationHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public restaurantService: ServiceRestaurantService) {
+    
+   }
 
   ngOnInit(): void {
   }

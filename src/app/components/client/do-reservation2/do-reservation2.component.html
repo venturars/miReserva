@@ -3,7 +3,7 @@
     <div class="title">
         <div class="lctl-br w"></div>
         <div class="lctl-br space"></div>
-        <p class="lctl-font-title">Jueves 20 2020</p>
+        <p class="lctl-font-title">{{this.calendarService.changedDayName}} {{this.calendarService.nuevaFecha.dayNum}} de {{this.calendarService.changedMonth}} {{this.calendarService.nuevaFecha.year}}</p>
         <div class="lctl-br w"></div>
         <div class="lctl-br space"></div>
     </div>
@@ -12,72 +12,17 @@
 <div class="page">
     <div class="schedules">
         <div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
-            <div class="lctl-cellButton">
-                12:30 a 13.30
-            </div>
+            <ng-container *ngFor="let shift of availableShifts; let i = index">
+                <div class="lctl-cellButton" id="turnos" (click)="shiftId(availableShifts[i].shift_id)">
+                    {{availableShifts[i].shift_from}} a {{availableShifts[i].shift_to}}
+                </div>
+            </ng-container>
         </div>
     </div>
     <div class="end">
-        <div class="comment">
+        <div class="comment" >
             <p class="obs">Observaciones:</p>
-            <textarea class="com"></textarea>
+            <textarea class="com" id="obs"></textarea>
         </div>
         <div class="buttoms">
                 <button class="lctl-button-m" routerLink="/reservation1">Anterior</button>
