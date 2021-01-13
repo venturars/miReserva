@@ -80,8 +80,8 @@
         
                 <select class="lctl-input-m-extraLarge" 
                     name="food_type" [(ngModel)]="restaurantmodel.food_type"  #food_type="ngModel" 
-                    [ngClass]="{'caution':restForm.submitted && food_type.invalid }" required>
-                    <option selected="true" disabled="disabled">Selecciona tipo de comida</option>
+                    [ngClass]="{'foodred':restForm.submitted && food_type.invalid }" id="food" required>
+                    <option selected="true" disabled="disabled" [ngValue]="null">Tipo de comida</option>
                     <option>Española</option>
                     <option>Mexicana</option>
                     <option>China</option>
@@ -93,13 +93,15 @@
                     placeholder="{{restForm.submitted && mail.invalid ?  'Email obligatorio' : 'Email'}}"
                     name="mail" [(ngModel)]="users.mail" #mail="ngModel" id="mail"
                     [ngClass]="{'caution':restForm.submitted && mail.invalid }" required>
-
+                    
                 <input type="text" class="lctl-input-m-extraLarge"
                     placeholder="{{restForm.submitted && password.invalid ?  'Contraseña obligatoria' : 'Contraseña'}}"
                     name="password" [(ngModel)]="users.password" #password="ngModel" id="password"
                     [ngClass]="{'caution':restForm.submitted && password.invalid }" required>
-            </div>        
-
+            </div> 
+             
+            <div class="lctl-font-comment message"><span class="lctl-font-bold">ATENCION!</span> este email y contraseña deben ser diferentes a los que creaste como propietario</div>      
+                
         </div>
 
         <div class="pass">

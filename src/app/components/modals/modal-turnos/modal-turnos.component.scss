@@ -48,7 +48,7 @@
         
     }
 
-    & > div:nth-child(3){
+    & > form{
        
         display: flex;
         flex-direction: row;
@@ -56,6 +56,7 @@
         width: 100%;
         height: 100px;
 
+     
         & > input{
             margin-top: 30px;
             width: 100px;
@@ -64,6 +65,14 @@
             height: 30px;
         }
 
+        & > div{
+            margin-top: 33px;
+            margin-left: 20px;
+            text-align: center;
+            font-size: 14px;
+            height: 30px;
+           
+        }
         & > button{
             margin-top: 33px;
             margin-left: 20px;
@@ -209,4 +218,26 @@
 .scrollshifts{
     max-height: 350px;
     overflow-y:scroll;
+}
+
+.is-invalid{
+    border:var(--primaryColor) solid 1px;
+
+}
+
+.botonmax{
+    width: 50px;
+    height: 35px;
+    border-radius: var(--borderRadiusM);
+    font-size: var(--fontSizeM);
+    color: var(--primaryColor);
+    background: var(--primaryColorOpposite);
+    border: 1px solid var(--secundaryColorAccent);
+}
+
+.mensaje{
+    height:10px;
+    color:var(--primaryColor);
+    font-size:14px;
+    text-align:center;
 }

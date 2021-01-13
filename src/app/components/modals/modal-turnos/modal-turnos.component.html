@@ -4,16 +4,31 @@
     <h1>Editar Turnos</h1>
   </div>
   <div>
-    <p>{{name}}   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
-  </div>
-  <div >
-       <input class="lctl-input-m-Large" type="time" #shiftinicio required>
-       <input class="lctl-input-m-Large" type="time" #shiftfinal required>
-       <input class="lctl-input-m-Large" type="number" onkeydown="return false" min=0 max={{serviceRestaurant.capacity}} #paxmax>
-       <button class="lctl-button "(click)="maximo(paxmax)">Max</button>
-       <button   class="lctl-warnButton-m buttonLib" (click)="addShifts(shiftinicio,shiftfinal,paxmax)">Anadir Turnos</button>       
+    <p *ngIf="name=='Mon'">Lunes   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
+    <p *ngIf="name=='Tue'">Martes   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
+    <p *ngIf="name=='Wed'">Miercoles   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
+    <p *ngIf="name=='Thu'">Jueves   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
+    <p *ngIf="name=='Fri'">Viernes   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
+    <p *ngIf="name=='Sat'">Sábado   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
+    <p *ngIf="name=='Sun'">Domingo   {{service}} Horario {{limiteinicio}} a {{limitefinal}}</p>
   </div>
   
+    <form #shiftForm="ngForm" (ngSubmit)="(shiftForm.invalid) ? 'mal' : onSubmit(shiftForm)"> 
+      
+       <input class="lctl-input-m-Large" type="time"  
+       name="shift_from" [(ngModel)]="shift.shift_from" #shift_from="ngModel" id="shift_from"
+      [ngClass]="{'is-invalid':shiftForm.submitted && shift_from.invalid }" time required>
+       <input class="lctl-input-m-Large" type="time"
+       name="shift_to" [(ngModel)]="shift.shift_to" #shift_to="ngModel" id="shift_to"
+      [ngClass]="{'is-invalid':shiftForm.submitted && shift_to.invalid }" time required>
+      <input class="lctl-input-m-Large" type="number" onkeydown="return false" min=0 max={{serviceRestaurant.capacity}} 
+      name="pax" [(ngModel)]="shift.pax" #pax="ngModel" #otro id="pax"
+      [ngClass]="{'is-invalid':shiftForm.submitted && pax.invalid }" number required>
+       <div class="botonmax"(click)="maximo(pax,otro)">Max</div>
+       <button type="submit"  class="lctl-warnButton-m buttonLib" >Anadir Turnos</button>       
+       </form>
+  
+<div class="mensaje" #mensaje *ngIf="fallo==true">El horario de los turnos debe estar dentro del horario fijado de {{limiteinicio}} a {{limitefinal}}</div>  
   
  <div class="scrollshifts" *ngIf="this.shifts.length!=0; else sinShifts" >
   <div class="title">
@@ -49,5 +64,5 @@
 </div>
 </ng-template>
 <button class="lctl-warnButton-s buttonli centrarh1" mat-dialog-close>Cerrar</button>
-
+<div #mensaje class="mensaje"></div>
 </div>

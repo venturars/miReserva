@@ -19,13 +19,12 @@ export class SearchComponent implements OnInit {
   public allRestaurants: Restaurants[] = new Array();
   public restaurants: Restaurants[] = new Array();
   public checked:any[] = new Array();
-  public marker:Marker[] = new Array();
+  public marker:any[] = new Array();
   public map:any = null;
   public rendered:any[]=[];
   public clicked:Restaurants;
   public renderedMarker:any[]=[];
-  public rendered2:any[]=[];
-  public unavez:boolean=false;
+ 
   constructor(
     private searchService:ServiceSearchService,
     private restaurantService:ServiceRestaurantService,
@@ -78,6 +77,7 @@ export class SearchComponent implements OnInit {
         
         
         .on('click', function(){
+          console.log("hola");
           this.rendered=[];
           this.renderedMarker=[];
           this.map.setView([this.restaurants[i].latitude ,this.restaurants[i].longitude])  
@@ -87,8 +87,7 @@ export class SearchComponent implements OnInit {
             if(this.map.getBounds().contains(this.marker[i].getLatLng())){
               this.rendered.push(this.restaurants[i]);
               this.renderedMarker.push(this.marker[i]);
-              this.rendered.push(this.restaurants[i]);
-              this.renderedMarker.push(this.marker[i]);
+             
             }
           }
           //cambia para que se muestre el primero de la lista el restaurante seleccionado
@@ -108,41 +107,12 @@ export class SearchComponent implements OnInit {
       }});
   }
 
-  //-----Design-----
-  public showOptions() {
-    let options:any = document.getElementById('options');
-    let hide:any = document.getElementById('hideOptions');
-    let filters:any = document.getElementsByClassName('filters')[0];
-    if(options.style.display === "flex") {
-      options.style.display = "none";
-      hide.style.display = "none";
-      if(filters) {
-        filters.style.visibility = "visible";
-      }
-    }else {
-      options.style.display = "flex";
-      hide.style.display = "flex";
-      if(filters) {
-        filters.style.visibility = "hidden";
-      }
-  }}
-  public hideOptions() {
-    let options:any = document.getElementById('options');
-    let hide:any = document.getElementById('hideOptions');
-    let filters:any = document.getElementsByClassName('filters')[0];
-    if(options.style.display === "flex") {
-      options.style.display = "none";
-      hide.style.display = "none";
-      if(filters) {
-        filters.style.visibility = "visible";
-      }
-    }
-  }
+ 
   public asign(value:string) {
     let input:any = document.getElementById(value);
     let label1:any = document.getElementsByClassName(value)[0];
     if(input.checked) {
-      console.log(this.checked);
+      
       this.checked.push(document.getElementById(value));
       label1.style.cssText =
         "background: var(--primaryColor); color: var(--primaryColorOpposite)";
@@ -159,11 +129,24 @@ export class SearchComponent implements OnInit {
 }
 
   public clickcard(restaurant,i){
-    
+       let posicion:number=null;
+       console.log(this.marker);
+       console.log(restaurant.name);
+    for (let i=0;i<this.marker.length;i++){
+      console.log(this.marker[i]._popup._content)
+      if (this.marker[i]._popup._content==(restaurant.name+"<br>"+restaurant.street_name+" , "+
+      restaurant.street_number)){
+        posicion=i;
+        console.log(i);
+        console.log(this.marker[i]);
+      }
+    }
+
     this.map.setView([restaurant.latitude ,restaurant.longitude],this.map._animateToZoom)  
-    this.renderedMarker[i].openPopup();
-console.log(restaurant);
-console.log(i);
+    this.marker[posicion].openPopup();
+    console.log(this.marker);
+    console.log(this.rendered);
+
   }
 
   tipodecomida(){
@@ -187,18 +170,24 @@ console.log(i);
                 
                 
               }
-            }
+          }
+        }    
+        this.renderedMarker=[];
+        this.renderedMarker=this.marker;
+
             for (let i=0;i<this.marker.length;i++){   
               this.map.addLayer(this.marker[i])
               this.marker[i].bindPopup(
                 this.rendered[i].name+"<br>"+this.rendered[i].street_name+" , "+
                 this.rendered[i].street_number
               )
-            
+              
             .on('click', function(){
                   
-                  if(this.unavez!=true){                 
-                  this.map.setView([this.rendered[i].latitude ,this.rendered[i].longitude])
+                    
+                         
+
+                  this.map.setView([this.marker[i]._latlng.lat, this.marker[i]._latlng.lng])
                   
                   
                   // // mira que markers se estan mostrando en el mapa y los añade a rendered que
@@ -207,52 +196,38 @@ console.log(i);
                   for (let i=0;i<this.marker.length;i++){
                     if(this.map.getBounds().contains(this.marker[i].getLatLng())){
                   this.renderedMarker.push(this.marker[i]);
-                  this.rendered2.push(this.rendered[i])
+                      if (this.rendered.indexOf(this.rendered[i])==-1){
+                          this.rendered.push(this.rendered[i])
+                      }
                     }
                 }
-                this.rendered=[];
-                this.rendered=this.rendered2;
-                this.unavez=true;  
+                
+                
+                
+                  
                       
                   
-                  // //cambia para que se muestre el primero de la lista el restaurante seleccionado
-                //   const posicion=this.rendered.indexOf(this.rendered2[i]);
-                //  this.renderedMarker.splice(posicion,1);
-                //  this.rendered.splice(posicion,1);
-                //  this.rendered.unshift(this.rendered2[i]);
-                //  this.renderedMarker.unshift(this.marker[i]);        
-                }  
+                  // cambia para que se muestre el primero de la lista el restaurante seleccionado
+                let posicion=null;
+                console.log (this.rendered);
+                  for (let z=0;z<this.rendered.length;z++){
+                    if (this.marker[i]._popup._content==(this.rendered[z].name+"<br>"+this.rendered[z].street_name+" , "+
+                    this.rendered[z].street_number)){
+                      posicion=z;
+                      console.log(posicion)
+                    }
+
+                  }
+                  let rest= this.rendered[posicion];               
+                  // this.renderedMarker.splice(posicion,1);
+                  this.rendered.splice(posicion,1);
+                  this.rendered.unshift(rest);
+                  // this.renderedMarker.unshift(this.marker[i]);        
+                 
                 }, this)
 
               }  
-          
-        }
-   
-    
-
-
-    //Creando nuevos markers solo de la busqueda
-           
-        // console.log(this.marker);
-        //   for (let i=0;i<this.rendered.length;i++){
-        //     this.marker[i] = new Marker([
-        //       this.rendered[i].latitude,
-        //       this.rendered[i].longitude
-        //     ]).addTo(this.map)
-
-            
-        //     this.marker[i].bindPopup(
-        //       this.rendered[i].name+"<br>"+this.rendered[i].street_name+" , "+
-        //       this.rendered[i].street_number
-        //     )
-      // }
-          
-                
-
-          
-          
-
-          
+                   
     }
 
     else{
@@ -274,8 +249,51 @@ console.log(i);
           this.rendered[i].name+"<br>"+this.rendered[i].street_name+" , "+
           this.rendered[i].street_number
         )
-      
-    }
+        .on('click', function(){
+                  
+                    
+                         
+
+          this.map.setView([this.marker[i]._latlng.lat, this.marker[i]._latlng.lng])
+          
+          
+          // // mira que markers se estan mostrando en el mapa y los añade a rendered que
+          // // que es el ngfor de las tarjetas que se visualizan
+          this.renderedMarker=[];
+          for (let i=0;i<this.marker.length;i++){
+            if(this.map.getBounds().contains(this.marker[i].getLatLng())){
+          this.renderedMarker.push(this.marker[i]);
+              if (this.rendered.indexOf(this.rendered[i])==-1){
+                  this.rendered.push(this.rendered[i])
+              }
+            }
+        }
+        
+        
+        
+          
+              
+          
+          // cambia para que se muestre el primero de la lista el restaurante seleccionado
+        let posicion=null;
+        console.log (this.rendered);
+          for (let z=0;z<this.rendered.length;z++){
+            if (this.marker[i]._popup._content==(this.rendered[z].name+"<br>"+this.rendered[z].street_name+" , "+
+            this.rendered[z].street_number)){
+              posicion=z;
+              console.log(posicion)
+            }
+
+          }
+          let rest= this.rendered[posicion];               
+          // this.renderedMarker.splice(posicion,1);
+          this.rendered.splice(posicion,1);
+          this.rendered.unshift(rest);
+          // this.renderedMarker.unshift(this.marker[i]);        
+         
+        }, this)
+
+      }
     } 
   }
 
@@ -309,48 +327,8 @@ console.log(i);
     }
 
     }
-  //         let sumRestaurants:number = this.allRestaurants.length;
-  //   let sumTypes:number;
-  //   // this.restaurants = new Array();
-  //   this.rendered=[];
+ 
 
-  //   if(this.checked) {
-  //     sumTypes = this.checked.length;
-  //   }else {
-  //     sumTypes = 0;
-  //   }
-    
-  //   for(let i = 0; i < sumRestaurants; i++) {
-
-  //     for(let j = 0; j < sumTypes; i++) {
-
-  //       if(this.allRestaurants[i].food_type == this.checked[j].value) {
-  //         // this.restaurants.push(this.allRestaurants[i]);
-  //         this.rendered.push(this.allRestaurants[i]);
-
-  //     }}
-
-  //     if(this.allRestaurants[i].name == texto.value) {
-
-  //       let total:number;
-
-  //       if(this.rendered) {
-
-  //         total = this.rendered.length;
-
-  //       }else {
-  //         total = 0;
-  //       }
-
-  //       for(let k = 0; k > total; i++) {
-
-  //         if(this.allRestaurants[i] != this.rendered[k]) {
-  //           this.rendered.push(this.allRestaurants[i]);
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 
