@@ -26,5 +26,5 @@ export class RestaurantsComponent implements OnInit {
     }});}
   public clickRestaurant(index:number) {
     console.log(index);
-      this.router.navigate(['reservations-list-restaurant']);
+    this.router.navigate(['reservations-list-restaurant']);
 }}

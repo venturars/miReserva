@@ -68,121 +68,213 @@
       border-left-color: var(--primaryColor);
     }
   }
-  @media screen and (max-width: 425px) {
-    .modifyNav div:after, .modifyNav div:before { 
-      display: none;
-  }}
-
-
-
-
-.containerr{
-    width: 70%;
-    display: flex;
-    flex-direction: column;
+@media screen and (max-width: 425px) {
+  .modifyNav div:after, .modifyNav div:before { 
+    display: none;
+}}
+//-----//-----//-----//-----//-----
+//-----Container-----
+//-----//-----//-----//-----//-----
+.content {
+  width: min(100%, 945px);
+  height: max(calc(100vh - 174px), 100%);
+  margin: auto;
+  padding: 20px 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .section {
     margin: auto;
-  
-}
-.open{
-   
-    & * {
-     margin: 10px;
-     padding-left: 20px;
-    }
-}
-button{
-    margin-left: 15px;
-    margin-top: -2px;
-}
-.buttonModify{
-    font-size: var(--fontSizeS);
-    width: 250px;
-    text-transform: none;
-}
-
-
-select{
-    margin-left: 15px;
-}
-
- p{
-    margin-top: 20px;
-    margin-left: 20px;
-    
-} 
-
-.Turns{
+    width: min(calc(100% - 20px), 905px);
+    height: 52px;
     display: flex;
-    & > div {
-        align-items: center;
-     min-width:  max-content;
-
-    }
-}
-
-.turnbotton{
-    & * { padding-right: 15px;}
-}
-
-.imagencerrado{
-    
-    display:flex;
     align-items: center;
-    justify-content: center;
-}
-
-.close
-{
-    height: 400px;
-    padding-top: 20px;
-    opacity: 1!important;
-}
-
-
-input{
-    margin-left: 20px;
-    margin-top: 20px;
-}
-.form1{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    
-
-}
-
-select{
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-.button{
-    width: 87%;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 40px;
-
-}
-  .caution{
-    border:var(--secundaryColorContrast) solid 2px;
-    background-color: lightgrey;
-  }
-  .caution::placeholder{
-    color:var(--secundaryColorContrast);
-
-  }
-  
-
-  .encolumna{
-      display:flex;
+    justify-content: space-between;
+    & > .left, & > .right {
+      display: flex;
+    }
+    & > .left {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px 0 10px;
+      min-width: 180px;
+      cursor: default;
+    }
+    & > .right {
+      width: 100%;
+      max-width: 725px;
+      justify-content: space-around;
+      & > .selects, & > .button {
+        display: flex;
+        align-items: center;
+        padding: 0 10px 0 10px;
+      }
+      & > .selects {
+        min-width: 450px;
+        justify-content: flex-end;
+        & > div {
+          margin-right: 10px;
+          cursor: default;
+        }
+        & > .time {
+          width: 190px;
+        }
+        & > .a {
+          margin-left: 10px;
+        }
+        & > select {
+          padding-left: 5%;
+      }}
+      & > .button {
+        & > button {
+          font-size: var(--fontSizeS);
+          width: max-content;
+          padding: 0 5px 0 5px;
+          margin: 0;
+}}}}}
+@media screen and (max-width: 866px) {
+  .content {
+    width: 680px;
+    .section {
       flex-direction: column;
-
-  }
-
-  .dosendos{
-      display:flex;
+      height: max-content;
+      & > .left, & > .right {
+        flex-direction: row;
+        height: 45px;
+      }
+      & > .left {
+        align-self: flex-start;
+        background: var(--secundaryColor);
+        border-bottom-right-radius: var(--borderRadiusL);
+      }
+      & > .right {
+        align-self: flex-end;
+        & > .selects, & > .button {
+        }
+        & > .selects {
+          & > div {
+          }
+          & > .time {
+          }
+          & > .a {
+          }
+          & > select {
+        }}
+        & > .button {
+          & > button {
+  }}}}}}
+@media screen and (max-width: 670px) {
+  .content {
+    width: 436px;
+    .section {
       flex-direction: row;
-      justify-content: space-evenly;
+      height: max-content;
+      & > .left, & > .right {
+        height: 45px;
+        align-self: auto;
+      }
+      & > .left {
+        background: wheat;
+        align-self: flex-start;
+        border-bottom-right-radius: var(--borderRadiusL);
+        z-index: 1;
+      }
+      & > .right {
+        flex-direction: row-reverse;
+        width: min-content;
+        background-color: aqua;
+        height: max-content;
+        margin-left: -190px;
+        border-bottom: 1px solid var(--secundaryColorPush);
+        & > .selects, & > .button {
+        }
+        & > .selects {
+          flex-direction: column;
+          min-width: min-content;
+          // background-color: yellowgreen;
+          & > div {
+          }
+          & > .time {
+          }
+          & > .a {
+          }
+          & > select {
+        }}
+        & > .button {
+          z-index: 1;
+          background-color: yellow;
+          height: min-content;
+          padding-bottom: 5px;
+          padding-left: 12.5px;
+          padding-right: 7.5px;
+          align-self: flex-end;
+          & > button {
+  }}}}}
+  .content {
+    .section :last-child {
+      & > .right {
+        border: none;
+}}}}
+//-----//-----//-----//-----//-----
+//-----Especial class-----
+//-----//-----//-----//-----//-----
+.caution{
+  border:var(--secundaryColorContrast) solid 1px;
+}
+.caution::placeholder{
+  color:var(--secundaryColorContrast);
+}
+.close {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  opacity: 1;
+}
+.closeImage {
+    height: 156px;
+}
+@media screen and (max-width: 866px) {
+  .close {
   }
-
-  
+  .closeImage {
+      height: 270px;
+  }
+}
+.hide {
+  display: none !important;
+}
+.disabled {
+  color: var(--secundaryColorPush);
+  border-color: var(--secundaryColorPush);
+}
+.header {
+  border-bottom: 1px solid var(--secundaryColorPush);
+  .left {
+    background: transparent !important;
+    border: none !important;
+  }
+}
+//-----//-----//-----//-----//-----
+//-----Buttons-----
+//-----//-----//-----//-----//-----
+.pass {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--primaryColorOpposite);
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding-right: 50px;
+  width: 100%;
+  height: 52px;
+}
+@media screen and (max-width: 768px) {
+  .pass {
+    justify-content: center;
+    padding: 0;
+    & > button {
+      width: 120px;
+}}}

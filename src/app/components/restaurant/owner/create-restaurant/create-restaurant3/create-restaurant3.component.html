@@ -4,674 +4,77 @@
     <div id="horarios"><a>Horas</a></div>
 </div>
 
+<div class="content">
 
-<div class="containerr">
+    <mat-tab-group class="lctl-mat-tab-group"><ng-container *ngFor="let str of structure">
+        
+        <mat-tab label="{{str.day}}">
 
-<div class="days">
-      <mat-tab-group>
-        <mat-tab class="lunes" label="Lunes">
-           
-            <div class="lctl-leftElements open">
-            <label id="labell">Abierto</label> 
-            <mat-slide-toggle class="lctl-ng-matSlideToggle" checked="true" #todoeldialunes (change)="abiertoCerradoDiaLunes($event,'Mon',todoeldialunes,desayunol,almuerzol,cenal)"></mat-slide-toggle> 
-            </div>
-            <div class="lctl-br separador"></div>
-            <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/close.svg"></div></div>
-            <div id="ellunes" class="turns" >
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Desayunos</label>
-                    
-                    <mat-slide-toggle #desayunol (change)="desayunoLunes($event,'Mon','Desayuno')"></mat-slide-toggle> 
-                    </div>
-                    
-                    <div class="lctl-rightElements" (change)="checkit(horainiciold,horafinalld)">
-                    
-                               
-                    <label id="labeldl" style="opacity:0.5">Horario de desayuno</label>
-                    
-                        <select disabled id="input1dl" class="lctl-input-m" name="" #horainiciold required (change)="cambiarInput(horainiciold,horafinalld)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index; let last = last" [disabled]="last" >{{desayunos[i].horario}}</option>
+            <div class="section header">
 
+                <div class="left">
+                    <div [ngClass]="{'hide': !openClose.checked}">Abierto</div>
+                    <div [ngClass]="{'hide': openClose.checked}">Cerrado</div>
+                    <mat-slide-toggle class="lctl-ng-matSlideToggle" checked="true" #openClose (change)="openCloseDay($event,str.day,openClose,des,al,cen)"></mat-slide-toggle> 
+                </div>
+                <!-- Estos elementos son sólo para diseño -->
+                <div class="right" style="display: none;">
+                    <div class="selects">
+                        <div class="time">Horario de desayuno</div>
+                        <select class="lctl-cellSelect-large">
                         </select>
-                        <p id="adl" style="opacity:0.5">a</p>
-                        <select disabled id="input2dl" class="lctl-input-m" name="" #horafinalld required (change)="cambiarInput(horainiciold,horafinalld)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let z = index; let first = first" [disabled]="first" >{{desayunos[z].horario}}</option>
-                        </select>    
-                       <button type="submit" disabled style="opacity:0.5" id="butondl" class="buttonadd lctl-button-m buttonModify" 
-                       #botondl (click)="setTimes(horainiciold, horafinalld,'Mon','Desayuno',botonshiftsdl)" >
-                       Guardar horarios y editar turnos</button>
-                        <button type="submit" style="display:none" id="butondl" (click)="turnos('Desayuno','Mon')"
-                         #botonshiftsdl>Turnos</button>
-                        
+                        <div class="a">a</div>
+                        <select class="lctl-cellSelect-large">
+                        </select>
                     </div>
+                    <div class="button">
+                        <button class="lctl-warnButtonOpposite-s">
+                            Guardar y crear turnos
+                        </button>
+                    </div>
+                </div>
+                <!-- Fin -->
+
+            </div>
+
+            <div class="close" [ngClass]="{'hide': openClose.checked}"><img class="closeImage" src="assets/close.svg"></div>
                
-                </div>
-
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Almuerzo</label>
-                    <mat-slide-toggle #almuerzol (change)="comidaLunes($event,'Mon','Almuerzo')"></mat-slide-toggle> 
-                    </div>
-                    <div class="lctl-rightElements" (change)="checkit(horainiciola, horafinalla)">
-                        <label id="labelal" style="opacity:0.5">Horario de Almuerzo</label>
-                        <select disabled id="input1al" class="lctl-input-m" name="" #horainiciola required (change)="cambiarInput(horainiciola,horafinalla)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index; let last=last" [disabled]="last">{{almuerzos[i].horario}}</option>
-                            </select>
-                        <p id="aal" style="opacity:0.5">a</p>
-                        <select disabled id="input2al" class="lctl-input-m" name="" #horafinalla required (change)="cambiarInput(horainiciola,horafinalla)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butonal" class="buttonadd lctl-button-m buttonModify" 
-                        (click)="setTimes(horainiciola,horafinalla,'Mon','Almuerzo',botonshiftsal)" >Guardar horarios y editar turnos</button>
-                       <button type="submit" style="display:none"  (click)="turnos('Almuerzo','Mon')"
-                         #botonshiftsal>Turnos</button>
-                    </div>
-                    </div>
-
-                    <div class="Turns">
-
-                        <div class="lctl-centerElements turnbotton">
-                        <label >Cena</label>
-                        <mat-slide-toggle #cenal (change)="cenaLunes($event,'Mon','Cena')"></mat-slide-toggle> 
-                        </div>
-    
-                        <div class="lctl-rightElements" (change)="checkit(horainiciolc,horafinallc)">
-                            
-                            <label id="labelcl" style="opacity:0.5">Horario de Cena</label>
-                            <select disabled id="input1cl" class="lctl-input-m" name="" #horainiciolc
-                            required change="cambiarInput(horainiciolc,horafinallc)">
-                                <option selected="true" disabled="disabled">Elige hora</option>
-                                    <option *ngFor="let cena of cenas;let i = index;let last= last" [disabled]="last">{{cenas[i].horario}}</option>
-                                </select>
-                            <p id="acl" style="opacity:0.5">a</p>
-                            <select disabled id="input2cl" class="lctl-input-m" name="" #horafinallc
-                            required change="cambiarInput(horainiciolc,horafinallc)">
-                                <option selected="true" disabled="disabled">Elige hora</option>
-                                <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
-                            </select>
-                           <button disabled style="opacity:0.5" id="butoncl" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainiciolc,horafinallc,'Mon','Cena',botonshiftscl)" >Guardar horarios y editar turnos</button>
-                             <button type="submit" style="display:none"  (click)="turnos('Cena','Mon')"
-                             #botonshiftscl>Turnos</button> 
-                        </div>
-                        </div>
-
-                </div>
+            <div class="section" [ngClass]="{'hide': !openClose.checked}" *ngFor="let day of days">
             
-        </mat-tab>
+                <div class="left">
+                    <div style="transform: translateX(-2px)">{{day.name}}</div>
+                    <mat-slide-toggle #des (change)="turn($event,str.dayI,day.turn,input1,input2,button)"></mat-slide-toggle> 
+                </div>
+                
+                <div class="right" (change)="checkIt(input1,input2)">
+                    <div class="selects">
+                        <div class="time" [ngClass]="{'disabled': input1.disabled}">Horario de {{day.name2}}</div>
+                        <select disabled #input1 class="lctl-cellSelect-large" name="" required (change)="changeInput(input1,input2)">
+                            <option selected="true" disabled="disabled">Inicio</option>
+                            <option *ngFor="let horario of day.horarios; let last = last" [disabled]="last">{{horario.horario}}</option>
+                        </select>
+                        <div class="a" [ngClass]="{'disabled': input1.disabled}">a</div>
+                        <select disabled #input2 class="lctl-cellSelect-large" name="" required (change)="changeInput(input1,input2)">
+                            <option selected="true" disabled="disabled">Fin</option>
+                            <option *ngFor="let horario of day.horarios; let first = first" [disabled]="first">{{horario.horario}}</option>
+                        </select>
+                    </div>
+                    <div class="button">
+                        <button type="submit" disabled class="lctl-warnButtonOpposite-s" [ngClass]="{'disabled': input1.disabled}"
+                            (click)="setTimes(input1,input2,str.dayI,'Desayuno')" #button>
+                            Guardar y crear turnos
+                        </button>
+                    </div>
+                </div>
 
-        <!-- MARTES -->
-
-        <mat-tab class="lunes" label="Martes">
-           
-            <div class="lctl-leftElements open">
-            <label id="labelm">Abierto</label> 
-            <mat-slide-toggle checked="true" #todoeldiamartes (change)="abiertoCerradoDiaMartes($event,'Tue',todoeldiamartes,desayunom,almuerzom,cenam)"></mat-slide-toggle> 
             </div>
-
-            <div class="lctl-br separador"></div>
-            <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/close.svg"></div></div>
-            <div id="elmartes" class="turns">
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Desayunos</label>
-                    <mat-slide-toggle #desayunom (change)="desayunoMartes($event,'Tue','Desayuno')"></mat-slide-toggle> 
-                    </div>
-
-                    <div class="lctl-rightElements" (change)="checkit(horainiciomd, horafinalmd)">
-                        <label id="labeldm" style="opacity:0.5">Horario de desayuno</label>
-                        <select disabled id="input1dm" class="lctl-input-m" name="" #horainiciomd
-                         required (change)="cambiarInput(horainiciomd, horafinalmd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let last= last" [disabled]="last">{{desayunos[i].horario}}</option>
-                        </select>
-                        <p id="adm" style="opacity:0.5">a</p>
-                        <select disabled id="input2dm" class="lctl-input-m" name="" #horafinalmd
-                         required (change)="cambiarInput(horainiciomd, horafinalmd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butondm" 
-                       class="buttonadd lctl-button-m buttonModify" 
-                    (click)="setTimes(horainiciomd,horafinalmd,'Tue','Desayuno',botonshiftsdm)" >Guardar horarios y editar turnos</button>
-                       <button type="submit" style="display:none" (click)="turnos('Desayuno','Tue')" #botonshiftsdm>Turnos</button>
-                    </div>
-                </div>
-
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Almuerzo</label>
-                    <mat-slide-toggle #almuerzom (change)="comidaMartes($event,'Tue','Almuerzo')"></mat-slide-toggle> 
-                    </div>
-                    <div class="lctl-rightElements" (change)="checkit(horainicioma,horafinalma)">
-                        <label id="labelam" style="opacity:0.5">Horario de Almuerzo</label>
-                        <select disabled id="input1am" class="lctl-input-m" name="" #horainicioma required 
-                        (change)="cambiarInput(horainicioma,horafinalma)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let last= last" [disabled]="last">{{almuerzos[i].horario}}</option>
-                            </select>
-                        <p id="aam" style="opacity:0.5">a</p>
-                        <select disabled id="input2am" class="lctl-input-m" name="" #horafinalma
-                        required  
-                        (change)="cambiarInput(horainicioma,horafinalma)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butonam" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainicioma,horafinalma,'Tue','Almuerzo',botonshiftsam)" >Guardar horarios y editar turnos</button>
-                       <button type="submit" style="display:none" (click)="turnos('Almuerzo','Tue')" #botonshiftsam>Turnos</button>
-
-                    </div>
-                    </div>
-
-                    <div class="Turns">
-
-                        <div class="lctl-centerElements turnbotton">
-                        <label >Cena</label>
-                        <mat-slide-toggle #cenam (change)="cenaMartes($event,'Tue','Cena')"></mat-slide-toggle> 
-                        </div>
-    
-                        <div class="lctl-rightElements" (change)="checkit(horainiciomc,horafinalmc)">
-                            
-                            <label id="labelcm" style="opacity:0.5">Horario de Cena</label>
-                            <select disabled id="input1cm" class="lctl-input-m" name="" #horainiciomc
-                            required (change)="cambiarInput(horainiciomc,horafinalmc)">
-                                <option selected="true" disabled="disabled">Elige hora</option>
-                                    <option *ngFor="let cena of cenas;let i = index;let last= last" [disabled]="last">{{cenas[i].horario}}</option>
-                                </select>
-                            <p id="acm" style="opacity:0.5">a</p>
-                            <select disabled id="input2cm" class="lctl-input-m" name="" #horafinalmc
-                            required (change)="cambiarInput(horainiciomc,horafinalmc)">
-                                <option selected="true" disabled="disabled">Elige hora</option>
-                                <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
-                            </select>
-                           <button disabled style="opacity:0.5" id="butoncm" class="buttonadd lctl-button-m buttonModify"
-                            (click)="setTimes(horainiciomc,horafinalmc,'Tue','Cena',botonshiftscm)" >Guardar horarios y editar turnos</button>
-                            <button type="submit" style="display:none" (click)="turnos('Cena','Tue')" #botonshiftscm>Turnos</button>
-
-                        </div>
-                        </div>
-
-                </div>
-            
+                    
         </mat-tab>
-
-        <!-- MIERCOLES -->
-
-        <mat-tab label="Miercoles">
-           
-            <div class="lctl-leftElements open">
-            <label id="labelx">Abierto</label> 
-            <mat-slide-toggle  checked="true" #todoeldiamiercoles (change)="abiertoCerradoDiaMiercoles($event,'Wed',todoeldiamiercoles,desayunox,almuerzox,cenax)"></mat-slide-toggle> 
-            </div>
-
-            <div class="lctl-br separador"></div>
-            <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/close.svg"></div></div>
-            <div id="elmiercoles" class="turns">
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Desayunos</label>
-                    <mat-slide-toggle #desayunox (change)="desayunoMiercoles($event,'Wed','Desayuno')"></mat-slide-toggle> 
-                    </div>
-
-                    <div class="lctl-rightElements" (change)="checkit(horainicioxd,horafinalxd)">
-                        <label id="labeldx" style="opacity:0.5">Horario de desayuno</label>
-                        <select disabled id="input1dx" class="lctl-input-m" name="" #horainicioxd
-                        required (change)="cambiarInput(horainicioxd,horafinalxd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let last= last" [disabled]="last">{{desayunos[i].horario}}</option>
-                        </select>
-                        <p id="adx" style="opacity:0.5">a</p>
-                        <select disabled id="input2dx" class="lctl-input-m" name="" #horafinalxd
-                        required (change)="cambiarInput(horainicioxd,horafinalxd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butondx" class="buttonadd lctl-button-m buttonModify" 
-                        (click)="setTimes(horainicioxd,horafinalxd,'Wed','Desayuno',botonshiftsdx)" >Guardar horarios y editar turnos</button>
-                        <button type="submit" style="display:none" (click)="turnos('Desayuno','Wed')" #botonshiftsdx>Turnos</button>
-
-                    </div>
-                </div>
-
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Almuerzo</label>
-                    <mat-slide-toggle #almuerzox (change)="comidaMiercoles($event,'Wed','Almuerzo')"></mat-slide-toggle> 
-                    </div>
-                    <div class="lctl-rightElements" (change)="checkit(horainicioxa,horafinalxa)">
-                        <label id="labelax" style="opacity:0.5">Horario de Almuerzo</label>
-                        <select disabled id="input1ax" class="lctl-input-m" name="" #horainicioxa
-                        required (change)="cambiarInput(horainicioxa,horafinalxa)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let last= last" [disabled]="last">{{almuerzos[i].horario}}</option>
-                            </select>
-                        <p id="aax" style="opacity:0.5">a</p>
-                        <select disabled id="input2ax" class="lctl-input-m" name="" #horafinalxa
-                        required (change)="cambiarInput(horainicioxa,horafinalxa)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butonax" class="buttonadd lctl-button-m buttonModify"
-                        (click)="setTimes(horainicioxa,horafinalxa,'Wed','Almuerzo',botonshiftsax)" >Guardar horarios y editar turnos</button>
-                        <button type="submit" style="display:none" (click)="turnos('Almuerzo','Wed')" #botonshiftsax>Turnos</button>
-
-                    </div>
-                    </div>
-
-                    <div class="Turns">
-
-                        <div class="lctl-centerElements turnbotton">
-                        <label >Cena</label>
-                        <mat-slide-toggle #cenax (change)="cenaMiercoles($event,'Wed','Cena')"></mat-slide-toggle> 
-                        </div>
     
-                        <div class="lctl-rightElements" (change)="checkit(horainicioxc,horafinalxc)">
-                            
-                            <label id="labelcx" style="opacity:0.5">Horario de Cena</label>
-                            <select disabled id="input1cx" class="lctl-input-m" name="" #horainicioxc
-                            required (change)="cambiarInput(horainicioxc,horafinalxc)">
-                                    <option selected="true" disabled="disabled">Elige hora</option>
-                                    <option *ngFor="let cena of cenas;let i = index;let last= last" [disabled]="last">{{cenas[i].horario}}</option>
-                                </select>
-                            <p id="acx" style="opacity:0.5">a</p>
-                            <select disabled id="input2cx" class="lctl-input-m" name="" #horafinalxc
-                            required (change)="cambiarInput(horainicioxc,horafinalxc)">
-                                <option selected="true" disabled="disabled">Elige hora</option>
-                                <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
-                            </select>
-                           <button disabled style="opacity:0.5" id="butoncx" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainicioxc,horafinalxc,'Wed','Cena',botonshiftscx)" >Guardar horarios y editar turnos</button>
-                            <button type="submit" style="display:none" (click)="turnos('Cena','Wed')" #botonshiftscx>Turnos</button>
+    </ng-container></mat-tab-group>
 
-                        </div>
-                        </div>
-
-                </div>
-            
-        </mat-tab>
-        <!-- JUEVES -->
-
-        <mat-tab label="Jueves">
-           
-            <div class="lctl-leftElements open">
-            <label id="labelj">Abierto</label> 
-            <mat-slide-toggle checked="true" #todoeldiajueves (change)="abiertoCerradoDiaJueves($event,'Thu',todoeldiajueves,desayunoj,almuerzoj,cenaj)"></mat-slide-toggle> 
-            </div>
-
-            <div class="lctl-br separador"></div>
-            <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/close.svg"></div></div>
-            <div id="eljueves" class="turns">
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Desayunos</label>
-                    <mat-slide-toggle #desayunoj (change)="desayunoJueves($event,'Thu','Desayuno')"></mat-slide-toggle> 
-                    </div>
-
-                    <div class="lctl-rightElements" (change)="checkit(horainiciojd,horafinaljd)">
-                        <label id="labeldj" style="opacity:0.5">Horario de desayuno</label>
-                        <select disabled id="input1dj" class="lctl-input-m" name="" #horainiciojd
-                        required (change)="cambiarInput(horainiciojd,horafinaljd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let last= last" [disabled]="last">{{desayunos[i].horario}}</option>
-                        </select>
-                        <p id="adj" style="opacity:0.5">a</p>
-                        <select disabled id="input2dj" class="lctl-input-m" name="" #horafinaljd
-                        required (change)="cambiarInput(horainiciojd,horafinaljd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butondj" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainiciojd,horafinaljd,'Thu','Desayuno',botonshiftsdj)" >Guardar horarios y editar turnos</button>
-                         <button type="submit" style="display:none" (click)="turnos('Desayuno','Thu')" #botonshiftsdj>Turnos</button>
-
-                    </div>
-                </div>
-
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Almuerzo</label>
-                    <mat-slide-toggle #almuerzoj (change)="comidaJueves($event,'Thu','Almuerzo')"></mat-slide-toggle> 
-                    </div>
-                    <div class="lctl-rightElements" (change)="checkit(horainicioja,horafinalja)">
-                        <label id="labelaj" style="opacity:0.5">Horario de Almuerzo</label>
-                        <select disabled id="input1aj" class="lctl-input-m" name="" #horainicioja
-                        required (change)="cambiarInput(horainicioja,horafinalja)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let last= last" [disabled]="last">{{almuerzos[i].horario}}</option>
-                            </select>
-                        <p id="aaj" style="opacity:0.5">a</p>
-                        <select disabled id="input2aj" class="lctl-input-m" name="" #horafinalja
-                        required (change)="cambiarInput(horainicioja,horafinalja)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butonaj" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainicioja,horafinalja,'Thu','Almuerzo',botonshiftsaj)" >Guardar horarios y editar turnos</button>
-                         <button type="submit" style="display:none" (click)="turnos('Almuerzo','Thu')" #botonshiftsaj>Turnos</button>
-
-                    </div>
-                    </div>
-
-                    <div class="Turns">
-
-                        <div class="lctl-centerElements turnbotton">
-                        <label >Cena</label>
-                        <mat-slide-toggle #cenaj (change)="cenaJueves($event,'Thu','Cena')"></mat-slide-toggle> 
-                        </div>
-    
-                        <div class="lctl-rightElements" (change)="checkit(horainiciojc,horafinaljc)">
-                            
-                            <label id="labelcj" style="opacity:0.5">Horario de Cena</label>
-                            <select disabled id="input1cj" class="lctl-input-m" name="" #horainiciojc
-                            required (change)="cambiarInput(horainiciojc,horafinaljc)">
-                                    <option selected="true" disabled="disabled">Elige hora</option>
-                                    <option *ngFor="let cena of cenas;let i = index;let last= last" [disabled]="last">{{cenas[i].horario}}</option>
-                                </select>
-                            <p id="acj" style="opacity:0.5">a</p>
-                            <select disabled id="input2cj" class="lctl-input-m" name="" #horafinaljc
-                            required (change)="cambiarInput(horainiciojc,horafinaljc)">
-                                <option selected="true" disabled="disabled">Elige hora</option>
-                                <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
-                            </select>
-                           <button disabled style="opacity:0.5" id="butoncj" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainiciojc,horafinaljc,'Thu','Cena',botonshiftscj)" >Guardar horarios y editar turnos</button>
-                            <button type="submit" style="display:none" (click)="turnos('Cena','Thu')" #botonshiftscj>Turnos</button>
-
-                        </div>
-                        </div>
-
-                </div>
-            
-        </mat-tab>
-
-        <!-- VIERNES -->
-
-                <mat-tab label="Viernes">
-           
-            <div class="lctl-leftElements open">
-            <label id="labelv">Abierto</label> 
-            <mat-slide-toggle checked="true" #todoeldiaviernes (change)="abiertoCerradoDiaViernes($event,'Fri',todoeldiaviernes,desayunov,almuerzov,cenav)"></mat-slide-toggle> 
-            </div>
-
-            <div class="lctl-br separador"></div>
-            <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/close.svg"></div></div>
-            <div id="elviernes" class="turns">
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Desayunos</label>
-                    <mat-slide-toggle #desayunov (change)="desayunoViernes($event,'Fri','Desayuno')"></mat-slide-toggle> 
-                    </div>
-
-                    <div class="lctl-rightElements" (change)="checkit(horainiciovd,horafinalvd)">
-                        <label id="labeldv" style="opacity:0.5">Horario de desayuno</label>
-                        <select disabled id="input1dv" class="lctl-input-m" name="" #horainiciovd
-                        required (change)="cambiarInput(horainiciovd,horafinalvd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let last= last" [disabled]="last">{{desayunos[i].horario}}</option>
-                        </select>
-                        <p id="adv" style="opacity:0.5">a</p>
-                        <select disabled id="input2dv" class="lctl-input-m" name="" #horafinalvd
-                        required (change)="cambiarInput(horainiciovd,horafinalvd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butondv" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainiciovd,horafinalvd,'Fri','Desayuno',botonshiftsdv)" >Guardar horarios y editar turnos</button>
-                         <button type="submit" style="display:none" (click)="turnos('Desayuno','Fri')" #botonshiftsdv>Turnos</button>
-
-                    </div>
-                </div>
-
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Almuerzo</label>
-                    <mat-slide-toggle #almuerzov (change)="comidaViernes($event,'Fri','Almuerzo')"></mat-slide-toggle> 
-                    </div>
-                    <div class="lctl-rightElements" (change)="checkit(horainiciova,horafinalva)">
-                        <label id="labelav" style="opacity:0.5">Horario de Almuerzo</label>
-                        <select disabled id="input1av" class="lctl-input-m" name="" #horainiciova
-                        required (change)="cambiarInput(horainiciova,horafinalva)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let last= last" [disabled]="last">{{almuerzos[i].horario}}</option>
-                            </select>
-                        <p id="aav" style="opacity:0.5">a</p>
-                        <select disabled id="input2av" class="lctl-input-m" name="" #horafinalva
-                        required (change)="cambiarInput(horainiciova,horafinalva)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butonav" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainiciova,horafinalva,'Fri','Almuerzo',botonshiftsav)" >Guardar horarios y editar turnos</button>
-                         <button type="submit" style="display:none" (click)="turnos('Almuerzo','Fri')" #botonshiftsav>Turnos</button>
-
-                    </div>
-                    </div>
-
-                    <div class="Turns">
-
-                        <div class="lctl-centerElements turnbotton">
-                        <label >Cena</label>
-                        <mat-slide-toggle #cenav (change)="cenaViernes($event,'Fri','Cena')"></mat-slide-toggle> 
-                        </div>
-    
-                        <div class="lctl-rightElements" (change)="checkit(horainiciovc,horafinalvc)">
-                            
-                            <label id="labelcv" style="opacity:0.5">Horario de Cena</label>
-                            <select disabled id="input1cv" class="lctl-input-m" name="" #horainiciovc
-                            required (change)="cambiarInput(horainiciovc,horafinalvc)">
-                                    <option selected="true" disabled="disabled">Elige hora</option>
-                                    <option *ngFor="let cena of cenas;let i = index;let last= last" [disabled]="last">{{cenas[i].horario}}</option>
-                                </select>
-                            <p id="acv" style="opacity:0.5">a</p>
-                            <select disabled id="input2cv" class="lctl-input-m" name="" #horafinalvc
-                            required (change)="cambiarInput(horainiciovc,horafinalvc)">
-                                <option selected="true" disabled="disabled">Elige hora</option>
-                                <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
-                            </select>
-                           <button disabled style="opacity:0.5" id="butoncv" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainiciovc,horafinalvc,'Fri','Cena',botonshiftscv)" >Guardar horarios y editar turnos</button>
-                         <button type="submit" style="display:none" (click)="turnos('Cena','Fri')" #botonshiftscv>Turnos</button>
-
-                        </div>
-                        </div>
-
-                </div>
-            
-        </mat-tab>
- <!-- SABADO -->
- <mat-tab label="Sábado">
-           
-    <div class="lctl-leftElements open">
-    <label id="labels">Abierto</label> 
-    <mat-slide-toggle checked="true" #todoeldiasabado (change)="abiertoCerradoDiaSabado($event,'Sat',todoeldiasabado,desayunosa,almuerzosa,cenasa)"></mat-slide-toggle> 
+    <div class="pass">
+        <button class="lctl-button-m " routerLink="/restaurants-list">Finalizar</button>
     </div>
 
-    <div class="lctl-br separador"></div>
-    <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/close.svg"></div></div>
-    <div id="elsabado" class="turns">
-        <div class="Turns">
-            <div class="lctl-centerElements turnbotton">
-            <label >Desayunos</label>
-            <mat-slide-toggle #desayunosa (change)="desayunoSabado($event,'Sat','Desayuno')"></mat-slide-toggle> 
-            </div>
-
-            <div class="lctl-rightElements" (change)="checkit(horainiciosd,horafinalsd)">
-                <label id="labelds" style="opacity:0.5">Horario de desayuno</label>
-                <select disabled id="input1ds" class="lctl-input-m" name="" #horainiciosd
-                required (change)="cambiarInput(horainiciosd,horafinalsd)">
-                    <option selected="true" disabled="disabled">Elige hora</option>
-                    <option *ngFor="let desayuno of desayunos;let i = index;let last= last" [disabled]="last">{{desayunos[i].horario}}</option>
-                </select>
-                <p id="ads" style="opacity:0.5">a</p>
-                <select disabled id="input2ds" class="lctl-input-m" name="" #horafinalsd
-                required (change)="cambiarInput(horainiciosd,horafinalsd)">
-                    <option selected="true" disabled="disabled">Elige hora</option>
-                    <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
-                </select>
-               <button disabled style="opacity:0.5" id="butonds" class="buttonadd lctl-button-m buttonModify"
-                 (click)="setTimes(horainiciosd,horafinalsd,'Sat','Desayuno',botonshiftsds)" >Guardar horarios y editar turnos</button>
-                 <button type="submit" style="display:none" (click)="turnos('Desayuno','Sat')" #botonshiftsds>Turnos</button>
-
-            </div>
-        </div>
-
-        <div class="Turns">
-            <div class="lctl-centerElements turnbotton">
-            <label >Almuerzo</label>
-            <mat-slide-toggle #almuerzosa (change)="comidaSabado($event,'Sat','Almuerzo')"></mat-slide-toggle> 
-            </div>
-            <div class="lctl-rightElements" (change)="checkit(horainiciosa,horafinalsa)">
-                <label id="labelas" style="opacity:0.5">Horario de Almuerzo</label>
-                <select disabled id="input1as" class="lctl-input-m" name="" #horainiciosa
-                required (change)="cambiarInput(horainiciosa,horafinalsa)">
-                    <option selected="true" disabled="disabled">Elige hora</option>
-                    <option *ngFor="let almuerzo of almuerzos;let i = index;let last= last" [disabled]="last">{{almuerzos[i].horario}}</option>
-                    </select>
-                <p id="aas" style="opacity:0.5">a</p>
-                <select disabled id="input2as" class="lctl-input-m" name="" #horafinalsa
-                required (change)="cambiarInput(horainiciosa,horafinalsa)">
-                    <option selected="true" disabled="disabled">Elige hora</option>
-                    <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
-                </select>
-               <button disabled style="opacity:0.5" id="butonas" class="buttonadd lctl-button-m buttonModify"
-                 (click)="setTimes(horainiciosa,horafinalsa,'Sat','Almuerzo',botonshiftsas)" >Guardar horarios y editar turnos</button>
-                 <button type="submit" style="display:none" (click)="turnos('Almuerzo','Sat')" #botonshiftsas>Turnos</button>
-
-            </div>
-            </div>
-
-            <div class="Turns">
-
-                <div class="lctl-centerElements turnbotton">
-                <label >Cena</label>
-                <mat-slide-toggle #cenasa (change)="cenaSabado($event,'Sat','Cena')"></mat-slide-toggle> 
-                </div>
-
-                <div class="lctl-rightElements" (change)="checkit(horainiciosc,horafinalsc)">
-                    
-                    <label id="labelcs" style="opacity:0.5">Horario de Cena</label>
-                    <select disabled id="input1cs" class="lctl-input-m" name="" #horainiciosc
-                    required (change)="cambiarInput(horainiciosc,horafinalsc)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let cena of cenas;let i = index;let last= last" [disabled]="last">{{cenas[i].horario}}</option>
-                        </select>
-                    <p id="acs" style="opacity:0.5">a</p>
-                    <select disabled id="input2cs" class="lctl-input-m" name="" #horafinalsc
-                    required (change)="cambiarInput(horainiciosc,horafinalsc)">
-                        <option selected="true" disabled="disabled">Elige hora</option>
-                        <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
-                    </select>
-                   <button disabled style="opacity:0.5" id="butoncs" class="buttonadd lctl-button-m buttonModify"
-                     (click)="setTimes(horainiciosc,horafinalsc,'Sat','Cena',botonshiftscs)" >Guardar horarios y editar turnos</button>
-                    <button type="submit" style="display:none" (click)="turnos('Cena','Sat')" #botonshiftscs>Turnos</button>
-
-                </div>
-                </div>
-
-        </div>
-    
-</mat-tab>
-        <!-- DOMINGO -->
-        <mat-tab label="Domingo">
-           
-            <div class="lctl-leftElements open">
-            <label id="labels">Abierto</label> 
-            <mat-slide-toggle checked="true" #todoeldiadomingo (change)="abiertoCerradoDiaDomingo($event,'Sun',todoeldiadomingo,desayunod,almuerzod,cenad)"></mat-slide-toggle> 
-            </div>
-        
-            <div class="lctl-br separador"></div>
-            <div id="cerrado" style="display:none" ><div class="imagencerrado"><img class="close" src="assets/close.svg"></div></div>
-            <div id="eldomingo" class="turns">
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Desayunos</label>
-                    <mat-slide-toggle #desayunod (change)="desayunoDomingo($event,'Sun','Desayuno')"></mat-slide-toggle> 
-                    </div>
-        
-                    <div class="lctl-rightElements" (change)="checkit(horainiciodd,horafinaldd)">
-                        <label id="labeldd" style="opacity:0.5">Horario de desayuno</label>
-                        <select disabled id="input1dd" class="lctl-input-m" name="" #horainiciodd
-                        required (change)="cambiarInput(horainiciodd,horafinaldd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let last= last" [disabled]="last">{{desayunos[i].horario}}</option>
-                        </select>
-                        <p id="add" style="opacity:0.5">a</p>
-                        <select disabled id="input2dd" class="lctl-input-m" name="" #horafinaldd
-                        required (change)="cambiarInput(horainiciodd,horafinaldd)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let desayuno of desayunos;let i = index;let first= first" [disabled]="first">{{desayunos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butondd" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainiciodd,horafinaldd,'Sun','Desayuno',botonshiftsdd)" >Guardar horarios y editar turnos</button>
-                        <button type="submit" style="display:none" (click)="turnos('Desayuno','Sun')" #botonshiftsdd>Turnos</button>
-
-                    </div>
-                </div>
-        
-                <div class="Turns">
-                    <div class="lctl-centerElements turnbotton">
-                    <label >Almuerzo</label>
-                    <mat-slide-toggle #almuerzod (change)="comidaDomingo($event,'Sun','Almuerzo')"></mat-slide-toggle> 
-                    </div>
-                    <div class="lctl-rightElements" (change)="checkit(horainicioda,horafinalda)">
-                        <label id="labelas" style="opacity:0.5">Horario de Almuerzo</label>
-                        <select disabled id="input1ad" class="lctl-input-m" name="" #horainicioda
-                        required (change)="cambiarInput(horainicioda,horafinalda)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let last= last" [disabled]="last">{{almuerzos[i].horario}}</option>
-                            </select>
-                        <p id="aad" style="opacity:0.5">a</p>
-                        <select disabled id="input2ad" class="lctl-input-m" name="" #horafinalda
-                        required (change)="cambiarInput(horainicioda,horafinalda)">
-                            <option selected="true" disabled="disabled">Elige hora</option>
-                            <option *ngFor="let almuerzo of almuerzos;let i = index;let first= first" [disabled]="first">{{almuerzos[i].horario}}</option>
-                        </select>
-                       <button disabled style="opacity:0.5" id="butonad" class="buttonadd lctl-button-m buttonModify"
-                         (click)="setTimes(horainicioda,horafinalda,'Sun','Almuerzo',botonshiftsad)" >Guardar horarios y editar turnos</button>
-                        <button type="submit" style="display:none" (click)="turnos('Almuerzo','Sun')" #botonshiftsad>Turnos</button>
-
-                    </div>
-                    </div>
-        
-                    <div class="Turns">
-        
-                        <div class="lctl-centerElements turnbotton">
-                        <label >Cena</label>
-                        <mat-slide-toggle #cenad (change)="cenaDomingo($event,'Sun','Cena')"></mat-slide-toggle> 
-                        </div>
-        
-                        <div class="lctl-rightElements" (change)="checkit(horainiciodc,horafinaldc)">
-                            
-                            <label id="labelcd" style="opacity:0.5">Horario de Cena</label>
-                            <select disabled id="input1cd" class="lctl-input-m" name="" #horainiciodc
-                            required (change)="cambiarInput(horainiciodc,horafinaldc)">
-                                    <option selected="true" disabled="disabled">Elige hora</option>
-                                    <option *ngFor="let cena of cenas;let i = index;let last= last" [disabled]="last">{{cenas[i].horario}}</option>
-                                </select>
-                            <p id="acd" style="opacity:0.5">a</p>
-                            <select disabled id="input2cd" class="lctl-input-m" name="" #horafinaldc
-                            required (change)="cambiarInput(horainiciodc,horafinaldc)">
-                                <option selected="true" disabled="disabled">Elige hora</option>
-                                <option *ngFor="let cena of cenas;let i = index;let first= first" [disabled]="first">{{cenas[i].horario}}</option>
-                            </select>
-                           <button disabled style="opacity:0.5" id="butoncd" class="buttonadd lctl-button-m buttonModify"
-                             (click)="setTimes(horainiciodc,horafinaldc,'Sun','Cena',botonshiftscd)" >Guardar horarios y editar turnos</button>
-                        <button type="submit" style="display:none" (click)="turnos('Cena','Sun')" #botonshiftscd>Turnos</button>
-
-                        </div>
-                        </div>
-        
-                </div>
-            
-        </mat-tab>
-      </mat-tab-group>
-
 </div>
-</div>
-    
