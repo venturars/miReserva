@@ -1579,7 +1579,6 @@ app.post("/registration", (req, res)=> {
                                     message.data = data1.insertId;
                                     res.send(message); 
 }});}});}}});});
-
 app.get("/registration", (req, res)=>{
     let params=[req.query.mail]
     let message={"control":null,
