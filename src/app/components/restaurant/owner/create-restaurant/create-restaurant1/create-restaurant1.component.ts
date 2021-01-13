@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ModalRegistroUsuarioComponent } from 'src/app/components/modals/modal-registro-usuario/modal-registro-usuario.component';
+import { ModalRegistroComponent } from 'src/app/components/modals/modal-registro/modal-registro.component';
 import { Restaurants } from 'src/app/models/restaurants';
 import { Restmailpassword } from 'src/app/models/restmailpassword';
 import { GeocodestreetService } from 'src/app/shared/geocodestreet.service';
@@ -107,7 +108,12 @@ export class CreateRestaurant1Component implements OnInit {
               })              
           })
         });
-        this.router.navigate(["/create-restaurant-2"]);
+        const dialogRef = this.dialog.open(ModalRegistroComponent);
+        dialogRef.componentInstance.mensaje="Restaurante creado, ahora configura sus mesas";
+    dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+    this.router.navigate(["/create-restaurant-2"]);})
+        
       }else {
         const dialogRef = this.dialog.open(ModalRegistroUsuarioComponent);
         dialogRef.componentInstance.email=restForm.value.mail;

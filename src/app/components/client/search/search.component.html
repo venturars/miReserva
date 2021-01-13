@@ -2,11 +2,11 @@
 
     <div class="search">
         <input type="text" class="searchLine" #searchLine id="searchline"
-            placeholder="What are you looking for?" (click)="hideOptions()">
+            placeholder="Busca tu restaurante" >
         <!-- <button class="filterButton" (click)="showOptions()">
            Filtros
         </button> -->
-        <button class="searchButton" (click)="hideOptions(); localSearch(searchLine)">
+        <button class="searchButton" (click)="localSearch(searchLine)">
         </button>
     </div>
             <div class="lctl-centerElements labelTeam">
@@ -37,7 +37,7 @@
         </div>
         <div class="panel"></div>
     </div>
-    <!-- <div id="hideOptions" (click)="hideOptions()"></div> -->
+    
     
     <div class="containFilters">
         <ng-container *ngIf="checked.length">

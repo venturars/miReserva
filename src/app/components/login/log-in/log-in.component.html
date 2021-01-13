@@ -29,10 +29,17 @@
 
   </div>
 
-  <div class="messageDiv">
-    <!-- Aquí Jesús  hay que meter un ng if para que el div solo se muestre si hay mensaje-->
+  <div class="messageDiv" *ngIf="(userForm.submitted && email.invalid)">
+      <div *ngIf="email.errors.required">Introduce un email</div>
+      <div *ngIf="email.errors.email">El email no tiene el formato correcto</div>
   </div>
+  
 
+  <div class="messageDiv" *ngIf="userForm.submitted && password.invalid">
+    <div *ngIf="password.errors.required">Introduce una contraseña</div>
+    <div *ngIf="password.errors.minlength">La contraseña debe tener 6 caracteres</div>
+  </div>
+  
   <div class="logIn">
     <button class="lctl-button-m">
       Iniciar sesión

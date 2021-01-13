@@ -79,7 +79,7 @@ form {
   background-position: 7px 0;
 }
 .caution{
-  border:var(--secundaryColorContrast) solid 2px;
+  border:var(--secundaryColorContrast) solid 1px;
   border-radius: var(--borderRadiusL);
 }
 .invalid-feedback-left{
@@ -105,6 +105,9 @@ form {
   }}
   .messageDiv {
     max-width: 580px;
+   
+    
+  
   }
   .logIn {
   }
