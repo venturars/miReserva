@@ -41,8 +41,8 @@
           </select>
           <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedTable">
               <option hidden selected>Mesa</option>
-                <ng-container *ngFor="let table of selectedTables; let i = index">
-                  <option value="{{selectedTables[i].table_id}}">Mesa {{selectedTables[i].table_name}} ({{selectedTables[i].table_min}} - {{selectedTables[i].table_max}}  PAX)</option>
+                <ng-container *ngFor="let tables of availableTables; let i = index">
+                  <option value="{{availableTables[i].table_id}}">Mesa {{availableTables[i].table_name}} ({{availableTables[i].table_min}} - {{availableTables[i].table_max}}  PAX)</option>
               </ng-container>
             </select>
           

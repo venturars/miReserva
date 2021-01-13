@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Calendar } from 'src/app/models/calendar';
@@ -5,7 +6,9 @@ import { Reservations } from 'src/app/models/reservations';
 import { ReservationsRestaurants } from 'src/app/models/reservations-restaurants';
 import { UserCustomer } from 'src/app/models/user-customer';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
+import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
+import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
 import { ServiceUserCustomerService } from 'src/app/shared/service-user-customer.service';
@@ -37,6 +40,10 @@ export class ReservationsRestaurantComponent implements OnInit {
   public dateOfBirth:string
   public reservation:Reservations
 
+  public restaurantId = 36
+  // public restaurantId:number
+
+
 // hace que el calendario no muestre un dia en particular
 // 0:domingo ..... 6:sabado
   myFilter = (d: Date | null): boolean => {
@@ -49,12 +56,21 @@ export class ReservationsRestaurantComponent implements OnInit {
               private customerService: ServiceUserCustomerService,
               private shiftsService: ServiceShiftsService,
               private timesService:ServiceTimesService,
-              private calendarService:ServiceCalendarService) {
-    this.reservationsConfirmed = []
-    this.reservationsRejected = []
-    this.reservationsCanceledByClient = []
+              private calendarService:ServiceCalendarService,
+              private loginService: ServiceLoginService,
+              private restaurantService: ServiceRestaurantService) {
 
-    this.reservationService.getReservationRestaurant(36).subscribe((data:any) =>{     
+                if(this.loginService.restaurants.restaurant_id != null){
+                  this.restaurantId = this.loginService.restaurants.restaurant_id
+                }else if(this.restaurantService.selectedRestaurantId != null){
+                  this.restaurantId =this.restaurantService.selectedRestaurantId
+                }
+
+                this.reservationsConfirmed = []
+                this.reservationsRejected = []
+                this.reservationsCanceledByClient = []
+
+    this.reservationService.getReservationRestaurant(this.restaurantId).subscribe((data:any) =>{     
     for(let i = 0; i<data.data.length;i++){
         
         if (data.data[i].status == "Reservada"){
@@ -63,24 +79,24 @@ export class ReservationsRestaurantComponent implements OnInit {
             
           this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
 
-          this.reservation ={reservation_id:data.data[i].reservation_id,
-            customer_id:data.data[i].customer_id,
-            restaurant_id:data.data[i].restaurant_id,
-            table_id:data.data[i].table_id,
-            pax:data.data[i].pax,
-            day_name:data.data[i].day_name,
-            day:data.data[i].day,
-            month:data.data[i].month,
-            year:data.data[i].year,
-            hour:data.data[i].hour,
-            shift_id:data.data[i].shift_id,
-            comments:data.data[i].comments,
-            status:data.data[i].status,
-            customer_name:data.data[i].customer_name,
-            customer_phone:data.data[i].customer_phone,
-            service:data4.data[0].service}
-          this.reservationsConfirmed.push(this.reservation)
-          
+          this.reservation = new Reservations(data.data[i].reservation_id,
+          data.data[i].customer_id,
+          data.data[i].restaurant_id,
+          data.data[i].table_id,
+          data.data[i].pax,
+          data.data[i].day_name,
+          data.data[i].day,
+          data.data[i].month,
+          data.data[i].year,
+          data.data[i].hour,
+          data.data[i].shift_id,
+          data.data[i].comments,
+          data.data[i].status,
+          data.data[i].customer_name,
+          data.data[i].customer_phone)
+          this.reservation.service = data4.data[0].service
+        this.reservationsConfirmed.push(this.reservation)
+
           }) 
           }) 
           
@@ -91,23 +107,24 @@ export class ReservationsRestaurantComponent implements OnInit {
             
         this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
   
-        this.reservation ={reservation_id:data.data[i].reservation_id,
-          customer_id:data.data[i].customer_id,
-          restaurant_id:data.data[i].restaurant_id,
-          table_id:data.data[i].table_id,
-          pax:data.data[i].pax,
-          day_name:data.data[i].day_name,
-          day:data.data[i].day,
-          month:data.data[i].month,
-          year:data.data[i].year,
-          hour:data.data[i].hour,
-          shift_id:data.data[i].shift_id,
-          comments:data.data[i].comments,
-          status:data.data[i].status,
-          customer_name:data.data[i].customer_name,
-          customer_phone:data.data[i].customer_phone,
-          service:data4.data[0].service}
+        this.reservation = new Reservations(data.data[i].reservation_id,
+          data.data[i].customer_id,
+          data.data[i].restaurant_id,
+          data.data[i].table_id,
+          data.data[i].pax,
+          data.data[i].day_name,
+          data.data[i].day,
+          data.data[i].month,
+          data.data[i].year,
+          data.data[i].hour,
+          data.data[i].shift_id,
+          data.data[i].comments,
+          data.data[i].status,
+          data.data[i].customer_name,
+          data.data[i].customer_phone)
+          this.reservation.service = data4.data[0].service
         this.reservationsRejected.push(this.reservation)
+
       }) 
       }) 
 
@@ -118,23 +135,23 @@ export class ReservationsRestaurantComponent implements OnInit {
             
       this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
   
-      this.reservation ={reservation_id:data.data[i].reservation_id,
-        customer_id:data.data[i].customer_id,
-        restaurant_id:data.data[i].restaurant_id,
-        table_id:data.data[i].table_id,
-        pax:data.data[i].pax,
-        day_name:data.data[i].day_name,
-        day:data.data[i].day,
-        month:data.data[i].month,
-        year:data.data[i].year,
-        hour:data.data[i].hour,
-        shift_id:data.data[i].shift_id,
-        comments:data.data[i].comments,
-        status:data.data[i].status,
-        customer_name:data.data[i].customer_name,
-        customer_phone:data.data[i].customer_phone,
-        service:data4.data[0].service}
-      this.reservationsCanceledByClient.push(this.reservation)
+        this.reservation = new Reservations(data.data[i].reservation_id,
+          data.data[i].customer_id,
+          data.data[i].restaurant_id,
+          data.data[i].table_id,
+          data.data[i].pax,
+          data.data[i].day_name,
+          data.data[i].day,
+          data.data[i].month,
+          data.data[i].year,
+          data.data[i].hour,
+          data.data[i].shift_id,
+          data.data[i].comments,
+          data.data[i].status,
+          data.data[i].customer_name,
+          data.data[i].customer_phone)
+          this.reservation.service = data4.data[0].service
+        this.reservationsCanceledByClient.push(this.reservation)
     }) 
     }) 
     }
@@ -144,23 +161,23 @@ export class ReservationsRestaurantComponent implements OnInit {
             
       this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
     
-      this.reservation ={reservation_id:data.data[i].reservation_id,
-        customer_id:data.data[i].customer_id,
-        restaurant_id:data.data[i].restaurant_id,
-        table_id:data.data[i].table_id,
-        pax:data.data[i].pax,
-        day_name:data.data[i].day_name,
-        day:data.data[i].day,
-        month:data.data[i].month,
-        year:data.data[i].year,
-        hour:data.data[i].hour,
-        shift_id:data.data[i].shift_id,
-        comments:data.data[i].comments,
-        status:data.data[i].status,
-        customer_name:data.data[i].customer_name,
-        customer_phone:data.data[i].customer_phone,
-        service:data4.data[0].service}
-      this.reservationsToBeConfirmed.push(this.reservation)
+        this.reservation = new Reservations(data.data[i].reservation_id,
+          data.data[i].customer_id,
+          data.data[i].restaurant_id,
+          data.data[i].table_id,
+          data.data[i].pax,
+          data.data[i].day_name,
+          data.data[i].day,
+          data.data[i].month,
+          data.data[i].year,
+          data.data[i].hour,
+          data.data[i].shift_id,
+          data.data[i].comments,
+          data.data[i].status,
+          data.data[i].customer_name,
+          data.data[i].customer_phone)
+          this.reservation.service = data4.data[0].service
+        this.reservationsToBeConfirmed.push(this.reservation)
     }) 
     }) 
     }

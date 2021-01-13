@@ -13,7 +13,7 @@
 
 
             <div class="title">
-                <p class="lctl-font-title" >Jueves 20 agosto 2020</p>
+                    <p class="lctl-font-title" >{{this.calendarService.changedDayName}} {{this.calendarService.nuevaFecha.dayNum}} de {{this.calendarService.changedMonth}} {{this.calendarService.nuevaFecha.year}}</p>
             </div>
             <div class="lctl-br margin"></div>
             <div class="title">
@@ -47,12 +47,11 @@
                 </div>
                 
                 <div class="title">
-                    <select class="lctl-cellSelect-extraLarge mid" id="turnos">
-                        <option disabled selected="true">Elige turno</option>
-                        <option value="Desayuno">Desayuno</option>
-                        <option value="Comida">Comida</option>
-                        <option value="Merienda">Merienda</option>
-                        <option value="Cena">Cena</option>
+                    <select class="lctl-cellSelect-extraLarge mid" id="turnos" (click)="asd()">
+                        <option hidden selected="true">Elige turno</option>
+                        <ng-container *ngFor="let time of this.calendarService.times; let i = index">
+                        <option value="{{this.calendarService.times[i].times_id}}">{{this.calendarService.times[i].service}}</option>
+                    </ng-container>
                     </select>
                 </div>               
             </div>

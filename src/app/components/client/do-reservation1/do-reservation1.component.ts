@@ -1,6 +1,17 @@
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Reservations } from 'src/app/models/reservations';
+import { Shifts } from 'src/app/models/shifts';
+import { Tables } from 'src/app/models/tables';
+import { Times } from 'src/app/models/times';
+import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
+import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
+import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
+import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
+import { ServiceTablesService } from 'src/app/shared/service-tables.service';
+import { ServiceTimesService } from 'src/app/shared/service-times.service';
+import { CalendarComponent } from '../../calendar/calendar.component';
 
 @Component({
   selector: 'app-client-doReservation1',
@@ -8,13 +19,153 @@ import { Router } from '@angular/router';
   styleUrls: ['./do-reservation1.component.scss']
 })
 export class DoReservation1Component implements OnInit {
+  // public restaurantId = this.restaurantService.restaurantReservation.restaurant_id
+
+  public restaurantId = 36
+
   public personas:number;
+  public personas2:string
   public ciudadElegida2: Date
   public turno:string;
-  constructor(public router:Router) {
-    this.personas=0;
-    this.turno=null;
+  public today: string
+  public selectedDayName:string
+  public selectedDayNum:string
+  public selectedMonth:string
+  public selectedYear:string
+  public changedDayName:string
+  public changedMonth:string
+  public pax:number
+  public tableId:number
+  public hola:string
+
+  public tables: Tables[]
+  public selectedTables: Tables[]
+  public availableTables:Tables[]
+  public times: Times[]
+  public shifts: Shifts[]
+  public selectedShifts:Shifts[]
+  public availableShifts:Shifts[]
+  public reservations: Reservations[]
+  public reservations2: Reservations[]
+
+
+  constructor(public router:Router,
+              private reservationService: ServiceReservationsService,
+              private timesService: ServiceTimesService,
+              private shiftsService: ServiceShiftsService,
+              public calendarService: ServiceCalendarService,
+              private tablesService: ServiceTablesService,
+              private restaurantService: ServiceRestaurantService
+              ) {            
+                this.tableId=0
+                this.personas=0;
+                this.turno=null;
+                this.tables = []
+                this.shifts = []
+                this.times = []
+                this.reservations = []
+                this.reservations2 = []
+                this.selectedTables = []
+                this.selectedShifts = []
+                this.availableShifts = []
+                this.availableTables = []
+                this.pax = 0
+                
+                // console.log(this.restaurantService.restaurantReservation.);
+                
+
+
+                
+                this.reservationService.getReservationRestaurant(this.restaurantId).subscribe((data:any) =>{     
+                  for(let i = 0; i<data.data.length;i++){
+        
+                    if (data.data[i].status == "Reservada"){            
+                      this.shiftsService.getShiftsId(data.data[i].shift_id).subscribe((data3:any) =>{  
+                        
+                      this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
+            
+                        let reservation:Reservations
+                        reservation = new Reservations(data.data[i].reservation_id,
+                        data.data[i].customer_id,
+                        data.data[i].restaurant_id,
+                        data.data[i].table_id,
+                        data.data[i].pax,
+                        data.data[i].day_name,
+                        data.data[i].day,
+                        data.data[i].month,
+                        data.data[i].year,
+                        data.data[i].hour,
+                        data.data[i].shift_id,
+                        data.data[i].comments,
+                        data.data[i].status,
+                        data.data[i].customer_name,
+                        data.data[i].customer_phone)
+                        reservation.service = data4.data[0].service
+                      this.reservations.push(reservation)
+                                    
+                      }) 
+                      }) 
+                    }
+                  }
+                })
+
+                this.timesService.getTimes(this.restaurantId).subscribe((dataTimes:any) =>{                    
+                  for(let i = 0; i < dataTimes.data.length; i++){   
+                                     
+                    if(dataTimes.data[i].name == this.selectedDayName){
+                      if(dataTimes.data[i].active == "true"){
+
+                    let time = new Times (dataTimes.data[i].times_id,
+                      dataTimes.data[i].name,
+                      dataTimes.data[i].time_from,
+                      dataTimes.data[i].time_to,
+                      dataTimes.data[i].restaurant_id,
+                      dataTimes.data[i].service,
+                      dataTimes.data[i].active)
+                        this.times.push(time)                        
+                      }}}   
+                })
+                this.tablesService.getTables(this.restaurantId).subscribe((dataTables:any) =>{                   
+                  for(let i = 0; i < dataTables.data.length; i++){
+                    let table = new Tables (dataTables.data[i].table_id,
+                      dataTables.data[i].table_name,
+                      dataTables.data[i].table_max,
+                      dataTables.data[i].table_min,
+                      dataTables.data[i].restaurant_id)
+                    this.tables.push(table)
+                  }    
+                })
+
+                  this.shiftsService.getShifts(this.restaurantId).subscribe((dataShifts:any) =>{   
+                        for(let i = 0; i < dataShifts.data.length; i++){
+                          let shift = new Shifts (dataShifts.data[i].shift_id,
+                            dataShifts.data[i].day,
+                            dataShifts.data[i].shift_from,
+                            dataShifts.data[i].shift_to,
+                            dataShifts.data[i].restaurant_id,
+                            dataShifts.data[i].times_id,
+                            dataShifts.data[i].pax);
+                            
+                            this.shifts.push(shift)
+                          }    
+                        })
+
+                this.today = Date();
+                let currentDayName = this.today.substring(0,3);
+                let currentDayNum = this.today.substring(8,10);
+                let currentMonth = this.today.substring(4,7);
+                let currentYear = this.today.substring(11,16);
+            
+                this.selectedDayNum = currentDayNum
+                this.selectedDayName = currentDayName
+                this.selectedMonth = currentMonth
+                this.selectedYear = currentYear
+
+
    }
+
+  //  FIN DEL CONSTRUCTOR
+
   ngOnInit() { 
 
  }
@@ -24,7 +175,8 @@ export class DoReservation1Component implements OnInit {
  elegirpax(event){
   
   this.personas=event.target.value;
-  console.log(this.personas);
+  this.personas2=event.target.value;
+
   const todoslaspax:any=document.getElementsByClassName("numbers");
   for (let i=0;i<todoslaspax.length;i++){
     todoslaspax[i].style.background="var(--secundaryColor)";
@@ -73,9 +225,53 @@ export class DoReservation1Component implements OnInit {
   
   if (this.personas!=0 && this.turno!="Elige turno"){
  this.router.navigate(['/reservation2'])
+  }
+
+this.reservationService.dayName = this.calendarService.nuevaFecha.dayName
+this.reservationService.dayNum = this.calendarService.nuevaFecha.dayNum
+this.reservationService.month = this.calendarService.nuevaFecha.month
+this.reservationService.year = this.calendarService.nuevaFecha.year
+this.reservationService.time = turnos.value
+this.reservationService.pax = this.personas
+
+for(let i = 0; i < this.shifts.length;i++){
+  
+  if (this.shifts[i].times_id == turnos.value){
+    this.selectedShifts.push(this.shifts[i])
+  }
 }
+
+for(let i = 0; i < this.selectedShifts.length;i++){
+  
+  this.reservationService.getReservationPax(this.selectedShifts[i].shift_id,
+    this.calendarService.nuevaFecha.dayName,
+    this.calendarService.nuevaFecha.dayNum,
+    this.calendarService.nuevaFecha.month,
+    this.calendarService.nuevaFecha.year
+    ).subscribe((data:any) =>{ 
+      let pax:number
+      pax = parseInt(this.personas2)
+      
+      let totalPax = data.data[0].pax + pax
+      
+      if(this.selectedShifts[i].pax >= totalPax){
+        this.availableShifts.push(this.selectedShifts[i])        
+      }
+      })
 }
- public eleccionCiudad(paramsCiudad:Date){
-  this.ciudadElegida2 = paramsCiudad
+
+
+
+this.reservationService.reservations = this.reservations
+this.reservationService.times = this.times
+this.reservationService.shifts = this.availableShifts
+
 }
+
+public asd(){
+  
+}
+
+
+
 }
