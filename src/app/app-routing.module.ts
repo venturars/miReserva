@@ -13,6 +13,7 @@ import { EditComponentR } from './components/restaurant/owner/edit/edit.componen
 import { RestaurantsComponent } from './components/restaurant/owner/restaurants/restaurants.component';
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
 import { ContactUsComponent } from './components/login/contact-us/contact-us.component';
+import { PresentationComponent } from './components/login/presentation/presentation.component';
 
 const routes: Routes = [
   {path:"reservation1", component: DoReservation1Component},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path:"create-restaurant-3", component: CreateRestaurant3Component},
   {path:"restaurants-list", component: RestaurantsComponent},
   {path:"contact-us", component: ContactUsComponent},
+  {path:"presentation", component: PresentationComponent},
   {path:"**", component: DesignComponent},
   {path:" ", component: DesignComponent}
 ];

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal-usuario-incorrecto.component.scss']
 })
 export class ModalUsuarioIncorrectoComponent implements OnInit {
-
+  mensaje:string="null";
   constructor() { }
 
   ngOnInit(): void {

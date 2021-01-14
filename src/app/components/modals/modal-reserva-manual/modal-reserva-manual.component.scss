@@ -1,6 +1,6 @@
 .content{
-    max-width: 700px;
-    min-width: 300px;
+    width: min(calc(100% - 20px), 500px);
+    min-height: 280px;
     height: 380px;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,7 @@
     & > div:nth-child(1){
         display: flex;
         justify-content: center;
-        background-color:#D8D8D8;
+        background-color:var(--secundaryColorPush);
         width: 100%;
         height: 40px;
         & > p{
@@ -25,186 +25,233 @@
 
     }
 
+    
     & > div:nth-child(2){
         display: flex;
-        flex-direction: column;
         justify-content: center;
         width: 100%;
-        height: 220px;
-       
-
-        & > div:nth-child(1){
-        width: 50%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-end;
-       
-        
-        & > input{
-            font-size: var(--fontSizeS);
-            font-weight: var(--fontWidthLight);
-            color: grey;
+        height: 40px;
+        & > p{
             margin-top: 10px;
-            margin-right: 5px;
+            font-size: var(--fontSizeM);
+            color:var(--secundaryColorPush);
+            text-align: center;   
             
-        }
-        & > select{
-            font-size: var(--fontSizeS);
-            font-weight: var(--fontWidthLight);
-            color: grey;
-            margin-top: 10px;
-            margin-right: 5px;
-            
-        }
-        
         }
 
-        & > div:nth-child(2){
-            width: 50%;
-            margin-left: auto;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-           
-
-        & > input{
-            margin-top: 10px;
-            margin-left: 5px;
-            font-size: var(--fontSizeS);
-            font-weight: var(--fontWidthLight);
-            color: grey;
-
-            
-        }
-        & > select{
-            width: 205px;
-            font-size: var(--fontSizeS);
-            font-weight: var(--fontWidthLight);
-            color: grey;
-            margin-top: 10px;
-            
-        }
-        
-
-        }
-        
-    }
-
-    & > div:nth-child(3){
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-       
-        & > input{
-            width: 410px;
-            height: 50px;
-            margin-top: -10px;
-            font-size: var(--fontSizeS);
-            font-weight: var(--fontWidthLight);
-            color: grey;  
-            
-        }    
-    }
-
-    & > div:nth-child(4){
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-       
-        
-        & > button{
-            margin-top: -8px;
-            justify-items: center;
-            width: 410px;
-            height: 30px;
-           
-            
-            
-        }
-        
-        
     }
 }
+
+.encolumna{
+    display:flex;
+    flex-direction: column;
+    
+   
+}
+
+.centrardos{
+    display:flex;
+    flex: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 10px;
+}
+.padding10{
+    padding-top:10px;
+}
+
+.twobuttons{
+    padding-top:20px;
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.ajuste
+{
+    color:var(--secundaryColorPush);
+    justify-content: left!important;
+}
+//     & > div:nth-child(3){
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         width: 100%;
+//         height: 220px;
+    
+
+//         & > div:nth-child(4){
+//         width: 100%;
+//         height: 100%;
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+        
+       
+          
+//         & > input{
+//             font-size: var(--fontSizeS);
+//             font-weight: var(--fontWidthLight);
+//             color: grey;
+//             margin-top: 10px;
+//             margin-right: 5px;
+            
+//         }
+//         & > select{
+//             font-size: var(--fontSizeS);
+//             font-weight: var(--fontWidthLight);
+//             color: grey;
+//             margin-top: 10px;
+//             margin-right: 5px;
+            
+//         }
+        
+//         }
+
+//         & > div:nth-child(2){
+//             width: 50%;
+//             margin-left: auto;
+//             height: 100%;
+//             display: flex;
+//             flex-direction: column;
+//             justify-content: center;
+//             align-items: flex-start;
+           
+
+//         & > input{
+//             margin-top: 10px;
+//             margin-left: 5px;
+//             font-size: var(--fontSizeS);
+//             font-weight: var(--fontWidthLight);
+//             color: grey;
+
+            
+//         }
+//         & > select{
+//             width: 205px;
+//             font-size: var(--fontSizeS);
+//             font-weight: var(--fontWidthLight);
+//             color: grey;
+//             margin-top: 10px;
+            
+//         }
+        
+
+//         }
+        
+//     }
+
+//     & > div:nth-child(3){
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: center;
+//         width: 100%;
+//         height: 100%;
+       
+//         & > input{
+//             width: 410px;
+//             height: 50px;
+//             margin-top: -10px;
+//             font-size: var(--fontSizeS);
+//             font-weight: var(--fontWidthLight);
+//             color: grey;  
+            
+//         }    
+//     }
+
+//     & > div:nth-child(4){
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: center;
+//         width: 100%;
+//         height: 100%;
+       
+        
+//         & > button{
+//             margin-top: -8px;
+//             justify-items: center;
+//             width: 410px;
+//             height: 30px;
+           
+            
+            
+//         }
+        
+        
+//     }
+// }
 
 ///////////img
 
-.image{
-    display: flex;
-    width: 100%;
-    height: 340px;
-    margin: auto;
+// .image{
+//     display: flex;
+//     width: 100%;
+//     height: 340px;
+//     margin: auto;
+    
 
-    & > div:nth-child(1){
-       z-index: 3;
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        width: 500px;
-        margin-right: -50px;
+//     & > div:nth-child(1){
+//        z-index: 3;
+//         display: flex;
+//         flex-direction: column;
+//         margin: auto;
+//         width: 500px;
+//         margin-right: -50px;
 
 
-        & > p{
-            font-size: var(--fontSizeM);
-            text-align: center;
+//         & > p{
+//             font-size: var(--fontSizeM);
+//             text-align: center;
 
-        }
-    }
+//         }
+//     }
 
-    & > div:nth-child(2){
+//     & > div:nth-child(2){
        
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        width: 500px;   
-        margin-left: -50px;
-        height: 300px;
-    }
+//         display: flex;
+//         flex-direction: column;
+//         margin: auto;
+//         width: 500px;   
+//         margin-left: -50px;
+//         height: 300px;
+//     }
 
 
-}
+// }
 
 
-.target{
-    max-width: 700px;
-    min-width: 300px;
-    height: 400px;
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    border: 2px solid var(--secundaryColorPush);
-    background-color: var(--secundaryColor);
-    border-radius: var(--borderRadiusM);
+// .target{
+//     max-width: 700px;
+//     min-width: 300px;
+//     height: 400px;
+//     display: flex;
+//     margin: auto;
+//     flex-direction: column;
+//     border: 2px solid var(--secundaryColorPush);
+//     background-color: var(--secundaryColor);
+//     border-radius: var(--borderRadiusM);
 
     
-    & > div:nth-child(1){
+//     & > div:nth-child(1){
         
         
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
+//         display: flex;
+//         flex-direction: column;
+//         height: 100%;
+//         width: 100%;
         
 
 
-    }
-    & > div:nth-child(2){
+//     }
+//     & > div:nth-child(2){
        
-        display: flex;
-        justify-content: space-around;
-        width: 250px;
-        margin: auto;
-        height: 60px;
-    }
+//         display: flex;
+//         justify-content: space-around;
+//         width: 250px;
+//         margin: auto;
+//         height: 60px;
+//     }
     
-}
+// }
 
 // #one {
 //     position: relative;

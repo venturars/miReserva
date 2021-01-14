@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ModalRegistroUsuarioComponent } from 'src/app/components/modals/modal-registro-usuario/modal-registro-usuario.component';
+import { ModalRegistroComponent } from 'src/app/components/modals/modal-registro/modal-registro.component';
 import { UserCustomer } from 'src/app/models/user-customer';
 import { Users } from 'src/app/models/users';
 import { ServiceLoginService } from 'src/app/shared/service-login.service';
@@ -45,8 +46,8 @@ onSubmit(form:any){
       (null,null,data.data,form.value.email,form.value.password)
     }
     else{
-    const dialogRef = this.dialog.open(ModalRegistroUsuarioComponent);
-      dialogRef.componentInstance.email=form.value.email;
+    const dialogRef = this.dialog.open(ModalRegistroComponent);
+      dialogRef.componentInstance.mensaje="Ese correo ya está registrado, intentalo de nuevo";
       const email:any=document.getElementById("profile")
       email.value=null;
       const password:any=document.getElementById("password")

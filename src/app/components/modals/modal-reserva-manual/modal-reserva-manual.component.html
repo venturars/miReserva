@@ -1,16 +1,27 @@
 <div class="content" *ngIf="showHide2">
+  <div><p>Reserva Manual</p></div>
   <div>
-      <p>Reserva Manual</p>
-      <p>{{selectedDayNum}} {{changedDayName}} de {{changedMonth}} {{selectedYear}}</p>
+      <p>{{changedDayName}}, {{selectedDayNum}} de {{changedMonth}} {{selectedYear}}</p>
   </div>
   
-  <div class="lctl-centerElements">
-    <div class="">
-      <input class="lctl-cellInput-extraLarger" type="text" placeholder="Nombre" [(ngModel)]="selectedName">
-      <input class="lctl-cellInput-extraLarger" type="text" placeholder="Teléfono" [(ngModel)]="selectedPhone">
+  <div class="encolumna">
+    <div class="centrardos">
+      <div  class="lctl-cellInput-extraLarger ajuste" (click)="calendar()">
+        Calendario
+     </div>
+     <input class="lctl-cellInput-extraLarger" type="text" placeholder="No. de Personas" [(ngModel)]="selectedPax"> 
+      
+    </div>
+    <div class="centrardos">
+      <input class="lctl-cellInput-extraLarger" type="text" placeholder="Nombre" [(ngModel)]="selectedName">  
+      <input class="lctl-cellInput-extraLarger" type="text" placeholder="Apellido" [(ngModel)]="selectedSurname">
+          
+           
+       
+    </div> 
+  <div class="centrardos">    
      
-      <input class="lctl-cellInput-extraLarger" type="text" placeholder="No. de Personas" [(ngModel)]="selectedPax">
-
+    <input class="lctl-cellInput-extraLarger" type="text" placeholder="Teléfono" [(ngModel)]="selectedPhone">
       <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedShift" (change)="asdd(selectedShift)">
           <option hidden selected>Hora</option>
           <ng-container *ngFor="let shift of shifts; let i = index">
@@ -18,26 +29,15 @@
               <option value="{{shifts[i].shift_id}}" >{{shifts[i].shift_from}}</option>
           </ng-container>
         </ng-container>
-    </select>
-      </div>
-      <div class="">
-          <input class="lctl-cellInput-extraLarger" type="text" placeholder="Apellido" [(ngModel)]="selectedSurname">
-          <!-- <input class="lctl-cellInput-extraLarger" type="text" placeholder="Calendario"> -->
-          <!-- ARREGLAR EL CALENDARIO, DESCUADRO TODO
-                SOY DE BACK, A MI NO ME DIGAN NADA :) -->
-          <button  class="lctl-cellInput-extraLarger" (click)="calendar()">
-            <p>Calendario</p>
-          <label id="one">
-            <p></p>
-          </label>
-        </button>
-  
-          <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedTime" (change)="asd(selectedTime)">
+      </select>
+  </div>
+   
+    <div class="centrardos">
+         <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedTime" (change)="asd(selectedTime)">
               <option hidden selected>Turnos</option>
               <ng-container *ngFor="let time of times; let i = index" >
                 <option value="{{times[i].times_id}}">{{times[i].service}}</option>
               </ng-container>
-
           </select>
           <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedTable">
               <option hidden selected>Mesa</option>
@@ -45,20 +45,20 @@
                   <option value="{{availableTables[i].table_id}}">Mesa {{availableTables[i].table_name}} ({{availableTables[i].table_min}} - {{availableTables[i].table_max}}  PAX)</option>
               </ng-container>
             </select>
-          
-          </div>
-   </div>
+    </div>       
+</div>         
+   
 
-   <div>
-      <input class="lctl-cellInput-extraLarger" type="text" placeholder="Observación" [(ngModel)]="selectedComments">
+   <div class="lctl-centerElements padding10">
+      <input class="lctl-cellInput-extraLarger" type="text" placeholder="Observaciones" [(ngModel)]="selectedComments">
   </div>
 
-   <div>
-      <button [mat-dialog-close]="true" cdkFocusInitial  class="lctl-warnButton-s buttonLib">Cancelar</button>
-      <button   class="lctl-warnButton-s buttonLib" (click)="confirmar()">Aceptar</button>
-   </div>
+  <div class="twobuttons">
+    <button   class="lctl-warnButton-s buttonLib" (click)="confirmar()">Aceptar</button>
+    <button [mat-dialog-close]="true" cdkFocusInitial  class="lctl-warnButton-s buttonLib">Cancelar</button>
+  </div>
 
-</div>
+
 
 <div class="target" *ngIf="showHide">
   <div class="elements">

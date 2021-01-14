@@ -6,6 +6,7 @@ import { UserOwner } from '../../../../models/user-owner';
 import { ModalRegistroUsuarioComponent } from '../../../modals/modal-registro-usuario/modal-registro-usuario.component';
 import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { Users } from 'src/app/models/users';
+import { ModalRegistroComponent } from 'src/app/components/modals/modal-registro/modal-registro.component';
 
 @Component({
   selector: 'app-registration-owner',
@@ -43,8 +44,8 @@ onSubmit(form:any){
       this.apiLogin.users= new Users (null,data.data,null,form.value.mail,form.value.password)
     }
     else {
-    const dialogRef = this.dialog.open(ModalRegistroUsuarioComponent);
-      dialogRef.componentInstance.email=form.value.mail;
+    const dialogRef = this.dialog.open(ModalRegistroComponent);
+      dialogRef.componentInstance.mensaje="Ese correo ya está registrado, intentalo de nuevo";
       const email:any=document.getElementById("profile")
       email.value=null;
       const password:any=document.getElementById("password")

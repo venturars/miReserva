@@ -110,13 +110,15 @@ export class CreateRestaurant1Component implements OnInit {
         });
         const dialogRef = this.dialog.open(ModalRegistroComponent);
         dialogRef.componentInstance.mensaje="Restaurante creado, ahora configura sus mesas";
+        dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
     dialogRef.afterClosed().subscribe(result => {
     console.log(`Dialog result: ${result}`);
     this.router.navigate(["/create-restaurant-2"]);})
         
       }else {
-        const dialogRef = this.dialog.open(ModalRegistroUsuarioComponent);
-        dialogRef.componentInstance.email=restForm.value.mail;
+        const dialogRef = this.dialog.open(ModalRegistroComponent,{panelClass: ['animate__animated','animate__backInDown']});
+        dialogRef.componentInstance.mensaje="Ese email ya existe en nuestra base de datos, tienes que elegir otro";
+        dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
         const email:any=document.getElementById("mail")
         email.value=null;
         const password:any=document.getElementById("password")

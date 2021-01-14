@@ -1162,9 +1162,9 @@ a {
 //----------//----------//----------//----------//----------
 //-----Mat calendar-----
 [class *="lctl-ngMatCalendar"] {
-    min-width: 300px;
+    margin: auto;
     min-height: 460px;
-    max-width: 800px;
+    width:min(calc(100% - 20px), 400px);
     height: 480px;
     border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusL);

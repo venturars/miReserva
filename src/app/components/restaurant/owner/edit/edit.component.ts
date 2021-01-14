@@ -71,6 +71,7 @@ export class EditComponentR implements OnInit {
             this.serviceLogin.userOwner = this.userOwner;
             const dialogRef = this.dialog.open(ModalRegistroComponent);
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
+            dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
         dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
             this.router.navigate(["/restaurants-list"]);

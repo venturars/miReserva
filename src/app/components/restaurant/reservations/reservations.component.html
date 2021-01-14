@@ -13,15 +13,16 @@
         <button  class="lctl-button-m " (click)="modalNew()" >Reserva Manual</button>
         </div>
         <div class="lctl-rightElements">
-        <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="value">
+        <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="value" [value]='0'>
             <!-- ng options -->
-            <option value="0" selected>Todas</option>
+            
+            <option value="0" >Todas</option>
             <option value="1">Confirmada</option>
             <option value="2">Rechazada</option>
             <option value="3">Cancelada por cliente</option>
         </select>
-        <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="service">
-            <option value="0" selected>Todos</option>
+        <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="service" [value]='0'>
+            <option value="0">Todos</option>
             <option value="1">Desayuno</option>
             <option value="2">Almuerzo</option>
             <option value="3">Cena</option>
@@ -39,7 +40,7 @@
     <div class="lctl-br"></div>
     <div class="lctl-br space"></div>
     <div class="title">
-        <h2>{{selectedDayNum}} {{changedDayName}} de {{changedMonth}} {{selectedYear}}</h2>
+        <h2>{{changedDayName}}, {{selectedDayNum}} de {{changedMonth}} {{selectedYear}}</h2>
 
     <ng-container *ngIf="value == 0">
         <h3>TODAS</h3>

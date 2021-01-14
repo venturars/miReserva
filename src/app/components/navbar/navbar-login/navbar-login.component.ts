@@ -32,4 +32,8 @@ export class NavbarLoginComponent implements OnInit {
     this.router.navigate(["/log-in"]);
     this.nav = 4;
   }
+  public toPresentation() {
+    this.router.navigate(["/presentation"]);
+    this.nav = 5;
+  }
 }
