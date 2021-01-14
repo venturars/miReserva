@@ -17,6 +17,7 @@ export class RestaurantsComponent implements OnInit {
     private router:Router
   ) { }
 
+
   ngOnInit() {
     this.serviceRestaurant.getRestaurantByOwner(
         this.serviceLogin.userOwner.owner_id
@@ -27,4 +28,9 @@ export class RestaurantsComponent implements OnInit {
   public clickRestaurant(index:number) {
     console.log(index);
     this.router.navigate(['reservations-list-restaurant']);
-}}
+}
+public createRest(){
+  this.router.navigate(["/create-restaurant-1"]);
+    this.serviceLogin.navOwner = 1;
+}
+}
