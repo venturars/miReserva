@@ -19,8 +19,7 @@ import { CalendarComponent } from '../../calendar/calendar.component';
   styleUrls: ['./modal-reserva-manual.component.scss']
 })
 export class ModalReservaManualComponent implements OnInit {
-  // public restaurantId :number
-  public restaurantId = 36
+  public restaurantId :number
   public showHide= false;
   public showHide2= true;
   public today: string
