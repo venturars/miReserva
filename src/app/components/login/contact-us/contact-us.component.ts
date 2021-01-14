@@ -26,18 +26,18 @@ export class ContactUsComponent implements OnInit {
     },
     {
       nombre: "Jesús",
-      apellido1: "Rellena",
-      apellido2: "Tus datos",
-      profesion: "En el ts",
-      photo: "y linkea la foto =)",
+      apellido1: "Cano",
+      apellido2: "Padrino",
+      profesion: "Developer",
+      photo: "./assets/fotoJesus.jpg",
       linkedIn: "https://www.linkedin.com/in/jes%C3%BAs-cano-82718618/"
     },
     {
       nombre: "Juan",
-      apellido1: "Rellena",
-      apellido2: "Tus datos",
-      profesion: "En el ts",
-      photo: "y linkea la foto =)",
+      apellido1: "Gianina",
+      apellido2: "",
+      profesion: "Developer",
+      photo: "./assets/fotoJuan.jpg",
       linkedIn: "https://www.linkedin.com/in/juan-gianina-3495811b8/"
     }
   ]
