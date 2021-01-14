@@ -14,7 +14,7 @@ import { ModalClienteComponent } from '../../modals/modal-cliente/modal-cliente.
 })
 export class ReservationsClientComponent implements OnInit {
 public reservations:Reservations[]
-public customerId = 1
+public customerId:number
 public changedMonth:string
 public changedDayName:string
   constructor(public dialog: MatDialog,
@@ -22,7 +22,7 @@ public changedDayName:string
               private reservationService: ServiceReservationsService,
               private restaurantService: ServiceRestaurantService
               ) {
-    // this.customerId = this.loginService.userCustomer.customer_id
+    this.customerId = this.loginService.userCustomer.customer_id
     this.reservations = []
     this.reservationService.getReservationClient(this.customerId).subscribe((data:any) =>{     
       for(let i = 0; i < data.data.length; i++){

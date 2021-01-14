@@ -38,17 +38,8 @@ export class ReservationsRestaurantComponent implements OnInit {
   public dateOfBirth:string
   public reservation:Reservations
 
-  public restaurantId = 36
-  // public restaurantId:number
+  public restaurantId:number
 
-
-// hace que el calendario no muestre un dia en particular
-// 0:domingo ..... 6:sabado
-  myFilter = (d: Date | null): boolean => {
-    const day = (d || new Date()).getDay();
-    return day !== 1
-  }
-  
   constructor(public dialog: MatDialog,
               private reservationService: ServiceReservationsService,
               private customerService: ServiceUserCustomerService,
@@ -58,11 +49,11 @@ export class ReservationsRestaurantComponent implements OnInit {
               private loginService: ServiceLoginService,
               private restaurantService: ServiceRestaurantService) {
 
-                // if(this.loginService.restaurants.restaurant_id != null){
-                //   this.restaurantId = this.loginService.restaurants.restaurant_id
-                // }else if(this.restaurantService.selectedRestaurantId != null){
-                //   this.restaurantId =this.restaurantService.selectedRestaurantId
-                // }
+                if(this.loginService.restaurants.restaurant_id != null){
+                  this.restaurantId = this.loginService.restaurants.restaurant_id
+                }else if(this.restaurantService.selectedRestaurantId != null){
+                  this.restaurantId =this.restaurantService.selectedRestaurantId
+                }
 
                 this.reservationsConfirmed = []
                 this.reservationsRejected = []

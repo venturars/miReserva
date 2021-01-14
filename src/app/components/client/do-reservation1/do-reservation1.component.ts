@@ -19,9 +19,7 @@ import { CalendarComponent } from '../../calendar/calendar.component';
   styleUrls: ['./do-reservation1.component.scss']
 })
 export class DoReservation1Component implements OnInit {
-  // public restaurantId = this.restaurantService.restaurantReservation.restaurant_id
-
-  public restaurantId = 36
+  public restaurantId = this.restaurantService.restaurantReservation.restaurant_id
 
   public personas:number;
   public personas2:string
@@ -69,10 +67,7 @@ export class DoReservation1Component implements OnInit {
                 this.selectedShifts = []
                 this.availableShifts = []
                 this.availableTables = []
-                this.pax = 0
-                
-                // console.log(this.restaurantService.restaurantReservation.);
-                
+                this.pax = 0              
 
 
                 

@@ -21,8 +21,7 @@ import { CalendarComponent } from '../../calendar/calendar.component';
   styleUrls: ['./modal-reserva-manual.component.scss']
 })
 export class ModalReservaManualComponent implements OnInit {
-  // public restaurantId :number
-  public restaurantId = 36
+  public restaurantId :number
   public showHide= false;
   public showHide2= true;
   public today: string
@@ -63,11 +62,11 @@ export class ModalReservaManualComponent implements OnInit {
               private restaurantService: ServiceRestaurantService
               ) {
 
-                // if(this.loginService.restaurants.restaurant_id != null){
-                //   this.restaurantId = this.loginService.restaurants.restaurant_id
-                // }else if(this.restaurantService.selectedRestaurantId != null){
-                //   this.restaurantId =this.restaurantService.selectedRestaurantId
-                // }
+                if(this.loginService.restaurants.restaurant_id != null){
+                  this.restaurantId = this.loginService.restaurants.restaurant_id
+                }else if(this.restaurantService.selectedRestaurantId != null){
+                  this.restaurantId =this.restaurantService.selectedRestaurantId
+                }
 
                 this.tables = []
                 this.shifts = []
