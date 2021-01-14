@@ -1,5 +1,5 @@
 .imyourfather {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     & > .background {
         position: fixed;
         justify-content: center;
-        width: 100%;
+        width: min(calc(100% - 20px), 1420px);
         height: 100%;
         & > .redShape{
             width: 25%;
@@ -16,11 +16,12 @@
     }}
     & > .lukeNooo {
         z-index: 3;
-        width: 100%;
+        width: min(calc(100% - 20px), 1420px);
         height: 100%;
         background: transparent;
         display: flex;
         flex-direction: column;
+        // background-color: var(--secundaryColor);
         & > .target {
             width: 100%;
             margin: 10px auto 10px auto;

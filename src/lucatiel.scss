@@ -661,8 +661,9 @@ a {
         z-index: 1;
 }}
 .lctl-navSelect {
-    background: var(--primaryColorContrast);
-    color: var(--secundaryColorOpposite);
+    background: var(--primaryColorContrast)!important;
+    color: var(--secundaryColorOpposite)!important;
+    cursor: default!important;
 }
 @media screen and (max-width: 768px) {
     .lctl-navContainer {
@@ -1247,10 +1248,28 @@ a {
 }}}
 //----------//----------//----------//----------//----------
 //-----Mat dialog-----
-.mat-dialog-container {
-    padding: 0 !important;
-    width:calc(100% - 20px)!important;
+.cdk-overlay-dark-backdrop {
+    background: var(--secundaryColor);
+    opacity: .6!important;
 }
+.cdk-global-overlay-wrapper {
+    width: 100%;
+    height: 100%;
+    & >.cdk-overlay-pane {
+        opacity: 1;
+        max-width: 100vw !important;
+        height: 100%;
+        width: 100%;
+        & .mat-dialog-container {
+            padding: 0 !important;
+            max-width: 100vw !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            & > .ng-star-inserted {
+                width: 100%;
+}}}}
 //----------//----------//----------//----------//----------
 //-----Mat nav-----
 .lctl-toggleNavbarButton {

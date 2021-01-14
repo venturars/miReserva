@@ -63,8 +63,8 @@ export class ModalReservaManualComponent implements OnInit {
 
                 if(this.loginService.restaurants.restaurant_id != null){
                   this.restaurantId = this.loginService.restaurants.restaurant_id
-                }else if(this.restaurantService.selectedRestaurantId != null){
-                  this.restaurantId =this.restaurantService.selectedRestaurantId
+                }else if(this.restaurantService.selectedRestaurant != null){
+                  this.restaurantId =this.restaurantService.selectedRestaurant.restaurant_id
                 }
 
                 this.tables = []

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Restaurants } from '../../../../models/restaurants';
 import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { ServiceRestaurantService } from '../../../../shared/service-restaurant.service';
@@ -26,11 +26,10 @@ export class RestaurantsComponent implements OnInit {
           this.restaurants = response.data;
     }});}
   public clickRestaurant(index:number) {
-    console.log(index);
+    this.serviceRestaurant.selectedRestaurant = this.restaurants[index];
     this.router.navigate(['reservations-list-restaurant']);
-}
-public createRest(){
-  this.router.navigate(["/create-restaurant-1"]);
+  }
+  public createRest(){
+    this.router.navigate(["/create-restaurant-1"]);
     this.serviceLogin.navOwner = 1;
-}
-}
+}}
