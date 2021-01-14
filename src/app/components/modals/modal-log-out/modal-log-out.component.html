@@ -13,7 +13,7 @@
          ¿Seguro que quieres salir?
     </div>
      <div class="buttons">
-        <button class="lctl-warnButton-s">No</button>
-        <button class="lctl-warnButton-s">si</button>
+        <button class="lctl-warnButton-s" mat-dialog-close>No</button>
+        <button class="lctl-warnButton-s" (click)="aceptLogOut()" mat-dialog-close>Si</button>
      </div>
 <div>

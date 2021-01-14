@@ -1161,9 +1161,9 @@ a {
 //----------//----------//----------//----------//----------
 //-----Mat calendar-----
 [class *="lctl-ngMatCalendar"] {
-    min-width: 300px;
+    margin: auto;
     min-height: 460px;
-    max-width: 800px;
+    width:min(calc(100% - 20px), 400px);
     height: 480px;
     border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusL);
@@ -1247,10 +1247,28 @@ a {
 }}}
 //----------//----------//----------//----------//----------
 //-----Mat dialog-----
-.mat-dialog-container {
-    padding: 0 !important;
-    width:calc(100% - 20px)!important;
+.cdk-overlay-dark-backdrop {
+    background: var(--secundaryColor);
+    opacity: .6!important;
 }
+.cdk-global-overlay-wrapper {
+    width: 100%;
+    height: 100%;
+    & >.cdk-overlay-pane {
+        opacity: 1;
+        max-width: 100vw !important;
+        height: 100%;
+        width: 100%;
+        & .mat-dialog-container {
+            padding: 0 !important;
+            max-width: 100vw !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            & > .ng-star-inserted {
+                width: 100%;
+}}}}
 //----------//----------//----------//----------//----------
 //-----Mat nav-----
 .lctl-toggleNavbarButton {

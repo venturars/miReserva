@@ -205,7 +205,8 @@ export class CreateRestaurant3Component implements OnInit {
     inicio.style.backgroundColor="let(--secundaryColor)";
   }
   public borramosModal() {
-    const dialogRef = this.dialog.open(ModalRegistroComponent);
+    const dialogRef = this.dialog.open(ModalRegistroComponent,{panelClass: ['animate__animated','animate__backInDown']});
+    dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
     dialogRef.componentInstance.mensaje="Eliminamos los turnos creados al cambiar el horario establecido";
     dialogRef.afterClosed().subscribe();
   }

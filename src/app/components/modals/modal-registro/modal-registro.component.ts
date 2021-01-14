@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalRegistroComponent implements OnInit {
 mensaje:string=null;
+imagen:string=null;
   constructor() { }
 
   ngOnInit(): void {
+ 
+  
   }
 
 }

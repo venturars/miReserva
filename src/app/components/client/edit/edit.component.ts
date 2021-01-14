@@ -69,6 +69,7 @@ export class EditClientComponent implements OnInit {
 
             const dialogRef = this.dialog.open(ModalRegistroComponent);
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
+            dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
             dialogRef.afterClosed().subscribe(result => {
             this.router.navigate(["/search"]);
             this.serviceLogin.navCustomer = 3;

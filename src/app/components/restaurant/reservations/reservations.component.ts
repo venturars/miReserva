@@ -28,8 +28,8 @@ export class ReservationsRestaurantComponent implements OnInit {
   public changedDayName:string
   public changedMonth:string
 
-  public value:number
-  public service:string
+  public value:number=0;
+  public service:string="0";
   public reservationsConfirmed:Reservations[]
   public reservationsRejected:Reservations[]
   public reservationsCanceledByClient:Reservations[]

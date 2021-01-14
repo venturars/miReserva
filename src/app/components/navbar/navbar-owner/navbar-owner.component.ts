@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ServiceLoginService } from '../../../shared/service-login.service';
+import { ModalLogOutComponent } from '../../modals/modal-log-out/modal-log-out.component';
 
 @Component({
   selector: 'app-navbarOwner',
@@ -11,7 +13,8 @@ export class NavbarOwnerComponent implements OnInit {
 
   constructor(
     private router:Router,
-    public serviceLogin:ServiceLoginService
+    public serviceLogin:ServiceLoginService,
+    private matDialog:MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -25,8 +28,12 @@ export class NavbarOwnerComponent implements OnInit {
     this.serviceLogin.navOwner = 2;
   }
   public toLogIn() {
-    this.router.navigate(["/"]);
-    this.serviceLogin.navOwner = 3;
+    const dialogRef = this.matDialog.open(ModalLogOutComponent);
+      
+      
+      dialogRef.afterClosed().subscribe()
+    {}
+  
   }
   public toEditProfile() {
     this.router.navigate(["/edit-owner"]);

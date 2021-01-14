@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ServiceLoginService } from 'src/app/shared/service-login.service';
 
 @Component({
   selector: 'app-modal-log-out',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalLogOutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,
+              private serviceLogin:ServiceLoginService) { }
 
   ngOnInit(): void {
+  }
+
+  public aceptLogOut(){
+    this.router.navigate(["/log-in"]);
+    this.serviceLogin.navCustomer = 3; 
+    setTimeout(function(){window.location.reload();},1000)
+    
+
   }
 
 }

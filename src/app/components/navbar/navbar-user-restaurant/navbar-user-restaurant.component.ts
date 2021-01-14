@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ServiceLoginService } from '../../../shared/service-login.service';
+import { ModalLogOutComponent } from '../../modals/modal-log-out/modal-log-out.component';
 @Component({
   selector: 'app-navbarUserRestaurant',
   templateUrl: './navbar-user-restaurant.component.html',
@@ -12,15 +14,20 @@ export class NavbarUserRestaurantComponent implements OnInit {
 
   constructor(
     private router:Router,
-    public serviceLogin:ServiceLoginService
+    public serviceLogin:ServiceLoginService,
+    public matDialog:MatDialog
     ) { }
 
   ngOnInit() {
 
   }
   public toLogIn() {
-    this.router.navigate(["/"]);
-    this.nav = 1;
+    const dialogRef = this.matDialog.open(ModalLogOutComponent);
+      
+      
+    dialogRef.afterClosed().subscribe()
+  {}
+
   }
   public toReservationListRestaurant() {
     this.router.navigate(["/reservations-list-restaurant"]);

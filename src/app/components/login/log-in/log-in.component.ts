@@ -7,6 +7,7 @@ import { UserCustomer } from '../../../models/user-customer';
 import { ModalUsuarioIncorrectoComponent } from '../../modals/modal-usuario-incorrecto/modal-usuario-incorrecto.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ModalRegistroComponent } from '../../modals/modal-registro/modal-registro.component';
 @Component({
   selector: 'app-login',
   templateUrl: './log-in.component.html',
@@ -76,8 +77,14 @@ export class LogInComponent implements OnInit {
         );
         this.router.navigate(['/search']);
     }}else {
-    const dialogRef = this.matDialog.open(ModalUsuarioIncorrectoComponent);
-      dialogRef.afterClosed().subscribe()}});
+      
+      const dialogRef = this.matDialog.open(ModalRegistroComponent,{panelClass: ['animate__animated','animate__backInDown']});
+      dialogRef.componentInstance.mensaje="Tu usuario o contraseña son incorrectos";
+      dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
+      
+      dialogRef.afterClosed().subscribe()
+    {}
+  }});
 }
   ngOnInit(): void {
 }}

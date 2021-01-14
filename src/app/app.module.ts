@@ -51,6 +51,7 @@ import { ModalUsuarioIncorrectoComponent } from './components/modals/modal-usuar
 import { ModalLogOutComponent } from './components/modals/modal-log-out/modal-log-out.component';
 import { ContactUsComponent } from './components/login/contact-us/contact-us.component';
 import { MaprestComponent } from './components/maprest/maprest.component';
+import { PresentationComponent } from './components/login/presentation/presentation.component';
 
 
 
@@ -93,7 +94,8 @@ import { MaprestComponent } from './components/maprest/maprest.component';
     ModalUsuarioIncorrectoComponent,
     ModalLogOutComponent,
     ContactUsComponent,
-    MaprestComponent
+    MaprestComponent,
+    PresentationComponent
   ],
   imports: [
     BrowserModule,
