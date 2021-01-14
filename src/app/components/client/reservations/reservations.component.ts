@@ -90,8 +90,6 @@ public changedDayName:string
               this.changedMonth = "Diciembre";
               break;        
           }        
-
-
           reservation = new Reservations(data.data[i].reservation_id,
           data.data[i].customer_id,
           data.data[i].restaurant_id,

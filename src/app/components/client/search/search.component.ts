@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ServiceRestaurantService } from '../../../shared/service-restaurant.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalRegistroComponent } from '../../modals/modal-registro/modal-registro.component';
+import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
 @Component({
   selector: 'app-client-search',
   templateUrl: './search.component.html',
@@ -30,7 +31,8 @@ export class SearchComponent implements OnInit {
     private searchService:ServiceSearchService,
     private restaurantService:ServiceRestaurantService,
     private router:Router,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private calendarService: ServiceCalendarService
   ) { }
 
   ngOnInit() {
@@ -283,6 +285,7 @@ console.log(i);
   public toReservate(restaurant,i:number) {
     this.router.navigate(['/reservation1'])
     this.restaurantService.restaurantReservation = this.restaurants[i];
+    this.calendarService.getTimes(restaurant.restaurant_id)
   }
   public localSearch(texto) {
     let control=false;

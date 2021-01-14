@@ -1,5 +1,6 @@
+import { Time } from '@angular/common';
 import { EventEmitter, Output, ViewChild } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { Moment } from 'moment';
 import { Calendar } from 'src/app/models/calendar';
@@ -26,7 +27,24 @@ export class CalendarComponent implements OnInit {
     public maxDate:Date;
     public selectDay:Date;
     public date:Calendar
-  public today:Date
+    public today:Date
+    public availableTimes:Times[]
+    public countSun:number
+    public countMon:number
+    public countTue:number
+    public countWed:number
+    public countThu:number
+    public countFri:number
+    public countSat:number
+    public sun:number
+    public mon:number
+    public tue:number
+    public wed:number
+    public thu:number
+    public fri:number
+    public sat:number
+
+
   @ViewChild('calendar') calendar: MatCalendar<Moment>;
   public selectedDate: Moment;
 
@@ -34,20 +52,36 @@ export class CalendarComponent implements OnInit {
               private shiftsService: ServiceShiftsService,
               private timesService: ServiceTimesService
     ) {
+      
       this.shifts = []
       this.times = []
       this.today = new Date()
+      this.availableTimes = []
       let name = this.today.toString().substring(0,3)
       let month = this.today.toString().substr(4,3)
       let day = this.today.toString().substr(8,2)
       let year = this.today.toString().substr(11,4);
       this.date = new Calendar(name, day, month, year)
       this.calendarService.nuevaFecha = this.date
-      
-  console.log(name);
-  console.log(day);
-  console.log(month);
-  console.log(year);
+      this.calendarService.nuevaFecha = this.date
+      this.countSun = 0
+      this.countMon = 0
+      this.countTue = 0
+      this.countWed = 0
+      this.countThu = 0
+      this.countFri = 0
+      this.countSat = 0
+      this.sun = null
+      this.mon = null
+      this.tue = null
+      this.wed = null
+      this.thu = null
+      this.fri = null
+      this.sat = null
+
+
+    
+
   switch (name){
     case "Sun":
       this.changedDayName = "Domingo";
@@ -235,14 +269,37 @@ this.calendarService.changedMonth = this.changedMonth
 
   }
 
-  myDateFilter = (date:Date) => {
-    const day = date.getDay();
-    const date2 = date.getDate();
+public myDateFilter = (date:Date) => {
 
-    // let special = new Date('2021/01/25').getDate();
-    // Prevent Saturday and Sunday from being selected.
-   
-      return day !== 0 && day !== 6;
+  const day = date.getDay();
+
+
+  
+      if (this.calendarService.countSun == 0)  
+        this.sun = 0
+      if (this.calendarService.countMon == 0)
+        this.mon = 1
+      if (this.calendarService.countTue == 0)
+        this.tue = 2
+      if (this.calendarService.countWed == 0)
+        this.wed = 3
+      if (this.calendarService.countThu == 0)
+        this.thu = 4
+      if (this.calendarService.countFri == 0)
+        this.fri = 5
+      if (this.calendarService.countSat == 0)
+        this.sat = 6
+
+        return day !== this.sun &&
+               day !== this.mon &&
+               day !== this.tue && 
+               day !== this.wed && 
+               day !== this.thu && 
+               day !== this.fri && 
+               day !== this.sat;    
+    
+  
+
   }
 
 }

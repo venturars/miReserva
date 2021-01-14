@@ -58,11 +58,11 @@ export class ReservationsRestaurantComponent implements OnInit {
               private loginService: ServiceLoginService,
               private restaurantService: ServiceRestaurantService) {
 
-                if(this.loginService.restaurants.restaurant_id != null){
-                  this.restaurantId = this.loginService.restaurants.restaurant_id
-                }else if(this.restaurantService.selectedRestaurantId != null){
-                  this.restaurantId =this.restaurantService.selectedRestaurantId
-                }
+                // if(this.loginService.restaurants.restaurant_id != null){
+                //   this.restaurantId = this.loginService.restaurants.restaurant_id
+                // }else if(this.restaurantService.selectedRestaurantId != null){
+                //   this.restaurantId =this.restaurantService.selectedRestaurantId
+                // }
 
                 this.reservationsConfirmed = []
                 this.reservationsRejected = []
