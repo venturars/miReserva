@@ -207,7 +207,7 @@ export class SearchComponent implements OnInit {
   public toReservate(i:number) {
     this.router.navigate(['/reservation1']);
     this.restaurantService.restaurantReservation = this.restaurants[i];
-    this.calendarService.getTimes(restaurant.restaurant_id)
+    this.calendarService.getTimes(this.restaurants[i].restaurant_id)
   }
   public localSearch(searchLine:HTMLInputElement) {
     let control = false;

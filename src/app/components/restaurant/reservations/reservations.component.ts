@@ -49,10 +49,10 @@ export class ReservationsRestaurantComponent implements OnInit {
               private loginService: ServiceLoginService,
               private restaurantService: ServiceRestaurantService) {
 
-                if(this.loginService.restaurants.restaurant_id != null){
+                if(this.loginService.users.restaurant_id != null){ 
                   this.restaurantId = this.loginService.restaurants.restaurant_id
-                }else if(this.restaurantService.selectedRestaurantId != null){
-                  this.restaurantId =this.restaurantService.selectedRestaurantId
+                }else if(this.loginService.users.owner_id != null){  
+                  this.restaurantId = this.restaurantService.selectedRestaurant.restaurant_id
                 }
 
                 this.reservationsConfirmed = []
