@@ -1,0 +1,111 @@
+.imyourfather{
+
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: darksalmon;
+
+    & > .background{
+       
+        position: fixed;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color:cyan;
+
+        & > .redShape{
+            width: 25%;
+            height: 100%;
+            background-color: red;
+    
+        }
+
+    }
+    & > .lukeNooo{
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+
+        & > .target{
+            width: 100%;
+            height: 250px;
+            display: flex;
+            flex-direction: row;
+            background-color: gray;
+
+            & > .elementsInf {
+                width: 50%;
+                height: 100%;
+                justify-content: flex-end;
+                align-items: center;
+                display: flex;
+                background-color: rgba(238, 130, 238, 0.212);
+                
+                & > .generalInfo {
+                    width: min-content;
+                    height: 200px;
+                    display: flex;
+                    align-items: center;
+                    background-color:blue;
+                    
+                    & > .picture{
+                        width: 130px;
+                        height: 130px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        border: 3px solid white;
+                        background-color: wheat;
+
+                        & > img{
+                            width: 100%;
+                           
+                        }
+                    }
+                    & > .information{
+                        width: 260px;
+                        height: 150px;
+                        margin-left: 40px;
+                        display: flex;
+                        align-items: center ;
+                        background-color: yellowgreen;
+
+                        & > p {
+                            font-size: 14px;
+
+                           
+                           
+                        }
+                    }    
+                }
+                
+            }
+            & > .linkInfo{
+                width: 50%;
+                height: 100%;
+                justify-content: flex-end;
+                align-items: center;
+                display: flex;
+                background-color: pink;
+
+                & > .linkeIn{
+                    width: 100%;
+                    align-items: center;
+                    justify-content: flex-end;
+                    height: 100px;
+                    display: flex;
+                    background-color:crimson;
+
+                    & > img{
+            
+                        height: 100%;
+                        
+                    }
+
+                }
+            }
+        }
+    }
+}
