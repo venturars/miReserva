@@ -1,89 +1,66 @@
-.content{
-    max-width: 700px;
-    min-width: 280px;
-    height: 280px;
+.content {
+    width: min(calc(100% - 20px), 500px);
+    min-height: 280px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    margin: auto;
-    border: 2px solid var(--secundaryColorPush);
-    border-radius: var(--borderRadiusM);
+    align-items: center;
+    border: 1px solid var(--secundaryColorPush);
+    border-radius: var(--borderRadiusL);
     background-color: var(--primaryColorOpposite);
-    
-    & > div:nth-child(1){
-       
+    & > .contentTitle {
         display: flex;
-        flex-direction: row-reverse;
         align-items: center;
+        justify-content: center;
+        padding: 0 5px 0 5px;
         width: 100%;
-        height: 120px;
+        min-height: 40px;
         background-color:var(--secundaryColorPush);   
-
-        
+        & > div {
+            text-align: center;
+            font-weight: var(--fontWidthBolder);
+        }
     }
-
-
-    & > div:nth-child(2){
-       
+    & > .img {
         display: flex;
-        margin-top: 10px;
-        flex-direction: row;
         justify-content: center;
         width: 100%;
-        height: 100px;
-
-        & > img{
-        
-            display: flex;
-            width: 100px;
-            height: 100px;
-        }
-        
-        
-        
-        & > p{
+        height: 150px;
+        padding: 10px;
+        & > img {
             width: 100%;
-            display: flex;
-            text-align: center;
-            font-size: var(--fontSizeS);
-            
-        }
-    }
-    
-    & > div:nth-child(3){
-        
+    }}
+    & > .info {
+        width: 100%;
         display: flex;
         justify-content: center;
-        width: 100%;
-       
-
-        & > p{
-            margin-top: 20px;
-            font-size: var(--fontSizeS);
-            text-align: center;
-
-        }
-
-       
+        text-align: center;
+        margin-top: 20px;
+        padding: 0 5px 0 5px;
+        font-size: var(--fontSizeM);
     }
-    & > div:nth-child(4){
-       
+    & > .buttons {
+        margin: auto;
         display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 230px;
-       
-
-    }
-
-   
-        
-
-    }
-
-    .buttonLib{
-        width: 350px;
-
-    }
-    
-
-
+        justify-content: space-around;
+        align-items: center;
+        width: 250px;
+        height: 60px;
+        & > .lctl-warnButton-s  {
+            width: 200px;
+}}}
+@media screen and (max-width: 450px) {
+    .content{
+        & > .contentTitle {
+            & > div {
+                font-size: var(--fontSizeS);
+            }
+        }
+        & > .img {
+            & > img {
+        }}
+        & > .info {
+        font-size: var(--fontSizeS);
+        }
+        & > .buttons {
+}}}

@@ -1,111 +1,78 @@
-.imyourfather{
-
+.imyourfather {
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     margin: auto;
-    background-color: darksalmon;
-
-    & > .background{
-       
+    & > .background {
         position: fixed;
         justify-content: center;
         width: 100%;
         height: 100%;
-        background-color:cyan;
-
         & > .redShape{
             width: 25%;
             height: 100%;
-            background-color: red;
-    
-        }
-
-    }
-    & > .lukeNooo{
+            background-color: var(--primaryColor);
+    }}
+    & > .lukeNooo {
         z-index: 3;
         width: 100%;
         height: 100%;
         background: transparent;
-
-        & > .target{
+        display: flex;
+        flex-direction: column;
+        & > .target {
             width: 100%;
-            height: 250px;
+            margin: 10px auto 10px auto;
+            min-height: max(calc(50% - 61px), 220px);
             display: flex;
             flex-direction: row;
-            background-color: gray;
-
+            align-items: center;
+            justify-content: space-between;
             & > .elementsInf {
-                width: 50%;
-                height: 100%;
+                width: min-content;
+                height: 160px;
                 justify-content: flex-end;
                 align-items: center;
                 display: flex;
-                background-color: rgba(238, 130, 238, 0.212);
-                
-                & > .generalInfo {
-                    width: min-content;
-                    height: 200px;
-                    display: flex;
-                    align-items: center;
-                    background-color:blue;
-                    
-                    & > .picture{
-                        width: 130px;
-                        height: 130px;
-                        border-radius: 50%;
-                        overflow: hidden;
-                        border: 3px solid white;
-                        background-color: wheat;
-
-                        & > img{
-                            width: 100%;
-                           
-                        }
-                    }
-                    & > .information{
-                        width: 260px;
-                        height: 150px;
-                        margin-left: 40px;
-                        display: flex;
-                        align-items: center ;
-                        background-color: yellowgreen;
-
-                        & > p {
-                            font-size: 14px;
-
-                           
-                           
-                        }
-                    }    
+                margin-left: calc(25% - 60px);
+                background-color: var(--primaryColorOpposite);
+                background-color: var(--secundaryColor);
+                border-bottom-left-radius: 1000px;
+                border-top-left-radius: 1000px;
+                padding-left: 5px;
+                & > .lctl-photoProfile-xl {
+                    border: 1px solid var(--secundaryColorPush) !important;
+                    width: 150px;
+                    height: 150px;
                 }
-                
-            }
-            & > .linkInfo{
-                width: 50%;
-                height: 100%;
+                & > .information {
+                    width: 300px;
+                    height: 100%;
+                    margin-left: 50px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
+                    & > div {
+                        height: 32px;
+                        font-weight: var(--fontWidthBolder);
+            }}}
+            & > .linkInfo {
+                width: 100%;
+                height: 160px;
                 justify-content: flex-end;
                 align-items: center;
                 display: flex;
-                background-color: pink;
-
-                & > .linkeIn{
+                // background-color: var(--primaryColorOpposite);
+                background-color: var(--secundaryColor);
+                & > .linkeIn {
                     width: 100%;
                     align-items: center;
                     justify-content: flex-end;
-                    height: 100px;
+                    height: 80px;
                     display: flex;
-                    background-color:crimson;
-
-                    & > img{
-            
+                    padding-right: 20px;
+                    & > img {
                         height: 100%;
-                        
-                    }
-
-                }
-            }
-        }
-    }
-}
+}}}}}}

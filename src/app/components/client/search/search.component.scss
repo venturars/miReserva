@@ -59,50 +59,7 @@
       font-size: 20px;
       &:hover, &:active {
         background-color: var(--primaryColorAccent);
-  }}}
-  .showOptions {
-    width: calc(100% - 20px);
-    position: fixed;
-    transform: translateY(70px);
-    display: none;
-    flex-direction: column;
-    background-color: var(--primaryColorOpposite);
-    z-index: 1000;
-    box-shadow: none;
-    border: 1px solid var(--secundaryColorPush);
-    & > .typeOption {
-      padding-bottom: 5px;
-      border-bottom: 1px solid var(--secundaryColorPush);
-      display: flex;
-      flex-direction: column;
-      width: calc(100% - 20px);
-      margin: 10px 10px 0 10px;
-      &:last-child {
-        border: none;
-      }
-      & > .titleOption {
-        display: flex;
-        justify-content: center;
-        color: var(--secundaryColorOpposite);
-        font-weight: var(--fontWidthBolder);
-      }
-      & > .box {
-        display: flex;
-        width: 100%;
-        overflow-x: scroll;
-        & > .labelTeam {
-          display: flex;
-          justify-content: flex-start;
-          flex-wrap: nowrap;
-          width: max-content;
-          & > label {
-            width: 100px;
-            &:active {
-              background-color: var(--primaryColor);
-          }}
-          & > input {
-            display: none;
-    }}}}
+  }}
     & > .panel {
       width: 20px;
       height: 20px;
@@ -203,72 +160,7 @@
     color: var(--primaryColor);
   }
 }
-@media screen and (max-width: 768px) {
-  .content {
-    .search {
-      .searchLine {
-        height: 35px;
-        font-size: var(--fontSizeS);
-        &::placeholder {
-        }
-        &:focus::placeholder {
-      }}
-      .filterButton {
-        height: 35px;
-        &:hover, &:active {
-      }}
-      .searchButton {
-        height: 35px;
-        width: 40px;
-        &:hover, &:active {
-    }}}
-    .showOptions {
-      & > .typeOption {
-        &:last-child {
-        }
-        & > .titleOption {
-        }
-        & > .box {
-          & > .labelTeam {
-            & > label {
-              &:active {
-            }}
-            & > input {
-      }}}}
-      & > .panel {
-    }}
-    & #hideOptions {
-    }
-  .containFilters {
-    .filters {
-      & > .box {
-        &:first-child {
-        }
-        &:last-child {
-        }
-        & .tag {
-          &:hover > mat-icon, &:active > mat-icon {
-          }
-          & > mat-icon {
-          }
- }}}}}
- .body {
-  .map {
-  }
-  .cards {
-  }
-  .lctl-infoCard {
-    &:first-child {
-    }
-    &:last-child {
-}}}}
-@media screen and (max-width: 849px) {
-  .map {
-    display: none;
-}}
 
-.esconder{
-  display:none;
+.checkIt {
+  background-color: red;
 }
-
-

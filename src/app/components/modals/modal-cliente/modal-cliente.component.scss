@@ -1,97 +1,66 @@
-
-
-.target{
-    max-width: 700px;
-    min-width: 280px;
+.target {
+    width: min(calc(100% - 20px), 700px);
     height: 400px;
-    display: flex;
     margin: auto;
+    display: flex;
     flex-direction: column;
-    border: 2px solid var(--secundaryColorPush);
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--secundaryColorPush);
+    border-radius: var(--borderRadiusL);
     background-color: var(--primaryColorOpposite);
-    border-radius: var(--borderRadiusM);
-
-    
-    & > .elements{
-        
-        
-        display: flex;
-        flex-direction: column;
+    & > .elements {
+        width: calc(100% - 20px);
         height: 100%;
-        width: 100%;
-
-    }
-    & > div:nth-child(2){
-       
+        display: flex;
+        align-items: center;
+        & > .message {
+            z-index: 3;
+             display: flex;
+             flex-direction: column;
+             width: 100%;
+             height: min-content;
+             margin-right: -50px;
+             font-size: var(--fontSizeM);
+             text-align: center;
+             transform: translateY(20px);
+         }
+         & > .imageIn {
+            display: flex;
+            width: 100%;
+            height: 340px;
+            margin-left: -100px;
+            & > img {
+                height: 100%;
+    }}}
+    & > .buttons {
+        margin: auto;
         display: flex;
         justify-content: space-around;
+        align-items: center;
         width: 250px;
-        margin: auto;
         height: 60px;
-    }
-    
-}
-
-
-
-.image{
-    display: flex;
-    width: 100%;
-    height: 340px;
-    margin: auto;
-    
-
-    & > .message {
-       z-index: 3;
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        width: 500px;
-        margin-right: -50px;
-
-
-        & > p{
-            font-size: var(--fontSizeM);
-            text-align: center;
-
-        }
-    }
-
-    & > .imageIn {
-       
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        width: 500px;   
-        margin-left: -50px;
-        height: 300px;
-    }
-}
-
-
-@media only screen and (max-width:500px) {
-
-    .target{
-        
+}}
+@media only screen and (max-width:425px) {
+    .target {
+        height: 100%;
         & > .elements {
-            
-            & > .image {
-                flex-direction: column;
-                & > .message{
-                    margin-right: 0;
-                    width: 100%;
-                    transform: translateY(40px);
-                }
-               & > .imageIn{
-                margin-left: 0;
-                width: 100%;
-                height: calc(100% - 100px);
-               }
+            flex-direction: column-reverse;
+            transform: translateY(-20px);
+            & > .message {
+                transform: translateY(2px);
+                margin: 0;
+                height: 34px;
+                padding: 0 5px 0 5px;
+                font-size: var(--fontSizeS);
+                justify-content: flex-end;
             }
-        }    
-    }
-}
-
-
-
-
+             & > .imageIn {
+                height: 100%;
+                margin: 0;
+                justify-content: center;
+                & > img {
+        }}}
+        & > .buttons {
+            transform: translateY(-10px);
+}}}

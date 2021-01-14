@@ -13,3 +13,5 @@ export class ModalInfdeRestauranteComponent implements OnInit {
   }
 
 }
+
+//Modal sin uso//
