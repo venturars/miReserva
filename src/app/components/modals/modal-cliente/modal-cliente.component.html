@@ -1,44 +1,28 @@
-
- <div class="target" *ngIf="showHide2">
-   <div class="elements">
-    <div class="image">
-      <div class="message">
-        <p>¿Seguro que quieres cancelar tu reserva?</p>
-
-      </div>
-      <div class="imageIn">
+<div class="target" *ngIf="showHide2">
+  <div class="elements">
+    <div class="message">
+      ¿Seguro que quieres cancelar tu reserva?
+    </div>
+    <div class="imageIn">
       <img src="../../../../assets/chair2.svg" alt="">
     </div>
-      </div>
-        
   </div>
-    <div>
-     
-        <button  mat-dialog-close class="lctl-warnButton-s">No</button>
-        <button cdkFocusInitial class="lctl-warnButton-s" (click)="confirmar()">Sí</button>
-      
+    <div class="buttons">
+      <button  mat-dialog-close class="lctl-warnButton-s">No</button>
+      <button cdkFocusInitial class="lctl-warnButton-s" (click)="confirmar()">Sí</button>
     </div>
-
- </div>
-
- <div class="target" *ngIf="showHide">
-  <div class="elements">
-   <div class="image">
-     <div class="message">
-       <p>Tu reserva ha sido cancelada</p>
-       
-     </div>
-     <div class="imageIn">
-     <img src="../../../../assets/chair1.svg" alt="">
-   </div>
-   
-     </div>
-       
- </div>
-   <div>
-           <button [mat-dialog-close]="true" cdkFocusInitial class="lctl-warnButton-s">Aceptar</button>
-     
-   </div>
-
 </div>
- 
+
+<div class="target" *ngIf="showHide">
+  <div class="elements">
+    <div class="message">
+      Tu reserva ha sido cancelada
+    </div>
+    <div class="imageIn">
+      <img src="../../../../assets/chair1.svg" alt="">
+    </div>
+  </div>
+    <div class="buttons">
+      <button [mat-dialog-close]="true" cdkFocusInitial class="lctl-warnButton-s">Aceptar</button>
+    </div>
+</div> 

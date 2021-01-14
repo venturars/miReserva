@@ -1,35 +1,40 @@
 <div class="imyourfather">
+
     <div class="background">
-            <div class="redShape"></div>
+        <div class="redShape"></div>
     </div>
 
     <div class="lukeNooo">
-        <!-- <ng-container *ngFor="let card of cards"> -->
-        <div class="target">
+
+        <div class="target" *ngFor="let person of persons">
+
             <div class="elementsInf">
-                <div class="generalInfo">
-                    <div class="picture">
-                        <img src="../../../../assets/foto.jpg" alt="">
+
+                <div class="lctl-photoProfile-xl">
+                    <img src="{{person.photo}}">
+                </div>
+                <div class="information">
+                    <div>
+                        Nombre: {{person.nombre}}
                     </div>
-                    <div class="information">
-                        <p>
-                            Nombre: Carolly 
-                            Apellido: García Morel
-                            Profesión: Publicidad
-                        </p>
+                    <div>
+                        Apellidos: {{person.apellido1}} {{person.apellido2}}
+                    </div>
+                    <div>
+                        Profesión: {{person.profesion}}
                     </div>
                 </div>
-            </div>    
-            
-            <div class="linkInfo">
-                <div class="linkeIn">
-                    <img src="../../../../assets/calink.svg" alt="">
-                </div>
+
             </div>
+
+            <div class="linkInfo">
+                <a class="linkeIn" href="{{person.linkedIn}}" target="_blank">
+                    <img src="../../../../assets/calink.svg">
+                </a>
+            </div>
+
         </div>
-    <!-- </ng-container> -->
+
     </div>
-
-
 
 </div>

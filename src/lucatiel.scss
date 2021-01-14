@@ -896,6 +896,9 @@ a {
     }
     &:active {
         border: 2px solid var(--secundaryColorAccent);
+    }
+    & img {
+        width: 100%;
 }}
 //----------
 [class *= "lctl-photoProfile-xs"] {
@@ -907,9 +910,6 @@ a {
     }
     &:active {
         border: 1px solid var(--secundaryColorAccent);
-    }
-    & img {
-        width: 100%;
 }}
 //----------
 [class *= "lctl-photoProfile-s"] {
@@ -922,23 +922,17 @@ a {
 [class *= "lctl-photoProfile-m"] {
     width: 60px;
     height: 60px;
-    & img {
-        width: 100%;
-}}
+}
 //----------
 [class *= "lctl-photoProfile-l"] {
     width: 100px;
     height: 100px;
-    & img {
-        width: 100%;
-}}
+}
 //----------
 [class *= "lctl-photoProfile-xl"] {
     width: 160px;
     height: 160px;
-    & img {
-        width: 100%;
-}}
+}
 //----------//----------//----------//----------//----------
 //-----How to use-----
 //----------

@@ -1,116 +1,88 @@
 <div class="content">
 
-    <div class="search">
-        <input type="text" class="searchLine" #searchLine id="searchline"
-            placeholder="Busca tu restaurante" >
-        <!-- <button class="filterButton" (click)="showOptions()">
-           Filtros
-        </button> -->
-        <button class="searchButton" (click)="localSearch(searchLine)">
-        </button>
-    </div>
-            <div class="lctl-centerElements labelTeam">
-                    <label for="Espayola" class="lctl-disabledButtonOpposite-s Espayola">Española</label>
-                    <input type="checkbox" class="esconder" id="Espayola" value="Española" (click)="asign('Espayola')">
-                    <label for="Mexicana" class="lctl-disabledButtonOpposite-s Mexicana">Mexicana</label>
-                    <input type="checkbox" class="esconder" id="Mexicana" value="Mexicana" (click)="asign('Mexicana')">
-                    <label for="Argentina" class="lctl-disabledButtonOpposite-s Argentina">Argentina</label>
-                    <input type="checkbox" class="esconder" id="Argentina" value="Argentina" (click)="asign('Argentina')">
-                    <label for="Dominicana" class="lctl-disabledButtonOpposite-s Dominicana">Dominicana</label>
-                    <input type="checkbox" class="esconder" id="Dominicana" value="Dominicana" (click)="asign('Dominicana')">
-                    <label for="Japonesa" class="lctl-disabledButtonOpposite-s Japonesa">Japonesa</label>
-                    <input type="checkbox" class="esconder" id="Japonesa" value="Japonesa" (click)="asign('Japonesa')">
-                    <label for="China" class="lctl-disabledButtonOpposite-s China">China</label>
-                    <input type="checkbox" class="esconder" id="China" value="China" (click)="asign('China')">
-            </div>
-    <div class="lctl-div" id="options">
+    <div class="allSearch">
 
-        <div class="typeOption">
-            <div class="titleOption">
-               
+        <div class="completeSearch">
+
+            <div class="search">
+                <input type="text" class="searchLine" #searchLine
+                placeholder="Busca tu restaurante" >
+                <button class="searchButton" (click)="localSearch(searchLine)">
+                </button>
             </div>
-            <div class="box">
-                <div class="lctl-centerElements labelTeam">
-                   
-                </div>
-            </div>
-        </div>
-        <div class="panel"></div>
-    </div>
-    
-    
-    <div class="containFilters">
-        <ng-container *ngIf="checked.length">
-            <div class="filters">
-                <ng-container *ngFor="let item of checked">
-                    <div class="box">
-                        <label for="{{item.id}}"><div class="tag">{{item.value}}<mat-icon>clear</mat-icon></div></label>
-                    </div>
+            
+            <div class="lctl-centerElements labelTeam">
+                <ng-container *ngFor="let option of options">
+                    <label #label for="{{option.id}}" class="lctl-disabledButtonOpposite-s" [ngClass]="{'checkIt': input.checked}">{{option.value}}</label>
+                    <input type="checkbox" style="display: none;" id="{{option.id}}" value="{{option.value}}" #input (click)="typeOfFood(input, label)">
                 </ng-container>
             </div>
-        </ng-container>
+
+        </div>
+
+        <div class="cards">
+    
+        </div>
+
     </div>
-
-</div>
-
-<div class="body">
+    
     <div class="map">
         <div id="mapid" style="width: 100%; height: 100%;"></div>
     </div>
-    <div class="cards" >
-        <!-- *ngIf="rendered.length<4 ;else lista" -->
-        <div *ngFor = "let restaurant of rendered; let i = index" (click)="clickcard(restaurant,i)">
-            <div class="lctl-infoCard" >
-                <ng-container *ngIf="restaurant.header; else noheader">
-                    <div class="lctl-infoCard-banner">
-                        <img src="{{restaurant.header}}">
-                    </div>
-                </ng-container>
-                <ng-template #noheader>
-                    <div class="lctl-infoCard-banner">
-                        <img src="assets/photos/potada2.png">
-                    </div>
-                </ng-template>
-                <div class="lctl-infoCard-under">
-                    <div class="lctl-infoCard-left">
-                        <ng-container *ngIf="restaurant.logo; else nologo">
-                            <div class="lctl-photoProfile-l">
-                                <img src="{{restaurant.logo}}">
-                            </div>
-                        </ng-container>
-                        <ng-template #nologo>
-                            <div class="lctl-photoProfile-l">
-                                <img src="assets/photos/logorestaurante2.png">
-                            </div>
 
-                        </ng-template>
-                    </div>
-                    <div class="lctl-infoCard-right">
-                        <div class="lctl-infoCard-info">
-                            <div>{{restaurant.name}}</div>
-                            <div>
-                                <div>{{restaurant.phone}}</div>
-                                <div>{{restaurant.food_type}}</div>
-                            </div>
-                        </div>
-                        <div class="lctl-infoCard-oferts">
-                        </div>
-                    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <div class="cards">
+
+    <div *ngFor = "let restaurant of rendered; let i = index" (click)="clickCard(i)">
+        <div class="lctl-infoCard">
+            <ng-container *ngIf="restaurant.header; else notHeader">
+                <div class="lctl-infoCard-banner">
+                    <img src="{{restaurant.header}}">
                 </div>
-                <div class="lctl-infoCard-bottons">
-                    <a class="lctl-warnButtonOpposite-s" (click)="toReservate(restaurant,i)">Reservar</a>
-                    <a class="lctl-warnButtonOpposite-s" href="{{restaurant.url}}" target="_blank">web</a>
+            </ng-container>
+            <ng-template #notHeader>
+                <div class="lctl-infoCard-banner">
+                    <img src="assets/photos/potada2.png">
+                </div>
+            </ng-template>
+            <div class="lctl-infoCard-under">
+                <div class="lctl-infoCard-left">
+                    <ng-container *ngIf="restaurant.logo; else nologo">
+                        <div class="lctl-photoProfile-l">
+                            <img src="{{restaurant.logo}}">
+                        </div>
+                    </ng-container>
+                    <ng-template #nologo>
+                        <div class="lctl-photoProfile-l">
+                            <img src="assets/photos/logorestaurante2.png">
+                        </div>
+                    </ng-template>
+                </div>
+                <div class="lctl-infoCard-right">
+                    <div class="lctl-infoCard-info">
+                        <div>{{restaurant.name}}</div>
+                        <div>
+                            <div>{{restaurant.phone}}</div>
+                            <div>{{restaurant.food_type}}</div>
+                        </div>
+                    </div>
+                    <div class="lctl-infoCard-oferts">
+                    </div>
                 </div>
             </div>
+            <div class="lctl-infoCard-bottons">
+                <a class="lctl-warnButtonOpposite-s" (click)="toReservate(i)">Reservar</a>
+                <a class="lctl-warnButtonOpposite-s" href="{{restaurant.url}}" target="_blank">web</a>
+            </div>
         </div>
-
     </div>
-    <!-- <ng-template #lista>
-        <ng-container *ngFor = "let restaurant of rendered; let i = index" (click)="clickcard(restaurant,i)">
-            <ul>
-                <li>{{restaurant.name}}</li>      
-            </ul>
-           {{restaurant.name}}
-        </ng-container>
-    </ng-template> -->
-</div>
+
+</div> -->

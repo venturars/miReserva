@@ -1,7 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { data } from 'jquery';
 import { Reservations } from 'src/app/models/reservations';
 import { Shifts } from 'src/app/models/shifts';
 import { Tables } from 'src/app/models/tables';
