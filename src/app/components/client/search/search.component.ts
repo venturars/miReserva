@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServiceSearchService } from '../../../shared/service-search.service';
 import { Restaurants } from '../../../models/restaurants';
 import { Map, tileLayer, Marker } from "leaflet";
@@ -48,7 +48,6 @@ export class SearchComponent implements OnInit {
       id:"chn"
     },
   ];
- 
   constructor(
     private searchService:ServiceSearchService,
     private restaurantService:ServiceRestaurantService,

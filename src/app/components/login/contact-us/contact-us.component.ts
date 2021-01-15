@@ -20,7 +20,7 @@ export class ContactUsComponent implements OnInit {
       nombre: "Ventura",
       apellido1: "Rodríguez",
       apellido2: "Serrano",
-      profesion: "Músico",
+      profesion: "UX/UI",
       photo: "./assets/fotoVentu.jpg",
       linkedIn: "https://www.linkedin.com/in/ventura-rodr%C3%ADguez-255009199/"
     },

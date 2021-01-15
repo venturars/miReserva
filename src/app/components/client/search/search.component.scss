@@ -1,21 +1,21 @@
 .content {
-  width: min(calc(100% -20px), 1420px);
   margin: auto;
+  width: min(calc(100% -20px), 1420px);
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
 }
 .allSearch {
-  position: sticky;
-  top: 0;
+  // position: sticky;
+  // top: 0;
   width: 100%;
-  height: 120px;
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--secundaryColor);
-  border-bottom: 1px solid var(--secundaryColorPush);
   & >.search {
     margin: 10px;
     display: flex;
@@ -52,30 +52,82 @@
       font-size: 20px;
         &:hover, &:active {
           background-color: var(--primaryColorAccent);
-    }}
+    }}}
     & > .labelTeam {
-      width: 100%;
+      width: calc(100% - 16px);
       display: flex;
-      justify-content: center;
+      overflow-y: scroll;
+      & > .design {
+        margin: auto;
+        display: flex;
+        width: min-content;
+}}}
+.map {
+  position: sticky;
+  // top: 120px;
+  top: 0;
+  width: calc(100% - 20px);
+  margin: auto;
+  height: 220px;
+  display: flex;
+  background-color: var(--primaryColorLink);
+  z-index: 10000000;
+}
+.cards {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  & > div {
+    margin: 10px;
+}}
+@media screen and (max-width: 800px) {
+  .content {
+  }
+  .allSearch {
+    & >.search {
+      & >.searchLine {
+        &::placeholder {
+        }
+        &:focus::placeholder {
+      }}
+      & >.searchButton {
+          &:hover, &:active {
+      }}}
+      & > .labelTeam {
   }}
   .map {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    // height: calc(100vh - 134px);
-    display: flex;
-    background-color: var(--primaryColorLink);
   }
   .cards {
-    background-color: aqua;
+    margin-top: 10px;
+    & > div {
+      margin: 5px;
+}}}
+@media screen and (max-width: 720px) {
+  .content {
+  }
+  .allSearch {
+    & >.search {
+      & >.searchLine {
+        &::placeholder {
+        }
+        &:focus::placeholder {
+      }}
+      & >.searchButton {
+          &:hover, &:active {
+      }}}
+      & > .labelTeam {
+  }}
+  .map {
     width: 100%;
-    height: 100%;
-    overflow-y: scroll;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}}
+    height: 160px;
+  }
+  .cards {
+    width: 100%;
+    & > div {
+}}}
 //-----Especial elements-----
 .checkIt {
   background-color: red;

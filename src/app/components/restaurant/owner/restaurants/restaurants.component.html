@@ -1,44 +1,70 @@
-<div class="page">
+<div class="content">
 
-    <div class="header">
-        <div class="lctl-font-title">Mis restaurantes</div>
+    <div class="allSearch">
+
+        <div class="text">
+            <div class="lctl-font-title">Mis restaurantes</div>
+        </div>
+
+        <div class="search">
+            <input type="text" class="searchLine" #searchLine
+            placeholder="Busca tu restaurante" >
+            <button class="searchButton">
+            </button>
+        </div>
+
     </div>
 
-    <div class="body">
-        <ng-container *ngIf="restaurants; else not">
-            <ng-container *ngFor="let restaurant of restaurants; let i = index ">
-                <div class="lctl-bigCard" (click)="clickRestaurant(i)">
-                    <div class="lctl-bigCard-banner">
-                        <img src="{{restaurant.header}}">
+    <div class="map" *ngIf="restaurants">
+        <div id="mapid" style="width: 100%; height: 100%;"></div>
+    </div>
+
+    <ng-template #not>
+        <div class="not"><img src="/assets/restaurantes.svg" (click)="createRest()"></div>
+    </ng-template>
+
+    <div class="cards"  *ngIf="restaurants; else not">
+    
+        <div class="lctl-simpleCard" *ngFor = "let restaurant of restaurants; let i = index">
+            <!-- <div class="lctl-simpleCard-banner" *ngIf="restaurant.header; else notHeader">
+                <img src="{{restaurant.header}}">
+            </div> -->
+            <div class="lctl-simpleCard-banner"  #notHeader>
+                <img src="assets/photos/potada2.png">
+            </div>
+            <!-- <div class="lctl-simpleCard-photoProfile" *ngIf="restaurant.logo; else notLogo">
+                <div class="lctl-photoProfile-">
+                    <img src="{{restaurant.logo}}">
+                </div>
+            </div> -->
+            <div class="lctl-simpleCard-photoProfile" #notLogo>
+                <div class="lctl-photoProfile-">
+                    <img #notLogo src="assets/photos/logorestaurante2.png">
+                </div>
+            </div>
+            <div class="lctl-simpleCard-info">
+                <div class="lctl-simpleCard-title">
+                    {{restaurant.name}}
+                </div>
+                <div class="lctl-simpleCard-paragraphs">
+                    <div class="lclt-simpleCard-firstParagraph">
+                        {{restaurant.food_type}}
                     </div>
-                    <div class="lctl-bigCard-profile">
-                        <div class="lctl-photoProfile-">
-                            <img src="{{restaurant.logo}}">
-                        </div>
+                    <div class="lctl-simpleCard-secondParagraph">
+                        {{restaurant.phone}}
                     </div>
-                    <div class="lctl-bigCard-name">
-                        <div>
-                            {{restaurant.name}}
-                        </div>
-                    </div>
-                    <div class="lctl-bigCard-content">
-                        <div class="lctl-bigCard-text">
-                            {{restaurant.city}}
-                        </div>
-                        <div class="lctl-bigCard-text">
-                            {{restaurant.phone}}
-                        </div>
-                        <div class="lctl-bigCard-text">
-                            Max pax.{{restaurant.capacity}}
-                        </div>
+                    <div class="lctl-simpleCard-thirdParagraph">
+                        dirección
                     </div>
                 </div>
-            </ng-container>
-        </ng-container>
-    
-        <ng-template #not>
-        <div class="not"><img src="/assets/restaurantes.svg" (click)="createRest()"></div>
-        </ng-template>
+            </div>
+            <div class="lctl-br"></div>
+            <div class="lctl-simpleCard-footer">
+                <a class="lctl-warnButtonOpposite-s" href="{{restaurant.url}}" target="_blank">web</a>
+                <a class="lctl-warnButtonOpposite-s" (click)="clickRestaurant(i)">Editar</a>
+            </div>
+        </div>
+
     </div>
 
 </div>
