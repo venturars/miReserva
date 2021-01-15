@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServiceSearchService } from '../../../shared/service-search.service';
 import { Restaurants } from '../../../models/restaurants';
 import { Map, tileLayer, Marker } from "leaflet";
@@ -13,7 +13,6 @@ import { ServiceCalendarService } from 'src/app/shared/service-calendar.service'
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
   public allRestaurants: Restaurants[] = new Array();
   public restaurants: Restaurants[] = new Array();
   public checked:any[] = new Array();
@@ -48,7 +47,6 @@ export class SearchComponent implements OnInit {
       id:"chn"
     },
   ];
- 
   constructor(
     private searchService:ServiceSearchService,
     private restaurantService:ServiceRestaurantService,
@@ -56,7 +54,6 @@ export class SearchComponent implements OnInit {
     private dialog:MatDialog,
     private calendarService: ServiceCalendarService
   ) { }
-
   ngOnInit() {
     this.searchService.initialSearch().subscribe((data:any) => {
       for(let i = 0; i < data.data.length; i++) {
@@ -86,7 +83,6 @@ export class SearchComponent implements OnInit {
         attribution: 'Mi reserva',
         maxZoom: 18
       }).addTo(this.map);
-      
       for (let i=0;i<this.restaurants.length;i++) {
         this.marker[i] = new Marker([
           this.restaurants[i].latitude,
@@ -224,3 +220,22 @@ export class SearchComponent implements OnInit {
       dialogRef.componentInstance.mensaje="No hemos encontrado ningún restaurante con ese nombre";
       dialogRef.afterClosed().subscribe();
 }}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

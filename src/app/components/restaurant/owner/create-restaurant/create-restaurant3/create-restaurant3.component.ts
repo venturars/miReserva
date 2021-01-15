@@ -21,7 +21,7 @@ export class CreateRestaurant3Component implements OnInit {
   public structure:object[] = [
     {day: "Lunes",dayI: "Mon"},
     {day: "Martes",dayI: "Tue"},
-    {day: "Miércoles",dayI: "Wes"},
+    {day: "Miércoles",dayI: "Wed"},
     {day: "Jueves",dayI: "Thu"},
     {day: "Viernes",dayI: "Fri"},
     {day: "Sábado",dayI: "Sat"},
