@@ -1315,6 +1315,7 @@ a, a:hover {
 .cdk-overlay-dark-backdrop {
     background: var(--secundaryColor);
     opacity: .6!important;
+    display:none!important;
 }
 .cdk-global-overlay-wrapper {
     width: 100%;
