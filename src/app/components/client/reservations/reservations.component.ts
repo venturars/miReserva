@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Reservations } from 'src/app/models/reservations';
 import { ReservationsClient } from 'src/app/models/reservations-client';
+import { Restaurants } from 'src/app/models/restaurants';
 import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
@@ -17,8 +18,7 @@ public reservations:Reservations[]
 public customerId:number
 public changedMonth:string
 public changedDayName:string
-public headers:string[];
-public logos:string[];
+public restaurantsReservated: Restaurants[]=[];
   constructor(public dialog: MatDialog,
               private loginService: ServiceLoginService,
               private reservationService: ServiceReservationsService,
@@ -26,15 +26,15 @@ public logos:string[];
               ) {
     this.customerId = this.loginService.userCustomer.customer_id
     this.reservations = []
-    this.headers=[];
-    this.logos=[];
+    
     this.reservationService.getReservationClient(this.customerId).subscribe((data:any) =>{     
       for(let i = 0; i < data.data.length; i++){
         this.restaurantService.getRestaurant(data.data[i].restaurant_id).subscribe((data2:any) =>{     
           let reservation:Reservations
-          console.log("ESTO ES:");
-          console.log(data2);
-          this.headers.push()
+          console.log(data2.data[0]);
+          this.restaurantsReservated.push(data2.data[0])
+          
+          console.log(this.restaurantsReservated);
           this.reservationService.reservation = data.data[i]
           switch (data.data[i].dayname){
             case "Sun":

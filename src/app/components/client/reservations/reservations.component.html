@@ -20,7 +20,10 @@
     <div class="lctl-centerElements row son">
         <div class="pic">
             <a routerLink="/" class="img">
-                <img src="" alt="" class="lctl-photoProfile-s">
+                <img *ngIf="this.restaurantsReservated[i].logo; else not" src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s">
+                <ng-template #not>
+                    <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s">
+                </ng-template>
             </a>
         </div>
             
@@ -29,7 +32,7 @@
             <p>Horario: {{reservations[i].hour}}</p> 
             <p>Observaciones: {{reservations[i].comments}}</p> 
             <p>Numero de personas: {{reservations[i].pax}}</p>  
-            <p>Restaurant: {{reservations[i].restaurantName}}</p>
+            <p>Restaurant: {{this.restaurantsReservated[i].name}}</p>
         </div>
 
         <div class="buttons">

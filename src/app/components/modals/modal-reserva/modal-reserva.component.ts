@@ -57,6 +57,7 @@ public shift:Shifts
     this.selectedMonth = this.calendarService.nuevaFecha.month
     this.selectedYear = this.calendarService.nuevaFecha.year
     this.restaurantId = this.restaurantService.restaurantReservation.restaurant_id
+    console.log(this.restaurantId);
     this.fullName = this.loginService.userCustomer.name + " " + this.loginService.userCustomer.surname
     this.shiftsService.getShiftsId(this.selectedShiftId).subscribe((data:any) =>{  
       this.shift = data.data[0]
