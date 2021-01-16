@@ -33,7 +33,7 @@
         </div>
 
         <div class="buttons">
-            <button class="lctl-button-s buttonRes" >Reservada</button>
+            <button class="lctl-button-s buttonRes" >{{reservations[i].status}}</button>
             <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
         </div>
     </div>   

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Reservations } from 'src/app/models/reservations';
 import { Shifts } from 'src/app/models/shifts';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
@@ -37,6 +38,7 @@ public fullName:string
 public shift:Shifts
 
   constructor(private reservationService: ServiceReservationsService,
+              private router:Router,
               private loginService: ServiceLoginService,
               public calendarService: ServiceCalendarService,
               private restaurantService: ServiceRestaurantService,
@@ -91,7 +93,8 @@ public shift:Shifts
       this.loginService.userCustomer.phone)    
 
 this.reservationService.postReservation(reservation).subscribe((data:any) =>{
-
+console.log(data);
+this.router.navigate(["/reservations-list-client"]);      
 })
     }else{
       let reservation = new Reservations(null,
@@ -113,6 +116,7 @@ this.reservationService.postReservation(reservation).subscribe((data:any) =>{
         
   this.reservationService.postReservation(reservation).subscribe((data:any) =>{
     console.log(data);
+    this.router.navigate(["/reservations-list-client"]);  
     
   })
     }

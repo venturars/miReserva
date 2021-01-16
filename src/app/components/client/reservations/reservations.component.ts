@@ -17,6 +17,8 @@ public reservations:Reservations[]
 public customerId:number
 public changedMonth:string
 public changedDayName:string
+public headers:string[];
+public logos:string[];
   constructor(public dialog: MatDialog,
               private loginService: ServiceLoginService,
               private reservationService: ServiceReservationsService,
@@ -24,10 +26,15 @@ public changedDayName:string
               ) {
     this.customerId = this.loginService.userCustomer.customer_id
     this.reservations = []
+    this.headers=[];
+    this.logos=[];
     this.reservationService.getReservationClient(this.customerId).subscribe((data:any) =>{     
       for(let i = 0; i < data.data.length; i++){
         this.restaurantService.getRestaurant(data.data[i].restaurant_id).subscribe((data2:any) =>{     
           let reservation:Reservations
+          console.log("ESTO ES:");
+          console.log(data2);
+          this.headers.push()
           this.reservationService.reservation = data.data[i]
           switch (data.data[i].dayname){
             case "Sun":
@@ -117,8 +124,9 @@ public changedDayName:string
     console.log(this.reservations);
    }
   ngOnInit(): void {
+    this.loginService.navCustomer = 4;
   }
-
+  
   public deleteReservation(id_reservation:number){
     let resultado =""
     console.log(id_reservation);

@@ -209,7 +209,7 @@ console.log(this.reservationService.tableId);
     const dialogRef = this.dialog.open(ModalReservaComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate(["/reservations-list-client"]);      
+      
     });
   }
 }

@@ -13,7 +13,8 @@
     <div class="schedules">
         <div>
             <ng-container *ngFor="let shift of availableShifts; let i = index">
-                <div class="lctl-cellButton" id="turnos" (click)="shiftId(availableShifts[i].shift_id)">
+                <div class="lctl-cellButton" id="turnos" [ngClass]="{'active': this.selectedShiftId==availableShifts[i].shift_id}" 
+                (click)="shiftId(availableShifts[i].shift_id)" >
                     {{availableShifts[i].shift_from}} a {{availableShifts[i].shift_to}}
                 </div>
             </ng-container>
