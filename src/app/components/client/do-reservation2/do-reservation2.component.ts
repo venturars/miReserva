@@ -11,6 +11,7 @@ import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTablesService } from 'src/app/shared/service-tables.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
 import { ModalReservaComponent } from '../../modals/modal-reserva/modal-reserva.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-doReservation2',
@@ -18,8 +19,7 @@ import { ModalReservaComponent } from '../../modals/modal-reserva/modal-reserva.
   styleUrls: ['./do-reservation2.component.scss']
 })
 export class DoReservation2Component implements OnInit {
-  // public restaurantId = this.restaurantService.restaurantReservation.restaurant_id
-  public restaurantId= 36
+  public restaurantId = this.restaurantService.restaurantReservation.restaurant_id
   public today: string
   public selectedDayName:string
   public selectedDayNum:string
@@ -58,7 +58,9 @@ export class DoReservation2Component implements OnInit {
     private shiftsService: ServiceShiftsService,
     public calendarService: ServiceCalendarService,
     private tablesService: ServiceTablesService,
-    private restaurantService:ServiceRestaurantService) {
+    private restaurantService:ServiceRestaurantService,
+    private router:Router
+    ) {
   this.tables = []
   this.shifts = []
   this.times = []
@@ -182,10 +184,13 @@ export class DoReservation2Component implements OnInit {
         if(!reservada)
           this.availableTables.push(this.tables[j])
         }
+        console.log(this.availableTables);
+        
         
         for(let i = 0; i < this.availableTables.length; i++){
           if(this.availableTables[i].table_max >= this.reservationService.pax && this.availableTables[i].table_min <= this.reservationService.pax ){
             this.reservationService.tableId = this.availableTables[i].table_id
+            i = this.availableTables.length + 1;
           }else{
             this.reservationService.tableId = 0
           }
@@ -204,6 +209,7 @@ console.log(this.reservationService.tableId);
     const dialogRef = this.dialog.open(ModalReservaComponent);
 
     dialogRef.afterClosed().subscribe(result => {
+      this.router.navigate(["/reservations-list-client"]);      
     });
   }
 }

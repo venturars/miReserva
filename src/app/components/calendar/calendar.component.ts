@@ -9,6 +9,7 @@ import { Times } from 'src/app/models/times';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
+import { ServiceRestaurantService } from '../../shared/service-restaurant.service';
 
 @Component({
   selector: 'app-calendar',
@@ -16,7 +17,7 @@ import { ServiceTimesService } from 'src/app/shared/service-times.service';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  public restaurantId = 36
+  public restaurantId = this.restaurantService.restaurantReservation.restaurant_id;
   public times: Times[]
   public shifts: Shifts[]
 
@@ -50,7 +51,8 @@ export class CalendarComponent implements OnInit {
 
   constructor(private calendarService: ServiceCalendarService,
               private shiftsService: ServiceShiftsService,
-              private timesService: ServiceTimesService
+              private timesService: ServiceTimesService,
+              private restaurantService:ServiceRestaurantService
     ) {
       
       this.shifts = []
@@ -275,28 +277,30 @@ public myDateFilter = (date:Date) => {
 
 
   
-      if (this.calendarService.countSun == 0)  
-        this.sun = 0
-      if (this.calendarService.countMon == 0)
-        this.mon = 1
-      if (this.calendarService.countTue == 0)
-        this.tue = 2
-      if (this.calendarService.countWed == 0)
-        this.wed = 3
-      if (this.calendarService.countThu == 0)
-        this.thu = 4
-      if (this.calendarService.countFri == 0)
-        this.fri = 5
-      if (this.calendarService.countSat == 0)
-        this.sat = 6
+      // if (this.calendarService.countSun == 0)  
+      //   this.sun = 0
+      // if (this.calendarService.countMon == 0)
+      //   this.mon = 1
+      // if (this.calendarService.countTue == 0)
+      //   this.tue = 2
+      // if (this.calendarService.countWed == 0)
+      //   this.wed = 3
+      // if (this.calendarService.countThu == 0)
+      //   this.thu = 4
+      // if (this.calendarService.countFri == 0)
+      //   this.fri = 5
+      // if (this.calendarService.countSat == 0)
+      //   this.sat = 6
 
-        return day !== this.sun &&
-               day !== this.mon &&
-               day !== this.tue && 
-               day !== this.wed && 
-               day !== this.thu && 
-               day !== this.fri && 
-               day !== this.sat;    
+      return day != null;
+        // return day !== 1 &&
+        //        day !== 2
+                // &&
+              //  day !== this.tue && 
+              //  day !== this.wed && 
+              //  day !== this.thu && 
+              //  day !== this.fri && 
+              //  day !== this.sat;    
     
   
 

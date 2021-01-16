@@ -27,22 +27,26 @@
     <div class="cards">
     
         <div class="lctl-simpleCard" *ngFor = "let restaurant of rendered; let i = index" (click)="clickCard(i)">
-            <!-- <div class="lctl-simpleCard-banner" *ngIf="restaurant.header; else notHeader">
+            <div class="lctl-simpleCard-banner" *ngIf="restaurant.header; else notHeader">
                 <img src="{{restaurant.header}}">
-            </div> -->
-            <div class="lctl-simpleCard-banner"  #notHeader>
-                <img src="assets/photos/potada2.png">
             </div>
-            <!-- <div class="lctl-simpleCard-photoProfile" *ngIf="restaurant.logo; else notLogo">
+            <ng-template #notHeader>
+                <div class="lctl-simpleCard-banner">
+                    <img src="assets/photos/potada2.png">
+                </div>
+            </ng-template>
+            <div class="lctl-simpleCard-photoProfile" *ngIf="restaurant.logo; else notLogo">
                 <div class="lctl-photoProfile-">
                     <img src="{{restaurant.logo}}">
                 </div>
-            </div> -->
-            <div class="lctl-simpleCard-photoProfile" #notLogo>
-                <div class="lctl-photoProfile-">
-                    <img #notLogo src="assets/photos/logorestaurante2.png">
-                </div>
             </div>
+            <ng-template #notLogo>
+                <div class="lctl-simpleCard-photoProfile">
+                    <div class="lctl-photoProfile-">
+                        <img #notLogo src="assets/photos/logorestaurante2.png">
+                    </div>
+                </div>
+            </ng-template>
             <div class="lctl-simpleCard-info">
                 <div class="lctl-simpleCard-title">
                     {{restaurant.name}}

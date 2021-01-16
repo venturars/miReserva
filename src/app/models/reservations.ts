@@ -3,7 +3,6 @@ export class Reservations {
     public restaurantName:string
     public changedDayName:string
     public changedMonth:string
-  
     constructor(public reservation_id:number,
                 public customer_id:number,
                 public restaurant_id:number,

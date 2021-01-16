@@ -115,11 +115,7 @@ public changedDayName:string
       }
     })
     console.log(this.reservations);
-    
-
-
    }
-
   ngOnInit(): void {
   }
 

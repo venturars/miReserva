@@ -41,8 +41,7 @@ public shift:Shifts
               public calendarService: ServiceCalendarService,
               private restaurantService: ServiceRestaurantService,
               private shiftsService: ServiceShiftsService) {
-    // this.customerId = this.loginService.userCustomer.customer_id
-    this.customerId = 10
+    this.customerId = this.loginService.userCustomer.customer_id
     this.selectedShiftId = this.reservationService.shiftId
     this.selectedPax = this.reservationService.pax
     this.selectedTable = this.reservationService.tableId
@@ -55,9 +54,8 @@ public shift:Shifts
     this.selectedDayNum = this.calendarService.nuevaFecha.dayNum
     this.selectedMonth = this.calendarService.nuevaFecha.month
     this.selectedYear = this.calendarService.nuevaFecha.year
-    // this.restaurantId = this.restaurantService.restaurantReservation.restaurant_id
-    this.restaurantId=36
-    // this.fullName = this.loginService.userCustomer.name + " " + this.loginService.userCustomer.surname
+    this.restaurantId = this.restaurantService.restaurantReservation.restaurant_id
+    this.fullName = this.loginService.userCustomer.name + " " + this.loginService.userCustomer.surname
     this.shiftsService.getShiftsId(this.selectedShiftId).subscribe((data:any) =>{  
       this.shift = data.data[0]
       this.selectedHour =  data.data[0].shift_from      
@@ -96,8 +94,8 @@ this.reservationService.postReservation(reservation).subscribe((data:any) =>{
 
 })
     }else{
-      let reservation = new Reservations(0,
-        1,
+      let reservation = new Reservations(null,
+        this.customerId,
         this.restaurantId, 
         this.selectedTable, 
         this.selectedPax, 
@@ -111,9 +109,11 @@ this.reservationService.postReservation(reservation).subscribe((data:any) =>{
         "Reservada", 
         this.fullName, 
         this.loginService.userCustomer.phone)    
-  
+        console.log(reservation);
+        
   this.reservationService.postReservation(reservation).subscribe((data:any) =>{
-  
+    console.log(data);
+    
   })
     }
   }

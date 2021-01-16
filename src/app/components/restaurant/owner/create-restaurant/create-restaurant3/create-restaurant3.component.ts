@@ -159,7 +159,7 @@ export class CreateRestaurant3Component implements OnInit {
     day:string,
     turn:string
   ){
-  if(inicio.value=="Inicio"){
+  if(inicio.value=="Inicio") {
     console.log("hacemos un toast para sacar el fallo");
   }else {
     inicio.cssText="border-color: var(--primaryColor); color: var(--primaryColor)";

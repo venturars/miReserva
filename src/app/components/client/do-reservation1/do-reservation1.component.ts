@@ -103,23 +103,6 @@ export class DoReservation1Component implements OnInit {
                     }
                   }
                 })
-
-                this.timesService.getTimes(this.restaurantId).subscribe((dataTimes:any) =>{                    
-                  for(let i = 0; i < dataTimes.data.length; i++){   
-                                     
-                    if(dataTimes.data[i].name == this.selectedDayName){
-                      if(dataTimes.data[i].active == "true"){
-
-                    let time = new Times (dataTimes.data[i].times_id,
-                      dataTimes.data[i].name,
-                      dataTimes.data[i].time_from,
-                      dataTimes.data[i].time_to,
-                      dataTimes.data[i].restaurant_id,
-                      dataTimes.data[i].service,
-                      dataTimes.data[i].active)
-                        this.times.push(time)                        
-                      }}}   
-                })
                 this.tablesService.getTables(this.restaurantId).subscribe((dataTables:any) =>{                   
                   for(let i = 0; i < dataTables.data.length; i++){
                     let table = new Tables (dataTables.data[i].table_id,
