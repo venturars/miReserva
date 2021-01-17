@@ -172,6 +172,7 @@ export class CalendarComponent implements OnInit {
 
 
     let currentDayName = name;
+    console.log(this.restaurantId);
     this.timesService.getTimes(this.restaurantId).subscribe((dataTimes:any) =>{                    
       for(let i = 0; i < dataTimes.data.length; i++){   
                          

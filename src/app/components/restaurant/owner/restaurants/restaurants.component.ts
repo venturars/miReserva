@@ -3,8 +3,8 @@ import { Restaurants } from '../../../../models/restaurants';
 import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { ServiceRestaurantService } from '../../../../shared/service-restaurant.service';
 import { ServiceRouterService } from '../../../../shared/service-router.service';
-import { ServiceCalendarService } from '../../../../shared/service-calendar.service';
 import { Router } from '@angular/router';
+import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
 
 @Component({
   selector: 'app-restaurant-owner-restaurants',
