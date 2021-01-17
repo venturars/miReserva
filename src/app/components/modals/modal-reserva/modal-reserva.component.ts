@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Reservations } from 'src/app/models/reservations';
 import { Shifts } from 'src/app/models/shifts';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
@@ -7,6 +6,7 @@ import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-reserva',
@@ -37,12 +37,14 @@ public fullName:string
 
 public shift:Shifts
 
-  constructor(private reservationService: ServiceReservationsService,
-              private router:Router,
-              private loginService: ServiceLoginService,
-              public calendarService: ServiceCalendarService,
-              private restaurantService: ServiceRestaurantService,
-              private shiftsService: ServiceShiftsService) {
+  constructor(
+    private reservationService: ServiceReservationsService,
+    private router:Router,
+    private loginService: ServiceLoginService,
+    public calendarService: ServiceCalendarService,
+    private restaurantService: ServiceRestaurantService,
+    private shiftsService: ServiceShiftsService
+  ) {
     this.customerId = this.loginService.userCustomer.customer_id
     this.selectedShiftId = this.reservationService.shiftId
     this.selectedPax = this.reservationService.pax

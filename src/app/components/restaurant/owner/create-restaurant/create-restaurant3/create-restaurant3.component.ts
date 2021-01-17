@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalRegistroComponent } from 'src/app/components/modals/modal-registro/modal-registro.component';
 import { ModalTurnosComponent } from 'src/app/components/modals/modal-turnos/modal-turnos.component';
 import { Times } from 'src/app/models/times';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
+import { SimpleAlertComponent } from '../../../../modals/simple-alert/simple-alert';
 
 class Turnos {
   constructor (public horario:string){
@@ -205,7 +205,7 @@ export class CreateRestaurant3Component implements OnInit {
     inicio.style.backgroundColor="let(--secundaryColor)";
   }
   public borramosModal() {
-    const dialogRef = this.dialog.open(ModalRegistroComponent,{panelClass: ['animate__animated','animate__backInDown']});
+    const dialogRef = this.dialog.open(SimpleAlertComponent,{panelClass: ['animate__animated','animate__backInDown']});
     dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
     dialogRef.componentInstance.mensaje="Eliminamos los turnos creados al cambiar el horario establecido";
     dialogRef.afterClosed().subscribe();

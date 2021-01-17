@@ -5,5 +5,5 @@ export class UserOwner {
         public name:string,
         public surname:string,
         public photo:string
-        ){}
+    ){}
 }

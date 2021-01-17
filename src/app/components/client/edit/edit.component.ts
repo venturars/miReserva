@@ -4,8 +4,8 @@ import { UserCustomer } from '../../../models/user-customer';
 import { ServiceLoginService } from '../../../shared/service-login.service';
 import { ServiceUserCustomerService } from '../../../shared/service-user-customer.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalRegistroComponent } from '../../modals/modal-registro/modal-registro.component';
 import { Router } from '@angular/router';
+import { SimpleAlertComponent } from '../../modals/simple-alert/simple-alert';
 @Component({
   selector: 'app-client-edit',
   templateUrl: './edit.component.html',
@@ -67,7 +67,7 @@ export class EditClientComponent implements OnInit {
             this.serviceLogin.users.password = this.users.password;
             this.serviceLogin.userCustomer = this.userCustomer;
 
-            const dialogRef = this.dialog.open(ModalRegistroComponent);
+            const dialogRef = this.dialog.open(SimpleAlertComponent);
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
             dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
             dialogRef.afterClosed().subscribe(result => {

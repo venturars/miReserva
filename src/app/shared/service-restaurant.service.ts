@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Restaurants } from '../models/restaurants'
-import { Restmailpassword } from '../models/restmailpassword';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,7 +12,7 @@ export class ServiceRestaurantService {
   public selectedRestaurant:Restaurants;
   public capacity:number;
   private url:string = "http://localhost:3000/restaurant";
-  public restaurant:Restaurants=null;
+  public create1Restaurant:Restaurants=null;
   
   constructor(
     private http:HttpClient
@@ -24,9 +23,27 @@ export class ServiceRestaurantService {
   getRestaurantByOwner(owner_id?:number):Observable<any> {
     return this.http.get(this.url + "?owner_id=" + owner_id);
   }
-  postRestaurant(nuevoRestaurant:Restmailpassword):Observable<any> {
-    return this.http.post(this.url,nuevoRestaurant);
-  }
+  postRestaurant(restaurant:Restaurants, mail:string, password:string):Observable<any> {
+    return this.http.post(this.url, {
+      name : restaurant.name,
+      province: restaurant.province,
+      city: restaurant.city,
+      street_name: restaurant.street_name,
+      street_number: restaurant.street_number,
+      postal_code: restaurant.postal_code,
+      phone: restaurant.phone,
+      capacity: restaurant.capacity,
+      food_type: restaurant.food_type,
+      header: restaurant.header,
+      logo: restaurant.logo,
+      menu: restaurant.menu,
+      url: restaurant.url,
+      latitude: restaurant.latitude,
+      longitude: restaurant.longitude,
+      owner_id: restaurant.owner_id,
+      mail: mail,
+      password: password
+  });}
   putRestaurant(nuevoRestaurant:Restaurants):Observable<any> {
    return this.http.put(this.url,nuevoRestaurant);
   }

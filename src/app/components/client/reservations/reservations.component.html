@@ -3,28 +3,32 @@
 <div class="fatherfiltro">
 
 <div class="filtroselect">
-    <select name="select" class="lctl-cellSelect-extraLarge" id="estado">
-        <option value="value2" hidden selected>Filtrar por</option>
-        <option value="1">Confirmadas</option>
-        <option value="2">Canceladas</option>
-        <option value="3">Recahzadas</option>
-        <option value="4">Pendientes</option>
+    <select name="select" class="lctl-cellSelect-extraLarge" id="estado" #estado (click)="cambiarSelect(estado)">
+        <option value="Todas" selected>Todas</option>
+        <option value="confirmadas">Confirmadas</option>
+        <option value="canceladas">Canceladas</option>
+        <option value="rechazadas">Rechazadas</option>
+        <option value="pendientes">Pendientes</option>
       </select>      
 </div>
 <div class="lctl-br modify"></div> 
 
 </div>
-<ng-container *ngIf="reservations != null"></ng-container>
-<div *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
-    <!-- <div class="lctl-br modify"></div> -->
+<ng-container *ngIf="estado.value=='Todas'">
+    <div>
+<ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
+              
     <div class="lctl-centerElements row son">
         <div class="pic">
-            <a routerLink="/" class="img">
-                <img *ngIf="this.restaurantsReservated[i].logo; else not" src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s">
+          
+                <img *ngIf="this.restaurantsReservated[i].logo; else not"
+                 src="{{this.restaurantsReservated[i].logo}}"
+                 alt="" class="lctl-photoProfile-s">
+                
                 <ng-template #not>
                     <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s">
                 </ng-template>
-            </a>
+           
         </div>
             
         <div class="info">
@@ -40,10 +44,124 @@
             <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
         </div>
     </div>   
+    <div class="lctl-br modify">
+    </div> 
+    <div class="lctl-br space" >
+    </div> 
+</ng-container>
+</div>
+</ng-container>
+
+  <!--CONFIRMADAS--> 
+    <ng-container *ngIf="elSelect=='confirmadas'">
+    <ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
+        <ng-container *ngIf="reservations[i].status=='Reservada'">        
+        <div class="lctl-centerElements row son">
+            <div class="pic">
+                
+                    <img *ngIf="this.restaurantsReservated[i].logo; else not" src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s">
+                    <ng-template #not>
+                        <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s">
+                    </ng-template>
+                
+            </div>
+                
+            <div class="info">
+                <p>Dia: {{reservations[i].changedDayName}} {{reservations[i].day}} de {{reservations[i].changedMonth}} {{reservations[i].year}} </p>
+                <p>Horario: {{reservations[i].hour}}</p> 
+                <p>Observaciones: {{reservations[i].comments}}</p> 
+                <p>Numero de personas: {{reservations[i].pax}}</p>  
+                <p>Restaurant: {{this.restaurantsReservated[i].name}}</p>
+            </div>
     
-     
+            <div class="buttons">
+                <button class="lctl-button-s buttonRes" >{{reservations[i].status}}</button>
+                <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
+            </div>
+        </div>
+        <div class="lctl-br modify">
+        </div> 
+        <div class="lctl-br space" >
+        </div>
+        </ng-container>
+        </ng-container>   
+    </ng-container>
+
+
+    <!-- Rechazadas-->
+
+    <ng-container *ngIf="elSelect=='rechazadas'">
+        <ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
+            <ng-container *ngIf="reservations[i].status=='Rechazada'">        
+            <div class="lctl-centerElements row son">
+                <div class="pic">
+                    
+                        <img *ngIf="this.restaurantsReservated[i].logo; else not" src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s">
+                        <ng-template #not>
+                            <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s">
+                        </ng-template>
+                    
+                </div>
+                    
+                <div class="info">
+                    <p>Dia: {{reservations[i].changedDayName}} {{reservations[i].day}} de {{reservations[i].changedMonth}} {{reservations[i].year}} </p>
+                    <p>Horario: {{reservations[i].hour}}</p> 
+                    <p>Observaciones: {{reservations[i].comments}}</p> 
+                    <p>Numero de personas: {{reservations[i].pax}}</p>  
+                    <p>Restaurant: {{this.restaurantsReservated[i].name}}</p>
+                </div>
+        
+                <div class="buttons">
+                    <button class="lctl-button-s buttonRes" >{{reservations[i].status}}</button>
+                    <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
+                </div>
+            </div>
+            <div class="lctl-br modify">
+            </div> 
+            <div class="lctl-br space" >
+            </div>
+            </ng-container>
+            </ng-container>   
+        </ng-container>
+<!-- CANCELADA POR EL CLIENTE-->
+
+<ng-container *ngIf="elSelect=='canceladas'">
+    <ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
+        <ng-container *ngIf="reservations[i].status=='Cancelada por cliente'">        
+        <div class="lctl-centerElements row son">
+            <div class="pic">
+                
+                    <img *ngIf="this.restaurantsReservated[i].logo; else not" src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s">
+                    <ng-template #not>
+                        <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s">
+                    </ng-template>
+                
+            </div>
+                
+            <div class="info">
+                <p>Dia: {{reservations[i].changedDayName}} {{reservations[i].day}} de {{reservations[i].changedMonth}} {{reservations[i].year}} </p>
+                <p>Horario: {{reservations[i].hour}}</p> 
+                <p>Observaciones: {{reservations[i].comments}}</p> 
+                <p>Numero de personas: {{reservations[i].pax}}</p>  
+                <p>Restaurant: {{this.restaurantsReservated[i].name}}</p>
+            </div>
+    
+            <div class="buttons">
+                <button class="lctl-button-s buttonRes" >{{reservations[i].status}}</button>
+                <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
+            </div>
+        </div>
+        <div class="lctl-br modify">
+        </div> 
+        <div class="lctl-br space" >
+        </div>
+        </ng-container>
+        </ng-container>   
+    </ng-container>
+
+
         <div class="lctl-br modify">
         </div> 
         <div class="lctl-br space" >
         </div> 
-</div>
+    

@@ -4,10 +4,9 @@ import { Users } from '../../../models/users';
 import { Restaurants } from '../../../models/restaurants';
 import { UserOwner } from '../../../models/user-owner';
 import { UserCustomer } from '../../../models/user-customer';
-import { ModalUsuarioIncorrectoComponent } from '../../modals/modal-usuario-incorrecto/modal-usuario-incorrecto.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ModalRegistroComponent } from '../../modals/modal-registro/modal-registro.component';
+import { SimpleAlertComponent } from '../../modals/simple-alert/simple-alert';
 @Component({
   selector: 'app-login',
   templateUrl: './log-in.component.html',
@@ -78,7 +77,7 @@ export class LogInComponent implements OnInit {
         this.router.navigate(['/search']);
     }}else {
       
-      const dialogRef = this.matDialog.open(ModalRegistroComponent,{panelClass: ['animate__animated','animate__backInDown']});
+      const dialogRef = this.matDialog.open(SimpleAlertComponent,{panelClass: ['animate__animated','animate__backInDown']});
       dialogRef.componentInstance.mensaje="Tu usuario o contraseña son incorrectos";
       dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
       

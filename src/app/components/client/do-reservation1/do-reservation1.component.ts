@@ -1,4 +1,3 @@
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Reservations } from 'src/app/models/reservations';
@@ -11,7 +10,6 @@ import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.serv
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTablesService } from 'src/app/shared/service-tables.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
-import { CalendarComponent } from '../../calendar/calendar.component';
 
 @Component({
   selector: 'app-client-doReservation1',

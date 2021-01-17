@@ -3,11 +3,11 @@ import { Reservations } from 'src/app/models/reservations';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 
 @Component({
-  selector: 'app-modal-cliente',
-  templateUrl: './modal-cliente.component.html',
-  styleUrls: ['./modal-cliente.component.scss']
+  selector: 'modal-rejectReservationClient',
+  templateUrl: './modal-rejectReservationClient.html',
+  styleUrls: ['./modal-rejectReservationClient.scss']
 })
-export class ModalClienteComponent implements OnInit {
+export class RejectReservationClientComponent implements OnInit {
   public showHide= false;
   public showHide2= true;
   public reservation:Reservations

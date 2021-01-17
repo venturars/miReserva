@@ -5,8 +5,8 @@ import { Map, tileLayer, Marker } from "leaflet";
 import { Router } from '@angular/router';
 import { ServiceRestaurantService } from '../../../shared/service-restaurant.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalRegistroComponent } from '../../modals/modal-registro/modal-registro.component';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
+import { SimpleAlertComponent } from '../../modals/simple-alert/simple-alert';
 @Component({
   selector: 'app-client-search',
   templateUrl: './search.component.html',
@@ -216,7 +216,7 @@ export class SearchComponent implements OnInit {
     if (control){
       searchLine.value="";
     }else {
-      const dialogRef = this.dialog.open(ModalRegistroComponent);
+      const dialogRef = this.dialog.open(SimpleAlertComponent);
       dialogRef.componentInstance.mensaje="No hemos encontrado ningún restaurante con ese nombre";
       dialogRef.afterClosed().subscribe();
 }}}

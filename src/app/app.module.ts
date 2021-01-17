@@ -13,6 +13,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //-----http-----
 import { HttpClientModule } from '@angular/common/http';
+//-----Especial elements-----
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { MaprestComponent } from './components/maprest/maprest.component';
+import { MapComponent } from './components/map/map.component';
 //-----Components-----
 import { NavbarClientComponent } from './components/navbar/navbarClient/navbarClient.component';
 import { NavbarLoginComponent } from './components/navbar/navbar-login/navbar-login.component';
@@ -32,26 +36,21 @@ import { CreateRestaurant1Component } from './components/restaurant/owner/create
 import { CreateRestaurant2Component } from './components/restaurant/owner/create-restaurant/create-restaurant2/create-restaurant2.component';
 import { CreateRestaurant3Component } from './components/restaurant/owner/create-restaurant/create-restaurant3/create-restaurant3.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PresentationComponent } from './components/login/presentation/presentation.component';
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
 import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
+import { ContactUsComponent } from './components/login/contact-us/contact-us.component';
 import { DoReservationHeaderComponent } from './components/client/do-reservation-header/do-reservation-header.component';
+import { DesignComponent } from './components/login/design/design.component';
+//-----Modals-----
+import { SimpleAlertComponent } from './components/modals/simple-alert/simple-alert';
 import { ModalTurnosComponent } from './components/modals/modal-turnos/modal-turnos.component';
-import { ModalClienteComponent } from './components/modals/modal-cliente/modal-cliente.component';
 import { ModalRestauranteComponent } from './components/modals/modal-restaurante/modal-restaurante.component';
 import { ModalReservaComponent } from './components/modals/modal-reserva/modal-reserva.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
 import { ModalReservaManualComponent } from './components/modals/modal-reserva-manual/modal-reserva-manual.component';
-import { MapComponent } from './components/map/map.component';
-import { DesignComponent } from './components/login/design/design.component';
-import { ModalInfdeRestauranteComponent } from './components/modals/modal-infde-restaurante/modal-infde-restaurante.component';
-import { ModalRegistroComponent } from './components/modals/modal-registro/modal-registro.component';
-import { ModalRegistro2Component } from './components/modals/modal-registro2/modal-registro2.component';
-import { ModalRegistroUsuarioComponent } from './components/modals/modal-registro-usuario/modal-registro-usuario.component';
-import { ModalUsuarioIncorrectoComponent } from './components/modals/modal-usuario-incorrecto/modal-usuario-incorrecto.component';
-import { ModalLogOutComponent } from './components/modals/modal-log-out/modal-log-out.component';
-import { ContactUsComponent } from './components/login/contact-us/contact-us.component';
-import { MaprestComponent } from './components/maprest/maprest.component';
-import { PresentationComponent } from './components/login/presentation/presentation.component';
+import { VerifiedAlertComponent } from './components/modals/verified-alert/verified-alert';
+import { InfoRestaurantComponent } from './components/modals/infoRestaurant-modal/modal-infoRestaurant';
+import { RejectReservationClientComponent } from './components/modals/modal-rejectReservationClient/modal-rejectReservationClient';
 
 
 
@@ -80,19 +79,16 @@ import { PresentationComponent } from './components/login/presentation/presentat
     ReservationsRestaurantComponent,
     DoReservationHeaderComponent,
     ModalTurnosComponent,
-    ModalClienteComponent,
+    RejectReservationClientComponent,
     ModalRestauranteComponent,
     ModalReservaComponent,
     CalendarComponent,
     ModalReservaManualComponent,
     MapComponent,
     DesignComponent,
-    ModalInfdeRestauranteComponent,
-    ModalRegistroComponent,
-    ModalRegistro2Component,
-    ModalRegistroUsuarioComponent,
-    ModalUsuarioIncorrectoComponent,
-    ModalLogOutComponent,
+    InfoRestaurantComponent,
+    SimpleAlertComponent,
+    VerifiedAlertComponent,
     ContactUsComponent,
     MaprestComponent,
     PresentationComponent

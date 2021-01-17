@@ -4,8 +4,8 @@ import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { Users } from '../../../../models/users';
 import { ServiceUserOwnerService } from '../../../../shared/service-user-owner.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalRegistroComponent } from 'src/app/components/modals/modal-registro/modal-registro.component';
 import { Router } from '@angular/router';
+import { SimpleAlertComponent } from '../../../modals/simple-alert/simple-alert';
 
 @Component({
   selector: 'app-restaurant-owner-edit',
@@ -69,7 +69,7 @@ export class EditComponentR implements OnInit {
             this.users.password = password;
             this.serviceLogin.users.password = this.users.password;
             this.serviceLogin.userOwner = this.userOwner;
-            const dialogRef = this.dialog.open(ModalRegistroComponent);
+            const dialogRef = this.dialog.open(SimpleAlertComponent);
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
             dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
         dialogRef.afterClosed().subscribe(result => {

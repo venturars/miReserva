@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SimpleAlertComponent } from './simple-alert';
 
-import { ModalLogOutComponent } from './modal-log-out.component';
 
-describe('ModalLogOutComponent', () => {
-  let component: ModalLogOutComponent;
-  let fixture: ComponentFixture<ModalLogOutComponent>;
+describe('ModalRegistroComponent', () => {
+  let component: SimpleAlertComponent;
+  let fixture: ComponentFixture<SimpleAlertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalLogOutComponent ]
+      declarations: [ SimpleAlertComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalLogOutComponent);
+    fixture = TestBed.createComponent(SimpleAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

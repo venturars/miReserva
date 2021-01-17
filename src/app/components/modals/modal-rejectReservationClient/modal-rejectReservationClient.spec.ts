@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalClienteComponent } from './modal-cliente.component';
+import { RejectReservationClientComponent } from './modal-rejectReservationClient';
 
 describe('ModalClienteComponent', () => {
-  let component: ModalClienteComponent;
-  let fixture: ComponentFixture<ModalClienteComponent>;
+  let component: RejectReservationClientComponent;
+  let fixture: ComponentFixture<RejectReservationClientComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalClienteComponent ]
+      declarations: [ RejectReservationClientComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalClienteComponent);
+    fixture = TestBed.createComponent(RejectReservationClientComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

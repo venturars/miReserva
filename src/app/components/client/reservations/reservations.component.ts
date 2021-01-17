@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Reservations } from 'src/app/models/reservations';
-import { ReservationsClient } from 'src/app/models/reservations-client';
-import { Restaurants } from 'src/app/models/restaurants';
 import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
-import { ModalClienteComponent } from '../../modals/modal-cliente/modal-cliente.component';
+import { RejectReservationClientComponent } from '../../modals/modal-rejectReservationClient/modal-rejectReservationClient';
+import { Restaurants } from '../../../models/restaurants';
 
 @Component({
   selector: 'app-client-reservations',
@@ -19,6 +18,7 @@ public customerId:number
 public changedMonth:string
 public changedDayName:string
 public restaurantsReservated: Restaurants[]=[];
+public elSelect:string="Todas";
   constructor(public dialog: MatDialog,
               private loginService: ServiceLoginService,
               private reservationService: ServiceReservationsService,
@@ -147,11 +147,17 @@ public restaurantsReservated: Restaurants[]=[];
     console.log(asd);
     this.reservationService.reservationId = asd    
     
-    const dialogRef = this.dialog.open(ModalClienteComponent);
+    const dialogRef = this.dialog.open(RejectReservationClientComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+
+   
+  }
+  cambiarSelect(estado){
+    console.log(estado.value)
+    this.elSelect=estado.value;
   }
 
 }

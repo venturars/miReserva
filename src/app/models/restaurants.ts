@@ -18,7 +18,4 @@ export class Restaurants {
         public longitude:number,
         public owner_id:number 
         ){}
-
 }
-
-

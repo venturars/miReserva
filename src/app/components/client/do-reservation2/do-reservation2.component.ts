@@ -201,7 +201,6 @@ export class DoReservation2Component implements OnInit {
 console.log(this.reservationService.tableId);
 
   }
-
   openDialog() {
     const obs:any=document.getElementById("obs");
     this.reservationService.obs = obs.value
@@ -209,7 +208,4 @@ console.log(this.reservationService.tableId);
     const dialogRef = this.dialog.open(ModalReservaComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      
-    });
-  }
-}
+});}}

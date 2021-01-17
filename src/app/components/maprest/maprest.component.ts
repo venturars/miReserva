@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Map, Marker, tileLayer } from 'leaflet';
 import { Restaurants } from 'src/app/models/restaurants';
-import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
+import { ServiceRestaurantService } from '../../shared/service-restaurant.service';
 
 @Component({
   selector: 'app-maprest',
@@ -17,15 +17,15 @@ export class MaprestComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.map = new Map("mapid").setView([this.apiRestaurants.restaurant.latitude ,this.apiRestaurants.restaurant.longitude], 50)
+    this.map = new Map("mapid").setView([this.apiRestaurants.create1Restaurant.latitude ,this.apiRestaurants.create1Restaurant.longitude], 50)
       .setZoom(11)
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-        attribution: this.apiRestaurants.restaurant.name,
+        attribution: this.apiRestaurants.create1Restaurant.name,
         maxZoom: 18
     }).addTo(this.map);
 
-    this.marker= new Marker([this.apiRestaurants.restaurant.latitude ,this.apiRestaurants.restaurant.longitude]).addTo(this.map);
-          this.marker.bindPopup(this.apiRestaurants.restaurant.name+"<br>"+this.apiRestaurants.restaurant.street_name+" , "+ this.apiRestaurants.restaurant.street_number)
+    this.marker= new Marker([this.apiRestaurants.create1Restaurant.latitude ,this.apiRestaurants.create1Restaurant.longitude]).addTo(this.map);
+          this.marker.bindPopup(this.apiRestaurants.create1Restaurant.name+"<br>"+this.apiRestaurants.create1Restaurant.street_name+" , "+ this.apiRestaurants.create1Restaurant.street_number)
           
 
   }

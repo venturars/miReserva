@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ModalRegistroUsuarioComponent } from 'src/app/components/modals/modal-registro-usuario/modal-registro-usuario.component';
-import { ModalRegistroComponent } from 'src/app/components/modals/modal-registro/modal-registro.component';
 import { Restaurants } from 'src/app/models/restaurants';
-import { Restmailpassword } from 'src/app/models/restmailpassword';
 import { GeocodestreetService } from 'src/app/shared/geocodestreet.service';
 import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceRegistrationService } from 'src/app/shared/service-registration.service';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { Users } from '../../../../../models/users';
+import { SimpleAlertComponent } from '../../../../modals/simple-alert/simple-alert';
 
 @Component({
   selector: 'app-restaurant-owner-CreateRestaurant1',
@@ -22,7 +20,6 @@ export class CreateRestaurant1Component implements OnInit {
   public restaurantmodel:Restaurants;
   public banner:any;
   public logo:any;
-  public restmailpassword:Restmailpassword;
   public restauranteCreado:any;
   public latitud:any;
   public longitud:any;
@@ -65,19 +62,22 @@ export class CreateRestaurant1Component implements OnInit {
   }
   public onSubmit(restForm:any) {
      // SE CREA RESTAURANTE
-    const nuevorestaurante:Restmailpassword = new Restmailpassword(
+    const sendRestaurant:Restaurants = new Restaurants(
       1,restForm.value.name, restForm.value.province, restForm.value.city, restForm.value.street_name,
        restForm.value.street_number, restForm.value.postal_code,restForm.value.phone,restForm.value.capacity,
        restForm.value.food_type,this.restaurantmodel.header,this.restaurantmodel.logo,null,restForm.value.url,
-       null,null,this.serviceLogIn.userOwner.owner_id, restForm.value.mail, restForm.value.password
+       null,null,this.serviceLogIn.userOwner.owner_id
     );     
     this.serviceRestaurant.capacity=restForm.value.capacity;
     this.serviceRegistration.checkMailFree(restForm.value.mail)
     .subscribe((data:any)=>{
       if (data.control==true){
 
-        this.serviceRestaurant.postRestaurant(nuevorestaurante)
-          .subscribe((data:any) => {  
+        this.serviceRestaurant.postRestaurant(
+          sendRestaurant,
+          restForm.value.mail,
+          restForm.value.password
+          ).subscribe((data:any) => {  
       
           // SE CALCULA LONGITUD Y LATITUD CON LA API
       
@@ -95,20 +95,20 @@ export class CreateRestaurant1Component implements OnInit {
               this.longitud=data[0].lon;
             }
             //SE ACTUALIZA EL RESTAURANTE CON LATITUD Y LONGITUD    
-              nuevorestaurante.restaurant_id=this.restauranteCreado;
+            sendRestaurant.restaurant_id=this.restauranteCreado;
               
-              this.serviceRestaurant.id_restaurant=nuevorestaurante.restaurant_id;
-              nuevorestaurante.latitude=this.latitud;
-              nuevorestaurante.longitude=this.longitud;
-              this.serviceRestaurant.restaurant=nuevorestaurante;
+              this.serviceRestaurant.id_restaurant=sendRestaurant.restaurant_id;
+              sendRestaurant.latitude=this.latitud;
+              sendRestaurant.longitude=this.longitud;
+              this.serviceRestaurant.create1Restaurant=sendRestaurant;
           
-              this.serviceRestaurant.putRestaurant(nuevorestaurante)
+              this.serviceRestaurant.putRestaurant(sendRestaurant)
               .subscribe(data=> {
               console.log(data)
               })              
           })
         });
-        const dialogRef = this.dialog.open(ModalRegistroComponent);
+        const dialogRef = this.dialog.open(SimpleAlertComponent);
         dialogRef.componentInstance.mensaje="Restaurante creado, ahora configura sus mesas";
         dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
     dialogRef.afterClosed().subscribe(result => {
@@ -116,7 +116,7 @@ export class CreateRestaurant1Component implements OnInit {
     this.router.navigate(["/create-restaurant-2"]);})
         
       }else {
-        const dialogRef = this.dialog.open(ModalRegistroComponent,{panelClass: ['animate__animated','animate__backInDown']});
+        const dialogRef = this.dialog.open(SimpleAlertComponent,{panelClass: ['animate__animated','animate__backInDown']});
         dialogRef.componentInstance.mensaje="Ese email ya existe en nuestra base de datos, tienes que elegir otro";
         dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
         const email:any=document.getElementById("mail")

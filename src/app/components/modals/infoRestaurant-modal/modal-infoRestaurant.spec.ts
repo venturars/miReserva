@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { InfoRestaurantComponent } from './modal-infoRestaurant';
 
-import { ModalRegistroComponent } from './modal-registro.component';
 
-describe('ModalRegistroComponent', () => {
-  let component: ModalRegistroComponent;
-  let fixture: ComponentFixture<ModalRegistroComponent>;
+describe('ModalInfdeRestauranteComponent', () => {
+  let component: InfoRestaurantComponent;
+  let fixture: ComponentFixture<InfoRestaurantComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalRegistroComponent ]
+      declarations: [ InfoRestaurantComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModalRegistroComponent);
+    fixture = TestBed.createComponent(InfoRestaurantComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

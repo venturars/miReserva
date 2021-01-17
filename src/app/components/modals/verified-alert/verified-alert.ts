@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { ServiceLoginService } from 'src/app/shared/service-login.service';
 
 @Component({
-  selector: 'app-modal-log-out',
-  templateUrl: './modal-log-out.component.html',
-  styleUrls: ['./modal-log-out.component.scss']
+  selector: 'verified-alert',
+  templateUrl: './verified-alert.html',
+  styleUrls: ['./verified-alert.scss']
 })
-export class ModalLogOutComponent implements OnInit {
+export class VerifiedAlertComponent implements OnInit {
 
   constructor(private router:Router,
               private serviceLogin:ServiceLoginService) { }

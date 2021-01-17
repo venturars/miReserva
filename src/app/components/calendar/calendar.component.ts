@@ -1,5 +1,5 @@
 import { Time } from '@angular/common';
-import { EventEmitter, Output, ViewChild } from '@angular/core';
+import { ViewChild } from '@angular/core';
 import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { Moment } from 'moment';

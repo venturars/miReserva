@@ -1,7 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Calendar } from 'src/app/models/calendar';
 import { Reservations } from 'src/app/models/reservations';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
 import { ServiceLoginService } from 'src/app/shared/service-login.service';

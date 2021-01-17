@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ServiceLoginService } from '../../../shared/service-login.service';
-import { ModalLogOutComponent } from '../../modals/modal-log-out/modal-log-out.component';
+import { VerifiedAlertComponent } from '../../modals/verified-alert/verified-alert';
 @Component({
   selector: 'app-navbarClient',
   templateUrl: './navbarClient.component.html',
@@ -27,7 +27,7 @@ export class NavbarClientComponent implements OnInit {
     this.serviceLogin.navCustomer = 3;
   }
   public toLogIn() {
-    const dialogRef = this.matDialog.open(ModalLogOutComponent);
+    const dialogRef = this.matDialog.open(VerifiedAlertComponent);
       
       
       dialogRef.afterClosed().subscribe()

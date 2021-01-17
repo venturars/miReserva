@@ -4,7 +4,6 @@ import { Reservations } from '../models/reservations';
 import { Observable } from 'rxjs';
 import { Times } from '../models/times';
 import { Shifts } from '../models/shifts';
-import { StickyDirection } from '@angular/cdk/table';
 
 @Injectable({
   providedIn: 'root'
