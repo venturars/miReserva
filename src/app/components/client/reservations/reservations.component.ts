@@ -124,7 +124,6 @@ public elSelect:string="Todas";
     console.log(this.reservations);
    }
   ngOnInit(): void {
-    this.loginService.navCustomer = 4;
   }
   
   public deleteReservation(id_reservation:number){

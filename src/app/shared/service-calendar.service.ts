@@ -47,7 +47,6 @@ this.getTimes(this.restaurantId)
 
   public getTimes(id:number){
     this.timesService.getTimes(id).subscribe((data4:any) =>{
-
       for(let i = 0; i < data4.data.length; i ++){
 
         switch (data4.data[i].name){

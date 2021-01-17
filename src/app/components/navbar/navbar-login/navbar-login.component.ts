@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ServiceRouterService } from '../../../shared/service-router.service';
 
 @Component({
   selector: 'app-navbarLogin',
@@ -8,32 +8,9 @@ import { Router } from '@angular/router';
 })
 export class NavbarLoginComponent implements OnInit {
 
-  public nav:number = 4;
-
   constructor(
-    private router:Router
+    public serviceRouter:ServiceRouterService
   ) { }
 
   ngOnInit(): void {
-  }
-  public toContact() {
-    this.router.navigate(["/contact-us"]);
-    this.nav = 1;
-  }
-  public toHowItWorks() {
-    this.router.navigate(["/"]);
-    this.nav = 2;
-  }
-  public toRegister() {
-    this.router.navigate(["/registration"]);
-    this.nav = 3;
-  }
-  public toLogIn() {
-    this.router.navigate(["/log-in"]);
-    this.nav = 4;
-  }
-  public toPresentation() {
-    this.router.navigate(["/presentation"]);
-    this.nav = 5;
-  }
-}
+  }}

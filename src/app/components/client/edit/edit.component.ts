@@ -6,6 +6,7 @@ import { ServiceUserCustomerService } from '../../../shared/service-user-custome
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SimpleAlertComponent } from '../../modals/simple-alert/simple-alert';
+import { ServiceRouterService } from '../../../shared/service-router.service';
 @Component({
   selector: 'app-client-edit',
   templateUrl: './edit.component.html',
@@ -22,7 +23,8 @@ export class EditClientComponent implements OnInit {
     private serviceLogin:ServiceLoginService,
     private serviceUserCustomer:ServiceUserCustomerService,
     private dialog:MatDialog,
-    private router:Router
+    private router:Router,
+    private serviceRouter:ServiceRouterService
   ) { }
   ngOnInit() {
     this.userCustomer = this.serviceLogin.userCustomer;
@@ -71,8 +73,7 @@ export class EditClientComponent implements OnInit {
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
             dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
             dialogRef.afterClosed().subscribe(result => {
-            this.router.navigate(["/search"]);
-            this.serviceLogin.navCustomer = 3;
+            this.serviceRouter.routerClient();
           });}
           this.message = null;
           this.pass = null;

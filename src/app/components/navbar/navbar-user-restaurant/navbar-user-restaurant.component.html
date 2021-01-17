@@ -1,10 +1,10 @@
 <div class="lctl-navContainer">
-    <ng-container *ngIf="serviceLogin.restaurants.logo; else sinfoto">
+    <ng-container *ngIf="serviceLogin.userRestaurant.logo; else notPhoto">
     <button class="lctl_navSection lctl-navToggle">
-        <img  src="{{this.serviceLogin.restaurants.logo}}" class="lctl-photoProfile-m">
+        <img  src="{{serviceLogin.userRestaurant.logo}}" class="lctl-photoProfile-m">
     </button>
 </ng-container>
-<ng-template #sinfoto>
+<ng-template #notPhoto>
     <button class="lctl_navSection lctl-navToggle">
         <img  src="assets/photos/logorestaurante2.png" class="lctl-photoProfile-m">
     </button>
@@ -13,22 +13,22 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
                 <div class="lctl-navAfterButton2">
-                    <div class="lctl-navElement" (click)="toLogIn()"
-                        [ngClass]="{'lctl-navSelect': nav === 1}">
+                    <div class="lctl-navElement" (click)="serviceRouter.routerRestaurant(0)"
+                        [ngClass]="{'lctl-navSelect': serviceRouter.navRestaurant === 0}">
                         Salir
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div class="lctl-navElement" (click)="toReservationListRestaurant()"
-                    [ngClass]="{'lctl-navSelect': nav === 2}">
+                <div class="lctl-navElement" (click)="serviceRouter.routerRestaurant(1)"
+                    [ngClass]="{'lctl-navSelect': serviceRouter.navRestaurant === 1}">
                     Reservas
                 </div>
             </div>
             <button class="lctl-navHidden"></button>
         </div>
     </button>
-        <div class="lctl_navSection lctl-navHome" (click)="toReservationListRestaurant()">
+        <div class="lctl_navSection lctl-navHome" (click)="serviceRouter.routerRestaurant()">
             <img src="../../../../assets/LogoMiReserva.svg">
     </div>
 </div>

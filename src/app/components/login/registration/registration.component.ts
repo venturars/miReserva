@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceRouterService } from '../../../shared/service-router.service';
 
 @Component({
   selector: 'app-registration',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  constructor() { }
+  constructor(
+    public serviceRouter:ServiceRouterService
+  ) { }
 
   ngOnInit(): void {
   }

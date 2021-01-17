@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { ServiceRegistrationService } from 'src/app/shared/service-registration.service';
 import { UserOwner } from '../../../../models/user-owner';
 import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { Users } from 'src/app/models/users';
 import { SimpleAlertComponent } from '../../../modals/simple-alert/simple-alert';
+import { ServiceRouterService } from '../../../../shared/service-router.service';
 
 @Component({
   selector: 'app-registration-owner',
@@ -18,9 +18,9 @@ export class OwnerComponent implements OnInit {
   public userOwner:UserOwner = new UserOwner(null,null,null,null,null)
   public acept:boolean = null;
   constructor(
-    private router: Router,
-    private apiRegistration: ServiceRegistrationService,
-    private apiLogin:ServiceLoginService,
+    private serviceRegistration: ServiceRegistrationService,
+    private serviceLogin:ServiceLoginService,
+    public serviceRouter:ServiceRouterService,
     public dialog:MatDialog,
     ) {
    }
@@ -34,13 +34,13 @@ onSubmit(form:any){
     "mail":form.value.email,
     "password":form.value.password
   }
-  this.apiRegistration.registrationOwner(owner)
+  this.serviceRegistration.registrationOwner(owner)
   .subscribe((data:any)=>{console.log(data)
     if(data.control) {
-      this.router.navigate(['/restaurants-list']);
-      this.apiLogin.userOwner= new UserOwner
+      this.serviceRouter.routerOwner()
+      this.serviceLogin.userOwner= new UserOwner
       (data.data.owner_id,form.value.cif,form.value.name,form.value.surname,null);
-      this.apiLogin.users= new Users (null,data.data,null,form.value.mail,form.value.password)
+      this.serviceLogin.users= new Users (null,data.data,null,form.value.mail,form.value.password)
     }
     else {
     const dialogRef = this.dialog.open(SimpleAlertComponent);
@@ -53,6 +53,4 @@ onSubmit(form:any){
       console.log(`Dialog result: ${result}`);
   });}})}
  ngOnInit(): void {
-  
-  }
-}
+}}

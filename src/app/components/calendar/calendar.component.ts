@@ -1,6 +1,5 @@
-import { Time } from '@angular/common';
 import { ViewChild } from '@angular/core';
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCalendar } from '@angular/material/datepicker';
 import { Moment } from 'moment';
 import { Calendar } from 'src/app/models/calendar';
@@ -17,7 +16,7 @@ import { ServiceRestaurantService } from '../../shared/service-restaurant.servic
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  public restaurantId = this.restaurantService.restaurantReservation.restaurant_id;
+  public restaurantId:number;
   public times: Times[]
   public shifts: Shifts[]
 

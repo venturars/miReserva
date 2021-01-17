@@ -6,6 +6,7 @@ import { Users } from 'src/app/models/users';
 import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceRegistrationService } from 'src/app/shared/service-registration.service';
 import { SimpleAlertComponent } from '../../../modals/simple-alert/simple-alert';
+import { ServiceRouterService } from '../../../../shared/service-router.service';
 
 @Component({
   selector: 'app-registration-client',
@@ -20,10 +21,11 @@ export class ClientComponent implements OnInit {
 
   constructor(
     public router:Router,
-    private apiRegistration:ServiceRegistrationService,
-    private apiLogin:ServiceLoginService,
-    private dialog:MatDialog ) {
-   }
+    public serviceRouter:ServiceRouterService,
+    private serviceRegistration:ServiceRegistrationService,
+    private servieLogin:ServiceLoginService,
+    private dialog:MatDialog
+  ) { }
 onSubmit(form:any){
   const customer= {
 
@@ -35,27 +37,23 @@ onSubmit(form:any){
     "mail":form.value.email,
     "password":form.value.password
   }
-  this.apiRegistration.registrationCustomer(customer)
+  this.serviceRegistration.registrationCustomer(customer)
   .subscribe((data:any)=>{
-    if(data.control==true){
-      this.router.navigate(["/search"]);
-      this.apiLogin.userCustomer = new UserCustomer
-      (data.data.customer_id,form.value.mobile, form.value.name,form.value.surname,null)
-      this.apiLogin.users = new Users 
-      (null,null,data.data,form.value.email,form.value.password)
-    }
-    else{
-    const dialogRef = this.dialog.open(SimpleAlertComponent);
-      dialogRef.componentInstance.mensaje="Ese correo ya está registrado, intentalo de nuevo";
-      const email:any=document.getElementById("profile")
-      email.value=null;
-      const password:any=document.getElementById("password")
-      password.value=null;
-        dialogRef.afterClosed().subscribe(result => {
-        })
-    }  
-  })
-} 
+    if(data.control==true) {
+      this.serviceRouter.routerClient();
+      this.servieLogin.userCustomer = new UserCustomer(
+        data.data.customer_id,form.value.mobile, form.value.name,form.value.surname,null
+      )
+      this.servieLogin.users = new Users(
+        null,null,data.data,form.value.email,form.value.password
+    )}else {
+      const dialogRef = this.dialog.open(SimpleAlertComponent);
+      dialogRef.componentInstance.mensaje = "Ese correo ya está registrado, intentalo de nuevo";
+      const email:any=document.getElementById("profile");
+      email.value = null;
+      const password:any = document.getElementById("password");
+      password.value = null;
+      dialogRef.afterClosed().subscribe();
+  }});} 
   ngOnInit(): void {
-  }
-}
+}}

@@ -1,8 +1,7 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ServiceLoginService } from '../../../shared/service-login.service';
-import { VerifiedAlertComponent } from '../../modals/verified-alert/verified-alert';
+import { ServiceRouterService } from '../../../shared/service-router.service';
+
 @Component({
   selector: 'app-navbarClient',
   templateUrl: './navbarClient.component.html',
@@ -11,29 +10,9 @@ import { VerifiedAlertComponent } from '../../modals/verified-alert/verified-ale
 export class NavbarClientComponent implements OnInit {
 
   constructor(
-    private router:Router,
-    public serviceLogin:ServiceLoginService,
-    private matDialog:MatDialog
+    public serviceRouter:ServiceRouterService,
+    public serviceLogin:ServiceLoginService
     ) { }
 
   ngOnInit() {
-  }
-  public toReservationListClient() {
-    this.router.navigate(["/reservations-list-client"]);
-    this.serviceLogin.navCustomer = 4;
-  }
-  public toSearch() {
-    this.router.navigate(["/search"]);
-    this.serviceLogin.navCustomer = 3;
-  }
-  public toLogIn() {
-    const dialogRef = this.matDialog.open(VerifiedAlertComponent);
-      
-      
-      dialogRef.afterClosed().subscribe()
-    {}
-  }
-  public toEditProfile() {
-    this.router.navigate(["/edit-client"]);
-    this.serviceLogin.navCustomer = 1;
 }}

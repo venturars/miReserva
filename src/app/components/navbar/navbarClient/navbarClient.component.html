@@ -13,30 +13,30 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
                 <div class="lctl-navAfterButton2">
-                    <div class="lctl-navElement" (click)="toEditProfile()"
-                        [ngClass]="{'lctl-navSelect': serviceLogin.navCustomer === 1}">
+                    <div class="lctl-navElement" (click)="serviceRouter.routerClient(3)"
+                        [ngClass]="{'lctl-navSelect': serviceRouter.navCustomer === 3}">
                         Editar perfil
                     </div>
-                    <div class="lctl-navElement" (click)="toLogIn()"
-                        [ngClass]="{'lctl-navSelect': serviceLogin.navCustomer === 2}">
+                    <div class="lctl-navElement" (click)="serviceRouter.routerClient(0)"
+                        [ngClass]="{'lctl-navSelect': serviceRouter.navCustomer === 0}">
                         Salir
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div class="lctl-navElement" (click)="toSearch()"
-                    [ngClass]="{'lctl-navSelect': serviceLogin.navCustomer === 3}">
+                <div class="lctl-navElement" (click)="serviceRouter.routerClient(2)"
+                    [ngClass]="{'lctl-navSelect': serviceRouter.navCustomer === 2}">
                     Reservar
                 </div>
-                <div class="lctl-navElement" (click)="toReservationListClient()"
-                    [ngClass]="{'lctl-navSelect': serviceLogin.navCustomer === 4}">
+                <div class="lctl-navElement" (click)="serviceRouter.routerClient(1)"
+                    [ngClass]="{'lctl-navSelect': serviceRouter.navCustomer === 1}">
                     Mis reservas
                 </div>
             </div>
             <button class="lctl-navHidden"></button>
         </div>
     </button>
-        <div class="lctl_navSection lctl-navHome" (click)="toSearch()">
+        <div class="lctl_navSection lctl-navHome" (click)="serviceRouter.routerClient()">
             <img src="../../../../assets/LogoMiReserva.svg">
     </div>
 </div>

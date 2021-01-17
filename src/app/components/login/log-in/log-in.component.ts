@@ -5,8 +5,9 @@ import { Restaurants } from '../../../models/restaurants';
 import { UserOwner } from '../../../models/user-owner';
 import { UserCustomer } from '../../../models/user-customer';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { SimpleAlertComponent } from '../../modals/simple-alert/simple-alert';
+import { ServiceCalendarService } from '../../../shared/service-calendar.service';
+import { ServiceRouterService } from '../../../shared/service-router.service';
 @Component({
   selector: 'app-login',
   templateUrl: './log-in.component.html',
@@ -19,10 +20,11 @@ export class LogInComponent implements OnInit {
 
   constructor(
     private serviceLogIn:ServiceLoginService,
-    private router:Router,
+    public serviceRouter:ServiceRouterService,
+    private serviceCalendar:ServiceCalendarService,
     public matDialog:MatDialog
   ) { }
-  onSubmit(form:any){
+  onSubmit(form:any) {
   this.serviceLogIn.getUsers( 
     form.value.email,
     form.value.password
@@ -37,7 +39,7 @@ export class LogInComponent implements OnInit {
         form.value.password
       );
       if(this.serviceLogIn.users.restaurant_id) {
-        this.serviceLogIn.restaurants = new Restaurants(
+        this.serviceLogIn.userRestaurant = new Restaurants(
           response.data[0].restaurant_id,
           response.data[0].name,
           response.data[0].province,
@@ -56,7 +58,8 @@ export class LogInComponent implements OnInit {
           response.data[0].longitude,
           null
         )
-        this.router.navigate(['/reservations-list-restaurant']);
+        this.serviceCalendar.restaurantId = response.data[0].restaurant_id;
+        this.serviceRouter.routerRestaurant();
       }else if(this.serviceLogIn.users.owner_id) {
         this.serviceLogIn.userOwner = new UserOwner(
           response.data[0].owner_id,
@@ -65,7 +68,7 @@ export class LogInComponent implements OnInit {
           response.data[0].surname,
           response.data[0].photo
           );
-        this.router.navigate(['/restaurants-list']);
+        this.serviceRouter.routerOwner();
       }else if(this.serviceLogIn.users.customer_id) {
         this.serviceLogIn.userCustomer= new UserCustomer(
           response.data[0].customer_id,
@@ -74,7 +77,7 @@ export class LogInComponent implements OnInit {
           response.data[0].surname,
           response.data[0].photo
         );
-        this.router.navigate(['/search']);
+        this.serviceRouter.routerClient();
     }}else {
       
       const dialogRef = this.matDialog.open(SimpleAlertComponent,{panelClass: ['animate__animated','animate__backInDown']});

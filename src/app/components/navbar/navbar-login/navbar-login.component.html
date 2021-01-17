@@ -6,34 +6,34 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems2">
                 <div class="lctl-navAfterButton2">
-                    <div class="lctl-navElement" (click)="toRegister()"
-                        [ngClass]="{'lctl-navSelect': nav === 3}">
+                    <div class="lctl-navElement" (click)="serviceRouter.routerLogin(5)"
+                        [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 5}">
                         Regístrate
                     </div>
-                    <div class="lctl-navElement" (click)="toLogIn()"
-                        [ngClass]="{'lctl-navSelect': nav === 4}">
+                    <div class="lctl-navElement" (click)="serviceRouter.routerLogin(4)"
+                        [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 4}">
                         Ingresa
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div class="lctl-navElement" (click)="toHowItWorks()"
-                    [ngClass]="{'lctl-navSelect': nav === 2}">
+                <div class="lctl-navElement" (click)="serviceRouter.routerLogin(3)"
+                    [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 3}">
                     ¿Cómo funciona?
                 </div>
-                <div class="lctl-navElement" (click)="toPresentation()"
-                [ngClass]="{'lctl-navSelect': nav === 5}">
+                <div class="lctl-navElement" (click)="serviceRouter.routerLogin(2)"
+                [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 2}">
                   Presentación
                 </div>
-                <div class="lctl-navElement" (click)="toContact()"
-                    [ngClass]="{'lctl-navSelect': nav === 1}">
+                <div class="lctl-navElement" (click)="serviceRouter.routerLogin(1)"
+                    [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 1}">
                     Contacto
                 </div>
             </div>
             <button class="lctl-navHidden"></button>
         </div>
     </button>
-    <div class="lctl_navSection lctl-navHome" (click)="toLogIn()">
+    <div class="lctl_navSection lctl-navHome" (click)="serviceRouter.routerLogin()">
         <img src="../../../../assets/LogoMiReserva.svg">
     </div>
 </div>

@@ -4,8 +4,8 @@ import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { Users } from '../../../../models/users';
 import { ServiceUserOwnerService } from '../../../../shared/service-user-owner.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { SimpleAlertComponent } from '../../../modals/simple-alert/simple-alert';
+import { ServiceRouterService } from '../../../../shared/service-router.service';
 
 @Component({
   selector: 'app-restaurant-owner-edit',
@@ -23,10 +23,10 @@ export class EditComponentR implements OnInit {
   public checkPassword2:string;
   public message:string;
   constructor (
-    private router:Router,
     private serviceLogin:ServiceLoginService,
     private serviceUserOwner:ServiceUserOwnerService,
-    public dialog:MatDialog
+    public dialog:MatDialog,
+    private serviceRouter:ServiceRouterService
   ) { }
   processFile(imageInput:any) {
     const file: File = imageInput.files[0];
@@ -74,8 +74,7 @@ export class EditComponentR implements OnInit {
             dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
         dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
-            this.router.navigate(["/restaurants-list"]);
-            this.serviceLogin.navOwner = 2;       
+          this.serviceRouter.routerOwner(2);
         })
           }
           this.message = null;

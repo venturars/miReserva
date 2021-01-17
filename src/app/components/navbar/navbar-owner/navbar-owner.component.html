@@ -1,10 +1,10 @@
 <div class="lctl-navContainer">
-    <ng-container *ngIf="this.serviceLogin.userOwner.photo; else sinfoto">
+    <ng-container *ngIf="serviceLogin.userOwner.photo; else notPhoto">
         <button class="lctl_navSection lctl-navToggle">
-            <img  src="{{this.serviceLogin.userOwner.photo}}" class="lctl-photoProfile-m">
+            <img  src="{{serviceLogin.userOwner.photo}}" class="lctl-photoProfile-m">
         </button>
     </ng-container>
-    <ng-template #sinfoto>
+    <ng-template #notPhoto>
         <button class="lctl_navSection lctl-navToggle">
             <img  src="assets/photos/logorestaurante2.png" class="lctl-photoProfile-m">
         </button>
@@ -13,30 +13,30 @@
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
                 <div class="lctl-navAfterButton2">
-                    <div class="lctl-navElement" (click)="toEditProfile()"
-                        [ngClass]="{'lctl-navSelect': serviceLogin.navOwner === 4}">
+                    <div class="lctl-navElement" (click)="serviceRouter.routerOwner(3)"
+                        [ngClass]="{'lctl-navSelect': serviceRouter.navOwner === 3}">
                         Editar perfil
                     </div>
-                    <div class="lctl-navElement" (click)="toLogIn()"
-                        [ngClass]="{'lctl-navSelect': serviceLogin.navOwner === 3}">
+                    <div class="lctl-navElement" (click)="serviceRouter.routerOwner(0)"
+                        [ngClass]="{'lctl-navSelect': serviceRouter.navOwner === 0}">
                         Salir
                     </div>
                 </div>
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
-                <div class="lctl-navElement" (click)="toCreateRestaurant1()"
-                        [ngClass]="{'lctl-navSelect': serviceLogin.navOwner === 1}">
+                <div class="lctl-navElement" (click)="serviceRouter.routerOwner(1)"
+                        [ngClass]="{'lctl-navSelect': serviceRouter.navOwner === 1}">
                         Añadir restaurante
                 </div>
-                <div class="lctl-navElement" (click)="toRestaurantsList()"
-                        [ngClass]="{'lctl-navSelect': serviceLogin.navOwner === 2}">
+                <div class="lctl-navElement" (click)="serviceRouter.routerOwner(2)"
+                        [ngClass]="{'lctl-navSelect': serviceRouter.navOwner === 2}">
                         Mis restaurantes
                 </div>
             </div>
             <button class="lctl-navHidden"></button>
         </div>
     </button>
-    <div class="lctl_navSection lctl-navHome" (click)="toRestaurantsList()">
+    <div class="lctl_navSection lctl-navHome" (click)="serviceRouter.routerOwner()">
         <img src="../../../../assets/LogoMiReserva.svg">
     </div>
 </div>

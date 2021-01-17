@@ -20,7 +20,7 @@
     </div> -->
 
     <ng-template #not>
-        <div class="not"><img src="/assets/restaurantes.svg" (click)="createRest()"></div>
+        <div class="not"><img src="/assets/restaurantes.svg" (click)="serviceRouter.routerOwner(1)"></div>
     </ng-template>
 
     <div class="cards"  *ngIf="restaurants; else not">

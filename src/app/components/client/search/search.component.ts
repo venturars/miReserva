@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit {
     private restaurantService:ServiceRestaurantService,
     private router:Router,
     private dialog:MatDialog,
-    private calendarService: ServiceCalendarService
+    private serviceCalendar: ServiceCalendarService,
   ) { }
   ngOnInit() {
     this.searchService.initialSearch().subscribe((data:any) => {
@@ -200,10 +200,11 @@ export class SearchComponent implements OnInit {
           this.rendered.unshift(rest);
         }, this)
   }}}
-  public toReservate(i:number,restaurant) {
+  public toReservate(i:number,restaurant:Restaurants) {
     this.router.navigate(['/reservation1']);
     this.restaurantService.restaurantReservation = restaurant;
-    this.calendarService.getTimes(this.restaurants[i].restaurant_id)
+    this.serviceCalendar.restaurantId = restaurant.restaurant_id;
+    this.serviceCalendar.getTimes(restaurant.restaurant_id);
   }
   public localSearch(searchLine:HTMLInputElement) {
     let control = false;
