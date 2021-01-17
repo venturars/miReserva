@@ -40,8 +40,8 @@
         </div>
 
         <div class="buttons">
-            <button class="lctl-button-s buttonRes" >{{reservations[i].status}}</button>
-            <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
+            <ng-container class="lctl-button-s buttonRes" >{{reservations[i].status}}</ng-container>
+            <button (click)="openDialog(reservation)" class="lctl-button-s" >Cancelar</button> 
         </div>
     </div>   
     <div class="lctl-br modify">
@@ -75,8 +75,8 @@
             </div>
     
             <div class="buttons">
-                <button class="lctl-button-s buttonRes" >{{reservations[i].status}}</button>
-                <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
+                <ng-container class="lctl-button-s buttonRes" >{{reservations[i].status}}</ng-container>
+                <button (click)="openDialog(reservation)" class="lctl-button-s" >Cancelar</button> 
             </div>
         </div>
         <div class="lctl-br modify">
@@ -112,8 +112,8 @@
                 </div>
         
                 <div class="buttons">
-                    <button class="lctl-button-s buttonRes" >{{reservations[i].status}}</button>
-                    <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
+                    <ng-container class="lctl-button-s buttonRes" >{{reservations[i].status}}</ng-container>
+                    <button (click)="openDialog(reservation)" class="lctl-button-s" >Cancelar</button> 
                 </div>
             </div>
             <div class="lctl-br modify">
@@ -147,8 +147,8 @@
             </div>
     
             <div class="buttons">
-                <button class="lctl-button-s buttonRes" >{{reservations[i].status}}</button>
-                <button (click)="openDialog(reservations[i].reservation_id)" class="lctl-button-s" >Eliminar</button> 
+                <ng-container class="lctl-button-s buttonRes" >{{reservations[i].status}}</ng-container>
+                <button (click)="openDialog(reservation)" class="lctl-button-s" >Cancelar</button> 
             </div>
         </div>
         <div class="lctl-br modify">

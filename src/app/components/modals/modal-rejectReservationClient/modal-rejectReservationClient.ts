@@ -19,6 +19,7 @@ export class RejectReservationClientComponent implements OnInit {
 
   public confirmar(){
     this.reservation = this.reservationService.reservation
+    
     this.reservation.status = "Cancelada por cliente"
     this.reservationService.putReservation(this.reservation).subscribe((data4:any) =>{    
     })

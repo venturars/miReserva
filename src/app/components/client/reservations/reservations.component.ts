@@ -145,7 +145,7 @@ public elSelect:string="Todas";
 
   openDialog(asd) {
     console.log(asd);
-    this.reservationService.reservationId = asd    
+    this.reservationService.reservation = asd;    
     
     const dialogRef = this.dialog.open(RejectReservationClientComponent);
 

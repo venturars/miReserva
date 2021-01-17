@@ -17,7 +17,8 @@ import { ServiceRestaurantService } from '../../shared/service-restaurant.servic
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  public restaurantId = this.restaurantService.restaurantReservation.restaurant_id;
+  public restaurantId 
+  // = this.restaurantService.restaurantReservation.restaurant_id;
   public times: Times[]
   public shifts: Shifts[]
 
@@ -173,6 +174,7 @@ export class CalendarComponent implements OnInit {
 
 
     let currentDayName = name;
+    console.log(this.restaurantId);
     this.timesService.getTimes(this.restaurantId).subscribe((dataTimes:any) =>{                    
       for(let i = 0; i < dataTimes.data.length; i++){   
                          
