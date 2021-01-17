@@ -8,6 +8,7 @@ import { ServiceReservationsService } from 'src/app/shared/service-reservations.
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ModalClienteComponent } from '../../modals/modal-cliente/modal-cliente.component';
 
+
 @Component({
   selector: 'app-client-reservations',
   templateUrl: './reservations.component.html',
@@ -19,6 +20,7 @@ public customerId:number
 public changedMonth:string
 public changedDayName:string
 public restaurantsReservated: Restaurants[]=[];
+public elSelect:string="Todas";
   constructor(public dialog: MatDialog,
               private loginService: ServiceLoginService,
               private reservationService: ServiceReservationsService,
@@ -152,6 +154,12 @@ public restaurantsReservated: Restaurants[]=[];
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+
+   
+  }
+  cambiarSelect(estado){
+    console.log(estado.value)
+    this.elSelect=estado.value;
   }
 
 }
