@@ -2,13 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Times } from '../models/times';
+import { Global } from '../models/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceTimesService {
 
-  private url:string = "http://localhost:3000/times";
+  private global:Global = new Global();
+  private url:string = this.global.url + "/times";
   public times:Times;
   public inicio:string;
   public fin:string;
@@ -34,8 +36,8 @@ export class ServiceTimesService {
   public putTimes(times:Times):Observable<any> {
     return this.http.put(this.url, times);
   }
-  public deleteTimes(id:number):Observable<any> {    
+  public deleteTimes(times_id:number):Observable<any> {    
     return this.http.request('DELETE', this.url, {
       headers: new HttpHeaders ({ 'Content-Type': 'application/json' }),
-      body: {id:id}
+      body: {times_id:times_id}
 });}}

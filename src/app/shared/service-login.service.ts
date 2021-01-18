@@ -5,13 +5,14 @@ import { Restaurants } from '../models/restaurants';
 import { UserOwner } from '../models/user-owner';
 import { UserCustomer } from '../models/user-customer';
 import { Observable } from 'rxjs';
+import { Global } from '../models/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceLoginService {
-
-  private url:string = "http://localhost:3000/login";
+  private global:Global = new Global();
+  private url:string = this.global.url + "/login";
   public users: Users = new Users(null,null,null,null,null);
   public userRestaurant: Restaurants;
   public userOwner: UserOwner;

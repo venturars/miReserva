@@ -203,10 +203,10 @@ export class DoReservation1Component implements OnInit {
  this.router.navigate(['/reservation2'])
   }
 
-this.reservationService.dayName = this.calendarService.nuevaFecha.dayName
-this.reservationService.dayNum = this.calendarService.nuevaFecha.dayNum
-this.reservationService.month = this.calendarService.nuevaFecha.month
-this.reservationService.year = this.calendarService.nuevaFecha.year
+this.reservationService.dayName = this.calendarService.getNewDate().dayName
+this.reservationService.dayNum = this.calendarService.getNewDate().dayNum
+this.reservationService.month = this.calendarService.getNewDate().month
+this.reservationService.year = this.calendarService.getNewDate().year
 this.reservationService.time = turnos.value
 this.reservationService.pax = this.personas
 
@@ -220,10 +220,10 @@ for(let i = 0; i < this.shifts.length;i++){
 for(let i = 0; i < this.selectedShifts.length;i++){
   
   this.reservationService.getReservationPax(this.selectedShifts[i].shift_id,
-    this.calendarService.nuevaFecha.dayName,
-    this.calendarService.nuevaFecha.dayNum,
-    this.calendarService.nuevaFecha.month,
-    this.calendarService.nuevaFecha.year
+    this.calendarService.getNewDate().dayName,
+    this.calendarService.getNewDate().dayNum,
+    this.calendarService.getNewDate().month,
+    this.calendarService.getNewDate().year
     ).subscribe((data:any) =>{ 
       let pax:number
       pax = parseInt(this.personas2)

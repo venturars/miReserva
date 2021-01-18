@@ -12,16 +12,15 @@ import { ServiceRouterService } from '../../../../shared/service-router.service'
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
-
-
-
 export class EditComponentR implements OnInit {
+
   public userOwner:UserOwner;
   public users:Users;
   public pass:string;
   public checkPassword:string;
   public checkPassword2:string;
   public message:string;
+  
   constructor (
     private serviceLogin:ServiceLoginService,
     private serviceUserOwner:ServiceUserOwnerService,
@@ -73,7 +72,6 @@ export class EditComponentR implements OnInit {
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
             dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
         dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
           this.serviceRouter.routerOwner(2);
         })
           }

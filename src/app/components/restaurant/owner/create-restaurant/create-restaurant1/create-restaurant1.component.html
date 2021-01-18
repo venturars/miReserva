@@ -33,54 +33,54 @@
                 <input type="text" class="lctl-input-m-extraLarge" 
                     placeholder="{{restForm.submitted && name.invalid ?  'Nombre del local obligatorio' : 'Nombre del local'}}"
                     name="name" [(ngModel)]="restaurantmodel.name" #name="ngModel"
-                    [ngClass]="{'caution':restForm.submitted && name.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && name.invalid }" required>
 
                 <input type="number" class="lctl-input-m-extraLarge" 
                     placeholder="{{restForm.submitted && phone.invalid ?  'Teléfono obligatorio' : 'Teléfono'}}"
                     name="phone" [(ngModel)]="restaurantmodel.phone" #phone="ngModel"
-                    [ngClass]="{'caution':restForm.submitted && phone.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && phone.invalid }" required>
             </div>
             <div>
                 <input type="text" class="lctl-input-m-extraLarge" 
                     placeholder="{{restForm.submitted && street_name.invalid ?  'Calle obligatoria' : 'Calle'}}"
                     name="street_name" [(ngModel)]="restaurantmodel.street_name" #street_name="ngModel"
-                    [ngClass]="{'caution':restForm.submitted && street_name.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && street_name.invalid }" required>
                 <input type="number" class="lctl-input-m-extraLarge" 
                     placeholder="{{restForm.submitted && street_number.invalid ?  'Numero de calle obligatorio' : 'Número de calle'}}"
                     name="street_number" [(ngModel)]="restaurantmodel.street_number" #street_number="ngModel"
-                    [ngClass]="{'caution':restForm.submitted && street_number.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && street_number.invalid }" required>
             </div>
             <div>
                 <input type="text" class="lctl-input-m-extraLarge" 
                     placeholder="{{restForm.submitted && city.invalid ?  'Ciudad obligatoria' : 'Ciudad'}}"
                     name="city" [(ngModel)]="restaurantmodel.city" #city="ngModel"
-                    [ngClass]="{'caution':restForm.submitted && city.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && city.invalid }" required>
 
                 <input type="number" class="lctl-input-m-extraLarge" 
                     placeholder="{{restForm.submitted && capacity.invalid ?  'Aforo obligatorio' : 'Capacidad aforo'}}"
                     name="capacity" [(ngModel)]="restaurantmodel.capacity" #capacity="ngModel"
-                    [ngClass]="{'caution':restForm.submitted && capacity.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && capacity.invalid }" required>
             </div>
             <div>
                 <input type="text" class="lctl-input-m-extraLarge" 
                     placeholder="{{restForm.submitted && province.invalid ?  'Provincia obligatoria' : 'Provincia'}}"
                     name="province" [(ngModel)]="restaurantmodel.province" #province="ngModel"
-                    [ngClass]="{'caution':restForm.submitted && city.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && city.invalid }" required>
 
                 <input type="text" class="lctl-input-m-extraLarge" 
                     placeholder="{{restForm.submitted && url.invalid ?  'Link web obligatorio' : 'Link web del restaurante'}}"
                     name="url" [(ngModel)]="restaurantmodel.url" #url="ngModel"
-                    [ngClass]="{'caution':restForm.submitted && url.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && url.invalid }" required>
             </div>
             <div>
                 <input type="number" class="lctl-input-m-extraLarge" 
                     placeholder="{{restForm.submitted && postal_code.invalid ?  'Código postal obligatorio' : 'Código postal'}}"
                     name="postal_code" [(ngModel)]="restaurantmodel.postal_code" #postal_code="ngModel"
-                    [ngClass]="{'caution':restForm.submitted && postal_code.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && postal_code.invalid }" required>
         
                 <select class="lctl-input-m-extraLarge" 
                     name="food_type" [(ngModel)]="restaurantmodel.food_type"  #food_type="ngModel" 
-                    [ngClass]="{'foodred':restForm.submitted && food_type.invalid }" id="food" required>
+                    [ngClass]="{'invalidform':restForm.submitted && food_type.invalid }" id="food" required>
                     <option selected="true" disabled="disabled" [ngValue]="null">Tipo de comida</option>
                     <option>Española</option>
                     <option>Mexicana</option>
@@ -94,12 +94,12 @@
                 <input type="text" class="lctl-input-m-extraLarge" placeholder="Email"
                     placeholder="{{restForm.submitted && mail.invalid ?  'Email obligatorio' : 'Email'}}"
                     name="mail" [(ngModel)]="users.mail" #mail="ngModel" id="mail"
-                    [ngClass]="{'caution':restForm.submitted && mail.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && mail.invalid }" required>
                     
                 <input type="text" class="lctl-input-m-extraLarge"
                     placeholder="{{restForm.submitted && password.invalid ?  'Contraseña obligatoria' : 'Contraseña'}}"
                     name="password" [(ngModel)]="users.password" #password="ngModel" id="password"
-                    [ngClass]="{'caution':restForm.submitted && password.invalid }" required>
+                    [ngClass]="{'invalidForm':restForm.submitted && password.invalid }" required>
             </div> 
              
             <div class="lctl-font-comment message"><span class="lctl-font-bold">ATENCION!</span> este email y contraseña deben ser diferentes a los que creaste como propietario</div>      

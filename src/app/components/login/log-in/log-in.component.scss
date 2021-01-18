@@ -39,14 +39,8 @@ form {
         align-items: center;
         height: 100%;
     }}
-    .messageDiv {
+    .messageInvalidForm {
       width: calc(100% - 20px);
-      min-height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: var(--primaryColor);
     }
     .logIn {
       width: 100%;
@@ -78,16 +72,6 @@ form {
   background-repeat: no-repeat;
   background-position: 7px 0;
 }
-.caution{
-  border:var(--secundaryColorContrast) solid 1px;
-  border-radius: var(--borderRadiusL);
-}
-.invalid-feedback-left{
-  color:var(--secundaryColorContrast);
-  display:flex;
-  justify-content: left!important;
-  font-size:12px;
-}
 //-----//-----//-----//-----//-----//-----
 
 //-----responsive-----
@@ -103,11 +87,8 @@ form {
       }}
       & > div:nth-child(2) {
   }}
-  .messageDiv {
+  .messagleInvalidForm {
     max-width: 580px;
-   
-    
-  
   }
   .logIn {
   }

@@ -8,89 +8,74 @@ import { ServiceTimesService } from './service-times.service';
   providedIn: 'root'
 })
 export class ServiceCalendarService {
-  public restaurantId;
-  public nuevaFecha:Calendar;
+  
+  public restaurantId:number;
+  private newDateCalendar:Calendar;
   public reserva:Reservations;
   public times:Times[]
-  public changedDayName:string
-  public changedMonth:string
-  public countSun:number
-  public countMon:number
-  public countTue:number
-  public countWed:number
-  public countThu:number
-  public countFri:number
-  public countSat:number
-
-
-  constructor(private timesService: ServiceTimesService
-    ) {
-    this.times = []
-    this.nuevaFecha = new Calendar("","","","")
-    this.countSun = 0
-    this.countMon = 0
-    this.countTue = 0
-    this.countWed = 0
-    this.countThu = 0
-    this.countFri = 0
-    this.countSat = 0
-
-this.getTimes(this.restaurantId)
-
-  }
-  public newDate(date:Calendar):any {
-    this.nuevaFecha =  date;
-  }
-  public getDate():any {
-    return this.nuevaFecha;
+  public changedDayName:string;
+  public changedMonth:string;
+  public count:any = {
+    Sun: 0,
+    Mon: 0,
+    Tue: 0,
+    Wed: 0,
+    Thu: 0,
+    Fri: 0,
+    Sat: 0
   }
 
-  public getTimes(id:number){
-    this.timesService.getTimes(id).subscribe((data4:any) =>{
-      for(let i = 0; i < data4.data.length; i ++){
+  constructor(
+    private timesService: ServiceTimesService,
+  ) {
+    this.times = [],
+    this.newDateCalendar = new Calendar("","","",""),
+    this.getTimes(this.restaurantId);
+  }
+  public getNewDate():any {
+    return this.newDateCalendar;
+  }
+  public setNewDate(date:Calendar):any {
+    this.newDateCalendar =  date;
+  }
+  public getTimes(restaurant_id:number) {
+    this.timesService.getTimes(restaurant_id).subscribe((result:any) =>{
+      for(let i = 0; i < result.data.length; i ++){
 
-        switch (data4.data[i].name){
+        switch (result.data[i].name){
           case "Sun":
-            if(data4.data[i].active == "true"){               
-              this.countSun = 1
+            if(result.data[i].active == "true") {
+              this.count.Sun = 1
             }
-          break;
+            break;
           case "Mon":
-            if(data4.data[i].active == "true"){   
-              this.countMon = 1                      
+            if(result.data[i].active == "true") {
+              this.count.Mon = 1                      
             }
-          break;
+            break;
           case "Tue":
-            if(data4.data[i].active == "true"){   
-              this.countTue = 1             
+            if(result.data[i].active == "true") {
+              this.count.Tue = 1             
             }
             break;
           case "Wed":
-            if(data4.data[i].active == "true"){   
-              this.countWed = 1             
+            if(result.data[i].active == "true") {
+              this.count.Wed = 1             
             }
             break;
           case "Thu":
-            if(data4.data[i].active == "true"){
-              this.countThu = 1                
+            if(result.data[i].active == "true") {
+              this.count.Thu = 1                
             }
             break;
           case "Fri":
-            if(data4.data[i].active == "true"){ 
-              this.countFri = 1               
+            if(result.data[i].active == "true") {
+              this.count.Fri = 1               
             }
             break;
           case "Sat":
-            if(data4.data[i].active == "true"){  
-              this.countSat = 1              
+            if(result.data[i].active == "true") {
+              this.count.Sat = 1              
             }
             break;        
-        }
-
-      }
-  
-      
-    })  
-
-  }
-}
+}}});}}

@@ -54,10 +54,10 @@ public shift:Shifts
     }else{
       this.selectedComments = this.reservationService.obs
     }
-    this.selectedDayName = this.calendarService.nuevaFecha.dayName
-    this.selectedDayNum = this.calendarService.nuevaFecha.dayNum
-    this.selectedMonth = this.calendarService.nuevaFecha.month
-    this.selectedYear = this.calendarService.nuevaFecha.year
+    this.selectedDayName = this.calendarService.getNewDate().dayName
+    this.selectedDayNum = this.calendarService.getNewDate().dayNum
+    this.selectedMonth = this.calendarService.getNewDate().month
+    this.selectedYear = this.calendarService.getNewDate().year
     this.restaurantId = this.restaurantService.restaurantReservation.restaurant_id
     console.log(this.restaurantId);
     this.fullName = this.loginService.userCustomer.name + " " + this.loginService.userCustomer.surname

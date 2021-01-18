@@ -142,10 +142,10 @@ export class DoReservation2Component implements OnInit {
       this.tables.push(table)
     }                      
   })
-  this.selectedDayNum = this.calendarService.nuevaFecha.dayNum
-  this.selectedDayName = this.calendarService.nuevaFecha.dayName
-  this.selectedMonth = this.calendarService.nuevaFecha.month
-  this.selectedYear = this.calendarService.nuevaFecha.year
+  this.selectedDayNum = this.calendarService.getNewDate().dayNum;
+  this.selectedDayName = this.calendarService.getNewDate().dayName;
+  this.selectedMonth = this.calendarService.getNewDate().month;
+  this.selectedYear = this.calendarService.getNewDate().year;
 
 
 }
