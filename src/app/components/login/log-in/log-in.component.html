@@ -6,15 +6,15 @@
     <input id="profile" class="lctl-input-l-large inputForm" name="email" placeholder="Email" 
       placeholder="{{userForm.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
       [(ngModel)]="users.mail" #email="ngModel" type="email"
-      [ngClass]="{'caution':userForm.submitted && email.invalid }" email required>
+      [ngClass]="{'invalidForm':userForm.submitted && email.invalid }" email required>
     <input id="password" class="lctl-input-l-large inputForm" name="password" 
       placeholder="{{userForm.submitted && password.invalid ?  'Contraseña obligatoria 6 caracteres' : 'Contraseña'}}"
       [(ngModel)]="users.password" #password="ngModel" type="password"
-      [ngClass]="{'caution':userForm.submitted && password.invalid }" minlength="6" required>
+      [ngClass]="{'invalidForm':userForm.submitted && password.invalid }" minlength="6" required>
 
   <div class="overLogIn">
 
-    <div [ngClass]="{'caution':userForm.submitted && check.invalid }">
+    <div [ngClass]="{'invalidForm':userForm.submitted && check.invalid }">
       <input type="checkbox" name="check" [(ngModel)]="remember" #check="ngModel">
       <p class="textCheck lctl-font-underline">
         Recuerdame
@@ -29,15 +29,11 @@
 
   </div>
 
-  <div class="messageDiv" *ngIf="(userForm.submitted && email.invalid)">
+  <div class="messageInvalidform" *ngIf="(userForm.submitted && email.invalid)">
       <div *ngIf="email.errors.required">Introduce un email</div>
       <div *ngIf="email.errors.email">El email no tiene el formato correcto</div>
-  </div>
-  
-
-  <div class="messageDiv" *ngIf="userForm.submitted && password.invalid">
-    <div *ngIf="password.errors.required">Introduce una contraseña</div>
-    <div *ngIf="password.errors.minlength">La contraseña debe tener 6 caracteres</div>
+      <div *ngIf="password.errors.required">Introduce una contraseña</div>
+      <div *ngIf="password.errors.minlength">La contraseña debe tener 6 caracteres</div>
   </div>
   
   <div class="logIn">

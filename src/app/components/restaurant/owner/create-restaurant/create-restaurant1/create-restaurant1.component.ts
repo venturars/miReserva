@@ -82,7 +82,6 @@ export class CreateRestaurant1Component implements OnInit {
           // SE CALCULA LONGITUD Y LATITUD CON LA API
       
           this.restauranteCreado=data.data.restaurant_id;
-            // console.log(this.restauranteCreado);
           this.geoservice.getJSONstreet(this.url)
           .subscribe((data:any)=> {
             
@@ -102,17 +101,13 @@ export class CreateRestaurant1Component implements OnInit {
               sendRestaurant.longitude=this.longitud;
               this.serviceRestaurant.create1Restaurant=sendRestaurant;
           
-              this.serviceRestaurant.putRestaurant(sendRestaurant)
-              .subscribe(data=> {
-              console.log(data)
-              })              
-          })
-        });
+              this.serviceRestaurant.putRestaurant(sendRestaurant, null)
+              .subscribe();              
+        });});
         const dialogRef = this.dialog.open(SimpleAlertComponent);
         dialogRef.componentInstance.mensaje="Restaurante creado, ahora configura sus mesas";
         dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
     dialogRef.afterClosed().subscribe(result => {
-    console.log(`Dialog result: ${result}`);
     this.router.navigate(["/create-restaurant-2"]);})
         
       }else {

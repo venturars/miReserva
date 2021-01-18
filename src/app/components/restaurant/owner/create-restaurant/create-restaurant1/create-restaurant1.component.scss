@@ -180,23 +180,9 @@
 //-----//-----//-----//-----//-----
 //-----Validations-----
 //-----//-----//-----//-----//-----
-.caution {
-    border:var(--secundaryColorContrast) solid 1px;
-}
-.caution::placeholder {
-    color:var(--secundaryColorContrast);
-}
-
 #food{
  color:var(--secundaryColorPush);
 }
-
-.foodred{
-  color:var(--secundaryColorContrast)!important;
-  border:var(--secundaryColorContrast) solid 1px;
-  
-}
-
 .message{
   font-size:var(--fontSizeM);
   width: min(calc(100% - 20px), 1420px);

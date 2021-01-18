@@ -18,28 +18,28 @@
     <div class="lctl-font-paragraph">La información de contacto debe estar actualizada</div>
     <input class="lctl-input-l-extraLarge" name="name" autocomplete="off" placeholder="Nombre" 
       [(ngModel)]="userOwner.name" #name="ngModel" type="text"
-      required [ngClass]="{'caution':userForm.submitted && name.invalid}">
+      required [ngClass]="{'invalidForm':userForm.submitted && name.invalid}">
     <input class="lctl-input-l-extraLarge" name="surname" autocomplete="off" placeholder="Apellidos" 
       [(ngModel)]="userOwner.surname" #surname="ngModel" type="text"
-      required [ngClass]="{'caution':userForm.submitted && surname.invalid}">
+      required [ngClass]="{'invalidForm':userForm.submitted && surname.invalid}">
     <!-- <input class="lctl-input-l-extraLarge" name="phone" autocomplete="off" placeholder="Telefono" 
       [(ngModel)]="userOwner.phone" #phone="ngModel" type="tel"
-      minlength="9" maxlength="9" required [ngClass]="{'caution':userForm.submitted && phone.invalid}"> -->
+      minlength="9" maxlength="9" required [ngClass]="{'invalidForm':userForm.submitted && phone.invalid}"> -->
     <input class="lctl-input-l-extraLarge" name="cif" autocomplete="off" placeholder="CIF" 
       [(ngModel)]="userOwner.cif" #cif="ngModel" type="text"
-      [ngClass]="{'caution':userForm.submitted && cif.invalid }" required>
+      [ngClass]="{'invalidForm':userForm.submitted && cif.invalid }" required>
       <div class="lctl-br space"></div>
     <input class="lctl-input-l-extraLarge password" name="password1" type="password" autocomplete="off"
       [(ngModel)]="checkPassword" #password1="ngModel" placeholder="Nueva contraseña"
-      minlength="6" [ngClass]="{'caution':userForm.submitted && password1.invalid}">
+      minlength="6" [ngClass]="{'invalidForm':userForm.submitted && password1.invalid}">
     <input class="lctl-input-l-extraLarge password" name="password2" type="password" autocomplete="off"
       [(ngModel)]="checkPassword2" #password2="ngModel" placeholder="Confirmar contraseña"
-      minlength="6" [ngClass]="{'caution':userForm.submitted && password2.invalid}">
-    <div class="message">{{message}}</div>
+      minlength="6" [ngClass]="{'invalidForm':userForm.submitted && password2.invalid}">
+    <div class="messageInvalidForm">{{message}}</div>
     <div class="message2">Confirma tu contraseña</div>
     <input class="lctl-input-l-extraLarge password" name="password" type="password" autocomplete="off"
       [(ngModel)]="pass" #password="ngModel" placeholder="Contraseña"
-      minlength="6" required [ngClass]="{'caution':userForm.submitted && password.invalid}">
+      minlength="6" required [ngClass]="{'invalidForm':userForm.submitted && password.invalid}">
     <div class="buttons">
       <div class="lctl-button-m">Cancelar</div>
       <button type="submit" class="lctl-button-m">Guardar</button>

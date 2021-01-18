@@ -51,8 +51,7 @@ import { ModalReservaManualComponent } from './components/modals/modal-reserva-m
 import { VerifiedAlertComponent } from './components/modals/verified-alert/verified-alert';
 import { InfoRestaurantComponent } from './components/modals/infoRestaurant-modal/modal-infoRestaurant';
 import { RejectReservationClientComponent } from './components/modals/modal-rejectReservationClient/modal-rejectReservationClient';
-
-
+//-----New Imports-----
 
 @NgModule({
   declarations: [

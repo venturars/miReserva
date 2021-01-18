@@ -1,5 +1,6 @@
 .content {
-    width: min(calc(100% - 20px), 500px);
+    width: 500px;
+    max-width: 100%;
     min-height: 280px;
     margin: auto;
     display: flex;
@@ -36,7 +37,7 @@
         justify-content: center;
         text-align: center;
         margin-top: 20px;
-        padding: 0 5px 0 5px;
+        padding: 0 10px 0 10px;
         font-size: var(--fontSizeM);
     }
     & > .buttons {

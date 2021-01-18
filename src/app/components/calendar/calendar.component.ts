@@ -63,8 +63,7 @@ export class CalendarComponent implements OnInit {
       let day = this.today.toString().substr(8,2)
       let year = this.today.toString().substr(11,4);
       this.date = new Calendar(name, day, month, year)
-      this.calendarService.nuevaFecha = this.date
-      this.calendarService.nuevaFecha = this.date
+      this.calendarService.setNewDate(this.date);
       this.countSun = 0
       this.countMon = 0
       this.countTue = 0
@@ -168,7 +167,7 @@ export class CalendarComponent implements OnInit {
     let year = e.toString().substr(11,4);
     this.date = new Calendar(name, day, month, year)
     this.selectDay = e;
-    this.calendarService.nuevaFecha = this.date
+    this.calendarService.setNewDate(this.date);
 
 
     let currentDayName = name;
@@ -277,19 +276,19 @@ public myDateFilter = (date:Date) => {
 
 
   
-      // if (this.calendarService.countSun == 0)  
+      // if (this.calendarService.count.Sun == 0)  
       //   this.sun = 0
-      // if (this.calendarService.countMon == 0)
+      // if (this.calendarService.count.Mon == 0)
       //   this.mon = 1
-      // if (this.calendarService.countTue == 0)
+      // if (this.calendarService.count.Tue == 0)
       //   this.tue = 2
-      // if (this.calendarService.countWed == 0)
+      // if (this.calendarService.count.Wed == 0)
       //   this.wed = 3
-      // if (this.calendarService.countThu == 0)
+      // if (this.calendarService.count.Thu == 0)
       //   this.thu = 4
-      // if (this.calendarService.countFri == 0)
+      // if (this.calendarService.count.Fri == 0)
       //   this.fri = 5
-      // if (this.calendarService.countSat == 0)
+      // if (this.calendarService.count.Sat == 0)
       //   this.sat = 6
 
       return day != null;

@@ -1,12 +1,12 @@
 <div class="maxContainer">
   <form class="lctl-div" #userForm="ngForm" (ngSubmit)="(userForm.invalid) ? '' : onSubmit()">
     <label for="photoInput">
-      <ng-container *ngIf="this.userCustomer.photo; else sinfoto">
+      <ng-container *ngIf="this.userCustomer.photo; else notPhoto">
       <div class="lctl-photoProfile-l">
         <img id="photo" src="{{this.userCustomer.photo}}">
       </div>
       </ng-container>
-      <ng-template #sinfoto>
+      <ng-template #notPhoto>
         <div class="lctl-photoProfile-l">
           <img id="photo" src="assets/photos/logorestaurante2.png">
         </div>
@@ -18,25 +18,25 @@
     <div class="lctl-font-paragraph">Los datos de contacto son visibles para los restaurantes</div>
     <input class="lctl-input-l-extraLarge" name="name" autocomplete="off" placeholder="Nombre" 
       [(ngModel)]="userCustomer.name" #name="ngModel" type="text"
-       required [ngClass]="{'caution':userForm.submitted && name.invalid}">
+       required [ngClass]="{'invalidForm':userForm.submitted && name.invalid}">
     <input class="lctl-input-l-extraLarge" name="surname" autocomplete="off" placeholder="Apellidos" 
       [(ngModel)]="userCustomer.surname" #surname="ngModel" type="text"
-      required [ngClass]="{'caution':userForm.submitted && surname.invalid}">
+      required [ngClass]="{'invalidForm':userForm.submitted && surname.invalid}">
     <input class="lctl-input-l-extraLarge" name="phone" autocomplete="off" placeholder="Telefono" 
       [(ngModel)]="userCustomer.phone" #phone="ngModel" type="tel"
-      minlength="9" maxlength="9" required [ngClass]="{'caution':userForm.submitted && phone.invalid}">
+      minlength="9" maxlength="9" required [ngClass]="{'invalidForm':userForm.submitted && phone.invalid}">
     <div class="lctl-br space"></div>
     <input class="lctl-input-l-extraLarge password" name="password1" type="password" autocomplete="off"
       [(ngModel)]="checkPassword" #password1="ngModel" placeholder="Nueva contraseña"
-      minlength="6" [ngClass]="{'caution':userForm.submitted && password1.invalid}">
+      minlength="6" [ngClass]="{'invalidForm':userForm.submitted && password1.invalid}">
     <input class="lctl-input-l-extraLarge password" name="password2" type="password" autocomplete="off"
       [(ngModel)]="checkPassword2" #password2="ngModel" placeholder="Confirmar contraseña"
-      minlength="6" [ngClass]="{'caution':userForm.submitted && password2.invalid}">
-    <div class="message">{{message}}</div>
+      minlength="6" [ngClass]="{'invalidForm':userForm.submitted && password2.invalid}">
+    <div class="messageInvalidForm">{{message}}</div>
     <div class="message2">Confirma tu contraseña</div>
     <input class="lctl-input-l-extraLarge password" name="password" type="password" autocomplete="off"
       [(ngModel)]="pass" #password="ngModel" placeholder="Contraseña"
-      minlength="6" required [ngClass]="{'caution':userForm.submitted && password.invalid}">
+      minlength="6" required [ngClass]="{'invalidForm':userForm.submitted && password.invalid}">
     <div class="buttons">
       <div class="lctl-button-m">Cancelar</div>
       <button type="submit" class="lctl-button-m">Guardar</button>
@@ -46,4 +46,4 @@
 
 <!-- <input class="lctl-input-l-extraLarge" name="email" autocomplete="off" placeholder="Email" 
 [(ngModel)]="users.mail" #mail="ngModel" id="profile" type="email"
-email required [ngClass]="{'caution':userForm.submitted && mail.invalid}"> -->
+email required [ngClass]="{'invalidForm':userForm.submitted && mail.invalid}"> -->

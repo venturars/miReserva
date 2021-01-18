@@ -184,7 +184,7 @@ export class ReservationsRestaurantComponent implements OnInit {
     this.selectedMonth = currentMonth
     this.selectedYear = currentYear
 
-    switch (this.selectedDayName){
+    switch (this.selectedDayName) {
       case "Sun":
         this.changedDayName = "Domingo";
         break;
@@ -207,7 +207,7 @@ export class ReservationsRestaurantComponent implements OnInit {
         this.changedDayName = "Sabado";
         break;        
     }
-    switch (this.selectedMonth){
+    switch (this.selectedMonth) {
       case "Jan":
         this.changedMonth = "Enero";
         break;
@@ -250,15 +250,15 @@ export class ReservationsRestaurantComponent implements OnInit {
   // FIN CONSTRUCTOR
 
 
-  ngOnInit(): void {
+  ngOnInit() {
  
   }
 
-  public confirmReservation(id_reservation:number){
+  public confirmReservation(id_reservation:number) {
 
   }
 
-  public rejectReservation(id_reservation:number){
+  public rejectReservation(id_reservation:number) {
 
   }
 
@@ -268,36 +268,20 @@ export class ReservationsRestaurantComponent implements OnInit {
     let dia = this.dateOfBirth.toString().substr(8,2)
     let anyo = this.dateOfBirth.toString().substr(11,4)
   }
-  
   public modalStatus(data12:any) {
-    console.log(data12);
-    
     this.calendarService.reserva = data12
     const dialogRef = this.dialog.open(ModalRestauranteComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed().subscribe();
   }
-
   public modalNew() {
-  const dialogRef = this.dialog.open(ModalReservaManualComponent);
-
-  dialogRef.afterClosed().subscribe(result => {
-    console.log(`Dialog result: ${result}`);
-  });
-}
-
-public calendar(){
-  const dialogRef = this.dialog.open(CalendarComponent);
-  dialogRef.afterClosed().subscribe(result => {
-    
-    console.log(this.calendarService.nuevaFecha);  
-    this.selectedDayName = this.calendarService.nuevaFecha.dayName
-    this.selectedDayNum = this.calendarService.nuevaFecha.dayNum
-    this.selectedMonth = this.calendarService.nuevaFecha.month
-    this.selectedYear = this.calendarService.nuevaFecha.year
-
-  });
-
-}
-}
+    const dialogRef = this.dialog.open(ModalReservaManualComponent);
+    dialogRef.afterClosed().subscribe();
+  }
+  public calendar(){
+    const dialogRef = this.dialog.open(CalendarComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedDayName = this.calendarService.getNewDate().dayName;
+      this.selectedDayNum = this.calendarService.getNewDate().dayNum;
+      this.selectedMonth = this.calendarService.getNewDate().month;
+      this.selectedYear = this.calendarService.getNewDate().year;
+});}}

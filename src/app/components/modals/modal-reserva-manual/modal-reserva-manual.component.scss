@@ -1,5 +1,6 @@
-.content{
-    width: min(calc(100% - 20px), 500px);
+.content {
+    width: 500px;
+    max-width: 100%;
     min-height: 280px;
     height: 380px;
     display: flex;

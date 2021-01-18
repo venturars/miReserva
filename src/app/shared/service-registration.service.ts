@@ -1,23 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Global } from '../models/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceRegistrationService {
 
-public url:string="http://localhost:3000/registration";
+  private global:Global = new Global();
+  private url:string = this.global.url + "/registration";
 
   constructor(
     private http:HttpClient
   ) { }
-  public registrationOwner(newOwner:any){
+  public registrationOwner(newOwner:any) {
     return this.http.post(this.url, newOwner);
   }
   
-  public registrationCustomer(newCustomer:any){
+  public registrationCustomer(newCustomer:any) {
      return this.http.post(this.url, newCustomer);
   }
-  public checkMailFree(mail:any){
+  public checkMailFree(mail:any) {
     return this.http.get(this.url+ "?mail=" + mail);
 }}

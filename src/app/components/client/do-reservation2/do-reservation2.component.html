@@ -3,7 +3,13 @@
     <div class="title">
         <div class="lctl-br w"></div>
         <div class="lctl-br space"></div>
-        <p class="lctl-font-title">{{this.calendarService.changedDayName}} {{this.calendarService.nuevaFecha.dayNum}} de {{this.calendarService.changedMonth}} {{this.calendarService.nuevaFecha.year}}</p>
+        <p class="lctl-font-title">
+            {{this.calendarService.changedDayName}}
+            {{this.calendarService.getNewDate().dayNum}}
+            de
+            {{this.calendarService.changedMonth}}
+            {{this.calendarService.getNewDate().year}}
+        </p>
         <div class="lctl-br w"></div>
         <div class="lctl-br space"></div>
     </div>

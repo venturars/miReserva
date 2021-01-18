@@ -3,27 +3,27 @@
   <input class="lctl-input-l-large inputForm" name="name" autocomplete="off" placeholder="Nombre" 
     placeholder="{{userForm1.submitted && name.invalid ?  'Nombre obligatorio' : 'Nombre'}}"
     [(ngModel)]="userOwner.name" #name="ngModel" type="text"
-    [ngClass]="{'caution':userForm1.submitted && name.invalid }" required>
+    [ngClass]="{'invalidForm':userForm1.submitted && name.invalid }" required>
   <input class="lctl-input-l-large inputForm" name="surname" autocomplete="off" 
     placeholder="{{userForm1.submitted && surname.invalid ?  'Apellidos obligatorios' : 'Apellidos'}}" 
     [(ngModel)]="userOwner.surname" #surname="ngModel" type="text"
-    [ngClass]="{'caution':userForm1.submitted && surname.invalid }" required>
+    [ngClass]="{'invalidForm':userForm1.submitted && surname.invalid }" required>
   <input id="profile" class="lctl-input-l-large inputForm" name="email" autocomplete="off"  
     placeholder="{{userForm1.submitted && email.invalid ?  'Email obligatorio' : 'Email'}}"
     [(ngModel)]="users.mail" #email="ngModel" type="email"
-    [ngClass]="{'caution':userForm1.submitted && email.invalid }" email required>
+    [ngClass]="{'invalidForm':userForm1.submitted && email.invalid }" email required>
   <input class="lctl-input-l-large inputForm" name="cif" autocomplete="off" 
     placeholder="{{userForm1.submitted && cif.invalid ?  'CIF obligatorio' : 'CIF'}}"
     [(ngModel)]="userOwner.cif" #cif="ngModel" type="text"
-    [ngClass]="{'caution':userForm1.submitted && cif.invalid }" required>
+    [ngClass]="{'invalidForm':userForm1.submitted && cif.invalid }" required>
   <input id="password" class="lctl-input-l-large inputForm" name="password" autocomplete="off" 
     placeholder="{{userForm1.submitted && password.invalid ?  'Password obligatorio' : 'Password'}}"
     [(ngModel)]="users.password" #password="ngModel" type="password"
-    [ngClass]="{'caution':userForm1.submitted && password.invalid }" minlength="6" required>
+    [ngClass]="{'invalidForm':userForm1.submitted && password.invalid }" minlength="6" required>
     
   <div class="overLogIn">
 
-    <div [ngClass]="{'caution':userForm1.submitted && check.invalid }">
+    <div [ngClass]="{'invalidForm':userForm1.submitted && check.invalid }">
       <input type="checkbox" name="check" [(ngModel)]="acept" #check="ngModel"
         required>
       <p class="textCheck lctl-font-underline">
@@ -42,7 +42,7 @@
 
   </div>
 
-  <div class="messageDiv">
+  <div class="messageInvalidForm">
     <!-- Aquí Jesús  hay que meter un ng if para que el div solo se muestre si hay mensaje-->
   </div>
 

@@ -2,13 +2,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Shifts } from '../models/shifts';
 import { Observable } from 'rxjs';
+import { Global } from '../models/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceShiftsService {
 
-  private url="http://localhost:3000/shifts";
+  private global:Global = new Global();
+  private url:string = this.global.url + "/shifts";
   public shifts:Shifts;
 
   constructor(
@@ -30,8 +32,8 @@ export class ServiceShiftsService {
   public putShifts(shift:Shifts):Observable<any> {
     return this.http.put(this.url, shift);
   }
-  public deleteShifts(id:number):Observable<any> {    
+  public deleteShifts(shift_id:number):Observable<any> {    
     return this.http.request('DELETE',this.url, {
       headers: new HttpHeaders ({ 'Content-Type': 'application/json' }),
-      body: {shift_id:id}
+      body: {shift_id:shift_id}
 });}}
