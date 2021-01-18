@@ -6,6 +6,7 @@ import { ServiceReservationsService } from 'src/app/shared/service-reservations.
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { RejectReservationClientComponent } from '../../modals/modal-rejectReservationClient/modal-rejectReservationClient';
 import { Restaurants } from '../../../models/restaurants';
+import { InfoRestaurantComponent } from '../../modals/infoRestaurant-modal/modal-infoRestaurant';
 
 @Component({
   selector: 'app-client-reservations',
@@ -157,6 +158,16 @@ public elSelect:string="Todas";
   cambiarSelect(estado){
     console.log(estado.value)
     this.elSelect=estado.value;
+  }
+
+  modalRest(restaurant){
+    this.restaurantService.restauranteMapa=restaurant;
+    const dialogRef = this.dialog.open(InfoRestaurantComponent);
+    dialogRef.componentInstance.restaurant=restaurant;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+
   }
 
 }

@@ -8,7 +8,7 @@ import { ServiceTimesService } from './service-times.service';
   providedIn: 'root'
 })
 export class ServiceCalendarService {
-  public restaurantId = 36
+  public restaurantId;
   public nuevaFecha:Calendar;
   public reserva:Reservations;
   public times:Times[]

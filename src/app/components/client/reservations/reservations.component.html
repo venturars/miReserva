@@ -23,10 +23,12 @@
           
                 <img *ngIf="this.restaurantsReservated[i].logo; else not"
                  src="{{this.restaurantsReservated[i].logo}}"
-                 alt="" class="lctl-photoProfile-s">
+                 alt="" class="lctl-photoProfile-s"
+                 (click)="modalRest(this.restaurantsReservated[i])">
                 
                 <ng-template #not>
-                    <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s">
+                    <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s"
+                    (click)="modalRest(this.restaurantsReservated[i])">
                 </ng-template>
            
         </div>
@@ -59,9 +61,12 @@
         <div class="lctl-centerElements row son">
             <div class="pic">
                 
-                    <img *ngIf="this.restaurantsReservated[i].logo; else not" src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s">
+                    <img *ngIf="this.restaurantsReservated[i].logo; else not" 
+                    src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s"
+                    (click)="modalRest(this.restaurantsReservated[i])">
                     <ng-template #not>
-                        <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s">
+                        <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s"
+                        (click)="modalRest(this.restaurantsReservated[i])">
                     </ng-template>
                 
             </div>
@@ -96,9 +101,12 @@
             <div class="lctl-centerElements row son">
                 <div class="pic">
                     
-                        <img *ngIf="this.restaurantsReservated[i].logo; else not" src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s">
+                        <img *ngIf="this.restaurantsReservated[i].logo; else not"
+                         src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s"
+                         (click)="modalRest(this.restaurantsReservated[i])">
                         <ng-template #not>
-                            <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s">
+                            <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s"
+                            (click)="modalRest(this.restaurantsReservated[i])">
                         </ng-template>
                     
                 </div>
@@ -131,9 +139,12 @@
         <div class="lctl-centerElements row son">
             <div class="pic">
                 
-                    <img *ngIf="this.restaurantsReservated[i].logo; else not" src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s">
+                    <img *ngIf="this.restaurantsReservated[i].logo; else not" 
+                    src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s"
+                    (click)="modalRest(this.restaurantsReservated[i])">
                     <ng-template #not>
-                        <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s">
+                        <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s"
+                        (click)="modalRest(this.restaurantsReservated[i])">
                     </ng-template>
                 
             </div>

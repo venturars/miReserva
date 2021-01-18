@@ -1,4 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { SimpleAlertComponent } from 'src/app/components/modals/simple-alert/simple-alert';
 import { Tables } from 'src/app/models/tables';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ServiceTablesService } from 'src/app/shared/service-tables.service';
@@ -14,7 +17,9 @@ export class CreateRestaurant2Component implements OnInit {
   
   constructor(
     public servicetable:ServiceTablesService,
-    public serviceRestaurant:ServiceRestaurantService
+    public serviceRestaurant:ServiceRestaurantService,
+    public dialog:MatDialog,
+    private router:Router
   ) {
     this.table = new Tables (null,null,null,null,null);
   }
@@ -45,4 +50,14 @@ export class CreateRestaurant2Component implements OnInit {
     this.servicetable.deleteTables(table.table_id).subscribe();
   }
   ngOnInit(): void {
-}}
+}
+ goToRestaurant3(){
+  const dialogRef = this.dialog.open(SimpleAlertComponent);
+  dialogRef.componentInstance.mensaje="Mesas creadas, ahora configura tus horarios y turnos";
+  dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
+dialogRef.afterClosed().subscribe(result => {
+console.log(`Dialog result: ${result}`);
+this.router.navigate(["/create-restaurant-3"]);})
+ }
+
+}

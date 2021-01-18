@@ -13,19 +13,19 @@ export class MaprestComponent implements OnInit {
   public map:Map;
   public restaurants: Restaurants;
 
-  constructor(private apiRestaurants:ServiceRestaurantService) { }
+  constructor(private restaurantService:ServiceRestaurantService) { }
 
   ngOnInit(): void {
 
-    this.map = new Map("mapid").setView([this.apiRestaurants.create1Restaurant.latitude ,this.apiRestaurants.create1Restaurant.longitude], 50)
+    this.map = new Map("mapid").setView([this.restaurantService.restauranteMapa.latitude ,this.restaurantService.restauranteMapa.longitude], 50)
       .setZoom(11)
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-        attribution: this.apiRestaurants.create1Restaurant.name,
+        attribution: this.restaurantService.restauranteMapa.name,
         maxZoom: 18
     }).addTo(this.map);
 
-    this.marker= new Marker([this.apiRestaurants.create1Restaurant.latitude ,this.apiRestaurants.create1Restaurant.longitude]).addTo(this.map);
-          this.marker.bindPopup(this.apiRestaurants.create1Restaurant.name+"<br>"+this.apiRestaurants.create1Restaurant.street_name+" , "+ this.apiRestaurants.create1Restaurant.street_number)
+    this.marker= new Marker([this.restaurantService.restauranteMapa.latitude ,this.restaurantService.restauranteMapa.longitude]).addTo(this.map);
+          this.marker.bindPopup(this.restaurantService.restauranteMapa.name+"<br>"+this.restaurantService.restauranteMapa.street_name+" , "+ this.restaurantService.restauranteMapa.street_number).openPopup();
           
 
   }

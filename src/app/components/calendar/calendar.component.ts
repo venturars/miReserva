@@ -16,7 +16,7 @@ import { ServiceRestaurantService } from '../../shared/service-restaurant.servic
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  public restaurantId:number;
+  public restaurantId:number=this.calendarService.restaurantId;
   public times: Times[]
   public shifts: Shifts[]
 

@@ -80,6 +80,8 @@ export class LogInComponent implements OnInit {
         this.serviceRouter.routerClient();
     }}else {
       
+      let password:any= document.getElementById("password");
+      password.value="";
       const dialogRef = this.matDialog.open(SimpleAlertComponent,{panelClass: ['animate__animated','animate__backInDown']});
       dialogRef.componentInstance.mensaje="Tu usuario o contraseña son incorrectos";
       dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";

@@ -61,7 +61,9 @@ export class CreateRestaurant1Component implements OnInit {
     reader.readAsDataURL(file);
   }
   public onSubmit(restForm:any) {
-     // SE CREA RESTAURANTE
+    
+    // SE CREA RESTAURANTE
+
     const sendRestaurant:Restaurants = new Restaurants(
       1,restForm.value.name, restForm.value.province, restForm.value.city, restForm.value.street_name,
        restForm.value.street_number, restForm.value.postal_code,restForm.value.phone,restForm.value.capacity,
@@ -72,13 +74,13 @@ export class CreateRestaurant1Component implements OnInit {
     this.serviceRegistration.checkMailFree(restForm.value.mail)
     .subscribe((data:any)=>{
       if (data.control==true){
-
+        console.log(sendRestaurant);
         this.serviceRestaurant.postRestaurant(
           sendRestaurant,
           restForm.value.mail,
           restForm.value.password
           ).subscribe((data:any) => {  
-      
+            
           // SE CALCULA LONGITUD Y LATITUD CON LA API
       
           this.restauranteCreado=data.data.restaurant_id;

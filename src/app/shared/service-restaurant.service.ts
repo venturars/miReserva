@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceRestaurantService {
+  public restauranteMapa:Restaurants;
   public restaurantReservation:Restaurants;
   public id_restaurant:number;
   public selectedRestaurant:Restaurants;

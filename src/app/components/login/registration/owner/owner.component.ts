@@ -37,9 +37,12 @@ onSubmit(form:any){
   this.serviceRegistration.registrationOwner(owner)
   .subscribe((data:any)=>{console.log(data)
     if(data.control) {
-      this.serviceRouter.routerOwner()
+      
+      
       this.serviceLogin.userOwner= new UserOwner
-      (data.data.owner_id,form.value.cif,form.value.name,form.value.surname,null);
+      (data.data,form.value.cif,form.value.name,form.value.surname,null);
+      
+      this.serviceRouter.routerOwner()
       this.serviceLogin.users= new Users (null,data.data,null,form.value.mail,form.value.password)
     }
     else {

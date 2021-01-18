@@ -22,25 +22,31 @@
   <div class="centrardos">    
      
     <input class="lctl-cellInput-extraLarger" type="text" placeholder="Teléfono" [(ngModel)]="selectedPhone">
-      <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedShift" (change)="asdd(selectedShift)">
-          <option hidden selected>Hora</option>
-          <ng-container *ngFor="let shift of shifts; let i = index">
-            <ng-container *ngIf="shifts[i].times_id == timesId">
-              <option value="{{shifts[i].shift_id}}" >{{shifts[i].shift_from}}</option>
-          </ng-container>
-        </ng-container>
-      </select>
+    <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedTime" 
+    (change)="asd(selectedTime)" [value]="0">
+      <option hidden selected value="0">Turnos</option>
+      <ng-container *ngFor="let time of times; let i = index" >
+        <option value="{{times[i].times_id}}">{{times[i].service}}</option>
+      </ng-container>
+  </select>
+
+      
   </div>
    
     <div class="centrardos">
-         <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedTime" (change)="asd(selectedTime)">
-              <option hidden selected>Turnos</option>
-              <ng-container *ngFor="let time of times; let i = index" >
-                <option value="{{times[i].times_id}}">{{times[i].service}}</option>
-              </ng-container>
-          </select>
-          <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedTable">
-              <option hidden selected>Mesa</option>
+           <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="selectedShift" 
+           (change)="asdd(selectedShift)" [value]="0">
+             <option hidden selected value="0">Hora entrada</option>
+             <ng-container *ngFor="let shift of shifts; let i = index">
+               <ng-container *ngIf="shifts[i].times_id == timesId">
+                 <option value="{{shifts[i].shift_id}}" >{{shifts[i].shift_from}}</option>
+             </ng-container>
+           </ng-container>
+         </select>
+   
+          <select name="select" class="lctl-cellSelect-extraLarge" 
+          [(ngModel)]="selectedTable" [value]="0">
+              <option hidden selected value="0">Mesa</option>
                 <ng-container *ngFor="let tables of availableTables; let i = index">
                   <option value="{{availableTables[i].table_id}}">Mesa {{availableTables[i].table_name}} ({{availableTables[i].table_min}} - {{availableTables[i].table_max}}  PAX)</option>
               </ng-container>
