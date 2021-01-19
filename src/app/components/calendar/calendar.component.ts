@@ -8,7 +8,6 @@ import { Times } from 'src/app/models/times';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
-import { ServiceRestaurantService } from '../../shared/service-restaurant.service';
 
 @Component({
   selector: 'app-calendar',
@@ -16,44 +15,42 @@ import { ServiceRestaurantService } from '../../shared/service-restaurant.servic
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  public restaurantId:number=this.calendarService.restaurantId;
-  public times: Times[]
-  public shifts: Shifts[]
-
-  public changedDayName:string
-  public changedMonth:string
-
-    public minDate:Date;
-    public maxDate:Date;
-    public selectDay:Date;
-    public date:Calendar
-    public today:Date
-    public availableTimes:Times[]
-    public countSun:number
-    public countMon:number
-    public countTue:number
-    public countWed:number
-    public countThu:number
-    public countFri:number
-    public countSat:number
-    public sun:number
-    public mon:number
-    public tue:number
-    public wed:number
-    public thu:number
-    public fri:number
-    public sat:number
-
 
   @ViewChild('calendar') calendar: MatCalendar<Moment>;
+  
   public selectedDate: Moment;
-
-  constructor(private calendarService: ServiceCalendarService,
-              private shiftsService: ServiceShiftsService,
-              private timesService: ServiceTimesService,
-              private restaurantService:ServiceRestaurantService
+  public restaurantId:number = this.serviceCalendar.restaurantId;
+  public times: Times[]
+  public shifts: Shifts[]
+  public changedDayName:string
+  public changedMonth:string
+  public minDate:Date;
+  public maxDate:Date;
+  public selectDay:Date;
+  public date:Calendar
+  public today:Date
+  public availableTimes:Times[]
+  public countSun:number = 0;
+  public countMon:number = 0;
+  public countTue:number = 0;
+  public countWed:number = 0;
+  public countThu:number = 0;
+  public countFri:number = 0;
+  public countSat:number = 0;
+  public count:any = {
+    Sun: null,
+    Mon: null,
+    Tue: null,
+    Wed: null,
+    Thu: null,
+    Fri: null,
+    Sat: null
+  }
+  constructor(
+    private serviceCalendar: ServiceCalendarService,
+    private shiftsService: ServiceShiftsService,
+    private timesService: ServiceTimesService,
     ) {
-      
       this.shifts = []
       this.times = []
       this.today = new Date()
@@ -63,24 +60,7 @@ export class CalendarComponent implements OnInit {
       let day = this.today.toString().substr(8,2)
       let year = this.today.toString().substr(11,4);
       this.date = new Calendar(name, day, month, year)
-      this.calendarService.setNewDate(this.date);
-      this.countSun = 0
-      this.countMon = 0
-      this.countTue = 0
-      this.countWed = 0
-      this.countThu = 0
-      this.countFri = 0
-      this.countSat = 0
-      this.sun = null
-      this.mon = null
-      this.tue = null
-      this.wed = null
-      this.thu = null
-      this.fri = null
-      this.sat = null
-
-
-    
+      this.serviceCalendar.setNewDate(this.date);
 
   switch (name){
     case "Sun":
@@ -141,33 +121,32 @@ export class CalendarComponent implements OnInit {
       break;
     case "Dic":
       this.changedMonth = "Diciembre";
-      break;        
-  }
-  this.calendarService.changedDayName = this.changedDayName
-  this.calendarService.changedMonth = this.changedMonth
-
-  
+      break;    
+    }
+    this.serviceCalendar.changedDayName = this.changedDayName
+    this.serviceCalendar.changedMonth = this.changedMonth
+    
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
     const currentDay = new Date().getDate();
-
+    
     this.minDate = new Date(currentYear,currentMonth,currentDay);
     this.maxDate = new Date(currentYear + 1, 11, 31);
-   }
+  }
 
   ngOnInit(): void {
   }
   
   public getChangedValue(e:Date)  {
     this.times = []
-    this.calendarService.times =[]
+    this.serviceCalendar.times =[]
     let name = e.toString().substring(0,3)
     let month = e.toString().substr(4,3)
     let day = e.toString().substr(8,2)
     let year = e.toString().substr(11,4);
     this.date = new Calendar(name, day, month, year)
     this.selectDay = e;
-    this.calendarService.setNewDate(this.date);
+    this.serviceCalendar.setNewDate(this.date);
 
 
     let currentDayName = name;
@@ -199,7 +178,7 @@ export class CalendarComponent implements OnInit {
               }    
             })
             this.times.push(time)
-            this.calendarService.times.push(time)                        
+            this.serviceCalendar.times.push(time)                        
           }}}   
     })
   
@@ -265,44 +244,39 @@ export class CalendarComponent implements OnInit {
         break;        
     }
 
-this.calendarService.changedDayName = this.changedDayName
-this.calendarService.changedMonth = this.changedMonth
-
+  this.serviceCalendar.changedDayName = this.changedDayName
+  this.serviceCalendar.changedMonth = this.changedMonth
   }
-
-public myDateFilter = (date:Date) => {
-
-  const day = date.getDay();
-
-
-  
-      // if (this.calendarService.count.Sun == 0)  
-      //   this.sun = 0
-      // if (this.calendarService.count.Mon == 0)
-      //   this.mon = 1
-      // if (this.calendarService.count.Tue == 0)
-      //   this.tue = 2
-      // if (this.calendarService.count.Wed == 0)
-      //   this.wed = 3
-      // if (this.calendarService.count.Thu == 0)
-      //   this.thu = 4
-      // if (this.calendarService.count.Fri == 0)
-      //   this.fri = 5
-      // if (this.calendarService.count.Sat == 0)
-      //   this.sat = 6
-
-      return day != null;
-        // return day !== 1 &&
-        //        day !== 2
-                // &&
-              //  day !== this.tue && 
-              //  day !== this.wed && 
-              //  day !== this.thu && 
-              //  day !== this.fri && 
-              //  day !== this.sat;    
-    
-  
-
-  }
-
-}
+  public myDateFilter = (date:Date) => {
+      let day = date.getDay();
+      let control:number = 0;
+        if (this.serviceCalendar.count.Sun && day == 0) {
+          this.count.Sun = 0
+          control = 1;
+        }
+        if (this.serviceCalendar.count.Mon && day == 1) {
+          this.count.Mon = 1
+          control = 1;
+        }
+        if (this.serviceCalendar.count.Tue && day == 2) {
+          this.count.Tue = 2
+          control = 1;
+        }
+        if (this.serviceCalendar.count.Wed && day == 3) {
+          this.count.Wed = 3
+          control = 1;
+        }
+        if (this.serviceCalendar.count.Thu && day == 4) {
+          this.count.Thu = 4
+          control = 1;
+        }
+        if (this.serviceCalendar.count.Fri != 0 && day == 5) {
+        this.count.Fri = 5
+        control = 1;
+      }
+      if (this.serviceCalendar.count.Sat != 0 && day == 6) {
+        this.count.Sat = 6;
+        control = 1;
+      }
+      return control;
+}}

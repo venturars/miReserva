@@ -3,6 +3,7 @@ import { Calendar } from '../models/calendar';
 import { Reservations } from '../models/reservations';
 import { Times } from '../models/times';
 import { ServiceTimesService } from './service-times.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,72 +11,70 @@ import { ServiceTimesService } from './service-times.service';
 export class ServiceCalendarService {
   
   public restaurantId:number;
-  private newDateCalendar:Calendar;
+  private newDateCalendar:Calendar = new Calendar("","","","");
   public reserva:Reservations;
-  public times:Times[]
+  public times:Times[] = new Array();
   public changedDayName:string;
   public changedMonth:string;
   public count:any = {
-    Sun: 0,
-    Mon: 0,
-    Tue: 0,
-    Wed: 0,
-    Thu: 0,
-    Fri: 0,
-    Sat: 0
+    Sun: false,
+    Mon: false,
+    Tue: false,
+    Wed: false,
+    Thu: false,
+    Fri: false,
+    Sat: false
   }
-
   constructor(
     private timesService: ServiceTimesService,
-  ) {
-    this.times = [],
-    this.newDateCalendar = new Calendar("","","",""),
-    this.getTimes(this.restaurantId);
-  }
-  public getNewDate():any {
+    private router:Router
+  ) { }
+  public getNewDate():Calendar {
     return this.newDateCalendar;
   }
-  public setNewDate(date:Calendar):any {
+  public setNewDate(date:Calendar) {
     this.newDateCalendar =  date;
   }
   public getTimes(restaurant_id:number) {
+    console.log('pillo times');
     this.timesService.getTimes(restaurant_id).subscribe((result:any) =>{
-      for(let i = 0; i < result.data.length; i ++){
-
+      for(let i = 0; i < result.data.length; i ++) {
         switch (result.data[i].name){
           case "Sun":
             if(result.data[i].active == "true") {
-              this.count.Sun = 1
+              this.count.Sun = true;
             }
             break;
           case "Mon":
             if(result.data[i].active == "true") {
-              this.count.Mon = 1                      
+              this.count.Mon = true;
             }
             break;
           case "Tue":
             if(result.data[i].active == "true") {
-              this.count.Tue = 1             
+              this.count.Tue = true;
             }
             break;
           case "Wed":
             if(result.data[i].active == "true") {
-              this.count.Wed = 1             
+              this.count.Wed = true;
             }
             break;
           case "Thu":
             if(result.data[i].active == "true") {
-              this.count.Thu = 1                
+              this.count.Thu = true;
             }
             break;
           case "Fri":
             if(result.data[i].active == "true") {
-              this.count.Fri = 1               
+              this.count.Fri = true;
             }
             break;
           case "Sat":
             if(result.data[i].active == "true") {
-              this.count.Sat = 1              
+              this.count.Sat = true;
             }
             break;        
-}}});}}
+      }}
+      this.router.navigate(['/reservation1']);
+});}}

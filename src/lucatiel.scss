@@ -1,3 +1,4 @@
+//----------//----------//----------//----------//----------
 //-----global variables-----
 //----------//----------//----------//----------//----------
 :root {
@@ -13,7 +14,7 @@
     --secundaryColorContrast: #D5341F;
     --secundaryColorOpposite: #121212;
     --secundaryColorPush: #8f8c8c;
-    --secundaryColorLink: #3959e9;
+    --secundaryColorLink: #a8a7a7;
 //----------
     --fontSizeXS: 9px;
     --fontSizeS: 14px;
@@ -56,6 +57,7 @@ a, a:hover {
 }
 //----------//----------//----------//----------//----------
 //-----Scroll-bar-----
+//----------//----------//----------//----------//----------
 *::-webkit-scrollbar {
     width: 7px;
     display: none;
@@ -143,7 +145,8 @@ a, a:hover {
     align-items: center;
     justify-content: center;
     text-transform: capitalize;
-    color: var(--primaryColorContrast);
+    text-align: center;
+    color: var(--primaryColorOpposite);
     background: var(--primaryColor);
     border: none;
     outline: none!important;
@@ -152,25 +155,49 @@ a, a:hover {
     font-weight: var(--fontWidthBolder);
     cursor: pointer;
     &:hover {
+        color: var(--primaryColorOpposite);
         background-color: var(--primaryColorPush);
-        border-color: var(--primaryColorPush)
     }
     &:active {
+        color: var(--primaryColorOpposite);
         background-color: var(--primaryColorAccent);
-        border-color: var(--primaryColorAccent)
+    }
+    &:disabled {
+        cursor: default;
+        color: var(--primaryColorOpposite);
+        background: var(--secundaryColorPush);
 }}
+//----------
+[class *="lctl-button"][class *="-selected"] {
+    color: var(--primaryColorOpposite);
+    background-color: var(--primaryColor);
+}
+//----------
 [class *="lctl-buttonOpposite"] {
     color: var(--primaryColor);
-    background: inherit;
+    background: var(--primaryColorOpposite);
     border: 1px solid var(--primaryColor);
-    &:active, &:hover {
-        background-color: var(--primaryColor);
-        color: var(--primaryColorOpposite);
+    &:hover {
+        background-color: var(--primaryColorOpposite);
+        color: var(--primaryColor);
+        border-color: var(--primaryColorPush);
     }
     &:active {
         background-color: var(--primaryColorAccent);
         border-color: var(--primaryColorAccent);
+        color: var(--primaryColorOpposite);
+    }
+    &:disabled {
+        color: var(--secundaryColorPush);
+        background: var(--primaryColorOpposite);
+        border-color: var(--secundaryColorPush);
 }}
+//----------
+[class *="lctl-buttonOpposite"][class *="-selected"] {
+    color: var(--primaryColor);
+    background: var(--primaryColorOpposite);
+    border-color:(--primaryColor);
+}
 //----------
 [class *="lctl-button-s"], [class *="lctl-buttonOpposite-s"] {
     width: 100px;
@@ -197,7 +224,7 @@ a, a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primaryColorContrast);
+    color: var(--primaryColorOpposite);
     background: var(--primaryColorAccent);
     border: none;
     outline: none!important;
@@ -207,25 +234,49 @@ a, a:hover {
     text-align: center;
     cursor: pointer;
     &:hover {
-        color: var(--primaryColorContrast);
+        color: var(--primaryColorOpposite);
+        background: var(--primaryColorAccent);
+    }
+    &:active {
+        color: var(--primaryColorOpposite);
+        background-color: var(--primaryColorPush);
     }
     &:disabled {
         cursor: default;
-    }
-    &:active {
-        background-color: var(--primaryColorPush);
+        color: var(--primaryColorContrast);
+        background-color: var(--secundaryColorPush);
 }}
+//----------
+[class *="lctl-warnButton"][class *="-selected"] {
+    color: var(--primaryColorContrast);
+    background: var(--primaryColorAccent);
+}
+//----------
 [class *="lctl-warnButtonOpposite"] {
     color: var(--primaryColor);
     background: var(--primaryColorOpposite);
     border: 1px solid var(--secundaryColorAccent);
     &:hover {
         color: var(--primaryColor);
+        background: var(--primaryColorOpposite);
+        border-color: var(--secundaryColorAccent);
     }
     &:active {
+        color: var(--primaryColorOpposite);
         background-color: var(--secundaryColorContrast);
-        color: var(--secundaryColor);
+        border-color: var(--secundaryColorContrast);
+    }
+    &:disabled {
+        color: var(--secundaryColorPush);
+        background-color: var(--primaryColorOpposite);
+        border-color: var(--secundaryColorPush);
 }}
+//----------
+[class *="lctl-warnButtonOpposite"][class *="-selected"] {
+    color: var(--primaryColorAccent);
+    background: var(--primaryColorOpposite);
+    border-color: var(--secundaryColorAccent);
+}
 //----------
 [class *="lctl-warnButton-s"], [class *="lctl-warnButtonOpposite-s"] {
     width: 100px;
@@ -249,31 +300,63 @@ a, a:hover {
 }
 //----------//----------//----------//----------//----------
 [class *="lctl-disabledButton"] {
-    color: var(--secundaryColor);
-    background: var(--secundaryColorPush);
-    border: 1px solid var(--secundaryColorPush);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primaryColorOpposite);
+    background-color: var(--secundaryColorPush);
+    border: none;
     outline: none!important;
     margin: 5px;
     max-width: 100%;
     font-weight: var(--fontWidthBolder);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     cursor: pointer;
+    &:hover {
+        color: var(--primaryColorOpposite);
+        background-color: var(--secundaryColorPush);
+    }
     &:active {
+        color: var(--primaryColorOpposite);
+        background-color: var(--secundaryColorLink);
+    }
+    &:disabled {
+        cursor: default;
+        color: var(--primaryColorOpposite);
         background-color: var(--secundaryColorPush);
 }}
+//----------
+[class *="lctl-disabledButton"][class *="-selected"] {
+    color: var(--primaryColorOpposite);
+    background: var(--primaryColor);
+}
+//----------
 [class *="lctl-disabledButtonOpposite"] {
     color: var(--secundaryColorPush);
     background: var(--primaryColorOpposite);
-    // border: 1px solid var(--secundaryColorPush);
+    border: 1px solid var(--secundaryColorPush);
     &:hover {
-        background-color: var(--primaryColorContrast);
+        color: var(--secundaryColorPush);
+        background: var(--primaryColorOpposite);
+        border-color: var(--secundaryColorPush);
     }
     &:active {
-        background-color: var(--secundaryColorPush);
-        color: var(--primaryColorOpposite);
+        color: var(--secundaryColorLink);
+        background: var(--primaryColorOpposite);
+        border-color: var(--secundaryColorLink);
+    }
+    &:disabled {
+        cursor: default;
+        color: var(--secundaryColorPush);
+        background: var(--primaryColorOpposite);
+        border-color: var(--secundaryColorPush);
 }}
+//----------
+[class *="lctl-disabledButtonOpposite"][class *="-selected"] {
+    color: var(--primaryColor);
+    background: var(--primaryColorOpposite);
+    border-color: var(--secundaryColorAccent);
+}
 //----------
 [class *="lctl-disabledButton-s"], [class *="lctl-disabledButtonOpposite-s"] {
     width: 100px;
@@ -296,28 +379,44 @@ a, a:hover {
     font-size: var(--fontSizeL);
 }
 //----------//----------//----------//----------//----------
+//-----Special buttons-----
+//----------//----------//----------//----------//----------
 [class *="lctl-cellButton"] {
-    cursor: pointer;
     width: 150px;
     height: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     font-weight: var(--fontWidthBolder);
-    box-shadow: 0 0 3px 1px var(--secundaryColorPush);
+    color: var(--secundaryColorOpposite);
     background-color: var(--primaryColorOpposite);
-    border: none;
+    border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusM);
+    outline: none!important;
     cursor: pointer;
     &:hover {
-        background-color: var(--secundaryColorContrast);
-        color: var(--primaryColorOpposite);
-        box-shadow: 0 0 3px 1px var(--secundaryColor);
+        color: var(--primaryColorPush);
+        background-color: var(--primaryColorOpposite);
+        border: 1px solid var(--primaryColorPush);
     }
     &:active {
-        color: var(--primaryColorOpposite);
-        background-color: var(--secundaryColorAccent);
+        color: var(--primaryColor);
+        background-color: var(--primaryColorOpposite);
+        border: 1px solid var(--primaryColor);
+    }
+    &:disabled {
+        cursor: default;
+        color: var(--secundaryColorPush);
+        background-color: var(--primaryColorOpposite);
+        border: 1px solid var(--secundaryColorPush);
 }}
+//----------
+[class *="lctl-cellButton"][class *="-selected"] {
+    color: var(--primaryColor);
+    background-color: var(--primaryColorOpposite);
+    border: 1px solid var(--primaryColor);
+}
 //----------//----------//----------//----------//----------
 //-----Inputs-----
 //----------//----------//----------//----------//----------
@@ -1166,7 +1265,7 @@ a, a:hover {
 [class *="lctl-ngMatCalendar"] {
     margin: auto;
     min-height: 460px;
-    width:400px;
+    width: 400px;
     min-width: 100%;
     height: 480px;
     border: 1px solid var(--secundaryColorPush);
@@ -1252,6 +1351,7 @@ a, a:hover {
 //----------//----------//----------//----------//----------
 //-----Mat dialog-----
 .cdk-overlay-container {
+    z-index: 1000000000000000000000000000000;
     .cdk-overlay-dark-backdrop {
         background: var(--secundaryColor);
         opacity: .6!important;
