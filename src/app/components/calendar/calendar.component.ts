@@ -270,11 +270,11 @@ export class CalendarComponent implements OnInit {
           this.count.Thu = 4
           control = 1;
         }
-        if (this.serviceCalendar.count.Fri != 0 && day == 5) {
+        if (this.serviceCalendar.count.Fri && day == 5) {
         this.count.Fri = 5
         control = 1;
       }
-      if (this.serviceCalendar.count.Sat != 0 && day == 6) {
+      if (this.serviceCalendar.count.Sat && day == 6) {
         this.count.Sat = 6;
         control = 1;
       }
