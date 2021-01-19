@@ -31,5 +31,7 @@ export class RestaurantsComponent implements OnInit {
   public clickRestaurant(index:number) {
     this.serviceRestaurant.selectedRestaurant = this.restaurants[index];
     this.serviceCalendar.restaurantId = this.restaurants[index].restaurant_id;
+    
+    this.serviceCalendar.getTimes(this.restaurants[index].restaurant_id)
     this.router.navigate(['/reservations-list-restaurant']);
 }}

@@ -203,13 +203,7 @@ export class SearchComponent implements OnInit {
   public toReservate(i:number,restaurant:Restaurants) {
     this.restaurantService.restaurantReservation = restaurant;
     this.serviceCalendar.restaurantId = restaurant.restaurant_id;
-    this.serviceCalendar.count.Sun = null;
-    this.serviceCalendar.count.Mon = null;
-    this.serviceCalendar.count.Tue = null;
-    this.serviceCalendar.count.Wed = null;
-    this.serviceCalendar.count.Thu = null;
-    this.serviceCalendar.count.Fri = null;
-    this.serviceCalendar.count.Sat = null;
+  
     this.serviceCalendar.getTimes(restaurant.restaurant_id);
   }
   public localSearch(searchLine:HTMLInputElement) {

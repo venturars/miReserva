@@ -246,7 +246,11 @@ export class ReservationsRestaurantComponent implements OnInit {
 
 
   ngOnInit() {
- 
+    if(this.loginService.userRestaurant){
+    
+     this.calendarService.getTimes(this.loginService.userRestaurant.restaurant_id)
+    
+  }
   }
 
   public confirmReservation(id_reservation:number) {
