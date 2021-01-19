@@ -28,34 +28,29 @@ export class ReservationsRestaurantComponent implements OnInit {
 
   public value:number=0;
   public service:string="0";
-  public reservationsConfirmed:Reservations[]
-  public reservationsRejected:Reservations[]
-  public reservationsCanceledByClient:Reservations[]
+  public reservationsConfirmed:Reservations[] = new Array();
+  public reservationsRejected:Reservations[] = new Array();
+  public reservationsCanceledByClient:Reservations[] = new Array();
   public reservationsToBeConfirmed:Reservations[]
   public showData:Reservations
   public dateOfBirth:string
   public reservation:Reservations
+  public restaurantId:number = (
+    this.loginService.users.restaurant_id != null
+    )?
+    this.loginService.userRestaurant.restaurant_id
+    :
+    this.restaurantService.selectedRestaurant.restaurant_id
 
-  public restaurantId:number
-
-  constructor(public dialog: MatDialog,
-              private reservationService: ServiceReservationsService,
-              private customerService: ServiceUserCustomerService,
-              private shiftsService: ServiceShiftsService,
-              private timesService:ServiceTimesService,
-              private calendarService:ServiceCalendarService,
-              private loginService: ServiceLoginService,
-              private restaurantService: ServiceRestaurantService) {
-
-                if(this.loginService.users.restaurant_id != null){ 
-                  this.restaurantId = this.loginService.userRestaurant.restaurant_id
-                }else if(this.loginService.users.owner_id != null) {
-                  this.restaurantId = this.restaurantService.selectedRestaurant.restaurant_id
-                }
-                this.reservationsConfirmed = []
-                this.reservationsRejected = []
-                this.reservationsCanceledByClient = []
-
+  constructor(
+    public dialog: MatDialog,
+    private reservationService: ServiceReservationsService,
+    private shiftsService: ServiceShiftsService,
+    private timesService:ServiceTimesService,
+    private calendarService:ServiceCalendarService,
+    private loginService: ServiceLoginService,
+    private restaurantService: ServiceRestaurantService
+    ) {
     this.reservationService.getReservationRestaurant(this.restaurantId).subscribe((data:any) =>{     
     for(let i = 0; i<data.data.length;i++){
         

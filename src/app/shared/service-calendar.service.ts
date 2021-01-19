@@ -42,7 +42,7 @@ export class ServiceCalendarService {
         switch (result.data[i].name){
           case "Sun":
             if(result.data[i].active == "true") {
-              this.count.Sun = true;
+                this.count.Sun = true;
             }
             break;
           case "Mon":

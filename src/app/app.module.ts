@@ -40,7 +40,6 @@ import { PresentationComponent } from './components/login/presentation/presentat
 import { ReservationsRestaurantComponent } from './components/restaurant/reservations/reservations.component';
 import { EditComponentR } from './components/restaurant/owner/edit/edit.component';
 import { ContactUsComponent } from './components/login/contact-us/contact-us.component';
-import { DoReservationHeaderComponent } from './components/client/do-reservation-header/do-reservation-header.component';
 import { DesignComponent } from './components/login/design/design.component';
 //-----Modals-----
 import { SimpleAlertComponent } from './components/modals/simple-alert/simple-alert';
@@ -76,7 +75,6 @@ import { RejectReservationClientComponent } from './components/modals/modal-reje
     CreateRestaurant3Component,
     FooterComponent,
     ReservationsRestaurantComponent,
-    DoReservationHeaderComponent,
     ModalTurnosComponent,
     RejectReservationClientComponent,
     ModalRestauranteComponent,

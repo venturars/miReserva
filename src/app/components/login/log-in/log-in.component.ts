@@ -21,7 +21,6 @@ export class LogInComponent implements OnInit {
   constructor(
     private serviceLogIn:ServiceLoginService,
     public serviceRouter:ServiceRouterService,
-    private serviceCalendar:ServiceCalendarService,
     public matDialog:MatDialog
   ) { }
   onSubmit(form:any) {
@@ -58,7 +57,6 @@ export class LogInComponent implements OnInit {
           response.data[0].longitude,
           null
         )
-        this.serviceCalendar.restaurantId = response.data[0].restaurant_id;
         this.serviceRouter.routerRestaurant();
       }else if(this.serviceLogIn.users.owner_id) {
         this.serviceLogIn.userOwner = new UserOwner(
