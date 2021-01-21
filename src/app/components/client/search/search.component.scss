@@ -7,8 +7,6 @@
   justify-content: space-around;
 }
 .allSearch {
-  // position: sticky;
-  // top: 0;
   width: 100%;
   min-height: 120px;
   display: flex;
@@ -44,7 +42,7 @@
       width: 50px;
       border: 1px solid var(--secundaryColorPush);
       border-left: none;
-      background: url("../../../../assets/seach.svg");
+      background: url("/assets/seach.svg");
       background-repeat: no-repeat;
       background-color: var(--primaryColor);
       border-radius: 0 5px 5px 0;
@@ -64,7 +62,7 @@
 }}}
 .map {
   position: sticky;
-  // top: 120px;
+  box-shadow: 0 0 30px 1px var(--secundaryColorLink);
   top: 0;
   width: calc(100% - 20px);
   margin: auto;

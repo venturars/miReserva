@@ -1,178 +1,42 @@
-<!-- <ng-container *ngIf="reservations == []"></ng-container>
-    <h3 class="lctl-centerElements">No tienes ninguna reserva activa</h3>    -->
-<div class="fatherfiltro">
-
-<div class="filtroselect">
-    <select name="select" class="lctl-cellSelect-extraLarge" id="estado" #estado (click)="cambiarSelect(estado)">
-        <option value="Todas" selected>Todas</option>
-        <option value="confirmadas">Confirmadas</option>
-        <option value="canceladas">Canceladas</option>
-        <option value="rechazadas">Rechazadas</option>
-        <option value="pendientes">Pendientes</option>
-      </select>      
-</div>
-<div class="lctl-br modify"></div> 
-
-</div>
-<ng-container *ngIf="estado.value=='Todas'">
-    <div>
-<ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
-              
-    <div class="lctl-centerElements row son">
-        <div class="pic">
-          
-                <img *ngIf="this.restaurantsReservated[i].logo; else not"
-                 src="{{this.restaurantsReservated[i].logo}}"
-                 alt="" class="lctl-photoProfile-s"
-                 (click)="modalRest(this.restaurantsReservated[i])">
-                
-                <ng-template #not>
-                    <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s"
-                    (click)="modalRest(this.restaurantsReservated[i])">
-                </ng-template>
-           
-        </div>
-            
-        <div class="info">
-            <p>Dia: {{reservations[i].changedDayName}} {{reservations[i].day}} de {{reservations[i].changedMonth}} {{reservations[i].year}} </p>
-            <p>Horario: {{reservations[i].hour}}</p> 
-            <p>Observaciones: {{reservations[i].comments}}</p> 
-            <p>Numero de personas: {{reservations[i].pax}}</p>  
-            <p>Restaurant: {{this.restaurantsReservated[i].name}}</p>
-        </div>
-
-        <div class="buttons">
-            <ng-container class="lctl-button-s buttonRes" >{{reservations[i].status}}</ng-container>
-            <button (click)="openDialog(reservation)" class="lctl-button-s" >Cancelar</button> 
-        </div>
-    </div>   
-    <div class="lctl-br modify">
-    </div> 
-    <div class="lctl-br space" >
-    </div> 
-</ng-container>
-</div>
-</ng-container>
-
-  <!--CONFIRMADAS--> 
-    <ng-container *ngIf="elSelect=='confirmadas'">
-    <ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
-        <ng-container *ngIf="reservations[i].status=='Reservada'">        
-        <div class="lctl-centerElements row son">
-            <div class="pic">
-                
-                    <img *ngIf="this.restaurantsReservated[i].logo; else not" 
-                    src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s"
-                    (click)="modalRest(this.restaurantsReservated[i])">
-                    <ng-template #not>
-                        <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s"
-                        (click)="modalRest(this.restaurantsReservated[i])">
-                    </ng-template>
-                
-            </div>
-                
-            <div class="info">
-                <p>Dia: {{reservations[i].changedDayName}} {{reservations[i].day}} de {{reservations[i].changedMonth}} {{reservations[i].year}} </p>
-                <p>Horario: {{reservations[i].hour}}</p> 
-                <p>Observaciones: {{reservations[i].comments}}</p> 
-                <p>Numero de personas: {{reservations[i].pax}}</p>  
-                <p>Restaurant: {{this.restaurantsReservated[i].name}}</p>
-            </div>
-    
-            <div class="buttons">
-                <ng-container class="lctl-button-s buttonRes" >{{reservations[i].status}}</ng-container>
-                <button (click)="openDialog(reservation)" class="lctl-button-s" >Cancelar</button> 
-            </div>
-        </div>
-        <div class="lctl-br modify">
-        </div> 
-        <div class="lctl-br space" >
-        </div>
-        </ng-container>
-        </ng-container>   
-    </ng-container>
-
-
-    <!-- Rechazadas-->
-
-    <ng-container *ngIf="elSelect=='rechazadas'">
-        <ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
-            <ng-container *ngIf="reservations[i].status=='Rechazada'">        
-            <div class="lctl-centerElements row son">
-                <div class="pic">
-                    
-                        <img *ngIf="this.restaurantsReservated[i].logo; else not"
-                         src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s"
-                         (click)="modalRest(this.restaurantsReservated[i])">
-                        <ng-template #not>
-                            <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s"
-                            (click)="modalRest(this.restaurantsReservated[i])">
-                        </ng-template>
-                    
-                </div>
-                    
-                <div class="info">
-                    <p>Dia: {{reservations[i].changedDayName}} {{reservations[i].day}} de {{reservations[i].changedMonth}} {{reservations[i].year}} </p>
-                    <p>Horario: {{reservations[i].hour}}</p> 
-                    <p>Observaciones: {{reservations[i].comments}}</p> 
-                    <p>Numero de personas: {{reservations[i].pax}}</p>  
-                    <p>Restaurant: {{this.restaurantsReservated[i].name}}</p>
-                </div>
-        
-                <div class="buttons">
-                    <ng-container class="lctl-button-s buttonRes" >{{reservations[i].status}}</ng-container>
-                    <button (click)="openDialog(reservation)" class="lctl-button-s" >Cancelar</button> 
-                </div>
-            </div>
-            <div class="lctl-br modify">
-            </div> 
-            <div class="lctl-br space" >
-            </div>
+<div class="filters">
+    <div class="filterSelect">
+        <select name="select" class="lctl-cellSelect-extraLarge" #selected (click)="cambiarSelect(selected)">
+            <ng-container *ngFor="let option of select; let i = index">
+                <option value="{{option.value}}"*ngIf="option.value == 'todas'" selected>{{option.name}}</option>
+                <option value="{{option.value}}"*ngIf="option.value != 'todas'">{{option.name}}</option>
             </ng-container>
-            </ng-container>   
-        </ng-container>
-<!-- CANCELADA POR EL CLIENTE-->
+        </select>
+    </div>
+    <div class="lctl-br"></div>
+</div>
 
-<ng-container *ngIf="elSelect=='canceladas'">
-    <ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
-        <ng-container *ngIf="reservations[i].status=='Cancelada por cliente'">        
-        <div class="lctl-centerElements row son">
-            <div class="pic">
-                
-                    <img *ngIf="this.restaurantsReservated[i].logo; else not" 
-                    src="{{this.restaurantsReservated[i].logo}}" alt="" class="lctl-photoProfile-s"
-                    (click)="modalRest(this.restaurantsReservated[i])">
+
+<ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
+        <ng-container *ngIf="reservations.status == elSelect || elSelect == 'todas'">
+
+        <div class="reservation">
+            <div class="img">
+                <div class="lctl-photoProfile-m" (click)="modalRest(this.restaurantsReservated[i])">
+                    <img *ngIf="this.restaurantsReservated[i].logo; else not"
+                        src="{{this.restaurantsReservated[i].logo}}">
                     <ng-template #not>
-                        <img src="assets/photos/logorestaurante2.png" alt="" class="lctl-photoProfile-s"
-                        (click)="modalRest(this.restaurantsReservated[i])">
+                        <img src="assets/photos/logorestaurante2.png">
                     </ng-template>
-                
+                </div>
             </div>
-                
             <div class="info">
-                <p>Dia: {{reservations[i].changedDayName}} {{reservations[i].day}} de {{reservations[i].changedMonth}} {{reservations[i].year}} </p>
-                <p>Horario: {{reservations[i].hour}}</p> 
-                <p>Observaciones: {{reservations[i].comments}}</p> 
-                <p>Numero de personas: {{reservations[i].pax}}</p>  
-                <p>Restaurant: {{this.restaurantsReservated[i].name}}</p>
+                <div>Restaurant: {{this.restaurantsReservated[i].name}}</div>
+                <div>Horario: {{reservations[i].hour}}</div>
+                <div>Dia: {{reservations[i].changedDayName}} {{reservations[i].day}} de {{reservations[i].changedMonth}} {{reservations[i].year}} </div>
             </div>
-    
             <div class="buttons">
-                <ng-container class="lctl-button-s buttonRes" >{{reservations[i].status}}</ng-container>
-                <button (click)="openDialog(reservation)" class="lctl-button-s" >Cancelar</button> 
+                <button disabled class="lctl-warnButtonOpposite-s"
+                    [ngClass]="{'class': true}">
+                    {{reservations[i].status}}
+                </button>
+                <button (click)="openDialog(reservation)" class="lctl-warnButton-s" >Cancelar</button>
             </div>
         </div>
-        <div class="lctl-br modify">
-        </div> 
-        <div class="lctl-br space" >
-        </div>
-        </ng-container>
-        </ng-container>   
+
     </ng-container>
-
-
-        <div class="lctl-br modify">
-        </div> 
-        <div class="lctl-br space" >
-        </div> 
-    
+</ng-container>

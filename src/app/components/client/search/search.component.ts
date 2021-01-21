@@ -80,7 +80,7 @@ export class SearchComponent implements OnInit {
       this.rendered=this.restaurants;
       this.map = new Map("mapid").setView([40.416865 ,-3.504302], 9).setZoom(11);
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Mi reserva',
+        attribution: '',
         maxZoom: 18
       }).addTo(this.map);
       for (let i=0;i<this.restaurants.length;i++) {

@@ -1,69 +1,95 @@
-<div class="page">
-    <div class="content">
-        <div class="lctl-div-m component">
-            <app-calendar></app-calendar>
+<div class="head">
+    <div class="aligns">
+        <div class="lctl-photoProfile-xl logo" *ngIf="restaurantService.restaurantReservation.logo; else notLogo">
+            <img src="{{restaurantService.restaurantReservation.logo}}">
         </div>
-        <div class="lctl-div-m component">
-            <div class="lctl-br separator"></div>
-            <div class="lctl-br separator"></div>
-            <div class="lctl-br separator"></div>
-            <div class="lctl-br separator"></div>
-
-
-
-            <div class="title">
-                    <p class="lctl-font-title">
-                        {{this.calendarService.changedDayName}}
-                        {{this.calendarService.getNewDate().dayNum}}
-                        de
-                        {{this.calendarService.changedMonth}}
-                        {{this.calendarService.getNewDate().year}}
-                    </p>
+        <ng-template #notLogo>
+            <div class="lctl-photoProfile-xl logo">
+                <img src="assets/photos/logorestaurante2.png">
             </div>
+        </ng-template>
+    </div>
+    <div class="img" *ngIf="restaurantService.restaurantReservation.header; else notHeader">
+        <img src="{{restaurantService.restaurantReservation.header}}" class="imgIn">  
+    </div>
+    <ng-template #notHeader>
+        <div class="img">
+            <img src="assets/photos/potada2.png" class="imgIn">  
+        </div>
+    </ng-template>
+</div>
+
+<div class="content">
+
+    <div class="calendar">
+
+        <app-calendar></app-calendar>
+
+    </div>
+
+    <div class="selects">
+
+        <div class="title">
+            <div class="lctl-font-title">
+                {{this.calendarService.changedDayName}}
+                {{this.calendarService.getNewDate().dayNum}}
+                de
+                {{this.calendarService.changedMonth}}
+                del
+                {{this.calendarService.getNewDate().year}}
+            </div>
+        </div>
+        <div class="lctl-br margin"></div>
+        <div class="title">
+            <div class="lctl-font-paragraph">Nº de personas (incluidos niños)</div> 
+        </div>
+
+        <div class="table">
+            <input type="button" class="lctl-cellButton numbers" value="1" (click)="elegirpax($event)"
+            [ngClass]="{'lctl-cellButton-selected': personas == 1}">
+            <input type="button" class="lctl-cellButton numbers" value="2" (click)="elegirpax($event)"
+            [ngClass]="{'lctl-cellButton-selected': personas == 2}">
+            <input type="button" class="lctl-cellButton numbers" value="3" (click)="elegirpax($event)"
+            [ngClass]="{'lctl-cellButton-selected': personas == 3}">
+            <input type="button" class="lctl-cellButton numbers" value="4" (click)="elegirpax($event)"
+            [ngClass]="{'lctl-cellButton-selected': personas == 4}">
+            <input type="button" class="lctl-cellButton numbers" value="5" (click)="elegirpax($event)"
+            [ngClass]="{'lctl-cellButton-selected': personas == 5}">
+            <input type="button" class="lctl-cellButton numbers" value="6" (click)="elegirpax($event)"
+            [ngClass]="{'lctl-cellButton-selected': personas == 6}">
+            <div class="lctl-br separator"></div>
+
+
+            <div class="input">
+                <div>7 o más</div>
+                <input type="number" id="elgrupo" class="lctl-cellButton" onkeydown="return false" min=7 max=20
+                [ngClass]="{'lctl-cellButton-selected': personas > 6}" (change)="elegirpax($event)">
+            </div>
+            <div class="lctl-br separator"></div>
+            <div class="title title2">
+                <div class="lctl-font-underline">Si son más de 6 personas, las reservas las confirmará el restaurante</div> 
+            </div>
+                <div class="lctl-font-underline" id="mensajerror"></div>                
             <div class="lctl-br margin"></div>
             <div class="title">
-                <p class="lctl-font-paragraph">Nº de personas (incluidos niños)</p> 
+                <div class="lctl-font-bold">Turno</div>
             </div>
-
-            <div class="table">
-                <input type="button" class="lctl-cellButton numbers" value="1" (click)="elegirpax($event)">
-                <input type="button" class="lctl-cellButton numbers" value="2" (click)="elegirpax($event)">
-                <input type="button" class="lctl-cellButton numbers" value="3" (click)="elegirpax($event)">
-                <input type="button" class="lctl-cellButton numbers" value="4" (click)="elegirpax($event)">
-                <input type="button" class="lctl-cellButton numbers" value="5" (click)="elegirpax($event)">
-                <input type="button" class="lctl-cellButton numbers" value="6" (click)="elegirpax($event)">
-                <div class="lctl-br separator"></div>
-
-
-                <div class="input">
-                    <div>Grupo</div>
-                    <input type="number" id="elgrupo" class="lctl-cellButton" onkeydown="return false" min=7 max=20 (change)="grupos($event)">
-                </div>
-                <div class="lctl-br separator"></div>
-                <div class="title title2">
-                    <p class="lctl-font-underline">Si son más de 6 personas, las reservas las confirmará el restaurante</p> 
-                    
-                </div>
-                <p class="lctl-font-underline" id="mensajerror"></p>                
-
-                <div class="lctl-br margin"></div>
-                <div class="title">
-                    <p class="lctl-font-bold">Turno</p> 
-                </div>
                 
-                <div class="title">
-                    <select class="lctl-cellSelect-extraLarge mid" id="turnos" (click)="asd()">
-                        <option hidden selected="true">Elige turno</option>
-                        <ng-container *ngFor="let time of this.calendarService.times; let i = index">
+            <div class="title">
+                <select class="lctl-cellSelect-extraLarge mid" id="turnos">
+                    <option hidden selected="true">Elige turno</option>
+                    <ng-container *ngFor="let time of this.calendarService.times; let i = index">
                         <option value="{{this.calendarService.times[i].times_id}}">{{this.calendarService.times[i].service}}</option>
                     </ng-container>
-                    </select>
-                </div>               
-            </div>
+                </select>
+            </div>  
         </div>
+
     </div>
-    <div class="buttoms">
-        <button class="lctl-button-m" (click)="siguiente()">Siguiente</button>
-        <button class="lctl-button-m" routerLink="/search">Anterior</button>
-    </div>
-</div> 
+
+</div>
+
+<div class="pass">
+    <button class="lctl-button-m" (click)="pass()">Siguiente</button>
+    <button class="lctl-warnButtonOpposite-m" routerLink="/search">Anterior</button>
+</div>

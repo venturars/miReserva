@@ -561,7 +561,56 @@ a, a:hover {
     text-align: justify;
 }
 //----------//----------//----------//----------//----------
-//-----Examample of use-----
+//-----Examample of use 1-----
+//----------//----------//----------//----------//----------
+// <div class="lctl-navContainer">
+//     <ng-container *ngIf="serviceLogin.userCustomer.photo; else notPhoto">
+//     <button class="lctl_navSection lctl-navToggle">
+//         <div class="lctl-photoProfile-m">
+//             <img  src="{{serviceLogin.userCustomer.photo}}">
+//         </div>
+//     </button>
+// </ng-container>
+// <ng-template #notPhoto>
+//     <button class="lctl_navSection lctl-navToggle lctl-photoProfile-m">
+//         <div class="lctl-photoProfile-m">
+//             <img  src="assets/photos/logorestaurante2.png">
+//         </div>
+//     </button>
+// </ng-template>
+//     <button class="lctl-navItems">
+//         <div class="lctl-navAfterButton">
+//             <button class="lctl_navSection lctl-navRightItems">
+//                 <div class="lctl-navAfterButton2">
+//                     <div class="lctl-navElement" (click)="serviceRouter.routerClient(3)"
+//                         [ngClass]="{'lctl-navSelect': serviceRouter.navCustomer === 3}">
+//                         Editar perfil
+//                     </div>
+//                     <div class="lctl-navElement" (click)="serviceRouter.routerClient(0)"
+//                         [ngClass]="{'lctl-navSelect': serviceRouter.navCustomer === 0}">
+//                         Salir
+//                     </div>
+//                 </div>
+//             </button>
+//             <div class="lctl_navSection lctl-navLeftItems">
+//                 <div class="lctl-navElement" (click)="serviceRouter.routerClient(2)"
+//                     [ngClass]="{'lctl-navSelect': serviceRouter.navCustomer === 2}">
+//                     Reservar
+//                 </div>
+//                 <div class="lctl-navElement" (click)="serviceRouter.routerClient(1)"
+//                     [ngClass]="{'lctl-navSelect': serviceRouter.navCustomer === 1}">
+//                     Mis reservas
+//                 </div>
+//             </div>
+//             <button class="lctl-navHidden"></button>
+//         </div>
+//     </button>
+//         <div class="lctl_navSection lctl-navHome" (click)="serviceRouter.routerClient()">
+//             <img src="../../../../assets/LogoMiReserva.svg">
+//     </div>
+// </div>
+//----------//----------//----------//----------//----------
+//-----Examample of use 2-----
 //----------//----------//----------//----------//----------
 // <div class="lctl-navContainer">
 //     <button class="lctl_navSection lctl-navToggle2">
@@ -571,53 +620,35 @@ a, a:hover {
 //         <div class="lctl-navAfterButton">
 //             <button class="lctl_navSection lctl-navRightItems2">
 //                 <div class="lctl-navAfterButton2">
-//                     <div class="lctl-navElement" (click)="toRegister()">
+//                     <div class="lctl-navElement" (click)="serviceRouter.routerLogin(5)"
+//                         [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 5}">
 //                         Regístrate
 //                     </div>
-//                     <div class="lctl-navElement" (click)="toLogIn()">
+//                     <div class="lctl-navElement" (click)="serviceRouter.routerLogin(4)"
+//                         [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 4}">
 //                         Ingresa
 //                     </div>
 //                 </div>
 //             </button>
 //             <div class="lctl_navSection lctl-navLeftItems">
-//                 <div class="lctl-navElement" (click)="toHowItWorks()">
+//                 <div class="lctl-navElement" (click)="serviceRouter.routerLogin(3)"
+//                     [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 3}">
 //                     ¿Cómo funciona?
 //                 </div>
-//                 <div class="lctl-navElement" (click)="toContact()">
+//                 <div class="lctl-navElement" (click)="serviceRouter.routerLogin(2)"
+//                 [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 2}">
+//                   Presentación
+//                 </div>
+//                 <div class="lctl-navElement" (click)="serviceRouter.routerLogin(1)"
+//                     [ngClass]="{'lctl-navSelect': serviceRouter.navLogin === 1}">
 //                     Contacto
 //                 </div>
 //             </div>
 //             <button class="lctl-navHidden"></button>
 //         </div>
 //     </button>
-//         <div class="lctl_navSection lctl-navHome" (click)="toHome()">
-//             <img src="../../../../assets/LogoMiReserva.svg">
-//     </div>
-// </div>
-//----------//----------//----------//----------//----------
-// <div class="lctl-navContainer">
-//     <button class="lctl_navSection lctl-navToggle">
-//         <img  src="assets/photos/logorestaurante.png" class="lctl-photoProfile-m">
-//     </button>
-//     <button class="lctl-navItems">
-//         <div class="lctl-navAfterButton">
-//             <button class="lctl_navSection lctl-navRightItems">
-//                 <div class="lctl-navAfterButton2">
-//                     <div class="lctl-navElement" (click)="toLogIn()">
-//                         Salir
-//                     </div>
-//                 </div>
-//             </button>
-//             <div class="lctl_navSection lctl-navLeftItems">
-//                 <div class="lctl-navElement" (click)="toReservationListRestaurant()">
-//                     Reservas
-//                 </div>
-//             </div>
-//             <button class="lctl-navHidden"></button>
-//         </div>
-//     </button>
-//         <div class="lctl_navSection lctl-navHome" (click)="toReservationListRestaurant()">
-//             <img src="../../../../assets/LogoMiReserva.svg">
+//     <div class="lctl_navSection lctl-navHome" (click)="serviceRouter.routerLogin()">
+//         <img src="../../../../assets/LogoMiReserva.svg">
 //     </div>
 // </div>
 //----------//----------//----------//----------//----------
@@ -653,6 +684,7 @@ a, a:hover {
         font-size: var(--fontSizeM);
         font-weight: var(--fontWidthBolder);
         color: var(--secundaryColorOpposite);
+        white-space: nowrap;
         cursor: pointer;
         &:hover {
             background-color: var(--primaryColor);
@@ -747,9 +779,19 @@ a, a:hover {
     }}}}}
     & > .lctl-navToggle {
         padding: 5px 20px 5px 10px;
+        min-width: 60px;
+        max-height: 60px;
         border: none;
         outline: none;
         background-color: transparent;
+        justify-content: center;
+        & > .lctl-photoProfile-m {
+            border: 1px solid var(--secundaryColorPush);
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            min-height: 60px;
+        }
         &:focus ~  .lctl-navItems > .lctl-navAfterButton >
             .lctl-navRightItems > .lctl-navAfterButton2, &:focus ~
             .lctl-navItems > .lctl-navAfterButton > .lctl-navHidden,
@@ -839,47 +881,46 @@ a, a:hover {
                         &:hover {
                         }
                         &:active {
-        }}}
-                & > .lctl-navRightItems2 {
-                    border: none;
-                    outline: none;
+            }}}
+            & > .lctl-navRightItems2 {
+                border: none;
+                outline: none;
+                display: flex;
+                position: initial;
+                top: initial;
+                right: initial;
+                height: max-content;
+                background-color: var(--primaryColorOpposite);
+                border-bottom-left-radius: var(--borderRadiusL);
+                border-bottom-right-radius: var(--borderRadiusL);
+                cursor: default;
+                &:focus > .lctl-navAfterButton2, &:focus ~ .lctl-navLeftItems, &:focus ~
+                    .lctl-navHidden {
                     display: flex;
-                    position: initial;
-                    top: initial;
-                    right: initial;
+                }
+                & .lctl-navAfterButton2 {
+                    display: none;
+                    flex-direction: column;
+                    width: max-content;
                     height: max-content;
-                    background-color: var(--primaryColorOpposite);
-                    border-bottom-left-radius: var(--borderRadiusL);
-                    border-bottom-right-radius: var(--borderRadiusL);
-                    cursor: default;
-                    &:focus > .lctl-navAfterButton2, &:focus ~ .lctl-navLeftItems, &:focus ~
-                        .lctl-navHidden {
-                        display: flex;
+                }
+                & .lctl-navElement {
+                    width: 200px;
+                    height: 40px;
+                    font-size: var(--fontSizeS);
+                    margin: 5px;
+                    border: 1px solid var(--primaryColorContrast);
+                    border-radius: var(--borderRadiusL);
+                    &:last-child {
                     }
-                    & .lctl-navAfterButton2 {
-                        display: none;
-                        flex-direction: column;
-                        width: max-content;
-                        height: max-content;
-    
+                    &:hover {
+                        background-color: var(--primaryColor);
+                        color: var(--primaryColorContrast);
+                        border: none;
                     }
-                    & .lctl-navElement {
-                        width: 200px;
-                        height: 40px;
-                        font-size: var(--fontSizeS);
-                        margin: 5px;
-                        border: 1px solid var(--primaryColorContrast);
-                        border-radius: var(--borderRadiusL);
-                        &:last-child {
-                        }
-                        &:hover {
-                            background-color: var(--primaryColor);
-                            color: var(--primaryColorContrast);
-                            border: none;
-                        }
-                        &:active {
-                            background-color: var(--primaryColorAccent);
-                            border: none;
+                    &:active {
+                        background-color: var(--primaryColorAccent);
+                        border: none;
         }}}}}
         & > .lctl-navToggle {
             &:focus ~  .lctl-navItems > .lctl-navAfterButton >
@@ -1008,7 +1049,7 @@ a, a:hover {
     justify-content: center;
     border-radius: 1000px;
     border: 2px solid var(--secundaryColorPush);
-    background-color: var(--primaryColorOpposite);
+    background-color: var(--secundaryColorLink);
     &:hover {
         border: 2px solid var(--secundaryColorContrast);
     }
@@ -1023,6 +1064,9 @@ a, a:hover {
     border: 1px solid var(--secundaryColorPush);
     width: 20px;
     height: 20px;
+    & img {
+        width: 100%;
+    }
     &:hover {
         border: 1px solid var(--secundaryColorContrast);
     }
@@ -1036,23 +1080,41 @@ a, a:hover {
     height: 40px;
     & img {
         width: 100%;
+    }
+    &:hover {
+        border: 1px solid var(--secundaryColorContrast);
+    }
+    &:active {
+        border: 1px solid var(--secundaryColorAccent);
 }}
 //----------
 [class *= "lctl-photoProfile-m"] {
     border: 1px solid var(--secundaryColorPush);
     width: 60px;
     height: 60px;
-}
+    & img {
+        width: 100%;
+    }
+    &:hover {
+        border: 1px solid var(--secundaryColorContrast);
+    }
+    &:active {
+        border: 1px solid var(--secundaryColorAccent);
+}}
 //----------
 [class *= "lctl-photoProfile-l"] {
     width: 100px;
     height: 100px;
-}
+    & img {
+        width: 100%;
+}}
 //----------
 [class *= "lctl-photoProfile-xl"] {
     width: 160px;
     height: 160px;
-}
+    & img {
+        width: 100%;
+}}
 //----------//----------//----------//----------//----------
 //-----How to use-----
 //----------//----------//----------//----------//----------
@@ -1104,9 +1166,9 @@ a, a:hover {
         align-items: center;
         width: 100%;
         height: 100%;
-        max-height: 66px;
+        max-height: 67px;
         & > img {
-            max-height: 66px;
+            max-height: 67px;
             max-width: 100%;
     }}
     & > .lctl-simpleCard-photoProfile {
@@ -1211,7 +1273,6 @@ a, a:hover {
     flex-direction: column;
     max-width: 580px;
     min-width: 260px;
-    border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusL);
 }
 //----------
@@ -1264,13 +1325,10 @@ a, a:hover {
 //-----Mat calendar-----
 [class *="lctl-ngMatCalendar"] {
     margin: auto;
-    min-height: 460px;
-    width: 400px;
-    min-width: 100%;
-    height: 480px;
+    max-height: 100%;
+    min-width: 260px;
     border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusL);
-    box-shadow: 0 0 5px 1px var(--secundaryColorPush);
     background-color: var(--primaryColorOpposite);
     overflow: hidden;
     & .mat-calendar-header {
@@ -1304,7 +1362,7 @@ a, a:hover {
                 outline: none;
                 color: var(--primaryColorOpposite);
                 &:disabled {
-                    color: var(--secundaryColorPush);
+                    color: var(--secundaryColorLink);
                 }
             }
             & .mat-icon-button:nth-child(4) {
@@ -1340,7 +1398,7 @@ a, a:hover {
         }
         & .mat-calendar-body-disabled {
             & .mat-calendar-body-cell-content {
-                color: var(--secundaryColorPush);
+                color: var(--secundaryColorLink);
             }
         }
         & tbody tr:first-child .mat-calendar-body-label {
@@ -1457,4 +1515,58 @@ a, a:hover {
 }}}
     .mat-slide-toggle.mat-checked .mat-ripple-element {
         background-color: var(--primaryColor);
+}}
+//----------//----------//----------//----------//----------
+//-----Leaflet map-----
+//----------//----------//----------//----------//----------
+.leaflet-popup {
+    & > .leaflet-popup-content-wrapper {
+        cursor: pointer;
+        background: var(--primaryColorOpposite);
+        & > .leaflet-popup-content {
+            color: var(--secundaryColorOpposite);
+    }}
+    & > .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+        background: var(--primaryColorOpposite);
+        border: 1px solid var(--secundaryColorPush);
+    }
+    & .leaflet-container a.leaflet-popup-close-button {
+        color: var(--secundaryColorLink);
+}}
+.leaflet-popup-tip-container {
+    transform: translateY(0px) scale(1, 1.1) !important;
+}
+.leaflet-marker-icon {
+    filter: hue-rotate(171deg) !important;
+}
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+    background-color: var(--primaryColorOpposite) !important;
+    border-color: var(--primaryColorOpposite) !important;
+    color: var(--secundaryColorOpposite) !important;
+}
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+    border: none !important;
+    box-shadow: 0 0 1px 1px var(--secundaryColorPush) !important;
+    opacity: 1;
+}
+.leaflet-control-attribution {
+    position: absolute;
+    top: -45px;
+    left: -93px;
+    background-color: var(--primaryColorOpposite) !important;
+    opacity: 1;
+    padding-top: 25px;
+    background-image: url(/assets/LogoMiReserva.svg) !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    height: 0px;
+    width: 43px;
+    border-width: 10px 20px 10px 20px;
+    border-style: solid;
+    border-color: var(--primaryColorOpposite);
+    box-sizing: content-box;
+    box-shadow: 0.5px 0.5px 1px 1px var(--secundaryColorPush) !important;
+    border-top-left-radius: 5px;
+    & > a {
+        display: none;
 }}

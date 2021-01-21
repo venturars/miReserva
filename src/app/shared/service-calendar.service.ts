@@ -49,7 +49,6 @@ export class ServiceCalendarService {
     this.count.Sat = null;
     this.timesService.getTimes(restaurant_id).subscribe((result:any) =>{
       this.shiftsService.getShifts(restaurant_id).subscribe((resultShift) =>{
-        console.log(resultShift.data);
       for(let i = 0; i < result.data.length; i ++) {
         
         switch (result.data[i].name){

@@ -12,7 +12,7 @@
         <div class="labelTeam">
             <div class="design">
                 <ng-container *ngFor="let option of options">
-                <label #label for="{{option.id}}" class="lctl-disabledButtonOpposite-s" [ngClass]="{'checkIt': input.checked}">{{option.value}}</label>
+                <label #label for="{{option.id}}" class="lctl-disabledButtonOpposite-s" [ngClass]="{'lctl-disabledButtonOpposite-s-selected': input.checked}">{{option.value}}</label>
                 <input type="checkbox" style="display: none;" id="{{option.id}}" value="{{option.value}}" #input (click)="typeOfFood(input, label)">
                 </ng-container>
             </div>
