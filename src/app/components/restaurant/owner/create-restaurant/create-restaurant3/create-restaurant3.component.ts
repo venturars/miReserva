@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalTurnosComponent } from 'src/app/components/modals/modal-turnos/modal-turnos.component';
 import { Times } from 'src/app/models/times';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
+import { ServiceRouterService } from 'src/app/shared/service-router.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
 import { SimpleAlertComponent } from '../../../../modals/simple-alert/simple-alert';
@@ -87,7 +88,8 @@ export class CreateRestaurant3Component implements OnInit {
     private dialog: MatDialog,
     public serviceTimes:ServiceTimesService,
     public serviceRestaurant:ServiceRestaurantService,
-    public serviceShfts:ServiceShiftsService
+    public serviceShfts:ServiceShiftsService,
+    public serviceRouter:ServiceRouterService
   ) { }
   public openCloseDay(
       event:any,
@@ -211,4 +213,14 @@ export class CreateRestaurant3Component implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
   ngOnInit() {
-}}
+}
+restaurantCreated(){
+  const dialogRef = this.dialog.open(SimpleAlertComponent,{panelClass: ['animate__animated','animate__backInDown']});
+  dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
+  dialogRef.componentInstance.mensaje="Hemos acabado de configurar tu restaurante!";
+  dialogRef.afterClosed().subscribe((result) => {
+    console.log(`Dialog result: ${result}`);
+    this.serviceRouter.routerOwner(2);})
+  }
+
+}

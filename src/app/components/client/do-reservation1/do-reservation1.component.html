@@ -52,7 +52,7 @@
                 </div>
                 
                 <div class="title">
-                    <select class="lctl-cellSelect-extraLarge mid" id="turnos" (click)="asd()">
+                    <select class="lctl-cellSelect-extraLarge mid" id="turnos" >
                         <option hidden selected="true">Elige turno</option>
                         <ng-container *ngFor="let time of this.calendarService.times; let i = index">
                         <option value="{{this.calendarService.times[i].times_id}}">{{this.calendarService.times[i].service}}</option>

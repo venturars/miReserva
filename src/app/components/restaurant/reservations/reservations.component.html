@@ -65,6 +65,65 @@
         <p class="lctl-font-bold">Observaciones</p>
         <p class="lctl-font-bold">Estado</p>
     </div>
+    <!-- FILTRO TODAS LAS RESERVAS Y TODOS LOS TURNOS -->
+    <ng-container *ngFor="let reservations of Allreservation; let i = index">
+        <ng-container *ngIf="reservations.day == selectedDayNum && reservations.month == selectedMonth && reservations.year == selectedYear">
+           
+        <ng-container *ngIf="value == 0 && service == 0">
+            
+                <div class="rows2" (click)="modalStatus(reservations)">
+                    <p class="lctl-font-paragraph">{{reservations.hour}}</p>
+                    <p class="lctl-font-paragraph">{{reservations.customer_name}}</p>
+                    <p class="lctl-font-paragraph">{{reservations.table_id}}</p>
+                    <p class="lctl-font-paragraph">{{reservations.pax}}</p>
+                    <p class="lctl-font-paragraph">{{reservations.comments}}</p>
+                    <p class="lctl-font-paragraph">{{reservations.status}}</p>
+                <ng-container> 
+                    <p> 
+                    <!-- <button (click)="modalStatus()" class="lctl-warnButton-s buttonLib">Liberada</button> -->
+                    <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonCan">Reservada</button>
+                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonRes">Reservada</button>
+                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonSen">Reservada</button>
+                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonAu">Reservada</button> -->
+                    </p>
+                </ng-container>
+                </div>
+                <div class="lctl-br"></div>
+    </ng-container>
+    </ng-container>
+</ng-container>
+
+<!-- TODAS LAS RESERVAS Y DISTINTOS TURNOS-->
+
+<!-- FILTRO TODAS LAS RESERVAS Y TODOS LOS TURNOS -->
+<ng-container *ngFor="let reservations of Allreservation; let i = index">
+    <ng-container *ngIf="reservations.day == selectedDayNum && reservations.month == selectedMonth && reservations.year == selectedYear">
+       
+    <ng-container *ngIf="value == 0 && service != 0">
+        <!-- DESAYUNO -->
+        <ng-container *ngIf="service == 1 && reservations.service == 'Desayuno' || service == 2 && reservations.service == 'Almuerzo' || service == 3 && reservations.service == 'Cena'">
+            <div class="rows2" (click)="modalStatus(reservationsConfirmed[i])">
+                <p class="lctl-font-paragraph">{{reservations.hour}}</p>
+                <p class="lctl-font-paragraph">{{reservations.customer_name}}</p>
+                <p class="lctl-font-paragraph">{{reservations.table_id}}</p>
+                <p class="lctl-font-paragraph">{{reservations.pax}}</p>
+                <p class="lctl-font-paragraph">{{reservations.comments}}</p>
+            <ng-container> 
+                <p> 
+                <!-- <button (click)="modalStatus()" class="lctl-warnButton-s buttonLib">Liberada</button> -->
+                <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonCan">Reservada</button>
+                <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonRes">Reservada</button>
+                <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonSen">Reservada</button>
+                <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonAu">Reservada</button> -->
+                </p>
+            </ng-container>
+            </div>
+            <div class="lctl-br"></div>
+    </ng-container>
+</ng-container>
+</ng-container>
+</ng-container>
+
 
     <!-- FILTRO RESERVA CONFIRMADA Y LOS TRES TURNOS -->
     <ng-container *ngFor="let reservations of reservationsConfirmed; let i = index">

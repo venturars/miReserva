@@ -13,6 +13,7 @@ import { ServiceCalendarService } from 'src/app/shared/service-calendar.service'
 })
 export class RestaurantsComponent implements OnInit {
   public restaurants:Restaurants[];
+  public restaurantCopy:Restaurants[]=[];
   constructor(
     private serviceLogin:ServiceLoginService,
     private serviceRestaurant:ServiceRestaurantService,
@@ -34,4 +35,30 @@ export class RestaurantsComponent implements OnInit {
     
     this.serviceCalendar.getTimes(this.restaurants[index].restaurant_id)
     this.router.navigate(['/reservations-list-restaurant']);
-}}
+}
+public findRest(busqueda){
+  this.restaurantCopy=[];
+  
+  let control=false;
+  for (let i=0;i<this.restaurants.length;i++){
+    if(this.restaurants[i].name.toLowerCase()==busqueda.value.toLowerCase()){
+      this.restaurantCopy.push(this.restaurants[i]);
+      busqueda.value="";
+      control=true;
+    }
+  
+  } 
+  if(!control){
+    busqueda.style.color="var(--primaryColor)";
+    busqueda.value="Restaurante no encontrado"
+    setTimeout(function(){busqueda.value="";
+                          busqueda.style.color="var(--secundaryColorOpposite)"}
+                          ,2500);
+  }
+}
+
+public showAll(){
+  this.restaurantCopy=[];
+}
+
+}

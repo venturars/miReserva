@@ -244,9 +244,7 @@ this.reservationService.shifts = this.availableShifts
 
 }
 
-public asd(){
-  
-}
+
 
 
 

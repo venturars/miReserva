@@ -5,6 +5,7 @@ import { ServiceCalendarService } from 'src/app/shared/service-calendar.service'
 import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
+import { ServiceRouterService } from 'src/app/shared/service-router.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
 import { ServiceUserCustomerService } from 'src/app/shared/service-user-customer.service';
@@ -25,7 +26,7 @@ export class ReservationsRestaurantComponent implements OnInit {
   public selectedYear:string
   public changedDayName:string
   public changedMonth:string
-
+  public Allreservation:Reservations[]=[];
   public value:number=0;
   public service:string="0";
   public reservationsConfirmed:Reservations[] = new Array();
@@ -49,11 +50,40 @@ export class ReservationsRestaurantComponent implements OnInit {
     private timesService:ServiceTimesService,
     private calendarService:ServiceCalendarService,
     private loginService: ServiceLoginService,
-    private restaurantService: ServiceRestaurantService
+    private restaurantService: ServiceRestaurantService,
+    public routerService:ServiceRouterService
     ) {
     this.reservationService.getReservationRestaurant(this.restaurantId).subscribe((data:any) =>{     
     for(let i = 0; i<data.data.length;i++){
-        
+
+        //PARA TODAS SIN IF
+
+        this.shiftsService.getShiftsId(data.data[i].shift_id).subscribe((data3:any) =>{  
+            
+          this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
+
+          this.reservation = new Reservations(data.data[i].reservation_id,
+          data.data[i].customer_id,
+          data.data[i].restaurant_id,
+          data.data[i].table_id,
+          data.data[i].pax,
+          data.data[i].day_name,
+          data.data[i].day,
+          data.data[i].month,
+          data.data[i].year,
+          data.data[i].hour,
+          data.data[i].shift_id,
+          data.data[i].comments,
+          data.data[i].status,
+          data.data[i].customer_name,
+          data.data[i].customer_phone)
+          this.reservation.service = data4.data[0].service
+          this.Allreservation.push(this.reservation) 
+          console.log(this.Allreservation); 
+        }) 
+      })
+      
+
         if (data.data[i].status == "Reservada"){
 
           this.shiftsService.getShiftsId(data.data[i].shift_id).subscribe((data3:any) =>{  
@@ -162,7 +192,6 @@ export class ReservationsRestaurantComponent implements OnInit {
     }) 
     }) 
     }
-
   }
   
   })     
@@ -249,8 +278,8 @@ export class ReservationsRestaurantComponent implements OnInit {
     if(this.loginService.userRestaurant){
     
      this.calendarService.getTimes(this.loginService.userRestaurant.restaurant_id)
+    }
     
-  }
   }
 
   public confirmReservation(id_reservation:number) {
@@ -270,7 +299,8 @@ export class ReservationsRestaurantComponent implements OnInit {
   public modalStatus(data12:any) {
     this.calendarService.reserva = data12
     const dialogRef = this.dialog.open(ModalRestauranteComponent);
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe((result)=>{
+     this.routerService.routerOwner();   });
   }
   public modalNew() {
     const dialogRef = this.dialog.open(ModalReservaManualComponent);

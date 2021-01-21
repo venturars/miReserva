@@ -6,12 +6,12 @@
             <div class="lctl-font-title">Mis restaurantes</div>
         </div>
 
-        <!-- <div class="search">
+        <div class="search">
             <input type="text" class="searchLine" #searchLine
-            placeholder="Busca tu restaurante" >
-            <button class="searchButton">
+            placeholder="Busca tu restaurante" (click)="showAll()">
+            <button (click)="findRest(searchLine)" class="searchButton">
             </button>
-        </div> -->
+        </div>
 
     </div>
 
@@ -23,23 +23,26 @@
         <div class="not"><img src="/assets/restaurantes.svg" (click)="serviceRouter.routerOwner(1)"></div>
     </ng-template>
 
+    <!--SI HAY UNA BUSQUEDA COINCIDENTE-->
+    <ng-container *ngIf="restaurantCopy[0]; else todos">            
     <div class="cards"  *ngIf="restaurants; else not">
-    
-        <div class="lctl-simpleCard" *ngFor = "let restaurant of restaurants; let i = index">
-            <div class="lctl-simpleCard-banner" *ngIf="restaurant.header != null; else notHeader">
-                <img src="{{restaurant.header}}">
-            </div>
-            <ng-template #notHeader>
-                <div class="lctl-simpleCard-banner">
-                    <img src="assets/photos/potada2.png">
+       
+                    <div class="lctl-simpleCard" *ngFor = "let restaurant of restaurantCopy; let i = index">
+                        
+                <div class="lctl-simpleCard-banner" *ngIf="restaurant.header != null; else notHeader">
+                    <img src="{{restaurant.header}}">
                 </div>
-            </ng-template>
-            <div class="lctl-simpleCard-photoProfile" *ngIf="restaurant.logo != null; else notLogo">
-                <div class="lctl-photoProfile-">
-                    <img src="{{restaurant.logo}}">
+                <ng-template #notHeader>
+                    <div class="lctl-simpleCard-banner">
+                        <img src="assets/photos/potada2.png">
+                    </div>
+                </ng-template>
+                <div class="lctl-simpleCard-photoProfile" *ngIf="restaurant.logo != null; else notLogo">
+                    <div class="lctl-photoProfile-">
+                        <img src="{{restaurant.logo}}">
+                    </div>
                 </div>
-            </div>
-            <ng-template #notLogo>
+             <ng-template #notLogo>
                 <div class="lctl-simpleCard-photoProfile">
                     <div class="lctl-photoProfile-">
                         <img #notLogo src="assets/photos/logorestaurante2.png">
@@ -58,17 +61,68 @@
                         {{restaurant.phone}}
                     </div>
                     <div class="lctl-simpleCard-thirdParagraph">
-                        dirección
+                        {{restaurant.street_name}}, {{restaurant.street_number}}. {{restaurant.city}}
                     </div>
                 </div>
             </div>
             <div class="lctl-br"></div>
             <div class="lctl-simpleCard-footer">
                 <a class="lctl-warnButtonOpposite-s" href="{{restaurant.url}}" target="_blank">web</a>
-                <a class="lctl-warnButtonOpposite-s" (click)="clickRestaurant(i)">Editar</a>
+                <a class="lctl-warnButtonOpposite-s" (click)="clickRestaurant(i)">Reservas</a>
             </div>
         </div>
-
+    
     </div>
+    </ng-container>
+
+    <ng-template #todos>
+        <div class="cards"  *ngIf="restaurants; else not">
+            <div class="lctl-simpleCard" *ngFor = "let restaurant of restaurants; let i = index">
+        <div class="lctl-simpleCard-banner" *ngIf="restaurant.header != null; else notHeader">
+            <img src="{{restaurant.header}}">
+        </div>
+        <ng-template #notHeader>
+            <div class="lctl-simpleCard-banner">
+                <img src="assets/photos/potada2.png">
+            </div>
+        </ng-template>
+        <div class="lctl-simpleCard-photoProfile" *ngIf="restaurant.logo != null; else notLogo">
+            <div class="lctl-photoProfile-">
+                <img src="{{restaurant.logo}}">
+            </div>
+        </div>
+     <ng-template #notLogo>
+        <div class="lctl-simpleCard-photoProfile">
+            <div class="lctl-photoProfile-">
+                <img #notLogo src="assets/photos/logorestaurante2.png">
+            </div>
+        </div>
+    </ng-template>
+    <div class="lctl-simpleCard-info">
+        <div class="lctl-simpleCard-title">
+            {{restaurant.name}}
+        </div>
+        <div class="lctl-simpleCard-paragraphs">
+            <div class="lclt-simpleCard-firstParagraph">
+                {{restaurant.food_type}}
+            </div>
+            <div class="lctl-simpleCard-secondParagraph">
+                {{restaurant.phone}}
+            </div>
+            <div class="lctl-simpleCard-thirdParagraph">
+                {{restaurant.street_name}}, {{restaurant.street_number}}. {{restaurant.city}}
+            </div>
+        </div>
+    </div>
+    <div class="lctl-br"></div>
+    <div class="lctl-simpleCard-footer">
+        <a class="lctl-warnButtonOpposite-s" href="{{restaurant.url}}" target="_blank">web</a>
+        <a class="lctl-warnButtonOpposite-s" (click)="clickRestaurant(i)">Reservas</a>
+    </div>
+</div>
+
+</div>
+
+    </ng-template>
 
 </div>

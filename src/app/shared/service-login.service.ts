@@ -13,10 +13,10 @@ import { Global } from '../models/global';
 export class ServiceLoginService {
   private global:Global = new Global();
   private url:string = this.global.url + "/login";
-  // public users: Users = new Users(null,null,null,null,null);
-  public users: Users = new Users(288,null,null,"kibona@kibona","kibona");
-  // public userRestaurant: Restaurants;
-  public userRestaurant: Restaurants = new Restaurants(288,"Kibon","Madrid","Alcala de Henares","menorca","12",28009,912403939,30,"Japonesa","assets/photos/KIBONAJAPO.jpg","assets/photos/KIBONAJAPO.jpg",null,"www.kibon.com",40.4857747,-3.3436791,10);
+  public users: Users = new Users(null,null,null,null,null);
+  // public users: Users = new Users(288,null,null,"kibona@kibona","kibona");
+  public userRestaurant: Restaurants;
+  // public userRestaurant: Restaurants = new Restaurants(288,"Kibon","Madrid","Alcala de Henares","menorca","12",28009,912403939,30,"Japonesa","assets/photos/KIBONAJAPO.jpg","assets/photos/KIBONAJAPO.jpg",null,"www.kibon.com",40.4857747,-3.3436791,10);
   public userOwner: UserOwner;
   public userCustomer: UserCustomer;
   

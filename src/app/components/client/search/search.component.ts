@@ -95,7 +95,7 @@ export class SearchComponent implements OnInit {
         ).on('click', () => {
           this.rendered=[];
           this.renderedMarker=[];
-          this.map.setView([this.restaurants[i].latitude ,this.restaurants[i].longitude]);
+          this.map.setView([this.restaurants[i].latitude + 0.0095 ,this.restaurants[i].longitude]);
           for (let i=0;i<this.marker.length;i++) {
             if(this.map.getBounds().contains(this.marker[i].getLatLng())) {
               this.rendered.push(this.restaurants[i]);
@@ -146,7 +146,8 @@ export class SearchComponent implements OnInit {
           this.rendered[i].name+"<br>"+this.rendered[i].street_name+" , " +
           this.rendered[i].street_number
         ).on('click', () => {
-          this.map.setView([this.marker[i]._latlng.lat, this.marker[i]._latlng.lng]);
+          
+          this.map.setView([this.marker[i]._latlng.lat + 0.0095, this.marker[i]._latlng.lng]);
           this.renderedMarker=[];
           for (let i=0;i<this.marker.length;i++) {
             if(this.map.getBounds().contains(this.marker[i].getLatLng())){
@@ -180,7 +181,7 @@ export class SearchComponent implements OnInit {
           this.rendered[i].name+"<br>"+this.rendered[i].street_name+" , "+
           this.rendered[i].street_number
         ).on('click', () => {
-          this.map.setView([this.marker[i]._latlng.lat, this.marker[i]._latlng.lng]);
+          this.map.setView([this.marker[i]._latlng.lat + 0.0095, this.marker[i]._latlng.lng]);
           this.renderedMarker=[];
           for (let i = 0;i < this.marker.length; i++) {
             if(this.map.getBounds().contains(this.marker[i].getLatLng())) {
@@ -218,7 +219,9 @@ export class SearchComponent implements OnInit {
       searchLine.value="";
     }else {
       const dialogRef = this.dialog.open(SimpleAlertComponent);
+      dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
       dialogRef.componentInstance.mensaje="No hemos encontrado ningún restaurante con ese nombre";
+
       dialogRef.afterClosed().subscribe();
 }}}
 
