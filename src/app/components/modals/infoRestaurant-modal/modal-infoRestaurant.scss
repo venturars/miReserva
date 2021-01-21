@@ -1,86 +1,118 @@
 .content {
     width: 700px;
     max-width: 100%;
-    height: 350px;
+    min-height: 280px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    margin: auto;
-    border: 2px solid var(--secundaryColorPush);
+    align-items: center;
+    border: 1px solid var(--secundaryColorPush);
+    border-radius: var(--borderRadiusL);
     background-color: var(--primaryColorOpposite);
-    border-radius: var(--borderRadiusM);
-
-    & > .title{
-       
+    & > .contentTitle {
         display: flex;
+        align-items: center;
         justify-content: center;
-        background-color:var(--secundaryColorPush);
-        color:white;
+        padding: 0 5px 0 5px;
         width: 100%;
-        height: 50px;
-
-        & > p{
-            margin-top: 15px;
-            font-size: var(--fontSizeS);
+        min-height: 40px;
+        background-color:var(--secundaryColorPush);  
+        cursor: default; 
+        & > div {
+            color: var(--primaryColorOpposite);
             text-align: center;
-
-        }
-
-    }
-    
-    & > .info{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+            font-weight: var(--fontWidthBolder);
+    }}
+    & > .infoR {
         width: 100%;
-        height: 100%;
-
-        & > .Map{
-            
+        display: flex;
+        flex-direction: row-reverse;
+        & > .map {
             width: 100%;
             height: 210px;
-            background-color: darkmagenta;
+            background-color: var(--secundaryColor);
             border-top: 1px solid var(--secundaryColorPush);
-         }
-         & > .shape{
-             display: flex;
-             width: 100%;
-             height: 40px;
-             background-color: var(--secundaryColorPush);
-             & > p{
-                 font-size: 14px;
-                 background-color: darkgoldenrod;
-             }
-             & > p:first-child{
-                 justify-self: left;
-
-             }
-             & > p:nth-child(2){
-                justify-self: right;
-            }
-         }
-
-        & > p{
-
             width: 100%;
-            margin-top: 10px;
-            font-size: var(--fontSizeS);
-            text-align: center;
-
         }
-       
-    }
-    & > .button{
-       
+        & > .info {
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 210px;
+            width: calc(100% - 20px);
+            overflow: hidden;
+            & > .name {
+                text-align: justify;
+                width: 100%;
+                display: flex;
+                height: 54px;
+                overflow: hidden;
+                font-weight: var(--fontWidthBolder);
+                padding-right: 15px;
+                padding-left: 10px;
+            }
+            & > .options {
+                position: relative;
+                height: 40px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+        }
+    }}
+    & > .buttons {
+        margin: auto;
         display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-
-        & > button{
-            margin-top: 40px;
+        justify-content: space-around;
+        align-items: center;
+        width: 250px;
+        height: 60px;
+        & > .lctl-warnButton-s  {
+            width: 200px;
+}}}
+@media screen and (max-width: 450px) {
+    .content{
+        & > .contentTitle {
+            & > div {
+                font-size: var(--fontSizeS);
+            }
         }
+        & > .map {
+        }
+        & > .info {
+        font-size: var(--fontSizeS);
+        }
+        & > .buttons {
+}}}
+
+
+
+
+.lctl-simpleCard-info {
+
+    & > .lctl-simpleCard-title {
 
     }
-    
-}
-
+    & > .lctl-simpleCard-paragraphs {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        & > div {
+            width: 100%;
+            text-align: justify;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            padding: 5px 15px 5px 10px;
+        }
+        & > .lctl-simpleCard-firstParagraph {
+        }
+        & > .lctl-simpleCard-secondParagraph {
+            justify-self: flex-end;
+        }
+        & >  {
+            font-size: var(--fontSizeS);
+}}}

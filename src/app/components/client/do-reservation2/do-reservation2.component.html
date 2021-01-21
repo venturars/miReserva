@@ -1,4 +1,25 @@
 <div class="head">
+    <div class="aligns">
+        <div class="lctl-photoProfile-xl logo" *ngIf="restaurantService.restaurantReservation.logo; else notLogo">
+            <img src="{{restaurantService.restaurantReservation.logo}}">
+        </div>
+        <ng-template #notLogo>
+            <div class="lctl-photoProfile-xl logo">
+                <img src="assets/photos/logorestaurante2.png">
+            </div>
+        </ng-template>
+    </div>
+    <div class="img" *ngIf="restaurantService.restaurantReservation.header; else notHeader">
+        <img src="{{restaurantService.restaurantReservation.header}}" class="imgIn">  
+    </div>
+    <ng-template #notHeader>
+        <div class="img">
+            <img src="assets/photos/potada2.png" class="imgIn">  
+        </div>
+    </ng-template>
+</div>
+
+<div class="headMal">
     <div class="title">
         <div class="lctl-br w"></div>
         <div class="lctl-br space"></div>
@@ -18,8 +39,9 @@
     <div class="schedules">
         <div>
             <ng-container *ngFor="let shift of availableShifts; let i = index">
-                <div class="lctl-cellButton" id="turnos" [ngClass]="{'active': this.selectedShiftId==availableShifts[i].shift_id}" 
-                (click)="shiftId(availableShifts[i].shift_id)" >
+                <div class="lctl-cellButton" id="turnos"
+                [ngClass]="{'lctl-cellButton-selected': this.selectedShiftId==availableShifts[i].shift_id}" 
+                (click)="shiftId(availableShifts[i].shift_id)">
                     {{availableShifts[i].shift_from}} a {{availableShifts[i].shift_to}}
                 </div>
             </ng-container>
@@ -30,9 +52,9 @@
             <p class="obs">Observaciones:</p>
             <textarea class="com" id="obs"></textarea>
         </div>
-        <div class="buttoms">
-                <button class="lctl-button-m" routerLink="/reservation1">Anterior</button>
-                <button (click)="openDialog()" class="lctl-button-m">Siguiente</button>
+        <div class="pass">
+            <button (click)="openDialog()" class="lctl-button-m">Siguiente</button>
+            <button class="lctl-warnButtonOpposite-m" routerLink="/reservation1">Anterior</button>
         </div>
     </div>
 </div>

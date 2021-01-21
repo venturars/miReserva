@@ -1,14 +1,16 @@
 <div class="lctl-navContainer">
-    <ng-container *ngIf="serviceLogin.userOwner.photo; else notPhoto">
-        <button class="lctl_navSection lctl-navToggle">
-            <img  src="{{serviceLogin.userOwner.photo}}" class="lctl-photoProfile-m">
-        </button>
-    </ng-container>
-    <ng-template #notPhoto>
-        <button class="lctl_navSection lctl-navToggle">
-            <img  src="assets/photos/logorestaurante2.png" class="lctl-photoProfile-m">
-        </button>
-    </ng-template>
+    <button class="lctl_navSection lctl-navToggle">
+        <ng-container *ngIf="serviceLogin.userOwner.photo; else notPhoto">
+            <div class="lctl-photoProfile-m">
+                <img  src="{{serviceLogin.userOwner.photo}}">
+            </div>
+        </ng-container>
+        <ng-template #notPhoto>
+            <div class="lctl-photoProfile-m">
+                <img  src="assets/photos/logorestaurante2.png" class="lctl-photoProfile-m">
+            </div>
+        </ng-template>
+    </button>
     <button class="lctl-navItems">
         <div class="lctl-navAfterButton">
             <button class="lctl_navSection lctl-navRightItems">
@@ -25,12 +27,12 @@
             </button>
             <div class="lctl_navSection lctl-navLeftItems">
                 <div class="lctl-navElement" (click)="serviceRouter.routerOwner(1)"
-                        [ngClass]="{'lctl-navSelect': serviceRouter.navOwner === 1}">
-                        Añadir restaurante
+                    [ngClass]="{'lctl-navSelect': serviceRouter.navOwner === 1}">
+                    Añadir restaurante
                 </div>
                 <div class="lctl-navElement" (click)="serviceRouter.routerOwner(2)"
-                        [ngClass]="{'lctl-navSelect': serviceRouter.navOwner === 2}">
-                        Mis restaurantes
+                    [ngClass]="{'lctl-navSelect': serviceRouter.navOwner === 2}">
+                    Mis restaurantes
                 </div>
             </div>
             <button class="lctl-navHidden"></button>

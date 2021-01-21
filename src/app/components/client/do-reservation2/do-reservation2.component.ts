@@ -11,7 +11,6 @@ import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
 import { ServiceTablesService } from 'src/app/shared/service-tables.service';
 import { ServiceTimesService } from 'src/app/shared/service-times.service';
 import { ModalReservaComponent } from '../../modals/modal-reserva/modal-reserva.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-doReservation2',
@@ -52,14 +51,14 @@ export class DoReservation2Component implements OnInit {
   public selectedComments:string
   public selectedFullName:string
 
-  constructor(public dialog: MatDialog,
+  constructor(
+    public dialog: MatDialog,
     private reservationService: ServiceReservationsService,
     private timesService: ServiceTimesService,
     private shiftsService: ServiceShiftsService,
     public calendarService: ServiceCalendarService,
     private tablesService: ServiceTablesService,
-    private restaurantService:ServiceRestaurantService,
-    private router:Router
+    public restaurantService:ServiceRestaurantService,
     ) {
   this.tables = []
   this.shifts = []
@@ -97,13 +96,7 @@ export class DoReservation2Component implements OnInit {
           reservation.service = data4.data[0].service
         this.reservations.push(reservation)
         
-        }) 
-        }) 
-      }
-    }
-
-
-  })
+        });});}}});
 
   this.timesService.getTimes(this.restaurantId).subscribe((dataTimes:any) =>{                    
     for(let i = 0; i < dataTimes.data.length; i++){
@@ -147,7 +140,8 @@ export class DoReservation2Component implements OnInit {
   this.selectedMonth = this.calendarService.getNewDate().month;
   this.selectedYear = this.calendarService.getNewDate().year;
 
-
+  console.log(this.availableShifts);
+  
 }
 
   ngOnInit(): void {
@@ -198,7 +192,6 @@ export class DoReservation2Component implements OnInit {
 
     }
 
-console.log(this.reservationService.tableId);
 
   }
   openDialog() {

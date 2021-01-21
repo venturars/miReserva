@@ -20,12 +20,12 @@ export class MaprestComponent implements OnInit {
     this.map = new Map("mapid").setView([this.restaurantService.restauranteMapa.latitude ,this.restaurantService.restauranteMapa.longitude], 50)
       .setZoom(11)
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-        attribution: this.restaurantService.restauranteMapa.name,
-        maxZoom: 18
+        // attribution: this.restaurantService.restauranteMapa.name,
+        maxZoom: 40
     }).addTo(this.map);
 
     this.marker= new Marker([this.restaurantService.restauranteMapa.latitude ,this.restaurantService.restauranteMapa.longitude]).addTo(this.map);
-          this.marker.bindPopup(this.restaurantService.restauranteMapa.name+"<br>"+this.restaurantService.restauranteMapa.street_name+" , "+ this.restaurantService.restauranteMapa.street_number).openPopup();
+          this.marker.bindPopup(this.restaurantService.restauranteMapa.street_name+" , "+ this.restaurantService.restauranteMapa.street_number).openPopup();
           
 
   }

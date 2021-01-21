@@ -10,9 +10,6 @@ export class InfoRestaurantComponent implements OnInit {
 restaurant:Restaurants;
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
-
 }
-
-//Modal sin uso//

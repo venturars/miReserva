@@ -14,28 +14,42 @@ import { InfoRestaurantComponent } from '../../modals/infoRestaurant-modal/modal
   styleUrls: ['./reservations.component.scss']
 })
 export class ReservationsClientComponent implements OnInit {
-public reservations:Reservations[]
-public customerId:number
-public changedMonth:string
-public changedDayName:string
-public restaurantsReservated: Restaurants[]=[];
-public elSelect:string="Todas";
-  constructor(public dialog: MatDialog,
-              private loginService: ServiceLoginService,
-              private reservationService: ServiceReservationsService,
-              private restaurantService: ServiceRestaurantService
-              ) {
-    this.customerId = this.loginService.userCustomer.customer_id
-    this.reservations = []
-    
+
+  public select:any[] = [
+    {
+      name: "Todas",
+      value: "todas"
+    },
+    {
+      name: "Confirmadas",
+      value: "Reservada"
+    },
+    {
+      name: "Rechazadas",
+      value: "Rechazadas"
+    },
+    {
+      name: "Canceladas",
+      value: "Cancelada por cliente"
+    }
+  ]
+  public elSelect:string="todas";
+  public reservations:Reservations[] = [];
+  public customerId:number = this.loginService.userCustomer.customer_id;
+  public changedMonth:string;
+  public changedDayName:string;
+  public restaurantsReservated: Restaurants[]=[];
+  constructor(
+    public dialog: MatDialog,
+    private loginService: ServiceLoginService,
+    private reservationService: ServiceReservationsService,
+    private restaurantService: ServiceRestaurantService
+  ) {
     this.reservationService.getReservationClient(this.customerId).subscribe((data:any) =>{     
       for(let i = 0; i < data.data.length; i++){
         this.restaurantService.getRestaurant(data.data[i].restaurant_id).subscribe((data2:any) =>{     
           let reservation:Reservations
-          console.log(data2.data[0]);
           this.restaurantsReservated.push(data2.data[0])
-          
-          console.log(this.restaurantsReservated);
           this.reservationService.reservation = data.data[i]
           switch (data.data[i].dayname){
             case "Sun":
@@ -98,76 +112,54 @@ public elSelect:string="Todas";
               this.changedMonth = "Diciembre";
               break;        
           }        
-          reservation = new Reservations(data.data[i].reservation_id,
-          data.data[i].customer_id,
-          data.data[i].restaurant_id,
-          data.data[i].table_id,
-          data.data[i].pax,
-          data.data[i].day_name,
-          data.data[i].day,
-          data.data[i].month,
-          data.data[i].year,
-          data.data[i].hour,
-          data.data[i].shift_id,
-          data.data[i].comments,
-          data.data[i].status,
-          data.data[i].customer_name,
-          data.data[i].customer_phone)
+          reservation = new Reservations(
+            data.data[i].reservation_id,
+            data.data[i].customer_id,
+            data.data[i].restaurant_id,
+            data.data[i].table_id,
+            data.data[i].pax,
+            data.data[i].day_name,
+            data.data[i].day,
+            data.data[i].month,
+            data.data[i].year,
+            data.data[i].hour,
+            data.data[i].shift_id,
+            data.data[i].comments,
+            data.data[i].status,
+            data.data[i].customer_name,
+            data.data[i].customer_phone
+            )
           reservation.restaurantName = data2.data[0].name
           reservation.changedDayName = this.changedDayName
           reservation.changedMonth = this.changedMonth
 
-        this.reservations.push(reservation)
-
-        })
-      }
-    })
-    console.log(this.reservations);
-   }
-  ngOnInit(): void {
+        this.reservations.push(reservation);
+  });}});}
+  ngOnInit() {
   }
-  
   public deleteReservation(id_reservation:number){
-    let resultado =""
-    console.log(id_reservation);
-    
-    
-    for(let i = 0; i < this.reservations.length; i++){
-      if(this.reservations[i].reservation_id == id_reservation){
-        this.reservations.splice(i,1)
-        resultado = "si"
+    let resultado ="";
+    for(let i = 0; i < this.reservations.length; i++) {
+      if(this.reservations[i].reservation_id == id_reservation) {
+        this.reservations.splice(i,1);
+        resultado = "si";
       }else{
-        resultado = "no"
+        resultado = "no";
       }
     }
-    return resultado
+    return resultado;
   }
-
   openDialog(asd) {
-    console.log(asd);
     this.reservationService.reservation = asd;    
-    
     const dialogRef = this.dialog.open(RejectReservationClientComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-
-   
+    dialogRef.afterClosed().subscribe();
   }
-  cambiarSelect(estado){
-    console.log(estado.value)
-    this.elSelect=estado.value;
+  cambiarSelect(select:any){
+    this.elSelect = select.value;
   }
-
   modalRest(restaurant){
     this.restaurantService.restauranteMapa=restaurant;
     const dialogRef = this.dialog.open(InfoRestaurantComponent);
     dialogRef.componentInstance.restaurant=restaurant;
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-
-  }
-
-}
+    dialogRef.afterClosed().subscribe();
+}}
