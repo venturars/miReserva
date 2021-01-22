@@ -85,6 +85,7 @@
       margin-top: 10px;
       display: flex;
       align-items: center;
+      justify-content: space-around;
       border-radius: var(--borderRadiusM);
       background-color: var(--primaryColorOpposite);
       overflow: hidden;
@@ -95,6 +96,12 @@
           white-space: nowrap;
           text-overflow: ellipsis;
           cursor: pointer;
+          & > input {
+            margin-left: 10px;
+          }
+          & > button {
+            outline: none;
+          }
           &:first-child {
               min-width: 150px;
               text-align: center;
@@ -108,6 +115,16 @@
               min-width: 150px;
               text-align: center;
 }}}}
+.first {
+  background-color: var(--secundaryColor)!important;
+  & > div {
+    display: flex;
+    & > .lctl-cellInput-extraLarge {
+      &:active {
+        border-color: var(--primaryColor)!important;
+        color: var(--primaryColor)!important;
+      }
+}}}
 .header {
   position: sticky;
   top: 66px;
@@ -116,74 +133,7 @@
   cursor: default !important;
   & > div {
       cursor: default !important;
-      &:nth-child(4) {
-        width: 150px;
-}}}
-.lctl-font-title {
-  margin-top: 20px;
-  text-align: center;
-}
-//-----//-----//-----//-----//-----
-//-----Tables-----
-//-----//-----//-----//-----//-----
-.tables, .headerr {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: min(calc(100% - 20px), 1420px);
-}
-.headerr {
-  background-color: var(--primaryColorOpposite);
-}
-.rows {
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  margin: auto;
-  & > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 100%;
-    & > button {
-}}}
-@media screen and(max-width: 922px) {
-  .tables, .header {
-  }
-  .header {
-  }
-  .rows {
-    & > div {
-      transform: translateX(-10px);
-      & > button {
-}}}}
-@media screen and (max-width: 600px) {
-  .tables, .header {
-  }
-  .header {
-  }
-  .rows {
-    & > div {
-      transform: translateX(0px);
-      & > button {
-}}}}
-@media screen and (max-width: 483px) {
-  .tables, .header {
-  }
-  .header {
-  }
-  .rows {
-    & > div {
-      font-size: var(--fontSizeS);
-      & > button {
-}}}}
+}}
 //-----//-----//-----//-----//-----
 //-----Not-----
 //-----//-----//-----//-----//-----
@@ -224,4 +174,3 @@
     & > button {
       width: 120px;
 }}}
-//-----Especial elements-----

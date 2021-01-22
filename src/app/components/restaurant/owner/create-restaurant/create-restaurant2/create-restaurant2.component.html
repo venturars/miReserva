@@ -6,7 +6,7 @@
 
 <div class="content">
 
-    <form class="rows header" #tableForm="ngForm"  (ngSubmit)="(tableForm.invalid) ? 'malll' : onSubmit(tableForm)">
+    <form class="rows first" #tableForm="ngForm"  (ngSubmit)="(tableForm.invalid) ? 'malll' : onSubmit(tableForm)">
         
         <div>
             Nombre
@@ -21,30 +21,30 @@
             <input class="lctl-cellInput-large" type="text" autocomplete="off"
                 placeholder="{{tableForm.submitted && paxmin.invalid ?  'PAX min' : 'PAX min'}}"           
                 name="table_min" [(ngModel)]="table.table_min" #paxmin="ngModel" 
-                [ngClass]="{'invalidform':tableForm.submitted && paxmin.invalid }" required>
+                [ngClass]="{'invalidForm':tableForm.submitted && paxmin.invalid }" required>
         </div>
 
         <div>
             PAX max
             <input class="lctl-cellInput-large" type="text" autocomplete="off"
-                placeholder="{{tableForm.submitted && paxmax.invalid ?  'PAX max ' : 'PAX max'}}"           
+                placeholder="{{tableForm.submitted && paxmax.invalid ?  'PAX max' : 'PAX max'}}"           
                 name="table_max" [(ngModel)]="table.table_max" #paxmax="ngModel" 
                 [ngClass]="{'invalidForm':tableForm.submitted && paxmax.invalid }" required>
         </div>
 
         <div>
-            <button type="submit" class="lctl-cellInput-extraLarge specialButton">Añadir mesa</button>
+            <button type="submit" class="lctl-cellInput-extraLarge">Añadir mesa</button>
         </div>
     
     </form>
-        
+    <div class="lctl-br"></div>
 </div>
 
 <ng-container *ngIf="this.servicetable.table[0]!=null; else not">
 
     <div class="content">
 
-        <div class="rows">
+        <div class="rows header">
     
             <div class="lctl-font-bold">Mesa</div>
             <div class="lctl-font-bold">PAX Min</div>
