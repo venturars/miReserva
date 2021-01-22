@@ -46,7 +46,14 @@
                         <div class="lctl-font-paragraph">{{reservations.table_id}}</div>
                         <div class="lctl-font-paragraph">{{reservations.customer_name}}</div>
                         <div class="lctl-font-paragraph">{{reservations.comments}}</div>
-                        <div class="lctl-font-paragraph">{{reservations.status}}</div>
+                        <div class="lctl-font-paragraph" *ngIf="reservations.status!='Cancelada por cliente';else cancelar">
+                            <button [ngClass]="reservations.status=='Reservada'? 'lctl-warnButtonOpposite-s-selected reservado' : 'lctl-warnButtonOpposite-s-selected eliminado'">{{reservations.status}}</button>
+                        </div>
+                        <ng-template #cancelar>
+                            <div class="lctl-font-paragraph">
+                                <button [ngClass]="reservations.status=='Cancelada por cliente'? 'lctl-warnButtonOpposite-s-selected cancelado' : 'lctl-warnButton-s'">Cancelada</button>
+                            </div>
+                        </ng-template>
                     </div>
             </ng-container>
         </ng-container>
@@ -62,7 +69,14 @@
                         <div class="lctl-font-paragraph">{{reservations.table_id}}</div>
                         <div class="lctl-font-paragraph">{{reservations.customer_name}}</div>
                         <div class="lctl-font-paragraph">{{reservations.comments}}</div>
-                        <div class="lctl-font-paragraph">{{reservations.status}}</div>
+                        <div class="lctl-font-paragraph" *ngIf="reservations.status!='Cancelada por cliente';else cancelar">
+                            <button [ngClass]="reservations.status=='Reservada'? 'lctl-warnButtonOpposite-s-selected reservado' : 'lctl-warnButtonOpposite-s-selected eliminado'">{{reservations.status}}</button>
+                        </div>
+                        <ng-template #cancelar>
+                            <div class="lctl-font-paragraph">
+                                <button [ngClass]="reservations.status=='Cancelada por cliente'? 'lctl-warnButtonOpposite-s-selected cancelado' : 'lctl-warnButton-s'">Cancelada</button>
+                            </div>
+                        </ng-template>
                     </div>
                 </ng-container>
             </ng-container>
@@ -79,7 +93,14 @@
                         <div class="lctl-font-paragraph">{{reservationsConfirmed[i].table_id}}</div>
                         <div class="lctl-font-paragraph">{{reservationsConfirmed[i].customer_name}}</div>
                         <div class="lctl-font-paragraph">{{reservationsConfirmed[i].comments}}</div>
-                        <div class="lctl-font-paragraph">{{reservationsConfirmed[i].status}}</div>
+                        <div class="lctl-font-paragraph" *ngIf="reservations.status!='Cancelada por cliente';else cancelar">
+                            <button [ngClass]="reservations.status=='Reservada'? 'lctl-warnButtonOpposite-s-selected reservado' : 'lctl-warnButtonOpposite-s-selected eliminado'">{{reservations.status}}</button>
+                        </div>
+                        <ng-template #cancelar>
+                            <div class="lctl-font-paragraph">
+                                <button [ngClass]="reservations.status=='Cancelada por cliente'? 'lctl-warnButtonOpposite-s-selected cancelado' : 'lctl-warnButton-s'">Cancelada</button>
+                            </div>
+                        </ng-template>
                     </div>
                 </ng-container>
             </ng-container>
@@ -96,7 +117,14 @@
                         <div class="lctl-font-paragraph">{{reservationsRejected[i].table_id}}</div>
                         <div class="lctl-font-paragraph">{{reservationsRejected[i].customer_name}}</div>
                         <div class="lctl-font-paragraph">{{reservationsRejected[i].comments}}</div>
-                        <div class="lctl-font-paragraph">{{reservationsRejected[i].status}}</div>
+                        <div class="lctl-font-paragraph" *ngIf="reservations.status!='Cancelada por cliente';else cancelar">
+                            <button [ngClass]="reservations.status=='Reservada'? 'lctl-warnButtonOpposite-s-selected reservado' : 'lctl-warnButtonOpposite-s-selected eliminado'">{{reservations.status}}</button>
+                        </div>
+                        <ng-template #cancelar>
+                            <div class="lctl-font-paragraph">
+                                <button [ngClass]="reservations.status=='Cancelada por cliente'? 'lctl-warnButtonOpposite-s-selected cancelado' : 'lctl-warnButton-s'">Cancelada</button>
+                            </div>
+                        </ng-template>
                     </div>
                 </ng-container>
             </ng-container>
@@ -113,7 +141,14 @@
                         <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].table_id}}</div>
                         <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].customer_name}}</div>
                         <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].comments}}</div>
-                        <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].status}}</div>
+                        <div class="lctl-font-paragraph" *ngIf="reservations.status!='Cancelada por cliente';else cancelar">
+                            <button [ngClass]="reservations.status=='Reservada'? 'lctl-warnButtonOpposite-s-selected reservado' : 'lctl-warnButtonOpposite-s-selected eliminado'">{{reservations.status}}</button>
+                        </div>
+                        <ng-template #cancelar>
+                            <div class="lctl-font-paragraph">
+                                <button [ngClass]="reservations.status=='Cancelada por cliente'? 'lctl-warnButtonOpposite-s-selected cancelado' : 'lctl-warnButton-s'">Cancelada</button>
+                            </div>
+                        </ng-template>
                     </div>
                 </ng-container>
             </ng-container>

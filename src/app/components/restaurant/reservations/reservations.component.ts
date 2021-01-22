@@ -175,29 +175,7 @@ export class ReservationsRestaurantComponent implements OnInit {
     this.selectedDayName = currentDayName;
     this.selectedMonth = currentMonth;
     this.selectedYear = currentYear;
-    switch (this.selectedDayName) {
-      case "Sun":
-        this.changedDayName = "Domingo";
-        break;
-      case "Mon":
-        this.changedDayName = "Lunes";
-        break;
-      case "Tue":
-        this.changedDayName = "Martes";
-        break;
-      case "Wed":
-        this.changedDayName = "Miercoles";
-        break;
-      case "Thu":
-        this.changedDayName = "Jueves";
-        break;
-      case "Fri":
-        this.changedDayName = "Viernes";
-        break;
-      case "Sat":
-        this.changedDayName = "Sabado";
-        break;        
-    }
+    this.changeDayName();
     switch (this.selectedMonth) {
       case "Jan":
         this.changedMonth = "Enero";
@@ -243,17 +221,44 @@ export class ReservationsRestaurantComponent implements OnInit {
   }}
   public modalStatus(data12:any) {
     this.calendarService.reserva = data12
-    const dialogRef = this.dialog.open(ModalRestauranteComponent);
+    const dialogRef = this.dialog.open(ModalRestauranteComponent,{panelClass: ['animate__animated','animate__zoomIn'], hasBackdrop: false});
+    
     dialogRef.afterClosed().subscribe();
   }
   public modalNew() {
     const dialogRef = this.dialog.open(ModalReservaManualComponent);
     dialogRef.afterClosed().subscribe();
   }
+  public changeDayName(){
+    switch (this.selectedDayName) {
+      case "Sun":
+        this.changedDayName = "Domingo";
+        break;
+      case "Mon":
+        this.changedDayName = "Lunes";
+        break;
+      case "Tue":
+        this.changedDayName = "Martes";
+        break;
+      case "Wed":
+        this.changedDayName = "Miercoles";
+        break;
+      case "Thu":
+        this.changedDayName = "Jueves";
+        break;
+      case "Fri":
+        this.changedDayName = "Viernes";
+        break;
+      case "Sat":
+        this.changedDayName = "Sabado";
+        break;        
+    }
+  }
   public calendar(){
     const dialogRef = this.dialog.open(CalendarComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.selectedDayName = this.calendarService.getNewDate().dayName;
+      this.changeDayName();
       this.selectedDayNum = this.calendarService.getNewDate().dayNum;
       this.selectedMonth = this.calendarService.getNewDate().month;
       this.selectedYear = this.calendarService.getNewDate().year;

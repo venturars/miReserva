@@ -58,6 +58,7 @@ export class ModalReservaManualComponent implements OnInit {
               private tablesService: ServiceTablesService,
               private loginService: ServiceLoginService,
               private restaurantService: ServiceRestaurantService
+              
               ) {
 
                 if(this.loginService.users.restaurant_id != null){
@@ -234,12 +235,12 @@ export class ModalReservaManualComponent implements OnInit {
   }
 
   public asdd(asd:number){
-    console.log(asd);
+   
     
     if (this.reservations.length != 0){
       for (let i = 0; i < this.reservations.length; i++){
         // this.selectedTables = []
-      console.log(this.selectedTables);
+     
         
         if(this.reservations[i].day == this.selectedDayNum &&
           this.reservations[i].day_name == this.selectedDayName && 
@@ -248,16 +249,17 @@ export class ModalReservaManualComponent implements OnInit {
           this.reservations[i].shift_id == asd){
           
           this.reservations2.push(this.reservations[i])     
-          console.log("asd");
-               
-        }
-        // else{
-        //   for (let i = 0; i < this.tables.length; i++){
-        //       this.selectedTables.push(this.tables[i])
-        //   }
-        //   console.log(this.selectedTables);
           
-        // }
+        }       
+        
+        else{
+          for (let i = 0; i < this.tables.length; i++){
+              this.selectedTables.push(this.tables[i])
+          }
+          
+          
+        }
+        
       }
       for (let j = 0; j < this.tables.length; j++){
         let i = 0;
@@ -274,9 +276,9 @@ export class ModalReservaManualComponent implements OnInit {
 
     }
 
-console.log(this.reservations2);
 
-console.log(this.availableTables);
+
+
 
 
 
@@ -291,7 +293,9 @@ console.log(this.availableTables);
       }
     }    
     this.selectedFullName = this.selectedName + " " + this.selectedSurname
-
+if (this.selectedComments==undefined){
+  this.selectedComments=" ";
+}
     let reservation = new Reservations(0,
                                        1,
                                        this.restaurantId, 
