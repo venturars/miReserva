@@ -18,9 +18,10 @@
         justify-content: flex-end;
         width: 100%;
         height: 60px;
+        padding-right: 20px;
         & > select{
             font-size: 14px;
-            color: var(--secundaryColorPush);
+            color: var(--secundaryColorOpposite);
             border: solid 1px var(--secundaryColorPush);
 }}}
 //----------//----------//----------//----------//----------
@@ -37,8 +38,8 @@
     border-radius: var(--borderRadiusL);
     & > .img {
         margin: 5px;
-        width: 150px;
-        & > .lctl-photoProfile-m {
+        width: 200px;
+        & > .lctl-photoProfile-l {
             border-color: var(--secundaryColorPush);
             cursor: pointer;
         }

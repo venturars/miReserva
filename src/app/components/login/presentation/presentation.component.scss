@@ -1,0 +1,12 @@
+div {
+    background-color: var(--secundaryColor);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.page {
+    background-color: var(--primaryColorOpposite);
+    width: min(calc(100% - 20px), 1420px);
+}

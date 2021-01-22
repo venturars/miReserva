@@ -12,33 +12,37 @@ export class ContactUsComponent implements OnInit {
       nombre: "Carolly",
       apellido1: "García",
       apellido2: "Morel",
-      profesion: "Publicidad",
+      profesion: "UX/UI Design",
       photo: "./assets/fotoCarolly.jpg",
-      linkedIn: "https://www.linkedin.com/in/carolly-garc%C3%ADa-36088b119/"
+      linkedIn: "https://www.linkedin.com/in/carolly-garc%C3%ADa-36088b119/",
+      linkedInPhoto: "assets/CarollyLink.svg"
     },
     {
       nombre: "Ventura",
       apellido1: "Rodríguez",
       apellido2: "Serrano",
-      profesion: "UX/UI",
+      profesion: "UX/UI Developer",
       photo: "./assets/fotoVentu.jpg",
-      linkedIn: "https://www.linkedin.com/in/ventura-rodr%C3%ADguez-255009199/"
+      linkedIn: "https://www.linkedin.com/in/ventura-rodr%C3%ADguez-255009199/",
+      linkedInPhoto: "assets/VentuLink.svg"
     },
     {
       nombre: "Jesús",
       apellido1: "Cano",
       apellido2: "Padrino",
-      profesion: "Developer",
+      profesion: "Full-Stack Developer",
       photo: "./assets/fotoJesus.jpg",
-      linkedIn: "https://www.linkedin.com/in/jes%C3%BAs-cano-82718618/"
+      linkedIn: "https://www.linkedin.com/in/jes%C3%BAs-cano-82718618/",
+      linkedInPhoto: "assets/JesusLink.svg"
     },
     {
       nombre: "Juan",
       apellido1: "Gianina",
       apellido2: "",
-      profesion: "Developer",
+      profesion: "Full-Stack Developer",
       photo: "./assets/fotoJuan.jpg",
-      linkedIn: "https://www.linkedin.com/in/juan-gianina-3495811b8/"
+      linkedIn: "https://www.linkedin.com/in/juan-gianina-3495811b8/",
+      linkedInPhoto: "assets/JuanLink.svg"
     }
   ]
   constructor(

@@ -35,7 +35,11 @@
     <input class="lctl-input-l-extraLarge password" name="password2" type="password" autocomplete="off"
       [(ngModel)]="checkPassword2" #password2="ngModel" placeholder="Confirmar contraseña"
       minlength="6" [ngClass]="{'invalidForm':userForm.submitted && password2.invalid}">
-    <div class="messageInvalidForm">{{message}}</div>
+    <div class="messageInvalidform">
+      <div>
+        {{message}}
+      </div>
+    </div>
     <div class="message2">Confirma tu contraseña</div>
     <input class="lctl-input-l-extraLarge password" name="password" type="password" autocomplete="off"
       [(ngModel)]="pass" #password="ngModel" placeholder="Contraseña"

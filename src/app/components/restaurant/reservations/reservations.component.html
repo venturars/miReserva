@@ -1,254 +1,135 @@
 <!-- <ng-container *ngIf="reservations == []"></ng-container>
     <h3 class="lctl-centerElements">No tienes ninguna reserva activa</h3>    -->
-    <div class="lctl-br space"></div>
-    <div class="lctl-br space"></div>  
-
-    <div class="content">
-<div class="table">
     
-
-    <div>
-        
-        <div class="lctl-leftElements">
-        <button  class="lctl-button-m " (click)="modalNew()" >Reserva Manual</button>
+    <div class="filters">
+        <div class="left">
+            <button  class="lctl-buttonOpposite-m" (click)="modalNew()" >Reserva Manual</button>
         </div>
-        <div class="lctl-rightElements">
-        <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="value" [value]='0'>
-            <!-- ng options -->
-            
-            <option value="0" >Todas</option>
-            <option value="1">Confirmada</option>
-            <option value="2">Rechazada</option>
-            <option value="3">Cancelada por cliente</option>
-        </select>
-        <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="service" [value]='0'>
-            <option value="0">Todos</option>
-            <option value="1">Desayuno</option>
-            <option value="2">Almuerzo</option>
-            <option value="3">Cena</option>
-          </select>
-          <button  class="" (click)="calendar()">
-              <p>Calendario</p>
-            <label id="one">
-                <p></p>
-            </label>
-        </button>
-          
-        </div>  
+        <div class="right">
+            <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="value" [value]='0'>
+                <option value="0" >Estado</option>
+                <option value="1">Confirmadas</option>
+                <option value="2">Rechazadas</option>
+                <option value="3">Canceladas</option>
+            </select>
+            <select name="select" class="lctl-cellSelect-extraLarge" [(ngModel)]="service" [value]='0'>
+                <option value="0">Turno</option>
+                <option value="1">Desayuno</option>
+                <option value="2">Almuerzo</option>
+                <option value="3">Cena</option>
+            </select>
+            <button class="lctl-cellButton" (click)="calendar()">
+                {{changedDayName}}, {{selectedDayNum}} de {{changedMonth}} {{selectedYear}}
+            </button>
+        </div>
     </div>
-    <div class="lctl-br space"></div>
-    <div class="lctl-br"></div>
-    <div class="lctl-br space"></div>
-    <div class="title">
-        <h2>{{changedDayName}}, {{selectedDayNum}} de {{changedMonth}} {{selectedYear}}</h2>
+    <div class="lctl-br" style="margin-bottom: 25px;"></div>
 
-    <ng-container *ngIf="value == 0">
-        <h3>TODAS</h3>
-    </ng-container>
-    <ng-container *ngIf="value == 1">
-        <h3>CONFIRMADAS</h3>
-    </ng-container>
-    <ng-container *ngIf="value == 2">
-        <h3>RECHAZADAS</h3>
-    </ng-container>
-    <ng-container *ngIf="value == 3">
-        <h3>CANCELADAS POR EL CLIENTE</h3>
-    </ng-container>
+<div class="content">
 
-    </div>
 
-    <div class="rows">
-        <p class="lctl-font-bold">Hora</p>
-        <p class="lctl-font-bold">Nombre</p>
-        <p class="lctl-font-bold">Mesa</p>
-        <p class="lctl-font-bold">Pax</p>
-        <p class="lctl-font-bold">Observaciones</p>
-        <p class="lctl-font-bold">Estado</p>
+    <div class="rows header">
+        <div class="lctl-font-bold">Hora</div>
+        <div class="lctl-font-bold">Pax</div>
+        <div class="lctl-font-bold">Mesa</div>
+        <div class="lctl-font-bold">Nombre</div>
+        <div class="lctl-font-bold">Observaciones</div>
+        <div class="lctl-font-bold">Estado</div>
     </div>
     <!-- FILTRO TODAS LAS RESERVAS Y TODOS LOS TURNOS -->
     <ng-container *ngFor="let reservations of Allreservation; let i = index">
         <ng-container *ngIf="reservations.day == selectedDayNum && reservations.month == selectedMonth && reservations.year == selectedYear">
-           
-        <ng-container *ngIf="value == 0 && service == 0">
-            
-                <div class="rows2" (click)="modalStatus(reservations)">
-                    <p class="lctl-font-paragraph">{{reservations.hour}}</p>
-                    <p class="lctl-font-paragraph">{{reservations.customer_name}}</p>
-                    <p class="lctl-font-paragraph">{{reservations.table_id}}</p>
-                    <p class="lctl-font-paragraph">{{reservations.pax}}</p>
-                    <p class="lctl-font-paragraph">{{reservations.comments}}</p>
-                    <p class="lctl-font-paragraph">{{reservations.status}}</p>
-                <ng-container> 
-                    <p> 
-                    <!-- <button (click)="modalStatus()" class="lctl-warnButton-s buttonLib">Liberada</button> -->
-                    <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonCan">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonRes">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonSen">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonAu">Reservada</button> -->
-                    </p>
-                </ng-container>
-                </div>
-                <div class="lctl-br"></div>
-    </ng-container>
-    </ng-container>
-</ng-container>
-
-<!-- TODAS LAS RESERVAS Y DISTINTOS TURNOS-->
-
-<!-- FILTRO TODAS LAS RESERVAS Y TODOS LOS TURNOS -->
-<ng-container *ngFor="let reservations of Allreservation; let i = index">
-    <ng-container *ngIf="reservations.day == selectedDayNum && reservations.month == selectedMonth && reservations.year == selectedYear">
-       
-    <ng-container *ngIf="value == 0 && service != 0">
-        <!-- DESAYUNO -->
-        <ng-container *ngIf="service == 1 && reservations.service == 'Desayuno' || service == 2 && reservations.service == 'Almuerzo' || service == 3 && reservations.service == 'Cena'">
-            <div class="rows2" (click)="modalStatus(reservationsConfirmed[i])">
-                <p class="lctl-font-paragraph">{{reservations.hour}}</p>
-                <p class="lctl-font-paragraph">{{reservations.customer_name}}</p>
-                <p class="lctl-font-paragraph">{{reservations.table_id}}</p>
-                <p class="lctl-font-paragraph">{{reservations.pax}}</p>
-                <p class="lctl-font-paragraph">{{reservations.comments}}</p>
-            <ng-container> 
-                <p> 
-                <!-- <button (click)="modalStatus()" class="lctl-warnButton-s buttonLib">Liberada</button> -->
-                <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonCan">Reservada</button>
-                <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonRes">Reservada</button>
-                <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonSen">Reservada</button>
-                <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonAu">Reservada</button> -->
-                </p>
+            <ng-container *ngIf="value == 0 && service == 0">
+                    <div class="rows" (click)="modalStatus(reservations)">
+                        <div class="lctl-font-paragraph">{{reservations.hour}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.pax}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.table_id}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.customer_name}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.comments}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.status}}</div>
+                    </div>
             </ng-container>
-            </div>
-            <div class="lctl-br"></div>
+        </ng-container>
     </ng-container>
-</ng-container>
-</ng-container>
-</ng-container>
-
-
+    <!-- TODAS LAS RESERVAS Y DISTINTOS TURNOS-->
+    <ng-container *ngFor="let reservations of Allreservation; let i = index">
+        <ng-container *ngIf="reservations.day == selectedDayNum && reservations.month == selectedMonth && reservations.year == selectedYear">
+            <ng-container *ngIf="value == 0 && service != 0">
+                <ng-container *ngIf="service == 1 && reservations.service == 'Desayuno' || service == 2 && reservations.service == 'Almuerzo' || service == 3 && reservations.service == 'Cena'">
+                    <div class="rows" (click)="modalStatus(reservationsConfirmed[i])">
+                        <div class="lctl-font-paragraph">{{reservations.hour}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.pax}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.table_id}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.customer_name}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.comments}}</div>
+                        <div class="lctl-font-paragraph">{{reservations.status}}</div>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+    </ng-container>
     <!-- FILTRO RESERVA CONFIRMADA Y LOS TRES TURNOS -->
     <ng-container *ngFor="let reservations of reservationsConfirmed; let i = index">
         <ng-container *ngIf="reservationsConfirmed[i].day == selectedDayNum && reservationsConfirmed[i].month == selectedMonth && reservationsConfirmed[i].year == selectedYear">
-        <ng-container *ngIf="value == 1">
-            <!-- DESAYUNO -->
-            <ng-container *ngIf="service == 1 && reservationsConfirmed[i].service == 'Desayuno' || service == 2 && reservationsConfirmed[i].service == 'Almuerzo' || service == 3 && reservationsConfirmed[i].service == 'Cena'">
-                <div class="rows2" (click)="modalStatus(reservationsConfirmed[i])">
-                    <p class="lctl-font-paragraph">{{reservationsConfirmed[i].hour}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsConfirmed[i].customer_name}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsConfirmed[i].table_id}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsConfirmed[i].pax}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsConfirmed[i].comments}}</p>
-                <ng-container> 
-                    <p> 
-                    <!-- <button (click)="modalStatus()" class="lctl-warnButton-s buttonLib">Liberada</button> -->
-                    <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonCan">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonRes">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonSen">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonAu">Reservada</button> -->
-                    </p>
+            <ng-container *ngIf="value == 1">
+                <ng-container *ngIf="service == 1 && reservationsConfirmed[i].service == 'Desayuno' || service == 2 && reservationsConfirmed[i].service == 'Almuerzo' || service == 3 && reservationsConfirmed[i].service == 'Cena'">
+                    <div class="rows" (click)="modalStatus(reservationsConfirmed[i])">
+                        <div class="lctl-font-paragraph">{{reservationsConfirmed[i].hour}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsConfirmed[i].pax}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsConfirmed[i].table_id}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsConfirmed[i].customer_name}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsConfirmed[i].comments}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsConfirmed[i].status}}</div>
+                    </div>
                 </ng-container>
-                </div>
-                <div class="lctl-br"></div>
+            </ng-container>
         </ng-container>
     </ng-container>
-    </ng-container>
-</ng-container>
-
     <!-- FILTRO RESERVA RECHAZADA Y LOS TRES TURNOS -->
     <ng-container *ngFor="let reservations of reservationsRejected; let i = index">
         <ng-container *ngIf="reservationsRejected[i].day == selectedDayNum && reservationsRejected[i].month == selectedMonth && reservationsRejected[i].year == selectedYear">
-        <ng-container *ngIf="value == 2">
-            <!-- DESAYUNO -->
-            <ng-container *ngIf="service == 1 && reservationsRejected[i].service == 'Desayuno' || service == 2 && reservationsRejected[i].service == 'Almuerzo' || service == 3 && reservationsRejected[i].service == 'Cena'">
-                <div class="rows2" (click)="modalStatus()">
-                    <p class="lctl-font-paragraph">{{reservationsRejected[i].hour}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsRejected[i].customer_name}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsRejected[i].table_id}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsRejected[i].pax}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsRejected[i].comments}}</p>
-                <ng-container> 
-                    <p> 
-                    <!-- <button (click)="modalStatus()" class="lctl-warnButton-s buttonLib">Liberada</button> -->
-                    <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonCan">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonRes">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonSen">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonAu">Reservada</button> -->
-                    </p>
+            <ng-container *ngIf="value == 2">
+                <ng-container *ngIf="service == 1 && reservationsRejected[i].service == 'Desayuno' || service == 2 && reservationsRejected[i].service == 'Almuerzo' || service == 3 && reservationsRejected[i].service == 'Cena'">
+                    <div class="rows" (click)="modalStatus()">
+                        <div class="lctl-font-paragraph">{{reservationsRejected[i].hour}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsRejected[i].pax}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsRejected[i].table_id}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsRejected[i].customer_name}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsRejected[i].comments}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsRejected[i].status}}</div>
+                    </div>
                 </ng-container>
-                </div>
-                <div class="lctl-br"></div>
             </ng-container>
         </ng-container>
-        </ng-container>
     </ng-container>
-
     <!-- FILTRO RESERVA CANCELADA POR EL CLIENTE Y LOS TRES TURNOS -->
     <ng-container *ngFor="let reservations of reservationsCanceledByClient; let i = index">
         <ng-container *ngIf="reservationsCanceledByClient[i].day == selectedDayNum && reservationsCanceledByClient[i].month == selectedMonth && reservationsCanceledByClient[i].year == selectedYear">
-        <ng-container *ngIf="value == 3">
-            <!-- DESAYUNO -->
-            <ng-container *ngIf="service == 1 && reservationsCanceledByClient[i].service == 'Desayuno' || service == 2 && reservationsCanceledByClient[i].service == 'Almuerzo' || service == 3 && reservationsCanceledByClient[i].service == 'Cena'">
-                <div class="rows2" (click)="modalStatus()">
-                    <p class="lctl-font-paragraph">{{reservationsCanceledByClient[i].hour}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsCanceledByClient[i].customer_name}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsCanceledByClient[i].table_id}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsCanceledByClient[i].pax}}</p>
-                    <p class="lctl-font-paragraph">{{reservationsCanceledByClient[i].comments}}</p>
-                <ng-container> 
-                    <p> 
-                    <!-- <button (click)="modalStatus()" class="lctl-warnButton-s buttonLib">Liberada</button> -->
-                    <!-- <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonCan">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonRes">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonSen">Reservada</button>
-                    <button (click)="confirmReservation(reservationsYes[i].id_reservation)" class="lctl-button-m buttonAu">Reservada</button> -->
-                    </p>
+            <ng-container *ngIf="value == 3">
+                <ng-container *ngIf="service == 1 && reservationsCanceledByClient[i].service == 'Desayuno' || service == 2 && reservationsCanceledByClient[i].service == 'Almuerzo' || service == 3 && reservationsCanceledByClient[i].service == 'Cena'">
+                    <div class="rows" (click)="modalStatus()">
+                        <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].hour}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].pax}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].table_id}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].customer_name}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].comments}}</div>
+                        <div class="lctl-font-paragraph">{{reservationsCanceledByClient[i].status}}</div>
+                    </div>
                 </ng-container>
-                </div>
-                <div class="lctl-br"></div>
             </ng-container>
-        </ng-container>
         </ng-container>
     </ng-container>
 
-    </div>
-</div>
-
-
-<!-- RESERVAS POR CONFIRMAR PORQUE SON DE MAS DE 6/7 PAX -->
-<div class="content">
-     <div class="table">
-    <div class="title">
-    <h3>POR CONFIRMAR</h3>
-   </div>
-    <div class="rows">
-        <p class="lctl-font-bold">Hora</p>
-        <p class="lctl-font-bold">Nombre</p>
-        <p class="lctl-font-bold">Mesa</p>
-        <p class="lctl-font-bold">Pax</p>
-        <p class="lctl-font-bold">Observaciones</p>
-        <p class="lctl-font-bold">Estado</p>
-    </div>
-    <!-- <ng-container *ngFor="let reservation of reservations2; let i = index">
-        <ng-container *ngIf="value == 1 ">
-
-    <div class="rows2">
-            <p class="lctl-font-paragraph">{{reservations2[i].hour}}</p>
-            <p class="lctl-font-paragraph">{{reservations2[i].day}}</p>
-            <p class="lctl-font-paragraph">{{reservations2[i].table_id}}</p>
-            <p class="lctl-font-paragraph">{{reservations2[i].pax}}</p>
-            <p class="lctl-font-paragraph">{{reservations2[i].comments}}</p>
-            <p class="changesButton">
-            <button (click)="confirmReservation(reservationsNo[i].id_reservation)" class="lctl-buttonOpposite-s" >Confirmar</button>
-            <button (click)="rejectReservation(reservationsNo[i].id_reservation)" class="lctl-warnButton-s" >Rechazar</button>
-            </p>
-    </div>
-    <div class="lctl-br"></div>
-</ng-container>
-
-</ng-container> -->
-
-</div> 
-
+    <!-- RESERVAS POR CONFIRMAR PORQUE SON DE MAS DE 6/7 PAX -->
+    <!-- <div class="lctl-br" style="margin-top: 30px;"></div>
+    <div class="lctl-font-title">POR CONFIRMAR</div>
+    <div class="rows header">
+        <div class="lctl-font-bold">Hora</div>
+        <div class="lctl-font-bold">Pax</div>
+        <div class="lctl-font-bold">Mesa</div>
+        <div class="lctl-font-bold">Nombre</div>
+        <div class="lctl-font-bold">Observaciones</div>
+        <div class="lctl-font-bold">Estado</div>
+    </div> -->
 
 </div>
-
-

@@ -90,6 +90,7 @@
                     <option>Argentina</option>
                 </select>
             </div> 
+            <div class="lctl-font-comment message"><span class="lctl-font-bold">ATENCION! </span> este email y contraseña deben ser diferentes a los que creaste como propietario</div>      
             <div>  
                 <input type="text" class="lctl-input-m-extraLarge" placeholder="Email"
                     placeholder="{{restForm.submitted && mail.invalid ?  'Email obligatorio' : 'Email'}}"
@@ -101,9 +102,7 @@
                     name="password" [(ngModel)]="users.password" #password="ngModel" id="password"
                     [ngClass]="{'invalidForm':restForm.submitted && password.invalid }" required>
             </div> 
-             
-            <div class="lctl-font-comment message"><span class="lctl-font-bold">ATENCION!</span> este email y contraseña deben ser diferentes a los que creaste como propietario</div>      
-                
+                             
         </div>
 
         <div class="pass">

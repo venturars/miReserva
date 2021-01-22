@@ -1,244 +1,107 @@
-.content{
-   max-width: 1000px;
-    min-width: 300px;
+//----------//----------//----------//----------//----------
+//----------Filters nav-----
+//----------//----------//----------//----------//----------
+.filters {
+    position: sticky;
+    top: 0;
+    width: min(calc(100% -20px), 1000px);
     height: max-content;
     display: flex;
     margin: auto;
-    flex-direction: column;
+    align-items: space-between;
     background-color: var(--secundaryColor);
-    border-radius: var(--borderRadiusM);
-
-    /*  div padre 1    */
-
-    & > div:nth-child(1){
+    padding-right: 15px;
+    padding-left: 15px;
+    & > .left {
         display: flex;
-        flex-direction: column;
-       
-        
-            & > div:nth-child(1){
-                display: flex;
-                align-content: center;
-                height: 50px;
-                justify-content: center;
-               
-
-               
-
-                 & > div:nth-child(1){
-                  
-                   align-items: center;
-               
-                    & > button{
-                        font-size: 14px;
-                        width: 200px;
-                        height: 30px;
-                    }
-                    }
-
-                 & > div:nth-child(2){
-                        display: flex;
-                        width: 383px;
-                        align-items: center;
-                        justify-content: center;
-                        margin: auto;
-                       
-
-                        & > select{
-                        font-size: 14px;    
-                        height: 30px;
-                        width: 130px;
-                        }
-
-                        & > button{
-                            background-color: transparent;
-                            border: none;  
-                            height: 30px;
-                            width: 110px;
-                           
-                            display: flex;
-                            justify-content: center;
-                                & > p{
-                                    
-                                    margin-top: 5px;
-                                    font-size: 14px; 
-                                    text-align: left;
-                                  
-                                }
-
-                            }
-                }
-            }
-
-            & > .title{
-                width: 100%;
-                height: 40px;
-                margin: auto;
-                display: flex;
-               
-                
-                & > h3{
-                    display: flex;
-                    margin: auto;
-                    font-size: 14px;
-                    
-                } 
-            }
-
-            & > .rows{
-                width: 100%;
-                height: 40px;
-                display: flex;
-                flex-direction: row;
-                align-content: center;
-
-                
-
-                & > p{
-                    width: 140px;                   
-                    font-size: 14px;
-                    width: 140px;
-                    margin: auto;
-                    text-align: center;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                  
-                }
-            }
-
-            & > .rows2{
-                width: 100%;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                flex-direction: row;    
-                
-
-
-                & > p{
-                    font-size: 14px;
-                    width: 140px;
-                    margin: auto;
-                    text-align: center;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                   
-                
-                } 
-
-    
-            }
-
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 60px;
+        & >.lctl-buttonOpposite-m {
+            width: 170px;
         }
-
-
-.buttonLib{
-background-color:#E4E4E5;
-color: #1C1B1B;
-font-weight: var(--fontWidthLight);    
-}
-.buttonCan{
-    background-color:#FFB3AF;
-    color: #1C1B1B;
-    font-weight: var(--fontWidthLight);
-}
-.buttonRes{
-    background-color:#BFFFD1;
-    color: #1C1B1B;
-    font-weight: var(--fontWidthLight);
-}
-.buttonSen{
-    background-color:#C3C8FF;
-    color: #1C1B1B;
-    font-weight: var(--fontWidthLight);
-}
-.buttonAu{
-    background-color:#FCC3FF;
-    color: #1C1B1B;
-    font-weight: var(--fontWidthLight);
-}
-
-#one {
-    position: relative;
-  }
-  
-  #one:before {
-    content: "";
-    position: absolute;
-    left: 2px;
-    top: 12px;
-    bottom: 0;
-    width: 10px;
-    height: 8px;
-    background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='10px' height='7px' viewBox='0 0 17 9' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 63.1 (92452) - https://sketch.com --%3E%3Ctitle%3EGroup Copy 2%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='anadirRestau-Copy-3' transform='translate(-810.000000, -699.000000)'%3E%3Cg id='Group-Copy-2' transform='translate(805.000000, 691.000000)'%3E%3Cpolygon id='Path' points='0 0 26 0 26 26 0 26'%3E%3C/polygon%3E%3Cpolyline id='Path' stroke='%23D5341F' stroke-width='2.75' stroke-linecap='round' stroke-linejoin='round' points='7 10 13.5 17 20 10'%3E%3C/polyline%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-   
-  }
-
-  
-
-
-
-
-    /*  div padre 2    */
-
-    /* & > div:nth-child(2){
-        
-            background-color: wheat;
-    
-    
-                & > div:nth-child(1){
-    
-                    background-color: yellowgreen;
-                
-                }
-                & > div:nth-child(2){
-    
-                    background-color: blue;
-                }
-    
-                & > div:nth-child(3){
-    
-                    background-color: blueviolet;
-                }
-                & > div:nth-child(4){
-    
-                background-color: brown;
-                }
-    
-            }     */
-
-    
-}
-
-
-
-.changesButton{
-
-    width: 40px;
-   
-
-    & > button{
-        height: 28px;
-        font-size: 10px;
-        width: 60px;
     }
-       
-
-
+    & > .right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        height: 60px;
+    & > .lctl-cellSelect-extraLarge {
+        margin: 5px;
+        font-size: 14px;
+        color: var(--secundaryColorOpposite);
+        border: solid 1px var(--secundaryColorPush);
+        width: 170px;
+    }
+    & >.lctl-cellButton {
+        width: max-content;
+        padding-left: 10px;
+        padding-right: 10px;
+}}}
+.lctl-br {
+    position: sticky;
+    top: 60px;
+    width: min(calc(100% -20px), 1000px);
 }
-
-.space{
-    opacity: 0;
-    height: 10px;
+//----------//----------//----------//----------//----------
+//----------Rows-----
+//----------//----------//----------//----------//----------
+.content {
+    width: min(calc(100% -20px), 1000px);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    & > .rows {
+        height: 60px;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        border-radius: var(--borderRadiusM);
+        background-color: var(--primaryColorOpposite);
+        overflow: hidden;
+        cursor: pointer;
+        & > div {
+            padding: 5px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            &:first-child {
+                min-width: 100px;
+                text-align: center;
+            }
+            &:nth-child(2) {
+                min-width: 80px;
+                justify-self: flex-start;
+                text-align: center;
+            }
+            &:nth-child(3) {
+                min-width: 100px;
+                text-align: center;
+            }
+            &:nth-child(4) {
+                min-width: 180px;
+            }
+            &:nth-child(5) {
+                width: 100%;
+            }
+            &:nth-child(6) {
+                min-width: 160px;
+                text-align: center;
+}}}}
+.header {
+    position: sticky;
+    top: 66px;
+    color: var(--primaryColorOpposite);
+    background-color: var(--secundaryColorPush)!important;
+    cursor: default !important;
+    & > div {
+        cursor: default !important;
+}}
+.lctl-font-title {
+    margin-top: 20px;
+    text-align: center;
 }
-
-
-
-
-
-
-
-
-
-

@@ -32,7 +32,7 @@ const routes: Routes = [
   {path:"create-restaurant-3", component: CreateRestaurant3Component},
   {path:"restaurants-list", component: RestaurantsComponent},
   {path:"contact-us", component: ContactUsComponent},
-  {path:"presentation", component: PresentationComponent},
+  {path:"howItWorks", component: PresentationComponent},
   {path:"**", component: DesignComponent},
   {path:" ", component: DesignComponent}
 ];

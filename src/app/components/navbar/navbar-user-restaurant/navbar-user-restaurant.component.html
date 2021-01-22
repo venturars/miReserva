@@ -2,12 +2,12 @@
     <button class="lctl_navSection lctl-navToggle">
         <ng-container *ngIf="serviceLogin.userRestaurant.logo; else notPhoto">
             <div class="lctl-photoProfile-m">
-                <img src="{{serviceLogin.userRestaurant.logo}}" class="lctl-photoProfile-m">
+                <img  src="{{serviceLogin.userRestaurant.logo}}">
             </div>
         </ng-container>
         <ng-template #notPhoto>
             <div class="lctl-photoProfile-m">
-                <img src="assets/photos/logorestaurante2.png" class="lctl-photoProfile-m">
+                <img  src="assets/photos/logorestaurante2.png">
             </div>
         </ng-template>
     </button>

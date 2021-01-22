@@ -73,99 +73,66 @@
       display: none;
 }}
 //-----//-----//-----//-----//-----
-//-----Add tales-----
+//-----Add tables-----
 //-----//-----//-----//-----//-----
-.center {
+.content {
+  width: min(calc(100% -20px), 1000px);
+  margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: auto;
-  width: min(calc(100% - 20px), 1420px);
-  & > .space {
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    min-height: 82px;
-    width:100%;
-    & > div {
-      margin: 20px;
+  & > .rows {
+      height: 60px;
+      margin-top: 10px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
-      width: 186px;
-      & >.specialButton {
-        outline: none;
-        width: 130px;
-        text-align: center;
-        &:active {
-          background: var(--primaryColor);
-          color: var(--primaryColorOpposite);
-          border-color: var(--primaryColor);
-      }}
-      & > input {
-        margin-left: 5px;
+      border-radius: var(--borderRadiusM);
+      background-color: var(--primaryColorOpposite);
+      overflow: hidden;
+      cursor: pointer;
+      & > div {
+          padding: 5px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          cursor: pointer;
+          &:first-child {
+              min-width: 150px;
+              text-align: center;
+          }
+          &:nth-child(2) {
+              min-width: 150px;
+              justify-self: flex-start;
+              text-align: center;
+          }
+          &:nth-child(3) {
+              min-width: 150px;
+              text-align: center;
 }}}}
-@media screen and (max-width: 922px) {
-  .center {
-    & > .space {
-      & > div {
-        width: min-content;
-        & >.specialButton {
-          transform: translateY(13px);
-          &:active {
-        }}
-        & > input {
-}}}}}
-@media screen and (max-width: 600px) {
-  .center {
-    & > .space {
-      flex-wrap: wrap;
-      & > div {
-        width: 40%;
-        margin: 10px;
-        & >.specialButton {
-          transform: translateY(0px);
-          &:active {
-        }}
-        & > input {
-}}}}}
-@media screen and (max-width: 483px) {
-  .center {
-    & > .space {
-      flex-wrap: wrap;
-      & > div {
-        width: 35%;
-        & >.specialButton {
-          transform: translateY(13px);
-          &:active {
-        }}
-        & > input {
-}}}}}
-@media screen and (max-width: 345px) {
-  .center {
-    & > .space {
-      flex-direction: column;
-      & > div {
-        width: max-content;
-        & >.specialButton {
-          transform: translateY(0px);
-          &:active {
-        }}
-        & > input {
-}}}}}
+.header {
+  position: sticky;
+  top: 66px;
+  color: var(--primaryColorOpposite);
+  background-color: var(--secundaryColorPush)!important;
+  cursor: default !important;
+  & > div {
+      cursor: default !important;
+      &:nth-child(4) {
+        width: 150px;
+}}}
+.lctl-font-title {
+  margin-top: 20px;
+  text-align: center;
+}
 //-----//-----//-----//-----//-----
 //-----Tables-----
 //-----//-----//-----//-----//-----
-.tables, .header {
+.tables, .headerr {
   display: flex;
   flex-direction: column;
   margin: auto;
   width: min(calc(100% - 20px), 1420px);
 }
-.header {
+.headerr {
   background-color: var(--primaryColorOpposite);
 }
 .rows {

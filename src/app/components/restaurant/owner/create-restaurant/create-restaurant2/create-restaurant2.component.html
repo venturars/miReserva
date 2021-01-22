@@ -4,9 +4,9 @@
     <div id="horarios"><a>Horas</a></div>
 </div>
 
-<div class="center">
+<div class="content">
 
-    <form class="space" #tableForm="ngForm"  (ngSubmit)="(tableForm.invalid) ? 'malll' : onSubmit(tableForm)">
+    <form class="rows header" #tableForm="ngForm"  (ngSubmit)="(tableForm.invalid) ? 'malll' : onSubmit(tableForm)">
         
         <div>
             Nombre
@@ -42,7 +42,7 @@
 
 <ng-container *ngIf="this.servicetable.table[0]!=null; else not">
 
-    <div class="header">
+    <div class="content">
 
         <div class="rows">
     
@@ -57,9 +57,7 @@
 
     </div>
 
-    <div class="tables" *ngFor="let table of this.servicetable.table; let i = index">
-
-        <div class="lctl-br"></div>
+    <div class="content" *ngFor="let table of this.servicetable.table; let i = index">
 
         <div class="rows">    
             <div class="lctl-font-paragraph">{{table.table_name}}</div>

@@ -3,7 +3,8 @@
 //----------//----------//----------//----------//----------//----------
 .head {
     background-color: var(--secundaryColor);
-    width: 100%;
+    width: min(100%, 1000px);
+    margin: auto;
     display: flex;
     flex-direction: column-reverse;
     & > .aligns {
@@ -22,7 +23,7 @@
                 width: 100%;
     }}}
         .img {
-            max-width: min(100%, 1440px);
+            max-width: min(100%, 1000px);
             max-height: 274px;
             margin: auto;
             text-align: center;
@@ -39,16 +40,11 @@
     justify-content: space-around;
     width: min(calc(100% - 20px), 1000px);
     margin: auto;
-    padding-bottom: 60px;
     & > .calendar {
-        max-width: 100%!important;
-        min-width: 260px!important;
-        height: 400px;
-        margin: 20px;
+        width: min(calc(100 - 20px), 400px);
         display: flex;
         justify-content: center;
-        align-items: center;
-        padding-bottom: 35px;
+        padding-top: 20px;
     }
     & > .selects {
         height: min-content;
@@ -114,10 +110,16 @@
     width: max-content;
     border: 1px solid var(--secundaryColorPush) !important;
 }
+.nothing {
+    display: none;
+}
 @media screen and (max-width:768px) {
     .calendar {
-        padding-bottom: 0 !important;
         max-height: min-content;
+        padding-bottom: 60px;
+    }
+    .nothing {
+        display: block;
 }}
 @media screen and (max-width:500px) {
     .selects {

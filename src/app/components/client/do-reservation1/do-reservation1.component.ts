@@ -119,8 +119,7 @@ export class DoReservation1Component implements OnInit {
     if (this.personas==0) {
       const mensajerror=document.getElementById("mensajerror");
       mensajerror.innerHTML="Elige número de comensales";
-    }
-    if (this.turno=="Elige turno"){
+    }else if (this.turno=="Elige turno"){
       const mensajerror=document.getElementById("mensajerror");
       mensajerror.innerHTML +="<br>Elige turno de comida"
     }

@@ -16,7 +16,7 @@
 
         <div class="reservation">
             <div class="img">
-                <div class="lctl-photoProfile-m" (click)="modalRest(this.restaurantsReservated[i])">
+                <div class="lctl-photoProfile-l" (click)="modalRest(this.restaurantsReservated[i])">
                     <img *ngIf="this.restaurantsReservated[i].logo; else not"
                         src="{{this.restaurantsReservated[i].logo}}">
                     <ng-template #not>

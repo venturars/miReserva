@@ -183,9 +183,12 @@
 #food{
  color:var(--secundaryColorPush);
 }
-.message{
+.message {
   font-size:var(--fontSizeM);
   width: min(calc(100% - 20px), 1420px);
   text-align: center;
 }
-
+@media screen and (max-width: 768px) {
+  .message {
+  width: min(calc(100% - 20px), 450px)!important;
+}}

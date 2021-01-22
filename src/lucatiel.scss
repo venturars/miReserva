@@ -392,7 +392,6 @@ a, a:hover {
     color: var(--secundaryColorOpposite);
     background-color: var(--primaryColorOpposite);
     border: 1px solid var(--secundaryColorPush);
-    border-radius: var(--borderRadiusM);
     outline: none!important;
     cursor: pointer;
     &:hover {
@@ -527,8 +526,8 @@ a, a:hover {
     height: 35px;
     border: 1px solid var(--secundaryColorOpposite);
     color: var(--secundaryColorOpposite);
+    background-color: var(--primaryColorOpposite);
     outline: none;
-    background: transparent;
     font-size: var(--fontSizeS);
     font-weight: var(--fontWidthBolder);
     cursor: pointer;
@@ -540,6 +539,7 @@ a, a:hover {
         cursor: default;
     }
     & > option {
+        background-color: var(--primaryColorOpposite);
         color: var(--secundaryColorOpposite);
         font-size: var(--fontSizeM);
         font-weight: var(--fontWidthBolder);
@@ -1329,8 +1329,9 @@ a, a:hover {
 //-----Mat calendar-----
 [class *="lctl-ngMatCalendar"] {
     margin: auto;
-    max-height: 100%;
+    width: 100vw;
     min-width: 260px;
+    max-width: 400px;
     border: 1px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusL);
     background-color: var(--primaryColorOpposite);

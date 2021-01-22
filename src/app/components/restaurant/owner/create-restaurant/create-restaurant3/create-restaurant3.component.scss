@@ -83,7 +83,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 60px;
   .section {
     margin: auto;
     width: min(calc(100% - 20px), 905px);
@@ -165,58 +166,58 @@
         & > .button {
           & > button {
   }}}}}}
-@media screen and (max-width: 670px) {
-  .content {
-    width: 436px;
-    .section {
-      flex-direction: row;
-      height: max-content;
-      & > .left, & > .right {
-        height: 45px;
-        align-self: auto;
-      }
-      & > .left {
-        background: wheat;
-        align-self: flex-start;
-        border-bottom-right-radius: var(--borderRadiusL);
-        z-index: 1;
-      }
-      & > .right {
-        flex-direction: row-reverse;
-        width: min-content;
-        background-color: aqua;
-        height: max-content;
-        margin-left: -190px;
-        border-bottom: 1px solid var(--secundaryColorPush);
-        & > .selects, & > .button {
-        }
-        & > .selects {
-          flex-direction: column;
-          min-width: min-content;
-          // background-color: yellowgreen;
-          & > div {
-          }
-          & > .time {
-          }
-          & > .a {
-          }
-          & > select {
-        }}
-        & > .button {
-          z-index: 1;
-          background-color: yellow;
-          height: min-content;
-          padding-bottom: 5px;
-          padding-left: 12.5px;
-          padding-right: 7.5px;
-          align-self: flex-end;
-          & > button {
-  }}}}}
-  .content {
-    .section :last-child {
-      & > .right {
-        border: none;
-}}}}
+// @media screen and (max-width: 670px) {
+//   .content {
+//     width: 436px;
+//     .section {
+//       flex-direction: row;
+//       height: max-content;
+//       & > .left, & > .right {
+//         height: 45px;
+//         align-self: auto;
+//       }
+//       & > .left {
+//         background: wheat;
+//         align-self: flex-start;
+//         border-bottom-right-radius: var(--borderRadiusL);
+//         z-index: 1;
+//       }
+//       & > .right {
+//         flex-direction: row-reverse;
+//         width: min-content;
+//         background-color: aqua;
+//         height: max-content;
+//         margin-left: -190px;
+//         border-bottom: 1px solid var(--secundaryColorPush);
+//         & > .selects, & > .button {
+//         }
+//         & > .selects {
+//           flex-direction: column;
+//           min-width: min-content;
+//           background-color: yellowgreen;
+//           & > div {
+//           }
+//           & > .time {
+//           }
+//           & > .a {
+//           }
+//           & > select {
+//         }}
+//         & > .button {
+//           z-index: 1;
+//           background-color: yellow;
+//           height: min-content;
+//           padding-bottom: 5px;
+//           padding-left: 12.5px;
+//           padding-right: 7.5px;
+//           align-self: flex-end;
+//           & > button {
+//   }}}}}
+//   .content {
+//     .section :last-child {
+//       & > .right {
+//         border: none;
+// }}}}
 //-----//-----//-----//-----//-----
 //-----Especial class-----
 //-----//-----//-----//-----//-----
