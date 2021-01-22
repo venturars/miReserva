@@ -300,7 +300,7 @@ export class ReservationsRestaurantComponent implements OnInit {
     this.calendarService.reserva = data12
     const dialogRef = this.dialog.open(ModalRestauranteComponent);
     dialogRef.afterClosed().subscribe((result)=>{
-     this.routerService.routerOwner();   });
+       });
   }
   public modalNew() {
     const dialogRef = this.dialog.open(ModalReservaManualComponent);

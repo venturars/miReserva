@@ -1,5 +1,15 @@
 <div class="content">
-    <div><p>RESERVA</p></div>
+    <div class="contentTitle"></div>
+    <div class="center">
+        <div class="lctl-photoProfile-m center">
+            <img *ngIf="this.restaurantService.selectedRestaurant.logo; else not"
+            src={{this.restaurantService.selectedRestaurant.logo}}>
+            <ng-template #not>
+                <img src="assets/photos/logorestaurante2.png">
+            </ng-template>
+        </div>
+    </div>
+    <div class="lctl-font-title center">Cambiar Estado Reserva</div>
     <div class="info">
         
         <p> Nombre: {{data.customer_name}} <br/>
@@ -9,10 +19,10 @@
         </p> 
     </div>
 
-     <div>
-         <button cdkFocusInitial class="lctl-warnButton-s buttonCan">Cancelada</button>
-         <button cdkFocusInitial class="lctl-warnButton-s buttonRes">Reservada</button>
-         <button cdkFocusInitial class="lctl-warnButton-s buttonLib">Eliminada</button>     
+     <div class="buttons">
+         <button cdkFocusInitial mat-dialog-close (click)="changeRes('Cancelada por cliente')" class="lctl-warnButton-s buttonCan">Cancelada</button>
+         <button cdkFocusInitial mat-dialog-close (click)="changeRes('Reservada')" class="lctl-warnButton-s buttonRes">Reservada</button>
+         <button cdkFocusInitial mat-dialog-close (click)="changeRes('Rechazada')" class="lctl-warnButton-s buttonLib">Eliminada</button>     
      </div>
   </div>
    

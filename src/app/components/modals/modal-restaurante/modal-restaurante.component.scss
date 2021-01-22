@@ -1,84 +1,53 @@
-.content {
+.content{
     width: 700px;
     max-width: 100%;
-    height: 300px;
+    height: 380px;
     display: flex;
     flex-direction: column;
     margin: auto;
+    justify-content: space-between;
     border: 2px solid var(--secundaryColorPush);
     border-radius: var(--borderRadiusM);
     background-color: var(--primaryColorOpposite);
-
-    & > div:nth-child(1){
-       
+    & > .contentTitle {
         display: flex;
+        align-items: center;
         justify-content: center;
-        background-color:#D8D8D8;
+        padding: 0 5px 0 5px;
         width: 100%;
-        height: 60px;
-        & > p{
-            margin-top: 25px;
-            font-size: var(--fontSizeS);
-            text-align: center;
-
-        }
-
+        min-height: 40px;
+        background-color:var(--secundaryColorPush);  
+        cursor: default;
     }
-    
-    & > div:nth-child(2){
-        
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-
-        & > p{
-            margin-top: 50px;
-            font-size: var(--fontSizeS);
-            text-align: center;
-
-        }
-
-       
-    }
-    & > div:nth-child(3){
-       
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-
-    }
-    
 }
 
-.buttonLib{
-background-color:#E4E4E5;
-color: #1C1B1B;
-font-weight: var(--fontWidthLight);
-
+.info{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
 }
-.buttonCan{
-    background-color:#FFB3AF;
-    color: #1C1B1B;
-    font-weight: var(--fontWidthLight);
-    
-    }
+.buttons{
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 250px;
+    height: 60px;
+   
+}
 
-.buttonRes{
-    background-color:#BFFFD1;
-    color: #1C1B1B;
-    font-weight: var(--fontWidthLight);
-    }
+.center{
+    display: flex;
+    flex-direction: row;
+    margin-top:10px;
+    margin-bottom:10px;
+    justify-content: center;
+}
 
-.buttonSen{
-        background-color:#C3C8FF;
-        color: #1C1B1B;
-        font-weight: var(--fontWidthLight);
-        }
-
-        .buttonAu{
-            background-color:#FCC3FF;
-            color: #1C1B1B;
-            font-weight: var(--fontWidthLight);
-            }
+.center2{
+    display:flex;
+    justify-content:center;
+    margin-bottom:10px;
+}

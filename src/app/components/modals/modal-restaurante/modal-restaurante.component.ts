@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Reservations } from 'src/app/models/reservations';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
+import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
+import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ReservationsRestaurantComponent } from '../../restaurant/reservations/reservations.component';
 
 @Component({
@@ -10,8 +12,12 @@ import { ReservationsRestaurantComponent } from '../../restaurant/reservations/r
 })
 export class ModalRestauranteComponent implements OnInit {
   public data:Reservations
-  constructor(private reservation:ServiceCalendarService) {
+  public month:string
+  constructor(private reservation:ServiceCalendarService, 
+              public restaurantService:ServiceRestaurantService,
+              public reservationService:ServiceReservationsService) {
     this.data = reservation.reserva
+    this.month=this.data.month;
     switch (reservation.reserva.day_name){
       case "Sun":
         this.data.day_name = "Domingo";
@@ -78,6 +84,11 @@ export class ModalRestauranteComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+changeRes(cambiorestado){
+  this.data.month=this.month;
+  this.data.status=cambiorestado;
+  this.reservationService.putReservation(this.data)
+  .subscribe((data)=> console.log(data))
+}
 
 }
