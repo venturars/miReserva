@@ -1311,6 +1311,10 @@ a, a:hover {
     color: var(--primaryColor);
     & div {
         width: 100%;
+        display: none;
+      &:first-child {
+        display: initial;
+      }
     }
   }
 .invalidForm {

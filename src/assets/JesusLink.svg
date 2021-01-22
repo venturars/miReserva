@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="403px" height="142px" viewBox="0 0 403 142" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-3.0%" y="-8.9%" width="106.0%" height="117.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <polygon id="path-2" points="0 135 398.093058 135 398.093058 0.336818182 0 0.336818182"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-1037.000000, -275.000000)">
+            <g id="Group" transform="translate(1041.000000, 276.000000)">
+                <g id="Group-16" filter="url(#filter-1)">
+                    <polygon id="Fill-1" fill="#F3F3F3" points="110 106 398 106 398 30 110 30"></polygon>
+                    <polygon id="Fill-2" fill="#D5341F" points="377 106 398 106 398 30 377 30"></polygon>
+                    <g id="Group-15">
+                        <path d="M131.756609,67.6677273 C131.756609,103.348636 102.872005,132.272727 67.2398068,132.272727 C31.6089706,132.272727 2.72436655,103.348636 2.72436655,67.6677273 C2.72436655,31.9881818 31.6089706,3.06409091 67.2398068,3.06409091 C102.872005,3.06409091 131.756609,31.9881818 131.756609,67.6677273" id="Fill-3" fill="#D5341F"></path>
+                        <path d="M131.756609,67.6677273 C131.756609,103.348636 102.872005,132.272727 67.2398068,132.272727 C31.6089706,132.272727 2.72436655,103.348636 2.72436655,67.6677273 C2.72436655,31.9881818 31.6089706,3.06409091 67.2398068,3.06409091 C102.872005,3.06409091 131.756609,31.9881818 131.756609,67.6677273 Z" id="Stroke-5" stroke="#FFFFFF" stroke-width="4"></path>
+                        <path d="M96.3271792,44.2369091 L96.3271792,44.2369091 C96.3271792,44.2369091 96.3271792,44.2355455 96.3271792,44.2369091" id="Fill-7" fill="#FFFFFF"></path>
+                        <path d="M96.3271792,44.2369091 C96.3407969,44.5832727 96.3271792,44.271 96.3271792,44.2369091" id="Fill-9" fill="#FFFFFF"></path>
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <g id="Clip-12"></g>
+                        <polygon id="Fill-11" fill="#FFFFFF" mask="url(#mask-3)" points="43.1968567 87.915 53.2685427 87.915 53.2685427 55.9336364 43.1968567 55.9336364"></polygon>
+                        <path d="M54.122784,45.6365455 C54.122784,48.8942727 51.4850263,51.5356364 48.2317464,51.5356364 C44.9784666,51.5356364 42.3407089,48.8942727 42.3407089,45.6365455 C42.3407089,42.3774545 44.9784666,39.7374545 48.2317464,39.7374545 C51.4850263,39.7374545 54.122784,42.3774545 54.122784,45.6365455" id="Fill-13" fill="#FFFFFF" mask="url(#mask-3)"></path>
+                        <path d="M80.5410778,54.7545 C73.7158628,54.7545 70.8057502,58.2931364 69.9628116,59.5981364 L69.9628116,55.9326818 L59.8911256,55.9326818 L59.8911256,87.9140455 L69.9628116,87.9140455 L69.9628116,69.0317727 C69.9628116,69.0317727 70.837071,63.4135909 75.5746853,63.4135909 C80.3122997,63.4135909 81.1388969,68.5708636 81.1388969,70.0217727 L81.1388969,88.0531364 L91.2105829,88.0531364 L91.2105829,69.0317727 C91.2105829,62.9526818 88.9119072,54.7545 80.5410778,54.7545" id="Fill-14" fill="#FFFFFF" mask="url(#mask-3)"></path>
+                    </g>
+                </g>
+                <text id="jesús-cano-82718618" font-family="Montserrat-Medium, Montserrat" font-size="15" font-weight="400" fill="#121212">
+                    <tspan x="164" y="77">jesús-cano-82718618</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

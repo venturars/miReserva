@@ -12,7 +12,7 @@
 
 
 <ng-container *ngFor="let reservation of reservations; let i = index"  class="lctl-centerElements father">
-        <ng-container *ngIf="reservations.status == elSelect || elSelect == 'todas'">
+        <ng-container *ngIf="reservation.status == elSelect || elSelect == 'todas'">
 
         <div class="reservation">
             <div class="img">
