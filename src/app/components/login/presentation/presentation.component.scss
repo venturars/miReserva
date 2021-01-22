@@ -9,4 +9,5 @@ div {
 .page {
     background-color: var(--primaryColorOpposite);
     width: min(calc(100% - 20px), 1420px);
+    margin: 5px;
 }
