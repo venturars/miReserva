@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Reservations } from 'src/app/models/reservations';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
+import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ReservationsRestaurantComponent } from '../../restaurant/reservations/reservations.component';
@@ -15,7 +17,11 @@ export class ModalRestauranteComponent implements OnInit {
   public month:string
   constructor(private reservation:ServiceCalendarService, 
               public restaurantService:ServiceRestaurantService,
-              public reservationService:ServiceReservationsService) {
+              public reservationService:ServiceReservationsService,
+              public loginService:ServiceLoginService,
+              public matDialog:MatDialog) {
+    console.log(reservation.reserva);
+    console.log(this.reservation.reserva);
     this.data = reservation.reserva
     this.month=this.data.month;
     switch (reservation.reserva.day_name){
@@ -88,7 +94,9 @@ changeRes(cambiorestado){
   this.data.month=this.month;
   this.data.status=cambiorestado;
   this.reservationService.putReservation(this.data)
-  .subscribe((data)=> console.log(data))
+  .subscribe((data)=> {console.log(data)
+   
+  })
 }
 
 }

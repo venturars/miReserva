@@ -1,13 +1,24 @@
 <div class="content">
     <div class="contentTitle"></div>
     <div class="center">
-        <div class="lctl-photoProfile-m center">
-            <img *ngIf="this.restaurantService.selectedRestaurant.logo; else not"
-            src={{this.restaurantService.selectedRestaurant.logo}}>
-            <ng-template #not>
-                <img src="assets/photos/logorestaurante2.png">
-            </ng-template>
-        </div>
+        <ng-container *ngIf="this.restaurantService.selectedRestaurant; else userrest">
+            <div class="lctl-photoProfile-m center">
+                <img *ngIf="this.restaurantService.selectedRestaurant.logo; else not"
+                src={{this.restaurantService.selectedRestaurant.logo}}>
+                <ng-template #not>
+                    <img src="assets/photos/logorestaurante2.png">
+                </ng-template>
+            </div>
+        </ng-container>
+        <ng-template #userrest>
+            <div class="lctl-photoProfile-m center">
+                <img *ngIf="this.loginService.userRestaurant.logo; else not"
+                src={{this.loginService.userRestaurant.logo}}>
+                <ng-template #not>
+                    <img src="assets/photos/logorestaurante2.png">
+                </ng-template>
+            </div>
+        </ng-template>
     </div>
     <div class="lctl-font-title center">Cambiar Estado Reserva</div>
     <div class="info">
@@ -20,9 +31,9 @@
     </div>
 
      <div class="buttons">
-         <button cdkFocusInitial mat-dialog-close (click)="changeRes('Cancelada por cliente')" class="lctl-warnButton-s buttonCan">Cancelada</button>
-         <button cdkFocusInitial mat-dialog-close (click)="changeRes('Reservada')" class="lctl-warnButton-s buttonRes">Reservada</button>
-         <button cdkFocusInitial mat-dialog-close (click)="changeRes('Rechazada')" class="lctl-warnButton-s buttonLib">Eliminada</button>     
+         <button cdkFocusInitial [mat-dialog-close] [ngClass]="data.status=='Cancelada por cliente'? 'lctl-warnButtonOpposite-s-selected cancelado' : 'lctl-warnButton-s'" (click)="changeRes('Cancelada por cliente')" >Cancelada</button>
+         <button cdkFocusInitial [mat-dialog-close] [ngClass]="data.status=='Reservada'? 'lctl-warnButtonOpposite-s-selected reservado' : 'lctl-warnButton-s'" (click)="changeRes('Reservada')" >Reservada</button>
+         <button cdkFocusInitial [mat-dialog-close] [ngClass]="data.status=='Rechazada'? 'lctl-warnButtonOpposite-s-selected eliminado' : 'lctl-warnButton-s'" (click)="changeRes('Rechazada')" >Eliminada</button>     
      </div>
   </div>
    
