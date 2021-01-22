@@ -26,7 +26,7 @@ export class ReservationsClientComponent implements OnInit {
     },
     {
       name: "Rechazadas",
-      value: "Rechazadas"
+      value: "Rechazada"
     },
     {
       name: "Canceladas",
@@ -156,6 +156,7 @@ export class ReservationsClientComponent implements OnInit {
   }
   cambiarSelect(select:any){
     this.elSelect = select.value;
+    console.log(this.elSelect);
   }
   modalRest(restaurant){
     this.restaurantService.restauranteMapa=restaurant;

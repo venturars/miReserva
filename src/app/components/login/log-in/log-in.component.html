@@ -29,13 +29,18 @@
 
   </div>
 
-  <div class="messageInvalidform" *ngIf="(userForm.submitted && email.invalid)">
+  <div class="messageInvalidform" *ngIf="userForm.submitted && email.invalid">
       <div *ngIf="email.errors.required">Introduce un email</div>
       <div *ngIf="email.errors.email">El email no tiene el formato correcto</div>
+  </div>
+  <ng-container *ngIf="email.valid">
+    <div class="messageInvalidform" *ngIf="userForm.submitted && password.invalid">
       <div *ngIf="password.errors.required">Introduce una contraseña</div>
       <div *ngIf="password.errors.minlength">La contraseña debe tener 6 caracteres</div>
-  </div>
+    </div>
+  </ng-container>
   
+
   <div class="logIn">
     <button class="lctl-button-m">
       Iniciar sesión
