@@ -6,7 +6,6 @@ import { UserOwner } from '../../../models/user-owner';
 import { UserCustomer } from '../../../models/user-customer';
 import { MatDialog } from '@angular/material/dialog';
 import { SimpleAlertComponent } from '../../modals/simple-alert/simple-alert';
-import { ServiceCalendarService } from '../../../shared/service-calendar.service';
 import { ServiceRouterService } from '../../../shared/service-router.service';
 @Component({
   selector: 'app-login',
@@ -23,6 +22,8 @@ export class LogInComponent implements OnInit {
     public serviceRouter:ServiceRouterService,
     public matDialog:MatDialog
   ) { }
+  ngOnInit():void {
+  }
   onSubmit(form:any) {
   this.serviceLogIn.getUsers( 
     form.value.email,
@@ -30,15 +31,16 @@ export class LogInComponent implements OnInit {
   ).subscribe((response:any) => {
         
     if(response.control) {
-      this.serviceLogIn.users = new Users(
+      let users:Users = new Users(
         response.data[0].restaurant_id,
         response.data[0].owner_id,
         response.data[0].customer_id,
         form.value.email,
         form.value.password
       );
-      if(this.serviceLogIn.users.restaurant_id) {
-        this.serviceLogIn.userRestaurant = new Restaurants(
+      localStorage.setItem('users', JSON.stringify(users));
+      if(users.restaurant_id) {
+        let userRestaurant:Restaurants = new Restaurants(
           response.data[0].restaurant_id,
           response.data[0].name,
           response.data[0].province,
@@ -55,34 +57,35 @@ export class LogInComponent implements OnInit {
           response.data[0].url,
           response.data[0].latitude,
           response.data[0].longitude,
-          null
+          response.data[0].owner_id,
         )
+        localStorage.setItem('userRestaurant', JSON.stringify(userRestaurant));
         this.serviceRouter.routerRestaurant();
-      }else if(this.serviceLogIn.users.owner_id) {
-        this.serviceLogIn.userOwner = new UserOwner(
+      }else if(users.owner_id) {
+        let userOwner:UserOwner = new UserOwner(
           response.data[0].owner_id,
           response.data[0].cif,
           response.data[0].name,
           response.data[0].surname,
           response.data[0].photo
           );
+        localStorage.setItem('userOwner', JSON.stringify(userOwner));
         this.serviceRouter.routerOwner();
-      }else if(this.serviceLogIn.users.customer_id) {
-        this.serviceLogIn.userCustomer= new UserCustomer(
+      }else if(users.customer_id) {
+        let userCustomer:UserCustomer = new UserCustomer(
           response.data[0].customer_id,
           response.data[0].phone,
           response.data[0].name,
           response.data[0].surname,
           response.data[0].photo
         );
+        localStorage.setItem('userCustomer', JSON.stringify(userCustomer));
         this.serviceRouter.routerClient();
     }}else {
       let password:any = document.getElementById("password");
       password.value = "";
       const dialogRef = this.matDialog.open(SimpleAlertComponent,{panelClass: ['animate__animated','animate__backInDown']});
       dialogRef.componentInstance.mensaje="Tu usuario o contraseña son incorrectos";
-      dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
+      dialogRef.componentInstance.imagen="/assets/null.svg";
       dialogRef.afterClosed().subscribe();
-}});}
-  ngOnInit(): void {
-}}
+}});}}
