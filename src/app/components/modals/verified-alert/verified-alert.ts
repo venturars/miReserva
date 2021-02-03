@@ -15,6 +15,9 @@ export class VerifiedAlertComponent implements OnInit {
   }
 
   public aceptLogOut() {
+    localStorage.removeItem('users');
+    localStorage.removeItem('userOwner');
+    localStorage.removeItem('userCustomer');
+    localStorage.removeItem('userRestaurant');
     this.serviceRouter.routerLogin();
-    setTimeout(function(){window.location.reload();},1000)
 }}
