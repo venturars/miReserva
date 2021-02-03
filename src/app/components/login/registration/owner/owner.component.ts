@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceRegistrationService } from 'src/app/shared/service-registration.service';
 import { UserOwner } from '../../../../models/user-owner';
-import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { Users } from 'src/app/models/users';
 import { SimpleAlertComponent } from '../../../modals/simple-alert/simple-alert';
 import { ServiceRouterService } from '../../../../shared/service-router.service';
@@ -19,7 +18,6 @@ export class OwnerComponent implements OnInit {
   public acept:boolean = null;
   constructor(
     private serviceRegistration: ServiceRegistrationService,
-    private serviceLogin:ServiceLoginService,
     public serviceRouter:ServiceRouterService,
     public dialog:MatDialog,
     ) {
@@ -39,18 +37,19 @@ onSubmit(form:any){
     if(data.control) {
       localStorage.setItem('users', JSON.stringify(new Users (
         null,
-        data.data,
+        data.data.owner_id,
         null,
         form.value.mail,
         form.value.password
       )));
       localStorage.setItem('userOwner', JSON.stringify(new UserOwner(
-        data.data,
+        data.data.owner_id,
         form.value.cif,
         form.value.name,
         form.value.surname,
         null
       )));
+      console.log(data.data.owner_id);
       this.serviceRouter.routerOwner()
     }
     else {

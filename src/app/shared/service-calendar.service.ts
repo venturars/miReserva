@@ -118,7 +118,7 @@ export class ServiceCalendarService {
             break;        
       }}
 
-      if(this.serviceLogin.users.customer_id){
+      if(JSON.parse(localStorage.getItem('userCustomer')).customer_id){
       this.router.navigate(['/reservation1']);
       }
     })});}}

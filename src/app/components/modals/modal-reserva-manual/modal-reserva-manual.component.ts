@@ -5,7 +5,6 @@ import { Shifts } from 'src/app/models/shifts';
 import { Tables } from 'src/app/models/tables';
 import { Times } from 'src/app/models/times';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
-import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
@@ -50,58 +49,52 @@ export class ModalReservaManualComponent implements OnInit {
   public selectedComments:string
   public selectedFullName:string
 
-  constructor(public dialog: MatDialog,
-              private reservationService: ServiceReservationsService,
-              private timesService: ServiceTimesService,
-              private shiftsService: ServiceShiftsService,
-              private calendarService: ServiceCalendarService,
-              private tablesService: ServiceTablesService,
-              private loginService: ServiceLoginService,
-              private restaurantService: ServiceRestaurantService
-              
-              ) {
-
-                if(this.loginService.users.restaurant_id != null){
-                  this.restaurantId = this.loginService.userRestaurant.restaurant_id
-                }else if(this.loginService.users.owner_id != null){
-                  this.restaurantId =this.restaurantService.selectedRestaurant.restaurant_id
-                }
-
-                this.tables = []
-                this.shifts = []
-                this.times = []
-                this.reservations = []
-                this.reservations2 = []
-                this.selectedTables = []
-                this.availableTables = []
-
-                this.reservationService.getReservationRestaurant(this.restaurantId).subscribe((data:any) =>{     
-                  for(let i = 0; i<data.data.length;i++){
-        
-                    if (data.data[i].status == "Reservada"){            
-                      this.shiftsService.getShiftsId(data.data[i].shift_id).subscribe((data3:any) =>{  
-                        
-                      this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
-            
-                        let reservation:Reservations
-                        reservation = new Reservations(data.data[i].reservation_id,
-                        data.data[i].customer_id,
-                        data.data[i].restaurant_id,
-                        data.data[i].table_id,
-                        data.data[i].pax,
-                        data.data[i].day_name,
-                        data.data[i].day,
-                        data.data[i].month,
-                        data.data[i].year,
-                        data.data[i].hour,
-                        data.data[i].shift_id,
-                        data.data[i].comments,
-                        data.data[i].status,
-                        data.data[i].customer_name,
-                        data.data[i].customer_phone)
-                        reservation.service = data4.data[0].service
-                      this.reservations.push(reservation)
-                                    
+  constructor(
+    public dialog: MatDialog,
+    private reservationService: ServiceReservationsService,
+    private timesService: ServiceTimesService,
+    private shiftsService: ServiceShiftsService,
+    private calendarService: ServiceCalendarService,
+    private tablesService: ServiceTablesService,
+    private restaurantService: ServiceRestaurantService
+    ) {
+      if(JSON.parse(localStorage.getItem('users')).restaurant_id != null){
+        this.restaurantId = JSON.parse(localStorage.getItem('userRestaurant')).restaurant_id
+      }else if(JSON.parse(localStorage.getItem('users')).owner_id != null){
+        this.restaurantId =this.restaurantService.selectedRestaurant.restaurant_id
+      }
+      this.tables = []
+      this.shifts = []
+      this.times = []
+      this.reservations = []
+      this.reservations2 = []
+      this.selectedTables = []
+      this.availableTables = []
+      this.reservationService.getReservationRestaurant(this.restaurantId).subscribe((data:any) =>{     
+        for(let i = 0; i<data.data.length;i++){
+          if (data.data[i].status == "Reservada"){            
+            this.shiftsService.getShiftsId(data.data[i].shift_id).subscribe((data3:any) =>{  
+              this.timesService.getTimesId(data3.data[0].times_id).subscribe((data4:any) =>{    
+                let reservation:Reservations
+                reservation = new Reservations(
+                  data.data[i].reservation_id,
+                  data.data[i].customer_id,
+                  data.data[i].restaurant_id,
+                  data.data[i].table_id,
+                  data.data[i].pax,
+                  data.data[i].day_name,
+                  data.data[i].day,
+                  data.data[i].month,
+                  data.data[i].year,
+                  data.data[i].hour,
+                  data.data[i].shift_id,
+                  data.data[i].comments,
+                  data.data[i].status,
+                  data.data[i].customer_name,
+                  data.data[i].customer_phone
+                );
+                reservation.service = data4.data[0].service;
+                this.reservations.push(reservation);
                       }) 
                       }) 
                     }
@@ -272,17 +265,7 @@ export class ModalReservaManualComponent implements OnInit {
         if(!reservada)
           this.availableTables.push(this.tables[j])
         }
-        
-
     }
-
-
-
-
-
-
-
-
   }
   public confirmar(){
     this.showHide = true

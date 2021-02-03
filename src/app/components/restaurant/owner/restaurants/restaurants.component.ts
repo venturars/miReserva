@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurants } from '../../../../models/restaurants';
-import { ServiceLoginService } from '../../../../shared/service-login.service';
 import { ServiceRestaurantService } from '../../../../shared/service-restaurant.service';
 import { ServiceRouterService } from '../../../../shared/service-router.service';
 import { Router } from '@angular/router';
@@ -15,7 +14,6 @@ export class RestaurantsComponent implements OnInit {
   public restaurants:Restaurants[];
   public restaurantCopy:Restaurants[]=[];
   constructor(
-    private serviceLogin:ServiceLoginService,
     private serviceRestaurant:ServiceRestaurantService,
     private serviceCalendar:ServiceCalendarService,
     public serviceRouter:ServiceRouterService,
@@ -24,7 +22,7 @@ export class RestaurantsComponent implements OnInit {
 
   ngOnInit() {
     this.serviceRestaurant.getRestaurantByOwner(
-        this.serviceLogin.userOwner.owner_id
+        JSON.parse(localStorage.getItem('userOwner')).owner_id
       ).subscribe((response) => {
         if(response.control) {
           this.restaurants = response.data;

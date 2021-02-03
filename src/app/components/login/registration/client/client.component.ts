@@ -39,11 +39,20 @@ onSubmit(form:any){
   .subscribe((data:any)=>{
     if(data.control) {
       localStorage.setItem( 'userCustomer' , JSON.stringify(new UserCustomer(
-        data.data.customer_id,form.value.mobile, form.value.name,form.value.surname,null
+        data.data.customer_id,
+        form.value.mobile,
+        form.value.name,
+        form.value.surname,
+        null
       )));
       localStorage.setItem('users', JSON.stringify(new Users(
-        null,null,data.data,form.value.email,form.value.password
+        null,
+        null,
+        data.data.customer_id,
+        form.value.email,
+        form.value.password
       )));
+      console.log(data.data.customer_id);
       this.serviceRouter.routerClient();
     }else {
       const dialogRef = this.dialog.open(SimpleAlertComponent);

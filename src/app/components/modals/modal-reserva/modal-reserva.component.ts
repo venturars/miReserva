@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Reservations } from 'src/app/models/reservations';
 import { Shifts } from 'src/app/models/shifts';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
-import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ServiceShiftsService } from 'src/app/shared/service-shifts.service';
@@ -39,13 +38,12 @@ public shift:Shifts
 
   constructor(
     private reservationService: ServiceReservationsService,
-    private loginService: ServiceLoginService,
     public calendarService: ServiceCalendarService,
     private restaurantService: ServiceRestaurantService,
     private shiftsService: ServiceShiftsService,
     private serviceRouter:ServiceRouterService
   ) {
-    this.customerId = this.loginService.userCustomer.customer_id
+    this.customerId = JSON.parse(localStorage.getItem('userCustomer')).customer_id
     this.selectedShiftId = this.reservationService.shiftId
     this.selectedPax = this.reservationService.pax
     this.selectedTable = this.reservationService.tableId
@@ -60,7 +58,7 @@ public shift:Shifts
     this.selectedYear = this.calendarService.getNewDate().year
     this.restaurantId = this.restaurantService.restaurantReservation.restaurant_id
     console.log(this.restaurantId);
-    this.fullName = this.loginService.userCustomer.name + " " + this.loginService.userCustomer.surname
+    this.fullName = JSON.parse(localStorage.getItem('userCustomer')).customer.name + " " + JSON.parse(localStorage.getItem('userCustomer')).surname
     this.shiftsService.getShiftsId(this.selectedShiftId).subscribe((data:any) =>{  
       this.shift = data.data[0]
       this.selectedHour =  data.data[0].shift_from      
@@ -93,7 +91,8 @@ public shift:Shifts
       this.selectedComments,
       "Pendiente", 
       this.fullName, 
-      this.loginService.userCustomer.phone)    
+      JSON.parse(localStorage.getItem('userCustomer')).phone
+    );
 
 this.reservationService.postReservation(reservation).subscribe((data:any) =>{
 console.log(data);
@@ -114,9 +113,8 @@ console.log(data);
         this.selectedComments,
         "Reservada", 
         this.fullName, 
-        this.loginService.userCustomer.phone)    
-        console.log(reservation);
-        
+        JSON.parse(localStorage.getItem('userCustomer')).phone
+      )    
   this.reservationService.postReservation(reservation).subscribe((data:any) =>{
     this.serviceRouter.routerClient(1);
   })

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Reservations } from 'src/app/models/reservations';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
-import { ServiceLoginService } from 'src/app/shared/service-login.service';
 import { ServiceReservationsService } from 'src/app/shared/service-reservations.service';
 import { ServiceRestaurantService } from 'src/app/shared/service-restaurant.service';
 import { ServiceRouterService } from 'src/app/shared/service-router.service';
@@ -37,9 +36,9 @@ export class ReservationsRestaurantComponent implements OnInit {
   public dateOfBirth:string
   public reservation:Reservations
   public restaurantId:number = (
-    this.loginService.users.restaurant_id != null
+    JSON.parse(localStorage.getItem('users')).restaurant_id != null
     )?
-    this.loginService.userRestaurant.restaurant_id
+    JSON.parse(localStorage.getItem('users')).restaurant_id
     :
     this.restaurantService.selectedRestaurant.restaurant_id;
 
@@ -49,10 +48,9 @@ export class ReservationsRestaurantComponent implements OnInit {
     private shiftsService: ServiceShiftsService,
     private timesService:ServiceTimesService,
     private calendarService:ServiceCalendarService,
-    private loginService: ServiceLoginService,
     private restaurantService: ServiceRestaurantService,
     public routerService:ServiceRouterService
-    ) {
+  ) {
     this.reservationService.getReservationRestaurant(this.restaurantId).subscribe((data:any) =>{     
     for(let i = 0; i<data.data.length;i++){
 
@@ -216,8 +214,8 @@ export class ReservationsRestaurantComponent implements OnInit {
     }}
   // FIN CONSTRUCTOR
   ngOnInit() {
-    if(this.loginService.userRestaurant){
-     this.calendarService.getTimes(this.loginService.userRestaurant.restaurant_id)
+    if(JSON.parse(localStorage.getItem('users')).restaurant_id){
+     this.calendarService.getTimes(JSON.parse(localStorage.getItem('users')).restaurant_id)
   }}
   public modalStatus(data12:any) {
     this.calendarService.reserva = data12

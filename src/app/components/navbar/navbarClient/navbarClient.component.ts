@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceLoginService } from '../../../shared/service-login.service';
 import { ServiceRouterService } from '../../../shared/service-router.service';
 
 @Component({
@@ -9,9 +8,10 @@ import { ServiceRouterService } from '../../../shared/service-router.service';
 })
 export class NavbarClientComponent implements OnInit {
 
+  public userCustomer:any = JSON.parse(localStorage.getItem('userCustomer'));
+
   constructor(
-    public serviceRouter:ServiceRouterService,
-    public serviceLogin:ServiceLoginService
+    public serviceRouter:ServiceRouterService
     ) { }
 
   ngOnInit() {

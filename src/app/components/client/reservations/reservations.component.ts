@@ -35,13 +35,12 @@ export class ReservationsClientComponent implements OnInit {
   ]
   public elSelect:string="todas";
   public reservations:Reservations[] = [];
-  public customerId:number = this.loginService.userCustomer.customer_id;
+  public customerId:number = JSON.parse(localStorage.getItem('userCustomer')).customer_id;
   public changedMonth:string;
   public changedDayName:string;
   public restaurantsReservated: Restaurants[]=[];
   constructor(
     public dialog: MatDialog,
-    private loginService: ServiceLoginService,
     private reservationService: ServiceReservationsService,
     private restaurantService: ServiceRestaurantService
   ) {

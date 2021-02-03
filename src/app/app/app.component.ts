@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServiceLoginService } from '../shared/service-login.service';
 import { ServiceRouterService } from '../shared/service-router.service';
+import { Users } from '../models/users';
 
 
 @Component({
@@ -11,16 +11,18 @@ import { ServiceRouterService } from '../shared/service-router.service';
 })
 export class AppComponent {
   title = 'miReserva';
+  public users:any = (JSON.parse(localStorage.getItem('users')))?JSON.parse(localStorage.getItem('users')):new Users(null,null,null,null,null);
   constructor (
     public router:Router,
-    public serviceLogin:ServiceLoginService,
     public serviceRouter:ServiceRouterService
     ){ }
   ngOnInit() {
-    this.serviceRouter.routerLogin();
-    if (this.router.url == " ") {
-      this.router.navigate[('log-in')]
-    }}
+
+    if (localStorage.getItem(this.users)) {
+      this.serviceRouter.routerLogin();
+      if (this.router.url == " ") {
+        this.router.navigate[('log-in')]
+      }}}
 
   }
 

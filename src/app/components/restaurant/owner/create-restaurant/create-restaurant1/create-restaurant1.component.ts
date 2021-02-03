@@ -68,7 +68,7 @@ export class CreateRestaurant1Component implements OnInit {
       1,restForm.value.name, restForm.value.province, restForm.value.city, restForm.value.street_name,
        restForm.value.street_number, restForm.value.postal_code,restForm.value.phone,restForm.value.capacity,
        restForm.value.food_type,this.restaurantmodel.header,this.restaurantmodel.logo,null,restForm.value.url,
-       null,null,this.serviceLogIn.userOwner.owner_id
+       null,null,JSON.parse(localStorage.getItem('userOwner')).owner_id
     );     
     this.serviceRestaurant.capacity=restForm.value.capacity;
     this.serviceRegistration.checkMailFree(restForm.value.mail)

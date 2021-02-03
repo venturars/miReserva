@@ -2,23 +2,23 @@
 
     <div class="header">
         <!-- -----Navbar----- -->
-        <ng-container *ngIf="!serviceLogin.users.customer_id &&
-            !serviceLogin.users.restaurant_id && !serviceLogin.users.owner_id">
+        <ng-container *ngIf="!users.customer_id &&
+            !users.restaurant_id && !users.owner_id">
             <app-navbarLogin>
             </app-navbarLogin>
         </ng-container>
         
-        <ng-container *ngIf="serviceLogin.users.customer_id">
+        <ng-container *ngIf="users.customer_id">
             <app-navbarClient>
             </app-navbarClient>
         </ng-container>
         
-        <ng-container *ngIf="serviceLogin.users.restaurant_id">
+        <ng-container *ngIf="users.restaurant_id">
             <app-navbarUserRestaurant>
             </app-navbarUserRestaurant>
         </ng-container>
 
-        <ng-container *ngIf="serviceLogin.users.owner_id">
+        <ng-container *ngIf="users.owner_id">
             <app-navbarOwner>
             </app-navbarOwner>
         </ng-container>

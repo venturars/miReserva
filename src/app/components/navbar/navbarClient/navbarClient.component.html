@@ -1,8 +1,8 @@
 <div class="lctl-navContainer">
     <button class="lctl_navSection lctl-navToggle">
-        <ng-container *ngIf="serviceLogin.userCustomer.photo; else notPhoto">
+        <ng-container *ngIf="userCustomer.photo; else notPhoto">
         <div class="lctl-photoProfile-m">
-            <img  src="{{serviceLogin.userCustomer.photo}}">
+            <img  src="{{userCustomer.photo}}">
         </div>
         </ng-container>
         <ng-template #notPhoto>

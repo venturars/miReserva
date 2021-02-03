@@ -4,7 +4,6 @@ import { UserCustomer } from '../../../models/user-customer';
 import { ServiceLoginService } from '../../../shared/service-login.service';
 import { ServiceUserCustomerService } from '../../../shared/service-user-customer.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { SimpleAlertComponent } from '../../modals/simple-alert/simple-alert';
 import { ServiceRouterService } from '../../../shared/service-router.service';
 @Component({
@@ -23,12 +22,11 @@ export class EditClientComponent implements OnInit {
     private serviceLogin:ServiceLoginService,
     private serviceUserCustomer:ServiceUserCustomerService,
     private dialog:MatDialog,
-    private router:Router,
     private serviceRouter:ServiceRouterService
   ) { }
   ngOnInit() {
-    this.userCustomer = this.serviceLogin.userCustomer;
-    this.users = this.serviceLogin.users;
+    this.userCustomer = JSON.parse(localStorage.getItem('userCustomer'));
+    this.users = JSON.parse(localStorage.getItem('users'));
   }
    processFile(imageInput: any) {
     const file: File = imageInput.files[0];
@@ -66,8 +64,8 @@ export class EditClientComponent implements OnInit {
             //Modal los cambios no se han podido guardar
           }else {
             this.users.password = password;
-            this.serviceLogin.users.password = this.users.password;
-            this.serviceLogin.userCustomer = this.userCustomer;
+            localStorage.setItem('users', JSON.stringify(this.users));
+            localStorage.setItem('userCUstomer', JSON.stringify(this.userCustomer));
 
             const dialogRef = this.dialog.open(SimpleAlertComponent);
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";

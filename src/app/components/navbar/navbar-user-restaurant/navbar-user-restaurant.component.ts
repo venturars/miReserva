@@ -8,9 +8,10 @@ import { ServiceLoginService } from '../../../shared/service-login.service';
 })
 export class NavbarUserRestaurantComponent implements OnInit {
 
+  public userRestaurant:any = JSON.parse(localStorage.getItem('userRestaurant'));
+
   constructor(
-    public serviceRouter:ServiceRouterService,
-    public serviceLogin:ServiceLoginService
+    public serviceRouter:ServiceRouterService
     ) { }
 
   ngOnInit() {

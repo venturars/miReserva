@@ -22,7 +22,6 @@ export class EditComponentR implements OnInit {
   public message:string;
   
   constructor (
-    private serviceLogin:ServiceLoginService,
     private serviceUserOwner:ServiceUserOwnerService,
     public dialog:MatDialog,
     private serviceRouter:ServiceRouterService
@@ -66,8 +65,8 @@ export class EditComponentR implements OnInit {
           }else {
             //Modal de los cambios se han guardado correctamente
             this.users.password = password;
-            this.serviceLogin.users.password = this.users.password;
-            this.serviceLogin.userOwner = this.userOwner;
+            localStorage.setItem('users', JSON.stringify(this.users));
+            localStorage.setItem('userOwner', JSON.stringify(this.userOwner));
             const dialogRef = this.dialog.open(SimpleAlertComponent);
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
             dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
@@ -80,9 +79,8 @@ export class EditComponentR implements OnInit {
           this.checkPassword = null;
           this.checkPassword2 = null;
   });}}}
-
   ngOnInit() {
-    this.userOwner = this.serviceLogin.userOwner;
-    this.users = this.serviceLogin.users;
+    this.userOwner = JSON.parse(localStorage.getItem('userOwner'));
+    this.users = JSON.parse(localStorage.getItem('users'));
   }
 }

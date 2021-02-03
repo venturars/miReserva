@@ -358,7 +358,7 @@ app.post("/times", (req, res) => {
                 message.control = true;
                 message.data = {
                     times_id: data.insertId
-                };
+            };
         }}
          res.status(200).send(message);
 });});
@@ -1447,7 +1447,10 @@ app.post("/registration", (req, res)=> {
     let message = {
         "control": null,
         "message": null,
-        "data": null
+        "data": {
+            "customer_id": null,
+            "owner_id": null
+        }
     }
     let sql =
         `SELECT 
@@ -1566,7 +1569,8 @@ app.post("/registration", (req, res)=> {
                                     if (err) {
                                         message.control = false;
                                         message.message = 'Usuario creado sin usuario de logueo';
-                                        message.data = data1.insertId;
+                                        message.data.customer_id = data1.insertId;
+                                        message.data.owner_id = data1.insertId;
                                     } else {
                                         message.control = false;
                                         message.message = 'Ha fallado el proceso de creación de logueo del usuario';
@@ -1576,7 +1580,8 @@ app.post("/registration", (req, res)=> {
                             });}else {
                                     message.control = true;
                                     message.message = 'Usuario creado correctamente';
-                                    message.data = data1.insertId;
+                                    message.data.customer_id = data1.insertId;
+                                    message.data.owner_id = data1.insertId;
                                     res.send(message); 
 }});}});}}});});
 app.get("/registration", (req, res)=>{
