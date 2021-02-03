@@ -97,7 +97,7 @@
                     name="mail" [(ngModel)]="users.mail" #mail="ngModel" id="mail"
                     [ngClass]="{'invalidForm':restForm.submitted && mail.invalid }" required>
                     
-                <input type="text" class="lctl-input-m-extraLarge"
+                <input type="password" class="lctl-input-m-extraLarge"
                     placeholder="{{restForm.submitted && password.invalid ?  'Contraseña obligatoria' : 'Contraseña'}}"
                     name="password" [(ngModel)]="users.password" #password="ngModel" id="password"
                     [ngClass]="{'invalidForm':restForm.submitted && password.invalid }" required>

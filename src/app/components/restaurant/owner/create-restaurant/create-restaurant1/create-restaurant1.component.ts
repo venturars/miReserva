@@ -86,9 +86,11 @@ export class CreateRestaurant1Component implements OnInit {
           this.restauranteCreado=data.data.restaurant_id;
           this.geoservice.getJSONstreet(this.url)
           .subscribe((data:any)=> {
+            console.log(data);
             
-            if (data=="") {
+            if (data[0].lat=="") {
               //EN ESTE IF ES CUANDO HA FALLADO LA LOCALIZACION Y HABRIA QUE METERSELAS O PREGUNTARLE POR ELLAS
+              console.log("entra aqui");
               }
             else
             {
@@ -96,14 +98,16 @@ export class CreateRestaurant1Component implements OnInit {
               this.longitud=data[0].lon;
             }
             //SE ACTUALIZA EL RESTAURANTE CON LATITUD Y LONGITUD    
-            sendRestaurant.restaurant_id=this.restauranteCreado;
-              
+            
+
+              sendRestaurant.restaurant_id=this.restauranteCreado;
+             
               this.serviceRestaurant.id_restaurant=sendRestaurant.restaurant_id;
               sendRestaurant.latitude=this.latitud;
               sendRestaurant.longitude=this.longitud;
-              this.serviceRestaurant.create1Restaurant=sendRestaurant;
-          
-              this.serviceRestaurant.putRestaurant(sendRestaurant, null)
+                          this.serviceRestaurant.create1Restaurant=sendRestaurant;
+              
+              this.serviceRestaurant.putRestaurant2(sendRestaurant)
               .subscribe();              
         });});
         const dialogRef = this.dialog.open(SimpleAlertComponent);

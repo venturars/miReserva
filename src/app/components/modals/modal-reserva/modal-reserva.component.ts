@@ -67,11 +67,12 @@ public shift:Shifts
       
     })
 
-    if(this.reservationService.tableId == 0){
-      this.showHideTables = true
-    }else{
-      this.showHide = true
-    }
+    // if(this.reservationService.tableId == 0){
+    //   this.showHideTables = true
+    // }else{
+    //   this.showHide = true
+    // }
+    this.showHide=true;
    }
 
   ngOnInit(): void {

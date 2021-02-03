@@ -1129,25 +1129,25 @@ app.put("/restaurant", (request, response) => {
         }}
         arr = [
             request.body.password,
-            request.body.customer_id
+            request.body.restaurant_id
         ];
         sql =
             `UPDATE
                 users
             SET
-                password = ?
+                password = COALESCE(?, street_number)
             WHERE
-                customer_id = ?`;
+                restaurant_id = ?`;
         connection.query(sql, arr, (err2, res2) => {
             if (err2) {
                 message = {
                     control: false,
-                    message: null,
+                    // message: null,
                     message2: "No se ha podido actualizar la tabla users"
             }}else {
                 message = {
                     control: true,
-                    message: null,
+                    // message: null,
                     message2: "Se ha actualizado la tabla users"
             }}
             response.status(200).send(message);
@@ -1606,6 +1606,65 @@ app.get("/registration", (req, res)=>{
         res.send(message)
     })
 })
+app.put("/restaurant2", (request, response) => {
+    let message = {
+        "control": null,
+        "message": null,
+        "message2": null
+    }        
+    let arr = new Array(
+        request.body.name,
+        request.body.province,
+        request.body.city,
+        request.body.street_name,
+        request.body.street_number,
+        request.body.postal_code,
+        request.body.phone,
+        request.body.capacity,
+        request.body.food_type,
+        request.body.header,
+        request.body.logo,
+        request.body.menu,
+        request.body.url,
+        request.body.latitude,
+        request.body.longitude,
+        request.body.restaurant_id
+    );
+    let sql =
+        `UPDATE
+            restaurants
+        SET
+            name = COALESCE(?, name),
+            province = COALESCE(?, province),
+            city = COALESCE(?, city),
+            street_name = COALESCE(?, street_name),
+            street_number = COALESCE(?, street_number),
+            postal_code = COALESCE(?, postal_code),
+            phone = COALESCE(?, phone),
+            capacity = COALESCE(?, capacity),
+            food_type = COALESCE(?, food_type),
+            header = COALESCE(?, header),
+            logo = COALESCE(?, logo),
+            menu = COALESCE(?, menu),
+            url = COALESCE(?, url),
+            latitude = COALESCE(?, latitude),
+            longitude = COALESCE(?, longitude)
+        WHERE
+            restaurant_id = ?`;
+    connection.query(sql, arr, (err, res) => {
+        if (err){
+            message = {
+                control: false,
+                message: "No se ha podido actualizar la tabla restaurants",
+                message2: null
+        }}else {
+            message = {
+                control: true,
+                message: "Se ha actualizado la tabla restaurants",
+                message2: null
+        }}
+        response.send(message);
+})});
 app.listen(3000, () => {
     console.log("listening to port 3000");
 });

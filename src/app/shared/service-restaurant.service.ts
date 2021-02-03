@@ -11,6 +11,7 @@ export class ServiceRestaurantService {
 
   private global:Global = new Global();
   private url:string = this.global.url + "/restaurant";
+  private url2:string= this.global.url + "/restaurant2";
   public restauranteMapa:Restaurants;
   public restaurantReservation:Restaurants;
   public id_restaurant:number;
@@ -72,4 +73,7 @@ export class ServiceRestaurantService {
     return this.http.request('DELETE',this.url, {
       headers: new HttpHeaders ({ 'Content-Type': 'application/json' }),
       body: {restaurant_id:restaurant_id}
-});}}
+});}
+putRestaurant2(restaurant:Restaurants):Observable<any> {
+  return this.http.put(this.url2, restaurant );}
+}

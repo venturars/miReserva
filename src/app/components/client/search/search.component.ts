@@ -97,10 +97,11 @@ export class SearchComponent implements OnInit {
           this.renderedMarker=[];
           this.map.setView([this.restaurants[i].latitude + 0.0095 ,this.restaurants[i].longitude]);
           for (let i=0;i<this.marker.length;i++) {
-            if(this.map.getBounds().contains(this.marker[i].getLatLng())) {
+            if(this.map.getBounds().contains(this.marker[i].getLatLng())) {          
               this.rendered.push(this.restaurants[i]);
               this.renderedMarker.push(this.marker[i]);
           }}
+          
           const position=this.rendered.indexOf(this.restaurants[i]);
           this.renderedMarker.splice(position,1);
           this.rendered.splice(position,1);
