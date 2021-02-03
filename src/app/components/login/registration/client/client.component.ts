@@ -45,7 +45,7 @@ onSubmit(form:any){
         data.data.customer_id,form.value.mobile, form.value.name,form.value.surname,null
       )
       this.servieLogin.users = new Users(
-        null,null,data.data,form.value.email,form.value.password
+        null,null,data.data.customer_id,form.value.email,form.value.password
     )}else {
       const dialogRef = this.dialog.open(SimpleAlertComponent);
       dialogRef.componentInstance.mensaje = "Ese correo ya está registrado, intentalo de nuevo";
