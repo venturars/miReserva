@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Users } from '../models/users';
-import { Restaurants } from '../models/restaurants';
-import { UserOwner } from '../models/user-owner';
-import { UserCustomer } from '../models/user-customer';
 import { Observable } from 'rxjs';
 import { Global } from '../models/global';
+import { Users } from '../models/users';
+import { UserCustomer } from '../models/user-customer';
+import { UserOwner } from '../models/user-owner';
+import { Restaurants } from '../models/restaurants';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +13,59 @@ import { Global } from '../models/global';
 export class ServiceLoginService {
   private global:Global = new Global();
   private url:string = this.global.url + "/login";
-  public users: Users = new Users(null,null,null,null,null);
-  // public users: Users = new Users(288,null,null,"kibona@kibona","kibona");
-  public userRestaurant: Restaurants;
-  // public userRestaurant: Restaurants = new Restaurants(288,"Kibon","Madrid","Alcala de Henares","menorca","12",28009,912403939,30,"Japonesa","assets/photos/KIBONAJAPO.jpg","assets/photos/logokibona.jpg",null,"www.kibon.com",40.4857747,-3.3436791,10);
-  public userOwner: UserOwner;
-  public userCustomer: UserCustomer;
+  public users:Users;
+  public userCustomer:UserCustomer;
+  public userOwner:UserOwner;
+  public userRestaurant:Restaurants;
   
   constructor(
     private http:HttpClient
   ) { }
+  public flush() {
+    let flushUsers:any = JSON.parse(localStorage.getItem('users'));
+    let flushUserCustomer:any = JSON.parse(localStorage.getItem('userCustomer'));
+    let flushUserOwner:any = JSON.parse(localStorage.getItem('userOwner'));
+    let flushUserRestaurant:any = JSON.parse(localStorage.getItem('userRestaurant'));
+    this.users = new Users(
+      flushUsers.restaurant_id,
+      flushUsers.owner_id,
+      flushUsers.customer_id,
+      flushUsers.mail,
+      flushUsers.password,
+    );
+    this.userCustomer = new UserCustomer(
+      flushUserCustomer.customer_id,
+      flushUserCustomer.phone,
+      flushUserCustomer.name,
+      flushUserCustomer.surname,
+      flushUserCustomer.photo
+    );
+    this.userOwner = new UserOwner(
+      flushUserOwner.owner_id,
+      flushUserOwner.cif,
+      flushUserOwner.name,
+      flushUserOwner.surname,
+      flushUserOwner.photo
+    );
+    this.userRestaurant = new Restaurants(
+      flushUserRestaurant.restaurant_id,
+      flushUserRestaurant.name,
+      flushUserRestaurant.province,
+      flushUserRestaurant.city,
+      flushUserRestaurant.street_name,
+      flushUserRestaurant.street_number,
+      flushUserRestaurant.postal_code,
+      flushUserRestaurant.phone,
+      flushUserRestaurant.capacity,
+      flushUserRestaurant.food_type,
+      flushUserRestaurant.header,
+      flushUserRestaurant.logo,
+      flushUserRestaurant.menu,
+      flushUserRestaurant.url,
+      flushUserRestaurant.latitude,
+      flushUserRestaurant.longitude,
+      flushUserRestaurant.owner_id,
+  );}
   public getUsers(
     mail:string,
     password:string
