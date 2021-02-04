@@ -35,19 +35,28 @@ onSubmit(form:any){
     "password":form.value.password
   }
   this.serviceRegistration.registrationOwner(owner)
-  .subscribe((data:any)=>{console.log(data)
+  .subscribe((data:any)=>{
     if(data.control) {
-      
-      
-      this.serviceLogin.userOwner= new UserOwner
-      (data.data.owner_id,form.value.cif,form.value.name,form.value.surname,null);
-      
+      this.serviceLogin.userOwner= new UserOwner(
+        data.data.owner_id,
+        form.value.cif,
+        form.value.name,
+        form.value.surname,
+        null
+      );
       this.serviceRouter.routerOwner()
-      this.serviceLogin.users= new Users (null,data.data.owner_id,null,form.value.mail,form.value.password)
-    }
-    else {
+      this.serviceLogin.users= new Users(
+        null,
+        data.data.owner_id,
+        null,
+        form.value.mail,
+        form.value.password
+      )
+      localStorage.setItem('userOwner', JSON.stringify(this.serviceLogin.userOwner));
+      localStorage.setItem('users', JSON.stringify(this.serviceLogin.users));
+    }else {
     const dialogRef = this.dialog.open(SimpleAlertComponent);
-      dialogRef.componentInstance.mensaje="Ese correo ya está registrado, intentalo de nuevo";
+      dialogRef.componentInstance.mensaje="Ese correo ya está registrado, inténtalo de nuevo";
       const email:any=document.getElementById("profile")
       email.value=null;
       const password:any=document.getElementById("password")

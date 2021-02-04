@@ -73,6 +73,7 @@ export class EditComponentR implements OnInit {
             dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
         dialogRef.afterClosed().subscribe(result => {
           this.serviceRouter.routerOwner(2);
+          this.serviceLogin.save();
         })
           }
           this.message = null;

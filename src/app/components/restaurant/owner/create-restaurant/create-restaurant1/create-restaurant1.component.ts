@@ -74,7 +74,6 @@ export class CreateRestaurant1Component implements OnInit {
     this.serviceRegistration.checkMailFree(restForm.value.mail)
     .subscribe((data:any)=>{
       if (data.control==true){
-        console.log(sendRestaurant);
         this.serviceRestaurant.postRestaurant(
           sendRestaurant,
           restForm.value.mail,
@@ -86,7 +85,6 @@ export class CreateRestaurant1Component implements OnInit {
           this.restauranteCreado=data.data.restaurant_id;
           this.geoservice.getJSONstreet(this.url)
           .subscribe((data:any)=> {
-            console.log(data);
             
             if (data[0].lat=="") {
               //EN ESTE IF ES CUANDO HA FALLADO LA LOCALIZACION Y HABRIA QUE METERSELAS O PREGUNTARLE POR ELLAS
@@ -125,7 +123,6 @@ export class CreateRestaurant1Component implements OnInit {
         const password:any=document.getElementById("password")
         password.value=null;
         dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
     });}});
     this.restaurantmodel.street_number=restForm.value.street_number;
     this.restaurantmodel.street_name=restForm.value.street_name;

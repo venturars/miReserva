@@ -17,10 +17,13 @@ export class AppComponent {
     public serviceRouter:ServiceRouterService
     ){ }
   ngOnInit() {
-    this.serviceRouter.routerLogin();
-    if (this.router.url == " ") {
-      this.router.navigate[('log-in')]
-    }}
-
+    this.serviceLogin.flush();
+    if(this.serviceLogin.users.owner_id) {
+      this.serviceRouter.routerOwner();
+    }else if(this.serviceLogin.users.customer_id) {
+      this.serviceRouter.routerClient();
+    }else if(this.serviceLogin.users.restaurant_id) {
+      this.serviceRouter.routerRestaurant();
+    }else {this.serviceRouter.routerLogin();}
   }
-
+}

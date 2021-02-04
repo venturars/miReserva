@@ -73,7 +73,8 @@ export class EditClientComponent implements OnInit {
             dialogRef.componentInstance.mensaje="Cambios guardados correctamente";
             dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
             dialogRef.afterClosed().subscribe(result => {
-            this.serviceRouter.routerClient();
+              this.serviceRouter.routerClient();
+              this.serviceLogin.save();
           });}
           this.message = null;
           this.pass = null;

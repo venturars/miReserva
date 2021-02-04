@@ -21,11 +21,17 @@ export class ServiceLoginService {
   constructor(
     private http:HttpClient
   ) { }
+  public save() {
+    localStorage.setItem('users', JSON.stringify(this.users));
+    localStorage.setItem('userCustomer', JSON.stringify(this.userCustomer));
+    localStorage.setItem('userOwner', JSON.stringify(this.userOwner));
+    localStorage.setItem('userRestaurant', JSON.stringify(this.userRestaurant));
+  }
   public flush() {
-    let flushUsers:any = JSON.parse(localStorage.getItem('users'));
-    let flushUserCustomer:any = JSON.parse(localStorage.getItem('userCustomer'));
-    let flushUserOwner:any = JSON.parse(localStorage.getItem('userOwner'));
-    let flushUserRestaurant:any = JSON.parse(localStorage.getItem('userRestaurant'));
+    let flushUsers:any = (localStorage.getItem('users'))?JSON.parse(localStorage.getItem('users')):new Users(null,null,null,null,null);
+    let flushUserCustomer:any = (localStorage.getItem('userCustomer'))?JSON.parse(localStorage.getItem('userCustomer')):new UserCustomer(null,null,null,null,null);
+    let flushUserOwner:any = (localStorage.getItem('userOwner'))?JSON.parse(localStorage.getItem('userOwner')):new UserOwner(null,null,null,null,null);
+    let flushUserRestaurant:any = (localStorage.getItem('userRestaurant'))?JSON.parse(localStorage.getItem('userRestaurant')):new Restaurants(null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
     this.users = new Users(
       flushUsers.restaurant_id,
       flushUsers.owner_id,

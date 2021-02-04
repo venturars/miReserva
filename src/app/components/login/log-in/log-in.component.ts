@@ -37,6 +37,7 @@ export class LogInComponent implements OnInit {
         form.value.email,
         form.value.password
       );
+      localStorage.setItem('users', JSON.stringify(this.serviceLogIn.users));
       if(this.serviceLogIn.users.restaurant_id) {
         this.serviceLogIn.userRestaurant = new Restaurants(
           response.data[0].restaurant_id,
@@ -57,6 +58,7 @@ export class LogInComponent implements OnInit {
           response.data[0].longitude,
           null
         )
+        localStorage.setItem('userRestaurant', JSON.stringify(this.serviceLogIn.userRestaurant));
         this.serviceRouter.routerRestaurant();
       }else if(this.serviceLogIn.users.owner_id) {
         this.serviceLogIn.userOwner = new UserOwner(
@@ -65,7 +67,8 @@ export class LogInComponent implements OnInit {
           response.data[0].name,
           response.data[0].surname,
           response.data[0].photo
-          );
+        );
+        localStorage.setItem('userOwner', JSON.stringify(this.serviceLogIn.userOwner));
         this.serviceRouter.routerOwner();
       }else if(this.serviceLogIn.users.customer_id) {
         this.serviceLogIn.userCustomer= new UserCustomer(
@@ -75,6 +78,7 @@ export class LogInComponent implements OnInit {
           response.data[0].surname,
           response.data[0].photo
         );
+        localStorage.setItem('userCustomer', JSON.stringify(this.serviceLogIn.userCustomer));
         this.serviceRouter.routerClient();
     }}else {
       let password:any = document.getElementById("password");

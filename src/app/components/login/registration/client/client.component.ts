@@ -23,7 +23,7 @@ export class ClientComponent implements OnInit {
     public router:Router,
     public serviceRouter:ServiceRouterService,
     private serviceRegistration:ServiceRegistrationService,
-    private servieLogin:ServiceLoginService,
+    private serviceLogin:ServiceLoginService,
     private dialog:MatDialog
   ) { }
 onSubmit(form:any){
@@ -40,15 +40,30 @@ onSubmit(form:any){
   this.serviceRegistration.registrationCustomer(customer)
   .subscribe((data:any)=>{
     if(data.control==true) {
-      this.serviceRouter.routerClient();
-      this.servieLogin.userCustomer = new UserCustomer(
-        data.data.customer_id,form.value.mobile, form.value.name,form.value.surname,null
+      this.serviceLogin.userCustomer = new UserCustomer(
+        data.data.customer_id,
+        form.value.mobile,
+        form.value.name,
+        form.value.surname,
+        null
       )
-      this.servieLogin.users = new Users(
-        null,null,data.data.customer_id,form.value.email,form.value.password
-    )}else {
+      this.serviceLogin.users = new Users(
+        null,
+        null,
+        data.data.customer_id,
+        form.value.email,
+        form.value.password
+      )
+      localStorage.setItem('userCustomer', JSON.stringify(this.serviceLogin.userCustomer));
+      localStorage.setItem('users', JSON.stringify(this.serviceLogin.users));
+      console.log(this.serviceLogin.users);
+      console.log(this.serviceLogin.userCustomer);
+      console.log(localStorage.getItem('users'));
+      console.log(localStorage.getItem('userCustomer'));
+      this.serviceRouter.routerClient();
+    }else {
       const dialogRef = this.dialog.open(SimpleAlertComponent);
-      dialogRef.componentInstance.mensaje = "Ese correo ya está registrado, intentalo de nuevo";
+      dialogRef.componentInstance.mensaje = "Ese correo ya está registrado, inténtalo de nuevo";
       const email:any=document.getElementById("profile");
       email.value = null;
       const password:any = document.getElementById("password");
