@@ -63,60 +63,54 @@ export class CreateRestaurant1Component implements OnInit {
   public onSubmit(restForm:any) {
     
     // SE CREA RESTAURANTE
-
+    let url:string;
+    if (/^http:\/\//.test(restForm.value.url) || /^https:\/\//.test(restForm.value.url)) {
+      url = restForm.value.url;
+      console.log(url);
+    } else {url = `http://${restForm.value.url}`}
     const sendRestaurant:Restaurants = new Restaurants(
       1,restForm.value.name, restForm.value.province, restForm.value.city, restForm.value.street_name,
        restForm.value.street_number, restForm.value.postal_code,restForm.value.phone,restForm.value.capacity,
-       restForm.value.food_type,this.restaurantmodel.header,this.restaurantmodel.logo,null,restForm.value.url,
+       restForm.value.food_type,this.restaurantmodel.header,this.restaurantmodel.logo,null,url,
        null,null,this.serviceLogIn.userOwner.owner_id
     );     
     this.serviceRestaurant.capacity=restForm.value.capacity;
     this.serviceRegistration.checkMailFree(restForm.value.mail)
     .subscribe((data:any)=>{
-      if (data.control==true){
+      if (data.control==true) {
         this.serviceRestaurant.postRestaurant(
           sendRestaurant,
           restForm.value.mail,
           restForm.value.password
-          ).subscribe((data:any) => {  
-            
+          ).subscribe((data:any) => {
           // SE CALCULA LONGITUD Y LATITUD CON LA API
-      
           this.restauranteCreado=data.data.restaurant_id;
           this.geoservice.getJSONstreet(this.url)
           .subscribe((data:any)=> {
             
             if (data[0].lat=="") {
               //EN ESTE IF ES CUANDO HA FALLADO LA LOCALIZACION Y HABRIA QUE METERSELAS O PREGUNTARLE POR ELLAS
-              console.log("entra aqui");
-              }
-            else
-            {
+              } else {
               this.latitud=data[0].lat;
               this.longitud=data[0].lon;
             }
             //SE ACTUALIZA EL RESTAURANTE CON LATITUD Y LONGITUD    
-            
-
               sendRestaurant.restaurant_id=this.restauranteCreado;
-             
               this.serviceRestaurant.id_restaurant=sendRestaurant.restaurant_id;
               sendRestaurant.latitude=this.latitud;
               sendRestaurant.longitude=this.longitud;
-                          this.serviceRestaurant.create1Restaurant=sendRestaurant;
-              
+              this.serviceRestaurant.create1Restaurant=sendRestaurant;
               this.serviceRestaurant.putRestaurant2(sendRestaurant)
               .subscribe();              
         });});
         const dialogRef = this.dialog.open(SimpleAlertComponent);
         dialogRef.componentInstance.mensaje="Restaurante creado, ahora configura sus mesas";
         dialogRef.componentInstance.imagen="..//..//..//..//assets/Actualizar.svg";
-    dialogRef.afterClosed().subscribe(result => {
-    this.router.navigate(["/create-restaurant-2"]);})
-        
+        dialogRef.afterClosed().subscribe(result => {
+        this.router.navigate(["/create-restaurant-2"]);})
       }else {
         const dialogRef = this.dialog.open(SimpleAlertComponent,{panelClass: ['animate__animated','animate__backInDown']});
-        dialogRef.componentInstance.mensaje="Ese email ya existe en nuestra base de datos, tienes que elegir otro";
+        dialogRef.componentInstance.mensaje="Ese email ya existe en nuestra base de datos, elige otro";
         dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
         const email:any=document.getElementById("mail")
         email.value=null;
