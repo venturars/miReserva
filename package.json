@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node apirest.js",
+    "start": "ng build && node apirest.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
