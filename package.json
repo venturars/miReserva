@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-     "start": "apirest/node server.js",
+     "start": "node apirest.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -38,7 +38,8 @@
     "ngx-show-hide-password": "^2.3.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "typescript": "~4.0.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1100.6",
@@ -57,7 +58,7 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
-    "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "tslint": "~6.1.0"
+    
   }
 }
