@@ -8,17 +8,12 @@
 
         <div class="search">
             <input type="text" class="searchLine" #searchLine
-            placeholder="Busca tu restaurante" (click)="showAll()">
+            placeholder="Busca tu restaurante">
             <button (click)="findRest(searchLine)" class="searchButton">
             </button>
         </div>
 
     </div>
-
-    <!-- <div class="map" *ngIf="restaurants">
-        <div id="mapid" style="width: 100%; height: 100%;"></div>
-    </div> -->
-
     <ng-template #not>
         <div class="not"><img src="/assets/restaurantes.svg" (click)="serviceRouter.routerOwner(1)"></div>
     </ng-template>

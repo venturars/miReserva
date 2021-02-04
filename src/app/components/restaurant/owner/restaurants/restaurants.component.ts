@@ -5,6 +5,8 @@ import { ServiceRestaurantService } from '../../../../shared/service-restaurant.
 import { ServiceRouterService } from '../../../../shared/service-router.service';
 import { Router } from '@angular/router';
 import { ServiceCalendarService } from 'src/app/shared/service-calendar.service';
+import { SimpleAlertComponent } from '../../../modals/simple-alert/simple-alert';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-restaurant-owner-restaurants',
@@ -19,7 +21,8 @@ export class RestaurantsComponent implements OnInit {
     private serviceRestaurant:ServiceRestaurantService,
     private serviceCalendar:ServiceCalendarService,
     public serviceRouter:ServiceRouterService,
-    private router:Router
+    private router:Router,
+    private dialog:MatDialog,
   ) { }
 
   ngOnInit() {
@@ -28,37 +31,26 @@ export class RestaurantsComponent implements OnInit {
       ).subscribe((response) => {
         if(response.control) {
           this.restaurants = response.data;
-    }});}
+  }});}
   public clickRestaurant(index:number) {
     this.serviceRestaurant.selectedRestaurant = this.restaurants[index];
     this.serviceCalendar.restaurantId = this.restaurants[index].restaurant_id;
     
     this.serviceCalendar.getTimes(this.restaurants[index].restaurant_id)
     this.router.navigate(['/reservations-list-restaurant']);
-}
-public findRest(busqueda){
-  this.restaurantCopy=[];
-  
-  let control=false;
-  for (let i=0;i<this.restaurants.length;i++){
-    if(this.restaurants[i].name.toLowerCase()==busqueda.value.toLowerCase()){
-      this.restaurantCopy.push(this.restaurants[i]);
-      busqueda.value="";
-      control=true;
-    }
-  
-  } 
-  if(!control){
-    busqueda.style.color="var(--primaryColor)";
-    busqueda.value="Restaurante no encontrado"
-    setTimeout(function(){busqueda.value="";
-                          busqueda.style.color="var(--secundaryColorOpposite)"}
-                          ,2500);
   }
-}
-
-public showAll(){
-  this.restaurantCopy=[];
-}
-
+  public findRest(busqueda:any) {
+    let same:RegExp = new RegExp(busqueda.value.toLowerCase());
+    this.restaurantCopy=[];
+    for (let i = 0; i < this.restaurants.length; i++) {
+      if(same.test(this.restaurants[i].name.toLowerCase())){
+        this.restaurantCopy.push(this.restaurants[i]);
+        busqueda.value="";
+    }}
+    if(busqueda.value!==""){
+      const dialogRef = this.dialog.open(SimpleAlertComponent);
+      dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
+      dialogRef.componentInstance.mensaje="No hemos encontrado ningún restaurante con ese nombre";
+      dialogRef.afterClosed().subscribe();
+  }}
 }

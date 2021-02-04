@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ServiceSearchService } from '../../../shared/service-search.service';
 import { Restaurants } from '../../../models/restaurants';
 import { Map, tileLayer, Marker } from "leaflet";
@@ -13,6 +13,7 @@ import { SimpleAlertComponent } from '../../modals/simple-alert/simple-alert';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+
   public allRestaurants: Restaurants[] = new Array();
   public restaurants: Restaurants[] = new Array();
   public checked:any[] = new Array();
@@ -21,7 +22,7 @@ export class SearchComponent implements OnInit {
   public rendered:any[] = new Array();
   public clicked:Restaurants;
   public renderedMarker:any[] = new Array();
-  public options:object[] = [
+  public options:any[] = [
     {
       value:"Española",
       id:"esp"
@@ -50,7 +51,6 @@ export class SearchComponent implements OnInit {
   constructor(
     private searchService:ServiceSearchService,
     private restaurantService:ServiceRestaurantService,
-    private router:Router,
     private dialog:MatDialog,
     private serviceCalendar: ServiceCalendarService,
   ) { }
@@ -209,38 +209,20 @@ export class SearchComponent implements OnInit {
     this.serviceCalendar.getTimes(restaurant.restaurant_id);
   }
   public localSearch(searchLine:HTMLInputElement) {
-    let control = false;
-    for (let i = 0; i <this.restaurants.length;i++){
-      if (this.restaurants[i].name.toLowerCase()==searchLine.value.toLowerCase()) {
-        this.rendered=[];
+    for (let i = 0; i < this.options.length; i++) {
+      let check:any = document.getElementById(this.options[i].id);
+      check.checked = 0;
+    }
+    let same:RegExp = new RegExp(searchLine.value.toLowerCase());
+    this.rendered=[];
+    for (let i = 0; i <this.restaurants.length;i++) {
+      if (same.test(this.restaurants[i].name.toLowerCase())) {
         this.rendered.push(this.restaurants[i]);
-        control=true;
+        searchLine.value="";
     }}
-    if (control){
-      searchLine.value="";
-    }else {
+    if(searchLine.value!=="") {
       const dialogRef = this.dialog.open(SimpleAlertComponent);
       dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
       dialogRef.componentInstance.mensaje="No hemos encontrado ningún restaurante con ese nombre";
-
       dialogRef.afterClosed().subscribe();
 }}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
