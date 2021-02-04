@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng build && node apirest.js",
+    "start": "node apirest.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -12,9 +12,9 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^11.0.7",
     "@angular/cli": "^11.0.6",
     "@angular/compiler-cli": "^11.0.7",
+    "@angular/animations": "^11.0.7",
     "@angular/cdk": "^11.0.3",
     "@angular/common": "^11.0.7",
     "@angular/compiler": "^11.0.7",
