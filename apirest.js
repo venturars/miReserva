@@ -3,7 +3,7 @@ const mysql = require ("mysql");
 const app = express();
 const cors = require('cors');
 const compression = require('compression');
-
+const PORT= process.env.PORT || 3000;
 const corsOptions = {
     "Access-Control-Allow-Methods" : ['GET', 'PUT', 'POST', 'DELETE']
 }
@@ -14,11 +14,13 @@ app.use(cors(corsOptions));
 app.use(compression());
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: null,
-    database: 'mi_reserva'
+    host: 'eu-cdbr-west-03.cleardb.net',
+    user: 'b50579c4e4296a',
+    password: '5f84781e',
+    database: 'heroku_5589b552b7dd6cb'
 })
+
+
 
 connection.connect((err,res) => {
     if (err)
@@ -1670,6 +1672,6 @@ app.put("/restaurant2", (request, response) => {
         }}
         response.send(message);
 })});
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("listening to port 3000");
 });
