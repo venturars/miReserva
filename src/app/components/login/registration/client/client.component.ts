@@ -64,6 +64,7 @@ onSubmit(form:any){
     }else {
       const dialogRef = this.dialog.open(SimpleAlertComponent);
       dialogRef.componentInstance.mensaje = "Ese correo ya está registrado, inténtalo de nuevo";
+      dialogRef.componentInstance.imagen = "/assets/null.svg";
       const email:any=document.getElementById("profile");
       email.value = null;
       const password:any = document.getElementById("password");

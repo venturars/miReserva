@@ -111,7 +111,7 @@ export class CreateRestaurant1Component implements OnInit {
       }else {
         const dialogRef = this.dialog.open(SimpleAlertComponent,{panelClass: ['animate__animated','animate__backInDown']});
         dialogRef.componentInstance.mensaje="Ese email ya existe en nuestra base de datos, elige otro";
-        dialogRef.componentInstance.imagen="..//..//..//..//assets/null.svg";
+        dialogRef.componentInstance.imagen="/assets/null.svg";
         const email:any=document.getElementById("mail")
         email.value=null;
         const password:any=document.getElementById("password")
