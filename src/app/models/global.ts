@@ -7,5 +7,6 @@ export class Global {
     public url;
     constructor() {
         this.url=window.location.href;
+        console.log("hola");
      }
 }
