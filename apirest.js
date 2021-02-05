@@ -1672,6 +1672,10 @@ app.put("/restaurant2", (request, response) => {
         }}
         response.send(message);
 })});
+
+app.post("/", (req, res) => {
+res.send("hello");
+});
 app.listen(PORT, () => {
     console.log("listening to port"+ PORT);
 });
