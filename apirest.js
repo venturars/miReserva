@@ -12,6 +12,8 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cors(corsOptions));
 app.use(compression());
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 
 const connection = mysql.createConnection({
     host: 'eu-cdbr-west-03.cleardb.net',
