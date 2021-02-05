@@ -78,7 +78,7 @@ export class ServiceLoginService {
     mail:string,
     password:string
   ):Observable<any> {
-    return this.http.post(this.router.url + "/login", {
+    return this.http.post(window.location.href+ "/login", {
       "mail": mail,
       "password": password
 });}}
