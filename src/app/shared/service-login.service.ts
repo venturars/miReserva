@@ -6,6 +6,7 @@ import { Users } from '../models/users';
 import { UserCustomer } from '../models/user-customer';
 import { UserOwner } from '../models/user-owner';
 import { Restaurants } from '../models/restaurants';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,10 @@ export class ServiceLoginService {
   public userCustomer:UserCustomer;
   public userOwner:UserOwner;
   public userRestaurant:Restaurants;
+  public router;
   
   constructor(
-    private http:HttpClient
+    private http:HttpClient, router: Router
   ) { }
   public save() {
     localStorage.setItem('users', JSON.stringify(this.users));
@@ -76,7 +78,7 @@ export class ServiceLoginService {
     mail:string,
     password:string
   ):Observable<any> {
-    return this.http.post(this.url, {
+    return this.http.post(this.router.url, {
       "mail": mail,
       "password": password
 });}}
