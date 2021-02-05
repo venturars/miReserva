@@ -25,8 +25,7 @@ const connection = mysql.createConnection({
 
 
 function handleDisconnect() {
-  connection = mysql.createConnection(connection); // Recreate the connection, since
-                                                  // the old one cannot be reused.
+ 
 
   connection.connect(function(err) {              // The server is either down
     if(err) {                                     // or restarting (takes a while sometimes).
