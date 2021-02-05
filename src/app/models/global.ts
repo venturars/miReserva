@@ -5,7 +5,7 @@ export class Global {
     // public url:string = "http://localhost:3000";
     
     public url;
-    constructor(url:Router) {
-        this.url.url;
+    constructor() {
+        this.url=window.location.href);
      }
 }
