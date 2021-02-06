@@ -1,6 +1,6 @@
 import { Router } from "@angular/router";
 
-import PORT from "apirest.js";
+import {PORT} from "apirest.js";
 export class Global {
     
     
