@@ -7,8 +7,12 @@ export class Global {
     public url:string = window.location.href;
     
     constructor() {
-            console.log(process.env.Port);
+            this.newMethod();
         // console.log(Port);
         // console.log(PORT);
      }
+
+    private newMethod() {
+        console.log(process.env.PORT);
+    }
 }
