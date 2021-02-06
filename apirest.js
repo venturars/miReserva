@@ -12,7 +12,7 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cors(corsOptions));
 app.use(compression());
-var distDir = __dirname + "/dist/";
+const distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
 const connection = mysql.createConnection({
@@ -1704,3 +1704,5 @@ res.send("hello");
 app.listen(PORT, () => {
     console.log("listening to port"+ PORT);
 });
+
+exports.module={ PORT};

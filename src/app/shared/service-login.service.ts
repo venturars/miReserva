@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ServiceLoginService {
-  // private global:Global = new Global();
-  // private url:string = this.global.url + "/login";
+  private global:Global = new Global();
+  private url:string = this.global.url + "login";
   public users:Users;
   public userCustomer:UserCustomer;
   public userOwner:UserOwner;
@@ -78,7 +78,7 @@ export class ServiceLoginService {
     mail:string,
     password:string
   ):Observable<any> {
-    return this.http.post(window.location.href+ "login", {
+    return this.http.post(this.url, {
       "mail": mail,
       "password": password
 });}}

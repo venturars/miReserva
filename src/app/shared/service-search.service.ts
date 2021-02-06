@@ -9,7 +9,7 @@ import { Global } from '../models/global';
 export class ServiceSearchService {
   
   private global:Global = new Global();
-  private url:string = window.location.href;
+  private url:string = this.global.url;
 
   constructor(
     private http:HttpClient

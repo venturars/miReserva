@@ -1,10 +1,11 @@
 import { Router } from "@angular/router";
 
+import {Port} from "../../../apirest.js";
 export class Global {
     
-    // public url:string = "http://localhost:3000";
+    public url:string = (Port.PORT==3000) ? "http://localhost:3000" : window.location.href;
     
-    public url;
+    
     constructor() {
         
         console.log("hola");
