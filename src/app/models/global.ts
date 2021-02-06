@@ -1,5 +1,5 @@
 import { Router } from "@angular/router";
-
+import {puerto} from "apirest.js";
 // import {PORT} from "apirest.js";
 export class Global {
     
@@ -7,12 +7,10 @@ export class Global {
     public url:string = window.location.href;
     
     constructor() {
-            this.newMethod();
-        // console.log(Port);
+        console.log(puerto);
+           // console.log(Port);
         // console.log(PORT);
      }
 
-    private newMethod() {
-        console.log(process.env.PORT);
-    }
+   
 }
