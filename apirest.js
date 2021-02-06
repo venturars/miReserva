@@ -3,7 +3,7 @@ const mysql = require ("mysql");
 const app = express();
 const cors = require('cors');
 const compression = require('compression');
-export const PORT= process.env.PORT || 3000;
+const PORT= process.env.PORT || 3000;
 const corsOptions = {
     "Access-Control-Allow-Methods" : ['GET', 'PUT', 'POST', 'DELETE']
 }
@@ -1705,4 +1705,3 @@ app.listen(PORT, () => {
     console.log("listening to port"+ PORT);
 });
 
-// exports.module={ PORT};
