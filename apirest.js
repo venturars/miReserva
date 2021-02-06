@@ -1705,4 +1705,3 @@ app.listen(PORT, () => {
     console.log("listening to port"+ PORT);
 });
 
-export let puerto="hola" + PORT;
