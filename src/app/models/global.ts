@@ -1,6 +1,6 @@
 import { Router } from "@angular/router";
 
-import {Port} from "../../../apirest.js";
+// import {Port} from "../../../apirest.js";
 export class Global {
     
     
@@ -8,7 +8,7 @@ export class Global {
     
     constructor() {
             
-        console.log(Port);
-        console.log(Port.PORT);
+        // console.log(Port);
+        // console.log(Port.PORT);
      }
 }
