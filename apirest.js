@@ -11,11 +11,11 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cors(corsOptions));
 app.use(compression());
-const distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
 
 //-----HEROKU-----
 
+// const distDir = __dirname + "/dist/";
+// app.use(express.static(distDir));
 // const connection = mysql.createPool({
 //     host: 'eu-cdbr-west-03.cleardb.net',
 //     user: 'b50579c4e4296a',
@@ -57,6 +57,14 @@ app.use(express.static(distDir));
 //----------//----------//----------//----------//----------
 
 //ANTIGUO CONNECT BASE DE DATOS
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: null,
+    database: 'mi_reserva'
+});
+
 connection.connect((err,res) => {
     if (err)
     console.log(err);

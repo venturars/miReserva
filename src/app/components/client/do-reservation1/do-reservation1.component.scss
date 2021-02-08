@@ -40,8 +40,9 @@
     justify-content: space-around;
     width: min(calc(100% - 20px), 1000px);
     margin: auto;
-    & > .calendar {
-        width: min(calc(100 - 20px), 400px);
+    & > .calendar app-calendar {
+        margin: auto;
+        width: min(calc(100% - 20px), 400px);
         display: flex;
         justify-content: center;
         padding-top: 20px;
