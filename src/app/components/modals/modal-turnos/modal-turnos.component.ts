@@ -78,7 +78,7 @@ deleteShifts(i,shift){
 
 maximo(pax,otro){
 
-otro.value=this.serviceRestaurant.capacity;
+otro.value=this.serviceRestaurant.capacity+1;
 }
 
 onSubmit(formulario){

@@ -1575,21 +1575,18 @@ a, a:hover {
     & > a {
         display: none;
 }}
-.reservado{
+.reservado {
     background-color: rgb(73, 146, 73)!important;
     color: var(--primaryColorOpposite)!important;
     border-color: rgb(73, 146, 73)!important;
 }
-
-.cancelado{
+.cancelado {
     background-color: rgb(138, 64, 138)!important;
     color:var(--primaryColorOpposite)!important;
     border-color: rgb(138, 64, 138)!important;
 }
-
-.eliminado{
+.eliminado {
     background-color: rgb(91, 91, 168)!important;
     color:var(--primaryColorOpposite)!important;
     border-color:rgb(91, 91, 168)!important;
-
 }

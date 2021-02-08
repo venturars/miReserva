@@ -121,6 +121,8 @@
   .map {
     width: 100%;
     height: 160px;
+    border-bottom: 10px solid var(--secundaryColor);
+    box-shadow: none;
   }
   .cards {
     width: 100%;
