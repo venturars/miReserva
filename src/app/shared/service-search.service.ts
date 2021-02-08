@@ -9,12 +9,12 @@ import { Global } from '../models/global';
 export class ServiceSearchService {
   
   private global:Global = new Global();
-  private url:string = this.global.url + "search";
+  private url:string = this.global.url ;
 
   constructor(
     private http:HttpClient
   ) { }
   
   public initialSearch():Observable<any> {
-    return this.http.get(this.url);
+    return this.http.get(this.url + "search");
 }}
