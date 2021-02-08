@@ -10,8 +10,8 @@ import { Global } from '../models/global';
 export class ServiceRestaurantService {
 
   private global:Global = new Global();
-  private url:string = this.global.url + "/restaurant";
-  private url2:string= this.global.url + "/restaurant2";
+  private url:string = this.global.url + "restaurant";
+  private url2:string= this.global.url + "restaurant2";
   public restauranteMapa:Restaurants;
   public restaurantReservation:Restaurants;
   public id_restaurant:number;

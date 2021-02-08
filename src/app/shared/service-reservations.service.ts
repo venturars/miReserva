@@ -12,7 +12,7 @@ import { Global } from '../models/global';
 export class ServiceReservationsService {
 
   private global:Global = new Global();
-  private url:string = this.global.url + "/reservations";  
+  private url:string = this.global.url + "reservations";  
   public reservation:Reservations
   public reservationId:number
   public pax:number
