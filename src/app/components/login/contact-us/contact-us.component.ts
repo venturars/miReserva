@@ -42,7 +42,7 @@ export class ContactUsComponent implements OnInit {
       profesion: "Full-Stack Developer",
       photo: "./assets/fotoJuan.jpg",
       linkedIn: "https://www.linkedin.com/in/juan-gianina-3495811b8/",
-      linkedInPhoto: "assets/JuanLink.svg"
+      linkedInPhoto: "assets/Juanlin.svg"
     }
   ]
   constructor(
