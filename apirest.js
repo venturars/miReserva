@@ -1715,6 +1715,6 @@ app.put("/restaurant2", (request, response) => {
         }}
         response.send(message);
 })});
-app.listen(3000, () => {
-    console.log("listening to port 3000");
+app.listen(PORT, () => {
+    console.log(`listening to port ${PORT}`);
 });
