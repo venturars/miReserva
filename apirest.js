@@ -32,7 +32,7 @@ const connection = mysql.createPool({
 function handleDisconnect() {
  
 
-  connection.connect(function(err) {              // The server is either down
+  connection.getConnection(function(err) {              // The server is either down
     if(err) {                                     // or restarting (takes a while sometimes).
       console.log('error when connecting to db:', err);
       setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
@@ -43,9 +43,9 @@ function handleDisconnect() {
     console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
         
-        
+
         console.log("ESTAMOS AQUI") // Connection to the MySQL server is usually
-      connection.connect((err)=>{
+      connection.getConnection((err)=>{
         if (err)
             console.log(err);
             else
