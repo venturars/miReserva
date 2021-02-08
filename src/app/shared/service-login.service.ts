@@ -6,20 +6,22 @@ import { Users } from '../models/users';
 import { UserCustomer } from '../models/user-customer';
 import { UserOwner } from '../models/user-owner';
 import { Restaurants } from '../models/restaurants';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceLoginService {
   private global:Global = new Global();
-  private url:string = this.global.url + "/login";
+  private url:string = this.global.url + "login";
   public users:Users;
   public userCustomer:UserCustomer;
   public userOwner:UserOwner;
   public userRestaurant:Restaurants;
+  public router;
   
   constructor(
-    private http:HttpClient
+    private http:HttpClient, router: Router
   ) { }
   public save() {
     localStorage.setItem('users', JSON.stringify(this.users));

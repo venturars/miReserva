@@ -10,7 +10,7 @@ import { Global } from '../models/global';
 export class ServiceShiftsService {
 
   private global:Global = new Global();
-  private url:string = this.global.url + "/shifts";
+  private url:string = this.global.url + "shifts";
   public shifts:Shifts;
 
   constructor(

@@ -9,7 +9,7 @@ import { Global } from '../models/global';
 export class ServiceUserOwnerService {
 
   private global:Global = new Global();
-  private url:string = this.global.url + "/user_owner";
+  private url:string = this.global.url + "user_owner";
 
   constructor(
     private http:HttpClient
