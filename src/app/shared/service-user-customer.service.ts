@@ -8,7 +8,7 @@ import { Global } from '../models/global';
 })
 export class ServiceUserCustomerService {
   private global:Global = new Global();
-  private url:string = this.global.url + "/user_customer";
+  private url:string = this.global.url + "user_customer";
 
   constructor (
     private http:HttpClient
