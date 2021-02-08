@@ -2,7 +2,7 @@
 export class Global {
     
     
-    public url:string = window.location.href;
+    public url:string = "https://mi-reserva.herokuapp.com/";
     
     constructor() {
         
