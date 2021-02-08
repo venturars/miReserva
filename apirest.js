@@ -15,14 +15,19 @@ app.use(compression());
 const distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
-const connection = mysql.createConnection({
+// const connection = mysql.createConnection({
+//     host: 'eu-cdbr-west-03.cleardb.net',
+//     user: 'b50579c4e4296a',
+//     password: '5f84781e',
+//     database: 'heroku_5589b552b7dd6cb'
+// })
+
+const connection = mysql.createPool({
     host: 'eu-cdbr-west-03.cleardb.net',
     user: 'b50579c4e4296a',
     password: '5f84781e',
     database: 'heroku_5589b552b7dd6cb'
 })
-
-
 
 function handleDisconnect() {
  
@@ -37,7 +42,7 @@ function handleDisconnect() {
   connection.on('error', function(err) {
     console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-        connection.destroy();
+        
         console.log("ESTAMOS AQUI") // Connection to the MySQL server is usually
       connection.connect((err)=>{
         if (err)
