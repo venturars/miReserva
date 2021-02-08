@@ -37,6 +37,7 @@ function handleDisconnect() {
   connection.on('error', function(err) {
     console.log('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+        connection.destroy();
         console.log("ESTAMOS AQUI") // Connection to the MySQL server is usually
       connection.connect((err)=>{
         if (err)
