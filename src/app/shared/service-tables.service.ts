@@ -10,7 +10,7 @@ import { Global } from '../models/global';
 export class ServiceTablesService {
 
   private global:Global = new Global();
-  private url:string = this.global.url + "/tables";
+  private url:string = this.global.url + "tables";
   public table:Tables[] = new Array();
 
   constructor(

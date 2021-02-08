@@ -10,7 +10,7 @@ import { Global } from '../models/global';
 export class ServiceTimesService {
 
   private global:Global = new Global();
-  private url:string = this.global.url + "/times";
+  private url:string = this.global.url + "times";
   public times:Times;
   public inicio:string;
   public fin:string;
