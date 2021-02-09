@@ -137,7 +137,7 @@ export class ReservationsClientComponent implements OnInit {
   });}});}
   ngOnInit() {
   }
-  public deleteReservation(id_reservation:number){
+  public deleteReservation(id_reservation:number) {
     let resultado ="";
     for(let i = 0; i < this.reservations.length; i++) {
       if(this.reservations[i].reservation_id == id_reservation) {
@@ -156,11 +156,10 @@ export class ReservationsClientComponent implements OnInit {
   }
   cambiarSelect(select:any){
     this.elSelect = select.value;
-    console.log(this.elSelect);
   }
-  modalRest(restaurant){
-    this.restaurantService.restauranteMapa=restaurant;
+  modalRest(restaurant:any){
+    this.restaurantService.restauranteMapa = restaurant;
     const dialogRef = this.dialog.open(InfoRestaurantComponent);
-    dialogRef.componentInstance.restaurant=restaurant;
+    dialogRef.componentInstance.restaurant = restaurant;
     dialogRef.afterClosed().subscribe();
 }}

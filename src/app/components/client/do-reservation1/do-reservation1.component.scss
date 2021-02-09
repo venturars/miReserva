@@ -147,7 +147,8 @@
   }
   @media screen and (max-width: 768px) {
     .pass {
-        bottom: 52px;
+        top: calc(100vh - 104px);
+        bottom: 0;
         padding: 0;
         width: 100%;
         box-shadow: initial;
