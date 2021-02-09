@@ -14,75 +14,75 @@ app.use(compression());
 
 //-----HEROKU-----
 
-// const distDir = __dirname + "/dist/";
-// app.use(express.static(distDir));
-// const connection = mysql.createPool({
-//     host: 'eu-cdbr-west-03.cleardb.net',
-//     user: 'b50579c4e4296a',
-//     password: '5f84781e',
-//     database: 'heroku_5589b552b7dd6cb'
-// })
+const distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+const connection = mysql.createPool({
+    host: 'eu-cdbr-west-03.cleardb.net',
+    user: 'b50579c4e4296a',
+    password: '5f84781e',
+    database: 'heroku_5589b552b7dd6cb'
+})
 
-// function handleDisconnect() {
+function handleDisconnect() {
  
 
-//   connection.getConnection(function(err) {              // The server is either down
-//     if(err) {                                     // or restarting (takes a while sometimes).
-//       console.log('error when connecting to db:', err);
-//       setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-//     }                                     // to avoid a hot loop, and to allow our node script to
-//   });                                     // process asynchronous requests in the meantime.
-//                                           // If you're also serving http, display a 503 error.
-//   connection.on('error', function(err) {
-//     console.log('db error', err);
-//     if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+  connection.getConnection(function(err) {              // The server is either down
+    if(err) {                                     // or restarting (takes a while sometimes).
+      console.log('error when connecting to db:', err);
+      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+    }                                     // to avoid a hot loop, and to allow our node script to
+  });                                     // process asynchronous requests in the meantime.
+                                          // If you're also serving http, display a 503 error.
+  connection.on('error', function(err) {
+    console.log('db error', err);
+    if(err.code === 'PROTOCOL_CONNECTION_LOST') {
         
 
-//         console.log("ESTAMOS AQUI") // Connection to the MySQL server is usually
-//       connection.getConnection((err)=>{
-//         if (err)
-//             console.log(err);
-//             else
-//             console.log("Conectado");
+        console.log("ESTAMOS AQUI") // Connection to the MySQL server is usually
+      connection.getConnection((err)=>{
+        if (err)
+            console.log(err);
+            else
+            console.log("Conectado");
 
-//       });                        // lost due to either server restart, or a
-//     } else {                                      // connnection idle timeout (the wait_timeout
-//       throw err;                                  // server variable configures this)
-//     }
-//   });
-// }
+      });                        // lost due to either server restart, or a
+    } else {                                      // connnection idle timeout (the wait_timeout
+      throw err;                                  // server variable configures this)
+    }
+  });
+}
 
-// handleDisconnect();
+handleDisconnect();
 
 //----------//----------//----------//----------//----------
 
 //ANTIGUO CONNECT BASE DE DATOS
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: null,
-    database: 'mi_reserva'
-});
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: null,
+//     database: 'mi_reserva'
+// });
 
-connection.connect((err,res) => {
-    if (err)
-    console.log(err);
-    else
-    console.log("Conectado");
+// connection.connect((err,res) => {
+//     if (err)
+//     console.log(err);
+//     else
+//     console.log("Conectado");
 
-    // Limpieza de BBDD//
-    let sql = 
-        `DELETE FROM
-            users
-        WHERE
-            owner_id IS null
-        AND
-            customer_id IS null
-        AND
-            restaurant_id IS null`;
-    connection.query(sql);
-});
+//     // Limpieza de BBDD//
+//     let sql = 
+//         `DELETE FROM
+//             users
+//         WHERE
+//             owner_id IS null
+//         AND
+//             customer_id IS null
+//         AND
+//             restaurant_id IS null`;
+//     connection.query(sql);
+// });
 //----------//----------//----------//----------//----------
 
 //-----Login-----
