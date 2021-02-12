@@ -11,8 +11,9 @@ Empezamos a explicarlo, primero hay que decir que existen tres perfiles de usuar
   <h3>  El restaurante</h3>
   -El propietario cuando configura su restaurante crea una cuenta para que desde el propio restaurante puedan gestionar las reservas, pero sin las privilegios de poder cambiar la configuración de datos, localización, mesas, horarios y turnos. Solo para gestión de reservas.<br><br>
   <h3>  El comensal</h3>
-  -El cliente pueda realizar la reserva en un mapa en el que geolocaliza los restaurantes, o bien buscarlos por buscador o por tipo de comida 🍔🍖 🍤<br>
-  puede realizar reservas sin esperar confirmación del restaurante y tiene un histórico de ellas, así como poder cancelarlas.<br><br>
+  -El cliente pueda realizar la reserva en un mapa en el que geolocaliza  📡  los restaurantes<br>
+  - O bien buscarlos por buscador o por tipo de comida 🍔🍖 🍤<br>
+  - Puede realizar reservas📆 sin esperar confirmación del restaurante y tiene un histórico de ellas, así como poder cancelarlas.<br><br>
 
 
 Por favor ser libres en probarlas y darnos vuestra opinion. Gracias!! 🙈 🙉 🙊
