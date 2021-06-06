@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+
+  mariaDB:
+    image: mariadb:10.5.10-focal
+    environment:
+      MARIADB_HOST: localhost
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD} 
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - ${VOLUME_MARIADB}:/var/lib/mysql
+    restart: always
+    ports:
+      - ${MARIADB_PORT}:3306
+
+  api-express:
+    image: api-express-node14.17
+    build: 
+      context: ./api-express
+      dockerfile: Dockerfile-machine
+    volumes:
+      - ${VOLUME_APIEXPRESS}:/home/api-express
+    ports:
+      - ${EXPRESS_PORT}:3000
+    links:
+      - mariaDB:mariaDB
+
+  ng-app:
+    image: angular11
+    build: 
+      context: ./ng-app
+      dockerfile: Dockerfile-machine
+    volumes:
+      - ${VOLUME_NGAPP}:/home/ng-app
+    ports:
+      - ${ANGULAR_PORT}:4200

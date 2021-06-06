@@ -1,1 +1,0 @@
-<h1>Docker para proyecto de Angular 12 con MariaDB</h1>

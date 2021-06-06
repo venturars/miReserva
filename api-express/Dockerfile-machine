@@ -1,0 +1,8 @@
+FROM node:14.17
+RUN npm install -g nodemon@2.0.7
+WORKDIR /home/api-express
+COPY package.json* package-lock.json* .
+RUN if [ ! -f package.json ]; then npm init -y; fi
+RUN npm ci
+RUN npm install express@4.17.1 dotenv@10.0.0 cors@2.8.5 compression@1.7.4 jsonwebtoken@8.5.1 mysql@2.18.1
+CMD ["nodemon", "index.js"]
