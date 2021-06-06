@@ -1,0 +1,19 @@
+# Variables for MariaDB
+
+MARIADB_ROOT_PASSWORD = PasswdR@@t54
+MARIADB_DATABASE = my-database
+MARIADB_PASSWORD = PasswdU@@r54
+
+
+# Variables for volumes PATHs
+
+VOLUME_DATABASE = my_absolute_path_db
+VOLUME_API-EXPRESS = my_absolute_path_api-express
+VOLUME_NG-APP = my_absolute_path_ng-app
+
+
+# Variables for external ports
+
+MARIADB_PORT = 3306	# default
+EXPRESS_PORT = 3000	# default
+ANGULAR_PORT = 4200	# default
